@@ -58,5 +58,17 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null
+  },
+  {
+    "id": "36a0473b-0a31-4765-ba31-8ebf7dd37aea",
+    "accountId": "273c125f-56b7-4aa1-8abc-89df16bfbe2a",
+    "accountLabel": "연리지 실타래",
+    "text": "테스트글4",
+    "status": "scheduled",
+    "scheduledAt": "2026-08-28T04:00:00.000Z",
+    "createdAt": "2026-08-23T09:22:18.729Z",
+    "publishedAt": null,
+    "publishedId": null,
+    "error": null
   }
 ]
