@@ -2,6 +2,7 @@ const state = {
   maxTextLength: 500,
   accounts: [],
   personaPresets: {},
+  partnersPresets: {},
   selectedAccountId: null,
   selectedCategoryId: null,
   publishMode: "now", // now | schedule
@@ -9,6 +10,7 @@ const state = {
   calendarDate: new Date(), // 현재 보고 있는 달 (day는 무시하고 년/월만 사용)
   selectedDay: null, // "YYYY-MM-DD" 또는 null
   schedulePosts: [],
+  newAccountType: "saju", // saju | partners (계정 추가 폼에서 선택 중인 카테고리)
 };
 
 const ACCOUNT_COLOR_PALETTE = ["#e07a5f", "#6ea8fe", "#81b29a", "#d88fd8", "#f2b56f", "#7fd1ae"];
@@ -33,7 +35,11 @@ const el = {
   accountSelect: document.getElementById("account-select"),
   accountPersonaHint: document.getElementById("account-persona-hint"),
   noAccountHint: document.getElementById("no-account-hint"),
+  categorySectionLabel: document.getElementById("category-section-label"),
   categoryOptions: document.getElementById("category-options"),
+  partnersProductFields: document.getElementById("partners-product-fields"),
+  productName: document.getElementById("product-name"),
+  productNote: document.getElementById("product-note"),
   btnGenerate: document.getElementById("btn-generate"),
   btnManual: document.getElementById("btn-manual"),
   settingsError: document.getElementById("settings-error"),
@@ -75,6 +81,10 @@ const el = {
   btnOauthConnect: document.getElementById("btn-oauth-connect"),
   oauthStatus: document.getElementById("oauth-status"),
   btnLookupUserId: document.getElementById("btn-lookup-userid"),
+  typeSajuBtn: document.getElementById("type-saju-btn"),
+  typePartnersBtn: document.getElementById("type-partners-btn"),
+  sajuFields: document.getElementById("saju-fields"),
+  partnersFields: document.getElementById("partners-fields"),
   personaTemplateSelect: document.getElementById("persona-template-select"),
   personaSpeechLevel: document.getElementById("persona-speech-level"),
   personaCategories: document.getElementById("persona-categories"),
@@ -82,6 +92,10 @@ const el = {
   personaCta: document.getElementById("persona-cta"),
   personaClosing: document.getElementById("persona-closing"),
   personaReference: document.getElementById("persona-reference"),
+  partnersTemplateSelect: document.getElementById("partners-template-select"),
+  partnersCategories: document.getElementById("partners-categories"),
+  partnersStyleGuide: document.getElementById("partners-style-guide"),
+  partnersDisclosure: document.getElementById("partners-disclosure"),
   btnAddAccount: document.getElementById("btn-add-account"),
   accountFormError: document.getElementById("account-form-error"),
   accountList: document.getElementById("account-list"),
@@ -125,6 +139,12 @@ function currentAccount() {
   return state.accounts.find((a) => a.id === state.selectedAccountId) || null;
 }
 
+// 사주 계정은 persona.categories, 파트너스 계정은 partnersProfile.categories 를 쓴다.
+function getAccountCategories(acc) {
+  if (!acc) return [];
+  return acc.type === "partners" ? acc.partnersProfile.categories : acc.persona.categories;
+}
+
 function renderAccountSelect() {
   el.accountSelect.innerHTML = "";
   if (state.accounts.length === 0) {
@@ -138,11 +158,22 @@ function renderAccountSelect() {
   el.noAccountHint.classList.add("hidden");
   el.accountSelect.disabled = false;
 
+  const groups = {
+    saju: { label: "🔮 사주", el: document.createElement("optgroup") },
+    partners: { label: "🛒 파트너스", el: document.createElement("optgroup") },
+  };
+  groups.saju.el.label = groups.saju.label;
+  groups.partners.el.label = groups.partners.label;
+
   state.accounts.forEach((acc) => {
     const opt = document.createElement("option");
     opt.value = acc.id;
     opt.textContent = acc.label;
-    el.accountSelect.appendChild(opt);
+    groups[acc.type === "partners" ? "partners" : "saju"].el.appendChild(opt);
+  });
+
+  [groups.saju, groups.partners].forEach((g) => {
+    if (g.el.children.length > 0) el.accountSelect.appendChild(g.el);
   });
 
   if (!state.selectedAccountId || !state.accounts.some((a) => a.id === state.selectedAccountId)) {
@@ -160,13 +191,23 @@ function renderAccountPersonaHint() {
     el.accountPersonaHint.textContent = "";
     return;
   }
-  el.accountPersonaHint.textContent = `${acc.persona.speechLevel} · 카테고리 ${acc.persona.categories.length}개 · 클로징 "${acc.persona.closingLine || "(미설정)"}"`;
+  if (acc.type === "partners") {
+    const p = acc.partnersProfile;
+    el.accountPersonaHint.textContent = `파트너스 · 니치 ${p.categories.length}개`;
+    el.categorySectionLabel.textContent = "니치 카테고리";
+    el.partnersProductFields.classList.remove("hidden");
+  } else {
+    const p = acc.persona;
+    el.accountPersonaHint.textContent = `${p.speechLevel} · 카테고리 ${p.categories.length}개 · 클로징 "${p.closingLine || "(미설정)"}"`;
+    el.categorySectionLabel.textContent = "글감 카테고리";
+    el.partnersProductFields.classList.add("hidden");
+  }
 }
 
 function renderCategoryOptions() {
   const acc = currentAccount();
   el.categoryOptions.innerHTML = "";
-  const categories = acc ? acc.persona.categories : [];
+  const categories = getAccountCategories(acc);
 
   if (!state.selectedCategoryId || !categories.some((c) => c.id === state.selectedCategoryId)) {
     state.selectedCategoryId = categories[0]?.id || null;
@@ -188,9 +229,14 @@ function renderCategoryOptions() {
 }
 
 function updateGenerateButtonState() {
-  el.btnGenerate.disabled = !(state.selectedAccountId && state.selectedCategoryId);
+  const acc = currentAccount();
+  const needsProduct = acc && acc.type === "partners";
+  const hasProduct = !needsProduct || el.productName.value.trim().length > 0;
+  el.btnGenerate.disabled = !(state.selectedAccountId && state.selectedCategoryId && hasProduct);
   el.btnManual.disabled = !state.selectedAccountId;
 }
+
+el.productName.addEventListener("input", updateGenerateButtonState);
 
 el.accountSelect.addEventListener("change", () => {
   state.selectedAccountId = el.accountSelect.value;
@@ -247,6 +293,45 @@ el.personaTemplateSelect.addEventListener("change", () => {
   applyPersonaTemplate(el.personaTemplateSelect.value);
 });
 
+async function loadPartnersPresets() {
+  const res = await fetch("/api/partners-presets");
+  const data = await res.json();
+  state.partnersPresets = data.presets;
+  el.partnersTemplateSelect.innerHTML = "";
+  Object.entries(state.partnersPresets).forEach(([key, preset]) => {
+    const opt = document.createElement("option");
+    opt.value = key;
+    opt.textContent = preset.name;
+    el.partnersTemplateSelect.appendChild(opt);
+  });
+  applyPartnersTemplate(el.partnersTemplateSelect.value);
+}
+
+function applyPartnersTemplate(key) {
+  const preset = state.partnersPresets[key];
+  if (!preset) return;
+  el.partnersCategories.value = categoriesToText(preset.categories);
+  el.partnersStyleGuide.value = preset.styleGuide;
+  el.partnersDisclosure.value =
+    "이 게시물은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.";
+}
+
+el.partnersTemplateSelect.addEventListener("change", () => {
+  applyPartnersTemplate(el.partnersTemplateSelect.value);
+});
+
+// ================= 계정 추가 폼: 카테고리(사주/파트너스) 토글 =================
+function setNewAccountType(type) {
+  state.newAccountType = type;
+  el.typeSajuBtn.classList.toggle("selected", type === "saju");
+  el.typePartnersBtn.classList.toggle("selected", type === "partners");
+  el.sajuFields.classList.toggle("hidden", type !== "saju");
+  el.partnersFields.classList.toggle("hidden", type !== "partners");
+}
+
+el.typeSajuBtn.addEventListener("click", () => setNewAccountType("saju"));
+el.typePartnersBtn.addEventListener("click", () => setNewAccountType("partners"));
+
 // ================= 초안 생성 =================
 function slugify(label, index) {
   const base = label
@@ -271,19 +356,26 @@ function parseCategoriesText(text) {
 async function generateDraft() {
   el.settingsError.textContent = "";
   if (!state.selectedAccountId || !state.selectedCategoryId) return;
+  const acc = currentAccount();
+  const isPartners = acc?.type === "partners";
+  if (isPartners && !el.productName.value.trim()) return;
 
   showLoading("초안을 생성하고 있어요 (이 채널의 목소리로)...");
   try {
+    const body = { accountId: state.selectedAccountId, categoryId: state.selectedCategoryId };
+    if (isPartners) {
+      body.productName = el.productName.value.trim();
+      body.productNote = el.productNote.value.trim();
+    }
     const res = await fetch("/api/draft", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ accountId: state.selectedAccountId, categoryId: state.selectedCategoryId }),
+      body: JSON.stringify(body),
     });
     const data = await res.json();
     if (!res.ok) throw new Error(data.error || "초안 생성에 실패했습니다.");
 
     el.draftText.value = data.draft;
-    const acc = currentAccount();
     el.previewMeta.textContent = `${acc?.label || ""} · ${data.category.label}`;
     updateCharCount();
     setPublishMode("now");
@@ -300,7 +392,8 @@ function startManualEntry() {
   if (!state.selectedAccountId) return;
 
   const acc = currentAccount();
-  const category = acc?.persona.categories.find((c) => c.id === state.selectedCategoryId);
+  const categories = getAccountCategories(acc);
+  const category = categories.find((c) => c.id === state.selectedCategoryId);
 
   el.draftText.value = "";
   el.previewMeta.textContent = `${acc?.label || ""} · 직접 작성${category ? " · " + category.label : ""}`;
@@ -750,10 +843,18 @@ function renderAccountList() {
       ? ` · <span class="${expiry.warn ? "token-expiry-warn" : "token-expiry-ok"}">${expiry.label}</span>`
       : "";
 
+    const isPartners = acc.type === "partners";
+    const typeBadgeHtml = isPartners
+      ? `<span class="type-badge partners">파트너스</span>`
+      : `<span class="type-badge saju">사주</span>`;
+    const detailHtml = isPartners
+      ? `니치 ${acc.partnersProfile.categories.length}개`
+      : `${escapeHtml(acc.persona.speechLevel)} · 카테고리 ${acc.persona.categories.length}개`;
+
     row.innerHTML = `
       <div class="account-meta">
-        <span>${escapeHtml(acc.label)}</span>
-        <span class="account-token">${escapeHtml(acc.persona.speechLevel)} · 카테고리 ${acc.persona.categories.length}개 · User ID: ${escapeHtml(acc.threadsUserId)} · Token: ${escapeHtml(acc.accessTokenPreview)}${expiryHtml}</span>
+        <span class="account-name-row">${typeBadgeHtml}${escapeHtml(acc.label)}</span>
+        <span class="account-token">${detailHtml} · User ID: ${escapeHtml(acc.threadsUserId)} · Token: ${escapeHtml(acc.accessTokenPreview)}${expiryHtml}</span>
       </div>
     `;
     const delBtn = document.createElement("button");
@@ -808,32 +909,49 @@ async function addAccount() {
   const label = el.newAccountLabel.value.trim();
   const threadsUserId = el.newAccountUserId.value.trim();
   const accessToken = el.newAccountToken.value.trim();
-  const categories = parseCategoriesText(el.personaCategories.value);
+  const type = state.newAccountType;
 
   if (!label || !threadsUserId || !accessToken) {
     el.accountFormError.textContent = "별명, User ID, Access Token을 모두 입력해주세요.";
     return;
   }
-  if (categories.length === 0) {
-    el.accountFormError.textContent = "카테고리를 최소 1개 이상 입력해주세요.";
-    return;
-  }
 
-  const persona = {
-    speechLevel: el.personaSpeechLevel.value,
-    categories,
-    styleGuide: el.personaStyleGuide.value.trim(),
-    ctaInstruction: el.personaCta.value.trim(),
-    closingLine: el.personaClosing.value.trim(),
-    referenceExample: el.personaReference.value.trim(),
-  };
+  const body = { label, threadsUserId, accessToken, type };
+
+  if (type === "partners") {
+    const categories = parseCategoriesText(el.partnersCategories.value);
+    if (categories.length === 0) {
+      el.accountFormError.textContent = "니치(카테고리)를 최소 1개 이상 입력해주세요.";
+      return;
+    }
+    body.partnersProfile = {
+      categories,
+      styleGuide: el.partnersStyleGuide.value.trim(),
+      disclosureText: el.partnersDisclosure.value.trim(),
+      closingLine: "",
+    };
+  } else {
+    const categories = parseCategoriesText(el.personaCategories.value);
+    if (categories.length === 0) {
+      el.accountFormError.textContent = "카테고리를 최소 1개 이상 입력해주세요.";
+      return;
+    }
+    body.persona = {
+      speechLevel: el.personaSpeechLevel.value,
+      categories,
+      styleGuide: el.personaStyleGuide.value.trim(),
+      ctaInstruction: el.personaCta.value.trim(),
+      closingLine: el.personaClosing.value.trim(),
+      referenceExample: el.personaReference.value.trim(),
+    };
+  }
 
   showLoading("계정을 추가하고 있어요...");
   try {
     const res = await fetch("/api/accounts", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ label, threadsUserId, accessToken, persona }),
+      body: JSON.stringify(body),
     });
     const data = await res.json();
     if (!res.ok) throw new Error(data.error || "계정 추가에 실패했습니다.");
@@ -880,6 +998,8 @@ el.draftText.addEventListener("input", updateCharCount);
 el.btnRefreshSchedule.addEventListener("click", loadSchedule);
 el.btnAddAccount.addEventListener("click", addAccount);
 
-Promise.all([loadMeta(), loadAccounts(), loadPersonaPresets()]).catch((err) => {
+setNewAccountType("saju");
+
+Promise.all([loadMeta(), loadAccounts(), loadPersonaPresets(), loadPartnersPresets()]).catch((err) => {
   el.settingsError.textContent = "초기 데이터를 불러오지 못했습니다: " + err.message;
 });

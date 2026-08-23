@@ -5,8 +5,10 @@ const { exec, execFile } = require("child_process");
 const express = require("express");
 
 const { PERSONA_PRESETS } = require("./config/personaPresets");
+const { PARTNERS_PRESETS } = require("./config/partnersPresets");
 const { writeDraft } = require("./skills/sajuDraftWriter");
 const { polishDraft } = require("./skills/sajuToneRewriter");
+const { writeDraft: writePartnersDraft } = require("./skills/partnersDraftWriter");
 const { publishTextPost, MAX_TEXT_LENGTH } = require("./lib/threadsClient");
 const accountsStore = require("./lib/accountsStore");
 const scheduleStore = require("./lib/scheduleStore");
@@ -103,15 +105,20 @@ app.get("/api/persona-presets", (req, res) => {
   res.json({ presets: PERSONA_PRESETS });
 });
 
-// ---------- 계정(+페르소나) 관리 ----------
+app.get("/api/partners-presets", (req, res) => {
+  res.json({ presets: PARTNERS_PRESETS });
+});
+
+// ---------- 계정(+카테고리별 설정) 관리 ----------
 app.get("/api/accounts", (req, res) => {
-  res.json({ accounts: accountsStore.listAccounts() });
+  const { type } = req.query;
+  res.json({ accounts: accountsStore.listAccounts({ type: type || null }) });
 });
 
 app.post("/api/accounts", (req, res) => {
   try {
-    const { label, threadsUserId, accessToken, persona } = req.body || {};
-    const account = accountsStore.addAccount({ label, threadsUserId, accessToken, persona });
+    const { label, threadsUserId, accessToken, type, persona, partnersProfile } = req.body || {};
+    const account = accountsStore.addAccount({ label, threadsUserId, accessToken, type, persona, partnersProfile });
     syncAccountsSecretToGitHub().catch((err) => console.error("[warn] 클라우드 동기화 실패:", err.message));
     res.status(201).json({ account });
   } catch (err) {
@@ -122,6 +129,15 @@ app.post("/api/accounts", (req, res) => {
 app.patch("/api/accounts/:id/persona", (req, res) => {
   try {
     const account = accountsStore.updatePersona(req.params.id, req.body?.persona);
+    res.json({ account });
+  } catch (err) {
+    handleError(res, err);
+  }
+});
+
+app.patch("/api/accounts/:id/partners-profile", (req, res) => {
+  try {
+    const account = accountsStore.updatePartnersProfile(req.params.id, req.body?.partnersProfile);
     res.json({ account });
   } catch (err) {
     handleError(res, err);
@@ -198,11 +214,17 @@ app.post("/api/accounts/refresh-tokens", async (req, res) => {
 // ---------- 초안 생성 / 다듬기 (계정 페르소나 기반) ----------
 app.post("/api/draft", async (req, res) => {
   try {
-    const { accountId, categoryId } = req.body || {};
+    const { accountId, categoryId, productName, productNote } = req.body || {};
     if (!accountId || !categoryId) {
       return res.status(400).json({ error: "accountId, categoryId가 필요합니다." });
     }
     const account = accountsStore.getAccountSecret(accountId);
+
+    if (account.type === "partners") {
+      const result = await writePartnersDraft({ account, categoryId, productName, productNote });
+      return res.json(result);
+    }
+
     const recentTexts = await scheduleStore.listRecentTextsForAccount(accountId).catch(() => []);
     const result = await writeDraft({ account, categoryId, recentTexts });
     res.json(result);
@@ -216,6 +238,9 @@ app.post("/api/polish", async (req, res) => {
     const { accountId, text } = req.body || {};
     if (!accountId) return res.status(400).json({ error: "accountId가 필요합니다." });
     const account = accountsStore.getAccountSecret(accountId);
+    if (account.type === "partners") {
+      return res.status(400).json({ error: "파트너스 계정은 아직 톤 다듬기를 지원하지 않습니다. 다시 생성해주세요." });
+    }
     const result = await polishDraft({ account, text });
     res.json(result);
   } catch (err) {

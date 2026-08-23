@@ -3,18 +3,16 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>스레드 자동 게시</title>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet" />
+<title>스레드 매니저</title>
+<link rel="stylesheet" as="style" crossorigin
+  href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
 <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<div class="bg-glow"></div>
 <div class="app">
   <header class="app-header">
-    <h1>🌙 스레드 자동 게시</h1>
-    <p class="subtitle">채널마다 다른 목소리를 그대로 살려서 쓰고, 지금 게시하거나 예약합니다.</p>
+    <h1>스레드 매니저</h1>
+    <p class="subtitle">카테고리별로 계정을 관리하고, 초안부터 예약 발행까지 한 곳에서 처리합니다.</p>
   </header>
 
   <nav class="tabs">
@@ -29,7 +27,7 @@
     <!-- 화면 1: 설정 -->
     <div id="screen-settings" class="screen">
       <div class="card">
-        <label class="field-label">계정 (채널)</label>
+        <label class="field-label">계정</label>
         <select id="account-select" class="select-input"></select>
         <p id="account-persona-hint" class="hint-text"></p>
         <p id="no-account-hint" class="hint-text hidden">
@@ -38,12 +36,19 @@
       </div>
 
       <div class="card">
-        <label class="field-label">글감 카테고리</label>
+        <label class="field-label" id="category-section-label">글감 카테고리</label>
         <div id="category-options" class="option-grid"></div>
       </div>
 
-      <button id="btn-generate" class="btn btn-primary" disabled>✦ 초안 생성 (AI)</button>
-      <button id="btn-manual" class="btn btn-secondary" disabled>✎ 직접 작성 (AI 없이)</button>
+      <!-- 파트너스 계정 선택 시에만 표시되는 상품 정보 입력 -->
+      <div id="partners-product-fields" class="card hidden">
+        <label class="field-label">상품 정보</label>
+        <input id="product-name" class="text-input" placeholder="상품명 (예: 3M 극세사 청소포)" />
+        <textarea id="product-note" class="text-input textarea" rows="3" placeholder="직접 써본 소감/추천 이유 (비워두면 카테고리에 맞게 자동 구성)"></textarea>
+      </div>
+
+      <button id="btn-generate" class="btn btn-primary" disabled>초안 생성 (AI)</button>
+      <button id="btn-manual" class="btn btn-secondary" disabled>직접 작성 (AI 없이)</button>
       <p id="settings-error" class="error-text"></p>
     </div>
 
@@ -56,7 +61,7 @@
         </div>
         <textarea id="draft-text" rows="10" placeholder="초안이 여기에 표시됩니다..."></textarea>
 
-        <button id="btn-polish" class="btn btn-secondary btn-small">↺ 이 채널 톤으로 다시 다듬기</button>
+        <button id="btn-polish" class="btn btn-secondary btn-small">이 채널 톤으로 다시 다듬기</button>
       </div>
 
       <div class="card">
@@ -123,39 +128,63 @@
     <div class="card">
       <label class="field-label">계정 추가</label>
 
+      <label class="field-label-small">카테고리</label>
+      <div class="type-toggle">
+        <button id="type-saju-btn" type="button" class="mode-btn selected" data-type="saju">🔮 사주</button>
+        <button id="type-partners-btn" type="button" class="mode-btn" data-type="partners">🛒 파트너스</button>
+      </div>
+
       <label class="field-label-small">기본 정보</label>
       <input id="new-account-label" class="text-input" placeholder="별명 (예: 연리지 실타래)" />
 
-      <button id="btn-oauth-connect" type="button" class="btn btn-secondary btn-small">🔗 Threads 계정 자동 연결</button>
+      <button id="btn-oauth-connect" type="button" class="btn btn-secondary btn-small">Threads 계정 자동 연결</button>
       <p id="oauth-status" class="hint-text"></p>
 
       <input id="new-account-token" class="text-input" type="password" placeholder="Access Token 붙여넣기" />
-      <button id="btn-lookup-userid" type="button" class="btn btn-secondary btn-small">🔍 이 토큰으로 User ID 자동 조회</button>
+      <button id="btn-lookup-userid" type="button" class="btn btn-secondary btn-small">이 토큰으로 User ID 자동 조회</button>
       <input id="new-account-userid" class="text-input" placeholder="Threads User ID (위 버튼으로 자동 입력됨)" />
 
-      <label class="field-label-small">페르소나 템플릿</label>
-      <select id="persona-template-select" class="select-input"></select>
+      <!-- 사주 전용 필드 -->
+      <div id="saju-fields">
+        <label class="field-label-small">페르소나 템플릿</label>
+        <select id="persona-template-select" class="select-input"></select>
 
-      <label class="field-label-small">말투</label>
-      <select id="persona-speech-level" class="select-input">
-        <option value="반말">반말</option>
-        <option value="존댓말">존댓말</option>
-      </select>
+        <label class="field-label-small">말투</label>
+        <select id="persona-speech-level" class="select-input">
+          <option value="반말">반말</option>
+          <option value="존댓말">존댓말</option>
+        </select>
 
-      <label class="field-label-small">카테고리 (한 줄에 하나, "라벨|설명" 형식)</label>
-      <textarea id="persona-categories" class="text-input textarea" rows="5" placeholder="재회운|헤어진 연인과의 재회 가능성"></textarea>
+        <label class="field-label-small">카테고리 (한 줄에 하나, "라벨|설명" 형식)</label>
+        <textarea id="persona-categories" class="text-input textarea" rows="5" placeholder="재회운|헤어진 연인과의 재회 가능성"></textarea>
 
-      <label class="field-label-small">문체/구조 가이드</label>
-      <textarea id="persona-style-guide" class="text-input textarea" rows="6"></textarea>
+        <label class="field-label-small">문체/구조 가이드</label>
+        <textarea id="persona-style-guide" class="text-input textarea" rows="6"></textarea>
 
-      <label class="field-label-small">CTA(참여 유도) 안내</label>
-      <textarea id="persona-cta" class="text-input textarea" rows="3"></textarea>
+        <label class="field-label-small">CTA(참여 유도) 안내</label>
+        <textarea id="persona-cta" class="text-input textarea" rows="3"></textarea>
 
-      <label class="field-label-small">클로징 문구</label>
-      <input id="persona-closing" class="text-input" placeholder="예: 꼬인 실타래를 풀어볼게🧶" />
+        <label class="field-label-small">클로징 문구</label>
+        <input id="persona-closing" class="text-input" placeholder="예: 꼬인 실타래를 풀어볼게🧶" />
 
-      <label class="field-label-small">참고 예시 글 (실제 게시물 1개 붙여넣기 - 선택)</label>
-      <textarea id="persona-reference" class="text-input textarea" rows="6"></textarea>
+        <label class="field-label-small">참고 예시 글 (실제 게시물 1개 붙여넣기 - 선택)</label>
+        <textarea id="persona-reference" class="text-input textarea" rows="6"></textarea>
+      </div>
+
+      <!-- 파트너스 전용 필드 -->
+      <div id="partners-fields" class="hidden">
+        <label class="field-label-small">템플릿</label>
+        <select id="partners-template-select" class="select-input"></select>
+
+        <label class="field-label-small">니치 (한 줄에 하나, "라벨|설명" 형식)</label>
+        <textarea id="partners-categories" class="text-input textarea" rows="5"></textarea>
+
+        <label class="field-label-small">문체 가이드</label>
+        <textarea id="partners-style-guide" class="text-input textarea" rows="6"></textarea>
+
+        <label class="field-label-small">공정거래위원회 문구 (글 맨 앞에 고정 삽입됨)</label>
+        <textarea id="partners-disclosure" class="text-input textarea" rows="2"></textarea>
+      </div>
 
       <button id="btn-add-account" class="btn btn-primary">계정 추가</button>
       <p id="account-form-error" class="error-text"></p>
@@ -164,7 +193,7 @@
     <div class="card">
       <div class="preview-header">
         <label class="field-label" style="margin:0;">등록된 계정</label>
-        <button id="btn-refresh-tokens" class="btn-link" type="button">🔄 토큰 전체 갱신 + 클라우드 동기화</button>
+        <button id="btn-refresh-tokens" class="btn-link" type="button">토큰 전체 갱신 + 클라우드 동기화</button>
       </div>
       <p class="hint-text">Threads 토큰은 60일마다 만료돼요. 만료 10일 전부터 계정 옆에 경고가 표시됩니다. 이 버튼 하나로 전체 갱신 + GitHub 시크릿 동기화까지 한 번에 끝나요.</p>
       <p id="refresh-tokens-status" class="hint-text"></p>
