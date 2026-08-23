@@ -34,5 +34,17 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null
+  },
+  {
+    "id": "dd30dcb7-6776-405d-a065-5583404ee779",
+    "accountId": "e0331659-96f0-4f5f-9aef-d89e0ed2a6a3",
+    "accountLabel": "아해사주",
+    "text": "테스트글2",
+    "status": "scheduled",
+    "scheduledAt": "2026-08-25T09:00:00.000Z",
+    "createdAt": "2026-08-23T09:22:16.570Z",
+    "publishedAt": null,
+    "publishedId": null,
+    "error": null
   }
 ]
