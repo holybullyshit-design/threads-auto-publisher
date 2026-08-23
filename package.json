@@ -1,0 +1,19 @@
+{
+  "name": "threads-auto-publisher",
+  "version": "1.0.0",
+  "private": true,
+  "description": "사주(재회/궁합/이혼/부부운) 카테고리 글감을 Claude로 초안 작성하고, 톤을 다듬어 Threads에 자동 게시하는 로컬 웹앱",
+  "main": "server/index.js",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "start": "node server/index.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  }
+}

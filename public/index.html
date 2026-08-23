@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>스레드 자동 게시</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="bg-glow"></div>
+<div class="app">
+  <header class="app-header">
+    <h1>🌙 스레드 자동 게시</h1>
+    <p class="subtitle">채널마다 다른 목소리를 그대로 살려서 쓰고, 지금 게시하거나 예약합니다.</p>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab-btn selected" data-tab="compose">글쓰기</button>
+    <button class="tab-btn" data-tab="schedule">예약 목록</button>
+    <button class="tab-btn" data-tab="accounts">계정 관리</button>
+  </nav>
+
+  <!-- ================= 글쓰기 탭 ================= -->
+  <section id="tab-compose" class="tab-panel">
+
+    <!-- 화면 1: 설정 -->
+    <div id="screen-settings" class="screen">
+      <div class="card">
+        <label class="field-label">계정 (채널)</label>
+        <select id="account-select" class="select-input"></select>
+        <p id="account-persona-hint" class="hint-text"></p>
+        <p id="no-account-hint" class="hint-text hidden">
+          등록된 계정이 없습니다. "계정 관리" 탭에서 먼저 계정을 추가해주세요.
+        </p>
+      </div>
+
+      <div class="card">
+        <label class="field-label">글감 카테고리</label>
+        <div id="category-options" class="option-grid"></div>
+      </div>
+
+      <button id="btn-generate" class="btn btn-primary" disabled>✦ 초안 생성 (AI)</button>
+      <button id="btn-manual" class="btn btn-secondary" disabled>✎ 직접 작성 (AI 없이)</button>
+      <p id="settings-error" class="error-text"></p>
+    </div>
+
+    <!-- 화면 2: 미리보기 -->
+    <div id="screen-preview" class="screen hidden">
+      <div class="card">
+        <div class="preview-header">
+          <span id="preview-meta" class="meta-badge"></span>
+          <span id="char-count" class="char-count"></span>
+        </div>
+        <textarea id="draft-text" rows="10" placeholder="초안이 여기에 표시됩니다..."></textarea>
+
+        <button id="btn-polish" class="btn btn-secondary btn-small">↺ 이 채널 톤으로 다시 다듬기</button>
+      </div>
+
+      <div class="card">
+        <label class="field-label">발행 방식</label>
+        <div class="publish-mode-row">
+          <button id="mode-now" class="mode-btn selected" data-mode="now">지금 게시</button>
+          <button id="mode-schedule" class="mode-btn" data-mode="schedule">예약 발행</button>
+        </div>
+        <div id="schedule-datetime-row" class="hidden">
+          <input type="datetime-local" id="schedule-datetime" class="select-input" />
+        </div>
+      </div>
+
+      <div class="button-row">
+        <button id="btn-back" class="btn btn-secondary">← 설정으로</button>
+        <button id="btn-regenerate" class="btn btn-secondary">다시 생성</button>
+        <button id="btn-submit" class="btn btn-primary">스레드에 게시</button>
+      </div>
+      <p id="preview-error" class="error-text"></p>
+      <p id="preview-success" class="success-text"></p>
+    </div>
+  </section>
+
+  <!-- ================= 예약 목록 탭 ================= -->
+  <section id="tab-schedule" class="tab-panel hidden">
+    <div class="card">
+      <div class="preview-header">
+        <label class="field-label" style="margin:0;">예약 / 게시 이력</label>
+        <button id="btn-refresh-schedule" class="btn-link">새로고침</button>
+      </div>
+      <p class="hint-text">GitHub Actions가 10분 간격으로 예약된 글을 대신 게시합니다. 랩톱이 꺼져 있어도 동작합니다.</p>
+      <div id="schedule-list" class="schedule-list"></div>
+      <p id="schedule-error" class="error-text"></p>
+    </div>
+  </section>
+
+  <!-- ================= 계정 관리 탭 ================= -->
+  <section id="tab-accounts" class="tab-panel hidden">
+    <div class="card">
+      <label class="field-label">계정 추가</label>
+
+      <label class="field-label-small">기본 정보</label>
+      <input id="new-account-label" class="text-input" placeholder="별명 (예: 연리지 실타래)" />
+      <input id="new-account-userid" class="text-input" placeholder="Threads User ID" />
+      <input id="new-account-token" class="text-input" type="password" placeholder="Access Token" />
+
+      <label class="field-label-small">페르소나 템플릿</label>
+      <select id="persona-template-select" class="select-input"></select>
+
+      <label class="field-label-small">말투</label>
+      <select id="persona-speech-level" class="select-input">
+        <option value="반말">반말</option>
+        <option value="존댓말">존댓말</option>
+      </select>
+
+      <label class="field-label-small">카테고리 (한 줄에 하나, "라벨|설명" 형식)</label>
+      <textarea id="persona-categories" class="text-input textarea" rows="5" placeholder="재회운|헤어진 연인과의 재회 가능성"></textarea>
+
+      <label class="field-label-small">문체/구조 가이드</label>
+      <textarea id="persona-style-guide" class="text-input textarea" rows="6"></textarea>
+
+      <label class="field-label-small">CTA(참여 유도) 안내</label>
+      <textarea id="persona-cta" class="text-input textarea" rows="3"></textarea>
+
+      <label class="field-label-small">클로징 문구</label>
+      <input id="persona-closing" class="text-input" placeholder="예: 꼬인 실타래를 풀어볼게🧶" />
+
+      <label class="field-label-small">참고 예시 글 (실제 게시물 1개 붙여넣기 - 선택)</label>
+      <textarea id="persona-reference" class="text-input textarea" rows="6"></textarea>
+
+      <button id="btn-add-account" class="btn btn-primary">계정 추가</button>
+      <p id="account-form-error" class="error-text"></p>
+    </div>
+
+    <div class="card">
+      <label class="field-label">등록된 계정</label>
+      <div id="account-list"></div>
+    </div>
+
+    <div class="card">
+      <label class="field-label">클라우드 예약 발행용 시크릿</label>
+      <p class="hint-text">
+        아래 버튼으로 계정 정보를 파일로 받은 뒤, README의 안내대로
+        <code>gh secret set THREADS_ACCOUNTS_JSON &lt; 파일경로</code> 명령으로
+        GitHub 저장소에 등록해주세요. (토큰이 그대로 담겨 있으니 등록 후 파일은 삭제하는 걸 권장합니다)
+      </p>
+      <a id="btn-export-secret" class="btn btn-secondary" href="/api/accounts/export-secret" download>
+        시크릿용 JSON 다운로드
+      </a>
+    </div>
+  </section>
+
+  <div id="loading-overlay" class="loading-overlay hidden">
+    <div class="spinner"></div>
+    <p id="loading-text">생성 중...</p>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+node_modules/
+.env
+npm-debug.log*
+.DS_Store
+*.log
+
+# 계정(Threads 액세스 토큰 등) 로컬 저장소 - 절대 커밋하지 않음
+data/

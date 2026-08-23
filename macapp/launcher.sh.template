@@ -1,0 +1,18 @@
+#!/bin/bash
+# .app 번들 안에 들어가는 실행 스크립트.
+# build-app.sh가 이 템플릿의 __PROJECT_DIR__ 를 실제 경로로 치환해서 복사한다.
+
+PROJECT_DIR="__PROJECT_DIR__"
+
+# Finder에서 더블클릭으로 실행하면 PATH가 매우 제한적이라
+# Homebrew/공식 설치본 node 위치를 직접 추가해준다.
+export PATH="/usr/local/bin:/opt/homebrew/bin:$PATH"
+
+# 로그를 보면서 실행할 수 있도록 Terminal.app에서 npm start를 띄운다.
+# (서버가 뜨면 서버 코드가 알아서 기본 브라우저를 자동으로 연다)
+osascript <<EOF
+tell application "Terminal"
+  activate
+  do script "cd \"$PROJECT_DIR\" && export PATH=\"/usr/local/bin:/opt/homebrew/bin:\$PATH\" && npm start"
+end tell
+EOF
