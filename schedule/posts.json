@@ -52,7 +52,7 @@
     "accountId": "44d8bd24-6bf7-4b3a-9241-ddfb2b12c3b0",
     "accountLabel": "팔자명가",
     "text": "테스트글3",
-    "status": "scheduled",
+    "status": "canceled",
     "scheduledAt": "2026-08-28T03:00:00.000Z",
     "createdAt": "2026-08-23T09:22:17.640Z",
     "publishedAt": null,
