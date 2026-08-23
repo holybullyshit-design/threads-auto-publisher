@@ -5,7 +5,22 @@ const state = {
   selectedAccountId: null,
   selectedCategoryId: null,
   publishMode: "now", // now | schedule
+  scheduleView: "calendar", // calendar | list
+  calendarDate: new Date(), // 현재 보고 있는 달 (day는 무시하고 년/월만 사용)
+  selectedDay: null, // "YYYY-MM-DD" 또는 null
+  schedulePosts: [],
 };
+
+const ACCOUNT_COLOR_PALETTE = ["#e07a5f", "#6ea8fe", "#81b29a", "#d88fd8", "#f2b56f", "#7fd1ae"];
+const accountColorCache = new Map();
+
+function getAccountColor(accountId) {
+  if (accountColorCache.has(accountId)) return accountColorCache.get(accountId);
+  const idx = accountColorCache.size % ACCOUNT_COLOR_PALETTE.length;
+  const color = ACCOUNT_COLOR_PALETTE[idx];
+  accountColorCache.set(accountId, color);
+  return color;
+}
 
 const el = {
   tabButtons: Array.from(document.querySelectorAll(".tab-btn")),
@@ -43,6 +58,16 @@ const el = {
   btnRefreshSchedule: document.getElementById("btn-refresh-schedule"),
   scheduleList: document.getElementById("schedule-list"),
   scheduleError: document.getElementById("schedule-error"),
+  calendarLegend: document.getElementById("calendar-legend"),
+  calendarView: document.getElementById("calendar-view"),
+  calendarGrid: document.getElementById("calendar-grid"),
+  calMonthLabel: document.getElementById("cal-month-label"),
+  calPrev: document.getElementById("cal-prev"),
+  calNext: document.getElementById("cal-next"),
+  calToday: document.getElementById("cal-today"),
+  viewCalendarBtn: document.getElementById("view-calendar-btn"),
+  viewListBtn: document.getElementById("view-list-btn"),
+  dayDetail: document.getElementById("day-detail"),
 
   newAccountLabel: document.getElementById("new-account-label"),
   newAccountUserId: document.getElementById("new-account-userid"),
@@ -420,28 +445,147 @@ const STATUS_LABEL = {
 
 async function loadSchedule() {
   el.scheduleError.textContent = "";
-  el.scheduleList.innerHTML = `<p class="empty-text">불러오는 중...</p>`;
   try {
     const res = await fetch("/api/schedule");
     const data = await res.json();
     if (!res.ok) throw new Error(data.error || "예약 목록을 불러오지 못했습니다.");
-    renderScheduleList(data.posts);
+    state.schedulePosts = data.posts;
+    seedAccountColors();
+    renderLegend();
+    renderScheduleView();
   } catch (err) {
-    el.scheduleList.innerHTML = "";
     el.scheduleError.textContent = err.message;
   }
 }
 
-function renderScheduleList(posts) {
+function seedAccountColors() {
+  // 계정 목록 순서대로 색을 먼저 배정해서, 범례/달력/목록에서 항상 같은 색이 나오게 한다.
+  state.accounts.forEach((acc) => getAccountColor(acc.id));
+  state.schedulePosts.forEach((p) => getAccountColor(p.accountId));
+}
+
+function renderLegend() {
+  const seen = new Map();
+  state.accounts.forEach((acc) => seen.set(acc.id, acc.label));
+  state.schedulePosts.forEach((p) => {
+    if (!seen.has(p.accountId)) seen.set(p.accountId, p.accountLabel || "계정 미상");
+  });
+
+  el.calendarLegend.innerHTML = "";
+  seen.forEach((label, accountId) => {
+    const item = document.createElement("span");
+    item.className = "legend-item";
+    item.innerHTML = `<span class="legend-dot" style="background:${getAccountColor(accountId)}"></span>${escapeHtml(label)}`;
+    el.calendarLegend.appendChild(item);
+  });
+}
+
+function renderScheduleView() {
+  const isCalendar = state.scheduleView === "calendar";
+  el.calendarView.classList.toggle("hidden", !isCalendar);
+  document.querySelector(".calendar-nav").classList.toggle("hidden", !isCalendar);
+  el.scheduleList.classList.toggle("hidden", isCalendar);
+  el.dayDetail.classList.toggle("hidden", !isCalendar || !state.selectedDay);
+
+  if (isCalendar) {
+    renderCalendar();
+    if (state.selectedDay) renderDayDetail(state.selectedDay);
+  } else {
+    renderPostCards(el.scheduleList, sortByCreatedDesc(state.schedulePosts), "등록된 예약/게시 이력이 없습니다.");
+  }
+}
+
+function sortByCreatedDesc(posts) {
+  return posts.slice().sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+}
+
+function localDateKey(isoString) {
+  const d = new Date(isoString);
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+}
+
+function renderCalendar() {
+  const year = state.calendarDate.getFullYear();
+  const month = state.calendarDate.getMonth(); // 0-based
+  el.calMonthLabel.textContent = `${year}년 ${month + 1}월`;
+
+  const postsByDay = new Map();
+  state.schedulePosts.forEach((p) => {
+    const key = localDateKey(p.scheduledAt);
+    if (!postsByDay.has(key)) postsByDay.set(key, []);
+    postsByDay.get(key).push(p);
+  });
+
+  const firstOfMonth = new Date(year, month, 1);
+  const startOffset = firstOfMonth.getDay(); // 0=일요일
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const todayKey = localDateKey(new Date().toISOString());
+
+  el.calendarGrid.innerHTML = "";
+
+  for (let i = 0; i < startOffset; i++) {
+    const empty = document.createElement("div");
+    empty.className = "calendar-day empty";
+    el.calendarGrid.appendChild(empty);
+  }
+
+  for (let day = 1; day <= daysInMonth; day++) {
+    const key = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+    const dayPosts = postsByDay.get(key) || [];
+
+    const cell = document.createElement("div");
+    cell.className = "calendar-day";
+    if (key === todayKey) cell.classList.add("today");
+    if (key === state.selectedDay) cell.classList.add("selected");
+
+    const maxDots = 6;
+    const dots = dayPosts
+      .slice(0, maxDots)
+      .map(
+        (p) =>
+          `<span class="calendar-dot status-${p.status}" style="background:${getAccountColor(p.accountId)}" title="${escapeHtml(p.accountLabel)} · ${STATUS_LABEL[p.status] || p.status}"></span>`
+      )
+      .join("");
+    const more = dayPosts.length > maxDots ? `<span class="calendar-more">+${dayPosts.length - maxDots}</span>` : "";
+
+    cell.innerHTML = `<span class="calendar-day-num">${day}</span><div class="calendar-dots">${dots}${more}</div>`;
+    cell.addEventListener("click", () => {
+      state.selectedDay = state.selectedDay === key ? null : key;
+      renderCalendar();
+      renderDayDetail(state.selectedDay);
+    });
+
+    el.calendarGrid.appendChild(cell);
+  }
+}
+
+function renderDayDetail(dayKey) {
+  if (!dayKey) {
+    el.dayDetail.classList.add("hidden");
+    el.dayDetail.innerHTML = "";
+    return;
+  }
+  el.dayDetail.classList.remove("hidden");
+  const dayPosts = state.schedulePosts
+    .filter((p) => localDateKey(p.scheduledAt) === dayKey)
+    .sort((a, b) => new Date(a.scheduledAt) - new Date(b.scheduledAt));
+
+  const [y, m, d] = dayKey.split("-");
+  el.dayDetail.innerHTML = `<div class="day-detail-title">${y}년 ${Number(m)}월 ${Number(d)}일</div><div id="day-detail-list"></div>`;
+  renderPostCards(document.getElementById("day-detail-list"), dayPosts, "이 날짜에는 예약/게시 이력이 없습니다.");
+}
+
+function renderPostCards(container, posts, emptyText) {
   if (!posts || posts.length === 0) {
-    el.scheduleList.innerHTML = `<p class="empty-text">등록된 예약/게시 이력이 없습니다.</p>`;
+    container.innerHTML = `<p class="empty-text">${emptyText}</p>`;
     return;
   }
 
-  el.scheduleList.innerHTML = "";
+  container.innerHTML = "";
   posts.forEach((post) => {
     const item = document.createElement("div");
     item.className = "schedule-item";
+    item.style.borderLeft = `3px solid ${getAccountColor(post.accountId)}`;
 
     const when = new Date(post.scheduledAt).toLocaleString("ko-KR");
     const statusClass = `status-${post.status}`;
@@ -464,9 +608,32 @@ function renderScheduleList(posts) {
       item.appendChild(cancelBtn);
     }
 
-    el.scheduleList.appendChild(item);
+    container.appendChild(item);
   });
 }
+
+function changeCalendarMonth(delta) {
+  state.calendarDate = new Date(state.calendarDate.getFullYear(), state.calendarDate.getMonth() + delta, 1);
+  renderCalendar();
+}
+
+el.calPrev.addEventListener("click", () => changeCalendarMonth(-1));
+el.calNext.addEventListener("click", () => changeCalendarMonth(1));
+el.calToday.addEventListener("click", () => {
+  state.calendarDate = new Date();
+  state.selectedDay = null;
+  renderCalendar();
+  renderDayDetail(null);
+});
+
+[el.viewCalendarBtn, el.viewListBtn].forEach((btn) => {
+  btn.addEventListener("click", () => {
+    state.scheduleView = btn.dataset.view;
+    el.viewCalendarBtn.classList.toggle("selected", state.scheduleView === "calendar");
+    el.viewListBtn.classList.toggle("selected", state.scheduleView === "list");
+    renderScheduleView();
+  });
+});
 
 async function cancelPost(id) {
   const confirmed = window.confirm("이 예약을 취소할까요?");
