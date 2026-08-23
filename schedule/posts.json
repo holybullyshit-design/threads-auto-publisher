@@ -28,7 +28,7 @@
     "accountId": "273c125f-56b7-4aa1-8abc-89df16bfbe2a",
     "accountLabel": "연리지 실타래",
     "text": "테스트글1",
-    "status": "scheduled",
+    "status": "canceled",
     "scheduledAt": "2026-08-25T05:00:00.000Z",
     "createdAt": "2026-08-23T09:22:15.185Z",
     "publishedAt": null,
