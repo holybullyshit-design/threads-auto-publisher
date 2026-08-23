@@ -22,5 +22,17 @@
     "publishedAt": "2026-08-23T09:16:54.857Z",
     "publishedId": "18122043610847592",
     "error": null
+  },
+  {
+    "id": "a9b046b0-f477-40c8-8f2d-610d5a0b8a28",
+    "accountId": "273c125f-56b7-4aa1-8abc-89df16bfbe2a",
+    "accountLabel": "연리지 실타래",
+    "text": "테스트글1",
+    "status": "scheduled",
+    "scheduledAt": "2026-08-25T05:00:00.000Z",
+    "createdAt": "2026-08-23T09:22:15.185Z",
+    "publishedAt": null,
+    "publishedId": null,
+    "error": null
   }
 ]
