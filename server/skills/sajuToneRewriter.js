@@ -3,7 +3,7 @@
 // 다시 맞춰 다듬는다. (예전 버전처럼 "다정한/냉철한" 같은 범용 톤을 고르는 방식이 아니라,
 // 계정마다 이미 정해진 채널 목소리 하나로 고정 정렬한다)
 
-const { runSkill } = require("../lib/anthropicClient");
+const { runSkill } = require("../lib/claudeCliEngine");
 
 function buildSystemPrompt(persona) {
   return `당신은 Threads 게시글의 문체를 "${persona.speechLevel}" 채널 목소리에 맞게 다듬는 "saju-tone-rewriter"입니다.

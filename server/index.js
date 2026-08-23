@@ -10,6 +10,7 @@ const { polishDraft } = require("./skills/sajuToneRewriter");
 const { publishTextPost, MAX_TEXT_LENGTH } = require("./lib/threadsClient");
 const accountsStore = require("./lib/accountsStore");
 const scheduleStore = require("./lib/scheduleStore");
+const threadsOAuth = require("./lib/threadsOAuth");
 
 const app = express();
 const PORT = Number(process.env.PORT) || 4321;
@@ -19,8 +20,84 @@ app.use(express.static(path.join(__dirname, "..", "public")));
 
 // ---------- 메타 정보 ----------
 app.get("/api/meta", (req, res) => {
-  res.json({ maxTextLength: MAX_TEXT_LENGTH });
+  res.json({ maxTextLength: MAX_TEXT_LENGTH, threadsOAuthConfigured: threadsOAuth.isConfigured() });
 });
+
+// ---------- Threads 계정 자동 연결 (OAuth) ----------
+// state -> { threadsUserId, accessToken, error, createdAt }
+const oauthResults = new Map();
+
+function cleanupOldOAuthResults() {
+  const cutoff = Date.now() - 10 * 60 * 1000; // 10분
+  for (const [state, entry] of oauthResults) {
+    if (entry.createdAt < cutoff) oauthResults.delete(state);
+  }
+}
+
+app.get("/oauth/threads/start", (req, res) => {
+  try {
+    const { state } = req.query;
+    if (!state) return res.status(400).send("state 파라미터가 필요합니다.");
+    const url = threadsOAuth.buildAuthorizeUrl(String(state));
+    res.redirect(url);
+  } catch (err) {
+    res.status(500).send(`설정 오류: ${err.message}`);
+  }
+});
+
+app.get("/oauth/threads/callback", async (req, res) => {
+  cleanupOldOAuthResults();
+  const { code, state, error, error_description } = req.query;
+
+  if (!state) return res.status(400).send("state 파라미터가 없습니다.");
+
+  if (error) {
+    oauthResults.set(String(state), { error: error_description || error, createdAt: Date.now() });
+    return res.send(oauthResultPage("연결이 취소되었거나 거부되었습니다. 이 창을 닫고 앱으로 돌아가주세요."));
+  }
+
+  try {
+    const short = await threadsOAuth.exchangeCodeForShortLivedToken(String(code));
+    const long = await threadsOAuth.exchangeForLongLivedToken(short.accessToken);
+    oauthResults.set(String(state), {
+      threadsUserId: short.userId,
+      accessToken: long.accessToken,
+      createdAt: Date.now(),
+    });
+    res.send(oauthResultPage("연결이 완료되었습니다! 이 창을 닫고 앱으로 돌아가주세요."));
+  } catch (err) {
+    oauthResults.set(String(state), { error: err.message, createdAt: Date.now() });
+    res.send(oauthResultPage("연결 중 오류가 발생했습니다: " + err.message));
+  }
+});
+
+// Meta 개발자 페이지의 "사용자 토큰 생성기"로 직접 발급받은 토큰을 붙여넣으면
+// User ID를 자동으로 찾아준다 (Access Token만 있고 User ID를 모를 때 사용).
+app.post("/api/threads/lookup", async (req, res) => {
+  try {
+    const { accessToken } = req.body || {};
+    if (!accessToken) return res.status(400).json({ error: "accessToken이 필요합니다." });
+    const result = await threadsOAuth.lookupUserByToken(accessToken);
+    res.json(result);
+  } catch (err) {
+    handleError(res, err);
+  }
+});
+
+app.get("/api/oauth/threads/result", (req, res) => {
+  const { state } = req.query;
+  const entry = oauthResults.get(String(state));
+  if (!entry) return res.json({ status: "pending" });
+  oauthResults.delete(String(state)); // 1회용
+  if (entry.error) return res.json({ status: "error", error: entry.error });
+  res.json({ status: "done", threadsUserId: entry.threadsUserId, accessToken: entry.accessToken });
+});
+
+function oauthResultPage(message) {
+  return `<!doctype html><html><head><meta charset="utf-8"><title>Threads 연결</title>
+  <style>body{background:#0a0812;color:#ece7f5;font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;text-align:center;padding:20px}</style>
+  </head><body><div><p style="font-size:18px;">${message}</p><p style="color:#a79cc2;font-size:13px;">이 창은 이제 닫으셔도 됩니다.</p></div></body></html>`;
+}
 
 app.get("/api/persona-presets", (req, res) => {
   res.json({ presets: PERSONA_PRESETS });
@@ -75,7 +152,8 @@ app.post("/api/draft", async (req, res) => {
       return res.status(400).json({ error: "accountId, categoryId가 필요합니다." });
     }
     const account = accountsStore.getAccountSecret(accountId);
-    const result = await writeDraft({ account, categoryId });
+    const recentTexts = await scheduleStore.listRecentTextsForAccount(accountId).catch(() => []);
+    const result = await writeDraft({ account, categoryId, recentTexts });
     res.json(result);
   } catch (err) {
     handleError(res, err);
@@ -105,6 +183,10 @@ app.post("/api/publish", async (req, res) => {
       accessToken: account.accessToken,
       threadsUserId: account.threadsUserId,
     });
+    // 다음 초안 생성 때 중복을 피할 수 있도록 이력에 기록 (실패해도 게시 자체는 이미 성공했으니 무시)
+    scheduleStore
+      .recordImmediatePublish({ accountId, accountLabel: account.label, text, publishedId: result.publishedId })
+      .catch((err) => console.error("[warn] 게시 이력 기록 실패:", err.message));
     res.json(result);
   } catch (err) {
     handleError(res, err);

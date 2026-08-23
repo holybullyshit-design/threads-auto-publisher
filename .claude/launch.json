@@ -1,0 +1,10 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "threads-auto-publisher",
+      "port": 4321,
+      "url": "http://localhost:4321"
+    }
+  ]
+}

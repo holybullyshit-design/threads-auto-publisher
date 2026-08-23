@@ -100,8 +100,13 @@
 
       <label class="field-label-small">기본 정보</label>
       <input id="new-account-label" class="text-input" placeholder="별명 (예: 연리지 실타래)" />
-      <input id="new-account-userid" class="text-input" placeholder="Threads User ID" />
-      <input id="new-account-token" class="text-input" type="password" placeholder="Access Token" />
+
+      <button id="btn-oauth-connect" type="button" class="btn btn-secondary btn-small">🔗 Threads 계정 자동 연결</button>
+      <p id="oauth-status" class="hint-text"></p>
+
+      <input id="new-account-token" class="text-input" type="password" placeholder="Access Token 붙여넣기" />
+      <button id="btn-lookup-userid" type="button" class="btn btn-secondary btn-small">🔍 이 토큰으로 User ID 자동 조회</button>
+      <input id="new-account-userid" class="text-input" placeholder="Threads User ID (위 버튼으로 자동 입력됨)" />
 
       <label class="field-label-small">페르소나 템플릿</label>
       <select id="persona-template-select" class="select-input"></select>

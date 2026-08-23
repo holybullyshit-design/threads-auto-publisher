@@ -47,6 +47,9 @@ const el = {
   newAccountLabel: document.getElementById("new-account-label"),
   newAccountUserId: document.getElementById("new-account-userid"),
   newAccountToken: document.getElementById("new-account-token"),
+  btnOauthConnect: document.getElementById("btn-oauth-connect"),
+  oauthStatus: document.getElementById("oauth-status"),
+  btnLookupUserId: document.getElementById("btn-lookup-userid"),
   personaTemplateSelect: document.getElementById("persona-template-select"),
   personaSpeechLevel: document.getElementById("persona-speech-level"),
   personaCategories: document.getElementById("persona-categories"),
@@ -174,6 +177,7 @@ async function loadMeta() {
   const res = await fetch("/api/meta");
   const data = await res.json();
   state.maxTextLength = data.maxTextLength;
+  state.threadsOAuthConfigured = data.threadsOAuthConfigured;
 }
 
 async function loadAccounts() {
@@ -479,6 +483,87 @@ async function cancelPost(id) {
     hideLoading();
   }
 }
+
+// ================= Threads 계정 자동 연결 (OAuth) =================
+function randomState() {
+  return Array.from(crypto.getRandomValues(new Uint8Array(16)))
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("");
+}
+
+async function startOAuthConnect() {
+  el.oauthStatus.textContent = "";
+
+  if (!state.threadsOAuthConfigured) {
+    el.oauthStatus.textContent =
+      "아직 Threads 앱 연동이 설정되지 않았습니다 (.env의 THREADS_APP_ID/SECRET). README를 참고해 먼저 Meta 개발자 앱을 등록해주세요.";
+    return;
+  }
+
+  const oauthState = randomState();
+  const popup = window.open(`/oauth/threads/start?state=${oauthState}`, "threads-oauth", "width=480,height=680");
+  if (!popup) {
+    el.oauthStatus.textContent = "팝업이 차단되었습니다. 브라우저의 팝업 차단을 해제해주세요.";
+    return;
+  }
+
+  el.oauthStatus.textContent = "브라우저 창에서 Threads 로그인/승인을 완료해주세요...";
+
+  const started = Date.now();
+  const poll = setInterval(async () => {
+    if (Date.now() - started > 3 * 60 * 1000) {
+      clearInterval(poll);
+      el.oauthStatus.textContent = "연결 시간이 초과되었습니다. 다시 시도해주세요.";
+      return;
+    }
+    try {
+      const res = await fetch(`/api/oauth/threads/result?state=${oauthState}`);
+      const data = await res.json();
+      if (data.status === "pending") return;
+
+      clearInterval(poll);
+      if (!popup.closed) popup.close();
+
+      if (data.status === "error") {
+        el.oauthStatus.textContent = "연결 실패: " + data.error;
+        return;
+      }
+
+      el.newAccountUserId.value = data.threadsUserId;
+      el.newAccountToken.value = data.accessToken;
+      el.oauthStatus.textContent = "✅ 연결 완료! User ID와 Access Token이 자동으로 채워졌습니다.";
+    } catch {
+      // 네트워크 오류 등은 다음 폴링에서 재시도
+    }
+  }, 2000);
+}
+
+el.btnOauthConnect.addEventListener("click", startOAuthConnect);
+
+async function lookupUserId() {
+  el.oauthStatus.textContent = "";
+  const accessToken = el.newAccountToken.value.trim();
+  if (!accessToken) {
+    el.oauthStatus.textContent = "먼저 Access Token을 붙여넣어주세요.";
+    return;
+  }
+  el.oauthStatus.textContent = "조회 중...";
+  try {
+    const res = await fetch("/api/threads/lookup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ accessToken }),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || "조회에 실패했습니다.");
+    el.newAccountUserId.value = data.userId;
+    el.oauthStatus.textContent = `✅ 확인됨: @${data.username} (User ID: ${data.userId})`;
+  } catch (err) {
+    el.oauthStatus.textContent = "조회 실패: " + err.message;
+  }
+}
+
+el.btnLookupUserId.addEventListener("click", lookupUserId);
 
 // ================= 계정 관리 탭 =================
 function renderAccountList() {
