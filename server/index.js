@@ -1,7 +1,7 @@
 require("dotenv").config();
 
 const path = require("path");
-const { exec } = require("child_process");
+const { exec, execFile } = require("child_process");
 const express = require("express");
 
 const { PERSONA_PRESETS } = require("./config/personaPresets");
@@ -112,6 +112,7 @@ app.post("/api/accounts", (req, res) => {
   try {
     const { label, threadsUserId, accessToken, persona } = req.body || {};
     const account = accountsStore.addAccount({ label, threadsUserId, accessToken, persona });
+    syncAccountsSecretToGitHub().catch((err) => console.error("[warn] 클라우드 동기화 실패:", err.message));
     res.status(201).json({ account });
   } catch (err) {
     handleError(res, err);
@@ -130,6 +131,7 @@ app.patch("/api/accounts/:id/persona", (req, res) => {
 app.delete("/api/accounts/:id", (req, res) => {
   try {
     accountsStore.deleteAccount(req.params.id);
+    syncAccountsSecretToGitHub().catch((err) => console.error("[warn] 클라우드 동기화 실패:", err.message));
     res.status(204).end();
   } catch (err) {
     handleError(res, err);
@@ -142,6 +144,55 @@ app.get("/api/accounts/export-secret", (req, res) => {
   res.setHeader("Content-Type", "application/json");
   res.setHeader("Content-Disposition", 'attachment; filename="threads-accounts-secret.json"');
   res.send(json);
+});
+
+// gh CLI로 GitHub Actions 시크릿(THREADS_ACCOUNTS_JSON)을 최신 계정 목록으로 갱신한다.
+// (파일을 거치지 않고 JSON을 표준입력으로 바로 넘긴다)
+function syncAccountsSecretToGitHub() {
+  return new Promise((resolve, reject) => {
+    const repo = process.env.GITHUB_REPO;
+    if (!repo) return reject(new Error("GITHUB_REPO가 설정되지 않아 클라우드 동기화를 건너뜁니다."));
+
+    const child = execFile(
+      "gh",
+      ["secret", "set", "THREADS_ACCOUNTS_JSON", "--repo", repo],
+      { timeout: 30000 },
+      (err, stdout, stderr) => {
+        if (err) return reject(new Error("gh secret set 실패: " + (stderr || err.message)));
+        resolve();
+      }
+    );
+    child.stdin.write(accountsStore.exportForCloudSecret());
+    child.stdin.end();
+  });
+}
+
+// 만료 임박 여부와 무관하게, 요청받은(또는 전체) 계정의 토큰을 즉시 갱신하고
+// 클라우드 시크릿까지 한 번에 동기화한다.
+app.post("/api/accounts/refresh-tokens", async (req, res) => {
+  const accounts = accountsStore.listAccounts({ includeSecrets: true });
+  const results = [];
+
+  for (const account of accounts) {
+    try {
+      const refreshed = await threadsOAuth.refreshLongLivedToken(account.accessToken);
+      accountsStore.updateAccountToken(account.id, refreshed.accessToken);
+      results.push({ id: account.id, label: account.label, ok: true });
+    } catch (err) {
+      results.push({ id: account.id, label: account.label, ok: false, error: err.message });
+    }
+  }
+
+  let syncedToCloud = false;
+  let syncError = null;
+  try {
+    await syncAccountsSecretToGitHub();
+    syncedToCloud = true;
+  } catch (err) {
+    syncError = err.message;
+  }
+
+  res.json({ results, syncedToCloud, syncError });
 });
 
 // ---------- 초안 생성 / 다듬기 (계정 페르소나 기반) ----------

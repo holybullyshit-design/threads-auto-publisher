@@ -80,6 +80,21 @@ async function exchangeForLongLivedToken(shortLivedToken) {
   return { accessToken: data.access_token, expiresIn: data.expires_in };
 }
 
+// 장기 토큰(60일)을 새 60일짜리로 갱신한다.
+// 조건(Threads API 정책): 토큰이 발급/직전 갱신 후 24시간 이상 지났고, 아직 만료 전이어야 한다.
+async function refreshLongLivedToken(accessToken) {
+  const url = new URL("https://graph.threads.net/refresh_access_token");
+  url.searchParams.set("grant_type", "th_refresh_token");
+  url.searchParams.set("access_token", accessToken);
+
+  const res = await fetch(url);
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok || !data.access_token) {
+    throw new Error("토큰 갱신에 실패했습니다: " + (data?.error?.message || JSON.stringify(data)));
+  }
+  return { accessToken: data.access_token, expiresIn: data.expires_in };
+}
+
 // Meta 개발자 페이지의 "사용자 토큰 생성기"로 직접 발급받은 토큰은 User ID를 알려주지 않는다.
 // 토큰만으로 /me를 조회해서 User ID + username을 찾아준다.
 async function lookupUserByToken(accessToken) {
@@ -101,4 +116,5 @@ module.exports = {
   exchangeCodeForShortLivedToken,
   exchangeForLongLivedToken,
   lookupUserByToken,
+  refreshLongLivedToken,
 };

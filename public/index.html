@@ -162,13 +162,19 @@
     </div>
 
     <div class="card">
-      <label class="field-label">등록된 계정</label>
+      <div class="preview-header">
+        <label class="field-label" style="margin:0;">등록된 계정</label>
+        <button id="btn-refresh-tokens" class="btn-link" type="button">🔄 토큰 전체 갱신 + 클라우드 동기화</button>
+      </div>
+      <p class="hint-text">Threads 토큰은 60일마다 만료돼요. 만료 10일 전부터 계정 옆에 경고가 표시됩니다. 이 버튼 하나로 전체 갱신 + GitHub 시크릿 동기화까지 한 번에 끝나요.</p>
+      <p id="refresh-tokens-status" class="hint-text"></p>
       <div id="account-list"></div>
     </div>
 
     <div class="card">
-      <label class="field-label">클라우드 예약 발행용 시크릿</label>
+      <label class="field-label">클라우드 예약 발행용 시크릿 (수동)</label>
       <p class="hint-text">
+        위 "토큰 전체 갱신" 버튼이 계정 추가/삭제 후 자동 동기화까지 처리 못하는 경우를 위한 수동 백업 방법이에요.
         아래 버튼으로 계정 정보를 파일로 받은 뒤, README의 안내대로
         <code>gh secret set THREADS_ACCOUNTS_JSON &lt; 파일경로</code> 명령으로
         GitHub 저장소에 등록해주세요. (토큰이 그대로 담겨 있으니 등록 후 파일은 삭제하는 걸 권장합니다)

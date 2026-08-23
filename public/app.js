@@ -85,6 +85,8 @@ const el = {
   btnAddAccount: document.getElementById("btn-add-account"),
   accountFormError: document.getElementById("account-form-error"),
   accountList: document.getElementById("account-list"),
+  btnRefreshTokens: document.getElementById("btn-refresh-tokens"),
+  refreshTokensStatus: document.getElementById("refresh-tokens-status"),
 
   loadingOverlay: document.getElementById("loading-overlay"),
   loadingText: document.getElementById("loading-text"),
@@ -742,10 +744,16 @@ function renderAccountList() {
   state.accounts.forEach((acc) => {
     const row = document.createElement("div");
     row.className = "account-row";
+
+    const expiry = tokenExpiryInfo(acc.tokenUpdatedAt);
+    const expiryHtml = expiry
+      ? ` · <span class="${expiry.warn ? "token-expiry-warn" : "token-expiry-ok"}">${expiry.label}</span>`
+      : "";
+
     row.innerHTML = `
       <div class="account-meta">
         <span>${escapeHtml(acc.label)}</span>
-        <span class="account-token">${escapeHtml(acc.persona.speechLevel)} · 카테고리 ${acc.persona.categories.length}개 · User ID: ${escapeHtml(acc.threadsUserId)} · Token: ${escapeHtml(acc.accessTokenPreview)}</span>
+        <span class="account-token">${escapeHtml(acc.persona.speechLevel)} · 카테고리 ${acc.persona.categories.length}개 · User ID: ${escapeHtml(acc.threadsUserId)} · Token: ${escapeHtml(acc.accessTokenPreview)}${expiryHtml}</span>
       </div>
     `;
     const delBtn = document.createElement("button");
@@ -756,6 +764,44 @@ function renderAccountList() {
     el.accountList.appendChild(row);
   });
 }
+
+// Threads 장기 토큰은 60일마다 만료된다. 마지막 갱신 시각 기준으로 남은 일수를 계산.
+function tokenExpiryInfo(tokenUpdatedAt) {
+  if (!tokenUpdatedAt) return null;
+  const updated = new Date(tokenUpdatedAt);
+  const daysLeft = 60 - Math.floor((Date.now() - updated.getTime()) / (1000 * 60 * 60 * 24));
+  if (daysLeft <= 10) return { warn: true, label: `⚠️ 토큰 만료 D-${daysLeft}` };
+  return { warn: false, label: `토큰 만료 D-${daysLeft}` };
+}
+
+async function refreshAllTokens() {
+  el.refreshTokensStatus.textContent = "";
+  showLoading("모든 계정 토큰을 갱신하고 있어요...");
+  try {
+    const res = await fetch("/api/accounts/refresh-tokens", { method: "POST" });
+    const data = await res.json();
+    const okCount = data.results.filter((r) => r.ok).length;
+    const failCount = data.results.length - okCount;
+    const failDetail = data.results
+      .filter((r) => !r.ok)
+      .map((r) => `${r.label}: ${r.error}`)
+      .join(" / ");
+
+    let msg = `✅ ${okCount}개 갱신 완료`;
+    if (failCount > 0) msg += `, ❌ ${failCount}개 실패 (${failDetail})`;
+    msg += data.syncedToCloud ? " · ☁️ 클라우드 동기화 완료" : ` · ⚠️ 클라우드 동기화 실패: ${data.syncError}`;
+    el.refreshTokensStatus.textContent = msg;
+
+    await loadAccounts();
+    renderAccountList();
+  } catch (err) {
+    el.refreshTokensStatus.textContent = "갱신 요청에 실패했습니다: " + err.message;
+  } finally {
+    hideLoading();
+  }
+}
+
+el.btnRefreshTokens.addEventListener("click", refreshAllTokens);
 
 async function addAccount() {
   el.accountFormError.textContent = "";

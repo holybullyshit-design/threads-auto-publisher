@@ -81,15 +81,32 @@ function addAccount({ label, threadsUserId, accessToken, persona }) {
     throw err;
   }
   const accounts = readAll();
+  const now = new Date().toISOString();
   const account = {
     id: crypto.randomUUID(),
     label,
     threadsUserId,
     accessToken,
     persona: validatePersona(persona),
-    createdAt: new Date().toISOString(),
+    createdAt: now,
+    tokenUpdatedAt: now,
   };
   accounts.push(account);
+  writeAll(accounts);
+  return toPublic(account);
+}
+
+// 60일마다 만료되는 토큰을 갱신한 뒤, 새 토큰으로 교체하고 갱신 시각을 기록한다.
+function updateAccountToken(id, newAccessToken) {
+  const accounts = readAll();
+  const account = accounts.find((a) => a.id === id);
+  if (!account) {
+    const err = new Error(`계정을 찾을 수 없습니다: ${id}`);
+    err.status = 404;
+    throw err;
+  }
+  account.accessToken = newAccessToken;
+  account.tokenUpdatedAt = new Date().toISOString();
   writeAll(accounts);
   return toPublic(account);
 }
@@ -137,6 +154,7 @@ module.exports = {
   getAccountSecret,
   addAccount,
   updatePersona,
+  updateAccountToken,
   deleteAccount,
   exportForCloudSecret,
 };

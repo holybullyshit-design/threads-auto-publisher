@@ -420,6 +420,15 @@ textarea#draft-text {
   font-size: 12px;
 }
 
+.token-expiry-ok {
+  color: var(--success);
+}
+
+.token-expiry-warn {
+  color: var(--danger);
+  font-weight: 700;
+}
+
 .btn-danger-link {
   background: none;
   border: none;
