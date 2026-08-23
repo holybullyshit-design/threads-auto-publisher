@@ -1,17 +1,5 @@
 [
   {
-    "id": "54d47534-c1ec-4260-ab0d-69fc9337ad4f",
-    "accountId": "273c125f-56b7-4aa1-8abc-89df16bfbe2a",
-    "accountLabel": "연리지 실타래",
-    "text": "헤어졌는데, 아직 그 사람 SNS부터 확인하는 사람.\n잘 지내는 척하면서\n연락 오면 제일 먼저 받고 싶은 사람.\n내가 인연을 보는 이유는 하나야.\n다시 만날 수 있냐 없냐보다,\n이 인연이 아직 끝나지 않은 흐름인지가 더 중요하거든.\n성별 + 생년월일시 + 고민 두 줄 남겨봐.\n상대 생년월일시도 같이 남겨줘.\n꼬인 실타래를 풀어볼게🧶",
-    "status": "canceled",
-    "scheduledAt": "2026-12-31T00:00:00.000Z",
-    "createdAt": "2026-08-23T09:13:35.316Z",
-    "publishedAt": null,
-    "publishedId": null,
-    "error": null
-  },
-  {
     "id": "f2cdca30-1a72-43af-bdef-ac96895e406e",
     "accountId": "e0331659-96f0-4f5f-9aef-d89e0ed2a6a3",
     "accountLabel": "아해사주",
@@ -21,54 +9,6 @@
     "createdAt": "2026-08-23T09:16:54.857Z",
     "publishedAt": "2026-08-23T09:16:54.857Z",
     "publishedId": "18122043610847592",
-    "error": null
-  },
-  {
-    "id": "a9b046b0-f477-40c8-8f2d-610d5a0b8a28",
-    "accountId": "273c125f-56b7-4aa1-8abc-89df16bfbe2a",
-    "accountLabel": "연리지 실타래",
-    "text": "테스트글1",
-    "status": "canceled",
-    "scheduledAt": "2026-08-25T05:00:00.000Z",
-    "createdAt": "2026-08-23T09:22:15.185Z",
-    "publishedAt": null,
-    "publishedId": null,
-    "error": null
-  },
-  {
-    "id": "dd30dcb7-6776-405d-a065-5583404ee779",
-    "accountId": "e0331659-96f0-4f5f-9aef-d89e0ed2a6a3",
-    "accountLabel": "아해사주",
-    "text": "테스트글2",
-    "status": "canceled",
-    "scheduledAt": "2026-08-25T09:00:00.000Z",
-    "createdAt": "2026-08-23T09:22:16.570Z",
-    "publishedAt": null,
-    "publishedId": null,
-    "error": null
-  },
-  {
-    "id": "36a8ffec-7634-4911-b163-7564b8d9ee3a",
-    "accountId": "44d8bd24-6bf7-4b3a-9241-ddfb2b12c3b0",
-    "accountLabel": "팔자명가",
-    "text": "테스트글3",
-    "status": "canceled",
-    "scheduledAt": "2026-08-28T03:00:00.000Z",
-    "createdAt": "2026-08-23T09:22:17.640Z",
-    "publishedAt": null,
-    "publishedId": null,
-    "error": null
-  },
-  {
-    "id": "36a0473b-0a31-4765-ba31-8ebf7dd37aea",
-    "accountId": "273c125f-56b7-4aa1-8abc-89df16bfbe2a",
-    "accountLabel": "연리지 실타래",
-    "text": "테스트글4",
-    "status": "canceled",
-    "scheduledAt": "2026-08-28T04:00:00.000Z",
-    "createdAt": "2026-08-23T09:22:18.729Z",
-    "publishedAt": null,
-    "publishedId": null,
     "error": null
   },
   {
