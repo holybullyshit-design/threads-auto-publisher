@@ -106,5 +106,17 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null
+  },
+  {
+    "id": "5d746b6b-dea1-4de1-9afe-1f927b8d755c",
+    "accountId": "e0331659-96f0-4f5f-9aef-d89e0ed2a6a3",
+    "accountLabel": "아해사주",
+    "text": "〈동생만 보면 심술이 나는 아이 사주〉\n\n평소엔 순하다가도\n동생 앞에서만 표정이 확 바뀌는 아이가 있습니다.\n\n장난감을 뺏는 것도 아니고\n크게 혼내는 것도 아닌데\n동생이 칭찬받는 순간마다 유독 날이 서곤 합니다.\n\n단순히 심술궂은 성격이라기보다\n사랑을 나눠 가져야 한다는 두려움이 큰 기질(氣質)일 수 있습니다.\n\n사주에서는\n타고난 기질(氣質)과 성장운(成長運)을 함께 보면\n아이가 유독 예민해지는 지점을 살펴볼 수 있습니다.\n\n성별 + 생년월일시를 남겨주세요.\n아이의 기질과 성장운(成長運)을 함께 살펴드리겠습니다.",
+    "status": "scheduled",
+    "scheduledAt": "2026-08-24T08:00:00.000Z",
+    "createdAt": "2026-08-23T10:46:28.324Z",
+    "publishedAt": null,
+    "publishedId": null,
+    "error": null
   }
 ]
