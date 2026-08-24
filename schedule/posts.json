@@ -330,12 +330,13 @@
     "accountId": "6b8b637e-1629-4844-9a1f-9728c420154e",
     "accountLabel": "엄마가 직접 써본 꿀템",
     "text": "아들 재우고 설거지하다가 문득 시계 봤는데 9시 47분.\n\n애 픽업, 저녁, 목욕, 숙제 검사, 그림책 두 권까지 다 끝냈는데 아직 10시도 안 됐다는 게 실화냐.\n\n그냥 그 자리에 서서 물 한 잔 마셨음. 아무도 안 부르고, 아무것도 안 흘리고, 순수하게 물맛만 느끼면서.\n\n이런 게 하루 중 제일 럭셔리한 순간인 거 진짜 아무도 안 알려줌ㅋㅋ\n\n내일 또 똑같이 정신없겠지만 오늘 이 3분은 좀 챙겼다.",
-    "status": "failed",
-    "scheduledAt": "2026-08-24T04:04:59.699Z",
+    "status": "scheduled",
+    "scheduledAt": "2026-08-24T09:22:56.190Z",
     "createdAt": "2026-08-24T02:21:39.236Z",
     "publishedAt": null,
     "publishedId": null,
-    "error": "The requested resource does not exist"
+    "error": null,
+    "retryCount": 0
   },
   {
     "id": "c1c5706f-6830-41f9-a7e1-6fc183404dc1",
