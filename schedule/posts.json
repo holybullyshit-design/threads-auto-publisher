@@ -112,12 +112,13 @@
     "accountId": "e0331659-96f0-4f5f-9aef-d89e0ed2a6a3",
     "accountLabel": "아해사주",
     "text": "〈동생만 보면 심술이 나는 아이 사주〉\n\n평소엔 순하다가도\n동생 앞에서만 표정이 확 바뀌는 아이가 있습니다.\n\n장난감을 뺏는 것도 아니고\n크게 혼내는 것도 아닌데\n동생이 칭찬받는 순간마다 유독 날이 서곤 합니다.\n\n단순히 심술궂은 성격이라기보다\n사랑을 나눠 가져야 한다는 두려움이 큰 기질(氣質)일 수 있습니다.\n\n사주에서는\n타고난 기질(氣質)과 성장운(成長運)을 함께 보면\n아이가 유독 예민해지는 지점을 살펴볼 수 있습니다.\n\n성별 + 생년월일시를 남겨주세요.\n아이의 기질과 성장운(成長運)을 함께 살펴드리겠습니다.",
-    "status": "failed",
-    "scheduledAt": "2026-08-24T08:00:00.000Z",
+    "status": "published",
+    "scheduledAt": "2026-08-24T09:40:47.826Z",
     "createdAt": "2026-08-23T10:46:28.324Z",
-    "publishedAt": null,
-    "publishedId": null,
-    "error": "The requested resource does not exist"
+    "publishedAt": "2026-08-24T09:42:35.811Z",
+    "publishedId": "18107449364147002",
+    "error": null,
+    "retryCount": 0
   },
   {
     "id": "c176b8f6-3178-4fb7-9716-8e7bb6499730",
@@ -208,12 +209,13 @@
     "accountId": "44d8bd24-6bf7-4b3a-9241-ddfb2b12c3b0",
     "accountLabel": "팔자명가",
     "text": "'왜 이번엔 이력서 넣기도 전에 연락이 오지?'\n'서류 붙었는데 나만 계속 대기야...'\n\n취업운이 열릴 때는\n그냥 원서 넣는 개수가 느는 게 아니라\n흐름 자체가 갑자기 트여.\n\n몇 달째 소식 없던 곳에서 뒤늦게 연락이 오거나,\n지원도 안 한 회사에서 먼저 제안이 들어오거나,\n같이 넣었던 동기는 떨어졌는데 나만 붙는 식으로.\n\n반대로 面接(면접)까지 잘 봐놓고\n계속 최종에서만 미끄러지는 시기도 있어.\n\n이건 노력 문제가 아니라\n食傷(식상)과 財星(재성)이 살아있는 흐름인지 아닌지의 차이야.\n\n다만 命式(명식)과 大運(대운)에 따라\n지금이 뚫리는 시기인지, 준비만 더 다져야 하는 시기인지는 달라.\n\n성별 + 생년월일시 + 취업/이직 고민 한 줄\n\n지금 흐름이 붙는 타이밍인지\n아직 때가 아닌 건지\n내가 봐줄게~\n\n복채는 스.하.리.팔🧧",
-    "status": "failed",
-    "scheduledAt": "2026-08-24T08:00:00.000Z",
+    "status": "published",
+    "scheduledAt": "2026-08-24T09:24:58.902Z",
     "createdAt": "2026-08-23T10:49:48.084Z",
-    "publishedAt": null,
-    "publishedId": null,
-    "error": "The requested resource does not exist"
+    "publishedAt": "2026-08-24T09:38:11.501Z",
+    "publishedId": "18614191636033505",
+    "error": null,
+    "retryCount": 0
   },
   {
     "id": "504d59ef-7382-4bc1-8dbc-85e07359c365",
@@ -328,12 +330,13 @@
     "accountId": "6b8b637e-1629-4844-9a1f-9728c420154e",
     "accountLabel": "엄마가 직접 써본 꿀템",
     "text": "아들 재우고 설거지하다가 문득 시계 봤는데 9시 47분.\n\n애 픽업, 저녁, 목욕, 숙제 검사, 그림책 두 권까지 다 끝냈는데 아직 10시도 안 됐다는 게 실화냐.\n\n그냥 그 자리에 서서 물 한 잔 마셨음. 아무도 안 부르고, 아무것도 안 흘리고, 순수하게 물맛만 느끼면서.\n\n이런 게 하루 중 제일 럭셔리한 순간인 거 진짜 아무도 안 알려줌ㅋㅋ\n\n내일 또 똑같이 정신없겠지만 오늘 이 3분은 좀 챙겼다.",
-    "status": "failed",
-    "scheduledAt": "2026-08-24T04:04:59.699Z",
+    "status": "published",
+    "scheduledAt": "2026-08-24T09:22:56.190Z",
     "createdAt": "2026-08-24T02:21:39.236Z",
-    "publishedAt": null,
-    "publishedId": null,
-    "error": "The requested resource does not exist"
+    "publishedAt": "2026-08-24T09:38:20.357Z",
+    "publishedId": "17903232099489307",
+    "error": null,
+    "retryCount": 0
   },
   {
     "id": "c1c5706f-6830-41f9-a7e1-6fc183404dc1",
