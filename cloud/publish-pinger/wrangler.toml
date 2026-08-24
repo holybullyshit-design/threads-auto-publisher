@@ -1,0 +1,12 @@
+# GitHub Actions의 "schedule" 트리거는 무료 요금제에서 부하에 따라 1~4시간까지도 지연되는
+# 걸로 확인됐다(2026-08-24). 그래서 Cloudflare Workers의 Cron Trigger(최소 1분 단위, 노트북
+# 켜짐 여부와 무관하게 항상 동작)로 15분마다 GitHub한테 "지금 발행해"라고 직접 찔러준다.
+# 배포: npx wrangler deploy (이 폴더 안에서)
+# 토큰 등록(최초 1회): npx wrangler secret put GITHUB_TOKEN
+
+name = "threads-publish-pinger"
+main = "index.js"
+compatibility_date = "2026-08-24"
+
+[triggers]
+crons = ["*/15 * * * *"]
