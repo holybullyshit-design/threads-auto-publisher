@@ -531,5 +531,22 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null
+  },
+  {
+    "id": "1889d023-d4a6-4a8a-a125-ba53bd65bcb9",
+    "accountId": "6b8b637e-1629-4844-9a1f-9728c420154e",
+    "accountLabel": "엄마가 직접 써본 꿀템",
+    "text": "아 오늘 저녁 뭐하지 하다가 그냥 부대찌개 끓임\n애 아빠가 의정부에서 먹던 그 맛이라고 국물까지 다 마심ㄷㄷ\n\n햄이랑 소시지만 몇 개 썰어 넣었는데 밖에서 사먹는 맛 그대로 남\n딸은 라면사리 추가해달라고 옆에서 조르고\n주말 저녁 메뉴 고민 이걸로 끝날 듯\n\n이 게시물은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.",
+    "images": [
+      "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@977ed4ba2d698c0207ff87a58a8106d77a7393ea/images/6dd97892-b96d-413f-8354-7393a4fc0390.jpg",
+      "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@02cb8526cb708bce6ddafbdaefdf094054aec95e/images/e2368fd9-3c62-4277-800f-a4cfa8d80f91.jpg"
+    ],
+    "replyText": "국물까지 진국이라 해장으로 딱임!\n\nhttps://link.coupang.com/a/gtkLOKmUeW\nhttps://link.coupang.com/a/gtkLOKmUeW",
+    "status": "scheduled",
+    "scheduledAt": "2026-09-01T00:03:07.558Z",
+    "createdAt": "2026-08-24T07:23:08.445Z",
+    "publishedAt": null,
+    "publishedId": null,
+    "error": null
   }
 ]
