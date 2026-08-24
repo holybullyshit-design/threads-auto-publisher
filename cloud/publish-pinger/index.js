@@ -4,6 +4,12 @@
 //
 // GITHUB_TOKEN은 코드에 하드코딩하지 않고 Cloudflare Worker Secret으로 등록해서 쓴다:
 //   npx wrangler secret put GITHUB_TOKEN
+//
+// /dashboard : 모바일에서 아무 때나 열어서 예약 큐 상태를 볼 수 있는 사람이 읽기 편한 페이지.
+// (원래 하루 2번 Claude 예약 작업이 알아서 보고하게 만들려 했는데, 그 실행 환경 자체가
+// 외부 네트워크 접근이 막혀있어서(egress 차단, 2026-08-24 확인) 안 됐다 — 대신 사용자가
+// 직접 열어보는 이 페이지로 대체.)
+// /status    : 위와 같은 데이터를 JSON으로 (프로그램에서 쓰기용)
 
 const REPO = "holybullyshit-design/threads-auto-publisher";
 const WORKFLOW = "publish-scheduled.yml";
@@ -29,90 +35,231 @@ export default {
     }
   },
 
-  // 수동으로 상태 확인하고 싶을 때 브라우저로 워커 URL 열면 바로 한 번 실행해볼 수 있게.
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
     if (url.pathname === "/status") {
-      return this.status(env);
+      const data = await getStatusData(env);
+      return new Response(JSON.stringify(data, null, 2), {
+        headers: { "Content-Type": "application/json" },
+      });
     }
+    if (url.pathname === "/dashboard") {
+      const data = await getStatusData(env);
+      return new Response(renderDashboard(data), {
+        headers: { "Content-Type": "text/html; charset=utf-8" },
+      });
+    }
+    // 그 외(루트 등)는 기존처럼 수동 즉시 발행 트리거.
     await this.scheduled(null, env, ctx);
     return new Response("pinged\n");
   },
-
-  // 하루 2번(오전/오후) 상태 보고용 — 토큰 없이도 이 주소 하나만 GET 하면 예약 큐 건강 상태를
-  // 읽기 전용으로 확인할 수 있게 만든다 (토큰은 이 워커 안에만 있고 바깥으로 안 나감).
-  async status(env) {
-    const headers = {
-      Authorization: `Bearer ${env.GITHUB_TOKEN}`,
-      Accept: "application/vnd.github+json",
-      "User-Agent": "threads-publish-pinger",
-    };
-
-    const [contentRes, runsRes] = await Promise.all([
-      fetch(`https://api.github.com/repos/${REPO}/contents/schedule/posts.json`, { headers }),
-      fetch(`https://api.github.com/repos/${REPO}/actions/workflows/${WORKFLOW}/runs?per_page=5`, {
-        headers,
-      }),
-    ]);
-
-    let posts = [];
-    if (contentRes.ok) {
-      const data = await contentRes.json();
-      try {
-        posts = JSON.parse(atob(data.content));
-      } catch {
-        posts = [];
-      }
-    }
-
-    const now = Date.now();
-    const scheduled = posts.filter((p) => p.status === "scheduled");
-    const overdue = scheduled.filter((p) => new Date(p.scheduledAt).getTime() < now);
-    const failed = posts.filter((p) => p.status === "failed");
-    const oneDayAgo = now - 24 * 60 * 60 * 1000;
-    const publishedLast24h = posts.filter(
-      (p) => p.status === "published" && p.publishedAt && new Date(p.publishedAt).getTime() > oneDayAgo
-    );
-    const retrying = scheduled.filter((p) => (p.retryCount || 0) > 0);
-
-    let recentRuns = [];
-    if (runsRes.ok) {
-      const data = await runsRes.json();
-      recentRuns = (data.workflow_runs || []).map((r) => ({
-        status: r.status,
-        conclusion: r.conclusion,
-        event: r.event,
-        created_at: r.created_at,
-      }));
-    }
-
-    const healthy = overdue.length === 0 && failed.length === 0;
-
-    return new Response(
-      JSON.stringify(
-        {
-          healthy,
-          scheduledCount: scheduled.length,
-          overdueCount: overdue.length,
-          overdue: overdue.slice(0, 10).map((p) => ({
-            accountLabel: p.accountLabel,
-            scheduledAt: p.scheduledAt,
-            retryCount: p.retryCount || 0,
-          })),
-          failedCount: failed.length,
-          failed: failed.slice(0, 10).map((p) => ({
-            accountLabel: p.accountLabel,
-            scheduledAt: p.scheduledAt,
-            error: p.error,
-          })),
-          retryingCount: retrying.length,
-          publishedLast24h: publishedLast24h.length,
-          recentRuns,
-        },
-        null,
-        2
-      ),
-      { headers: { "Content-Type": "application/json" } }
-    );
-  },
 };
+
+async function getStatusData(env) {
+  const headers = {
+    Authorization: `Bearer ${env.GITHUB_TOKEN}`,
+    Accept: "application/vnd.github+json",
+    "User-Agent": "threads-publish-pinger",
+  };
+
+  const [contentRes, runsRes] = await Promise.all([
+    fetch(`https://api.github.com/repos/${REPO}/contents/schedule/posts.json`, { headers }),
+    fetch(`https://api.github.com/repos/${REPO}/actions/workflows/${WORKFLOW}/runs?per_page=5`, {
+      headers,
+    }),
+  ]);
+
+  let posts = [];
+  if (contentRes.ok) {
+    const data = await contentRes.json();
+    try {
+      // atob()는 결과를 Latin-1로 취급해서 한글(멀티바이트 UTF-8)이 깨진다 —
+      // 바이트 배열로 받은 뒤 TextDecoder로 UTF-8로 디코딩해야 한다.
+      const binary = atob(data.content);
+      const bytes = Uint8Array.from(binary, (c) => c.charCodeAt(0));
+      posts = JSON.parse(new TextDecoder("utf-8").decode(bytes));
+    } catch {
+      posts = [];
+    }
+  }
+
+  const now = Date.now();
+  const scheduled = posts.filter((p) => p.status === "scheduled");
+  const overdue = scheduled
+    .filter((p) => new Date(p.scheduledAt).getTime() < now)
+    .sort((a, b) => new Date(a.scheduledAt) - new Date(b.scheduledAt));
+  const failed = posts.filter((p) => p.status === "failed");
+  const oneDayAgo = now - 24 * 60 * 60 * 1000;
+  const publishedLast24h = posts.filter(
+    (p) => p.status === "published" && p.publishedAt && new Date(p.publishedAt).getTime() > oneDayAgo
+  );
+  const retrying = scheduled.filter((p) => (p.retryCount || 0) > 0);
+  const upcoming = scheduled
+    .filter((p) => new Date(p.scheduledAt).getTime() >= now)
+    .sort((a, b) => new Date(a.scheduledAt) - new Date(b.scheduledAt))
+    .slice(0, 5);
+
+  let recentRuns = [];
+  if (runsRes.ok) {
+    const data = await runsRes.json();
+    recentRuns = (data.workflow_runs || []).map((r) => ({
+      status: r.status,
+      conclusion: r.conclusion,
+      event: r.event,
+      created_at: r.created_at,
+    }));
+  }
+
+  return {
+    healthy: overdue.length === 0 && failed.length === 0,
+    scheduledCount: scheduled.length,
+    overdueCount: overdue.length,
+    overdue: overdue.slice(0, 10).map((p) => ({
+      accountLabel: p.accountLabel,
+      scheduledAt: p.scheduledAt,
+      retryCount: p.retryCount || 0,
+    })),
+    failedCount: failed.length,
+    failed: failed.slice(0, 10).map((p) => ({
+      accountLabel: p.accountLabel,
+      scheduledAt: p.scheduledAt,
+      error: p.error,
+    })),
+    retryingCount: retrying.length,
+    publishedLast24h: publishedLast24h.length,
+    upcoming: upcoming.map((p) => ({
+      accountLabel: p.accountLabel,
+      scheduledAt: p.scheduledAt,
+      text: (p.text || "").split("\n")[0].slice(0, 40),
+    })),
+    recentRuns,
+    checkedAt: new Date().toISOString(),
+  };
+}
+
+function fmtKst(iso) {
+  const d = new Date(new Date(iso).getTime() + 9 * 60 * 60 * 1000);
+  const pad = (n) => String(n).padStart(2, "0");
+  return `${d.getUTCMonth() + 1}/${d.getUTCDate()} ${pad(d.getUTCHours())}:${pad(d.getUTCMinutes())}`;
+}
+
+function esc(s) {
+  return String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+}
+
+function renderDashboard(data) {
+  const statusLabel = data.healthy ? "정상 작동 중" : "확인 필요";
+  const statusColor = data.healthy ? "#4ade80" : "#f87171";
+
+  const overdueHtml = data.overdue.length
+    ? data.overdue
+        .map(
+          (p) =>
+            `<div class="row"><span>${esc(p.accountLabel)}</span><span class="dim">${fmtKst(p.scheduledAt)} · 재시도 ${p.retryCount}회</span></div>`
+        )
+        .join("")
+    : `<div class="empty">없음</div>`;
+
+  const failedHtml = data.failed.length
+    ? data.failed
+        .map(
+          (p) =>
+            `<div class="row"><span>${esc(p.accountLabel)}</span><span class="dim">${fmtKst(p.scheduledAt)}</span></div><div class="err">${esc(p.error)}</div>`
+        )
+        .join("")
+    : `<div class="empty">없음</div>`;
+
+  const upcomingHtml = data.upcoming
+    .map(
+      (p) =>
+        `<div class="row"><span>${esc(p.accountLabel)}</span><span class="dim">${fmtKst(p.scheduledAt)}</span></div><div class="preview">${esc(p.text)}</div>`
+    )
+    .join("");
+
+  const runsHtml = data.recentRuns
+    .map((r) => {
+      const label = r.status === "completed" ? (r.conclusion === "success" ? "✅ 성공" : "❌ 실패") : "⏳ 진행중";
+      return `<div class="row"><span>${label} (${r.event === "schedule" ? "GitHub 자체" : "워커 트리거"})</span><span class="dim">${fmtKst(r.created_at)}</span></div>`;
+    })
+    .join("");
+
+  return `<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>스레드 자동화 상태</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 20px 16px 40px;
+    background: #0f1115; color: #e5e7eb;
+    font-family: -apple-system, BlinkMacSystemFont, "Pretendard", sans-serif;
+    max-width: 480px; margin-left: auto; margin-right: auto;
+  }
+  h1 { font-size: 17px; font-weight: 700; margin: 0 0 4px; }
+  .updated { color: #9ca3af; font-size: 12px; margin-bottom: 20px; }
+  .status-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #1a1d24; border: 1px solid #2a2e37; border-radius: 12px;
+    padding: 14px 16px; margin-bottom: 18px; width: 100%;
+  }
+  .dot { width: 10px; height: 10px; border-radius: 50%; background: ${statusColor}; flex-shrink: 0; }
+  .status-text { font-size: 16px; font-weight: 700; }
+  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 18px; }
+  .stat { background: #1a1d24; border: 1px solid #2a2e37; border-radius: 10px; padding: 12px; }
+  .stat .num { font-size: 22px; font-weight: 700; }
+  .stat .label { font-size: 11.5px; color: #9ca3af; margin-top: 2px; }
+  section { margin-bottom: 18px; }
+  section h2 { font-size: 13px; color: #9ca3af; margin: 0 0 8px; font-weight: 600; }
+  .card { background: #1a1d24; border: 1px solid #2a2e37; border-radius: 10px; padding: 4px 14px; }
+  .row { display: flex; justify-content: space-between; padding: 9px 0; font-size: 13.5px; border-bottom: 1px solid #23262e; }
+  .row:last-child { border-bottom: none; }
+  .dim { color: #9ca3af; font-size: 12px; }
+  .err { color: #f87171; font-size: 11.5px; padding: 0 0 9px; }
+  .preview { color: #9ca3af; font-size: 12px; padding: 0 0 9px; }
+  .empty { color: #6b7280; font-size: 13px; padding: 10px 0; }
+  .refresh-note { color: #6b7280; font-size: 11.5px; text-align: center; margin-top: 24px; }
+</style>
+</head>
+<body>
+  <h1>🧵 스레드 자동화 상태</h1>
+  <div class="updated">확인 시각(KST): ${fmtKst(data.checkedAt)}</div>
+
+  <div class="status-badge">
+    <span class="dot"></span>
+    <span class="status-text">${statusLabel}</span>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="num">${data.scheduledCount}</div><div class="label">예약 대기중</div></div>
+    <div class="stat"><div class="num">${data.publishedLast24h}</div><div class="label">최근 24시간 발행</div></div>
+    <div class="stat"><div class="num" style="color:${data.overdueCount ? "#f87171" : "#e5e7eb"}">${data.overdueCount}</div><div class="label">밀린 글</div></div>
+    <div class="stat"><div class="num" style="color:${data.failedCount ? "#f87171" : "#e5e7eb"}">${data.failedCount}</div><div class="label">실패</div></div>
+  </div>
+
+  <section>
+    <h2>밀린 글 (예약시각 지났는데 대기중)</h2>
+    <div class="card">${overdueHtml}</div>
+  </section>
+
+  <section>
+    <h2>실패한 글</h2>
+    <div class="card">${failedHtml}</div>
+  </section>
+
+  <section>
+    <h2>다음 예약 (가까운 순 5개)</h2>
+    <div class="card">${upcomingHtml || '<div class="empty">없음</div>'}</div>
+  </section>
+
+  <section>
+    <h2>최근 발행 시도 기록</h2>
+    <div class="card">${runsHtml || '<div class="empty">없음</div>'}</div>
+  </section>
+
+  <div class="refresh-note">당겨서 새로고침하거나 다시 열면 최신 상태로 갱신됩니다</div>
+</body>
+</html>`;
+}
