@@ -745,5 +745,17 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null
+  },
+  {
+    "id": "1c139960-3c16-4eee-b4c0-0c60df718cc9",
+    "accountId": "6b8b637e-1629-4844-9a1f-9728c420154e",
+    "accountLabel": "엄마가 직접 써본 꿀템",
+    "text": "어린이집에서 이상한 유행어 배워옴.\n\n\"엄마 그거 알아? '스퇴퇴'래\" 이러는데\n뜻을 물어보니까 자기도 모름. 그냥 친구가 자꾸 해서 따라한다고.\n\n밥 먹다가도 \"스퇴퇴\", 양말 신다가도 \"스퇴퇴\"...\n하루 종일 국적불명 주문 외우는 애랑 삽니다.\n\n원래 유행어 뜻도 모르고 쓰는 거 국룰인가요, 저희 집만 이런가요",
+    "status": "scheduled",
+    "scheduledAt": "2026-09-15T21:57:03.505Z",
+    "createdAt": "2026-08-24T07:55:26.514Z",
+    "publishedAt": null,
+    "publishedId": null,
+    "error": null
   }
 ]
