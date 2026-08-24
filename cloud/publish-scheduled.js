@@ -12,6 +12,12 @@ const { publishTextPost, publishImagePost } = require("../server/lib/threadsClie
 
 const SCHEDULE_FILE = path.join(__dirname, "..", "schedule", "posts.json");
 
+// 게시가 실패해도 바로 "failed"로 못박지 않고, 이 횟수만큼은 다음 실행(10분 뒤)에
+// 자동으로 다시 시도한다. threadsClient.js 안의 즉시 재시도(같은 실행 안에서)로도 못 넘긴
+// 에러가, 시간이 조금 더 지나면 풀리는 경우(메타 쪽 일시적 문제 등)를 자동으로 흡수하기 위함.
+// 이 횟수를 다 써도 안 되면 그때는 진짜 "failed"로 두고 사람이 확인하게 한다.
+const MAX_AUTO_RETRIES = 3;
+
 function loadAccounts() {
   const raw = process.env.THREADS_ACCOUNTS_JSON;
   if (!raw) {
@@ -93,9 +99,17 @@ async function main() {
         }
       }
     } catch (err) {
-      post.status = "failed";
+      post.retryCount = (post.retryCount || 0) + 1;
       post.error = err.message;
-      console.error(`[실패] ${post.id}: ${err.message}`);
+      if (post.retryCount < MAX_AUTO_RETRIES) {
+        // status는 "scheduled"로 그대로 둔다 -> 다음 실행(10분 뒤)에 자동으로 다시 시도된다.
+        console.error(
+          `[재시도 예정 ${post.retryCount}/${MAX_AUTO_RETRIES}] ${post.id}: ${err.message}`
+        );
+      } else {
+        post.status = "failed";
+        console.error(`[최종 실패, ${MAX_AUTO_RETRIES}회 재시도 소진] ${post.id}: ${err.message}`);
+      }
     }
   }
 

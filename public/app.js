@@ -1295,7 +1295,15 @@ function renderPostCards(container, posts, emptyText) {
       <div class="schedule-item-text">${escapeHtml(post.text)}</div>
       ${imagesHtml}
       ${replyHtml}
-      ${post.error ? `<div class="error-text" style="margin:0 0 8px;">${escapeHtml(post.error)}</div>` : ""}
+      ${
+        post.error
+          ? `<div class="error-text" style="margin:0 0 8px;">${escapeHtml(post.error)}${
+              post.status === "scheduled" && post.retryCount
+                ? ` (자동 재시도 ${post.retryCount}회째 — 다음 발행 시각에 다시 시도됩니다)`
+                : ""
+            }</div>`
+          : ""
+      }
     `;
 
     if (post.status === "scheduled") {
