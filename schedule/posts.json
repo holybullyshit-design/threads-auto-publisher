@@ -514,5 +514,22 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null
+  },
+  {
+    "id": "4039b6dd-09db-4aca-8797-dbd3d754dea7",
+    "accountId": "6b8b637e-1629-4844-9a1f-9728c420154e",
+    "accountLabel": "엄마가 직접 써본 꿀템",
+    "text": "아 진짜 저녁시간마다 냉장고 앞에서 실랑이함ㅋㅋ\n아들아 밥 먹기 싫대서 그럼 이거라도 먹으라 했더니 한 사발 뚝딱 ㄷㄷ\n\n삼계탕 국물이라 그런가 은근 든든해함\n먹고 나서 껌 하나 물려주면 개운하다고 좋아함\n이 조합 은근 저녁 급할 때 계속 손이 감\n\n이 게시물은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.",
+    "images": [
+      "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@53d24c5ffb80336e7ab2446773c2f330b6b33de0/images/29b31d38-784a-4227-8115-33749554baca.jpg",
+      "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@53d24c5ffb80336e7ab2446773c2f330b6b33de0/images/cc22c594-aef4-41a6-b3a6-5008d3342364.jpg"
+    ],
+    "replyText": "매콤한 국물에 껌까지 세트로 챙기니 편의점 갈 필요 없이 딱임!\n\nhttps://link.coupang.com/a/gtgneUgmbI\nhttps://link.coupang.com/a/gtgneUgmbI",
+    "status": "scheduled",
+    "scheduledAt": "2026-09-01T00:00:11.918Z",
+    "createdAt": "2026-08-24T06:22:30.436Z",
+    "publishedAt": null,
+    "publishedId": null,
+    "error": null
   }
 ]
