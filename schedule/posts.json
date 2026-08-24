@@ -925,5 +925,21 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null
+  },
+  {
+    "id": "673f8763-4199-46d8-ba5a-adc190bdcd54",
+    "accountId": "6b8b637e-1629-4844-9a1f-9728c420154e",
+    "accountLabel": "엄마가 직접 써본 꿀템",
+    "text": "아 이거 남편 입냄새 때문에 몰래 산건데\n쓰더니 본인이 먼저 개운하다고 함\n\n민트가 화하지 않고 은근 순한데 상쾌함은 오래감\n양치 끝나고 나서 키스갈도 가능한 수준\n이 정도면 우리집 필수템 등극\n\n이 게시물은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.",
+    "images": [
+      "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@d93a57f9c9d63c63b2b144635711c0790bcef726/images/c450b503-af51-45cc-99d5-3aeead128efc.jpg"
+    ],
+    "replyText": "입냄새 걱정 끝, 키갈까지 되니까 이거 하나로 정리됨 \n\nhttps://link.coupang.com/a/gtsv3u3iTs\nhttps://link.coupang.com/a/gtsv3u3iTs",
+    "status": "scheduled",
+    "scheduledAt": "2026-09-01T22:25:42.780Z",
+    "createdAt": "2026-08-24T09:11:14.400Z",
+    "publishedAt": null,
+    "publishedId": null,
+    "error": null
   }
 ]
