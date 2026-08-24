@@ -35,16 +35,66 @@
         </p>
       </div>
 
-      <div class="card">
+      <!-- 파트너스 계정에서만: 제품 홍보 글 / 일상글(비-광고) 선택 -->
+      <div id="partners-mode-toggle" class="card hidden">
+        <label class="field-label">콘텐츠 종류</label>
+        <div class="publish-mode-row">
+          <button id="mode-product" type="button" class="mode-btn selected">🛒 제품 홍보</button>
+          <button id="mode-lifestyle" type="button" class="mode-btn">✍️ 일상글</button>
+        </div>
+      </div>
+
+      <div id="product-category-card" class="card">
         <label class="field-label" id="category-section-label">글감 카테고리</label>
         <div id="category-options" class="option-grid"></div>
       </div>
 
-      <!-- 파트너스 계정 선택 시에만 표시되는 상품 정보 입력 -->
+      <!-- 파트너스: 일상글 모드일 때만 표시 -->
+      <div id="partners-lifestyle-fields" class="card hidden">
+        <label class="field-label">일상글 카테고리</label>
+        <div id="lifestyle-category-options" class="option-grid"></div>
+        <textarea id="lifestyle-topic-note" class="text-input textarea" rows="3" placeholder="오늘 쓰고 싶은 소재/메모 (비워두면 카테고리에 맞게 자동 창작)"></textarea>
+      </div>
+
+      <!-- 파트너스: 제품 홍보 모드일 때만 표시되는 상품 검색/선택 -->
       <div id="partners-product-fields" class="card hidden">
-        <label class="field-label">상품 정보</label>
-        <input id="product-name" class="text-input" placeholder="상품명 (예: 3M 극세사 청소포)" />
+        <label class="field-label">상품 검색 (쿠팡)</label>
+        <div class="product-search-row">
+          <input id="product-search-keyword" class="text-input" placeholder="상품명 또는 키워드 (예: 손목보호대)" />
+          <button id="btn-product-search" class="btn btn-secondary btn-small" type="button">🔍 검색</button>
+        </div>
+        <p id="product-search-error" class="error-text"></p>
+        <div id="keyword-suggestions" class="keyword-suggestions hidden"></div>
+        <div id="product-search-results" class="product-result-grid"></div>
+
+        <div id="selected-product-box" class="selected-product-box hidden">
+          <img id="selected-product-thumb" class="selected-product-thumb" alt="" />
+          <div class="selected-product-info">
+            <div id="selected-product-name" class="selected-product-name"></div>
+            <div id="selected-product-price" class="selected-product-price"></div>
+            <a id="selected-product-link" class="selected-product-link" href="#" target="_blank" rel="noopener">상품 페이지 열기 ↗ (사진 더 필요하면 여기서 우클릭 → 이미지 주소 복사)</a>
+          </div>
+          <button id="btn-clear-product" class="btn btn-secondary btn-small" type="button">변경</button>
+        </div>
+
         <textarea id="product-note" class="text-input textarea" rows="3" placeholder="직접 써본 소감/추천 이유 (비워두면 카테고리에 맞게 자동 구성)"></textarea>
+
+        <details class="extra-images-details" open>
+          <summary>상품 사진 직접 추가 (2~3장 — AI 자동 생성 없이, 직접 올린 사진만 씁니다)</summary>
+          <div id="image-dropzone" class="image-dropzone" tabindex="0">
+            📎 상세페이지 등에서 캡처한 사진을 여기로 끌어다 놓거나, 클릭해서 붙여넣기(⌘V)하세요 (2~3장)
+            <input id="image-file-input" type="file" accept="image/*" multiple class="hidden" />
+          </div>
+          <p id="image-upload-error" class="error-text"></p>
+          <div id="extra-images-preview" class="extra-images-preview"></div>
+
+          <button id="btn-search-external-images" class="btn btn-secondary btn-small hidden" type="button">
+            🔎 다른 사이트에서 같은 상품 사진 찾기
+          </button>
+          <p id="external-images-error" class="error-text"></p>
+          <p id="external-images-hint" class="hint-text hidden">마음에 드는 사진을 클릭하면 위 목록에 추가됩니다 (안 눌러도 그만이에요)</p>
+          <div id="external-images-results" class="external-images-grid"></div>
+        </details>
       </div>
 
       <button id="btn-generate" class="btn btn-primary" disabled>초안 생성 (AI)</button>
@@ -60,6 +110,9 @@
           <span id="char-count" class="char-count"></span>
         </div>
         <textarea id="draft-text" rows="10" placeholder="초안이 여기에 표시됩니다..."></textarea>
+
+        <div id="preview-images" class="preview-images hidden"></div>
+        <p id="preview-reply-hint" class="hint-text hidden"></p>
 
         <button id="btn-polish" class="btn btn-secondary btn-small">이 채널 톤으로 다시 다듬기</button>
       </div>
@@ -93,6 +146,29 @@
         <button id="btn-refresh-schedule" class="btn-link">새로고침</button>
       </div>
       <p class="hint-text">GitHub Actions가 10분 간격으로 예약된 글을 대신 게시합니다. 랩톱이 꺼져 있어도 동작합니다.</p>
+
+      <details class="rebalance-details">
+        <summary>⏱ 예약 시간 재배치 (정확한 시각 계산 없이 예약해두고, 나중에 하루 정해진 시간대로 한 번에 정리)</summary>
+        <div class="rebalance-panel">
+          <label class="field-label">계정</label>
+          <select id="rebalance-account" class="select-input"></select>
+
+          <label class="field-label">대상 글 종류</label>
+          <select id="rebalance-kind" class="select-input">
+            <option value="product">제품 홍보 글만</option>
+            <option value="lifestyle">일상글만</option>
+            <option value="all">전체</option>
+          </select>
+
+          <label class="field-label">하루 시간 슬롯 (쉼표로 구분)</label>
+          <input id="rebalance-times" class="text-input" value="11:00, 16:00, 20:00" />
+          <p class="hint-text">같은 날짜로 예약된 글이 여러 개면, 먼저 만든 순서대로 위 시간대에 하나씩 배정됩니다.</p>
+
+          <button id="btn-rebalance-apply" class="btn btn-secondary btn-small" type="button">재배치 적용</button>
+          <p id="rebalance-result" class="hint-text"></p>
+          <p id="rebalance-error" class="error-text"></p>
+        </div>
+      </details>
 
       <div id="calendar-legend" class="calendar-legend"></div>
 
@@ -217,6 +293,11 @@
   <div id="loading-overlay" class="loading-overlay hidden">
     <div class="spinner"></div>
     <p id="loading-text">생성 중...</p>
+  </div>
+
+  <div id="image-lightbox" class="image-lightbox hidden">
+    <button id="lightbox-close" class="lightbox-close" type="button" aria-label="닫기">×</button>
+    <img id="lightbox-img" src="" alt="확대 이미지" />
   </div>
 </div>
 

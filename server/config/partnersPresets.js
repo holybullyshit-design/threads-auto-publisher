@@ -15,6 +15,14 @@ const PARTNERS_PRESETS = {
       { id: "pet", label: "반려동물용품", description: "사료, 간식, 위생용품 등 반려동물 소모품" },
       { id: "beauty", label: "가성비뷰티", description: "가격 대비 만족도 높은 뷰티 소모품" },
       { id: "camping", label: "캠핑/차박소품", description: "캠핑·차박용 소품 및 편의용품" },
+      { id: "kitchen-storage", label: "주방/수납용품", description: "주방 정리, 밀폐용기, 수납 등 살림 효율템" },
+      { id: "health-food", label: "건강기능식품", description: "유산균, 비타민 등 가족이 챙겨 먹는 건강식품" },
+      { id: "kids-edu-toy", label: "아동교육/장난감", description: "아이 발달·놀이·학습용 장난감과 교구" },
+      { id: "fashion", label: "패션/잡화", description: "엄마·아이 옷, 신발, 가방 등 데일리 패션" },
+      { id: "car", label: "차량용품", description: "카시트, 방향제 등 가족 차량에 쓰는 용품" },
+      { id: "office", label: "문구/오피스", description: "재택·홈스쿨링에 쓰는 문구·사무용품" },
+      { id: "it-appliance", label: "IT/생활가전", description: "무선청소기, 에어프라이어 등 편의 가전" },
+      { id: "interior", label: "인테리어 소품", description: "집을 예쁘게 만드는 저부담 인테리어 소품" },
     ],
     styleGuide: `- 광고 티가 나지 않게, "내가 직접 써보고 좋아서 공유한다"는 후기 어조로 쓴다 (과장 광고 문구 금지).
 - 반말/존댓말 어느 쪽이든 가능하지만, 친근하고 담백한 반말체를 기본으로 한다.

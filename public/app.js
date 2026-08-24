@@ -10,7 +10,21 @@ const state = {
   calendarDate: new Date(), // 현재 보고 있는 달 (day는 무시하고 년/월만 사용)
   selectedDay: null, // "YYYY-MM-DD" 또는 null
   schedulePosts: [],
+  editingPostId: null, // 예약 목록에서 지금 수정 폼을 펼쳐둔 게시물 id (한 번에 하나만)
   newAccountType: "saju", // saju | partners (계정 추가 폼에서 선택 중인 카테고리)
+
+  // 파트너스: 쿠팡 상품 검색/선택 + 준비된 이미지/답글(제휴 링크)
+  productSearchResults: [],
+  selectedProduct: null, // { productName, productImage, productUrl, productPrice, ... }
+  currentImages: [], // 미리보기에 걸려 있는, 이미 공개 호스팅된 1:1 이미지 URL들
+  currentReplyText: "", // 본문 게시 직후 답글로 자동 게시할 텍스트(제휴 링크)
+  extraImages: [], // [{ id, previewUrl, url, status: 'uploading'|'done'|'error' }] — 캡처해서 끌어다 놓은 추가 이미지
+  externalImageSearchConfigured: false, // 이미지 검색 API 키 설정 여부 — false면 "다른 사이트에서 사진 찾기" 버튼 숨김
+
+  // 파트너스: 콘텐츠 종류 ("product" 제품 홍보 | "lifestyle" 일상글)
+  contentMode: "product",
+  lifestyleCategories: [],
+  selectedLifestyleCategoryId: null,
 };
 
 const ACCOUNT_COLOR_PALETTE = ["#e07a5f", "#6ea8fe", "#81b29a", "#d88fd8", "#f2b56f", "#7fd1ae"];
@@ -37,9 +51,36 @@ const el = {
   noAccountHint: document.getElementById("no-account-hint"),
   categorySectionLabel: document.getElementById("category-section-label"),
   categoryOptions: document.getElementById("category-options"),
+  productCategoryCard: document.getElementById("product-category-card"),
+  partnersModeToggle: document.getElementById("partners-mode-toggle"),
+  modeProductBtn: document.getElementById("mode-product"),
+  modeLifestyleBtn: document.getElementById("mode-lifestyle"),
+  partnersLifestyleFields: document.getElementById("partners-lifestyle-fields"),
+  lifestyleCategoryOptions: document.getElementById("lifestyle-category-options"),
+  lifestyleTopicNote: document.getElementById("lifestyle-topic-note"),
   partnersProductFields: document.getElementById("partners-product-fields"),
-  productName: document.getElementById("product-name"),
+  productSearchKeyword: document.getElementById("product-search-keyword"),
+  btnProductSearch: document.getElementById("btn-product-search"),
+  productSearchError: document.getElementById("product-search-error"),
+  productSearchResults: document.getElementById("product-search-results"),
+  keywordSuggestions: document.getElementById("keyword-suggestions"),
+  selectedProductBox: document.getElementById("selected-product-box"),
+  selectedProductThumb: document.getElementById("selected-product-thumb"),
+  selectedProductName: document.getElementById("selected-product-name"),
+  selectedProductPrice: document.getElementById("selected-product-price"),
+  selectedProductLink: document.getElementById("selected-product-link"),
+  btnClearProduct: document.getElementById("btn-clear-product"),
   productNote: document.getElementById("product-note"),
+  imageDropzone: document.getElementById("image-dropzone"),
+  imageFileInput: document.getElementById("image-file-input"),
+  imageUploadError: document.getElementById("image-upload-error"),
+  extraImagesPreview: document.getElementById("extra-images-preview"),
+  btnSearchExternalImages: document.getElementById("btn-search-external-images"),
+  externalImagesError: document.getElementById("external-images-error"),
+  externalImagesHint: document.getElementById("external-images-hint"),
+  externalImagesResults: document.getElementById("external-images-results"),
+  previewImages: document.getElementById("preview-images"),
+  previewReplyHint: document.getElementById("preview-reply-hint"),
   btnGenerate: document.getElementById("btn-generate"),
   btnManual: document.getElementById("btn-manual"),
   settingsError: document.getElementById("settings-error"),
@@ -64,6 +105,12 @@ const el = {
   btnRefreshSchedule: document.getElementById("btn-refresh-schedule"),
   scheduleList: document.getElementById("schedule-list"),
   scheduleError: document.getElementById("schedule-error"),
+  rebalanceAccount: document.getElementById("rebalance-account"),
+  rebalanceKind: document.getElementById("rebalance-kind"),
+  rebalanceTimes: document.getElementById("rebalance-times"),
+  btnRebalanceApply: document.getElementById("btn-rebalance-apply"),
+  rebalanceResult: document.getElementById("rebalance-result"),
+  rebalanceError: document.getElementById("rebalance-error"),
   calendarLegend: document.getElementById("calendar-legend"),
   calendarView: document.getElementById("calendar-view"),
   calendarGrid: document.getElementById("calendar-grid"),
@@ -183,6 +230,23 @@ function renderAccountSelect() {
   el.accountSelect.value = state.selectedAccountId;
   renderAccountPersonaHint();
   renderCategoryOptions();
+  renderRebalanceAccountOptions();
+}
+
+function renderRebalanceAccountOptions() {
+  const prev = el.rebalanceAccount.value;
+  el.rebalanceAccount.innerHTML = "";
+  state.accounts.forEach((acc) => {
+    const opt = document.createElement("option");
+    opt.value = acc.id;
+    opt.textContent = `${acc.type === "partners" ? "🛒" : "🔮"} ${acc.label}`;
+    el.rebalanceAccount.appendChild(opt);
+  });
+  if (prev && state.accounts.some((a) => a.id === prev)) {
+    el.rebalanceAccount.value = prev;
+  } else if (state.selectedAccountId) {
+    el.rebalanceAccount.value = state.selectedAccountId;
+  }
 }
 
 function renderAccountPersonaHint() {
@@ -195,13 +259,64 @@ function renderAccountPersonaHint() {
     const p = acc.partnersProfile;
     el.accountPersonaHint.textContent = `파트너스 · 니치 ${p.categories.length}개`;
     el.categorySectionLabel.textContent = "니치 카테고리";
-    el.partnersProductFields.classList.remove("hidden");
+    el.partnersModeToggle.classList.remove("hidden");
+    setContentMode("product");
   } else {
     const p = acc.persona;
     el.accountPersonaHint.textContent = `${p.speechLevel} · 카테고리 ${p.categories.length}개 · 클로징 "${p.closingLine || "(미설정)"}"`;
     el.categorySectionLabel.textContent = "글감 카테고리";
+    el.partnersModeToggle.classList.add("hidden");
     el.partnersProductFields.classList.add("hidden");
+    el.partnersLifestyleFields.classList.add("hidden");
+    el.productCategoryCard.classList.remove("hidden");
   }
+}
+
+// ================= 파트너스: 콘텐츠 종류(제품 홍보 / 일상글) 전환 =================
+function setContentMode(mode) {
+  state.contentMode = mode;
+  el.modeProductBtn.classList.toggle("selected", mode === "product");
+  el.modeLifestyleBtn.classList.toggle("selected", mode === "lifestyle");
+
+  const isLifestyle = mode === "lifestyle";
+  el.productCategoryCard.classList.toggle("hidden", isLifestyle);
+  el.partnersProductFields.classList.toggle("hidden", isLifestyle);
+  el.partnersLifestyleFields.classList.toggle("hidden", !isLifestyle);
+
+  if (isLifestyle) {
+    renderLifestyleCategoryOptions();
+  } else {
+    renderCategoryOptions();
+  }
+  updateGenerateButtonState();
+}
+
+function renderLifestyleCategoryOptions() {
+  el.lifestyleCategoryOptions.innerHTML = "";
+  if (!state.selectedLifestyleCategoryId && state.lifestyleCategories.length) {
+    state.selectedLifestyleCategoryId = state.lifestyleCategories[0].id;
+  }
+  state.lifestyleCategories.forEach((item) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "option-btn" + (item.id === state.selectedLifestyleCategoryId ? " selected" : "");
+    btn.innerHTML = `<span class="opt-label">${escapeHtml(item.label)}</span><span class="opt-desc">${escapeHtml(item.description || "")}</span>`;
+    btn.addEventListener("click", () => {
+      state.selectedLifestyleCategoryId = item.id;
+      renderLifestyleCategoryOptions();
+    });
+    el.lifestyleCategoryOptions.appendChild(btn);
+  });
+  updateGenerateButtonState();
+}
+
+el.modeProductBtn.addEventListener("click", () => setContentMode("product"));
+el.modeLifestyleBtn.addEventListener("click", () => setContentMode("lifestyle"));
+
+async function loadLifestylePresets() {
+  const res = await fetch("/api/lifestyle-presets");
+  const data = await res.json();
+  state.lifestyleCategories = data.categories || [];
 }
 
 function renderCategoryOptions() {
@@ -230,20 +345,348 @@ function renderCategoryOptions() {
 
 function updateGenerateButtonState() {
   const acc = currentAccount();
-  const needsProduct = acc && acc.type === "partners";
-  const hasProduct = !needsProduct || el.productName.value.trim().length > 0;
-  el.btnGenerate.disabled = !(state.selectedAccountId && state.selectedCategoryId && hasProduct);
+  const isPartners = acc && acc.type === "partners";
+  const isLifestyle = isPartners && state.contentMode === "lifestyle";
+
+  let ready;
+  if (isLifestyle) {
+    ready = Boolean(state.selectedAccountId && state.selectedLifestyleCategoryId);
+  } else if (isPartners) {
+    ready = Boolean(state.selectedAccountId && state.selectedCategoryId && state.selectedProduct);
+  } else {
+    ready = Boolean(state.selectedAccountId && state.selectedCategoryId);
+  }
+  el.btnGenerate.disabled = !ready;
   el.btnManual.disabled = !state.selectedAccountId;
 }
-
-el.productName.addEventListener("input", updateGenerateButtonState);
 
 el.accountSelect.addEventListener("change", () => {
   state.selectedAccountId = el.accountSelect.value;
   state.selectedCategoryId = null;
-  renderAccountPersonaHint();
+  state.selectedLifestyleCategoryId = null;
+  clearSelectedProduct();
+  renderAccountPersonaHint(); // partners 계정이면 이 안에서 setContentMode("product")까지 처리됨
   renderCategoryOptions();
 });
+
+// ================= 파트너스: 상품 검색 / 선택 =================
+
+function clearSelectedProduct() {
+  state.selectedProduct = null;
+  state.productSearchResults = [];
+  el.productSearchResults.innerHTML = "";
+  el.keywordSuggestions.classList.add("hidden");
+  el.selectedProductBox.classList.add("hidden");
+  clearExtraImages();
+  clearExternalImageResults();
+  updateGenerateButtonState();
+}
+
+async function searchProducts(keywordOverride) {
+  const keyword = (keywordOverride ?? el.productSearchKeyword.value).trim();
+  el.productSearchError.textContent = "";
+  if (!keyword) {
+    el.productSearchError.textContent = "검색할 상품명(키워드)을 입력해주세요.";
+    return;
+  }
+  el.productSearchKeyword.value = keyword;
+
+  const acc = currentAccount();
+  const categories = getAccountCategories(acc);
+  const categoryLabel = categories.find((c) => c.id === state.selectedCategoryId)?.label || "";
+
+  el.btnProductSearch.disabled = true;
+  el.btnProductSearch.textContent = "검색 중...";
+  el.keywordSuggestions.classList.add("hidden"); // 이전 검색의 추천어가 남아있지 않게
+  try {
+    const res = await fetch("/api/partners/search", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ keyword, limit: 10 }),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || "검색에 실패했습니다.");
+    state.productSearchResults = data.products || [];
+    renderProductResults();
+    fetchKeywordSuggestions(keyword, categoryLabel); // 결과 기다리게 하지 않고 따로, 늦게 채워짐
+  } catch (err) {
+    el.productSearchError.textContent = err.message;
+  } finally {
+    el.btnProductSearch.disabled = false;
+    el.btnProductSearch.textContent = "🔍 검색";
+  }
+}
+
+// 연관 검색어는 AI 호출이라 몇 초 걸린다 — 상품 검색 결과를 기다리게 하지 않고,
+// 검색창에 그 키워드가 여전히 남아있을 때만(사용자가 다른 검색으로 넘어가지 않았을 때만) 채운다.
+let keywordSuggestionsRequestId = 0;
+async function fetchKeywordSuggestions(keyword, categoryLabel) {
+  const requestId = ++keywordSuggestionsRequestId;
+  try {
+    const res = await fetch("/api/partners/keyword-suggestions", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ keyword, categoryLabel }),
+    });
+    const data = await res.json();
+    if (!res.ok || requestId !== keywordSuggestionsRequestId) return; // 그새 다른 검색으로 넘어갔으면 버림
+    renderKeywordSuggestions(data.suggestedKeywords || []);
+  } catch {
+    // 추천어는 부가 기능이라 실패해도 조용히 넘어간다 (검색 결과 자체엔 지장 없음)
+  }
+}
+
+function renderKeywordSuggestions(suggestions) {
+  el.keywordSuggestions.innerHTML = "";
+  if (!suggestions.length) {
+    el.keywordSuggestions.classList.add("hidden");
+    return;
+  }
+  const label = document.createElement("div");
+  label.className = "suggestion-label";
+  label.textContent = "결과가 10개뿐인가요? 이런 검색어도 있어요 — 눌러서 다시 검색";
+  el.keywordSuggestions.appendChild(label);
+
+  suggestions.forEach((word) => {
+    const chip = document.createElement("button");
+    chip.type = "button";
+    chip.className = "keyword-chip";
+    chip.textContent = word;
+    chip.addEventListener("click", () => searchProducts(word));
+    el.keywordSuggestions.appendChild(chip);
+  });
+  el.keywordSuggestions.classList.remove("hidden");
+}
+
+function renderProductResults() {
+  el.productSearchResults.innerHTML = "";
+  state.productSearchResults.forEach((product) => {
+    const card = document.createElement("button");
+    card.type = "button";
+    card.className = "product-result-card";
+    card.innerHTML = `
+      <img src="${escapeHtml(product.productImage)}" alt="" loading="lazy" />
+      <div class="product-result-name">${escapeHtml(product.productName)}</div>
+      <div class="product-result-price">${product.productPrice.toLocaleString("ko-KR")}원</div>
+    `;
+    card.addEventListener("click", () => selectProduct(product));
+    el.productSearchResults.appendChild(card);
+  });
+}
+
+function selectProduct(product) {
+  state.selectedProduct = product;
+  el.selectedProductThumb.src = product.productImage;
+  el.selectedProductName.textContent = product.productName;
+  el.selectedProductPrice.textContent = `${product.productPrice.toLocaleString("ko-KR")}원`;
+  el.selectedProductLink.href = product.productUrl;
+  el.selectedProductBox.classList.remove("hidden");
+  el.productSearchResults.innerHTML = "";
+  clearExternalImageResults(); // 상품이 바뀌었으니 이전 상품의 검색 후보는 지운다
+  el.keywordSuggestions.classList.add("hidden");
+  updateGenerateButtonState();
+}
+
+// ================= 파트너스: 캡처 이미지 끌어다 놓기 / 붙여넣기 =================
+const MAX_EXTRA_IMAGES = 3; // AI 이미지 생성을 끄고 직접 업로드만 쓰기로 함(2026-08-24) — 2~3장
+
+function clearExtraImages() {
+  state.extraImages.forEach((img) => img.previewUrl && URL.revokeObjectURL(img.previewUrl));
+  state.extraImages = [];
+  renderExtraImages();
+}
+
+function renderExtraImages() {
+  el.extraImagesPreview.innerHTML = "";
+  state.extraImages.forEach((img) => {
+    const chip = document.createElement("div");
+    chip.className = "extra-image-chip" + (img.status === "uploading" ? " uploading" : "");
+    chip.innerHTML = `<img src="${img.url || img.previewUrl}" alt="" />`;
+    const removeBtn = document.createElement("button");
+    removeBtn.type = "button";
+    removeBtn.className = "remove-chip";
+    removeBtn.textContent = "×";
+    removeBtn.addEventListener("click", () => removeExtraImage(img.id));
+    chip.appendChild(removeBtn);
+    el.extraImagesPreview.appendChild(chip);
+  });
+}
+
+function removeExtraImage(id) {
+  const img = state.extraImages.find((i) => i.id === id);
+  if (img?.previewUrl) URL.revokeObjectURL(img.previewUrl);
+  state.extraImages = state.extraImages.filter((i) => i.id !== id);
+  renderExtraImages();
+}
+
+async function uploadExtraImageFile(file) {
+  el.imageUploadError.textContent = "";
+  if (!file.type.startsWith("image/")) return;
+  const remaining = MAX_EXTRA_IMAGES - state.extraImages.length;
+  if (remaining <= 0) {
+    el.imageUploadError.textContent = `이미지는 최대 ${MAX_EXTRA_IMAGES}장까지 추가할 수 있어요.`;
+    return;
+  }
+
+  const id = crypto.randomUUID();
+  const previewUrl = URL.createObjectURL(file);
+  state.extraImages.push({ id, previewUrl, url: null, status: "uploading" });
+  renderExtraImages();
+
+  try {
+    const imageBase64 = await new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+    const res = await fetch("/api/partners/upload-image", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ imageBase64 }),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || "이미지 업로드에 실패했습니다.");
+
+    const entry = state.extraImages.find((i) => i.id === id);
+    if (entry) {
+      entry.url = data.url;
+      entry.status = "done";
+      renderExtraImages();
+    }
+  } catch (err) {
+    el.imageUploadError.textContent = err.message;
+    removeExtraImage(id);
+  }
+}
+
+function handleFiles(fileList) {
+  const remaining = MAX_EXTRA_IMAGES - state.extraImages.length;
+  Array.from(fileList)
+    .slice(0, remaining)
+    .forEach(uploadExtraImageFile);
+}
+
+el.imageDropzone.addEventListener("click", () => el.imageFileInput.click());
+el.imageFileInput.addEventListener("change", (e) => {
+  handleFiles(e.target.files);
+  e.target.value = ""; // 같은 파일 다시 선택해도 change가 다시 뜨도록
+});
+el.imageDropzone.addEventListener("dragover", (e) => {
+  e.preventDefault();
+  el.imageDropzone.classList.add("dragover");
+});
+el.imageDropzone.addEventListener("dragleave", () => {
+  el.imageDropzone.classList.remove("dragover");
+});
+el.imageDropzone.addEventListener("drop", (e) => {
+  e.preventDefault();
+  el.imageDropzone.classList.remove("dragover");
+  handleFiles(e.dataTransfer.files);
+});
+el.imageDropzone.addEventListener("paste", (e) => {
+  const items = Array.from(e.clipboardData?.items || []);
+  const files = items.filter((it) => it.kind === "file" && it.type.startsWith("image/")).map((it) => it.getAsFile());
+  if (files.length > 0) {
+    e.preventDefault();
+    handleFiles(files);
+  }
+});
+
+// ================= 파트너스: 다른 사이트에서 같은 상품 사진 후보 찾기 (구글 이미지 검색) =================
+// 자동으로 아무거나 골라서 쓰지 않는다 — 후보만 보여주고, 클릭해서 고르는 건 항상 사람이 한다.
+function clearExternalImageResults() {
+  el.externalImagesResults.innerHTML = "";
+  el.externalImagesHint.classList.add("hidden");
+  el.externalImagesError.textContent = "";
+}
+
+async function searchExternalImages() {
+  const keyword = state.selectedProduct?.productName;
+  el.externalImagesError.textContent = "";
+  if (!keyword) {
+    el.externalImagesError.textContent = "먼저 상품을 검색해서 선택해주세요.";
+    return;
+  }
+
+  el.btnSearchExternalImages.disabled = true;
+  el.btnSearchExternalImages.textContent = "찾는 중...";
+  try {
+    const res = await fetch(`/api/partners/search-external-images?keyword=${encodeURIComponent(keyword)}`);
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || "검색에 실패했습니다.");
+    renderExternalImageResults(data.results || []);
+  } catch (err) {
+    el.externalImagesError.textContent = err.message;
+  } finally {
+    el.btnSearchExternalImages.disabled = false;
+    el.btnSearchExternalImages.textContent = "🔎 다른 사이트에서 같은 상품 사진 찾기";
+  }
+}
+
+function renderExternalImageResults(results) {
+  el.externalImagesResults.innerHTML = "";
+  if (results.length === 0) {
+    el.externalImagesError.textContent = "검색 결과가 없어요.";
+    el.externalImagesHint.classList.add("hidden");
+    return;
+  }
+  el.externalImagesHint.classList.remove("hidden");
+  results.forEach((item) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "external-image-candidate";
+    btn.innerHTML = `<img src="${escapeHtml(item.image)}" alt="" loading="lazy" /><span class="mall-name">${escapeHtml(item.mallName || "")}</span>`;
+    btn.addEventListener("click", () => importExternalImage(item.image, btn));
+    el.externalImagesResults.appendChild(btn);
+  });
+}
+
+async function importExternalImage(imageUrl, buttonEl) {
+  el.externalImagesError.textContent = "";
+  const remaining = MAX_EXTRA_IMAGES - state.extraImages.length;
+  if (remaining <= 0) {
+    el.externalImagesError.textContent = `이미지는 최대 ${MAX_EXTRA_IMAGES}장까지 추가할 수 있어요.`;
+    return;
+  }
+  if (buttonEl.classList.contains("imported")) return; // 같은 후보 중복 클릭 방지
+
+  const id = crypto.randomUUID();
+  state.extraImages.push({ id, previewUrl: imageUrl, url: null, status: "uploading" });
+  renderExtraImages();
+  buttonEl.classList.add("imported");
+
+  try {
+    const res = await fetch("/api/partners/import-image", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ imageUrl }),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || "이미지를 가져오지 못했습니다.");
+    const entry = state.extraImages.find((i) => i.id === id);
+    if (entry) {
+      entry.url = data.url;
+      entry.status = "done";
+      renderExtraImages();
+    }
+  } catch (err) {
+    el.externalImagesError.textContent = err.message;
+    removeExtraImage(id);
+    buttonEl.classList.remove("imported");
+  }
+}
+
+el.btnSearchExternalImages.addEventListener("click", searchExternalImages);
+
+el.btnProductSearch.addEventListener("click", () => searchProducts());
+el.productSearchKeyword.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    searchProducts();
+  }
+});
+el.btnClearProduct.addEventListener("click", clearSelectedProduct);
 
 // ================= 초기 데이터 로드 =================
 async function loadMeta() {
@@ -251,6 +694,8 @@ async function loadMeta() {
   const data = await res.json();
   state.maxTextLength = data.maxTextLength;
   state.threadsOAuthConfigured = data.threadsOAuthConfigured;
+  state.externalImageSearchConfigured = data.externalImageSearchConfigured;
+  el.btnSearchExternalImages.classList.toggle("hidden", !state.externalImageSearchConfigured);
 }
 
 async function loadAccounts() {
@@ -355,18 +800,87 @@ function parseCategoriesText(text) {
 
 async function generateDraft() {
   el.settingsError.textContent = "";
-  if (!state.selectedAccountId || !state.selectedCategoryId) return;
   const acc = currentAccount();
   const isPartners = acc?.type === "partners";
-  if (isPartners && !el.productName.value.trim()) return;
+  const isLifestyle = isPartners && state.contentMode === "lifestyle";
+
+  state.currentImages = [];
+  state.currentReplyText = "";
+
+  if (isLifestyle) {
+    if (!state.selectedAccountId || !state.selectedLifestyleCategoryId) return;
+    showLoading("일상글 초안을 쓰고 있어요...");
+    try {
+      const res = await fetch("/api/partners/lifestyle-draft", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          accountId: state.selectedAccountId,
+          categoryId: state.selectedLifestyleCategoryId,
+          topicNote: el.lifestyleTopicNote.value.trim(),
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "초안 생성에 실패했습니다.");
+
+      el.draftText.value = data.draft;
+      el.previewMeta.textContent = `${acc?.label || ""} · 일상글 · ${data.category.label}`;
+      renderPreviewImages();
+      updateCharCount();
+      setPublishMode("now");
+      switchToPreview();
+    } catch (err) {
+      el.settingsError.textContent = err.message;
+    } finally {
+      hideLoading();
+    }
+    return;
+  }
+
+  if (!state.selectedAccountId || !state.selectedCategoryId) return;
+  if (isPartners && !state.selectedProduct) return;
+
+  if (isPartners) {
+    // 파트너스: 검색으로 고른 상품 + (선택)끌어다 놓은 추가 이미지 → 초안을 한 번에 준비
+    const extraImageUrls = state.extraImages
+      .filter((img) => img.status === "done" && img.url)
+      .map((img) => img.url);
+
+    showLoading("상품 이미지를 1:1로 가공하고, 초안을 쓰고 있어요...");
+    try {
+      const res = await fetch("/api/partners/prepare", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          accountId: state.selectedAccountId,
+          categoryId: state.selectedCategoryId,
+          product: state.selectedProduct,
+          extraImageUrls,
+          productNote: el.productNote.value.trim(),
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "준비에 실패했습니다.");
+
+      el.draftText.value = data.draftText;
+      el.previewMeta.textContent = `${acc?.label || ""} · ${data.category.label}`;
+      state.currentImages = data.images || [];
+      state.currentReplyText = data.replyText || data.affiliateLink || "";
+      renderPreviewImages();
+      updateCharCount();
+      setPublishMode("now");
+      switchToPreview();
+    } catch (err) {
+      el.settingsError.textContent = err.message;
+    } finally {
+      hideLoading();
+    }
+    return;
+  }
 
   showLoading("초안을 생성하고 있어요 (이 채널의 목소리로)...");
   try {
     const body = { accountId: state.selectedAccountId, categoryId: state.selectedCategoryId };
-    if (isPartners) {
-      body.productName = el.productName.value.trim();
-      body.productNote = el.productNote.value.trim();
-    }
     const res = await fetch("/api/draft", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -377,6 +891,7 @@ async function generateDraft() {
 
     el.draftText.value = data.draft;
     el.previewMeta.textContent = `${acc?.label || ""} · ${data.category.label}`;
+    renderPreviewImages();
     updateCharCount();
     setPublishMode("now");
     switchToPreview();
@@ -397,10 +912,39 @@ function startManualEntry() {
 
   el.draftText.value = "";
   el.previewMeta.textContent = `${acc?.label || ""} · 직접 작성${category ? " · " + category.label : ""}`;
+  // 직접 작성 모드에서는 (검색으로 골랐던 상품이 있어도) 이미지는 비워서 시작 — 텍스트만 순수하게 작성
+  state.currentImages = [];
+  state.currentReplyText = "";
+  renderPreviewImages();
   updateCharCount();
   setPublishMode("now");
   switchToPreview();
   el.draftText.focus();
+}
+
+// 미리보기 화면에 준비된 이미지들(이미 공개 호스팅된 1:1 URL)을 썸네일로 보여준다.
+function renderPreviewImages() {
+  el.previewImages.innerHTML = "";
+  if (state.currentImages.length > 0) {
+    state.currentImages.forEach((url) => {
+      const img = document.createElement("img");
+      img.src = url;
+      img.alt = "게시될 이미지";
+      el.previewImages.appendChild(img);
+    });
+    el.previewImages.classList.remove("hidden");
+  } else {
+    el.previewImages.classList.add("hidden");
+  }
+
+  if (state.currentReplyText) {
+    el.previewReplyHint.innerHTML =
+      `💬 게시 직후 아래 내용이 <b>답글</b>로 자동 게시됩니다:<br>` +
+      `<span class="reply-preview-box">${escapeHtml(state.currentReplyText)}</span>`;
+    el.previewReplyHint.classList.remove("hidden");
+  } else {
+    el.previewReplyHint.classList.add("hidden");
+  }
 }
 
 async function polishDraft() {
@@ -484,11 +1028,18 @@ async function submitPost() {
       const res = await fetch("/api/publish", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text, accountId: state.selectedAccountId }),
+        body: JSON.stringify({
+          text,
+          accountId: state.selectedAccountId,
+          images: state.currentImages,
+          replyText: state.currentReplyText,
+        }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "게시에 실패했습니다.");
-      el.previewSuccess.textContent = `게시 완료! (게시물 ID: ${data.publishedId})`;
+      el.previewSuccess.textContent = data.reply
+        ? `게시 완료! (게시물 ID: ${data.publishedId}) · 링크 답글도 자동으로 달았어요.`
+        : `게시 완료! (게시물 ID: ${data.publishedId})`;
     } catch (err) {
       el.previewError.textContent = err.message;
     } finally {
@@ -518,6 +1069,8 @@ async function submitPost() {
         accountId: state.selectedAccountId,
         text,
         scheduledAt: scheduledAt.toISOString(),
+        images: state.currentImages,
+        replyText: state.currentReplyText,
       }),
     });
     const data = await res.json();
@@ -670,6 +1223,12 @@ function renderDayDetail(dayKey) {
   renderPostCards(document.getElementById("day-detail-list"), dayPosts, "이 날짜에는 예약/게시 이력이 없습니다.");
 }
 
+function toDatetimeLocalValue(isoString) {
+  const d = new Date(isoString);
+  const tzOffset = d.getTimezoneOffset() * 60000;
+  return new Date(d - tzOffset).toISOString().slice(0, 16);
+}
+
 function renderPostCards(container, posts, emptyText) {
   if (!posts || posts.length === 0) {
     container.innerHTML = `<p class="empty-text">${emptyText}</p>`;
@@ -686,16 +1245,69 @@ function renderPostCards(container, posts, emptyText) {
     const statusClass = `status-${post.status}`;
     const statusLabel = STATUS_LABEL[post.status] || post.status;
 
+    const imagesHtml =
+      Array.isArray(post.images) && post.images.length > 0
+        ? `<div class="schedule-item-images">${post.images
+            .map((url) => `<img src="${escapeHtml(url)}" alt="첨부 이미지" />`)
+            .join("")}</div>`
+        : "";
+    const replyHtml = post.replyText
+      ? `<div class="schedule-item-reply">💬 답글: ${escapeHtml(post.replyText)}</div>`
+      : "";
+
+    if (post.status === "scheduled" && state.editingPostId === post.id) {
+      // 수정 폼 — 본문/예약 시각만 수정한다 (이미지/답글은 새로 초안을 만드는 게 더 확실해서 제외).
+      item.innerHTML = `
+        <div class="schedule-item-top">
+          <span>${escapeHtml(post.accountLabel || "계정 미상")} · 예약: ${when}</span>
+          <span class="status-badge ${statusClass}">${statusLabel}</span>
+        </div>
+        <textarea class="text-input textarea schedule-edit-text" rows="4">${escapeHtml(post.text)}</textarea>
+        <input type="datetime-local" class="select-input schedule-edit-datetime" value="${toDatetimeLocalValue(post.scheduledAt)}" />
+        ${imagesHtml}
+        ${replyHtml}
+        <p class="error-text schedule-edit-error"></p>
+      `;
+      const saveBtn = document.createElement("button");
+      saveBtn.className = "btn-primary-link";
+      saveBtn.textContent = "저장";
+      saveBtn.addEventListener("click", () =>
+        saveEditPost(post.id, item.querySelector(".schedule-edit-text"), item.querySelector(".schedule-edit-datetime"), item.querySelector(".schedule-edit-error"))
+      );
+      const cancelEditBtn = document.createElement("button");
+      cancelEditBtn.className = "btn-link";
+      cancelEditBtn.textContent = "취소";
+      cancelEditBtn.addEventListener("click", () => {
+        state.editingPostId = null;
+        renderScheduleView();
+      });
+      item.appendChild(saveBtn);
+      item.appendChild(cancelEditBtn);
+      container.appendChild(item);
+      return;
+    }
+
     item.innerHTML = `
       <div class="schedule-item-top">
         <span>${escapeHtml(post.accountLabel || "계정 미상")} · 예약: ${when}</span>
         <span class="status-badge ${statusClass}">${statusLabel}</span>
       </div>
       <div class="schedule-item-text">${escapeHtml(post.text)}</div>
+      ${imagesHtml}
+      ${replyHtml}
       ${post.error ? `<div class="error-text" style="margin:0 0 8px;">${escapeHtml(post.error)}</div>` : ""}
     `;
 
     if (post.status === "scheduled") {
+      const editBtn = document.createElement("button");
+      editBtn.className = "btn-link";
+      editBtn.textContent = "수정";
+      editBtn.addEventListener("click", () => {
+        state.editingPostId = post.id;
+        renderScheduleView();
+      });
+      item.appendChild(editBtn);
+
       const cancelBtn = document.createElement("button");
       cancelBtn.className = "btn-danger-link";
       cancelBtn.textContent = "예약 취소";
@@ -729,6 +1341,41 @@ el.calToday.addEventListener("click", () => {
     renderScheduleView();
   });
 });
+
+async function saveEditPost(id, textEl, datetimeEl, errorEl) {
+  errorEl.textContent = "";
+  const text = textEl.value.trim();
+  if (!text) {
+    errorEl.textContent = "본문을 입력해주세요.";
+    return;
+  }
+  if (!datetimeEl.value) {
+    errorEl.textContent = "예약 시각을 선택해주세요.";
+    return;
+  }
+  const scheduledAt = new Date(datetimeEl.value);
+  if (scheduledAt.getTime() <= Date.now()) {
+    errorEl.textContent = "예약 시각은 현재보다 미래여야 합니다.";
+    return;
+  }
+
+  showLoading("수정하고 있어요...");
+  try {
+    const res = await fetch(`/api/schedule/${id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ text, scheduledAt: scheduledAt.toISOString() }),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || "수정에 실패했습니다.");
+    state.editingPostId = null;
+    await loadSchedule();
+  } catch (err) {
+    errorEl.textContent = err.message;
+  } finally {
+    hideLoading();
+  }
+}
 
 async function cancelPost(id) {
   const confirmed = window.confirm("이 예약을 취소할까요?");
@@ -1000,6 +1647,40 @@ el.btnAddAccount.addEventListener("click", addAccount);
 
 setNewAccountType("saju");
 
-Promise.all([loadMeta(), loadAccounts(), loadPersonaPresets(), loadPartnersPresets()]).catch((err) => {
+// ================= 이미지 확대 보기(라이트박스) =================
+// 미리보기/추가이미지/검색결과/선택상품 썸네일 어디든 클릭하면 원본 크기로 볼 수 있게.
+// 나중에 추가되는 이미지 썸네일도 자동으로 동작하도록 이벤트 위임 방식으로 처리한다.
+const el2 = {
+  lightbox: document.getElementById("image-lightbox"),
+  lightboxImg: document.getElementById("lightbox-img"),
+  lightboxClose: document.getElementById("lightbox-close"),
+};
+
+// product-result-card 안의 이미지는 일부러 뺐다 — 그 카드는 클릭하면 상품을 "선택"하는 버튼이라,
+// 확대 보기를 넣으면 그 클릭 동작과 충돌한다 (검색 결과는 선택이 먼저다).
+const LIGHTBOX_TARGET_SELECTOR =
+  "#preview-images img, .extra-image-chip img, #selected-product-thumb, .schedule-item-images img";
+
+document.addEventListener("click", (e) => {
+  const target = e.target.closest(LIGHTBOX_TARGET_SELECTOR);
+  if (!target || !target.src) return;
+  e.preventDefault();
+  e.stopPropagation();
+  el2.lightboxImg.src = target.src;
+  el2.lightbox.classList.remove("hidden");
+});
+
+function closeLightbox() {
+  el2.lightbox.classList.add("hidden");
+  el2.lightboxImg.src = "";
+}
+
+el2.lightbox.addEventListener("click", closeLightbox);
+el2.lightboxClose.addEventListener("click", closeLightbox);
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeLightbox();
+});
+
+Promise.all([loadMeta(), loadAccounts(), loadPersonaPresets(), loadPartnersPresets(), loadLifestylePresets()]).catch((err) => {
   el.settingsError.textContent = "초기 데이터를 불러오지 못했습니다: " + err.message;
 });

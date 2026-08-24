@@ -8,7 +8,7 @@
 
 const fs = require("fs");
 const path = require("path");
-const { publishTextPost } = require("../server/lib/threadsClient");
+const { publishTextPost, publishImagePost } = require("../server/lib/threadsClient");
 
 const SCHEDULE_FILE = path.join(__dirname, "..", "schedule", "posts.json");
 
@@ -58,16 +58,40 @@ async function main() {
     }
 
     try {
-      const result = await publishTextPost({
-        text: post.text,
-        accessToken: account.accessToken,
-        threadsUserId: account.threadsUserId,
-      });
+      const result =
+        Array.isArray(post.images) && post.images.length > 0
+          ? await publishImagePost({
+              text: post.text,
+              imageUrls: post.images,
+              accessToken: account.accessToken,
+              threadsUserId: account.threadsUserId,
+            })
+          : await publishTextPost({
+              text: post.text,
+              accessToken: account.accessToken,
+              threadsUserId: account.threadsUserId,
+            });
+
       post.status = "published";
       post.publishedAt = new Date().toISOString();
       post.publishedId = result.publishedId;
       post.error = null;
       console.log(`[성공] ${post.id} → ${result.publishedId}`);
+
+      // 파트너스: 본문 게시 직후, 제휴 링크를 답글로 자동으로 단다.
+      if (post.replyText) {
+        try {
+          const reply = await publishTextPost({
+            text: post.replyText,
+            replyToId: result.publishedId,
+            accessToken: account.accessToken,
+            threadsUserId: account.threadsUserId,
+          });
+          console.log(`[답글 성공] ${post.id} → ${reply.publishedId}`);
+        } catch (err) {
+          console.error(`[답글 실패] ${post.id}: ${err.message}`);
+        }
+      }
     } catch (err) {
       post.status = "failed";
       post.error = err.message;

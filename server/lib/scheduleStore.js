@@ -1,24 +1,35 @@
 const crypto = require("crypto");
 const { readSchedule, writeSchedule } = require("./githubStore");
 
+// 매일 정확히 같은 분·초에 게시되면 "자동화 패턴"으로 감지될 위험이 있다(Threads 스팸 정책 —
+// 봇처럼 보이는 규칙적인 패턴을 스팸 신호로 본다). 그래서 예약 시각에 ±15분 랜덤 오차를 자동으로 준다.
+// 사용자가 화면에서 "오후 1시"를 골라도 실제로는 12:47이나 13:09처럼 살짝 흔들려서 저장된다.
+const JITTER_RANGE_MS = 15 * 60 * 1000;
+
+function withJitter(date) {
+  const offset = Math.floor((Math.random() * 2 - 1) * JITTER_RANGE_MS); // -15분 ~ +15분
+  return new Date(date.getTime() + offset);
+}
+
 async function listSchedule() {
   const { posts } = await readSchedule();
   // 최신 예약이 위로 오도록 정렬
   return posts.slice().sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 }
 
-async function addScheduledPost({ accountId, accountLabel, text, scheduledAt }) {
+async function addScheduledPost({ accountId, accountLabel, text, scheduledAt, images, replyText }) {
   if (!accountId || !text || !scheduledAt) {
     const err = new Error("accountId, text, scheduledAt은 모두 필수입니다.");
     err.status = 400;
     throw err;
   }
-  const when = new Date(scheduledAt);
-  if (Number.isNaN(when.getTime())) {
+  const requested = new Date(scheduledAt);
+  if (Number.isNaN(requested.getTime())) {
     const err = new Error("scheduledAt이 올바른 날짜/시간이 아닙니다.");
     err.status = 400;
     throw err;
   }
+  const when = withJitter(requested);
 
   const { posts, sha } = await readSchedule();
   const newPost = {
@@ -26,6 +37,8 @@ async function addScheduledPost({ accountId, accountLabel, text, scheduledAt }) 
     accountId,
     accountLabel: accountLabel || "",
     text,
+    images: Array.isArray(images) && images.length ? images : undefined, // 파트너스: 공개 이미지 URL 배열
+    replyText: replyText || undefined, // 파트너스: 본문 게시 직후 답글로 자동으로 달 텍스트(제휴 링크)
     status: "scheduled", // scheduled | published | failed | canceled
     scheduledAt: when.toISOString(),
     createdAt: new Date().toISOString(),
@@ -50,7 +63,7 @@ async function listRecentTextsForAccount(accountId, { limit = 15 } = {}) {
 }
 
 // "지금 게시"로 즉시 올린 글도 기록에 남겨서, 다음 초안 생성 때 중복을 피할 수 있게 한다.
-async function recordImmediatePublish({ accountId, accountLabel, text, publishedId }) {
+async function recordImmediatePublish({ accountId, accountLabel, text, publishedId, images, replyText }) {
   const { posts, sha } = await readSchedule();
   const now = new Date().toISOString();
   const newPost = {
@@ -58,6 +71,8 @@ async function recordImmediatePublish({ accountId, accountLabel, text, published
     accountId,
     accountLabel: accountLabel || "",
     text,
+    images: Array.isArray(images) && images.length ? images : undefined,
+    replyText: replyText || undefined,
     status: "published",
     scheduledAt: now,
     createdAt: now,
@@ -68,6 +83,122 @@ async function recordImmediatePublish({ accountId, accountLabel, text, published
   posts.push(newPost);
   await writeSchedule(posts, { sha, message: `chore: record immediate publish ${newPost.id}` });
   return newPost;
+}
+
+// 아직 발행 전(scheduled 상태)인 예약 글의 내용/시각을 수정한다. 발행된 글이나 취소/실패한 글은
+// 수정할 수 없다 — 그건 새로 작성해야 한다. scheduledAt을 새로 지정한 경우에만 새로 지터를 준다
+// (텍스트만 고칠 땐 이미 지터가 적용된 기존 시각을 그대로 유지).
+async function updateScheduledPost(id, { text, scheduledAt, images, replyText } = {}) {
+  const { posts, sha } = await readSchedule();
+  const target = posts.find((p) => p.id === id);
+  if (!target) {
+    const err = new Error(`예약 글을 찾을 수 없습니다: ${id}`);
+    err.status = 404;
+    throw err;
+  }
+  if (target.status !== "scheduled") {
+    const err = new Error("이미 발행되었거나 취소/실패한 글은 수정할 수 없습니다.");
+    err.status = 400;
+    throw err;
+  }
+
+  if (text !== undefined) {
+    if (!text) {
+      const err = new Error("본문(text)은 비워둘 수 없습니다.");
+      err.status = 400;
+      throw err;
+    }
+    target.text = text;
+  }
+  if (scheduledAt !== undefined) {
+    const requested = new Date(scheduledAt);
+    if (Number.isNaN(requested.getTime())) {
+      const err = new Error("scheduledAt이 올바른 날짜/시간이 아닙니다.");
+      err.status = 400;
+      throw err;
+    }
+    target.scheduledAt = withJitter(requested).toISOString();
+  }
+  if (images !== undefined) {
+    target.images = Array.isArray(images) && images.length ? images : undefined;
+  }
+  if (replyText !== undefined) {
+    target.replyText = replyText || undefined;
+  }
+
+  await writeSchedule(posts, { sha, message: `chore: update scheduled post ${id}` });
+  return target;
+}
+
+// KST 기준 "YYYY-MM-DD" 날짜 키. 예약 목록을 날짜별로 묶을 때 쓴다.
+function kstDateKey(isoString) {
+  const kst = new Date(new Date(isoString).getTime() + 9 * 60 * 60 * 1000);
+  return kst.toISOString().slice(0, 10);
+}
+
+// "YYYY-MM-DD"(KST 날짜) + "HH:MM"(KST 시각)을 실제 UTC Date로 변환.
+function kstDateAndTimeToUtc(dateKeyKST, hhmm) {
+  const [h, m] = hhmm.split(":").map(Number);
+  const utc = new Date(`${dateKeyKST}T00:00:00.000Z`);
+  utc.setUTCHours(utc.getUTCHours() - 9 + h, m, 0, 0);
+  return utc;
+}
+
+// 특정 계정의 예약(아직 발행 안 된 것만)을 날짜별로 묶어서, 하루에 정해진 시각 슬롯(예:
+// 11:00/16:00/20:00)으로 다시 배분한다. 정확한 시간을 매번 고를 필요 없이 "아무 날짜"로만
+// 예약해두고, 나중에 이걸로 한 번에 정리하기 위한 기능. kind로 대상 글 종류를 제한할 수 있다
+// (예: 제품 홍보 글만 — 이미 자리 잡은 일상글 예약 시각은 건드리지 않기 위해).
+async function rebalanceTimes({ accountId, times, kind = "all" }) {
+  if (!accountId) {
+    const err = new Error("accountId가 필요합니다.");
+    err.status = 400;
+    throw err;
+  }
+  if (!Array.isArray(times) || times.length === 0) {
+    const err = new Error("times(시간 슬롯 배열)가 필요합니다. 예: [\"11:00\",\"16:00\",\"20:00\"]");
+    err.status = 400;
+    throw err;
+  }
+  for (const t of times) {
+    if (!/^\d{1,2}:\d{2}$/.test(t)) {
+      const err = new Error(`시간 형식이 올바르지 않습니다: ${t} (HH:MM 형식이어야 함)`);
+      err.status = 400;
+      throw err;
+    }
+  }
+
+  const { posts, sha } = await readSchedule();
+  const targets = posts.filter((p) => {
+    if (p.accountId !== accountId || p.status !== "scheduled") return false;
+    if (kind === "product") return Boolean(p.replyText);
+    if (kind === "lifestyle") return !p.replyText;
+    return true;
+  });
+
+  // 날짜별로 묶고, 그 안에서는 먼저 만든(createdAt 빠른) 순서대로 슬롯을 배정한다.
+  const byDate = new Map();
+  for (const p of targets) {
+    const key = kstDateKey(p.scheduledAt);
+    if (!byDate.has(key)) byDate.set(key, []);
+    byDate.get(key).push(p);
+  }
+
+  let updated = 0;
+  for (const [dateKey, dayPosts] of byDate) {
+    dayPosts.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+    dayPosts.forEach((post, i) => {
+      const slot = times[i % times.length];
+      const base = kstDateAndTimeToUtc(dateKey, slot);
+      post.scheduledAt = withJitter(base).toISOString();
+      updated += 1;
+    });
+  }
+
+  await writeSchedule(posts, {
+    sha,
+    message: `chore: rebalance schedule times for account ${accountId} (${kind})`,
+  });
+  return { updated, days: byDate.size };
 }
 
 async function cancelScheduledPost(id) {
@@ -91,7 +222,10 @@ async function cancelScheduledPost(id) {
 module.exports = {
   listSchedule,
   addScheduledPost,
+  updateScheduledPost,
+  rebalanceTimes,
   cancelScheduledPost,
   listRecentTextsForAccount,
   recordImmediatePublish,
+  withJitter,
 };
