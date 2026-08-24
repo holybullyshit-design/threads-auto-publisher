@@ -548,5 +548,22 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null
+  },
+  {
+    "id": "a78acec2-703d-4767-ba97-f9cf910c4740",
+    "accountId": "6b8b637e-1629-4844-9a1f-9728c420154e",
+    "accountLabel": "엄마가 직접 써본 꿀템",
+    "text": "아들아 그거 세 그릇째야ㅋㅋ\n\n차오차이 직화 짬뽕탕 끓였다고 국물만 저렇게 퍼먹을 일이야\n불맛 실화냐 진짜 볶은 티가 남\n\n편식쟁이가 건더기까지 싹싹 긁어먹는 거 처음 봄\n\n이 집 저녁 메뉴 고민 끝났다\n\n이 게시물은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.",
+    "images": [
+      "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@aed6c4a984f376ab5b882dc6652f6d0d7faa9e77/images/89097e26-8d7c-4909-af7f-47f51d7a4e69.jpg",
+      "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@70e5502031ff9c951bdbdb2bfcda0e2586e0e140/images/86158612-1518-4c6d-a303-575c3edacb33.jpg"
+    ],
+    "replyText": "아들이 미친듯이 흡입할 정도면 인정.. 직화향 진짜 제대로임\n\nhttps://link.coupang.com/a/gtlOGs3wOq\nhttps://link.coupang.com/a/gtlOGs3wOq",
+    "status": "scheduled",
+    "scheduledAt": "2026-09-01T11:42:06.782Z",
+    "createdAt": "2026-08-24T07:37:39.761Z",
+    "publishedAt": null,
+    "publishedId": null,
+    "error": null
   }
 ]
