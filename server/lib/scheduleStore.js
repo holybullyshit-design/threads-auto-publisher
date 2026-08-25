@@ -85,9 +85,10 @@ async function recordImmediatePublish({ accountId, accountLabel, text, published
   return newPost;
 }
 
-// 아직 발행 전(scheduled 상태)인 예약 글의 내용/시각을 수정한다. 발행된 글이나 취소/실패한 글은
+// 예약 중(scheduled)이거나 실패(failed)한 글의 내용/시각을 수정한다. 발행됐거나 취소된 글은
 // 수정할 수 없다 — 그건 새로 작성해야 한다. scheduledAt을 새로 지정한 경우에만 새로 지터를 준다
-// (텍스트만 고칠 땐 이미 지터가 적용된 기존 시각을 그대로 유지).
+// (텍스트만 고칠 땐 이미 지터가 적용된 기존 시각을 그대로 유지). 실패한 글을 수정하면, 그
+// 자체로 "다시 시도해달라"는 뜻으로 보고 자동으로 예약 대기열(scheduled)에 다시 올린다.
 async function updateScheduledPost(id, { text, scheduledAt, images, replyText } = {}) {
   const { posts, sha } = await readSchedule();
   const target = posts.find((p) => p.id === id);
@@ -96,10 +97,16 @@ async function updateScheduledPost(id, { text, scheduledAt, images, replyText } 
     err.status = 404;
     throw err;
   }
-  if (target.status !== "scheduled") {
-    const err = new Error("이미 발행되었거나 취소/실패한 글은 수정할 수 없습니다.");
+  if (target.status !== "scheduled" && target.status !== "failed") {
+    const err = new Error("이미 발행되었거나 취소된 글은 수정할 수 없습니다.");
     err.status = 400;
     throw err;
+  }
+  const wasFailed = target.status === "failed";
+  if (wasFailed) {
+    target.status = "scheduled";
+    target.error = null;
+    target.retryCount = 0;
   }
 
   if (text !== undefined) {

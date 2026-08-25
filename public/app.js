@@ -1255,7 +1255,7 @@ function renderPostCards(container, posts, emptyText) {
       ? `<div class="schedule-item-reply">💬 답글: ${escapeHtml(post.replyText)}</div>`
       : "";
 
-    if (post.status === "scheduled" && state.editingPostId === post.id) {
+    if ((post.status === "scheduled" || post.status === "failed") && state.editingPostId === post.id) {
       // 수정 폼 — 본문/예약 시각만 수정한다 (이미지/답글은 새로 초안을 만드는 게 더 확실해서 제외).
       item.innerHTML = `
         <div class="schedule-item-top">
@@ -1306,16 +1306,18 @@ function renderPostCards(container, posts, emptyText) {
       }
     `;
 
-    if (post.status === "scheduled") {
+    if (post.status === "scheduled" || post.status === "failed") {
       const editBtn = document.createElement("button");
       editBtn.className = "btn-link";
-      editBtn.textContent = "수정";
+      editBtn.textContent = post.status === "failed" ? "수정해서 다시 시도" : "수정";
       editBtn.addEventListener("click", () => {
         state.editingPostId = post.id;
         renderScheduleView();
       });
       item.appendChild(editBtn);
+    }
 
+    if (post.status === "scheduled") {
       const cancelBtn = document.createElement("button");
       cancelBtn.className = "btn-danger-link";
       cancelBtn.textContent = "예약 취소";
