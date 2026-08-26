@@ -33,7 +33,7 @@ function loadOAuthConfig() {
     if (config.appId && config.appSecret) {
       process.env.INSTAGRAM_APP_ID = String(config.appId);
       process.env.INSTAGRAM_APP_SECRET = String(config.appSecret);
-      process.env.INSTAGRAM_REDIRECT_URI = String(config.redirectUri || "http://localhost:4321/oauth/instagram/callback");
+      process.env.INSTAGRAM_REDIRECT_URI = String(config.redirectUri || "https://threads-publish-pinger.threadsautopub.workers.dev/oauth/instagram/callback");
       return { configured: true, appId: String(config.appId) };
     }
   } catch (error) {

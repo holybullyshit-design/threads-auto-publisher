@@ -45,6 +45,7 @@
     const popup = window.open(`/oauth/instagram/start?state=${encodeURIComponent(state)}`, "instagram-oauth", "width=520,height=760");
     if (!popup) return void (status.textContent = "팝업이 차단되었습니다. 브라우저에서 팝업을 허용해주세요.");
     status.textContent = "Instagram 로그인 창에서 팔자명가 계정을 선택하고 권한을 승인해주세요…";
+    $("ig-callback-help").classList.remove("hidden");
     const deadline = Date.now() + 5 * 60 * 1000;
     while (Date.now() < deadline) {
       await new Promise((resolve) => setTimeout(resolve, 1200));
@@ -59,6 +60,17 @@
       return;
     }
     status.textContent = "연결 시간이 초과되었습니다. 다시 눌러주세요.";
+  }
+
+  async function completeCallback() {
+    const raw = $("ig-callback-url").value.trim();
+    const callback = new URL(raw);
+    if (callback.hostname !== "threads-publish-pinger.threadsautopub.workers.dev" || callback.pathname !== "/oauth/instagram/callback") throw new Error("Cloudflare 승인 완료 주소 전체를 정확히 붙여넣어주세요.");
+    if (!callback.searchParams.get("code") || !callback.searchParams.get("state")) throw new Error("주소에 Instagram 승인 코드가 없습니다. 계정 자동 연결부터 다시 진행해주세요.");
+    $("ig-callback-status").textContent = "승인 코드를 안전하게 처리 중…";
+    const response = await fetch(`/oauth/instagram/callback?${callback.searchParams.toString()}`);
+    if (!response.ok) throw new Error((await response.text()).replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim() || "승인 코드 처리 실패");
+    $("ig-callback-status").textContent = "✓ 승인 코드 전달 완료 · 계정 연결 결과 확인 중";
   }
 
   async function saveOAuthConfig() {
@@ -79,7 +91,7 @@
     catch (error) { $("ig-schedule-error").textContent = error.message; } finally { $("ig-schedule-range").disabled = false; }
   }
 
-  $("ig-load-preview").addEventListener("click", loadPreview); $("ig-validate-range").addEventListener("click", validateRange); $("ig-save-oauth-config").addEventListener("click", () => saveOAuthConfig().catch((error) => { $("ig-config-status").textContent = `저장 실패: ${error.message}`; })); $("ig-oauth-connect").addEventListener("click", () => connectInstagram().catch((error) => { $("ig-oauth-status").textContent = `연결 실패: ${error.message}`; })); $("ig-preflight").addEventListener("click", preflight); $("ig-schedule-range").addEventListener("click", scheduleRange);
+  $("ig-load-preview").addEventListener("click", loadPreview); $("ig-validate-range").addEventListener("click", validateRange); $("ig-save-oauth-config").addEventListener("click", () => saveOAuthConfig().catch((error) => { $("ig-config-status").textContent = `저장 실패: ${error.message}`; })); $("ig-oauth-connect").addEventListener("click", () => connectInstagram().catch((error) => { $("ig-oauth-status").textContent = `연결 실패: ${error.message}`; })); $("ig-complete-callback").addEventListener("click", () => completeCallback().catch((error) => { $("ig-callback-status").textContent = `처리 실패: ${error.message}`; })); $("ig-preflight").addEventListener("click", preflight); $("ig-schedule-range").addEventListener("click", scheduleRange);
   [$("ig-start-date"), $("ig-end-date")].forEach((input) => input.addEventListener("change", () => { validatedRangeKey = null; $("ig-confirm-reviewed").checked = false; }));
   window.loadInstagramDashboard = () => { if (!$("ig-card-grid").children.length) loadPreview(); };
 })();

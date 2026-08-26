@@ -52,15 +52,16 @@
       <details class="ig-caption-box" id="ig-meta-setup">
         <summary>처음 한 번: Meta Instagram 앱 연결 설정</summary>
         <div class="ig-meta-setup-body">
-          <p class="hint-text">Meta 개발자 앱에 <b>Instagram</b> 제품을 추가하고, 비즈니스 로그인 OAuth URI에 아래 주소를 정확히 등록합니다.</p>
-          <code>http://localhost:4321/oauth/instagram/callback</code>
+          <p class="hint-text">Meta 개발자 앱에 <b>Instagram</b> 제품을 추가하고, 비즈니스 로그인 OAuth URI에 아래 HTTPS 주소를 정확히 등록합니다.</p>
+          <code>https://threads-publish-pinger.threadsautopub.workers.dev/oauth/instagram/callback</code>
           <p><a class="btn btn-secondary" href="https://developers.facebook.com/apps/" target="_blank" rel="noopener">Meta 앱 설정 열기</a></p>
-          <div class="ig-range-row"><label>Instagram 앱 ID<input id="ig-app-id" class="select-input" inputmode="numeric" autocomplete="off" placeholder="숫자 앱 ID"></label><label>Instagram 앱 시크릿<input id="ig-app-secret" class="select-input" type="password" autocomplete="new-password" placeholder="앱 시크릿"></label></div>
+          <div class="ig-range-row"><label>Instagram 앱 ID<input id="ig-app-id" class="select-input" inputmode="numeric" autocomplete="off" value="2477345572757281"></label><label>Instagram 앱 시크릿<input id="ig-app-secret" class="select-input" type="password" autocomplete="new-password" placeholder="Meta에서 표시 후 복사"></label></div>
           <button id="ig-save-oauth-config" class="btn btn-secondary" type="button">앱 정보 안전하게 저장</button>
           <p id="ig-config-status" class="hint-text"></p>
         </div>
       </details>
       <div class="button-row"><button id="ig-oauth-connect" class="btn btn-primary" type="button">Instagram 계정 자동 연결</button><span id="ig-oauth-status" class="hint-text">Instagram 로그인 한 번으로 안전하게 연결합니다.</span></div>
+      <div id="ig-callback-help" class="ig-callback-help hidden"><p class="hint-text">Instagram 승인 후 열린 Cloudflare 페이지의 <b>전체 주소</b>를 복사해 아래에 붙여넣으세요.</p><div class="ig-date-row"><input id="ig-callback-url" class="select-input" type="url" autocomplete="off" placeholder="https://threads-publish-pinger.../oauth/instagram/callback?code=...&state=..."><button id="ig-complete-callback" class="btn btn-secondary" type="button">승인 주소 처리</button></div><p id="ig-callback-status" class="hint-text"></p></div>
       <label class="ig-confirm"><input id="ig-confirm-reviewed" type="checkbox"> 위 기간의 전체 검수 통과 결과를 확인했습니다.</label>
       <div class="button-row"><button id="ig-preflight" class="btn btn-secondary" type="button">계정·토큰 사전 점검</button><button id="ig-schedule-range" class="btn btn-primary" type="button">검수된 7장 카드 일괄 예약</button></div>
       <p id="ig-schedule-status" class="hint-text"></p><p id="ig-schedule-error" class="error-text"></p>

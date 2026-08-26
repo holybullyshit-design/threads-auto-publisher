@@ -29,6 +29,7 @@ instagramAuthStore.load();
 
 const app = express();
 const PORT = Number(process.env.PORT) || 4321;
+const INSTAGRAM_PUBLIC_REDIRECT_URI = "https://threads-publish-pinger.threadsautopub.workers.dev/oauth/instagram/callback";
 
 app.use(express.json({ limit: "15mb" })); // 캡처 이미지(base64) 업로드를 받을 수 있도록 넉넉하게
 app.use(express.static(path.join(__dirname, "..", "public")));
@@ -89,7 +90,7 @@ app.post("/api/instagram/oauth-config", (req, res) => {
     const appSecret = String(req.body?.appSecret || "").trim();
     if (!/^\d+$/.test(appId)) return res.status(400).json({ error: "Instagram 앱 ID는 숫자만 입력해주세요." });
     if (appSecret.length < 8) return res.status(400).json({ error: "Instagram 앱 시크릿을 정확히 입력해주세요." });
-    const redirectUri = `http://localhost:${PORT}/oauth/instagram/callback`;
+    const redirectUri = INSTAGRAM_PUBLIC_REDIRECT_URI;
     instagramAuthStore.saveOAuthConfig({ appId, appSecret, redirectUri });
     process.env.INSTAGRAM_APP_ID = appId;
     process.env.INSTAGRAM_APP_SECRET = appSecret;

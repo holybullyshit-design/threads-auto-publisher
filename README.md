@@ -11,7 +11,7 @@ Threads 초안·예약 기능을 보존하면서 Instagram `@saju_orbit`용 오�
 - 날짜별 `dedupeKey` + 캡션 고유 마커로 재시도 중복 게시를 방지합니다.
 - 7장/이미지 크기/12띠/48개 문구/생년-띠/날짜-만세력/캡션/댓글 CTA 중 하나라도 틀리면 예약을 차단합니다.
 
-Instagram 탭에서 `미리보기 → 전체 기간 검수 → Instagram 계정 자동 연결 → 계정 사전 점검 → 일괄 예약` 순서로 진행합니다. Meta 앱에 Instagram 제품을 추가하고 비즈니스 로그인 OAuth URI를 `http://localhost:4321/oauth/instagram/callback`로 등록한 뒤, `.env`에 `INSTAGRAM_APP_ID`, `INSTAGRAM_APP_SECRET`, `INSTAGRAM_REDIRECT_URI`를 설정하면 로그인 한 번으로 60일 토큰과 계정 ID를 받아 GitHub Secrets까지 동기화합니다. 요청 권한은 게시에 필요한 `instagram_business_basic`, `instagram_business_content_publish` 두 개뿐입니다.
+Instagram 탭에서 `미리보기 → 전체 기간 검수 → Instagram 계정 자동 연결 → 계정 사전 점검 → 일괄 예약` 순서로 진행합니다. Meta 앱에 Instagram 제품을 추가하고 비즈니스 로그인 OAuth URI를 `https://threads-publish-pinger.threadsautopub.workers.dev/oauth/instagram/callback`로 등록한 뒤 앱 ID·시크릿을 한 번 저장합니다. Instagram 승인 후 열린 Cloudflare 페이지의 전체 주소를 프로그램의 `승인 주소 처리` 칸에 붙여넣으면 60일 토큰과 계정 ID를 받아 GitHub Secrets까지 동기화합니다. 요청 권한은 게시에 필요한 `instagram_business_basic`, `instagram_business_content_publish` 두 개뿐입니다.
 
 ```bash
 npm test
