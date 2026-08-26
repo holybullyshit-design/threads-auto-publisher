@@ -21,6 +21,11 @@ const mediaHost = require("./lib/mediaHost");
 const externalImageSearch = require("./lib/externalImageSearch");
 const instagramAutomation = require("./lib/instagramAutomation");
 const { preflightInstagram } = require("./lib/instagramClient");
+const instagramOAuth = require("./lib/instagramOAuth");
+const instagramAuthStore = require("./lib/instagramAuthStore");
+
+instagramAuthStore.loadOAuthConfig();
+instagramAuthStore.load();
 
 const app = express();
 const PORT = Number(process.env.PORT) || 4321;
@@ -35,6 +40,7 @@ app.get("/api/meta", (req, res) => {
     threadsOAuthConfigured: threadsOAuth.isConfigured(),
     externalImageSearchConfigured: externalImageSearch.isConfigured(),
     instagramConfigured: Boolean(process.env.INSTAGRAM_USER_ID && process.env.INSTAGRAM_ACCESS_TOKEN),
+    instagramOAuthConfigured: instagramOAuth.isConfigured(),
   });
 });
 
@@ -76,6 +82,85 @@ app.post("/api/instagram/schedule-range", async (req, res) => {
     res.status(201).json(result);
   } catch (err) { handleError(res, err); }
 });
+
+app.post("/api/instagram/oauth-config", (req, res) => {
+  try {
+    const appId = String(req.body?.appId || "").trim();
+    const appSecret = String(req.body?.appSecret || "").trim();
+    if (!/^\d+$/.test(appId)) return res.status(400).json({ error: "Instagram 앱 ID는 숫자만 입력해주세요." });
+    if (appSecret.length < 8) return res.status(400).json({ error: "Instagram 앱 시크릿을 정확히 입력해주세요." });
+    const redirectUri = `http://localhost:${PORT}/oauth/instagram/callback`;
+    instagramAuthStore.saveOAuthConfig({ appId, appSecret, redirectUri });
+    process.env.INSTAGRAM_APP_ID = appId;
+    process.env.INSTAGRAM_APP_SECRET = appSecret;
+    process.env.INSTAGRAM_REDIRECT_URI = redirectUri;
+    res.json({ saved: true, redirectUri });
+  } catch (err) { handleError(res, err); }
+});
+
+// ---------- Instagram 계정 자동 연결 (공식 Instagram Login OAuth) ----------
+const instagramOAuthResults = new Map();
+const instagramOAuthStates = new Map();
+
+app.get("/oauth/instagram/start", (req, res) => {
+  try {
+    if (!req.query.state) return res.status(400).send("state 파라미터가 필요합니다.");
+    const state = String(req.query.state);
+    instagramOAuthStates.set(state, Date.now());
+    res.redirect(instagramOAuth.buildAuthorizeUrl(state));
+  } catch (err) { res.status(500).send(`설정 오류: ${err.message}`); }
+});
+
+app.get("/oauth/instagram/callback", async (req, res) => {
+  const { code, state, error, error_description } = req.query;
+  if (!state) return res.status(400).send("state 파라미터가 없습니다.");
+  const issuedAt = instagramOAuthStates.get(String(state));
+  instagramOAuthStates.delete(String(state));
+  if (!issuedAt || Date.now() - issuedAt > 10 * 60 * 1000) return res.status(400).send("만료되었거나 올바르지 않은 연결 요청입니다.");
+  if (error) {
+    instagramOAuthResults.set(String(state), { error: error_description || error, createdAt: Date.now() });
+    return res.send(oauthResultPage("Instagram 연결이 취소되었거나 거부되었습니다.", "Instagram 연결"));
+  }
+  try {
+    const short = await instagramOAuth.exchangeCode(String(code || ""));
+    const long = await instagramOAuth.exchangeLongToken(short.accessToken);
+    process.env.INSTAGRAM_USER_ID = short.userId;
+    process.env.INSTAGRAM_ACCESS_TOKEN = long.accessToken;
+    process.env.INSTAGRAM_TOKEN_EXPIRES_AT = String(Date.now() + long.expiresIn * 1000);
+    instagramAuthStore.save({ userId: short.userId, accessToken: long.accessToken, expiresAt: Number(process.env.INSTAGRAM_TOKEN_EXPIRES_AT) });
+    let cloudSynced = false;
+    let cloudSyncError = null;
+    try { await syncInstagramSecretsToGitHub(short.userId, long.accessToken); cloudSynced = true; }
+    catch (syncError) { cloudSyncError = syncError.message; }
+    instagramOAuthResults.set(String(state), { userId: short.userId, expiresIn: long.expiresIn, cloudSynced, cloudSyncError, createdAt: Date.now() });
+    res.send(oauthResultPage("팔자명가 Instagram 연결이 완료되었습니다.", "Instagram 연결"));
+  } catch (err) {
+    instagramOAuthResults.set(String(state), { error: err.message, createdAt: Date.now() });
+    res.send(oauthResultPage("Instagram 연결 중 오류가 발생했습니다: " + err.message, "Instagram 연결"));
+  }
+});
+
+app.get("/api/oauth/instagram/result", (req, res) => {
+  const state = String(req.query.state || "");
+  const entry = instagramOAuthResults.get(state);
+  if (!entry) return res.json({ status: "pending" });
+  instagramOAuthResults.delete(state);
+  if (entry.error) return res.json({ status: "error", error: entry.error });
+  res.json({ status: "done", userId: entry.userId, expiresIn: entry.expiresIn, cloudSynced: entry.cloudSynced, cloudSyncError: entry.cloudSyncError });
+});
+
+function syncInstagramSecretsToGitHub(userId, accessToken) {
+  const repo = process.env.GITHUB_REPO;
+  if (!repo) return Promise.reject(new Error("GITHUB_REPO가 설정되지 않아 클라우드 동기화를 건너뜁니다."));
+  const setSecret = (name, value) => new Promise((resolve, reject) => {
+    const child = execFile("gh", ["secret", "set", name, "--repo", repo], { timeout: 30000 }, (err, stdout, stderr) => {
+      if (err) return reject(new Error(`${name} 동기화 실패: ${stderr || err.message}`));
+      resolve();
+    });
+    child.stdin.end(value);
+  });
+  return Promise.all([setSecret("INSTAGRAM_USER_ID", userId), setSecret("INSTAGRAM_ACCESS_TOKEN", accessToken)]);
+}
 
 // ---------- Threads 계정 자동 연결 (OAuth) ----------
 // state -> { threadsUserId, accessToken, error, createdAt }
@@ -147,8 +232,8 @@ app.get("/api/oauth/threads/result", (req, res) => {
   res.json({ status: "done", threadsUserId: entry.threadsUserId, accessToken: entry.accessToken });
 });
 
-function oauthResultPage(message) {
-  return `<!doctype html><html><head><meta charset="utf-8"><title>Threads 연결</title>
+function oauthResultPage(message, title = "Threads 연결") {
+  return `<!doctype html><html><head><meta charset="utf-8"><title>${title}</title>
   <style>body{background:#0a0812;color:#ece7f5;font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;text-align:center;padding:20px}</style>
   </head><body><div><p style="font-size:18px;">${message}</p><p style="color:#a79cc2;font-size:13px;">이 창은 이제 닫으셔도 됩니다.</p></div></body></html>`;
 }

@@ -49,6 +49,18 @@
     <div class="card ig-publish-card">
       <div class="preview-header"><label class="field-label" style="margin:0;">3. Instagram 예약 등록</label><span id="ig-account-status" class="meta-badge">계정 확인 전</span></div>
       <p class="hint-text">오늘 6시가 지났다면 오늘 카드는 다음 클라우드 실행에서 바로 게시되고, 내일부터는 오전 6시를 맞춥니다.</p>
+      <details class="ig-caption-box" id="ig-meta-setup">
+        <summary>처음 한 번: Meta Instagram 앱 연결 설정</summary>
+        <div class="ig-meta-setup-body">
+          <p class="hint-text">Meta 개발자 앱에 <b>Instagram</b> 제품을 추가하고, 비즈니스 로그인 OAuth URI에 아래 주소를 정확히 등록합니다.</p>
+          <code>http://localhost:4321/oauth/instagram/callback</code>
+          <p><a class="btn btn-secondary" href="https://developers.facebook.com/apps/" target="_blank" rel="noopener">Meta 앱 설정 열기</a></p>
+          <div class="ig-range-row"><label>Instagram 앱 ID<input id="ig-app-id" class="select-input" inputmode="numeric" autocomplete="off" placeholder="숫자 앱 ID"></label><label>Instagram 앱 시크릿<input id="ig-app-secret" class="select-input" type="password" autocomplete="new-password" placeholder="앱 시크릿"></label></div>
+          <button id="ig-save-oauth-config" class="btn btn-secondary" type="button">앱 정보 안전하게 저장</button>
+          <p id="ig-config-status" class="hint-text"></p>
+        </div>
+      </details>
+      <div class="button-row"><button id="ig-oauth-connect" class="btn btn-primary" type="button">Instagram 계정 자동 연결</button><span id="ig-oauth-status" class="hint-text">Instagram 로그인 한 번으로 안전하게 연결합니다.</span></div>
       <label class="ig-confirm"><input id="ig-confirm-reviewed" type="checkbox"> 위 기간의 전체 검수 통과 결과를 확인했습니다.</label>
       <div class="button-row"><button id="ig-preflight" class="btn btn-secondary" type="button">계정·토큰 사전 점검</button><button id="ig-schedule-range" class="btn btn-primary" type="button">검수된 7장 카드 일괄 예약</button></div>
       <p id="ig-schedule-status" class="hint-text"></p><p id="ig-schedule-error" class="error-text"></p>

@@ -10,7 +10,7 @@
   },
   "scripts": {
     "start": "node server/index.js",
-    "test": "node --test test/fortuneEngine.test.js test/instagramClient.test.js test/scheduleTime.test.js",
+    "test": "node --test test/fortuneEngine.test.js test/instagramClient.test.js test/instagramOAuth.test.js test/scheduleTime.test.js",
     "test:render": "node --test test/instagramRender.test.js"
   },
   "dependencies": {
