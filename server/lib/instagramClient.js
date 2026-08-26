@@ -56,10 +56,11 @@ async function waitForContainer(config, id, { timeoutMs = 120000, intervalMs = 2
 
 async function preflightInstagram(overrides = {}) {
   const config = getConfig(overrides);
-  const account = await graphRequest(config, config.userId, { params: { fields: "id,username,account_type" } });
+  const account = await graphRequest(config, "me", { params: { fields: "id,user_id,username,name,account_type" } });
+  const publishingUserId = String(account.user_id || config.userId);
   let publishingLimit = null;
-  try { publishingLimit = await graphRequest(config, `${config.userId}/content_publishing_limit`, { params: { fields: "quota_usage,config" } }); } catch (error) { publishingLimit = { unavailable: true, reason: error.message }; }
-  return { configured: true, account, publishingLimit, graphVersion: config.graphVersion };
+  try { publishingLimit = await graphRequest(config, `${publishingUserId}/content_publishing_limit`, { params: { fields: "quota_usage,config" } }); } catch (error) { publishingLimit = { unavailable: true, reason: error.message }; }
+  return { configured: true, account, publishingUserId, publishingLimit, graphVersion: config.graphVersion };
 }
 
 async function findPublishedByMarker(marker, overrides = {}) {

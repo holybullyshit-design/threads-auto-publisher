@@ -18,10 +18,12 @@ test("Instagram 승인 URL은 게시에 필요한 최소 권한과 CSRF state를
   withConfig();
   const url = new URL(instagramOAuth.buildAuthorizeUrl("safe-state"));
   assert.equal(url.origin, "https://www.instagram.com");
-  assert.equal(url.pathname, "/oauth/authorize");
+  assert.equal(url.pathname, "/oauth/authorize/");
   assert.equal(url.searchParams.get("state"), "safe-state");
   assert.equal(url.searchParams.get("scope"), "instagram_business_basic,instagram_business_content_publish");
   assert.equal(url.searchParams.get("redirect_uri"), process.env.INSTAGRAM_REDIRECT_URI);
+  assert.equal(url.searchParams.get("enable_fb_login"), "0");
+  assert.equal(url.searchParams.get("force_authentication"), "1");
 });
 
 test("Instagram OAuth 설정이 없으면 연결을 시작하지 않는다", () => {

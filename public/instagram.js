@@ -42,7 +42,7 @@
     }
     const state = randomState();
     const status = $("ig-oauth-status");
-    const popup = window.open(`/oauth/instagram/start?state=${encodeURIComponent(state)}`, "instagram-oauth", "width=520,height=760");
+    const popup = window.open(`/oauth/instagram/start?state=${encodeURIComponent(state)}`, "_blank");
     if (!popup) return void (status.textContent = "팝업이 차단되었습니다. 브라우저에서 팝업을 허용해주세요.");
     status.textContent = "Instagram 로그인 창에서 팔자명가 계정을 선택하고 권한을 승인해주세요…";
     $("ig-callback-help").classList.remove("hidden");

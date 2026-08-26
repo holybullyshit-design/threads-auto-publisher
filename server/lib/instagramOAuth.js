@@ -1,10 +1,11 @@
 // Instagram Login API OAuth helper.
 // Official flow: authorize -> short-lived token -> 60-day token.
 
-const AUTHORIZE_URL = "https://www.instagram.com/oauth/authorize";
+const AUTHORIZE_URL = "https://www.instagram.com/oauth/authorize/";
 const TOKEN_URL = "https://api.instagram.com/oauth/access_token";
 const LONG_TOKEN_URL = "https://graph.instagram.com/access_token";
 const REFRESH_URL = "https://graph.instagram.com/refresh_access_token";
+const PROFILE_URL = "https://graph.instagram.com/v24.0/me";
 const SCOPES = "instagram_business_basic,instagram_business_content_publish";
 
 function getConfig() {
@@ -31,6 +32,8 @@ function buildAuthorizeUrl(state) {
   url.searchParams.set("response_type", "code");
   url.searchParams.set("scope", SCOPES);
   url.searchParams.set("state", state);
+  url.searchParams.set("enable_fb_login", "0");
+  url.searchParams.set("force_authentication", "1");
   return url.toString();
 }
 
@@ -65,6 +68,18 @@ async function exchangeLongToken(shortToken) {
   return { accessToken: data.access_token, expiresIn: Number(data.expires_in || 0) };
 }
 
+async function fetchProfile(accessToken) {
+  const url = new URL(PROFILE_URL);
+  url.searchParams.set("fields", "user_id,username,name,account_type");
+  url.searchParams.set("access_token", accessToken);
+  const response = await fetch(url);
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok || !data.user_id) {
+    throw new Error("Instagram 계정 확인 실패: " + (data.error?.message || JSON.stringify(data)));
+  }
+  return data;
+}
+
 async function refreshLongToken(accessToken) {
   const url = new URL(REFRESH_URL);
   url.searchParams.set("grant_type", "ig_refresh_token");
@@ -77,4 +92,4 @@ async function refreshLongToken(accessToken) {
   return { accessToken: data.access_token, expiresIn: Number(data.expires_in || 0) };
 }
 
-module.exports = { isConfigured, buildAuthorizeUrl, exchangeCode, exchangeLongToken, refreshLongToken, SCOPES };
+module.exports = { isConfigured, buildAuthorizeUrl, exchangeCode, exchangeLongToken, fetchProfile, refreshLongToken, SCOPES };

@@ -125,15 +125,16 @@ app.get("/oauth/instagram/callback", async (req, res) => {
   try {
     const short = await instagramOAuth.exchangeCode(String(code || ""));
     const long = await instagramOAuth.exchangeLongToken(short.accessToken);
-    process.env.INSTAGRAM_USER_ID = short.userId;
+    const profile = await instagramOAuth.fetchProfile(long.accessToken);
+    process.env.INSTAGRAM_USER_ID = String(profile.user_id);
     process.env.INSTAGRAM_ACCESS_TOKEN = long.accessToken;
     process.env.INSTAGRAM_TOKEN_EXPIRES_AT = String(Date.now() + long.expiresIn * 1000);
-    instagramAuthStore.save({ userId: short.userId, accessToken: long.accessToken, expiresAt: Number(process.env.INSTAGRAM_TOKEN_EXPIRES_AT) });
+    instagramAuthStore.save({ userId: profile.user_id, accessToken: long.accessToken, expiresAt: Number(process.env.INSTAGRAM_TOKEN_EXPIRES_AT) });
     let cloudSynced = false;
     let cloudSyncError = null;
-    try { await syncInstagramSecretsToGitHub(short.userId, long.accessToken); cloudSynced = true; }
+    try { await syncInstagramSecretsToGitHub(String(profile.user_id), long.accessToken); cloudSynced = true; }
     catch (syncError) { cloudSyncError = syncError.message; }
-    instagramOAuthResults.set(String(state), { userId: short.userId, expiresIn: long.expiresIn, cloudSynced, cloudSyncError, createdAt: Date.now() });
+    instagramOAuthResults.set(String(state), { userId: String(profile.user_id), expiresIn: long.expiresIn, cloudSynced, cloudSyncError, createdAt: Date.now() });
     res.send(oauthResultPage("팔자명가 Instagram 연결이 완료되었습니다.", "Instagram 연결"));
   } catch (err) {
     instagramOAuthResults.set(String(state), { error: err.message, createdAt: Date.now() });
