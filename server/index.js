@@ -113,7 +113,7 @@ app.get("/oauth/instagram/start", (req, res) => {
 
 app.get("/oauth/instagram/callback", async (req, res) => {
   const { code, state, error, error_description } = req.query;
-  if (!state) return res.status(400).send("state 파라미터가 없습니다.");
+  if (!state) return res.status(400).send(instagramCallbackHelpPage());
   const issuedAt = instagramOAuthStates.get(String(state));
   instagramOAuthStates.delete(String(state));
   if (!issuedAt || Date.now() - issuedAt > 10 * 60 * 1000) return res.status(400).send("만료되었거나 올바르지 않은 연결 요청입니다.");
@@ -236,6 +236,12 @@ function oauthResultPage(message, title = "Threads 연결") {
   return `<!doctype html><html><head><meta charset="utf-8"><title>${title}</title>
   <style>body{background:#0a0812;color:#ece7f5;font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;text-align:center;padding:20px}</style>
   </head><body><div><p style="font-size:18px;">${message}</p><p style="color:#a79cc2;font-size:13px;">이 창은 이제 닫으셔도 됩니다.</p></div></body></html>`;
+}
+
+function instagramCallbackHelpPage() {
+  return `<!doctype html><html><head><meta charset="utf-8"><title>Instagram 연결 안내</title>
+  <style>body{background:#0a0812;color:#ece7f5;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;text-align:center;padding:24px;box-sizing:border-box}.box{max-width:560px;padding:34px;border:1px solid #665536;border-radius:18px;background:#121018}h1{font-size:24px;color:#e6c982}p{line-height:1.7;color:#c9c0d2}.btn{display:inline-block;margin-top:12px;padding:13px 22px;border-radius:10px;background:#c69b4b;color:#0b0910;text-decoration:none;font-weight:800}</style>
+  </head><body><div class="box"><h1>문제가 생긴 것이 아닙니다</h1><p>이 주소는 Meta 설정에 등록하는 콜백 주소입니다. 직접 여는 페이지가 아니며, 팔자명가 프로그램의 <b>Instagram 계정 자동 연결</b> 버튼을 눌렀을 때만 자동으로 사용됩니다.</p><a class="btn" href="/">팔자명가 프로그램으로 돌아가기</a></div></body></html>`;
 }
 
 app.get("/api/persona-presets", (req, res) => {
