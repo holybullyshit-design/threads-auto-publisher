@@ -8,11 +8,19 @@
 // /dashboard : 모바일에서 아무 때나 열어서 예약 큐 상태를 볼 수 있는 사람이 읽기 편한 페이지.
 // (원래 하루 2번 Claude 예약 작업이 알아서 보고하게 만들려 했는데, 그 실행 환경 자체가
 // 외부 네트워크 접근이 막혀있어서(egress 차단, 2026-08-24 확인) 안 됐다 — 대신 사용자가
-// 직접 열어보는 이 페이지로 대체.)
+// 직접 열어보는 이 페이지로 대체했었다.)
 // /status    : 위와 같은 데이터를 JSON으로 (프로그램에서 쓰기용)
+//
+// 실제 푸시 알림(2026-08-26 추가): 이 워커는 항상 떠있으니(egress 차단 없음), 매일
+// 06:00 / 18:00 KST에 ntfy.sh(무료 푸시 알림 중계)로 상태 요약을 폰에 쏴준다.
+// 토픽 이름 = 사실상 비밀번호이므로 반드시 추측 불가능한 랜덤 값으로 등록:
+//   npx wrangler secret put NTFY_TOPIC
+// 알림 본문엔 GITHUB_TOKEN 등 민감정보를 절대 넣지 않는다 — 건수 요약만 전송.
 
 const REPO = "holybullyshit-design/threads-auto-publisher";
 const WORKFLOW = "publish-scheduled.yml";
+const NTFY_SERVER = "https://ntfy.sh";
+const DIGEST_HOURS_KST = [6, 18]; // 오전 6시 / 오후 6시
 
 export default {
   async scheduled(event, env, ctx) {
@@ -33,6 +41,16 @@ export default {
       const text = await res.text().catch(() => "");
       console.error(`디스패치 실패: ${res.status} ${text}`);
     }
+
+    // 15분 간격 크론 중, 06:00·18:00 KST 정각 슬롯에서만 하루 2번 요약 알림을 보낸다.
+    // event.scheduledTime(크론이 원래 잡혔던 시각)을 기준으로 판단 — 실행이 살짝 늦어져도
+    // 슬롯 판정이 흔들리지 않는다.
+    const scheduledMs = event && event.scheduledTime ? event.scheduledTime : Date.now();
+    const kst = new Date(scheduledMs + 9 * 60 * 60 * 1000);
+    const isDigestSlot = DIGEST_HOURS_KST.includes(kst.getUTCHours()) && kst.getUTCMinutes() < 15;
+    if (isDigestSlot) {
+      await sendStatusDigest(env).catch((err) => console.error("[warn] ntfy 알림 실패:", err.message));
+    }
   },
 
   async fetch(request, env, ctx) {
@@ -49,11 +67,60 @@ export default {
         headers: { "Content-Type": "text/html; charset=utf-8" },
       });
     }
+    if (url.pathname === "/test-notify") {
+      // 06:00/18:00 슬롯을 안 기다리고 지금 바로 ntfy 알림이 오는지 확인해보는 수동 테스트용.
+      await sendStatusDigest(env);
+      return new Response("알림을 보냈습니다. 폰에서 확인해주세요.\n");
+    }
     // 그 외(루트 등)는 기존처럼 수동 즉시 발행 트리거.
     await this.scheduled(null, env, ctx);
     return new Response("pinged\n");
   },
 };
+
+// 매일 06:00 / 18:00 KST에 그 시점 예약 큐 상태를 요약해서 ntfy.sh로 폰에 푸시 알림을 보낸다.
+// NTFY_TOPIC이 등록 안 돼있으면(로컬 개발 등) 조용히 건너뛴다.
+async function sendStatusDigest(env) {
+  if (!env.NTFY_TOPIC) {
+    console.log("[알림 건너뜀] NTFY_TOPIC이 설정되지 않음");
+    return;
+  }
+  const data = await getStatusData(env);
+
+  const problems = [];
+  if (data.failedCount) problems.push(`실패 ${data.failedCount}건`);
+  if (data.overdueCount) problems.push(`밀린 글 ${data.overdueCount}건`);
+
+  const title = data.healthy ? "🧵 스레드 자동화 — 정상 작동 중" : "🧵 스레드 자동화 — 확인 필요";
+  const message = data.healthy
+    ? `문제 없음 · 예약 ${data.scheduledCount}건 대기 중 · 최근 24시간 ${data.publishedLast24h}건 발행`
+    : `${problems.join(", ")} — 눌러서 자세히 확인하세요`;
+
+  // ntfy 헤더 방식은 비ASCII(한글)를 넣으려면 RFC2047 인코딩이 필요해서 번거롭다 —
+  // 대신 JSON 발행 방식을 쓰면 본문에 UTF-8을 그대로 담을 수 있다.
+  const payload = {
+    topic: env.NTFY_TOPIC,
+    title,
+    message,
+    priority: data.healthy ? 3 : 4, // 3=기본, 4=high(문제 있을 때 더 눈에 띄게)
+    tags: data.healthy ? ["white_check_mark"] : ["warning"],
+  };
+  if (env.WORKER_URL) payload.click = `${env.WORKER_URL}/dashboard`;
+
+  const headers = { "Content-Type": "application/json" };
+  if (env.NTFY_TOKEN) headers["Authorization"] = `Bearer ${env.NTFY_TOKEN}`;
+
+  const res = await fetch(NTFY_SERVER, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(payload),
+  });
+  if (!res.ok) {
+    const text = await res.text().catch(() => "");
+    throw new Error(`ntfy 발행 실패: HTTP ${res.status} ${text}`);
+  }
+  console.log(`ntfy 알림 전송 완료 (healthy=${data.healthy})`);
+}
 
 async function getStatusData(env) {
   const headers = {
