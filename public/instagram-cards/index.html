@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>팔자명가 · 오늘의 운세 제작소</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <aside class="panel">
+    <div class="brand"><span class="seal">八</span><div><b>팔자명가</b><small>오늘의 운세 제작소</small></div></div>
+    <label>발행일<input id="date" type="date"></label>
+    <label>콘텐츠 초점<select id="focus"><option value="overall">오늘의 종합운</option><option value="money">금전·일운</option><option value="relation">애정·관계운</option></select></label>
+    <button id="generate">운세 다시 짓기</button>
+    <button id="downloadDaily" class="primary">오늘 카드 1~5장 저장</button>
+    <button id="download">전체 7장 저장</button>
+    <div id="calendar" class="calendar"></div>
+    <details><summary>판단 기준</summary><p>입춘 기준 연주, 절기 기준 월주, 율리우스일 기반 일진을 계산합니다. 일지와 각 띠의 육합·삼합·충·형·해·파를 중심으로 생활 조언을 만듭니다.</p></details>
+    <p class="notice"><b>자동화 구성</b><br>1~5장은 날짜에 따라 자동 변경됩니다.<br>6~7장은 고정 브랜드 카드입니다.<br><br>띠 운세는 집단적 참고 콘텐츠이며 개인 사주 상담을 대신하지 않습니다.</p>
+  </aside>
+  <main><div class="toolbar"><button id="prev">‹</button><span id="pageLabel"></span><button id="next">›</button></div><canvas id="card" width="1080" height="1350"></canvas></main>
+  <script src="app.js"></script>
+</body>
+</html>

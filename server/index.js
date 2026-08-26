@@ -19,6 +19,8 @@ const { suggestKeywords } = require("./skills/keywordSuggester");
 const { squareToJpeg } = require("./lib/imageSquarer");
 const mediaHost = require("./lib/mediaHost");
 const externalImageSearch = require("./lib/externalImageSearch");
+const instagramAutomation = require("./lib/instagramAutomation");
+const { preflightInstagram } = require("./lib/instagramClient");
 
 const app = express();
 const PORT = Number(process.env.PORT) || 4321;
@@ -32,7 +34,47 @@ app.get("/api/meta", (req, res) => {
     maxTextLength: MAX_TEXT_LENGTH,
     threadsOAuthConfigured: threadsOAuth.isConfigured(),
     externalImageSearchConfigured: externalImageSearch.isConfigured(),
+    instagramConfigured: Boolean(process.env.INSTAGRAM_USER_ID && process.env.INSTAGRAM_ACCESS_TOKEN),
   });
+});
+
+// ---------- Instagram 팔자명가 오늘의 운세 ----------
+app.get("/api/instagram/content", (req, res) => {
+  try {
+    res.json({ content: instagramAutomation.generateFortunePackage(String(req.query.date || "")) });
+  } catch (err) { handleError(res, err); }
+});
+
+app.get("/api/instagram/card/:date/:page.jpg", async (req, res) => {
+  try {
+    const { buffer, pkg } = await instagramAutomation.renderCard(req.params.date, Number(req.params.page));
+    res.setHeader("Content-Type", "image/jpeg");
+    res.setHeader("Cache-Control", "private, max-age=3600");
+    res.setHeader("X-Content-Hash", pkg.contentHash);
+    res.send(buffer);
+  } catch (err) { handleError(res, err); }
+});
+
+app.get("/api/instagram/range", (req, res) => {
+  try {
+    const start = String(req.query.start || "2026-08-26");
+    const end = String(req.query.end || start);
+    const days = instagramAutomation.rangeSummary(start, end);
+    res.json({ start, end, count: days.length, days });
+  } catch (err) { handleError(res, err); }
+});
+
+app.get("/api/instagram/preflight", async (req, res) => {
+  try { res.json(await preflightInstagram()); } catch (err) { handleError(res, err); }
+});
+
+app.post("/api/instagram/schedule-range", async (req, res) => {
+  try {
+    const { start, end, confirm } = req.body || {};
+    if (confirm !== true) return res.status(400).json({ error: "검수 후 예약 확정(confirm=true)이 필요합니다." });
+    const result = await instagramAutomation.prepareAndScheduleRange(start, end);
+    res.status(201).json(result);
+  } catch (err) { handleError(res, err); }
 });
 
 // ---------- Threads 계정 자동 연결 (OAuth) ----------
@@ -551,7 +593,7 @@ function handleError(res, err) {
 
 app.listen(PORT, () => {
   const url = `http://localhost:${PORT}`;
-  console.log(`\n스레드 자동 게시 앱이 실행되었습니다: ${url}\n`);
+  console.log(`\n팔자명가 스레드 + Instagram 자동화 앱이 실행되었습니다: ${url}\n`);
 
   if (process.platform === "darwin") {
     exec(`open "${url}"`);

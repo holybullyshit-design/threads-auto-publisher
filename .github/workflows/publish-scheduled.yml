@@ -1,10 +1,10 @@
-name: Publish scheduled Threads posts
+name: Publish scheduled Threads + Instagram posts
 
 on:
   schedule:
-    # 10분마다 실행 (GitHub의 스케줄은 정확히 그 분에 도는 것을 보장하지 않고
+    # 5분마다 실행 (Instagram 06:00 KST 슬롯과 재시도를 빠르게 처리)
     # 몇 분 정도 늦게 도는 경우가 있습니다 - 개인 자동화 용도로는 충분합니다)
-    - cron: "*/10 * * * *"
+    - cron: "*/5 * * * *"
   workflow_dispatch: {} # 필요하면 Actions 탭에서 수동 실행도 가능
 
 permissions:
@@ -29,6 +29,9 @@ jobs:
       - name: Publish due posts
         env:
           THREADS_ACCOUNTS_JSON: ${{ secrets.THREADS_ACCOUNTS_JSON }}
+          INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          INSTAGRAM_GRAPH_VERSION: ${{ vars.INSTAGRAM_GRAPH_VERSION || 'v24.0' }}
         run: node cloud/publish-scheduled.js
 
       - name: Commit updated schedule (if changed)

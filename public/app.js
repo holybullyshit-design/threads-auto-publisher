@@ -42,6 +42,7 @@ const el = {
   tabButtons: Array.from(document.querySelectorAll(".tab-btn")),
   tabPanels: {
     compose: document.getElementById("tab-compose"),
+    instagram: document.getElementById("tab-instagram"),
     schedule: document.getElementById("tab-schedule"),
     accounts: document.getElementById("tab-accounts"),
   },
@@ -174,6 +175,7 @@ function switchTab(tabName) {
     panel.classList.toggle("hidden", name !== tabName);
   });
   if (tabName === "schedule") loadSchedule();
+  if (tabName === "instagram" && window.loadInstagramDashboard) window.loadInstagramDashboard();
   if (tabName === "accounts") renderAccountList();
 }
 
@@ -1244,6 +1246,7 @@ function renderPostCards(container, posts, emptyText) {
     const when = new Date(post.scheduledAt).toLocaleString("ko-KR");
     const statusClass = `status-${post.status}`;
     const statusLabel = STATUS_LABEL[post.status] || post.status;
+    const platformLabel = post.platform === "instagram" ? "Instagram" : "Threads";
 
     const imagesHtml =
       Array.isArray(post.images) && post.images.length > 0
@@ -1259,7 +1262,7 @@ function renderPostCards(container, posts, emptyText) {
       // 수정 폼 — 본문/예약 시각만 수정한다 (이미지/답글은 새로 초안을 만드는 게 더 확실해서 제외).
       item.innerHTML = `
         <div class="schedule-item-top">
-          <span>${escapeHtml(post.accountLabel || "계정 미상")} · 예약: ${when}</span>
+          <span>${platformLabel} · ${escapeHtml(post.accountLabel || "계정 미상")} · 예약: ${when}</span>
           <span class="status-badge ${statusClass}">${statusLabel}</span>
         </div>
         <textarea class="text-input textarea schedule-edit-text" rows="4">${escapeHtml(post.text)}</textarea>
@@ -1289,7 +1292,7 @@ function renderPostCards(container, posts, emptyText) {
 
     item.innerHTML = `
       <div class="schedule-item-top">
-        <span>${escapeHtml(post.accountLabel || "계정 미상")} · 예약: ${when}</span>
+        <span>${platformLabel} · ${escapeHtml(post.accountLabel || "계정 미상")} · 예약: ${when}</span>
         <span class="status-badge ${statusClass}">${statusLabel}</span>
       </div>
       <div class="schedule-item-text">${escapeHtml(post.text)}</div>
@@ -1306,7 +1309,7 @@ function renderPostCards(container, posts, emptyText) {
       }
     `;
 
-    if (post.status === "scheduled" || post.status === "failed") {
+    if ((post.status === "scheduled" || post.status === "failed") && post.platform !== "instagram") {
       const editBtn = document.createElement("button");
       editBtn.className = "btn-link";
       editBtn.textContent = post.status === "failed" ? "수정해서 다시 시도" : "수정";

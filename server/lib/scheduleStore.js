@@ -51,6 +51,47 @@ async function addScheduledPost({ accountId, accountLabel, text, scheduledAt, im
   return newPost;
 }
 
+// Instagram 오늘의 운세는 정확한 오전 6시(KST)가 브랜드 약속이므로
+// Threads용 ±15분 지터를 절대 적용하지 않는다. dedupeKey로 중복 예약도 차단한다.
+async function addInstagramBatch(items) {
+  if (!Array.isArray(items) || items.length === 0) throw Object.assign(new Error("예약할 Instagram 콘텐츠가 없습니다."), { status: 400 });
+  const { posts, sha } = await readSchedule();
+  const existingKeys = new Set(posts.filter((post) => post.status !== "canceled").map((post) => post.dedupeKey).filter(Boolean));
+  const newPosts = [];
+  for (const item of items) {
+    const dedupeKey = `instagram:palja-daily:${item.date}`;
+    if (existingKeys.has(dedupeKey)) throw Object.assign(new Error(`${item.date} Instagram 운세가 이미 예약되어 있습니다.`), { status: 409, code: "DUPLICATE_INSTAGRAM_DATE" });
+    if (item.validation?.status !== "passed") throw Object.assign(new Error(`${item.date} 콘텐츠가 검수를 통과하지 못했습니다.`), { status: 422 });
+    if (!Array.isArray(item.images) || item.images.length !== 7) throw Object.assign(new Error(`${item.date} 카드가 7장이 아닙니다.`), { status: 422 });
+    const scheduledAt = kstDateAndTimeToUtc(item.date, "06:00");
+    const post = {
+      id: crypto.randomUUID(),
+      platform: "instagram",
+      accountId: "saju_orbit",
+      accountLabel: "팔자명가",
+      text: item.caption,
+      images: item.images,
+      status: "scheduled",
+      scheduledAt: scheduledAt.toISOString(),
+      expectedLocalDate: item.date,
+      exactTimeKst: "06:00",
+      dedupeKey,
+      contentHash: item.contentHash,
+      validation: item.validation,
+      createdAt: new Date().toISOString(),
+      publishedAt: null,
+      publishedId: null,
+      error: null,
+      retryCount: 0,
+    };
+    posts.push(post);
+    newPosts.push(post);
+    existingKeys.add(dedupeKey);
+  }
+  await writeSchedule(posts, { sha, message: `chore: schedule ${newPosts.length} Instagram daily fortunes` });
+  return newPosts;
+}
+
 // 계정별로 최근에 이미 만든 글 목록 (게시완료 + 예약중, 취소/실패 제외)
 // -> 초안 생성 시 "이거랑 겹치지 않게" 참고용으로 넘겨준다.
 async function listRecentTextsForAccount(accountId, { limit = 15 } = {}) {
@@ -99,6 +140,11 @@ async function updateScheduledPost(id, { text, scheduledAt, images, replyText } 
   }
   if (target.status !== "scheduled" && target.status !== "failed") {
     const err = new Error("이미 발행되었거나 취소된 글은 수정할 수 없습니다.");
+    err.status = 400;
+    throw err;
+  }
+  if (target.platform === "instagram") {
+    const err = new Error("Instagram 운세는 검수 해시가 깨지므로 직접 수정할 수 없습니다. 취소 후 Instagram 탭에서 다시 생성해주세요.");
     err.status = 400;
     throw err;
   }
@@ -234,5 +280,7 @@ module.exports = {
   cancelScheduledPost,
   listRecentTextsForAccount,
   recordImmediatePublish,
+  addInstagramBatch,
+  kstDateAndTimeToUtc,
   withJitter,
 };

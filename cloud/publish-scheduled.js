@@ -9,6 +9,7 @@
 const fs = require("fs");
 const path = require("path");
 const { publishTextPost, publishImagePost } = require("../server/lib/threadsClient");
+const { publishCarousel, findPublishedByMarker } = require("../server/lib/instagramClient");
 
 const SCHEDULE_FILE = path.join(__dirname, "..", "schedule", "posts.json");
 
@@ -43,7 +44,6 @@ function savePosts(posts) {
 }
 
 async function main() {
-  const accounts = loadAccounts();
   const posts = loadPosts();
   const now = new Date();
 
@@ -55,6 +55,28 @@ async function main() {
   }
 
   for (const post of due) {
+    if (post.platform === "instagram") {
+      try {
+        if (post.validation?.status !== "passed" || !post.contentHash) throw Object.assign(new Error("검수 통과 증거가 없어 게시를 차단했습니다."), { code: "VALIDATION_REQUIRED" });
+        const marker = `#팔자명가${String(post.expectedLocalDate).replaceAll("-", "")}`;
+        const existing = await findPublishedByMarker(marker);
+        const result = existing ? { publishedId: existing.id, recoveredDuplicate: true } : await publishCarousel({ imageUrls: post.images, caption: post.text });
+        post.status = "published";
+        post.publishedAt = new Date().toISOString();
+        post.publishedId = result.publishedId;
+        post.error = null;
+        console.log(`[인스타그램 성공] ${post.id} → ${result.publishedId}${result.recoveredDuplicate ? " (기존 게시물 회수)" : ""}`);
+      } catch (err) {
+        post.retryCount = (post.retryCount || 0) + 1;
+        post.error = err.message;
+        const fatal = ["VALIDATION_REQUIRED", "INVALID_CAROUSEL", "INVALID_CAPTION", "INVALID_IMAGE_URL", "MISSING_INSTAGRAM_CONFIG"].includes(err.code);
+        if (fatal || post.retryCount >= MAX_AUTO_RETRIES) post.status = "failed";
+        console.error(`[인스타그램 ${post.status === "failed" ? "최종 실패" : "재시도 예정"}] ${post.id}: ${err.message}`);
+      }
+      continue;
+    }
+
+    const accounts = loadAccounts();
     const account = accounts.find((a) => a.id === post.accountId);
     if (!account) {
       post.status = "failed";

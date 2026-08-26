@@ -9,11 +9,14 @@
     "node": ">=18.0.0"
   },
   "scripts": {
-    "start": "node server/index.js"
+    "start": "node server/index.js",
+    "test": "node --test test/fortuneEngine.test.js test/instagramClient.test.js test/scheduleTime.test.js",
+    "test:render": "node --test test/instagramRender.test.js"
   },
   "dependencies": {
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "lunar-javascript": "^1.7.7",
     "puppeteer": "^25.8.0",
     "sharp": "^0.35.3"
   },

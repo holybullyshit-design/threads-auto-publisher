@@ -38,10 +38,16 @@ body {
 }
 
 .app {
-  max-width: 640px;
+  max-width: 1040px;
   margin: 0 auto;
   padding: 40px 20px 90px;
 }
+
+.ig-hero{position:relative;overflow:hidden;margin:20px 0 14px;padding:28px;border:1px solid rgba(214,169,83,.38);border-radius:18px;background:radial-gradient(circle at 85% 15%,rgba(204,156,64,.22),transparent 35%),linear-gradient(135deg,#131814,#202018);box-shadow:0 24px 70px rgba(0,0,0,.25)}
+.ig-hero:after{content:"八";position:absolute;right:25px;top:-34px;font:170px Georgia,serif;color:rgba(232,194,119,.07)}.ig-kicker{color:#d9af61;font-size:11px;font-weight:800;letter-spacing:.22em}.ig-hero h2{margin:8px 0 7px;font-family:"AppleMyungjo",serif;font-size:30px;color:#f5deb0}.ig-hero p{margin:0;color:#c7bdab;font-size:13px}.ig-pipeline{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin-top:20px}.ig-pipeline span{padding:7px 11px;border:1px solid rgba(216,175,94,.3);border-radius:999px;color:#ecd49f;font-size:11px;background:rgba(0,0,0,.18)}.ig-pipeline b{color:#8f7953}
+.ig-date-row{display:grid;grid-template-columns:1fr auto;gap:10px;margin-top:16px}.ig-calendar-summary{display:flex;justify-content:space-between;gap:12px;margin:14px 0;padding:12px 14px;border-radius:10px;background:rgba(205,164,84,.08);color:#dbc18e;font-size:12px}.ig-card-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.ig-card-grid figure{margin:0;overflow:hidden;border:1px solid var(--card-border);border-radius:10px;background:#111}.ig-card-grid iframe{display:block;width:100%;aspect-ratio:4/5;border:0;background:#090b0a}.ig-card-grid figcaption{padding:8px;text-align:center;color:var(--text-dim);font-size:10px}.ig-caption-box{margin-top:14px;border-top:1px solid var(--card-border);padding-top:12px}.ig-caption-box summary{cursor:pointer;color:#d7bc87;font-size:12px;font-weight:700}.ig-caption-box pre{white-space:pre-wrap;font:12px/1.65 var(--font);color:#c9c1b4}
+.ig-range-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}.ig-range-row label{color:var(--text-dim);font-size:11px;font-weight:700}.ig-range-row input{margin-top:5px;width:100%}.ig-range-result{margin-top:13px;display:grid;gap:4px;color:#a7dfc8;font-size:12px}.ig-range-result span{color:var(--text-dim)}.ig-day-chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}.ig-day-chips i{padding:5px 7px;border-radius:6px;background:rgba(52,201,143,.1);font-style:normal;font-size:10px;color:#82dab7}.ig-confirm{display:block;margin:14px 0;color:#d5ccbc;font-size:12px}.ig-confirm input{vertical-align:-2px;accent-color:#b78d47}.ig-pass{color:#78d3ad!important;border-color:rgba(52,201,143,.35)!important}
+.ig-growth-card{border-color:rgba(207,165,81,.24)}.ig-funnel{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}.ig-funnel div{min-height:105px;padding:12px 9px;border-radius:10px;background:linear-gradient(160deg,rgba(209,168,85,.11),rgba(255,255,255,.025));border:1px solid rgba(212,175,101,.13)}.ig-funnel b{display:block;color:#bc9146;font:20px Georgia,serif}.ig-funnel strong,.ig-funnel small{display:block}.ig-funnel strong{margin:5px 0;color:#f0dfbd;font-size:13px}.ig-funnel small{color:var(--text-dim);font-size:10px;line-height:1.4}@media(max-width:720px){.ig-card-grid{grid-template-columns:repeat(2,1fr)}.ig-funnel{grid-template-columns:repeat(2,1fr)}.ig-calendar-summary{display:grid}.tabs{overflow-x:auto}.tab-btn{white-space:nowrap}}
 
 .app-header h1 {
   font-size: 21px;

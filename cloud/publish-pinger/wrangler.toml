@@ -20,7 +20,7 @@ main = "index.js"
 compatibility_date = "2026-08-24"
 
 [triggers]
-crons = ["*/15 * * * *"]
+crons = ["*/5 * * * *"]
 
 [vars]
 # 알림에서 "눌러서 확인" 눌렀을 때 열릴 대시보드 주소. 비밀값 아님(URL 자체는 공개돼도 무방 —

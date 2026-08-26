@@ -47,7 +47,7 @@ export default {
     // 슬롯 판정이 흔들리지 않는다.
     const scheduledMs = event && event.scheduledTime ? event.scheduledTime : Date.now();
     const kst = new Date(scheduledMs + 9 * 60 * 60 * 1000);
-    const isDigestSlot = DIGEST_HOURS_KST.includes(kst.getUTCHours()) && kst.getUTCMinutes() < 15;
+    const isDigestSlot = DIGEST_HOURS_KST.includes(kst.getUTCHours()) && kst.getUTCMinutes() < 5;
     if (isDigestSlot) {
       await sendStatusDigest(env).catch((err) => console.error("[warn] ntfy 알림 실패:", err.message));
     }
@@ -91,7 +91,7 @@ async function sendStatusDigest(env) {
   if (data.failedCount) problems.push(`실패 ${data.failedCount}건`);
   if (data.overdueCount) problems.push(`밀린 글 ${data.overdueCount}건`);
 
-  const title = data.healthy ? "🧵 스레드 자동화 — 정상 작동 중" : "🧵 스레드 자동화 — 확인 필요";
+  const title = data.healthy ? "✨ 팔자명가 통합 자동화 — 정상" : "⚠️ 팔자명가 통합 자동화 — 확인 필요";
   const message = data.healthy
     ? `문제 없음 · 예약 ${data.scheduledCount}건 대기 중 · 최근 24시간 ${data.publishedLast24h}건 발행`
     : `${problems.join(", ")} — 눌러서 자세히 확인하세요`;
