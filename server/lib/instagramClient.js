@@ -75,7 +75,7 @@ async function publishCarousel({ imageUrls, caption, ...overrides }) {
   const config = getConfig(overrides);
   const children = [];
   for (const imageUrl of imageUrls) {
-    const child = await graphRequest(config, `${config.userId}/media`, { method: "POST", params: { image_url: imageUrl, is_carousel_item: "true" } });
+    const child = await graphRequest(config, `${config.userId}/media`, { method: "POST", params: { media_type: "IMAGE", image_url: imageUrl, is_carousel_item: "true" } });
     await waitForContainer(config, child.id);
     children.push(child.id);
   }
