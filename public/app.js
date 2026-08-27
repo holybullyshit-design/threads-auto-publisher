@@ -7,6 +7,7 @@ const state = {
   selectedCategoryId: null,
   publishMode: "now", // now | schedule
   scheduleView: "calendar", // calendar | list
+  scheduleGroupFilter: "all", // all | saju | partners | instagram — 예약 달력/목록 구분 필터
   calendarDate: new Date(), // 현재 보고 있는 달 (day는 무시하고 년/월만 사용)
   selectedDay: null, // "YYYY-MM-DD" 또는 null
   schedulePosts: [],
@@ -112,6 +113,7 @@ const el = {
   btnRebalanceApply: document.getElementById("btn-rebalance-apply"),
   rebalanceResult: document.getElementById("rebalance-result"),
   rebalanceError: document.getElementById("rebalance-error"),
+  groupFilter: document.getElementById("group-filter"),
   calendarLegend: document.getElementById("calendar-legend"),
   calendarView: document.getElementById("calendar-view"),
   calendarGrid: document.getElementById("calendar-grid"),
@@ -1123,19 +1125,52 @@ function seedAccountColors() {
   state.schedulePosts.forEach((p) => getAccountColor(p.accountId));
 }
 
+// 이 탭(예약 목록)은 스레드 전용이다 — Instagram 게시물은 별도 "Instagram 운세" 탭에서
+// 관리하므로 여기서는 항상 제외한다. 스레드 안에서는 사주(3계정)/파트너스(1계정)가 섞여
+// 헷갈릴 수 있어서, 그 둘만 전체/사주/파트너스로 걸러볼 수 있게 한다.
+function getPostGroup(post) {
+  const acc = state.accounts.find((a) => a.id === post.accountId);
+  return acc && acc.type === "partners" ? "partners" : "saju";
+}
+
+const GROUP_LABEL = { saju: "🔮 사주", partners: "🛒 파트너스" };
+
+function getThreadsSchedulePosts() {
+  const threadsOnly = state.schedulePosts.filter((p) => p.platform !== "instagram");
+  if (state.scheduleGroupFilter === "all") return threadsOnly;
+  return threadsOnly.filter((p) => getPostGroup(p) === state.scheduleGroupFilter);
+}
+
 function renderLegend() {
   const seen = new Map();
-  state.accounts.forEach((acc) => seen.set(acc.id, acc.label));
-  state.schedulePosts.forEach((p) => {
-    if (!seen.has(p.accountId)) seen.set(p.accountId, p.accountLabel || "계정 미상");
+  state.accounts.forEach((acc) => {
+    if (acc.type === "partners" || acc.type === "saju" || !acc.type) {
+      seen.set(acc.id, { label: acc.label, group: acc.type === "partners" ? "partners" : "saju" });
+    }
   });
+  state.schedulePosts
+    .filter((p) => p.platform !== "instagram")
+    .forEach((p) => {
+      if (!seen.has(p.accountId)) seen.set(p.accountId, { label: p.accountLabel || "계정 미상", group: getPostGroup(p) });
+    });
+
+  const byGroup = { saju: [], partners: [] };
+  seen.forEach((entry, accountId) => byGroup[entry.group].push({ accountId, ...entry }));
 
   el.calendarLegend.innerHTML = "";
-  seen.forEach((label, accountId) => {
-    const item = document.createElement("span");
-    item.className = "legend-item";
-    item.innerHTML = `<span class="legend-dot" style="background:${getAccountColor(accountId)}"></span>${escapeHtml(label)}`;
-    el.calendarLegend.appendChild(item);
+  ["saju", "partners"].forEach((group) => {
+    if (!byGroup[group].length) return;
+    const row = document.createElement("div");
+    row.className = "legend-group";
+    row.innerHTML =
+      `<span class="legend-group-title">${GROUP_LABEL[group]}</span>` +
+      byGroup[group]
+        .map(
+          ({ accountId, label }) =>
+            `<span class="legend-item"><span class="legend-dot" style="background:${getAccountColor(accountId)}"></span>${escapeHtml(label)}</span>`
+        )
+        .join("");
+    el.calendarLegend.appendChild(row);
   });
 }
 
@@ -1150,7 +1185,7 @@ function renderScheduleView() {
     renderCalendar();
     if (state.selectedDay) renderDayDetail(state.selectedDay);
   } else {
-    renderPostCards(el.scheduleList, sortByCreatedDesc(state.schedulePosts), "등록된 예약/게시 이력이 없습니다.");
+    renderPostCards(el.scheduleList, sortByCreatedDesc(getThreadsSchedulePosts()), "이 구분에 해당하는 예약/게시 이력이 없습니다.");
   }
 }
 
@@ -1169,7 +1204,7 @@ function renderCalendar() {
   el.calMonthLabel.textContent = `${year}년 ${month + 1}월`;
 
   const postsByDay = new Map();
-  state.schedulePosts.forEach((p) => {
+  getThreadsSchedulePosts().forEach((p) => {
     const key = localDateKey(p.scheduledAt);
     if (!postsByDay.has(key)) postsByDay.set(key, []);
     postsByDay.get(key).push(p);
@@ -1225,7 +1260,7 @@ function renderDayDetail(dayKey) {
     return;
   }
   el.dayDetail.classList.remove("hidden");
-  const dayPosts = state.schedulePosts
+  const dayPosts = getThreadsSchedulePosts()
     .filter((p) => localDateKey(p.scheduledAt) === dayKey)
     .sort((a, b) => new Date(a.scheduledAt) - new Date(b.scheduledAt));
 
@@ -1444,6 +1479,15 @@ el.calToday.addEventListener("click", () => {
     state.scheduleView = btn.dataset.view;
     el.viewCalendarBtn.classList.toggle("selected", state.scheduleView === "calendar");
     el.viewListBtn.classList.toggle("selected", state.scheduleView === "list");
+    renderScheduleView();
+  });
+});
+
+Array.from(el.groupFilter.querySelectorAll(".mode-btn")).forEach((btn) => {
+  btn.addEventListener("click", () => {
+    state.scheduleGroupFilter = btn.dataset.group;
+    el.groupFilter.querySelectorAll(".mode-btn").forEach((b) => b.classList.toggle("selected", b === btn));
+    state.selectedDay = null;
     renderScheduleView();
   });
 });
