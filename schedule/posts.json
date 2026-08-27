@@ -974,8 +974,8 @@
     "createdAt": "2026-08-27T01:43:13.468Z",
     "publishedAt": null,
     "publishedId": null,
-    "error": null,
-    "retryCount": 0
+    "error": "Only photo or video can be accepted as media type.",
+    "retryCount": 1
   },
   {
     "id": "9aa521da-7b89-431d-8bc0-de95c4c110a9",
