@@ -960,7 +960,7 @@
       "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-auto-publisher@14d2c9298a40618422c6d6b6da2687075c8b8036/public/generated/instagram/2026-08-27/6.jpg",
       "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-auto-publisher@14d2c9298a40618422c6d6b6da2687075c8b8036/public/generated/instagram/2026-08-27/7.jpg"
     ],
-    "status": "scheduled",
+    "status": "failed",
     "scheduledAt": "2026-08-26T21:00:00.000Z",
     "expectedLocalDate": "2026-08-27",
     "exactTimeKst": "06:00",
@@ -975,7 +975,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": "Only photo or video can be accepted as media type.",
-    "retryCount": 2
+    "retryCount": 3
   },
   {
     "id": "9aa521da-7b89-431d-8bc0-de95c4c110a9",
