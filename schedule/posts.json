@@ -403,11 +403,11 @@
     "accountId": "6b8b637e-1629-4844-9a1f-9728c420154e",
     "accountLabel": "엄마가 직접 써본 꿀템",
     "text": "아들아 제발 흰밥에 김만 먹지 좀 마... 하고 국까지 새로 끓였는데\n\n결국 오늘 저녁 메뉴: 흰밥+김. 어제도 이거였는데.\n\n\"엄마 이거 맛있어\" 하면서 김 세 장째 집어먹는 거 보고 그냥 숟가락 놨음ㅋㅋ\n\n반찬 다섯 개 차려놓고 애가 먹는 건 김 하나. 나머지는 다 내 뱃속으로.\n\n시금치 나물에 설탕 넣어보고, 계란말이에 야채 숨겨보고 별짓 다 해봤는데 다 귀신같이 골라냄. 혀에 무슨 센서 달렸나\n\n“엄마도 편식했잖아” 친정엄마가 그러는데 진짜 할많하않... 인과응보인가 이거",
-    "status": "scheduled",
+    "status": "published",
     "scheduledAt": "2026-08-27T02:09:36.140Z",
     "createdAt": "2026-08-24T02:36:15.207Z",
-    "publishedAt": null,
-    "publishedId": null,
+    "publishedAt": "2026-08-27T02:09:47.030Z",
+    "publishedId": "18102448294956388",
     "error": null
   },
   {
@@ -960,7 +960,7 @@
       "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@b94136b509206a4ae4ff6b9be693b1503496c2f1/images/palja-2026-08-27-6.jpg",
       "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@b94136b509206a4ae4ff6b9be693b1503496c2f1/images/palja-2026-08-27-7.jpg"
     ],
-    "status": "scheduled",
+    "status": "published",
     "scheduledAt": "2026-08-26T21:00:00.000Z",
     "expectedLocalDate": "2026-08-27",
     "exactTimeKst": "06:00",
@@ -972,8 +972,8 @@
       "checks": 8
     },
     "createdAt": "2026-08-27T01:43:13.468Z",
-    "publishedAt": null,
-    "publishedId": null,
+    "publishedAt": "2026-08-27T02:10:57.673Z",
+    "publishedId": "18112183232059681",
     "error": null,
     "retryCount": 0
   },
