@@ -40,8 +40,11 @@ async function renderFortunePackage(pkg, { pages = [0, 1, 2, 3, 4, 5, 6], format
     const output = [];
     for (const pageIndex of pages) {
       await page.evaluate(async (payload, index) => window.PaljaCards.renderPackage(payload, index), pkg, pageIndex);
-      const dataUrl = await page.evaluate(() => window.PaljaCards.dataUrl());
-      const png = Buffer.from(dataUrl.split(",")[1], "base64");
+      // Element screenshots work even when local image assets make the canvas
+      // "tainted" under Chromium's file:// cross-origin rules on Linux CI.
+      const canvas = await page.$("#card");
+      if (!canvas) throw new Error("카드 캔버스를 찾지 못했습니다.");
+      const png = await canvas.screenshot({ type: "png" });
       const buffer = format === "png" ? png : await sharp(png).jpeg({ quality: 94, chromaSubsampling: "4:4:4" }).toBuffer();
       const metadata = await sharp(buffer).metadata();
       if (metadata.width !== 1080 || metadata.height !== 1350) throw new Error(`카드 ${pageIndex + 1}장 크기가 1080x1350이 아닙니다.`);
