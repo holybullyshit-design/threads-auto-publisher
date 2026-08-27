@@ -546,13 +546,13 @@ app.post("/api/partners/lifestyle-draft", async (req, res) => {
 
 app.post("/api/polish", async (req, res) => {
   try {
-    const { accountId, text } = req.body || {};
+    const { accountId, text, categoryId } = req.body || {};
     if (!accountId) return res.status(400).json({ error: "accountId가 필요합니다." });
     const account = accountsStore.getAccountSecret(accountId);
     if (account.type === "partners") {
       return res.status(400).json({ error: "파트너스 계정은 아직 톤 다듬기를 지원하지 않습니다. 다시 생성해주세요." });
     }
-    const result = await polishDraft({ account, text });
+    const result = await polishDraft({ account, text, categoryId });
     res.json(result);
   } catch (err) {
     handleError(res, err);

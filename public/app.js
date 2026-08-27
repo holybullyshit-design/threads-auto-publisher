@@ -354,7 +354,8 @@ function updateGenerateButtonState() {
   if (isLifestyle) {
     ready = Boolean(state.selectedAccountId && state.selectedLifestyleCategoryId);
   } else if (isPartners) {
-    ready = Boolean(state.selectedAccountId && state.selectedCategoryId && state.selectedProduct);
+    const imageUploadPending = state.extraImages.some((img) => img.status === "uploading");
+    ready = Boolean(state.selectedAccountId && state.selectedCategoryId && state.selectedProduct && !imageUploadPending);
   } else {
     ready = Boolean(state.selectedAccountId && state.selectedCategoryId);
   }
@@ -512,6 +513,7 @@ function renderExtraImages() {
     chip.appendChild(removeBtn);
     el.extraImagesPreview.appendChild(chip);
   });
+  updateGenerateButtonState();
 }
 
 function removeExtraImage(id) {
@@ -534,6 +536,7 @@ async function uploadExtraImageFile(file) {
   const previewUrl = URL.createObjectURL(file);
   state.extraImages.push({ id, previewUrl, url: null, status: "uploading" });
   renderExtraImages();
+  updateGenerateButtonState();
 
   try {
     const imageBase64 = await new Promise((resolve, reject) => {
@@ -555,10 +558,12 @@ async function uploadExtraImageFile(file) {
       entry.url = data.url;
       entry.status = "done";
       renderExtraImages();
+      updateGenerateButtonState();
     }
   } catch (err) {
     el.imageUploadError.textContent = err.message;
     removeExtraImage(id);
+    updateGenerateButtonState();
   }
 }
 
@@ -957,7 +962,11 @@ async function polishDraft() {
     const res = await fetch("/api/polish", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ accountId: state.selectedAccountId, text: el.draftText.value }),
+      body: JSON.stringify({
+        accountId: state.selectedAccountId,
+        text: el.draftText.value,
+        categoryId: state.selectedCategoryId,
+      }),
     });
     const data = await res.json();
     if (!res.ok) throw new Error(data.error || "다듬기에 실패했습니다.");
@@ -1259,7 +1268,8 @@ function renderPostCards(container, posts, emptyText) {
       : "";
 
     if ((post.status === "scheduled" || post.status === "failed") && state.editingPostId === post.id) {
-      // 수정 폼 — 본문/예약 시각만 수정한다 (이미지/답글은 새로 초안을 만드는 게 더 확실해서 제외).
+      // 수정 폼 — 본문/예약 시각뿐 아니라 예약에 연결된 사진도 추가·삭제할 수 있다.
+      let editImages = Array.isArray(post.images) ? [...post.images] : [];
       item.innerHTML = `
         <div class="schedule-item-top">
           <span>${platformLabel} · ${escapeHtml(post.accountLabel || "계정 미상")} · 예약: ${when}</span>
@@ -1267,15 +1277,80 @@ function renderPostCards(container, posts, emptyText) {
         </div>
         <textarea class="text-input textarea schedule-edit-text" rows="4">${escapeHtml(post.text)}</textarea>
         <input type="datetime-local" class="select-input schedule-edit-datetime" value="${toDatetimeLocalValue(post.scheduledAt)}" />
-        ${imagesHtml}
+        <div class="schedule-edit-images"></div>
+        <label class="schedule-edit-image-add">
+          <span>＋ 사진 추가</span>
+          <input class="schedule-edit-image-input" type="file" accept="image/*" multiple />
+        </label>
+        <p class="hint-text schedule-edit-image-count"></p>
         ${replyHtml}
         <p class="error-text schedule-edit-error"></p>
       `;
+      const editImagesEl = item.querySelector(".schedule-edit-images");
+      const imageCountEl = item.querySelector(".schedule-edit-image-count");
+      const imageInputEl = item.querySelector(".schedule-edit-image-input");
+      const errorEl = item.querySelector(".schedule-edit-error");
+
+      const renderEditImages = () => {
+        editImagesEl.innerHTML = "";
+        editImages.forEach((url, index) => {
+          const chip = document.createElement("div");
+          chip.className = "schedule-edit-image-chip";
+          chip.innerHTML = `<img src="${escapeHtml(url)}" alt="예약 첨부 이미지 ${index + 1}" />`;
+          const removeBtn = document.createElement("button");
+          removeBtn.type = "button";
+          removeBtn.className = "remove-chip";
+          removeBtn.setAttribute("aria-label", `사진 ${index + 1} 삭제`);
+          removeBtn.textContent = "×";
+          removeBtn.addEventListener("click", () => {
+            editImages.splice(index, 1);
+            renderEditImages();
+          });
+          chip.appendChild(removeBtn);
+          editImagesEl.appendChild(chip);
+        });
+        imageCountEl.textContent = `현재 게시될 사진 ${editImages.length}장`;
+      };
+
+      imageInputEl.addEventListener("change", async () => {
+        errorEl.textContent = "";
+        const files = Array.from(imageInputEl.files || []);
+        if (!files.length) return;
+        if (editImages.length + files.length > 10) {
+          errorEl.textContent = "Threads 사진은 최대 10장까지 추가할 수 있습니다.";
+          imageInputEl.value = "";
+          return;
+        }
+        imageInputEl.disabled = true;
+        imageCountEl.textContent = `${files.length}장 업로드 중… 저장 버튼은 잠시 기다려주세요.`;
+        try {
+          for (const file of files) {
+            const url = await uploadScheduleEditImage(file);
+            editImages.push(url);
+            renderEditImages();
+          }
+        } catch (err) {
+          errorEl.textContent = err.message;
+        } finally {
+          imageInputEl.disabled = false;
+          imageInputEl.value = "";
+          renderEditImages();
+        }
+      });
+      renderEditImages();
+
       const saveBtn = document.createElement("button");
       saveBtn.className = "btn-primary-link";
       saveBtn.textContent = "저장";
       saveBtn.addEventListener("click", () =>
-        saveEditPost(post.id, item.querySelector(".schedule-edit-text"), item.querySelector(".schedule-edit-datetime"), item.querySelector(".schedule-edit-error"))
+        saveEditPost(
+          post.id,
+          item.querySelector(".schedule-edit-text"),
+          item.querySelector(".schedule-edit-datetime"),
+          errorEl,
+          editImages,
+          imageInputEl
+        )
       );
       const cancelEditBtn = document.createElement("button");
       cancelEditBtn.className = "btn-link";
@@ -1332,6 +1407,24 @@ function renderPostCards(container, posts, emptyText) {
   });
 }
 
+async function uploadScheduleEditImage(file) {
+  if (!file?.type?.startsWith("image/")) throw new Error("이미지 파일만 추가할 수 있습니다.");
+  const imageBase64 = await new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = () => reject(new Error("사진을 읽지 못했습니다."));
+    reader.readAsDataURL(file);
+  });
+  const res = await fetch("/api/partners/upload-image", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ imageBase64 }),
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || "사진 업로드에 실패했습니다.");
+  return data.url;
+}
+
 function changeCalendarMonth(delta) {
   state.calendarDate = new Date(state.calendarDate.getFullYear(), state.calendarDate.getMonth() + delta, 1);
   renderCalendar();
@@ -1355,7 +1448,7 @@ el.calToday.addEventListener("click", () => {
   });
 });
 
-async function saveEditPost(id, textEl, datetimeEl, errorEl) {
+async function saveEditPost(id, textEl, datetimeEl, errorEl, images, imageInputEl) {
   errorEl.textContent = "";
   const text = textEl.value.trim();
   if (!text) {
@@ -1371,13 +1464,17 @@ async function saveEditPost(id, textEl, datetimeEl, errorEl) {
     errorEl.textContent = "예약 시각은 현재보다 미래여야 합니다.";
     return;
   }
+  if (imageInputEl?.disabled) {
+    errorEl.textContent = "사진 업로드가 끝난 뒤 저장해주세요.";
+    return;
+  }
 
   showLoading("수정하고 있어요...");
   try {
     const res = await fetch(`/api/schedule/${id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ text, scheduledAt: scheduledAt.toISOString() }),
+      body: JSON.stringify({ text, scheduledAt: scheduledAt.toISOString(), images }),
     });
     const data = await res.json();
     if (!res.ok) throw new Error(data.error || "수정에 실패했습니다.");

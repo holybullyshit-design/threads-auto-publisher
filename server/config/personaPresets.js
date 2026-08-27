@@ -47,7 +47,8 @@ const PERSONA_PRESETS = {
       { id: "parenting", label: "양육고민", description: "부모-자녀 갈등, 훈육 방향에 대한 고민" },
       { id: "peer-relations", label: "또래관계", description: "친구 관계에서 겪는 어려움" },
       { id: "development", label: "적응/발달", description: "낯가림, 적응, 발달 속도에 대한 걱정" },
-      { id: "pregnancy", label: "임신운", description: "임신 계획과 시기에 대한 흐름" },
+      // "임신운"은 절대 추가하지 않는다 — 난임으로 힘든 사람에게 상처가 될 수 있는 주제라
+      // 2026-08-27에 완전히 제외하기로 결정함 (sajuDraftWriter.js의 금지 주제 규칙 참고).
     ],
     styleGuide: `- 존댓말체("~습니다", "~있습니다")로 정중하고 다정한 부모 상담 톤을 유지한다. 반말은 절대 쓰지 않는다.
 - 제목을 "〈...아이 사주〉" 형태(홑화살괄호)로 짧게 뽑아 첫 줄에 둔다.
