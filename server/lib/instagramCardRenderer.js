@@ -40,6 +40,13 @@ async function renderFortunePackage(pkg, { pages = [0, 1, 2, 3, 4, 5, 6], format
     const output = [];
     for (const pageIndex of pages) {
       await page.evaluate(async (payload, index) => window.PaljaCards.renderPackage(payload, index), pkg, pageIndex);
+      await page.evaluate(() => {
+        const canvas = document.querySelector("#card");
+        canvas.style.setProperty("width", "1080px", "important");
+        canvas.style.setProperty("height", "1350px", "important");
+        canvas.style.setProperty("max-width", "none", "important");
+        canvas.style.setProperty("max-height", "none", "important");
+      });
       // Element screenshots work even when local image assets make the canvas
       // "tainted" under Chromium's file:// cross-origin rules on Linux CI.
       const canvas = await page.$("#card");
