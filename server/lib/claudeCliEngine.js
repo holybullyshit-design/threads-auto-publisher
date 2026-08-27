@@ -13,7 +13,7 @@ const TIMEOUT_MS = 120000; // 2분
 
 function runSkill({ system, userMessage }) {
   return new Promise((resolve, reject) => {
-    execFile(
+    const child = execFile(
       "claude",
       [
         "-p",
@@ -55,6 +55,11 @@ function runSkill({ system, userMessage }) {
         resolve(String(data.result || "").trim());
       }
     );
+    // stdin을 아무것도 안 주고 열어두면, claude CLI가 "입력을 기다려야 하나?" 하고 몇 초
+    // 대기하다가 경고를 찍는 경우가 있다(짧은 호출을 여러 번 연달아 부를 때 특히 잘 걸림).
+    // 어차피 이 호출은 인자로 프롬프트를 다 넘기고 stdin은 안 쓰므로, 즉시 EOF를 줘서
+    // "입력 없음"을 바로 알려준다.
+    child.stdin.end();
   });
 }
 
