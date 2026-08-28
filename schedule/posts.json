@@ -1025,7 +1025,7 @@
       "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@b94136b509206a4ae4ff6b9be693b1503496c2f1/images/palja-2026-08-29-6.jpg",
       "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@b94136b509206a4ae4ff6b9be693b1503496c2f1/images/palja-2026-08-29-7.jpg"
     ],
-    "status": "scheduled",
+    "status": "published",
     "scheduledAt": "2026-08-28T21:00:00.000Z",
     "expectedLocalDate": "2026-08-29",
     "exactTimeKst": "06:00",
@@ -1037,8 +1037,8 @@
       "checks": 8
     },
     "createdAt": "2026-08-27T01:43:13.468Z",
-    "publishedAt": null,
-    "publishedId": null,
+    "publishedAt": "2026-08-28T21:01:42.942Z",
+    "publishedId": "17990977554012560",
     "error": null,
     "retryCount": 0
   },
