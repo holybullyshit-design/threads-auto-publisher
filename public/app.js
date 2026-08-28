@@ -1301,6 +1301,17 @@ function renderPostCards(container, posts, emptyText) {
     const replyHtml = post.replyText
       ? `<div class="schedule-item-reply">💬 답글: ${escapeHtml(post.replyText)}</div>`
       : "";
+    // 팔자장인 스타일: 본문 뒤에 이어지는 답글 여러 개(클리프행어 스레드). 총 파트 수 대비
+    // 몇 번째인지 보여줘서, 예약 목록에서도 이어지는 스레드라는 게 한눈에 보이게 한다.
+    const totalParts = 1 + (Array.isArray(post.replyChain) ? post.replyChain.length : 0);
+    const chainHtml = Array.isArray(post.replyChain) && post.replyChain.length
+      ? post.replyChain
+          .map(
+            (part, i) =>
+              `<div class="schedule-item-chain-part"><span class="schedule-item-chain-label">${i + 2}/${totalParts}</span>${escapeHtml(part)}</div>`
+          )
+          .join("")
+      : "";
 
     if ((post.status === "scheduled" || post.status === "failed") && state.editingPostId === post.id) {
       // 수정 폼 — 본문/예약 시각뿐 아니라 예약에 연결된 사진도 추가·삭제할 수 있다.
@@ -1405,7 +1416,8 @@ function renderPostCards(container, posts, emptyText) {
         <span>${platformLabel} · ${escapeHtml(post.accountLabel || "계정 미상")} · 예약: ${when}</span>
         <span class="status-badge ${statusClass}">${statusLabel}</span>
       </div>
-      <div class="schedule-item-text">${escapeHtml(post.text)}</div>
+      <div class="schedule-item-text">${totalParts > 1 ? `<span class="schedule-item-chain-label">1/${totalParts}</span>` : ""}${escapeHtml(post.text)}</div>
+      ${chainHtml}
       ${imagesHtml}
       ${replyHtml}
       ${

@@ -1192,3 +1192,27 @@ textarea#draft-text {
   margin-bottom: 8px;
   white-space: pre-wrap;
 }
+
+/* 팔자장인 스타일: 본문 뒤에 이어지는 답글 여러 개(클리프행어 스레드) */
+.schedule-item-chain-part {
+  font-size: 13px;
+  color: var(--text);
+  background: var(--bg-elevated);
+  border-left: 2px solid var(--card-border-hover);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 8px 10px;
+  margin-bottom: 6px;
+  white-space: pre-wrap;
+}
+
+.schedule-item-chain-label {
+  display: inline-block;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--text-faint);
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 5px;
+  padding: 1px 6px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
