@@ -253,8 +253,8 @@ const BRIDGE_STYLES = [
   `별도의 "기분 탓 아니다"류 연결 문장 없이, 곧바로 명리학적 설명으로 자연스럽게 넘어간다.`,
 ];
 
-function buildSystemPrompt(factsBlock, cta, partCount, hookFormat, bridgeStyle) {
-  return `당신은 한국 Threads(스레드)에서 "종합사주" 콘텐츠를 연재하는 계정 "팔자장인"의 전속 작가입니다.
+function buildSystemPrompt(factsBlock, cta, partCount, hookFormat, bridgeStyle, accountLabel) {
+  return `당신은 한국 Threads(스레드)에서 "종합사주" 콘텐츠를 연재하는 계정 "${accountLabel}"의 전속 작가입니다.
 이 계정은 연리지실타래/아해사주/팔자명가 같은 고정 페르소나 계정과 다릅니다 — 소재마다 스타일이 다양하고,
 목표는 댓글 유도가 아니라 "많은 사람이 끝까지 읽고 프로필까지 눌러보게" 만드는 조회수/체류시간입니다.
 매번 같은 틀로 찍어내면 안 됩니다 — 이번 글에 배정된 훅 형태/연결 방식을 그대로 따르세요.
@@ -294,11 +294,14 @@ ${factsBlock}
 - "복채", "스.하.리.팔" 같은 캐릭터성 결제 유도 문구는 쓰지 않는다.`;
 }
 
-function buildUserMessage(topic) {
-  return `소재: ${topic.label} (${topic.format})\n\n위 [검증된 사실]만 근거로, 팔자장인 계정 스타일의 클리프행어 스레드를 작성해줘.`;
+function buildUserMessage(topic, accountLabel) {
+  return `소재: ${topic.label} (${topic.format})\n\n위 [검증된 사실]만 근거로, ${accountLabel} 계정 스타일의 클리프행어 스레드를 작성해줘.`;
 }
 
-async function writeThreadDraft({ dateKey, topicId, hookFormatId } = {}) {
+// accountLabel: 이 엔진(소재 뱅크 + 구조)을 공유하는 여러 "종합사주" 계정을 구분하기 위한 이름.
+// 팔자장인 외에 같은 포맷으로 운영하는 계정(예: 팔자궤도)이 늘어나도 이 파일 하나로 처리한다 —
+// 계정마다 다른 건 이름뿐, 소재/훅/클리프행어/CTA 구조는 전부 동일하게 유지해야 바이럴 공식이 깨지지 않는다.
+async function writeThreadDraft({ dateKey, topicId, hookFormatId, accountLabel = "팔자장인" } = {}) {
   const topic = topicId ? TOPICS.find((t) => t.id === topicId) : pickRandom(TOPICS);
   if (!topic) throw Object.assign(new Error(`알 수 없는 소재: ${topicId}`), { status: 400 });
   const hookFormat = hookFormatId ? HOOK_FORMATS.find((h) => h.id === hookFormatId) : pickRandom(HOOK_FORMATS);
@@ -310,8 +313,8 @@ async function writeThreadDraft({ dateKey, topicId, hookFormatId } = {}) {
   const partCount = 3 + Math.floor(Math.random() * 3); // 3~5
 
   const raw = await runSkill({
-    system: buildSystemPrompt(factsBlock, cta, partCount, hookFormat, bridgeStyle),
-    userMessage: buildUserMessage(topic),
+    system: buildSystemPrompt(factsBlock, cta, partCount, hookFormat, bridgeStyle, accountLabel),
+    userMessage: buildUserMessage(topic, accountLabel),
   });
 
   const parts = raw
