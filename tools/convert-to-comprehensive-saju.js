@@ -5,6 +5,9 @@
 //   2) taebaekSajuDraftWriter 엔진(팔자장인과 동일, accountLabel만 다름)으로 새 글을 생성해서
 //      "지금부터 종료일까지" 하루 3슬롯(10:30/15:00/19:30 KST, 지난 슬롯은 건너뜀)에 채운다
 //
+// 한 건씩 생성되는 즉시 저장한다(끝에 한 번에 저장하지 않음) - claude CLI가 가끔 타임아웃 나는데
+// (2026-08-28 실측: 9개 중 8번째에서 타임아웃) 끝에 몰아서 저장하면 그 전까지 성공한 것도 다 날아간다.
+//
 // 사용법: node tools/convert-to-comprehensive-saju.js "<계정라벨>" <종료일 YYYY-MM-DD>
 // 예:     node tools/convert-to-comprehensive-saju.js "팔자명가" 2026-08-31
 
@@ -18,6 +21,7 @@ const { writeThreadDraft, pickTopicIds, pickHookFormatIds } = require("../server
 const ACCOUNT_LABEL = process.argv[2];
 const END_DATE = process.argv[3]; // "YYYY-MM-DD" (KST 기준, 이 날짜까지 포함)
 const DAILY_SLOTS_KST = ["10:30", "15:00", "19:30"];
+const RETRY_ATTEMPTS = 3;
 
 if (!ACCOUNT_LABEL || !END_DATE) {
   console.error('사용법: node tools/convert-to-comprehensive-saju.js "<계정라벨>" <종료일 YYYY-MM-DD>');
@@ -71,6 +75,40 @@ async function cancelExistingThreadsSchedule(accountId) {
   return canceledCount;
 }
 
+async function writeThreadDraftWithRetry(args) {
+  let lastErr;
+  for (let attempt = 1; attempt <= RETRY_ATTEMPTS; attempt++) {
+    try {
+      return await writeThreadDraft(args);
+    } catch (err) {
+      lastErr = err;
+      console.log(`  (시도 ${attempt}/${RETRY_ATTEMPTS} 실패: ${err.message} - 재시도)`);
+    }
+  }
+  throw lastErr;
+}
+
+async function saveOnePost(account, draft, when) {
+  const { posts, sha } = await readSchedule();
+  const basePosts = posts.slice();
+  const newPost = {
+    id: crypto.randomUUID(),
+    accountId: account.id,
+    accountLabel: account.label,
+    text: draft.text,
+    replyChain: draft.replyChain,
+    status: "scheduled",
+    scheduledAt: when.toISOString(),
+    createdAt: new Date().toISOString(),
+    publishedAt: null,
+    publishedId: null,
+    error: null,
+  };
+  const merged = posts.concat([newPost]);
+  await writeSchedule(merged, { sha, message: `chore: schedule 1 post for ${ACCOUNT_LABEL}`, basePosts });
+  return newPost;
+}
+
 async function main() {
   const account = findAccount();
   if (!account) {
@@ -91,40 +129,30 @@ async function main() {
 
   const topicIds = pickTopicIds(slots.length);
   const hookFormatIds = pickHookFormatIds(slots.length);
-  const newPosts = [];
+  let savedCount = 0;
 
   for (let i = 0; i < slots.length; i++) {
     const { dateStr, slot } = slots[i];
     console.log(`[${i + 1}/${slots.length}] 생성 중... (예정: ${dateStr} ${slot} KST)`);
-    const draft = await writeThreadDraft({
-      dateKey: dateStr,
-      topicId: topicIds[i],
-      hookFormatId: hookFormatIds[i],
-      accountLabel: ACCOUNT_LABEL,
-    });
+    let draft;
+    try {
+      draft = await writeThreadDraftWithRetry({
+        dateKey: dateStr,
+        topicId: topicIds[i],
+        hookFormatId: hookFormatIds[i],
+        accountLabel: ACCOUNT_LABEL,
+      });
+    } catch (err) {
+      console.log(`  -> ${RETRY_ATTEMPTS}번 다 실패, 이 슬롯은 건너뜀: ${err.message}`);
+      continue;
+    }
     const when = withJitter(kstSlotToUtc(dateStr, slot));
-    newPosts.push({
-      id: crypto.randomUUID(),
-      accountId: account.id,
-      accountLabel: account.label,
-      text: draft.text,
-      replyChain: draft.replyChain,
-      status: "scheduled",
-      scheduledAt: when.toISOString(),
-      createdAt: new Date().toISOString(),
-      publishedAt: null,
-      publishedId: null,
-      error: null,
-    });
-    console.log(`  -> 소재: ${draft.topic} / 훅: ${draft.hookFormat} / 파트 ${1 + draft.replyChain.length}개`);
+    await saveOnePost(account, draft, when);
+    savedCount++;
+    console.log(`  -> 저장됨. 소재: ${draft.topic} / 훅: ${draft.hookFormat} / 파트 ${1 + draft.replyChain.length}개`);
   }
 
-  const { posts, sha } = await readSchedule();
-  const basePosts = posts.slice();
-  const merged = posts.concat(newPosts);
-  await writeSchedule(merged, { sha, message: `feat: ${ACCOUNT_LABEL} 종합사주 전환 - ${END_DATE}까지 ${newPosts.length}건 예약`, basePosts });
-
-  console.log(`\n완료: ${ACCOUNT_LABEL} 계정 - 기존 ${canceled}건 취소, 신규 ${newPosts.length}건 예약 (${END_DATE}까지).`);
+  console.log(`\n완료: ${ACCOUNT_LABEL} 계정 - 기존 ${canceled}건 취소, 신규 ${savedCount}/${slots.length}건 예약 (${END_DATE}까지).`);
 }
 
 main().catch((err) => {
