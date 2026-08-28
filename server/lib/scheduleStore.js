@@ -32,6 +32,7 @@ async function addScheduledPost({ accountId, accountLabel, text, scheduledAt, im
   const when = withJitter(requested);
 
   const { posts, sha } = await readSchedule();
+  const basePosts = posts.slice(); // 새 글만 추가하므로 얕은 복사로 충분(기존 글은 안 건드림)
   const newPost = {
     id: crypto.randomUUID(),
     accountId,
@@ -47,7 +48,7 @@ async function addScheduledPost({ accountId, accountLabel, text, scheduledAt, im
     error: null,
   };
   posts.push(newPost);
-  await writeSchedule(posts, { sha, message: `chore: schedule post ${newPost.id}` });
+  await writeSchedule(posts, { sha, message: `chore: schedule post ${newPost.id}`, basePosts });
   return newPost;
 }
 
@@ -56,6 +57,7 @@ async function addScheduledPost({ accountId, accountLabel, text, scheduledAt, im
 async function addInstagramBatch(items) {
   if (!Array.isArray(items) || items.length === 0) throw Object.assign(new Error("예약할 Instagram 콘텐츠가 없습니다."), { status: 400 });
   const { posts, sha } = await readSchedule();
+  const basePosts = posts.slice(); // 새 글만 추가하므로 얕은 복사로 충분
   const existingKeys = new Set(posts.filter((post) => post.status !== "canceled").map((post) => post.dedupeKey).filter(Boolean));
   const newPosts = [];
   for (const item of items) {
@@ -88,7 +90,7 @@ async function addInstagramBatch(items) {
     newPosts.push(post);
     existingKeys.add(dedupeKey);
   }
-  await writeSchedule(posts, { sha, message: `chore: schedule ${newPosts.length} Instagram daily fortunes` });
+  await writeSchedule(posts, { sha, message: `chore: schedule ${newPosts.length} Instagram daily fortunes`, basePosts });
   return newPosts;
 }
 
@@ -106,6 +108,7 @@ async function listRecentTextsForAccount(accountId, { limit = 15 } = {}) {
 // "지금 게시"로 즉시 올린 글도 기록에 남겨서, 다음 초안 생성 때 중복을 피할 수 있게 한다.
 async function recordImmediatePublish({ accountId, accountLabel, text, publishedId, images, replyText }) {
   const { posts, sha } = await readSchedule();
+  const basePosts = posts.slice(); // 새 글만 추가하므로 얕은 복사로 충분
   const now = new Date().toISOString();
   const newPost = {
     id: crypto.randomUUID(),
@@ -122,7 +125,7 @@ async function recordImmediatePublish({ accountId, accountLabel, text, published
     error: null,
   };
   posts.push(newPost);
-  await writeSchedule(posts, { sha, message: `chore: record immediate publish ${newPost.id}` });
+  await writeSchedule(posts, { sha, message: `chore: record immediate publish ${newPost.id}`, basePosts });
   return newPost;
 }
 
@@ -132,6 +135,7 @@ async function recordImmediatePublish({ accountId, accountLabel, text, published
 // 자체로 "다시 시도해달라"는 뜻으로 보고 자동으로 예약 대기열(scheduled)에 다시 올린다.
 async function updateScheduledPost(id, { text, scheduledAt, images, replyText } = {}) {
   const { posts, sha } = await readSchedule();
+  const basePosts = JSON.parse(JSON.stringify(posts)); // target을 그 자리에서 바로 고칠 거라, 그 전 스냅샷을 떠둔다
   const target = posts.find((p) => p.id === id);
   if (!target) {
     const err = new Error(`예약 글을 찾을 수 없습니다: ${id}`);
@@ -179,7 +183,7 @@ async function updateScheduledPost(id, { text, scheduledAt, images, replyText } 
     target.replyText = replyText || undefined;
   }
 
-  await writeSchedule(posts, { sha, message: `chore: update scheduled post ${id}` });
+  await writeSchedule(posts, { sha, message: `chore: update scheduled post ${id}`, basePosts });
   return target;
 }
 
@@ -221,6 +225,7 @@ async function rebalanceTimes({ accountId, times, kind = "all" }) {
   }
 
   const { posts, sha } = await readSchedule();
+  const basePosts = JSON.parse(JSON.stringify(posts)); // 여러 글의 scheduledAt을 그 자리에서 고칠 거라 미리 스냅샷
   const targets = posts.filter((p) => {
     if (p.accountId !== accountId || p.status !== "scheduled") return false;
     if (kind === "product") return Boolean(p.replyText);
@@ -250,12 +255,14 @@ async function rebalanceTimes({ accountId, times, kind = "all" }) {
   await writeSchedule(posts, {
     sha,
     message: `chore: rebalance schedule times for account ${accountId} (${kind})`,
+    basePosts,
   });
   return { updated, days: byDate.size };
 }
 
 async function cancelScheduledPost(id) {
   const { posts, sha } = await readSchedule();
+  const basePosts = JSON.parse(JSON.stringify(posts)); // target을 그 자리에서 바로 고칠 거라, 그 전 스냅샷을 떠둔다
   const target = posts.find((p) => p.id === id);
   if (!target) {
     const err = new Error(`예약 글을 찾을 수 없습니다: ${id}`);
@@ -268,7 +275,7 @@ async function cancelScheduledPost(id) {
     throw err;
   }
   target.status = "canceled";
-  await writeSchedule(posts, { sha, message: `chore: cancel scheduled post ${id}` });
+  await writeSchedule(posts, { sha, message: `chore: cancel scheduled post ${id}`, basePosts });
   return target;
 }
 

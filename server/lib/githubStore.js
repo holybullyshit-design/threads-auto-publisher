@@ -61,8 +61,31 @@ async function readSchedule() {
   return { posts, sha: data.sha };
 }
 
-// posts 배열 전체를 다시 저장한다. 동시 수정 충돌(409/422) 시 1회 재시도한다.
-async function writeSchedule(posts, { sha, message } = {}, attempt = 0) {
+// base(우리가 읽었던 시점의 스냅샷) 대비 mine(우리가 수정한 결과)에서 실제로 바뀌었거나
+// 새로 추가/삭제된 글만 골라서, remote(그 사이 다른 곳이 새로 커밋한 최신 내용) 위에 얹는다.
+// 이렇게 하면 "그 사이 GitHub Actions가 다른 글을 발행완료로 바꾼 것"까지 우리가 실수로
+// 덮어써서 되돌리는 일을 막을 수 있다 — 우리가 손댄 글만 반영하고 나머지는 remote 그대로 둔다.
+function rebaseOnto(remote, base, mine) {
+  const baseById = new Map(base.map((p) => [p.id, p]));
+  const changedOrNew = mine.filter((p) => {
+    const before = baseById.get(p.id);
+    return !before || JSON.stringify(before) !== JSON.stringify(p);
+  });
+  const mineIds = new Set(mine.map((p) => p.id));
+  const removedIds = new Set(base.filter((p) => !mineIds.has(p.id)).map((p) => p.id));
+
+  const merged = new Map(remote.map((p) => [p.id, p]));
+  changedOrNew.forEach((p) => merged.set(p.id, p));
+  removedIds.forEach((id) => merged.delete(id));
+
+  return Array.from(merged.values());
+}
+
+// posts 배열 전체를 다시 저장한다. 동시 수정 충돌(409/422) 시, basePosts(수정 전 스냅샷)가
+// 있으면 우리가 실제로 바꾼 부분만 최신 내용 위에 다시 얹어서(rebase) 1회 재시도한다.
+// basePosts가 없으면(과거 호출부 호환용) 예전처럼 통째로 덮어쓴다 — 이 경우 그 사이 다른
+// 곳의 변경을 덮어쓸 위험이 있으니, 새로 쓰는 코드는 반드시 basePosts를 넘길 것.
+async function writeSchedule(posts, { sha, message, basePosts } = {}, attempt = 0) {
   const { repo } = getConfig();
   const content = Buffer.from(JSON.stringify(posts, null, 2), "utf8").toString("base64");
 
@@ -82,9 +105,12 @@ async function writeSchedule(posts, { sha, message } = {}, attempt = 0) {
   }
 
   if ((res.status === 409 || res.status === 422) && attempt === 0) {
-    // 다른 곳(Actions 등)에서 먼저 커밋한 경우: 최신 sha를 다시 읽어 한 번 재시도
+    // 다른 곳(Actions 등)에서 먼저 커밋한 경우: 최신 내용을 다시 읽어서
+    // - basePosts가 있으면: 우리가 실제로 바꾼 글만 최신 내용 위에 얹어서 재시도
+    // - 없으면: 예전 동작대로 그냥 우리 posts로 덮어써서 재시도(위험 감수)
     const latest = await readSchedule();
-    return writeSchedule(posts, { sha: latest.sha, message }, attempt + 1);
+    const rebased = basePosts ? rebaseOnto(latest.posts, basePosts, posts) : posts;
+    return writeSchedule(rebased, { sha: latest.sha, message, basePosts }, attempt + 1);
   }
 
   const body = await res.json().catch(() => ({}));
