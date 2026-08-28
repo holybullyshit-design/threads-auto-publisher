@@ -76,6 +76,66 @@ async function main() {
       continue;
     }
 
+    // "팔자장인" 스타일: 본문 + 답글 여러 개가 이어지는 클리프행어 스레드.
+    // chainPublishedIds에 "지금까지 실제로 올라간 파트들의 id"를 순서대로 기록해두고,
+    // 재시도할 땐 거기부터 이어서 게시한다 — 안 그러면 재시도할 때마다 이미 올라간
+    // 앞부분까지 중복으로 다시 올라갈 위험이 있다.
+    if (Array.isArray(post.replyChain) && post.replyChain.length > 0) {
+      const chainAccounts = loadAccounts();
+      const chainAccount = chainAccounts.find((a) => a.id === post.accountId);
+      if (!chainAccount) {
+        post.status = "failed";
+        post.error = `계정을 찾을 수 없습니다 (accountId: ${post.accountId}). THREADS_ACCOUNTS_JSON 시크릿을 최신 상태로 갱신해주세요.`;
+        console.error(`[실패] ${post.id}: ${post.error}`);
+        continue;
+      }
+      try {
+        const progress = Array.isArray(post.chainPublishedIds) ? post.chainPublishedIds : [];
+        let lastId = progress.length ? progress[progress.length - 1] : null;
+
+        if (progress.length === 0) {
+          const result = await publishTextPost({
+            text: post.text,
+            accessToken: chainAccount.accessToken,
+            threadsUserId: chainAccount.threadsUserId,
+          });
+          progress.push(result.publishedId);
+          post.chainPublishedIds = progress;
+          post.publishedId = result.publishedId; // 대표 id = 본문
+          lastId = result.publishedId;
+        }
+
+        // progress[0]=본문이므로, 아직 안 올라간 답글은 (progress.length - 1)번째부터.
+        const remainingParts = post.replyChain.slice(progress.length - 1);
+        for (const part of remainingParts) {
+          const reply = await publishTextPost({
+            text: part,
+            replyToId: lastId,
+            accessToken: chainAccount.accessToken,
+            threadsUserId: chainAccount.threadsUserId,
+          });
+          progress.push(reply.publishedId);
+          post.chainPublishedIds = progress;
+          lastId = reply.publishedId;
+        }
+
+        post.status = "published";
+        post.publishedAt = new Date().toISOString();
+        post.error = null;
+        console.log(`[팔자장인 체인 성공] ${post.id} → ${progress.length}파트 전부 게시`);
+      } catch (err) {
+        post.retryCount = (post.retryCount || 0) + 1;
+        post.error = err.message;
+        if (post.retryCount < MAX_AUTO_RETRIES) {
+          console.error(`[팔자장인 체인 재시도 예정 ${post.retryCount}/${MAX_AUTO_RETRIES}, 지금까지 ${(post.chainPublishedIds || []).length}파트 완료] ${post.id}: ${err.message}`);
+        } else {
+          post.status = "failed";
+          console.error(`[팔자장인 체인 최종 실패] ${post.id}: ${err.message}`);
+        }
+      }
+      continue;
+    }
+
     const accounts = loadAccounts();
     const account = accounts.find((a) => a.id === post.accountId);
     if (!account) {

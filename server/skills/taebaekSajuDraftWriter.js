@@ -1,0 +1,270 @@
+// "팔자장인" 계정 전용 — 종합사주 클리프행어 스레드(본문 + 답글 이어달기) 생성 스킬.
+// 다른 3계정(연리지실타래/아해사주/팔자명가)과 달리:
+//  - 고정 페르소나 목소리가 아니라 소재마다 다양한 스타일
+//  - 댓글 유도가 아니라 조회수/체류시간이 목표 (프로필 링크 CTA)
+//  - 본문에서 문장을 끊고 답글로 이어지는 "클리프행어" 구조, 파트 수는 3~5개로 유동적
+//  - 사주 이론은 AI가 기억으로 지어내지 않고, sajuFacts.js가 미리 계산한 "검증된 사실"만 사용
+
+const { runSkill } = require("../lib/claudeCliEngine");
+const {
+  ANIMALS,
+  STEMS_KO,
+  STEM_ELEMENT,
+  SIPSEONG_TABLE,
+  YANGIN_TABLE,
+  CHEONEULGWIIN_TABLE,
+  branchLabel,
+  getSamhapRoles,
+  getSamjaeInfo,
+  getVerifiedCalendarFacts,
+} = require("../lib/sajuFacts");
+
+const CTA_POOL = [
+  "여기까지 읽었으면, 이미 궁금해진 겁니다. 프로필로 넘어와서 확인해보세요.",
+  "아는 사람은 미리 대비하고, 모르는 사람은 나중에 놀랍니다. 프로필에서 확인해보세요.",
+  "내 사주는 어느 쪽일까요? 프로필로 와서 직접 확인해보세요.",
+  "지금이 물어보기 딱 좋은 시점입니다. 프로필 확인해보세요.",
+  "궁금하면 편하게 프로필로 넘어오세요. 직접 봐드릴게요.",
+  "정확한 건 원국을 봐야 나옵니다. 프로필에서 확인해보세요.",
+  "남 얘기 같아도, 내 얘기일 수 있습니다. 프로필에서 확인해보세요.",
+  "궁금한 채로 넘기지 마세요. 지금 프로필 눌러서 확인해보세요.",
+  "몰랐다고 피해가는 게 아닙니다. 미리 알고 준비하세요. 프로필에서 확인해보세요.",
+];
+
+function pickRandom(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+// 순수 무작위 추첨(pickRandom)만으로 한 번에 여러 개를 뽑으면, 확률상 같은 소재가
+// 몰리는 경우가 실제로 생긴다(2026-08-28 실측: 11개 중 도화살이 6번). 그래서 여러 개를
+// 한 번에 뽑을 땐 "카드 뭉치를 섞어서 한 바퀴 다 돌고 나서야 다시 섞는" 셔플백 방식을
+// 써서, 전체 소재가 최대한 고르게 나오도록 강제한다.
+function shuffled(arr) {
+  const copy = [...arr];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+
+function pickTopicIds(count, topicIds = TOPICS.map((t) => t.id)) {
+  const result = [];
+  let bag = [];
+  while (result.length < count) {
+    if (bag.length === 0) bag = shuffled(topicIds);
+    result.push(bag.pop());
+  }
+  return result;
+}
+
+// 소재 뱅크 — 각 항목이 build(dateKey)를 실행하면, 그 소재에 필요한 "검증된 사실 블록"
+// 문자열을 만들어준다. AI는 이 사실만 근거로 쓰고, 새로운 명리학 규칙을 지어내면 안 된다.
+const TOPICS = [
+  {
+    id: "yeokma",
+    label: "역마살(띠 기반)",
+    format: "성격/시기형",
+    build(dateKey) {
+      const groupIdx = Math.floor(Math.random() * 4);
+      const group = ["인오술(화국)", "신자진(수국)", "사유축(금국)", "해묘미(목국)"][groupIdx];
+      const seedBranch = { "인오술(화국)": 2, "신자진(수국)": 8, "사유축(금국)": 5, "해묘미(목국)": 11 }[group];
+      const roles = getSamhapRoles(seedBranch);
+      const memberAnimals = roles.group.branches.map((b) => ANIMALS[b]).join("·");
+      return `[검증된 사실 - 역마살]
+대상 띠: ${memberAnimals}띠 (${roles.group.name})
+역마 자리: ${branchLabel(roles.역마)}
+판별법: 위 띠로 태어난 사람의 사주 원국 어딘가에 역마 자리(${branchLabel(roles.역마)})가 있으면 역마살이 성립한다.
+성격/의미: 역마는 움직임·이동·변화의 기운. 원국이 안정적이면 이직/이사/여행이 좋은 쪽으로 풀리는 역마, 원국이 흔들리는 상태에서 겹치면 불안해서 도망치고 싶은 역마로 갈린다.`;
+    },
+  },
+  {
+    id: "dohwa",
+    label: "도화살(띠 기반)",
+    format: "성격형",
+    build() {
+      const groupIdx = Math.floor(Math.random() * 4);
+      const group = ["인오술(화국)", "신자진(수국)", "사유축(금국)", "해묘미(목국)"][groupIdx];
+      const seedBranch = { "인오술(화국)": 2, "신자진(수국)": 8, "사유축(금국)": 5, "해묘미(목국)": 11 }[group];
+      const roles = getSamhapRoles(seedBranch);
+      const memberAnimals = roles.group.branches.map((b) => ANIMALS[b]).join("·");
+      return `[검증된 사실 - 도화살]
+대상 띠: ${memberAnimals}띠 (${roles.group.name})
+도화 자리: ${branchLabel(roles.도화)}
+판별법: 위 띠로 태어난 사람의 사주 원국 어딘가에 도화 자리(${branchLabel(roles.도화)})가 있으면 도화살이 성립한다.
+성격/의미: 본인 의지와 무관하게 사람을 끌어당기는 매력. 원국에서 힘 있게 자리잡으면 매력으로 쓰이고, 원국이 흔들리는 상태에서 겹치면 관계가 계속 꼬이는 소모전이 된다.`;
+    },
+  },
+  {
+    id: "hwagae",
+    label: "화개살(띠 기반)",
+    format: "성격형",
+    build() {
+      const groupIdx = Math.floor(Math.random() * 4);
+      const group = ["인오술(화국)", "신자진(수국)", "사유축(금국)", "해묘미(목국)"][groupIdx];
+      const seedBranch = { "인오술(화국)": 2, "신자진(수국)": 8, "사유축(금국)": 5, "해묘미(목국)": 11 }[group];
+      const roles = getSamhapRoles(seedBranch);
+      const memberAnimals = roles.group.branches.map((b) => ANIMALS[b]).join("·");
+      return `[검증된 사실 - 화개살]
+대상 띠: ${memberAnimals}띠 (${roles.group.name})
+화개 자리: ${branchLabel(roles.화개)}
+판별법: 위 띠로 태어난 사람의 사주 원국 어딘가에 화개 자리(${branchLabel(roles.화개)})가 있으면 화개살이 성립한다.
+성격/의미: 밖으로 뻗치기보다 안으로 응축·몰입하는 기운. 예술·종교·학문 쪽으로 잘 풀리는 살이며(옛날엔 수행자 팔자로도 봄), 원국이 약하면 몰입이 아니라 고립으로 흐르기도 한다.`;
+    },
+  },
+  {
+    id: "yangin",
+    label: "양인살(일간 기반)",
+    format: "성격형",
+    build() {
+      const stems = Object.keys(YANGIN_TABLE);
+      const stem = pickRandom(stems);
+      const branch = YANGIN_TABLE[stem];
+      return `[검증된 사실 - 양인살]
+대상 일간: ${stem}(${STEM_ELEMENT[STEMS_KO.indexOf(stem)]}) 일간
+양인 자리: ${branchLabel(branch)}
+판별법: 일간이 ${stem}인 사람의 사주에 ${branchLabel(branch)} 자리가 있으면 양인살이 성립한다(양간에만 적용되는 정통 판별법).
+성격/의미: 일간 기운이 가장 날카롭게 선 자리. 결단력·추진력·승부욕이 강함. 군인·의사·운동선수처럼 결단이 필요한 자리에선 무기가 되지만, 쓸 곳이 없으면 가까운 사람에게 날이 향하기도 한다.`;
+    },
+  },
+  {
+    id: "cheoneulgwiin",
+    label: "천을귀인(일간 기반)",
+    format: "성격/길신형",
+    build() {
+      const stems = Object.keys(CHEONEULGWIIN_TABLE);
+      const stem = pickRandom(stems);
+      const branches = CHEONEULGWIIN_TABLE[stem];
+      return `[검증된 사실 - 천을귀인]
+대상 일간: ${stem} 일간
+귀인 자리: ${branches.map(branchLabel).join(", ")}
+판별법: 일간이 ${stem}인 사람의 사주 원국(년주·월주·일주·시주) 어딘가에 위 자리 중 하나라도 있으면 천을귀인이 성립한다.
+의미: 명리학에서 최고로 치는 길신. 다른 신살과 달리 거의 순수하게 좋은 쪽으로만 작용. 일지에 있으면 배우자/가까운 사람이, 시주에 있으면 노년에, 월주에 있으면 사회생활에서 귀인을 만난다. 원국이 탁하면 있어도 잘 안 쓰인다는 단서도 있음.`;
+    },
+  },
+  {
+    id: "sipseong-jaeseong",
+    label: "재성 시기(일간별 재물운)",
+    format: "시기형",
+    build(dateKey) {
+      const cal = getVerifiedCalendarFacts(dateKey);
+      const elements = ["목", "화", "토", "금", "수"];
+      const el = pickRandom(elements);
+      const jaeseong = SIPSEONG_TABLE[el].재성;
+      const bigeop = SIPSEONG_TABLE[el].비겁;
+      return `[검증된 사실 - 재성/시기]
+기준 날짜: ${cal.korean} (${cal.dateKey})
+이번 달 오행: ${cal.monthStemElement}
+대상 일간: ${el} 일간
+이 일간의 재성(財星, 재물운) 오행: ${jaeseong}
+이 일간의 비겁(比劫) 오행: ${bigeop}
+십성 원리: 일간과 같은 오행이 강해지는 시기(비겁운)엔 재성이 상대적으로 눌리고, 일간이 극(剋)하는 오행이 강해지는 시기(재성운)엔 재물운이 좋아진다.
+현재 이번 달 오행(${cal.monthStemElement})이 이 일간(${el})한테 비겁인지 재성인지 관계를 스스로 판단해서, 그 관계에 맞는 내용으로 쓸 것. (같은 오행=비겁, 일간이 극하는 오행=재성)`;
+    },
+  },
+  {
+    id: "sipseong-gwanseong",
+    label: "관성 시기(일간별 직장운)",
+    format: "시기형",
+    build(dateKey) {
+      const cal = getVerifiedCalendarFacts(dateKey);
+      const elements = ["목", "화", "토", "금", "수"];
+      const el = pickRandom(elements);
+      const gwanseong = SIPSEONG_TABLE[el].관성;
+      return `[검증된 사실 - 관성/시기]
+기준 날짜: ${cal.korean} (${cal.dateKey})
+이번 달 오행: ${cal.monthStemElement}
+대상 일간: ${el} 일간
+이 일간의 관성(官星, 직장·명예운) 오행: ${gwanseong}
+십성 원리: 일간을 극(剋)하는 오행이 관성이다 — 나를 통제하고 자리 잡게 만드는 힘.
+현재 이번 달 오행(${cal.monthStemElement})이 이 일간(${el})의 관성에 해당하는지 스스로 판단해서, 맞으면 "직장/조직에서 부딪히거나 인정받는 시기"로, 아니면 다른 십성 관계로 자연스럽게 풀어서 쓸 것.`;
+    },
+  },
+  {
+    id: "samjae",
+    label: "삼재(띠 기반)",
+    format: "시기형",
+    build() {
+      const groupIdx = Math.floor(Math.random() * 4);
+      const group = ["인오술(화국)", "신자진(수국)", "사유축(금국)", "해묘미(목국)"][groupIdx];
+      const seedBranch = { "인오술(화국)": 2, "신자진(수국)": 8, "사유축(금국)": 5, "해묘미(목국)": 11 }[group];
+      const info = getSamjaeInfo(seedBranch);
+      const memberAnimals = info.samhapGroup.branches.map((b) => ANIMALS[b]).join("·");
+      const samjaeYears = info.samjaeBanghap.branches.map((b) => ANIMALS[b]).join("·");
+      return `[검증된 사실 - 삼재]
+대상 띠: ${memberAnimals}띠 (${info.samhapGroup.name})
+삼재에 해당하는 방합: ${info.samjaeBanghap.name}
+삼재 3년의 띠(그 해의 지지): ${samjaeYears}
+판별법: ${memberAnimals}띠는 ${info.samjaeBanghap.name} 3년 동안 삼재를 겪는다(정통 방합 기준 공식).
+의미: 삼재라고 다 나쁜 게 아니다. 원국에 그 삼재 방합 오행이 이미 자리잡고 있으면 오히려 정리·결실의 시기로 풀리기도 한다.`;
+    },
+  },
+];
+
+function buildSystemPrompt(factsBlock, cta, partCount) {
+  return `당신은 한국 Threads(스레드)에서 "종합사주" 콘텐츠를 연재하는 계정 "팔자장인"의 전속 작가입니다.
+이 계정은 연리지실타래/아해사주/팔자명가 같은 고정 페르소나 계정과 다릅니다 — 소재마다 스타일이 다양하고,
+목표는 댓글 유도가 아니라 "많은 사람이 끝까지 읽고 프로필까지 눌러보게" 만드는 조회수/체류시간입니다.
+
+[반드시 지킬 구조 규칙]
+1. 본문(1개) + 답글(N-1개)로 구성된 "이어지는 스레드"를 쓴다. 전체 파트 수는 ${partCount}개.
+2. **클리프행어**: 본문과 답글 대부분을, 완결된 문장이 아니라 중간에 끊긴 채로 끝낸다(예: "이거 그냥" 처럼).
+   그리고 다음 파트 맨 앞에서 그 문장을 이어서 완성한다. 마지막 파트만 완결해도 된다.
+3. 본문은 짧고 구체적인 관찰/증상을 3~7개 번호로 나열하는 형태로 시작하는 경우가 많다(예: "1. ...  2. ...").
+   항목은 추상적("성격이 급하다")이 아니라 구체적인 행동/장면으로 쓴다(예: "결제하려다 손이 멈춘다").
+4. "이상하죠 / 기분 탓 아닙니다 / 명리로 설명되는 구조예요" 같은 톤으로, 관찰 -> 부정(우연 아님) -> 메커니즘
+   설명 순서로 풀어간다. 오행/십성/일간을 설명할 땐 가능하면 그 오행의 성질을 구체적 사물에 빗댄
+   은유(예: 계수=이슬, 신금=보석, 갑목=큰 나무)를 섞어서 기억에 남게 쓴다.
+5. 마지막 파트 끝에 아래 문장을 정확히 그대로 포함한다:
+   "${cta}"
+
+[절대 규칙 - 사실 근거]
+아래 [검증된 사실] 블록에 있는 명리학 판별법/관계만 사용한다. 여기 없는 새로운 신살 이름, 새로운 판별법,
+새로운 절기/간지 사실을 지어내지 않는다. 오행 상생상극(목생화·화생토·토생금·금생수·수생목 /
+목극토·토극수·수극화·화극금·금극목) 관계도 이 규칙대로만 쓴다.
+
+${factsBlock}
+
+[작성 규칙]
+- 결과물은 아래 형식으로만 출력한다. 그 외 설명/따옴표/마크다운 기호는 절대 붙이지 않는다:
+  각 파트를 "===PART===" 라는 구분선으로 나눠서, 파트 1부터 ${partCount}까지 순서대로 출력한다.
+- 파트 하나당 공백 포함 500자를 넘지 않는다(Threads 글자 수 제한).
+- 특정 개인을 저격하거나 실존 인물을 지목하지 않는다.
+- 미신을 맹신하게 하거나 근거 없는 의료/법률적 확언은 하지 않는다.
+- "복채", "스.하.리.팔" 같은 캐릭터성 결제 유도 문구는 쓰지 않는다.`;
+}
+
+function buildUserMessage(topic) {
+  return `소재: ${topic.label} (${topic.format})\n\n위 [검증된 사실]만 근거로, 팔자장인 계정 스타일의 클리프행어 스레드를 작성해줘.`;
+}
+
+async function writeThreadDraft({ dateKey, topicId } = {}) {
+  const topic = topicId ? TOPICS.find((t) => t.id === topicId) : pickRandom(TOPICS);
+  if (!topic) throw Object.assign(new Error(`알 수 없는 소재: ${topicId}`), { status: 400 });
+
+  const factsBlock = topic.build(dateKey || new Date().toISOString().slice(0, 10));
+  const cta = pickRandom(CTA_POOL);
+  const partCount = 3 + Math.floor(Math.random() * 3); // 3~5
+
+  const raw = await runSkill({
+    system: buildSystemPrompt(factsBlock, cta, partCount),
+    userMessage: buildUserMessage(topic),
+  });
+
+  const parts = raw
+    .split("===PART===")
+    .map((p) => p.trim())
+    .filter(Boolean);
+
+  if (parts.length < 2) {
+    throw new Error(`파트 구분에 실패했습니다(파트 ${parts.length}개). 원문: ${raw.slice(0, 200)}`);
+  }
+
+  return {
+    topic: topic.label,
+    text: parts[0],
+    replyChain: parts.slice(1),
+  };
+}
+
+module.exports = { writeThreadDraft, TOPICS, CTA_POOL, pickTopicIds };
