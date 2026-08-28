@@ -16,11 +16,11 @@
   </header>
 
   <nav class="tabs">
-    <button class="tab-btn selected" data-tab="compose">글쓰기</button>
+    <button class="tab-btn selected" data-tab="ops">관제탑</button>
+    <button class="tab-btn" data-tab="compose">글쓰기</button>
     <button class="tab-btn" data-tab="instagram">Instagram 운세</button>
     <button class="tab-btn" data-tab="schedule">예약 목록</button>
     <button class="tab-btn" data-tab="accounts">계정 관리</button>
-    <button class="tab-btn" data-tab="ops">관제탑</button>
   </nav>
 
   <section id="tab-instagram" class="tab-panel hidden">
@@ -76,7 +76,7 @@
   </section>
 
   <!-- ================= 글쓰기 탭 ================= -->
-  <section id="tab-compose" class="tab-panel">
+  <section id="tab-compose" class="tab-panel hidden">
 
     <!-- 화면 1: 설정 -->
     <div id="screen-settings" class="screen">
@@ -352,7 +352,7 @@
   </section>
 
   <!-- ================= 관제탑 탭 ================= -->
-  <section id="tab-ops" class="tab-panel hidden">
+  <section id="tab-ops" class="tab-panel">
     <div class="ops-header card">
       <div class="ops-header-id">
         <span class="ops-avatar">🛰️</span>

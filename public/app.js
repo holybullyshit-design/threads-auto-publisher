@@ -1958,3 +1958,6 @@ document.addEventListener("keydown", (e) => {
 Promise.all([loadMeta(), loadAccounts(), loadPersonaPresets(), loadPartnersPresets(), loadLifestylePresets()]).catch((err) => {
   el.settingsError.textContent = "초기 데이터를 불러오지 못했습니다: " + err.message;
 });
+
+// 관제탑이 첫 화면이라 클릭 없이도 바로 데이터를 채운다.
+loadOps();
