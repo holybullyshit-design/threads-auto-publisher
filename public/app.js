@@ -46,6 +46,7 @@ const el = {
     instagram: document.getElementById("tab-instagram"),
     schedule: document.getElementById("tab-schedule"),
     accounts: document.getElementById("tab-accounts"),
+    ops: document.getElementById("tab-ops"),
   },
 
   accountSelect: document.getElementById("account-select"),
@@ -179,6 +180,113 @@ function switchTab(tabName) {
   if (tabName === "schedule") loadSchedule();
   if (tabName === "instagram" && window.loadInstagramDashboard) window.loadInstagramDashboard();
   if (tabName === "accounts") renderAccountList();
+  if (tabName === "ops") loadOps();
+}
+
+// ================= 관제탑 =================
+const OPS_GRADIENTS = ["ops-grad-accent", "ops-grad-success", "ops-grad-saju", "ops-grad-partners"];
+
+async function loadOps() {
+  const genAt = document.getElementById("ops-generated-at");
+  genAt.textContent = "불러오는 중...";
+  try {
+    const res = await fetch("/api/ops/summary");
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || "관제탑 데이터를 불러오지 못했습니다.");
+    renderOps(data);
+  } catch (err) {
+    genAt.textContent = "불러오기 실패: " + err.message;
+  }
+}
+
+function renderOps(data) {
+  const gen = new Date(data.generatedAt);
+  document.getElementById("ops-generated-at").textContent =
+    `${gen.toLocaleDateString("ko-KR", { month: "long", day: "numeric", weekday: "short" })} ${gen.toLocaleTimeString("ko-KR", { hour: "2-digit", minute: "2-digit" })} 기준 · 전체 ${data.totalPosts}건`;
+
+  const stats = [
+    { label: "예약 대기", value: data.totalScheduled, grad: "ops-grad-accent" },
+    { label: "이번 주 발행 예정", value: data.dueThisWeek, grad: "ops-grad-success" },
+    { label: "발행 완료", value: data.totalPublished, grad: "ops-grad-saju" },
+    { label: "실패", value: data.totalFailed, grad: data.totalFailed > 0 ? "ops-grad-danger" : "ops-grad-partners" },
+  ];
+  document.getElementById("ops-stat-grid").innerHTML = stats
+    .map(
+      (s) => `<div class="ops-stat-card ${s.grad}">
+        <div class="ops-stat-label">${escapeHtml(s.label)}</div>
+        <div class="ops-stat-value">${s.value}<span class="ops-stat-unit">건</span></div>
+      </div>`
+    )
+    .join("");
+
+  document.getElementById("ops-insight-text").textContent = data.insight;
+
+  const quicks = [
+    { icon: "✍️", label: "글쓰기", grad: "ops-grad-accent", action: () => switchTab("compose") },
+    { icon: "🗓️", label: "예약 목록", grad: "ops-grad-success", action: () => switchTab("schedule") },
+    { icon: "🖼️", label: "Instagram 운세", grad: "ops-grad-instagram", action: () => switchTab("instagram") },
+    { icon: "👥", label: "계정 관리", grad: "ops-grad-saju", action: () => switchTab("accounts") },
+    { icon: "🔭", label: "벤치마크 채널", grad: "ops-grad-partners", action: () => window.open("https://www.threads.com/@taebaek_saju", "_blank") },
+    { icon: "🐙", label: "GitHub 저장소", grad: "ops-grad-danger", action: () => window.open("https://github.com/holybullyshit-design/threads-auto-publisher", "_blank") },
+  ];
+  const quickGrid = document.getElementById("ops-quick-grid");
+  quickGrid.innerHTML = "";
+  quicks.forEach((q) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = `ops-quick-tile ${q.grad}`;
+    btn.innerHTML = `<span class="ops-quick-icon">${q.icon}</span><span class="ops-quick-label">${escapeHtml(q.label)}</span>`;
+    btn.addEventListener("click", q.action);
+    quickGrid.appendChild(btn);
+  });
+
+  document.getElementById("ops-account-list").innerHTML = data.accounts
+    .map((a, i) => {
+      const grad = OPS_GRADIENTS[i % OPS_GRADIENTS.length];
+      const failedBit = a.failed > 0 ? `<span class="status-badge status-failed">실패 ${a.failed}</span>` : "";
+      return `<div class="ops-account-row">
+        <span class="ops-account-dot ${grad}"></span>
+        <span class="ops-account-name">${escapeHtml(a.label)}</span>
+        <span class="ops-account-platforms">${a.platforms.map((p) => `<span class="meta-badge">${escapeHtml(p)}</span>`).join("")}</span>
+        <span class="ops-account-nums">발행 ${a.published} · 예약 ${a.scheduled}</span>
+        ${failedBit}
+      </div>`;
+    })
+    .join("") || `<p class="hint-text">계정이 없습니다.</p>`;
+
+  document.getElementById("ops-queue-list").innerHTML = data.queue
+    .map(
+      (q) => `<div class="ops-queue-row">
+        <span class="ops-queue-time">${q.time}<span class="ops-queue-day">${q.day}</span></span>
+        <span class="ops-queue-acct">${escapeHtml(q.account)}</span>
+        <span class="ops-queue-text">${escapeHtml(q.text)}</span>
+      </div>`
+    )
+    .join("") || `<p class="hint-text">예약된 게시물이 없습니다.</p>`;
+
+  document.getElementById("ops-benchmark-log").innerHTML =
+    data.benchmarkLog.length > 0
+      ? data.benchmarkLog
+          .map(
+            (e) => `<div class="ops-log-entry">
+              <div class="ops-log-date">${escapeHtml(e.date || "")}</div>
+              <ul>${(e.findings || []).map((f) => `<li>${escapeHtml(f)}</li>`).join("")}</ul>
+            </div>`
+          )
+          .join("")
+      : `<p class="hint-text">아직 기록이 없습니다 — 다음 월요일 벤치마크 점검 후 첫 기록이 남습니다. 다음 실행: ${escapeHtml(data.nextMonday)}</p>`;
+
+  document.getElementById("ops-growth-log").innerHTML =
+    data.growthLog.length > 0
+      ? data.growthLog
+          .map(
+            (e) => `<div class="ops-log-entry">
+              <div class="ops-log-date">${escapeHtml(e.date || "")}</div>
+              <ul>${(e.findings || []).map((f) => `<li>${escapeHtml(f)}</li>`).join("")}</ul>
+            </div>`
+          )
+          .join("")
+      : `<p class="hint-text">아직 기록이 없습니다 — 매주 성장 리서치 작업이 실행되면 여기 쌓입니다.</p>`;
 }
 
 el.tabButtons.forEach((btn) => {

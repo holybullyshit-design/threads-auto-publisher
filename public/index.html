@@ -20,6 +20,7 @@
     <button class="tab-btn" data-tab="instagram">Instagram 운세</button>
     <button class="tab-btn" data-tab="schedule">예약 목록</button>
     <button class="tab-btn" data-tab="accounts">계정 관리</button>
+    <button class="tab-btn" data-tab="ops">관제탑</button>
   </nav>
 
   <section id="tab-instagram" class="tab-panel hidden">
@@ -347,6 +348,52 @@
       <a id="btn-export-secret" class="btn btn-secondary" href="/api/accounts/export-secret" download>
         시크릿용 JSON 다운로드
       </a>
+    </div>
+  </section>
+
+  <!-- ================= 관제탑 탭 ================= -->
+  <section id="tab-ops" class="tab-panel hidden">
+    <div class="ops-header card">
+      <div class="ops-header-id">
+        <span class="ops-avatar">🛰️</span>
+        <div>
+          <div class="ops-header-title">자동화 관제탑</div>
+          <div class="ops-header-sub" id="ops-generated-at">불러오는 중...</div>
+        </div>
+      </div>
+      <span class="status-badge status-published">● 실시간 연동</span>
+    </div>
+
+    <div id="ops-stat-grid" class="ops-stat-grid"></div>
+
+    <div class="card ops-insight">
+      <span class="ops-insight-icon">✨</span>
+      <p id="ops-insight-text">분석 중...</p>
+    </div>
+
+    <div class="field-label-small">빠른 실행</div>
+    <div id="ops-quick-grid" class="ops-quick-grid"></div>
+
+    <div class="ops-grid-2">
+      <div class="card">
+        <label class="field-label">계정별 현황</label>
+        <div id="ops-account-list"></div>
+      </div>
+      <div class="card">
+        <label class="field-label">다음 예약 발행 (KST)</label>
+        <div id="ops-queue-list"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <label class="field-label">팔자장인 벤치마크 기록</label>
+      <div id="ops-benchmark-log"></div>
+    </div>
+
+    <div class="card">
+      <label class="field-label">성장 리서치 기록</label>
+      <p class="hint-text">매주 Threads/Instagram 노출·알고리즘 최적화 리서치에서 뽑은 실행 가능한 아이디어입니다.</p>
+      <div id="ops-growth-log"></div>
     </div>
   </section>
 

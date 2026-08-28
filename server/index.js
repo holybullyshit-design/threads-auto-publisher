@@ -1,6 +1,7 @@
 require("dotenv").config();
 
 const path = require("path");
+const fs = require("fs");
 const { exec, execFile } = require("child_process");
 const express = require("express");
 
@@ -618,6 +619,136 @@ app.get("/api/schedule", async (req, res) => {
   try {
     const posts = await scheduleStore.listSchedule();
     res.json({ posts });
+  } catch (err) {
+    handleError(res, err);
+  }
+});
+
+// ---------- 관제탑(운영 현황) ----------
+// "글쓰기/예약 목록/계정 관리" 탭과 같은 데이터(scheduleStore)를 보고 시점에 새로 계산해서
+// 보여주는 요약 뷰. 정적 스냅샷이 아니라 탭을 열 때마다 서버에서 다시 계산한다.
+const WEEKDAY_KO = ["일", "월", "화", "수", "목", "금", "토"];
+
+function toKst(dateInput) {
+  const d = new Date(dateInput);
+  const kstMs = d.getTime() + 9 * 60 * 60 * 1000;
+  const k = new Date(kstMs);
+  return {
+    year: k.getUTCFullYear(),
+    month: k.getUTCMonth() + 1,
+    date: k.getUTCDate(),
+    hour: k.getUTCHours(),
+    minute: k.getUTCMinutes(),
+    weekday: WEEKDAY_KO[k.getUTCDay()],
+  };
+}
+
+function formatNextMonday() {
+  const k = toKst(new Date());
+  const kstNow = new Date(Date.UTC(k.year, k.month - 1, k.date, k.hour, k.minute));
+  const dow = kstNow.getUTCDay();
+  let daysUntilMonday = (1 - dow + 7) % 7;
+  if (daysUntilMonday === 0 && (k.hour > 9 || (k.hour === 9 && k.minute >= 9))) daysUntilMonday = 7;
+  const next = new Date(kstNow);
+  next.setUTCDate(next.getUTCDate() + daysUntilMonday);
+  return `${next.getUTCMonth() + 1}/${next.getUTCDate()} (월) 09:09`;
+}
+
+function buildOpsSummary(posts) {
+  const byAccount = new Map();
+  let totalPublished = 0;
+  let totalScheduled = 0;
+  let totalFailed = 0;
+
+  for (const p of posts) {
+    const label = p.accountLabel || "(알 수 없음)";
+    if (!byAccount.has(label)) {
+      byAccount.set(label, { label, published: 0, scheduled: 0, failed: 0, other: 0, platforms: new Set() });
+    }
+    const acc = byAccount.get(label);
+    acc.platforms.add((p.platform || "threads").toUpperCase());
+    if (p.status === "published") { acc.published++; totalPublished++; }
+    else if (p.status === "scheduled") { acc.scheduled++; totalScheduled++; }
+    else if (p.status === "failed") { acc.failed++; totalFailed++; }
+    else acc.other++;
+  }
+
+  const accounts = [...byAccount.values()]
+    .map((a) => ({ ...a, platforms: [...a.platforms] }))
+    .sort((a, b) => (b.published + b.scheduled) - (a.published + a.scheduled));
+
+  const now = Date.now();
+  const in7d = now + 7 * 24 * 60 * 60 * 1000;
+  const dueThisWeek = posts.filter(
+    (p) => p.status === "scheduled" && p.scheduledAt && new Date(p.scheduledAt).getTime() <= in7d
+  ).length;
+
+  const queue = posts
+    .filter((p) => p.status === "scheduled" && p.scheduledAt)
+    .sort((a, b) => new Date(a.scheduledAt) - new Date(b.scheduledAt))
+    .slice(0, 8)
+    .map((p) => {
+      const k = toKst(p.scheduledAt);
+      const preview = (p.text || "").replace(/\s+/g, " ").trim().slice(0, 44);
+      return {
+        time: `${String(k.hour).padStart(2, "0")}:${String(k.minute).padStart(2, "0")}`,
+        day: `${k.month}/${k.date} ${k.weekday}`,
+        account: p.accountLabel || "",
+        text: preview,
+      };
+    });
+
+  // 벤치마크 기록 (매주 월요일 스케줄 작업이 tools/ops-dashboard/benchmark-log.json에 append)
+  let benchmarkLog = [];
+  try {
+    const raw = fs.readFileSync(path.join(__dirname, "..", "tools", "ops-dashboard", "benchmark-log.json"), "utf8");
+    const parsed = JSON.parse(raw);
+    if (Array.isArray(parsed)) benchmarkLog = parsed.slice(-3).reverse();
+  } catch (e) {
+    benchmarkLog = [];
+  }
+
+  // 성장 리서치 기록 (매주 노출/알고리즘 최적화 리서치 스케줄 작업이 append)
+  let growthLog = [];
+  try {
+    const raw = fs.readFileSync(path.join(__dirname, "..", "tools", "ops-dashboard", "growth-research-log.json"), "utf8");
+    const parsed = JSON.parse(raw);
+    if (Array.isArray(parsed)) growthLog = parsed.slice(-3).reverse();
+  } catch (e) {
+    growthLog = [];
+  }
+
+  // 간단한 규칙 기반 한 줄 인사이트 — 지어낸 숫자 없이 지금 데이터에서만 뽑는다.
+  let insight;
+  if (totalFailed > 0) {
+    insight = `⚠ 실패한 게시물이 ${totalFailed}건 있습니다 — 예약 목록에서 확인해보세요.`;
+  } else if (accounts.length > 0) {
+    const top = accounts[0];
+    insight = `이번 주 발행 예정 ${dueThisWeek}건 중, 예약이 가장 많이 쌓인 계정은 '${top.label}'입니다 (${top.scheduled}건 대기).`;
+  } else {
+    insight = "아직 등록된 게시물이 없습니다.";
+  }
+
+  return {
+    generatedAt: new Date().toISOString(),
+    totalPosts: posts.length,
+    totalPublished,
+    totalScheduled,
+    totalFailed,
+    dueThisWeek,
+    accounts,
+    queue,
+    nextMonday: formatNextMonday(),
+    benchmarkLog,
+    growthLog,
+    insight,
+  };
+}
+
+app.get("/api/ops/summary", async (req, res) => {
+  try {
+    const posts = await scheduleStore.listSchedule();
+    res.json(buildOpsSummary(posts));
   } catch (err) {
     handleError(res, err);
   }
