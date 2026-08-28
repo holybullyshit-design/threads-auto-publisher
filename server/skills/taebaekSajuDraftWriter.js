@@ -338,6 +338,15 @@ async function writeThreadDraft({ dateKey, topicId, hookFormatId, accountLabel =
     throw new Error(`파트 구분에 실패했습니다(파트 ${parts.length}개). 원문: ${raw.slice(0, 200)}`);
   }
 
+  // 가끔 모델이 "<제목>" 같은 안내문 속 자리표시자를 실제 제목 대신 그대로 쓰거나(예: "<제목>:
+  // <실제 제목>"), 어떤 파트를 "<제목/도입부는 이미 각 파트 안에 포함>" 식 메타 설명 문장으로
+  // 대체해버리는 경우가 실측됨(2026-08-28). 둘 다 파트 개수/구분자는 정상이라 위 체크를
+  // 통과하므로, 여기서 한 번 더 걸러서 실패시키면 호출부의 재시도 로직이 다시 시도하게 된다.
+  const looksBroken = parts.some((p) => p.length < 40 || p.includes("<제목>") || p.includes("이미 각 파트"));
+  if (looksBroken) {
+    throw new Error(`파트 내용이 비정상입니다(자리표시자 잔존 또는 너무 짧음). 원문: ${raw.slice(0, 200)}`);
+  }
+
   return {
     topic: topic.label,
     hookFormat: hookFormat.id,
