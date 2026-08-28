@@ -201,21 +201,64 @@ const TOPICS = [
   },
 ];
 
-function buildSystemPrompt(factsBlock, cta, partCount) {
+// 훅(첫인상) 형태가 매번 "번호 리스트 나열"로 고정되면, 소재(신살/십성)는 달라도 글의
+// "구조"가 다 똑같아 보인다(2026-08-28 실측 지적) — 그래서 본문이 시작되는 방식 자체를
+// 여러 형태로 나눠두고 매번 다른 걸 뽑아서 쓴다.
+const HOOK_FORMATS = [
+  {
+    id: "list",
+    instruction: `번호 리스트형: 구체적인 관찰/증상을 3~7개, "1. ...  2. ..." 형태로 나열하며 시작한다.
+    항목은 추상적("성격이 급하다")이 아니라 구체적인 행동/장면으로 쓴다(예: "결제하려다 손이 멈춘다").`,
+  },
+  {
+    id: "topRank",
+    instruction: `TOP 랭킹형: "OOO TOP 5" 같은 제목으로, 순위를 매기는 형태로 시작한다(예: "1위. ...  2위. ...").
+    검증된 사실 안에서 실제로 순위를 매길 수 있는 대상(일간별, 띠별 등)이 있을 때 쓴다.`,
+  },
+  {
+    id: "apology",
+    instruction: `"죄송하지만" 사과형: 제목이나 첫 줄을 "죄송하지만," 으로 시작해서 안 좋은 소식을 전하는 듯한
+    긴장감을 준 뒤, 번호 없이 짧은 문장 2~4개로 상황을 압축해서 던진다.`,
+  },
+  {
+    id: "keywords",
+    instruction: `키워드 나열형: 문장이 아니라 짧은 명사/구를 마침표로 끊어서 나열하며 시작한다
+    (예: "촉. 직감. 끝까지." 처럼). 번호를 매기지 않는다.`,
+  },
+  {
+    id: "question",
+    instruction: `직접 질문형: "이런 사람들 특징 아는 사람?", "이거 겪어본 사람?" 같은 짧고 직접적인
+    질문 하나로 시작한 뒤, 번호 없이 상황을 1~2문장으로 던진다.`,
+  },
+];
+
+// 관찰 -> 설명으로 넘어가는 연결 문장도 매번 "이상하죠 / 기분 탓 아닙니다"로 고정하면 티가 난다.
+const BRIDGE_STYLES = [
+  `"이상하죠. 근데 기분 탓 아닙니다. 명리로 설명되는 구조예요." 같은 톤으로 이어간다.`,
+  `"우연 아닙니다. 사주에 이미 새겨진 구조예요." 같은 톤으로 짧게 단정하며 이어간다.`,
+  `"이거 성격이 아니라, [소재명]이 있는 겁니다." 처럼 원인을 바로 지목하며 이어간다.`,
+  `별도의 "기분 탓 아니다"류 연결 문장 없이, 곧바로 명리학적 설명으로 자연스럽게 넘어간다.`,
+];
+
+function buildSystemPrompt(factsBlock, cta, partCount, hookFormat, bridgeStyle) {
   return `당신은 한국 Threads(스레드)에서 "종합사주" 콘텐츠를 연재하는 계정 "팔자장인"의 전속 작가입니다.
 이 계정은 연리지실타래/아해사주/팔자명가 같은 고정 페르소나 계정과 다릅니다 — 소재마다 스타일이 다양하고,
 목표는 댓글 유도가 아니라 "많은 사람이 끝까지 읽고 프로필까지 눌러보게" 만드는 조회수/체류시간입니다.
+매번 같은 틀로 찍어내면 안 됩니다 — 이번 글에 배정된 훅 형태/연결 방식을 그대로 따르세요.
+
+[이번 글의 훅(본문 시작) 형태]
+${hookFormat.instruction}
+
+[이번 글의 관찰->설명 연결 방식]
+${bridgeStyle}
 
 [반드시 지킬 구조 규칙]
 1. 본문(1개) + 답글(N-1개)로 구성된 "이어지는 스레드"를 쓴다. 전체 파트 수는 ${partCount}개.
 2. **클리프행어**: 본문과 답글 대부분을, 완결된 문장이 아니라 중간에 끊긴 채로 끝낸다(예: "이거 그냥" 처럼).
    그리고 다음 파트 맨 앞에서 그 문장을 이어서 완성한다. 마지막 파트만 완결해도 된다.
-3. 본문은 짧고 구체적인 관찰/증상을 3~7개 번호로 나열하는 형태로 시작하는 경우가 많다(예: "1. ...  2. ...").
-   항목은 추상적("성격이 급하다")이 아니라 구체적인 행동/장면으로 쓴다(예: "결제하려다 손이 멈춘다").
-4. "이상하죠 / 기분 탓 아닙니다 / 명리로 설명되는 구조예요" 같은 톤으로, 관찰 -> 부정(우연 아님) -> 메커니즘
-   설명 순서로 풀어간다. 오행/십성/일간을 설명할 땐 가능하면 그 오행의 성질을 구체적 사물에 빗댄
-   은유(예: 계수=이슬, 신금=보석, 갑목=큰 나무)를 섞어서 기억에 남게 쓴다.
-5. 마지막 파트 끝에 아래 문장을 정확히 그대로 포함한다:
+3. 오행/십성/일간을 설명할 땐 가능하면 그 오행의 성질을 구체적 사물에 빗댄 은유(예: 계수=이슬,
+   신금=보석, 갑목=큰 나무)를 섞어서 기억에 남게 쓴다.
+4. 마지막 파트 끝에 아래 문장을 정확히 그대로 포함한다:
    "${cta}"
 
 [절대 규칙 - 사실 근거]
@@ -238,16 +281,19 @@ function buildUserMessage(topic) {
   return `소재: ${topic.label} (${topic.format})\n\n위 [검증된 사실]만 근거로, 팔자장인 계정 스타일의 클리프행어 스레드를 작성해줘.`;
 }
 
-async function writeThreadDraft({ dateKey, topicId } = {}) {
+async function writeThreadDraft({ dateKey, topicId, hookFormatId } = {}) {
   const topic = topicId ? TOPICS.find((t) => t.id === topicId) : pickRandom(TOPICS);
   if (!topic) throw Object.assign(new Error(`알 수 없는 소재: ${topicId}`), { status: 400 });
+  const hookFormat = hookFormatId ? HOOK_FORMATS.find((h) => h.id === hookFormatId) : pickRandom(HOOK_FORMATS);
+  if (!hookFormat) throw Object.assign(new Error(`알 수 없는 훅 형태: ${hookFormatId}`), { status: 400 });
 
   const factsBlock = topic.build(dateKey || new Date().toISOString().slice(0, 10));
   const cta = pickRandom(CTA_POOL);
+  const bridgeStyle = pickRandom(BRIDGE_STYLES);
   const partCount = 3 + Math.floor(Math.random() * 3); // 3~5
 
   const raw = await runSkill({
-    system: buildSystemPrompt(factsBlock, cta, partCount),
+    system: buildSystemPrompt(factsBlock, cta, partCount, hookFormat, bridgeStyle),
     userMessage: buildUserMessage(topic),
   });
 
@@ -262,9 +308,14 @@ async function writeThreadDraft({ dateKey, topicId } = {}) {
 
   return {
     topic: topic.label,
+    hookFormat: hookFormat.id,
     text: parts[0],
     replyChain: parts.slice(1),
   };
 }
 
-module.exports = { writeThreadDraft, TOPICS, CTA_POOL, pickTopicIds };
+function pickHookFormatIds(count) {
+  return pickTopicIds(count, HOOK_FORMATS.map((h) => h.id)); // 셔플백 로직 재사용
+}
+
+module.exports = { writeThreadDraft, TOPICS, HOOK_FORMATS, CTA_POOL, pickTopicIds, pickHookFormatIds };
