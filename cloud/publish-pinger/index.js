@@ -245,7 +245,15 @@ function renderDashboard(data) {
 
   const runsHtml = data.recentRuns
     .map((r) => {
-      const label = r.status === "completed" ? (r.conclusion === "success" ? "✅ 성공" : "❌ 실패") : "⏳ 진행중";
+      // cancelled는 실패가 아니다 — 15분마다 도는 워커 트리거가 거의 동시에 겹쳐서
+      // GitHub이 "같은 작업 중복이니 하나는 취소"한 정상적인 상황이다(2026-08-28 확인).
+      // 이걸 실패로 표시하면 아무 문제 없는데 사고처럼 보여서 혼란을 준다.
+      let label = "⏳ 진행중";
+      if (r.status === "completed") {
+        if (r.conclusion === "success") label = "✅ 성공";
+        else if (r.conclusion === "cancelled") label = "⏭️ 중복 취소(정상)";
+        else label = "❌ 실패";
+      }
       return `<div class="row"><span>${label} (${r.event === "schedule" ? "GitHub 자체" : "워커 트리거"})</span><span class="dim">${fmtKst(r.created_at)}</span></div>`;
     })
     .join("");
