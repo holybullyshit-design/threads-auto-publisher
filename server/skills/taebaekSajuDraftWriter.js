@@ -253,11 +253,27 @@ const BRIDGE_STYLES = [
   `별도의 "기분 탓 아니다"류 연결 문장 없이, 곧바로 명리학적 설명으로 자연스럽게 넘어간다.`,
 ];
 
-function buildSystemPrompt(factsBlock, cta, partCount, hookFormat, bridgeStyle, accountLabel) {
+function buildSystemPrompt(factsBlock, cta, partCount, hookFormat, bridgeStyle, accountLabel, domainFraming, speechLevel, extraBans) {
+  const defaultIdentity = `이 계정은 연리지실타래/아해사주/팔자명가 같은 고정 페르소나 계정과 다릅니다 — 소재마다 스타일이 다양하고,
+목표는 댓글 유도가 아니라 "많은 사람이 끝까지 읽고 프로필까지 눌러보게" 만드는 조회수/체류시간입니다.`;
+  // domainFraming이 있으면 = 이 계정은 원래 고정 페르소나 계정인데(연리지실타래/아해사주),
+  // 하루 중 한 슬롯만 이 "종합사주 바이럴" 형식을 빌려 쓰는 경우다. 그 계정 본연의 컨셉(연애/육아)
+  // 렌즈로 소재를 재해석해야 하므로 정체성 설명 자체를 다르게 준다.
+  const identity = domainFraming
+    ? `이 계정은 평소엔 페르소나 상담형 콘텐츠를 쓰지만, 오늘 이 글은 예외적으로 "많은 사람이 끝까지
+읽고 프로필까지 눌러보게" 만드는 조회수 극대화용 바이럴 콘텐츠입니다(댓글에 생년월일시를
+남기라고 요청하지 않습니다). ${domainFraming}`
+    : defaultIdentity;
+  const speechRule = speechLevel
+    ? `\n[말투]\n이 계정은 반드시 ${speechLevel}만 쓴다. 아래 훅 형태 예시 문장이 다른 말투로 적혀 있어도,
+그건 구조 참고용일 뿐이니 실제 출력은 ${speechLevel}로 바꿔서 쓴다.\n`
+    : "";
+  const bansRule = extraBans ? `\n[이 계정만의 추가 금지 사항]\n${extraBans}\n` : "";
+
   return `당신은 한국 Threads(스레드)에서 "종합사주" 콘텐츠를 연재하는 계정 "${accountLabel}"의 전속 작가입니다.
-이 계정은 연리지실타래/아해사주/팔자명가 같은 고정 페르소나 계정과 다릅니다 — 소재마다 스타일이 다양하고,
-목표는 댓글 유도가 아니라 "많은 사람이 끝까지 읽고 프로필까지 눌러보게" 만드는 조회수/체류시간입니다.
+${identity}
 매번 같은 틀로 찍어내면 안 됩니다 — 이번 글에 배정된 훅 형태/연결 방식을 그대로 따르세요.
+${speechRule}${bansRule}
 
 [이번 글의 훅(본문 시작) 형태]
 ${hookFormat.instruction}
@@ -313,8 +329,20 @@ function buildUserMessage(topic, accountLabel) {
 // accountLabel: 이 엔진(소재 뱅크 + 구조)을 공유하는 여러 "종합사주" 계정을 구분하기 위한 이름.
 // 팔자장인 외에 같은 포맷으로 운영하는 계정(예: 팔자궤도)이 늘어나도 이 파일 하나로 처리한다 —
 // 계정마다 다른 건 이름뿐, 소재/훅/클리프행어/CTA 구조는 전부 동일하게 유지해야 바이럴 공식이 깨지지 않는다.
-async function writeThreadDraft({ dateKey, topicId, hookFormatId, accountLabel = "팔자장인" } = {}) {
-  const topic = topicId ? TOPICS.find((t) => t.id === topicId) : pickRandom(TOPICS);
+async function writeThreadDraft({
+  dateKey,
+  topicId,
+  hookFormatId,
+  accountLabel = "팔자장인",
+  topicPool, // 지정하면 이 배열(TOPICS의 부분집합)에서만 소재를 고른다 - 연리지실타래/아해사주처럼
+  // 계정 컨셉에 안 맞는 소재(재성/관성 시기 등)를 빼고 쓸 때 사용
+  domainFraming, // 있으면 = 원래 고정 페르소나 계정이 오늘만 이 바이럴 형식을 빌려 쓰는 경우.
+  // 소재를 그 계정 컨셉(연애/육아 등) 렌즈로 재해석하라는 지시문
+  speechLevel, // "반말" | "존댓말" - 지정 안 하면 훅 형태 예시들의 기본 톤을 그대로 따름
+  extraBans, // 이 계정에서 절대 다루면 안 되는 추가 주제(예: 아해사주의 임신/난임 금지)
+} = {}) {
+  const pool = topicPool || TOPICS;
+  const topic = topicId ? pool.find((t) => t.id === topicId) : pickRandom(pool);
   if (!topic) throw Object.assign(new Error(`알 수 없는 소재: ${topicId}`), { status: 400 });
   const hookFormat = hookFormatId ? HOOK_FORMATS.find((h) => h.id === hookFormatId) : pickRandom(HOOK_FORMATS);
   if (!hookFormat) throw Object.assign(new Error(`알 수 없는 훅 형태: ${hookFormatId}`), { status: 400 });
@@ -325,7 +353,7 @@ async function writeThreadDraft({ dateKey, topicId, hookFormatId, accountLabel =
   const partCount = 3 + Math.floor(Math.random() * 3); // 3~5
 
   const raw = await runSkill({
-    system: buildSystemPrompt(factsBlock, cta, partCount, hookFormat, bridgeStyle, accountLabel),
+    system: buildSystemPrompt(factsBlock, cta, partCount, hookFormat, bridgeStyle, accountLabel, domainFraming, speechLevel, extraBans),
     userMessage: buildUserMessage(topic, accountLabel),
   });
 
