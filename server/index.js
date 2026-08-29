@@ -31,6 +31,10 @@ instagramAuthStore.load();
 const app = express();
 const PORT = Number(process.env.PORT) || 4321;
 const INSTAGRAM_PUBLIC_REDIRECT_URI = "https://threads-publish-pinger.threadsautopub.workers.dev/oauth/instagram/callback";
+const INSTAGRAM_ACCOUNT_CATALOG = Object.freeze({
+  palja: { key: "palja", label: "팔자명가", expectedUsername: "saju_orbit", contentReady: true },
+  yeonliji: { key: "yeonliji", label: "연리지 실타래", expectedUsername: "", contentReady: false },
+});
 
 app.use(express.json({ limit: "15mb" })); // 캡처 이미지(base64) 업로드를 받을 수 있도록 넉넉하게
 app.use(express.static(path.join(__dirname, "..", "public")));
@@ -73,7 +77,25 @@ app.get("/api/instagram/range", (req, res) => {
 });
 
 app.get("/api/instagram/preflight", async (req, res) => {
-  try { res.json(await preflightInstagram()); } catch (err) { handleError(res, err); }
+  try {
+    const accountKey = String(req.query.accountKey || "palja");
+    const credentials = instagramAuthStore.getCredentials(accountKey);
+    if (!credentials) return res.status(404).json({ error: `${INSTAGRAM_ACCOUNT_CATALOG[accountKey]?.label || accountKey} Instagram 계정이 아직 연결되지 않았습니다.` });
+    res.json(await preflightInstagram({ userId: credentials.userId, accessToken: credentials.accessToken }));
+  } catch (err) { handleError(res, err); }
+});
+
+app.get("/api/instagram/accounts", (req, res) => {
+  const stored = instagramAuthStore.listAccounts();
+  const byKey = new Map(stored.accounts.map((account) => [account.key, account]));
+  res.json({
+    activeAccountKey: stored.activeAccountKey,
+    accounts: Object.values(INSTAGRAM_ACCOUNT_CATALOG).map((entry) => ({
+      ...entry,
+      ...(byKey.get(entry.key) || {}),
+      connected: Boolean(byKey.get(entry.key)?.configured),
+    })),
+  });
 });
 
 app.post("/api/instagram/schedule-range", async (req, res) => {
@@ -108,7 +130,10 @@ app.get("/oauth/instagram/start", (req, res) => {
   try {
     if (!req.query.state) return res.status(400).send("state 파라미터가 필요합니다.");
     const state = String(req.query.state);
-    instagramOAuthStates.set(state, Date.now());
+    const accountKey = String(req.query.accountKey || "palja");
+    const target = INSTAGRAM_ACCOUNT_CATALOG[accountKey];
+    if (!target) return res.status(400).send("지원하지 않는 Instagram 계정입니다.");
+    instagramOAuthStates.set(state, { createdAt: Date.now(), accountKey, label: target.label });
     res.redirect(instagramOAuth.buildAuthorizeUrl(state));
   } catch (err) { res.status(500).send(`설정 오류: ${err.message}`); }
 });
@@ -116,9 +141,9 @@ app.get("/oauth/instagram/start", (req, res) => {
 app.get("/oauth/instagram/callback", async (req, res) => {
   const { code, state, error, error_description } = req.query;
   if (!state) return res.status(400).send(instagramCallbackHelpPage());
-  const issuedAt = instagramOAuthStates.get(String(state));
+  const oauthState = instagramOAuthStates.get(String(state));
   instagramOAuthStates.delete(String(state));
-  if (!issuedAt || Date.now() - issuedAt > 10 * 60 * 1000) return res.status(400).send("만료되었거나 올바르지 않은 연결 요청입니다.");
+  if (!oauthState || Date.now() - oauthState.createdAt > 10 * 60 * 1000) return res.status(400).send("만료되었거나 올바르지 않은 연결 요청입니다.");
   if (error) {
     instagramOAuthResults.set(String(state), { error: error_description || error, createdAt: Date.now() });
     return res.send(oauthResultPage("Instagram 연결이 취소되었거나 거부되었습니다.", "Instagram 연결"));
@@ -127,16 +152,27 @@ app.get("/oauth/instagram/callback", async (req, res) => {
     const short = await instagramOAuth.exchangeCode(String(code || ""));
     const long = await instagramOAuth.exchangeLongToken(short.accessToken);
     const profile = await instagramOAuth.fetchProfile(long.accessToken);
-    process.env.INSTAGRAM_USER_ID = String(profile.user_id);
-    process.env.INSTAGRAM_ACCESS_TOKEN = long.accessToken;
-    process.env.INSTAGRAM_TOKEN_EXPIRES_AT = String(Date.now() + long.expiresIn * 1000);
-    instagramAuthStore.save({ userId: profile.user_id, accessToken: long.accessToken, expiresAt: Number(process.env.INSTAGRAM_TOKEN_EXPIRES_AT) });
+    const expiresAt = Date.now() + long.expiresIn * 1000;
+    instagramAuthStore.saveAccount({
+      key: oauthState.accountKey,
+      label: oauthState.label,
+      username: profile.username || "",
+      userId: profile.user_id,
+      accessToken: long.accessToken,
+      expiresAt,
+    }, { makeActive: false });
     let cloudSynced = false;
     let cloudSyncError = null;
-    try { await syncInstagramSecretsToGitHub(String(profile.user_id), long.accessToken); cloudSynced = true; }
+    // 팔자명가의 기존 개별 시크릿은 그대로 유지하고, 다계정 시크릿은 별도 이름으로 병행한다.
+    if (oauthState.accountKey === "palja") {
+      instagramAuthStore.save({ userId: profile.user_id, accessToken: long.accessToken, expiresAt });
+      try { await syncInstagramSecretsToGitHub(String(profile.user_id), long.accessToken); cloudSynced = true; }
+      catch (syncError) { cloudSyncError = syncError.message; }
+    }
+    try { await syncInstagramAccountsToGitHub(); cloudSynced = true; }
     catch (syncError) { cloudSyncError = syncError.message; }
-    instagramOAuthResults.set(String(state), { userId: String(profile.user_id), expiresIn: long.expiresIn, cloudSynced, cloudSyncError, createdAt: Date.now() });
-    res.send(oauthResultPage("팔자명가 Instagram 연결이 완료되었습니다.", "Instagram 연결"));
+    instagramOAuthResults.set(String(state), { accountKey: oauthState.accountKey, label: oauthState.label, username: profile.username || "", userId: String(profile.user_id), expiresIn: long.expiresIn, cloudSynced, cloudSyncError, createdAt: Date.now() });
+    res.send(oauthResultPage(`${oauthState.label} Instagram 연결이 완료되었습니다.`, "Instagram 연결"));
   } catch (err) {
     instagramOAuthResults.set(String(state), { error: err.message, createdAt: Date.now() });
     res.send(oauthResultPage("Instagram 연결 중 오류가 발생했습니다: " + err.message, "Instagram 연결"));
@@ -149,7 +185,7 @@ app.get("/api/oauth/instagram/result", (req, res) => {
   if (!entry) return res.json({ status: "pending" });
   instagramOAuthResults.delete(state);
   if (entry.error) return res.json({ status: "error", error: entry.error });
-  res.json({ status: "done", userId: entry.userId, expiresIn: entry.expiresIn, cloudSynced: entry.cloudSynced, cloudSyncError: entry.cloudSyncError });
+  res.json({ status: "done", accountKey: entry.accountKey, label: entry.label, username: entry.username, userId: entry.userId, expiresIn: entry.expiresIn, cloudSynced: entry.cloudSynced, cloudSyncError: entry.cloudSyncError });
 });
 
 function syncInstagramSecretsToGitHub(userId, accessToken) {
@@ -163,6 +199,23 @@ function syncInstagramSecretsToGitHub(userId, accessToken) {
     child.stdin.end(value);
   });
   return Promise.all([setSecret("INSTAGRAM_USER_ID", userId), setSecret("INSTAGRAM_ACCESS_TOKEN", accessToken)]);
+}
+
+function syncInstagramAccountsToGitHub() {
+  const repo = process.env.GITHUB_REPO;
+  if (!repo) return Promise.reject(new Error("GITHUB_REPO가 설정되지 않아 다계정 클라우드 동기화를 건너뜁니다."));
+  const accounts = {};
+  for (const account of instagramAuthStore.listAccounts().accounts) {
+    const credentials = instagramAuthStore.getCredentials(account.key);
+    if (credentials) accounts[account.key] = { userId: credentials.userId, accessToken: credentials.accessToken };
+  }
+  return new Promise((resolve, reject) => {
+    const child = execFile("gh", ["secret", "set", "INSTAGRAM_ACCOUNTS_JSON", "--repo", repo], { timeout: 30000 }, (err, stdout, stderr) => {
+      if (err) return reject(new Error(`INSTAGRAM_ACCOUNTS_JSON 동기화 실패: ${stderr || err.message}`));
+      resolve();
+    });
+    child.stdin.end(JSON.stringify(accounts));
+  });
 }
 
 // ---------- Threads 계정 자동 연결 (OAuth) ----------

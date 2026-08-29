@@ -94,6 +94,35 @@ async function addInstagramBatch(items) {
   return newPosts;
 }
 
+// 다계정 Instagram 단건 예약. 기존 팔자명가 일일운세 함수는 그대로 두고,
+// 다른 계정 콘텐츠만 이 경로를 사용해 서로의 예약/중복키를 건드리지 않는다.
+async function addInstagramPost(item) {
+  const required = ["accountKey", "accountId", "accountLabel", "caption", "date", "time", "contentHash"];
+  for (const key of required) if (!item?.[key]) throw Object.assign(new Error(`${key} 값이 필요합니다.`), { status: 400 });
+  if (item.validation?.status !== "passed") throw Object.assign(new Error("최종 검수를 통과하지 못한 콘텐츠는 예약할 수 없습니다."), { status: 422 });
+  if (!Array.isArray(item.images) || item.images.length < 2 || item.images.length > 10) throw Object.assign(new Error("Instagram 이미지는 2~10장이어야 합니다."), { status: 422 });
+  if (!/^\d{2}:\d{2}$/.test(item.time)) throw Object.assign(new Error("예약 시각은 HH:MM 형식이어야 합니다."), { status: 400 });
+
+  const dedupeKey = item.dedupeKey || `instagram:${item.accountKey}:${item.date}:${item.contentHash}`;
+  const { posts, sha } = await readSchedule();
+  const basePosts = posts.slice();
+  if (posts.some((post) => post.status !== "canceled" && post.dedupeKey === dedupeKey)) {
+    throw Object.assign(new Error("같은 계정·콘텐츠의 Instagram 예약이 이미 있습니다."), { status: 409, code: "DUPLICATE_INSTAGRAM_CONTENT" });
+  }
+  const post = {
+    id: crypto.randomUUID(), platform: "instagram", accountKey: item.accountKey,
+    accountId: item.accountId, accountLabel: item.accountLabel, text: item.caption,
+    title: item.title || "", contentSeries: item.contentSeries || "", images: item.images,
+    status: "scheduled", scheduledAt: kstDateAndTimeToUtc(item.date, item.time).toISOString(),
+    expectedLocalDate: item.date, exactTimeKst: item.time, dedupeKey, contentHash: item.contentHash,
+    validation: item.validation, createdAt: new Date().toISOString(), publishedAt: null,
+    publishedId: null, error: null, retryCount: 0,
+  };
+  posts.push(post);
+  await writeSchedule(posts, { sha, message: `chore: schedule Instagram ${item.accountKey} ${item.date} ${item.time}`, basePosts });
+  return post;
+}
+
 // 계정별로 최근에 이미 만든 글 목록 (게시완료 + 예약중, 취소/실패 제외)
 // -> 초안 생성 시 "이거랑 겹치지 않게" 참고용으로 넘겨준다.
 async function listRecentTextsForAccount(accountId, { limit = 15 } = {}) {
@@ -288,6 +317,7 @@ module.exports = {
   listRecentTextsForAccount,
   recordImmediatePublish,
   addInstagramBatch,
+  addInstagramPost,
   kstDateAndTimeToUtc,
   withJitter,
 };

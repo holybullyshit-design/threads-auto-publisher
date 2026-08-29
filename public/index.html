@@ -19,7 +19,7 @@
     <button class="tab-btn selected" data-tab="ops">관제탑</button>
     <button class="tab-btn" data-tab="compose">글쓰기</button>
     <button class="tab-btn" data-tab="instagram">Instagram 운세</button>
-    <button class="tab-btn" data-tab="schedule">예약 목록</button>
+    <button class="tab-btn" data-tab="schedule">콘텐츠 캘린더</button>
     <button class="tab-btn" data-tab="accounts">계정 관리</button>
   </nav>
 
@@ -49,6 +49,8 @@
 
     <div class="card ig-publish-card">
       <div class="preview-header"><label class="field-label" style="margin:0;">3. Instagram 예약 등록</label><span id="ig-account-status" class="meta-badge">계정 확인 전</span></div>
+      <div class="ig-range-row"><label>연결·점검할 Instagram 계정<select id="ig-account-select" class="select-input"><option value="palja">팔자명가 · 연결 확인 중</option><option value="yeonliji">연리지 실타래 · 연결 필요</option></select></label></div>
+      <p id="ig-account-safety" class="hint-text">계정별 토큰을 분리해 저장합니다. 연리지 연결은 팔자명가 클라우드 토큰을 변경하지 않습니다.</p>
       <p class="hint-text">오늘 6시가 지났다면 오늘 카드는 다음 클라우드 실행에서 바로 게시되고, 내일부터는 오전 6시를 맞춥니다.</p>
       <details class="ig-caption-box" id="ig-meta-setup">
         <summary>처음 한 번: Meta Instagram 앱 연결 설정</summary>
@@ -61,7 +63,7 @@
           <p id="ig-config-status" class="hint-text"></p>
         </div>
       </details>
-      <div class="button-row"><button id="ig-oauth-connect" class="btn btn-primary" type="button">Instagram 계정 자동 연결</button><span id="ig-oauth-status" class="hint-text">Instagram 로그인 한 번으로 안전하게 연결합니다.</span></div>
+      <div class="button-row"><button id="ig-oauth-connect" class="btn btn-primary" type="button">선택 계정 연결·갱신</button><span id="ig-oauth-status" class="hint-text">Instagram 로그인 한 번으로 선택한 계정만 연결합니다.</span></div>
       <div id="ig-callback-help" class="ig-callback-help hidden"><p class="hint-text">Instagram 승인 후 열린 Cloudflare 페이지의 <b>전체 주소</b>를 복사해 아래에 붙여넣으세요.</p><div class="ig-date-row"><input id="ig-callback-url" class="select-input" type="url" autocomplete="off" placeholder="https://threads-publish-pinger.../oauth/instagram/callback?code=...&state=..."><button id="ig-complete-callback" class="btn btn-secondary" type="button">승인 주소 처리</button></div><p id="ig-callback-status" class="hint-text"></p></div>
       <label class="ig-confirm"><input id="ig-confirm-reviewed" type="checkbox"> 위 기간의 전체 검수 통과 결과를 확인했습니다.</label>
       <div class="button-row"><button id="ig-preflight" class="btn btn-secondary" type="button">계정·토큰 사전 점검</button><button id="ig-schedule-range" class="btn btn-primary" type="button">검수된 7장 카드 일괄 예약</button></div>
@@ -196,10 +198,10 @@
   <section id="tab-schedule" class="tab-panel hidden">
     <div class="card">
       <div class="preview-header">
-        <label class="field-label" style="margin:0;">예약 / 게시 이력</label>
+        <label class="field-label" style="margin:0;">콘텐츠 캘린더 · 게시 이력</label>
         <button id="btn-refresh-schedule" class="btn-link">새로고침</button>
       </div>
-      <p class="hint-text">GitHub Actions가 10분 간격으로 예약된 글을 대신 게시합니다. 랩톱이 꺼져 있어도 동작합니다.</p>
+      <p class="hint-text">Threads와 Instagram의 예약·게시·실패 이력을 날짜별로 확인합니다. 자동 게시기는 5분마다 확인하며 랩톱이 꺼져 있어도 동작합니다.</p>
 
       <details class="rebalance-details">
         <summary>⏱ 예약 시간 재배치 (정확한 시각 계산 없이 예약해두고, 나중에 하루 정해진 시간대로 한 번에 정리)</summary>
@@ -224,10 +226,10 @@
         </div>
       </details>
 
-      <p class="hint-text">Instagram 게시물은 이 목록에 안 보여요 — 위 "Instagram 운세" 탭에서 따로 관리합니다.</p>
       <div id="group-filter" class="group-filter">
         <button class="mode-btn selected" data-group="all" type="button">전체</button>
-        <button class="mode-btn" data-group="saju" type="button">🔮 사주</button>
+        <button class="mode-btn" data-group="instagram" type="button">Instagram</button>
+        <button class="mode-btn" data-group="saju" type="button">Threads · 사주</button>
         <button class="mode-btn" data-group="partners" type="button">🛒 파트너스</button>
       </div>
 

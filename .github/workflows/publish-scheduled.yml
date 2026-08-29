@@ -31,6 +31,7 @@ jobs:
           THREADS_ACCOUNTS_JSON: ${{ secrets.THREADS_ACCOUNTS_JSON }}
           INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
           INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          INSTAGRAM_ACCOUNTS_JSON: ${{ secrets.INSTAGRAM_ACCOUNTS_JSON }}
           INSTAGRAM_GRAPH_VERSION: ${{ vars.INSTAGRAM_GRAPH_VERSION || 'v24.0' }}
           # schedule/posts.json을 로컬 git 커밋이 아니라 GitHub Contents API로 직접 읽고 쓴다
           # (githubStore.js) - 로컬 앱의 다른 쓰기 작업과 동시에 일어나도 충돌 시 자동으로

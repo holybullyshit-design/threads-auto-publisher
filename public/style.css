@@ -611,6 +611,12 @@ textarea#draft-text {
   gap: 10px;
 }
 
+.calendar-posts { display:flex; flex-direction:column; gap:4px; margin-top:7px; min-width:0; }
+.calendar-post-row { display:block; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; border-left:3px solid var(--account-color); border-radius:5px; padding:3px 5px; background:rgba(255,255,255,.045); color:var(--text-dim); font-size:10px; }
+.calendar-post-row.status-published { opacity:.72; }
+.calendar-post-row.status-failed { background:var(--danger-soft); color:var(--danger); }
+.calendar-post-row.status-canceled { opacity:.35; text-decoration:line-through; }
+
 .calendar-nav {
   display: flex;
   align-items: center;

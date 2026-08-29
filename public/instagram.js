@@ -1,6 +1,7 @@
 (() => {
   const $ = (id) => document.getElementById(id);
   let validatedRangeKey = null;
+  let instagramAccounts = [];
   async function request(url, options) { const response = await fetch(url, options); const body = await response.json().catch(() => ({})); if (!response.ok) throw new Error(body.error || `요청 실패 (${response.status})`); return body; }
 
   async function loadPreview() {
@@ -25,8 +26,27 @@
 
   async function preflight() {
     $("ig-schedule-error").textContent = ""; $("ig-account-status").textContent = "점검 중…";
-    try { const result = await request("/api/instagram/preflight"); $("ig-account-status").textContent = `✓ @${result.account.username || result.account.id} 연결`; $("ig-account-status").classList.add("ig-pass"); $("ig-schedule-status").textContent = `Instagram ${result.account.account_type || "전문"} 계정 · Graph API ${result.graphVersion} · 토큰 정상`; }
+    const accountKey = $("ig-account-select").value;
+    try { const result = await request(`/api/instagram/preflight?accountKey=${encodeURIComponent(accountKey)}`); $("ig-account-status").textContent = `✓ @${result.account.username || result.account.id} 연결`; $("ig-account-status").classList.add("ig-pass"); $("ig-schedule-status").textContent = `Instagram ${result.account.account_type || "전문"} 계정 · Graph API ${result.graphVersion} · 토큰 정상`; }
     catch (error) { $("ig-account-status").textContent = "연결 필요"; $("ig-schedule-error").textContent = error.message; }
+  }
+
+  async function loadInstagramAccounts() {
+    const result = await request("/api/instagram/accounts");
+    instagramAccounts = result.accounts || [];
+    $("ig-account-select").innerHTML = instagramAccounts.map((account) => `<option value="${account.key}">${account.label} · ${account.connected ? `@${account.username || account.userId} 연결됨` : "연결 필요"}</option>`).join("");
+    $("ig-account-select").value = result.activeAccountKey || "palja";
+    updateInstagramAccountSafety();
+  }
+
+  function updateInstagramAccountSafety() {
+    const account = instagramAccounts.find((item) => item.key === $("ig-account-select").value);
+    const isPalja = account?.key === "palja";
+    $("ig-account-safety").textContent = isPalja
+      ? "팔자명가 기존 자동 게시 계정입니다. 현재 예약과 클라우드 설정을 그대로 유지합니다."
+      : "연리지 실타래는 연결 정보만 분리 저장합니다. 콘텐츠와 예약 기능은 검수 완료 전까지 비활성 상태입니다.";
+    $("ig-confirm-reviewed").disabled = !isPalja;
+    $("ig-schedule-range").disabled = !isPalja;
   }
 
   function randomState() {
@@ -41,10 +61,12 @@
       throw new Error("먼저 위의 Meta Instagram 앱 ID와 시크릿을 저장해주세요.");
     }
     const state = randomState();
+    const accountKey = $("ig-account-select").value;
+    const target = instagramAccounts.find((account) => account.key === accountKey);
     const status = $("ig-oauth-status");
-    const popup = window.open(`/oauth/instagram/start?state=${encodeURIComponent(state)}`, "_blank");
+    const popup = window.open(`/oauth/instagram/start?state=${encodeURIComponent(state)}&accountKey=${encodeURIComponent(accountKey)}`, "_blank");
     if (!popup) return void (status.textContent = "팝업이 차단되었습니다. 브라우저에서 팝업을 허용해주세요.");
-    status.textContent = "Instagram 로그인 창에서 팔자명가 계정을 선택하고 권한을 승인해주세요…";
+    status.textContent = `Instagram 로그인 창에서 ${target?.label || "선택 계정"} 계정을 선택하고 권한을 승인해주세요…`;
     $("ig-callback-help").classList.remove("hidden");
     const deadline = Date.now() + 5 * 60 * 1000;
     while (Date.now() < deadline) {
@@ -53,9 +75,12 @@
       if (result.status === "pending") continue;
       if (result.status === "error") throw new Error(result.error);
       try { popup.close(); } catch {}
-      status.textContent = result.cloudSynced
-        ? "✓ 팔자명가 Instagram 연결 및 클라우드 자동 게시 설정 완료"
-        : `✓ 로컬 연결 완료 · 클라우드 동기화 확인 필요: ${result.cloudSyncError || "알 수 없는 오류"}`;
+      status.textContent = result.accountKey === "palja"
+        ? (result.cloudSynced ? "✓ 팔자명가 Instagram 연결 및 클라우드 자동 게시 설정 완료" : `✓ 팔자명가 로컬 연결 완료 · 클라우드 동기화 확인 필요: ${result.cloudSyncError || "알 수 없는 오류"}`)
+        : `✓ ${result.label} 연결 완료 · 팔자명가 클라우드 설정은 변경하지 않았습니다.`;
+      await loadInstagramAccounts();
+      $("ig-account-select").value = result.accountKey;
+      updateInstagramAccountSafety();
       await preflight();
       return;
     }
@@ -91,7 +116,7 @@
     catch (error) { $("ig-schedule-error").textContent = error.message; } finally { $("ig-schedule-range").disabled = false; }
   }
 
-  $("ig-load-preview").addEventListener("click", loadPreview); $("ig-validate-range").addEventListener("click", validateRange); $("ig-save-oauth-config").addEventListener("click", () => saveOAuthConfig().catch((error) => { $("ig-config-status").textContent = `저장 실패: ${error.message}`; })); $("ig-oauth-connect").addEventListener("click", () => connectInstagram().catch((error) => { $("ig-oauth-status").textContent = `연결 실패: ${error.message}`; })); $("ig-complete-callback").addEventListener("click", () => completeCallback().catch((error) => { $("ig-callback-status").textContent = `처리 실패: ${error.message}`; })); $("ig-preflight").addEventListener("click", preflight); $("ig-schedule-range").addEventListener("click", scheduleRange);
+  $("ig-load-preview").addEventListener("click", loadPreview); $("ig-validate-range").addEventListener("click", validateRange); $("ig-save-oauth-config").addEventListener("click", () => saveOAuthConfig().catch((error) => { $("ig-config-status").textContent = `저장 실패: ${error.message}`; })); $("ig-oauth-connect").addEventListener("click", () => connectInstagram().catch((error) => { $("ig-oauth-status").textContent = `연결 실패: ${error.message}`; })); $("ig-complete-callback").addEventListener("click", () => completeCallback().catch((error) => { $("ig-callback-status").textContent = `처리 실패: ${error.message}`; })); $("ig-preflight").addEventListener("click", preflight); $("ig-schedule-range").addEventListener("click", scheduleRange); $("ig-account-select").addEventListener("change", updateInstagramAccountSafety);
   [$("ig-start-date"), $("ig-end-date")].forEach((input) => input.addEventListener("change", () => { validatedRangeKey = null; $("ig-confirm-reviewed").checked = false; }));
-  window.loadInstagramDashboard = () => { if (!$("ig-card-grid").children.length) loadPreview(); };
+  window.loadInstagramDashboard = () => { loadInstagramAccounts().catch((error) => { $("ig-schedule-error").textContent = error.message; }); if (!$("ig-card-grid").children.length) loadPreview(); };
 })();

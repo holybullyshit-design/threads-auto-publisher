@@ -39,6 +39,19 @@ function loadAccounts() {
   }
 }
 
+function loadInstagramAccounts() {
+  let mapped = {};
+  if (process.env.INSTAGRAM_ACCOUNTS_JSON) {
+    try { mapped = JSON.parse(process.env.INSTAGRAM_ACCOUNTS_JSON); }
+    catch (e) { throw new Error("INSTAGRAM_ACCOUNTS_JSON 파싱에 실패했습니다: " + e.message); }
+  }
+  // 기존 팔자명가 시크릿은 완전 하위호환으로 유지한다.
+  if (!mapped.palja && process.env.INSTAGRAM_USER_ID && process.env.INSTAGRAM_ACCESS_TOKEN) {
+    mapped.palja = { userId: process.env.INSTAGRAM_USER_ID, accessToken: process.env.INSTAGRAM_ACCESS_TOKEN };
+  }
+  return mapped;
+}
+
 // 방금 처리한 post 하나의 결과 필드만, 최신 원격 상태 위에 다시 얹어서 즉시 저장한다.
 // (전체 posts를 끝에 몰아서 한 번에 저장하지 않는다 - 위 설명 참고)
 async function persistPostResult(postId, fields) {
@@ -68,9 +81,13 @@ async function main() {
     if (post.platform === "instagram") {
       try {
         if (post.validation?.status !== "passed" || !post.contentHash) throw Object.assign(new Error("검수 통과 증거가 없어 게시를 차단했습니다."), { code: "VALIDATION_REQUIRED" });
-        const marker = `#팔자명가${String(post.expectedLocalDate).replaceAll("-", "")}`;
-        const existing = await findPublishedByMarker(marker);
-        const result = existing ? { publishedId: existing.id, recoveredDuplicate: true } : await publishCarousel({ imageUrls: post.images, caption: post.text });
+        const accountKey = post.accountKey || "palja";
+        const credentials = loadInstagramAccounts()[accountKey];
+        if (!credentials?.userId || !credentials?.accessToken) throw Object.assign(new Error(`${accountKey} Instagram 클라우드 시크릿이 없습니다.`), { code: "MISSING_INSTAGRAM_CONFIG" });
+        const marker = post.publishMarker || `#자동게시_${accountKey}_${String(post.id).slice(0, 8)}`;
+        const existing = await findPublishedByMarker(marker, credentials);
+        const caption = String(post.text || "").includes(marker) ? post.text : `${post.text}\n\n${marker}`;
+        const result = existing ? { publishedId: existing.id, recoveredDuplicate: true } : await publishCarousel({ imageUrls: post.images, caption, ...credentials });
         console.log(`[인스타그램 성공] ${post.id} → ${result.publishedId}${result.recoveredDuplicate ? " (기존 게시물 회수)" : ""}`);
         await persistPostResult(post.id, { status: "published", publishedAt: new Date().toISOString(), publishedId: result.publishedId, error: null });
       } catch (err) {

@@ -1237,16 +1237,16 @@ function seedAccountColors() {
 // 관리하므로 여기서는 항상 제외한다. 스레드 안에서는 사주(3계정)/파트너스(1계정)가 섞여
 // 헷갈릴 수 있어서, 그 둘만 전체/사주/파트너스로 걸러볼 수 있게 한다.
 function getPostGroup(post) {
+  if (post.platform === "instagram") return "instagram";
   const acc = state.accounts.find((a) => a.id === post.accountId);
   return acc && acc.type === "partners" ? "partners" : "saju";
 }
 
-const GROUP_LABEL = { saju: "🔮 사주", partners: "🛒 파트너스" };
+const GROUP_LABEL = { instagram: "Instagram", saju: "Threads · 사주", partners: "Threads · 파트너스" };
 
-function getThreadsSchedulePosts() {
-  const threadsOnly = state.schedulePosts.filter((p) => p.platform !== "instagram");
-  if (state.scheduleGroupFilter === "all") return threadsOnly;
-  return threadsOnly.filter((p) => getPostGroup(p) === state.scheduleGroupFilter);
+function getVisibleSchedulePosts() {
+  if (state.scheduleGroupFilter === "all") return state.schedulePosts;
+  return state.schedulePosts.filter((p) => getPostGroup(p) === state.scheduleGroupFilter);
 }
 
 function renderLegend() {
@@ -1256,17 +1256,15 @@ function renderLegend() {
       seen.set(acc.id, { label: acc.label, group: acc.type === "partners" ? "partners" : "saju" });
     }
   });
-  state.schedulePosts
-    .filter((p) => p.platform !== "instagram")
-    .forEach((p) => {
+  state.schedulePosts.forEach((p) => {
       if (!seen.has(p.accountId)) seen.set(p.accountId, { label: p.accountLabel || "계정 미상", group: getPostGroup(p) });
     });
 
-  const byGroup = { saju: [], partners: [] };
+  const byGroup = { instagram: [], saju: [], partners: [] };
   seen.forEach((entry, accountId) => byGroup[entry.group].push({ accountId, ...entry }));
 
   el.calendarLegend.innerHTML = "";
-  ["saju", "partners"].forEach((group) => {
+  ["instagram", "saju", "partners"].forEach((group) => {
     if (!byGroup[group].length) return;
     const row = document.createElement("div");
     row.className = "legend-group";
@@ -1293,7 +1291,7 @@ function renderScheduleView() {
     renderCalendar();
     if (state.selectedDay) renderDayDetail(state.selectedDay);
   } else {
-    renderPostCards(el.scheduleList, sortByCreatedDesc(getThreadsSchedulePosts()), "이 구분에 해당하는 예약/게시 이력이 없습니다.");
+    renderPostCards(el.scheduleList, sortByCreatedDesc(getVisibleSchedulePosts()), "이 구분에 해당하는 예약/게시 이력이 없습니다.");
   }
 }
 
@@ -1312,7 +1310,7 @@ function renderCalendar() {
   el.calMonthLabel.textContent = `${year}년 ${month + 1}월`;
 
   const postsByDay = new Map();
-  getThreadsSchedulePosts().forEach((p) => {
+  getVisibleSchedulePosts().forEach((p) => {
     const key = localDateKey(p.scheduledAt);
     if (!postsByDay.has(key)) postsByDay.set(key, []);
     postsByDay.get(key).push(p);
@@ -1340,17 +1338,14 @@ function renderCalendar() {
     if (key === todayKey) cell.classList.add("today");
     if (key === state.selectedDay) cell.classList.add("selected");
 
-    const maxDots = 6;
-    const dots = dayPosts
-      .slice(0, maxDots)
-      .map(
-        (p) =>
-          `<span class="calendar-dot status-${p.status}" style="background:${getAccountColor(p.accountId)}" title="${escapeHtml(p.accountLabel)} · ${STATUS_LABEL[p.status] || p.status}"></span>`
-      )
-      .join("");
-    const more = dayPosts.length > maxDots ? `<span class="calendar-more">+${dayPosts.length - maxDots}</span>` : "";
-
-    cell.innerHTML = `<span class="calendar-day-num">${day}</span><div class="calendar-dots">${dots}${more}</div>`;
+    const maxRows = 3;
+    const rows = dayPosts.slice(0, maxRows).map((p) => {
+      const platform = p.platform === "instagram" ? "IG" : "TH";
+      const time = new Date(p.scheduledAt).toLocaleTimeString("ko-KR", { hour: "2-digit", minute: "2-digit", hour12: false });
+      return `<span class="calendar-post-row status-${p.status}" style="--account-color:${getAccountColor(p.accountId)}" title="${escapeHtml(p.accountLabel)} · ${STATUS_LABEL[p.status] || p.status}"><b>${platform}</b> ${time} ${escapeHtml(p.accountLabel || "계정")}</span>`;
+    }).join("");
+    const more = dayPosts.length > maxRows ? `<span class="calendar-more">+${dayPosts.length - maxRows}건 더보기</span>` : "";
+    cell.innerHTML = `<span class="calendar-day-num">${day}</span><div class="calendar-posts">${rows}${more}</div>`;
     cell.addEventListener("click", () => {
       state.selectedDay = state.selectedDay === key ? null : key;
       renderCalendar();
@@ -1368,7 +1363,7 @@ function renderDayDetail(dayKey) {
     return;
   }
   el.dayDetail.classList.remove("hidden");
-  const dayPosts = getThreadsSchedulePosts()
+  const dayPosts = getVisibleSchedulePosts()
     .filter((p) => localDateKey(p.scheduledAt) === dayKey)
     .sort((a, b) => new Date(a.scheduledAt) - new Date(b.scheduledAt));
 
