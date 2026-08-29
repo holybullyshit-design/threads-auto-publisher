@@ -370,6 +370,16 @@ app.post("/api/draft", async (req, res) => {
     }
     const account = accountsStore.getAccountSecret(accountId);
 
+    // "종합사주"(팔자장인/팔자명가/팔자궤도) 계정은 카테고리 기반 페르소나(sajuDraftWriter)가 아니라
+    // 소재 뱅크 + 클리프행어 답글 체인 구조(taebaekSajuDraftWriter)로 운영한다. 이 탭(단일 텍스트
+    // 작성 화면)은 답글 체인을 못 다루므로, 여기서 잘못된 스타일로 조용히 생성되는 대신 막고
+    // 배치 스크립트(tools/convert-to-comprehensive-saju.js 등)를 쓰라고 안내한다.
+    if (account.contentEngine === "comprehensive-saju") {
+      return res.status(400).json({
+        error: `"${account.label}"은(는) 종합사주 계정이라 이 화면에서 직접 작성할 수 없습니다. 팔자장인과 같은 소재/클리프행어 구조로만 콘텐츠를 만들며, 배치 스크립트(tools/convert-to-comprehensive-saju.js)로만 생성·예약합니다.`,
+      });
+    }
+
     if (account.type === "partners") {
       const result = await writePartnersDraft({ account, categoryId, productName, productNote });
       return res.json(result);
