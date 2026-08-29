@@ -85,10 +85,21 @@ function addDaysStr(dateStr, days) {
 
 // 이미 있는 스케줄에서, "이 날짜에 이미 몇 개가 있는지"를 구한다(시:분 정확히 일치가 아니라
 // 같은 KST 날짜에 이미 채워진 슬롯 개수로 판단 - 지터 때문에 정확한 시:분은 매번 흔들리므로).
-function countExistingByDate(posts, accountId) {
+//
+// viral-morning 모드에서는 반드시 "오전(정오 이전)" 슬롯만 세야 한다 - 연리지실타래/아해사주는
+// 원래 매일 오후 5시에 댓글유도 글이 이미 하나씩 예약돼 있는데, 이걸 그냥 "그날 이미 1개
+// 있음"으로 세버리면 오전 슬롯을 하나도 안 채우게 된다(2026-08-29 실측: 실제로 이 버그로
+// 0개가 채워짐 - 다행히 저장 전에 잡음). 오후 슬롯과 오전 슬롯은 서로 다른 몫이라 반드시
+// 시간대로 구분해서 세야 한다.
+function countExistingByDate(posts, accountId, mode) {
   const counts = {};
   posts
     .filter((p) => p.accountId === accountId && p.status !== "canceled" && p.platform !== "instagram")
+    .filter((p) => {
+      if (mode !== "viral-morning") return true;
+      const { hour } = toKstDateHour(p.scheduledAt);
+      return hour < 12; // 정오 이전만 "오전 슬롯"으로 집계
+    })
     .forEach((p) => {
       const { date } = toKstDateHour(p.scheduledAt);
       counts[date] = (counts[date] || 0) + 1;
@@ -137,7 +148,7 @@ async function main() {
   const dailySlotTimes = MODE === "comprehensive" ? COMPREHENSIVE_SLOTS_KST : [MORNING_SLOT_KST];
 
   const { posts: currentPosts } = await readSchedule();
-  const existingCounts = countExistingByDate(currentPosts, account.id);
+  const existingCounts = countExistingByDate(currentPosts, account.id, MODE);
 
   // 날짜별로 "이미 채워진 개수"만큼은 빼고, 부족한 만큼만 오늘 목표(slotsPerDay)에 채운다.
   const jobs = []; // { dateStr, slotTime }
