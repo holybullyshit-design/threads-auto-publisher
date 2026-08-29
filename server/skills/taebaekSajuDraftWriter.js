@@ -338,13 +338,25 @@ async function writeThreadDraft({ dateKey, topicId, hookFormatId, accountLabel =
     throw new Error(`파트 구분에 실패했습니다(파트 ${parts.length}개). 원문: ${raw.slice(0, 200)}`);
   }
 
+  // 요청한 파트 수(partCount)와 실제로 나온 파트 수가 다르면 무조건 비정상이다 - 특히
+  // 실측된 사고: 모델이 검증 과정을 영어로 혼잣말하듯 출력에 남기고, 그러다 스스로 다시
+  // 처음부터 전체 파트를 새로 써서 "본문~답글N"이 그대로 통째로 두 번 반복된 채 나온 적이
+  // 있음(2026-08-28, 파트 8개 - 요청은 4개였는데 정상 4파트 + 영어 자기검증 문단 + 같은
+  // 4파트 반복). 개수가 안 맞으면 재시도하는 게 개별 파트 안을 하나하나 검사하는 것보다 확실하다.
+  if (parts.length !== partCount) {
+    throw new Error(`요청한 파트 수(${partCount})와 실제 파트 수(${parts.length})가 다릅니다. 원문: ${raw.slice(0, 200)}`);
+  }
+
   // 가끔 모델이 "<제목>" 같은 안내문 속 자리표시자를 실제 제목 대신 그대로 쓰거나(예: "<제목>:
   // <실제 제목>"), 어떤 파트를 "<제목/도입부는 이미 각 파트 안에 포함>" 식 메타 설명 문장으로
-  // 대체해버리는 경우가 실측됨(2026-08-28). 둘 다 파트 개수/구분자는 정상이라 위 체크를
-  // 통과하므로, 여기서 한 번 더 걸러서 실패시키면 호출부의 재시도 로직이 다시 시도하게 된다.
-  const looksBroken = parts.some((p) => p.length < 40 || p.includes("<제목>") || p.includes("이미 각 파트"));
+  // 대체해버리는 경우, 또는 파트 안에 영어 검증 혼잣말이 섞여 나오는 경우가 실측됨(2026-08-28).
+  // 파트 개수/구분자 체크만으로는 못 걸러내서, 내용 자체를 한 번 더 검사한다.
+  const asciiHeavy = (p) => (p.match(/[A-Za-z]/g) || []).length > 25;
+  const looksBroken = parts.some(
+    (p) => p.length < 40 || p.includes("<제목>") || p.includes("이미 각 파트") || asciiHeavy(p)
+  );
   if (looksBroken) {
-    throw new Error(`파트 내용이 비정상입니다(자리표시자 잔존 또는 너무 짧음). 원문: ${raw.slice(0, 200)}`);
+    throw new Error(`파트 내용이 비정상입니다(자리표시자/영어 혼잣말 잔존 또는 너무 짧음). 원문: ${raw.slice(0, 200)}`);
   }
 
   return {
