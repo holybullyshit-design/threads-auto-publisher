@@ -64,19 +64,54 @@
         <p>기획 → 캐릭터·무드 잠금 → 7장 제작 → 오타·흐름·중복 검수 → 내가 승인 → 예약</p>
         <div class="ig-pipeline"><span>관계 공감 후킹</span><b>→</b><span>사주 10~20%</span><b>→</b><span>7장 웹툰</span><b>→</b><span>명시적 승인</span></div>
       </div>
+
+      <div class="card ig-topic-studio">
+        <div class="preview-header ig-topic-header">
+          <div>
+            <span class="ig-step-label">STEP 1</span>
+            <label class="field-label" style="margin:4px 0 0;">오늘 만들 주제 하나를 골라주세요</label>
+          </div>
+          <button id="ig-y-refresh-topics" class="btn btn-secondary btn-small ig-inline-btn" type="button">↻ 다른 주제 10개 보기</button>
+        </div>
+        <p class="hint-text ig-topic-help">10개 중 마음에 드는 주제를 한 번 누르면 선택됩니다. 아직 이미지는 만들지 않으니 편하게 둘러보세요.</p>
+        <div id="ig-y-topic-grid" class="ig-topic-grid" role="listbox" aria-label="연리지 실타래 추천 주제 10개">
+          <div class="ig-topic-loading"><span class="ig-mini-spinner" aria-hidden="true"></span>주제 10개를 준비하고 있습니다…</div>
+        </div>
+        <div id="ig-y-selected-topic" class="ig-selected-topic hidden" aria-live="polite"></div>
+        <div class="ig-create-settings">
+          <label>게시 날짜<input id="ig-y-create-date" type="date" class="select-input"></label>
+          <label>게시 시간<input id="ig-y-create-time" type="time" class="select-input" value="18:00"></label>
+        </div>
+        <button id="ig-y-generate" class="btn btn-primary ig-generate-btn" type="button" disabled>주제를 먼저 선택해주세요</button>
+        <div id="ig-y-generate-progress" class="ig-generate-progress hidden" role="status" aria-live="polite">
+          <div class="ig-progress-head"><b>7장 시안을 만들고 있습니다</b><span id="ig-y-generate-elapsed">00:00</span></div>
+          <div class="ig-progress-track"><i></i></div>
+          <p id="ig-y-generate-message">캐릭터와 글씨를 고정한 뒤 7장 흐름을 구성하고 있어요. 보통 1~2분 걸립니다.</p>
+        </div>
+        <p id="ig-y-generate-error" class="error-text"></p>
+      </div>
+
       <div class="card ig-character-lock">
-        <div class="preview-header"><label class="field-label" style="margin:0;">캐릭터·스타일 기준</label><span class="meta-badge ig-pass">🔒 잠금 ON</span></div>
+        <div class="preview-header"><div><span class="ig-step-label">STEP 2</span><label class="field-label" style="margin:4px 0 0;">캐릭터·스타일 기준</label></div><span class="meta-badge ig-pass">🔒 잠금 ON</span></div>
         <div id="ig-character-bible" class="ig-character-bible"><p>연지와 타래의 기준을 불러오는 중입니다…</p></div>
       </div>
       <div class="card">
-        <div class="preview-header"><label class="field-label" style="margin:0;">제작 시안 검수·승인</label><span id="ig-y-draft-status" class="meta-badge">시안 확인 중</span></div>
+        <div class="preview-header ig-draft-header">
+          <div><span class="ig-step-label">STEP 3</span><label class="field-label" style="margin:4px 0 0;">제작 시안 크게 보고 검수·승인</label></div>
+          <div class="ig-draft-actions"><button id="ig-y-refresh-drafts" class="btn btn-secondary btn-small ig-inline-btn" type="button">↻ 시안 새로고침</button><span id="ig-y-draft-status" class="meta-badge">시안 확인 중</span></div>
+        </div>
         <div class="ig-range-row"><label>시안<select id="ig-y-draft-select" class="select-input"></select></label><label>예약 시각<input id="ig-y-schedule-display" class="select-input" readonly></label></div>
-        <div id="ig-y-summary" class="ig-calendar-summary"></div>
-        <div id="ig-y-card-grid" class="ig-card-grid"></div>
-        <details class="ig-caption-box" open><summary>7장 문구·Instagram 캡션 검수</summary><div id="ig-y-copy-review" class="ig-copy-review"></div><pre id="ig-y-caption"></pre></details>
-        <div id="ig-y-checks" class="ig-qa-grid"></div>
-        <label class="ig-confirm"><input id="ig-y-confirm" type="checkbox"> 7장 이미지·오타·흐름·사주 표현·캡션을 모두 확인했고 이 시안을 승인합니다.</label>
-        <button id="ig-y-schedule" class="btn btn-primary" type="button" disabled>승인한 시안 예약하기</button>
+        <div id="ig-y-empty" class="ig-draft-empty hidden"><b>아직 볼 수 있는 시안이 없습니다.</b><span>위에서 주제를 하나 고른 뒤 ‘7장 이미지 시안 만들기’를 눌러주세요.</span></div>
+        <div id="ig-y-preview-body">
+          <div id="ig-y-summary" class="ig-calendar-summary"></div>
+          <p class="ig-image-tip">사진을 누르면 원본 크기로 크게 볼 수 있습니다.</p>
+          <div id="ig-y-card-grid" class="ig-card-grid"></div>
+          <button id="ig-y-regenerate" class="btn btn-secondary" type="button" disabled>같은 주제로 이미지 다시 만들기</button>
+          <details class="ig-caption-box" open><summary>7장 문구·Instagram 캡션 검수</summary><div id="ig-y-copy-review" class="ig-copy-review"></div><pre id="ig-y-caption"></pre></details>
+          <div id="ig-y-checks" class="ig-qa-grid"></div>
+          <label class="ig-confirm"><input id="ig-y-confirm" type="checkbox"> 7장 이미지·오타·흐름·사주 표현·캡션을 모두 확인했고 이 시안을 승인합니다.</label>
+          <button id="ig-y-schedule" class="btn btn-primary" type="button" disabled>승인한 시안 예약하기</button>
+        </div>
         <p id="ig-y-result" class="hint-text"></p><p id="ig-y-error" class="error-text"></p>
       </div>
     </div>
@@ -236,29 +271,6 @@
         <button id="btn-refresh-schedule" class="btn-link">새로고침</button>
       </div>
       <p class="hint-text">Threads와 Instagram의 예약·게시·실패 이력을 날짜별로 확인합니다. 자동 게시기는 5분마다 확인하며 랩톱이 꺼져 있어도 동작합니다.</p>
-
-      <details class="rebalance-details">
-        <summary>⏱ 예약 시간 재배치 (정확한 시각 계산 없이 예약해두고, 나중에 하루 정해진 시간대로 한 번에 정리)</summary>
-        <div class="rebalance-panel">
-          <label class="field-label">계정</label>
-          <select id="rebalance-account" class="select-input"></select>
-
-          <label class="field-label">대상 글 종류</label>
-          <select id="rebalance-kind" class="select-input">
-            <option value="product">제품 홍보 글만</option>
-            <option value="lifestyle">일상글만</option>
-            <option value="all">전체</option>
-          </select>
-
-          <label class="field-label">하루 시간 슬롯 (쉼표로 구분)</label>
-          <input id="rebalance-times" class="text-input" value="11:00, 16:00, 20:00" />
-          <p class="hint-text">같은 날짜로 예약된 글이 여러 개면, 먼저 만든 순서대로 위 시간대에 하나씩 배정됩니다.</p>
-
-          <button id="btn-rebalance-apply" class="btn btn-secondary btn-small" type="button">재배치 적용</button>
-          <p id="rebalance-result" class="hint-text"></p>
-          <p id="rebalance-error" class="error-text"></p>
-        </div>
-      </details>
 
       <div id="group-filter" class="group-filter">
         <button class="mode-btn selected" data-group="all" type="button">전체</button>

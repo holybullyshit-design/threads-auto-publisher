@@ -888,18 +888,6 @@ app.patch("/api/schedule/:id", async (req, res) => {
   }
 });
 
-// 특정 계정의 예약 시각들을, 날짜는 그대로 두고 하루에 정해진 시간 슬롯으로 다시 배분한다.
-// (예: 정확한 시간 계산 없이 아무 시각으로나 걸어둔 뒤, 한 번에 11:00/16:00/20:00으로 정리)
-app.post("/api/schedule/rebalance-times", async (req, res) => {
-  try {
-    const { accountId, times, kind } = req.body || {};
-    const result = await scheduleStore.rebalanceTimes({ accountId, times, kind });
-    res.json(result);
-  } catch (err) {
-    handleError(res, err);
-  }
-});
-
 app.post("/api/schedule/:id/cancel", async (req, res) => {
   try {
     const post = await scheduleStore.cancelScheduledPost(req.params.id);

@@ -108,12 +108,6 @@ const el = {
   btnRefreshSchedule: document.getElementById("btn-refresh-schedule"),
   scheduleList: document.getElementById("schedule-list"),
   scheduleError: document.getElementById("schedule-error"),
-  rebalanceAccount: document.getElementById("rebalance-account"),
-  rebalanceKind: document.getElementById("rebalance-kind"),
-  rebalanceTimes: document.getElementById("rebalance-times"),
-  btnRebalanceApply: document.getElementById("btn-rebalance-apply"),
-  rebalanceResult: document.getElementById("rebalance-result"),
-  rebalanceError: document.getElementById("rebalance-error"),
   groupFilter: document.getElementById("group-filter"),
   calendarLegend: document.getElementById("calendar-legend"),
   calendarView: document.getElementById("calendar-view"),
@@ -348,23 +342,6 @@ function renderAccountSelect() {
   el.accountSelect.value = state.selectedAccountId;
   renderAccountPersonaHint();
   renderCategoryOptions();
-  renderRebalanceAccountOptions();
-}
-
-function renderRebalanceAccountOptions() {
-  const prev = el.rebalanceAccount.value;
-  el.rebalanceAccount.innerHTML = "";
-  state.accounts.forEach((acc) => {
-    const opt = document.createElement("option");
-    opt.value = acc.id;
-    opt.textContent = `${acc.type === "partners" ? "🛒" : "🔮"} ${acc.label}`;
-    el.rebalanceAccount.appendChild(opt);
-  });
-  if (prev && state.accounts.some((a) => a.id === prev)) {
-    el.rebalanceAccount.value = prev;
-  } else if (state.selectedAccountId) {
-    el.rebalanceAccount.value = state.selectedAccountId;
-  }
 }
 
 function renderAccountPersonaHint() {
@@ -1351,11 +1328,16 @@ function renderCalendar() {
     // 매일 1건씩 잡혀 보여서, 정작 "지금 실제로 뭐가 예정돼 있나"를 한눈에 보기 어려워진다.
     // 취소 이력 자체는 날짜 클릭 시 상세 목록(renderDayDetail)에서 그대로 확인 가능하다.
     const activeDayPosts = dayPosts.filter((p) => p.status !== "canceled");
-    const byAccount = new Map(); // accountId -> { label, count, hasFailed, allPublished }
+    const byAccount = new Map(); // "accountId|platform" -> { label, count, hasFailed, allPublished }
     activeDayPosts.forEach((p) => {
-      const key = p.accountId || p.accountLabel || "unknown";
+      // 팔자명가는 Threads 글과 Instagram "오늘의 운세"가 같은 accountLabel을 쓰지만 accountId는
+      // 다르다(Instagram 쪽은 "saju_orbit" 고정값) - platform까지 키에 넣어야 서로 다른 두 칩으로
+      // 안 뭉개지고, 라벨에 (IG) 표시를 붙여서 왜 "팔자명가"가 두 줄인지 헷갈리지 않게 한다.
+      const platform = p.platform === "instagram" ? "instagram" : "threads";
+      const key = `${p.accountId || p.accountLabel || "unknown"}|${platform}`;
       if (!byAccount.has(key)) {
-        byAccount.set(key, { label: p.accountLabel || "계정", accountId: p.accountId, count: 0, hasFailed: false, allPublished: true });
+        const label = (p.accountLabel || "계정") + (platform === "instagram" ? " (IG)" : "");
+        byAccount.set(key, { label, accountId: p.accountId, count: 0, hasFailed: false, allPublished: true });
       }
       const entry = byAccount.get(key);
       entry.count += 1;

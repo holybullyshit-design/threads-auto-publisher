@@ -230,65 +230,6 @@ function kstDateAndTimeToUtc(dateKeyKST, hhmm) {
   return utc;
 }
 
-// 특정 계정의 예약(아직 발행 안 된 것만)을 날짜별로 묶어서, 하루에 정해진 시각 슬롯(예:
-// 11:00/16:00/20:00)으로 다시 배분한다. 정확한 시간을 매번 고를 필요 없이 "아무 날짜"로만
-// 예약해두고, 나중에 이걸로 한 번에 정리하기 위한 기능. kind로 대상 글 종류를 제한할 수 있다
-// (예: 제품 홍보 글만 — 이미 자리 잡은 일상글 예약 시각은 건드리지 않기 위해).
-async function rebalanceTimes({ accountId, times, kind = "all" }) {
-  if (!accountId) {
-    const err = new Error("accountId가 필요합니다.");
-    err.status = 400;
-    throw err;
-  }
-  if (!Array.isArray(times) || times.length === 0) {
-    const err = new Error("times(시간 슬롯 배열)가 필요합니다. 예: [\"11:00\",\"16:00\",\"20:00\"]");
-    err.status = 400;
-    throw err;
-  }
-  for (const t of times) {
-    if (!/^\d{1,2}:\d{2}$/.test(t)) {
-      const err = new Error(`시간 형식이 올바르지 않습니다: ${t} (HH:MM 형식이어야 함)`);
-      err.status = 400;
-      throw err;
-    }
-  }
-
-  const { posts, sha } = await readSchedule();
-  const basePosts = JSON.parse(JSON.stringify(posts)); // 여러 글의 scheduledAt을 그 자리에서 고칠 거라 미리 스냅샷
-  const targets = posts.filter((p) => {
-    if (p.accountId !== accountId || p.status !== "scheduled") return false;
-    if (kind === "product") return Boolean(p.replyText);
-    if (kind === "lifestyle") return !p.replyText;
-    return true;
-  });
-
-  // 날짜별로 묶고, 그 안에서는 먼저 만든(createdAt 빠른) 순서대로 슬롯을 배정한다.
-  const byDate = new Map();
-  for (const p of targets) {
-    const key = kstDateKey(p.scheduledAt);
-    if (!byDate.has(key)) byDate.set(key, []);
-    byDate.get(key).push(p);
-  }
-
-  let updated = 0;
-  for (const [dateKey, dayPosts] of byDate) {
-    dayPosts.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
-    dayPosts.forEach((post, i) => {
-      const slot = times[i % times.length];
-      const base = kstDateAndTimeToUtc(dateKey, slot);
-      post.scheduledAt = withJitter(base).toISOString();
-      updated += 1;
-    });
-  }
-
-  await writeSchedule(posts, {
-    sha,
-    message: `chore: rebalance schedule times for account ${accountId} (${kind})`,
-    basePosts,
-  });
-  return { updated, days: byDate.size };
-}
-
 async function cancelScheduledPost(id) {
   const { posts, sha } = await readSchedule();
   const basePosts = JSON.parse(JSON.stringify(posts)); // target을 그 자리에서 바로 고칠 거라, 그 전 스냅샷을 떠둔다
@@ -312,7 +253,6 @@ module.exports = {
   listSchedule,
   addScheduledPost,
   updateScheduledPost,
-  rebalanceTimes,
   cancelScheduledPost,
   listRecentTextsForAccount,
   recordImmediatePublish,
