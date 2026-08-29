@@ -32,16 +32,11 @@ jobs:
           INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
           INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
           INSTAGRAM_GRAPH_VERSION: ${{ vars.INSTAGRAM_GRAPH_VERSION || 'v24.0' }}
+          # schedule/posts.json을 로컬 git 커밋이 아니라 GitHub Contents API로 직접 읽고 쓴다
+          # (githubStore.js) - 로컬 앱의 다른 쓰기 작업과 동시에 일어나도 충돌 시 자동으로
+          # 안전하게 재시도된다. 2026-08-29: 예전 방식(plain git commit && push, 별도 스텝)은
+          # 이 API 기반 쓰기와 경합하다 push가 실패하면 "방금 게시했다"는 기록이 통째로
+          # 유실돼서 같은 글이 중복 게시되는 사고가 있었음 - 그래서 이 스텝 하나로 합침.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPO: ${{ github.repository }}
         run: node cloud/publish-scheduled.js
-
-      - name: Commit updated schedule (if changed)
-        run: |
-          if [ -n "$(git status --porcelain schedule/posts.json)" ]; then
-            git config user.name "threads-auto-publisher-bot"
-            git config user.email "actions@users.noreply.github.com"
-            git add schedule/posts.json
-            git commit -m "chore: update schedule status [skip ci]"
-            git push
-          else
-            echo "변경 사항 없음"
-          fi
