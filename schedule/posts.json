@@ -4876,5 +4876,49 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null
+  },
+  {
+    "id": "3413b92a-94cb-4218-b9f7-42251bfe6d4c",
+    "platform": "instagram",
+    "accountKey": "yeonliji",
+    "accountId": "knot_saju",
+    "accountLabel": "연리지 실타래",
+    "text": "좋아하면서도 자꾸 멀어지는 사람.\n마음이 없어서가 아니라, 가까워질수록 더 많은 장면을 걱정하는 사람도 있어요.\n\n명리에서 귀문관살은 감각과 생각이 예민하고 감정을 오래 곱씹는 성향으로 읽기도 합니다. 하지만 이것 하나로 이별이나 재회를 단정할 수는 없어요. 일주와 전체 명식, 두 사람의 궁합, 지금 흐르는 운을 함께 봐야 합니다.\n\n끝난 줄 알았는데 마음이 아직 남았다면 댓글에 ‘매듭’이라고 남겨주세요. 다음 편에서 재회 흐름을 볼 때 먼저 확인할 것을 풀어볼게요.\n\n#연리지실타래 #재회운 #궁합 #사주풀이 #연애고민",
+    "title": "좋아하는데 왜 자꾸 멀어질까?",
+    "contentSeries": "연리지 관계기록",
+    "images": [
+      "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@b227fed050d812757baf29bc391b0f92e5530a9a/images/2ad8e1e4-7034-42e2-91ad-786cac4eab7f.jpg",
+      "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@b227fed050d812757baf29bc391b0f92e5530a9a/images/7070ba79-4eac-4057-9678-f414cefcf521.jpg",
+      "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@b227fed050d812757baf29bc391b0f92e5530a9a/images/f539d13d-7345-40f1-b52b-b0c1b386f483.jpg",
+      "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@b227fed050d812757baf29bc391b0f92e5530a9a/images/990b92cc-dce9-438b-9109-d9e5d99740ef.jpg",
+      "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@b227fed050d812757baf29bc391b0f92e5530a9a/images/732d1f93-ba04-4eb2-b521-b84cb0eee5d6.jpg",
+      "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@b227fed050d812757baf29bc391b0f92e5530a9a/images/7923dfe2-d579-4b50-a292-c09241cdfb61.jpg",
+      "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@b227fed050d812757baf29bc391b0f92e5530a9a/images/b3bd6dad-1ff7-4cf0-85f2-1304e0b6064c.jpg"
+    ],
+    "status": "scheduled",
+    "scheduledAt": "2026-08-29T09:00:00.000Z",
+    "expectedLocalDate": "2026-08-29",
+    "exactTimeKst": "18:00",
+    "dedupeKey": "instagram:yeonliji:2026-08-29:5210a22d808d501dfa8501cdf8d0dd458fca788f580b66bac26b9fb57c4d9bbd",
+    "contentHash": "5210a22d808d501dfa8501cdf8d0dd458fca788f580b66bac26b9fb57c4d9bbd",
+    "validation": {
+      "status": "passed",
+      "checkedAt": "2026-08-29T04:51:15.570Z",
+      "checks": {
+        "spelling": true,
+        "flow": true,
+        "sajuAccuracy": true,
+        "nonDeterministicLanguage": true,
+        "slideCount": true,
+        "imageUniqueness": true,
+        "ctaQuality": true,
+        "dimensions": "1080x1350"
+      }
+    },
+    "createdAt": "2026-08-29T04:53:55.183Z",
+    "publishedAt": null,
+    "publishedId": null,
+    "error": null,
+    "retryCount": 0
   }
 ]
