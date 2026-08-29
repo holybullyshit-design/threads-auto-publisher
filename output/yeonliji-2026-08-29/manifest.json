@@ -1,0 +1,121 @@
+{
+  "title": "좋아하는데 왜 자꾸 멀어질까?",
+  "series": "연리지 관계기록",
+  "accountKey": "yeonliji",
+  "accountId": "knot_saju",
+  "accountLabel": "연리지 실타래",
+  "date": "2026-08-29",
+  "time": "18:00",
+  "caption": "좋아하면서도 자꾸 멀어지는 사람.\n마음이 없어서가 아니라, 가까워질수록 더 많은 장면을 걱정하는 사람도 있어요.\n\n명리에서 귀문관살은 감각과 생각이 예민하고 감정을 오래 곱씹는 성향으로 읽기도 합니다. 하지만 이것 하나로 이별이나 재회를 단정할 수는 없어요. 일주와 전체 명식, 두 사람의 궁합, 지금 흐르는 운을 함께 봐야 합니다.\n\n끝난 줄 알았는데 마음이 아직 남았다면 댓글에 ‘매듭’이라고 남겨주세요. 다음 편에서 재회 흐름을 볼 때 먼저 확인할 것을 풀어볼게요.\n\n#연리지실타래 #재회운 #궁합 #사주풀이 #연애고민",
+  "contentHash": "5210a22d808d501dfa8501cdf8d0dd458fca788f580b66bac26b9fb57c4d9bbd",
+  "cards": [
+    {
+      "eyebrow": "연리지 관계기록 01",
+      "title": [
+        "좋아하는데",
+        "왜 자꾸 멀어질까?"
+      ],
+      "body": [
+        "마음이 없어서가 아니라",
+        "너무 많이 느끼는 사람도 있어."
+      ],
+      "panel": 0
+    },
+    {
+      "eyebrow": "연지의 이야기",
+      "title": [
+        "연락이 오면 설레는데",
+        "가까워지면 겁이 났다"
+      ],
+      "body": [
+        "좋아질수록 잃을 장면부터 떠올라",
+        "먼저 한 걸음 물러나곤 했다."
+      ],
+      "panel": 1
+    },
+    {
+      "eyebrow": "타래의 한마디",
+      "title": [
+        "도망은 무관심보다",
+        "불안에서 시작되기도 해"
+      ],
+      "body": [
+        "상대의 말 한마디를 오래 곱씹고",
+        "아직 오지 않은 이별까지 걱정하는 마음."
+      ],
+      "panel": 2
+    },
+    {
+      "eyebrow": "사주 한 스푼 · 귀문관살",
+      "title": [
+        "‘귀문관살’은",
+        "저주가 아니야"
+      ],
+      "body": [
+        "전통 명리에서 감각과 생각이 예민해",
+        "감정을 깊이 반추하는 성향으로 읽기도 해."
+      ],
+      "note": "※ 이것 하나만으로 이별·재회를 단정하지 않아요.",
+      "panel": 3
+    },
+    {
+      "eyebrow": "단정하지 않기",
+      "title": [
+        "같은 귀문관살도",
+        "사랑의 모양은 다르다"
+      ],
+      "body": [
+        "일주와 전체 명식, 지금 흐르는 운에 따라",
+        "예민함은 통찰이 되기도, 불안이 되기도 해."
+      ],
+      "panel": 4
+    },
+    {
+      "eyebrow": "관계를 볼 때",
+      "title": [
+        "‘그 사람이 돌아올까’보다",
+        "먼저 볼 것이 있다"
+      ],
+      "body": [
+        "반복되는 거리두기, 두 사람의 궁합,",
+        "그리고 다시 만날 시기의 흐름."
+      ],
+      "panel": 5
+    },
+    {
+      "eyebrow": "다음 이야기 · 재회 흐름",
+      "title": [
+        "끝난 줄 알았는데",
+        "마음이 아직 남았다면"
+      ],
+      "body": [
+        "댓글에 ‘매듭’이라고 남겨줘.",
+        "다음 편에서 재회운을 볼 때 먼저 확인할 것을 풀게."
+      ],
+      "final": true
+    }
+  ],
+  "files": [
+    "/Users/choitaehwan/Desktop/스레드 자동화 프로그램/output/yeonliji-2026-08-29/card-01.jpg",
+    "/Users/choitaehwan/Desktop/스레드 자동화 프로그램/output/yeonliji-2026-08-29/card-02.jpg",
+    "/Users/choitaehwan/Desktop/스레드 자동화 프로그램/output/yeonliji-2026-08-29/card-03.jpg",
+    "/Users/choitaehwan/Desktop/스레드 자동화 프로그램/output/yeonliji-2026-08-29/card-04.jpg",
+    "/Users/choitaehwan/Desktop/스레드 자동화 프로그램/output/yeonliji-2026-08-29/card-05.jpg",
+    "/Users/choitaehwan/Desktop/스레드 자동화 프로그램/output/yeonliji-2026-08-29/card-06.jpg",
+    "/Users/choitaehwan/Desktop/스레드 자동화 프로그램/output/yeonliji-2026-08-29/card-07.jpg"
+  ],
+  "validation": {
+    "status": "passed",
+    "checkedAt": "2026-08-29T04:51:15.570Z",
+    "checks": {
+      "spelling": true,
+      "flow": true,
+      "sajuAccuracy": true,
+      "nonDeterministicLanguage": true,
+      "slideCount": true,
+      "imageUniqueness": true,
+      "ctaQuality": true,
+      "dimensions": "1080x1350"
+    }
+  }
+}

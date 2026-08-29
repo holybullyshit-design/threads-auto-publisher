@@ -24,6 +24,7 @@ const instagramAutomation = require("./lib/instagramAutomation");
 const { preflightInstagram } = require("./lib/instagramClient");
 const instagramOAuth = require("./lib/instagramOAuth");
 const instagramAuthStore = require("./lib/instagramAuthStore");
+const yeonlijiAutomation = require("./lib/yeonlijiAutomation");
 
 instagramAuthStore.loadOAuthConfig();
 instagramAuthStore.load();
@@ -54,6 +55,24 @@ app.get("/api/meta", (req, res) => {
 app.get("/api/instagram/content", (req, res) => {
   try {
     res.json({ content: instagramAutomation.generateFortunePackage(String(req.query.date || "")) });
+  } catch (err) { handleError(res, err); }
+});
+
+// ---------- Instagram 연리지 실타래 검수·승인 작업실 ----------
+app.get("/api/instagram/yeonliji/studio", async (req, res) => {
+  try { res.json(await yeonlijiAutomation.getStudio()); }
+  catch (err) { handleError(res, err); }
+});
+
+app.get("/api/instagram/yeonliji/card/:draftId/:page.jpg", (req, res) => {
+  try { res.sendFile(yeonlijiAutomation.readCard(req.params.draftId, req.params.page)); }
+  catch (err) { handleError(res, err); }
+});
+
+app.post("/api/instagram/yeonliji/schedule", async (req, res) => {
+  try {
+    if (req.body?.confirm !== true) return res.status(400).json({ error: "최종 시안 승인(confirm=true)이 필요합니다." });
+    res.status(201).json(await yeonlijiAutomation.scheduleApprovedDraft(String(req.body?.draftId || "")));
   } catch (err) { handleError(res, err); }
 });
 

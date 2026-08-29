@@ -2,6 +2,7 @@
   const $ = (id) => document.getElementById(id);
   let validatedRangeKey = null;
   let instagramAccounts = [];
+  let yeonlijiDrafts = [];
   async function request(url, options) { const response = await fetch(url, options); const body = await response.json().catch(() => ({})); if (!response.ok) throw new Error(body.error || `요청 실패 (${response.status})`); return body; }
 
   async function loadPreview() {
@@ -36,7 +37,60 @@
     instagramAccounts = result.accounts || [];
     $("ig-account-select").innerHTML = instagramAccounts.map((account) => `<option value="${account.key}">${account.label} · ${account.connected ? `@${account.username || account.userId} 연결됨` : "연결 필요"}</option>`).join("");
     $("ig-account-select").value = result.activeAccountKey || "palja";
+    selectInstagramStudio($("ig-account-select").value);
+  }
+
+  function checkLabel(key) {
+    const labels = { spelling: "오타·맞춤법", flow: "7장 흐름", sajuAccuracy: "사주 표현", nonDeterministicLanguage: "단정·불안 조장 방지", slideCount: "7장 구성", imageUniqueness: "이미지 중복 방지", ctaQuality: "마지막 참여 유도", dimensions: "1080×1350 규격" };
+    return labels[key] || key;
+  }
+
+  async function loadYeonlijiStudio() {
+    $("ig-y-error").textContent = "";
+    const studio = await request("/api/instagram/yeonliji/studio");
+    yeonlijiDrafts = studio.drafts || [];
+    const bible = studio.characterBible;
+    $("ig-character-bible").innerHTML = `<div><b>주인공</b><span>${bible.heroine}</span></div><div><b>관계 요정</b><span>${bible.companion}</span></div><div><b>그림체</b><span>${bible.art}</span></div><div><b>고정 팔레트</b><span>${bible.palette}</span></div><div class="wide"><b>변경 금지</b><span>${bible.rules.join(" · ")}</span></div>`;
+    $("ig-y-draft-select").innerHTML = yeonlijiDrafts.length ? yeonlijiDrafts.map((draft) => `<option value="${draft.id}">${draft.date} · ${draft.title}${draft.scheduled ? " · 예약됨" : " · 승인 대기"}</option>`).join("") : '<option value="">아직 제작된 시안이 없습니다</option>';
+    renderYeonlijiDraft();
+  }
+
+  function renderYeonlijiDraft() {
+    const draft = yeonlijiDrafts.find((item) => item.id === $("ig-y-draft-select").value) || yeonlijiDrafts[0];
+    if (!draft) { $("ig-y-draft-status").textContent = "시안 없음"; $("ig-y-card-grid").innerHTML = ""; return; }
+    $("ig-y-draft-select").value = draft.id;
+    $("ig-y-schedule-display").value = `${draft.date} ${draft.time} KST`;
+    $("ig-y-summary").innerHTML = `<b>${draft.series} · ${draft.title}</b><span>7장 · 캐릭터 잠금 · ${draft.validation?.status === "passed" ? "자동 검수 통과" : "검수 필요"}</span>`;
+    $("ig-y-card-grid").innerHTML = Array.from({ length: draft.imageCount }, (_, index) => `<figure><img src="/api/instagram/yeonliji/card/${encodeURIComponent(draft.id)}/${index + 1}.jpg" alt="${draft.title} ${index + 1}장"><figcaption>${index + 1}장 · ${index === 0 ? "후킹" : index === 6 ? "참여 유도" : "이야기 전개"}</figcaption></figure>`).join("");
+    $("ig-y-copy-review").innerHTML = draft.cards.map((card, index) => `<article><b>${index + 1}장 · ${card.eyebrow || ""}</b><strong>${(card.title || []).join(" / ")}</strong><span>${(card.body || []).join(" ")}</span>${card.note ? `<small>${card.note}</small>` : ""}</article>`).join("");
+    $("ig-y-caption").textContent = draft.caption;
+    $("ig-y-checks").innerHTML = Object.entries(draft.validation?.checks || {}).map(([key, value]) => `<span class="${value ? "passed" : "failed"}">${value ? "✓" : "!"} ${checkLabel(key)}${typeof value === "string" ? ` · ${value}` : ""}</span>`).join("");
+    $("ig-y-confirm").checked = false;
+    $("ig-y-confirm").disabled = draft.scheduled;
+    $("ig-y-schedule").disabled = true;
+    $("ig-y-draft-status").textContent = draft.scheduled ? (draft.schedule?.status === "published" ? "✓ 게시 완료" : "✓ 예약 완료") : "승인 대기";
+    $("ig-y-draft-status").classList.toggle("ig-pass", draft.scheduled || draft.validation?.status === "passed");
+    $("ig-y-result").textContent = draft.scheduled ? `중복 방지 적용 · ${new Date(draft.schedule.scheduledAt).toLocaleString("ko-KR")} 예약 · 같은 시안은 다시 예약되지 않습니다.` : "이미지를 클릭해 확대 확인하고, 아래 승인 체크 후에만 예약할 수 있습니다.";
+  }
+
+  async function scheduleYeonlijiDraft() {
+    const draftId = $("ig-y-draft-select").value;
+    $("ig-y-error").textContent = ""; $("ig-y-result").textContent = "7장 원본 재검수 → 공개 이미지 등록 → 예약 중…"; $("ig-y-schedule").disabled = true;
+    try {
+      const result = await request("/api/instagram/yeonliji/schedule", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ draftId, confirm: true }) });
+      $("ig-y-result").textContent = result.duplicatePrevented ? "✓ 이미 등록된 동일 시안을 확인했습니다. 중복 예약은 만들지 않았습니다." : "✓ 연리지 실타래 예약 등록 완료";
+      await loadYeonlijiStudio();
+    } catch (error) { $("ig-y-error").textContent = error.message; }
+  }
+
+  function selectInstagramStudio(key) {
+    const isPalja = key === "palja";
+    document.querySelectorAll("[data-ig-studio]").forEach((button) => button.classList.toggle("selected", button.dataset.igStudio === key));
+    $("ig-palja-workspace").classList.toggle("hidden", !isPalja);
+    $("ig-yeonliji-workspace").classList.toggle("hidden", isPalja);
+    $("ig-account-select").value = key;
     updateInstagramAccountSafety();
+    if (!isPalja) loadYeonlijiStudio().catch((error) => { $("ig-y-error").textContent = error.message; });
   }
 
   function updateInstagramAccountSafety() {
@@ -44,9 +98,17 @@
     const isPalja = account?.key === "palja";
     $("ig-account-safety").textContent = isPalja
       ? "팔자명가 기존 자동 게시 계정입니다. 현재 예약과 클라우드 설정을 그대로 유지합니다."
-      : "연리지 실타래는 연결 정보만 분리 저장합니다. 콘텐츠와 예약 기능은 검수 완료 전까지 비활성 상태입니다.";
+      : "연리지 실타래 전용 토큰입니다. 팔자명가 토큰과 기존 예약은 변경하지 않습니다.";
+    $("ig-account-publish-rule").textContent = isPalja
+      ? "팔자명가는 매일 오전 6시 자동 게시 규칙을 그대로 유지합니다."
+      : "연리지 실타래는 위 작업실에서 시안을 직접 확인하고 승인한 콘텐츠만 지정 시각에 게시합니다.";
+    $("ig-palja-growth").classList.toggle("hidden", !isPalja);
+    $("ig-palja-confirm-row").classList.toggle("hidden", !isPalja);
+    $("ig-schedule-range").classList.toggle("hidden", !isPalja);
     $("ig-confirm-reviewed").disabled = !isPalja;
     $("ig-schedule-range").disabled = !isPalja;
+    $("ig-studio-live-status").textContent = account?.connected ? `✓ ${account.label} @${account.username || account.userId} 연결` : `${account?.label || "선택 계정"} 연결 필요`;
+    $("ig-studio-live-status").classList.toggle("ig-pass", Boolean(account?.connected));
   }
 
   function randomState() {
@@ -116,7 +178,11 @@
     catch (error) { $("ig-schedule-error").textContent = error.message; } finally { $("ig-schedule-range").disabled = false; }
   }
 
-  $("ig-load-preview").addEventListener("click", loadPreview); $("ig-validate-range").addEventListener("click", validateRange); $("ig-save-oauth-config").addEventListener("click", () => saveOAuthConfig().catch((error) => { $("ig-config-status").textContent = `저장 실패: ${error.message}`; })); $("ig-oauth-connect").addEventListener("click", () => connectInstagram().catch((error) => { $("ig-oauth-status").textContent = `연결 실패: ${error.message}`; })); $("ig-complete-callback").addEventListener("click", () => completeCallback().catch((error) => { $("ig-callback-status").textContent = `처리 실패: ${error.message}`; })); $("ig-preflight").addEventListener("click", preflight); $("ig-schedule-range").addEventListener("click", scheduleRange); $("ig-account-select").addEventListener("change", updateInstagramAccountSafety);
+  $("ig-load-preview").addEventListener("click", loadPreview); $("ig-validate-range").addEventListener("click", validateRange); $("ig-save-oauth-config").addEventListener("click", () => saveOAuthConfig().catch((error) => { $("ig-config-status").textContent = `저장 실패: ${error.message}`; })); $("ig-oauth-connect").addEventListener("click", () => connectInstagram().catch((error) => { $("ig-oauth-status").textContent = `연결 실패: ${error.message}`; })); $("ig-complete-callback").addEventListener("click", () => completeCallback().catch((error) => { $("ig-callback-status").textContent = `처리 실패: ${error.message}`; })); $("ig-preflight").addEventListener("click", preflight); $("ig-schedule-range").addEventListener("click", scheduleRange); $("ig-account-select").addEventListener("change", () => selectInstagramStudio($("ig-account-select").value));
+  document.querySelectorAll("[data-ig-studio]").forEach((button) => button.addEventListener("click", () => selectInstagramStudio(button.dataset.igStudio)));
+  $("ig-y-draft-select").addEventListener("change", renderYeonlijiDraft);
+  $("ig-y-confirm").addEventListener("change", () => { const draft = yeonlijiDrafts.find((item) => item.id === $("ig-y-draft-select").value); $("ig-y-schedule").disabled = !$("ig-y-confirm").checked || !draft || draft.scheduled || draft.validation?.status !== "passed"; });
+  $("ig-y-schedule").addEventListener("click", scheduleYeonlijiDraft);
   [$("ig-start-date"), $("ig-end-date")].forEach((input) => input.addEventListener("change", () => { validatedRangeKey = null; $("ig-confirm-reviewed").checked = false; }));
   window.loadInstagramDashboard = () => { loadInstagramAccounts().catch((error) => { $("ig-schedule-error").textContent = error.message; }); if (!$("ig-card-grid").children.length) loadPreview(); };
 })();

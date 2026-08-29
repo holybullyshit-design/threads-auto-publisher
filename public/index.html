@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>팔자명가 · 스레드 + 인스타 자동화</title>
+<title>콘텐츠 자동화 매니저</title>
 <link rel="stylesheet" as="style" crossorigin
   href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
 <link rel="stylesheet" href="style.css" />
@@ -11,19 +11,28 @@
 <body>
 <div class="app">
   <header class="app-header">
-    <h1>팔자명가 콘텐츠 매니저</h1>
-    <p class="subtitle">스레드 글과 Instagram 오늘의 운세를 생성·검수·예약합니다.</p>
+    <h1>콘텐츠 자동화 매니저</h1>
+    <p class="subtitle">팔자명가와 연리지 실타래 콘텐츠를 계정별로 생성·검수·승인·예약합니다.</p>
   </header>
 
   <nav class="tabs">
     <button class="tab-btn selected" data-tab="ops">관제탑</button>
     <button class="tab-btn" data-tab="compose">글쓰기</button>
-    <button class="tab-btn" data-tab="instagram">Instagram 운세</button>
+    <button class="tab-btn" data-tab="instagram">Instagram 작업실</button>
     <button class="tab-btn" data-tab="schedule">콘텐츠 캘린더</button>
     <button class="tab-btn" data-tab="accounts">계정 관리</button>
   </nav>
 
   <section id="tab-instagram" class="tab-panel hidden">
+    <div class="ig-studio-switch card">
+      <div class="preview-header"><div><span class="ig-section-kicker">작업 계정</span><h2>어느 채널의 콘텐츠를 작업할까요?</h2></div><span id="ig-studio-live-status" class="meta-badge">계정 확인 중</span></div>
+      <div class="ig-account-cards">
+        <button class="ig-account-card selected" type="button" data-ig-studio="palja"><span class="ig-account-mark palja">八</span><span><b>팔자명가</b><small>@saju_orbit · 오늘의 띠별 운세</small></span><i>기존 자동 게시 유지</i></button>
+        <button class="ig-account-card" type="button" data-ig-studio="yeonliji"><span class="ig-account-mark yeonliji">結</span><span><b>연리지 실타래</b><small>@knot_saju · 재회·연애·궁합 웹툰</small></span><i>검수 후 승인 게시</i></button>
+      </div>
+    </div>
+
+    <div id="ig-palja-workspace">
     <div class="ig-hero">
       <span class="ig-kicker">PALJA DAILY FORTUNE</span>
       <h2>오늘부터 매일 오전 6시</h2>
@@ -46,12 +55,37 @@
       <button id="ig-validate-range" class="btn btn-secondary" type="button">전체 날짜 만세력·오타·중복 검사</button>
       <div id="ig-range-result" class="ig-range-result"></div><p id="ig-range-error" class="error-text"></p>
     </div>
+    </div>
+
+    <div id="ig-yeonliji-workspace" class="hidden">
+      <div class="ig-hero ig-hero-yeonliji">
+        <span class="ig-kicker">YEONLIJI RELATIONSHIP STORIES</span>
+        <h2>연애의 매듭을 사주로 풀어보는 7장 이야기</h2>
+        <p>기획 → 캐릭터·무드 잠금 → 7장 제작 → 오타·흐름·중복 검수 → 내가 승인 → 예약</p>
+        <div class="ig-pipeline"><span>관계 공감 후킹</span><b>→</b><span>사주 10~20%</span><b>→</b><span>7장 웹툰</span><b>→</b><span>명시적 승인</span></div>
+      </div>
+      <div class="card ig-character-lock">
+        <div class="preview-header"><label class="field-label" style="margin:0;">캐릭터·스타일 기준</label><span class="meta-badge ig-pass">🔒 잠금 ON</span></div>
+        <div id="ig-character-bible" class="ig-character-bible"><p>연지와 타래의 기준을 불러오는 중입니다…</p></div>
+      </div>
+      <div class="card">
+        <div class="preview-header"><label class="field-label" style="margin:0;">제작 시안 검수·승인</label><span id="ig-y-draft-status" class="meta-badge">시안 확인 중</span></div>
+        <div class="ig-range-row"><label>시안<select id="ig-y-draft-select" class="select-input"></select></label><label>예약 시각<input id="ig-y-schedule-display" class="select-input" readonly></label></div>
+        <div id="ig-y-summary" class="ig-calendar-summary"></div>
+        <div id="ig-y-card-grid" class="ig-card-grid"></div>
+        <details class="ig-caption-box" open><summary>7장 문구·Instagram 캡션 검수</summary><div id="ig-y-copy-review" class="ig-copy-review"></div><pre id="ig-y-caption"></pre></details>
+        <div id="ig-y-checks" class="ig-qa-grid"></div>
+        <label class="ig-confirm"><input id="ig-y-confirm" type="checkbox"> 7장 이미지·오타·흐름·사주 표현·캡션을 모두 확인했고 이 시안을 승인합니다.</label>
+        <button id="ig-y-schedule" class="btn btn-primary" type="button" disabled>승인한 시안 예약하기</button>
+        <p id="ig-y-result" class="hint-text"></p><p id="ig-y-error" class="error-text"></p>
+      </div>
+    </div>
 
     <div class="card ig-publish-card">
       <div class="preview-header"><label class="field-label" style="margin:0;">3. Instagram 예약 등록</label><span id="ig-account-status" class="meta-badge">계정 확인 전</span></div>
       <div class="ig-range-row"><label>연결·점검할 Instagram 계정<select id="ig-account-select" class="select-input"><option value="palja">팔자명가 · 연결 확인 중</option><option value="yeonliji">연리지 실타래 · 연결 필요</option></select></label></div>
       <p id="ig-account-safety" class="hint-text">계정별 토큰을 분리해 저장합니다. 연리지 연결은 팔자명가 클라우드 토큰을 변경하지 않습니다.</p>
-      <p class="hint-text">오늘 6시가 지났다면 오늘 카드는 다음 클라우드 실행에서 바로 게시되고, 내일부터는 오전 6시를 맞춥니다.</p>
+      <p id="ig-account-publish-rule" class="hint-text">팔자명가는 매일 오전 6시 자동 게시 규칙을 유지합니다.</p>
       <details class="ig-caption-box" id="ig-meta-setup">
         <summary>처음 한 번: Meta Instagram 앱 연결 설정</summary>
         <div class="ig-meta-setup-body">
@@ -65,12 +99,12 @@
       </details>
       <div class="button-row"><button id="ig-oauth-connect" class="btn btn-primary" type="button">선택 계정 연결·갱신</button><span id="ig-oauth-status" class="hint-text">Instagram 로그인 한 번으로 선택한 계정만 연결합니다.</span></div>
       <div id="ig-callback-help" class="ig-callback-help hidden"><p class="hint-text">Instagram 승인 후 열린 Cloudflare 페이지의 <b>전체 주소</b>를 복사해 아래에 붙여넣으세요.</p><div class="ig-date-row"><input id="ig-callback-url" class="select-input" type="url" autocomplete="off" placeholder="https://threads-publish-pinger.../oauth/instagram/callback?code=...&state=..."><button id="ig-complete-callback" class="btn btn-secondary" type="button">승인 주소 처리</button></div><p id="ig-callback-status" class="hint-text"></p></div>
-      <label class="ig-confirm"><input id="ig-confirm-reviewed" type="checkbox"> 위 기간의 전체 검수 통과 결과를 확인했습니다.</label>
-      <div class="button-row"><button id="ig-preflight" class="btn btn-secondary" type="button">계정·토큰 사전 점검</button><button id="ig-schedule-range" class="btn btn-primary" type="button">검수된 7장 카드 일괄 예약</button></div>
+      <label id="ig-palja-confirm-row" class="ig-confirm"><input id="ig-confirm-reviewed" type="checkbox"> 위 기간의 전체 검수 통과 결과를 확인했습니다.</label>
+      <div class="button-row"><button id="ig-preflight" class="btn btn-secondary" type="button">계정·토큰 사전 점검</button><button id="ig-schedule-range" class="btn btn-primary" type="button">팔자명가 검수 카드 일괄 예약</button></div>
       <p id="ig-schedule-status" class="hint-text"></p><p id="ig-schedule-error" class="error-text"></p>
     </div>
 
-    <div class="card ig-growth-card">
+    <div id="ig-palja-growth" class="card ig-growth-card">
       <label class="field-label">월 200~300 매출 목표를 위한 콘텐츠 동선</label>
       <div class="ig-funnel"><div><b>1</b><strong>멈춤</strong><small>날짜·띠 그림·큰 글자</small></div><div><b>2</b><strong>내 얘기</strong><small>생년별 4개 한 줄</small></div><div><b>3</b><strong>반응</strong><small>저장·지인 띠·댓글</small></div><div><b>4</b><strong>신뢰</strong><small>7,000건·후기 2,100개</small></div><div><b>5</b><strong>상담</strong><small>프로필 링크 CTA</small></div></div>
       <p class="hint-text">매출은 노출량보다 ‘프로필 방문 → 상담 문의 → 결제’ 전환율로 관리합니다. 과장·불안 조장 문구는 사용하지 않습니다.</p>
