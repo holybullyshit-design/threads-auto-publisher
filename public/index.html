@@ -373,6 +373,15 @@
       <p id="ops-insight-text">분석 중...</p>
     </div>
 
+    <div class="card ops-week-card">
+      <div class="preview-header">
+        <label class="field-label" style="margin:0;">7일 콘텐츠 흐름</label>
+        <button class="btn-link" type="button" onclick="switchTab('schedule')">전체 캘린더 보기</button>
+      </div>
+      <p class="hint-text">계정과 플랫폼을 섞어 보되, 같은 날짜의 중복 발행과 빈 날짜를 즉시 확인합니다.</p>
+      <div id="ops-week-timeline" class="ops-week-timeline"></div>
+    </div>
+
     <div class="field-label-small">빠른 실행</div>
     <div id="ops-quick-grid" class="ops-quick-grid"></div>
 
@@ -382,7 +391,7 @@
         <div id="ops-account-list"></div>
       </div>
       <div class="card">
-        <label class="field-label">다음 예약 발행 (KST)</label>
+        <label class="field-label">다음 예약 발행 · KST</label>
         <div id="ops-queue-list"></div>
       </div>
     </div>

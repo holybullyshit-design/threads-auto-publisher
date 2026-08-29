@@ -223,7 +223,7 @@ function renderOps(data) {
 
   const quicks = [
     { icon: "✍️", label: "글쓰기", grad: "ops-grad-accent", action: () => switchTab("compose") },
-    { icon: "🗓️", label: "예약 목록", grad: "ops-grad-success", action: () => switchTab("schedule") },
+    { icon: "🗓️", label: "콘텐츠 캘린더", grad: "ops-grad-success", action: () => switchTab("schedule") },
     { icon: "🖼️", label: "Instagram 운세", grad: "ops-grad-instagram", action: () => switchTab("instagram") },
     { icon: "👥", label: "계정 관리", grad: "ops-grad-saju", action: () => switchTab("accounts") },
     { icon: "🔭", label: "벤치마크 채널", grad: "ops-grad-partners", action: () => window.open("https://www.threads.com/@taebaek_saju", "_blank") },
@@ -253,6 +253,12 @@ function renderOps(data) {
       </div>`;
     })
     .join("") || `<p class="hint-text">계정이 없습니다.</p>`;
+
+  document.getElementById("ops-week-timeline").innerHTML = (data.weeklyTimeline || []).map((day) => {
+    const items = day.items.slice(0, 5).map((item) => `<div class="ops-week-item status-${item.status}"><span>${escapeHtml(item.time)}</span><b>${escapeHtml(item.platform)}</b><span>${escapeHtml(item.account)}</span></div>`).join("");
+    const more = day.items.length > 5 ? `<div class="ops-week-more">+${day.items.length - 5}건</div>` : "";
+    return `<div class="ops-week-day"><div class="ops-week-day-head"><b>${escapeHtml(day.weekday)}</b><span>${escapeHtml(day.label)}</span></div>${items || '<div class="ops-week-empty">비어 있음</div>'}${more}</div>`;
+  }).join("");
 
   document.getElementById("ops-queue-list").innerHTML = data.queue
     .map(

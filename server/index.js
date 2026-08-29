@@ -761,6 +761,18 @@ function buildOpsSummary(posts) {
       };
     });
 
+  // 오늘부터 7일간의 실제 편성표. 계정/플랫폼/상태를 한눈에 보되, 존재하지 않는 성과 수치는 만들지 않는다.
+  const todayKst = toKst(new Date());
+  const weekStart = new Date(Date.UTC(todayKst.year, todayKst.month - 1, todayKst.date));
+  const weeklyTimeline = Array.from({ length: 7 }, (_, offset) => {
+    const day = new Date(weekStart); day.setUTCDate(day.getUTCDate() + offset);
+    const key = day.toISOString().slice(0, 10);
+    const items = posts.filter((p) => p.scheduledAt && kstDateKeyForOps(p.scheduledAt) === key)
+      .sort((a, b) => new Date(a.scheduledAt) - new Date(b.scheduledAt))
+      .map((p) => { const k = toKst(p.scheduledAt); return { id: p.id, time: `${String(k.hour).padStart(2,"0")}:${String(k.minute).padStart(2,"0")}`, account: p.accountLabel || "", platform: p.platform === "instagram" ? "IG" : "TH", status: p.status, title: p.title || String(p.text || "").replace(/\s+/g," ").slice(0,30) }; });
+    return { key, label: `${day.getUTCMonth()+1}/${day.getUTCDate()}`, weekday: WEEKDAY_KO[day.getUTCDay()], items };
+  });
+
   // 벤치마크 기록 (매주 월요일 스케줄 작업이 tools/ops-dashboard/benchmark-log.json에 append)
   let benchmarkLog = [];
   try {
@@ -805,7 +817,13 @@ function buildOpsSummary(posts) {
     benchmarkLog,
     growthLog,
     insight,
+    weeklyTimeline,
   };
+}
+
+function kstDateKeyForOps(iso) {
+  const k = toKst(iso);
+  return `${k.year}-${String(k.month).padStart(2,"0")}-${String(k.date).padStart(2,"0")}`;
 }
 
 app.get("/api/ops/summary", async (req, res) => {

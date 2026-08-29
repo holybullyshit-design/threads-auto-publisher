@@ -1283,6 +1283,18 @@ textarea#draft-text {
 .ops-insight-icon { font-size: 18px; flex-shrink: 0; }
 .ops-insight p { margin: 0; font-size: 13.5px; line-height: 1.6; color: var(--text); }
 
+.ops-week-card { overflow:hidden; }
+.ops-week-timeline { display:grid; grid-template-columns:repeat(7,minmax(112px,1fr)); gap:8px; overflow-x:auto; padding-bottom:4px; }
+.ops-week-day { min-height:150px; border:1px solid var(--card-border); border-radius:12px; padding:10px; background:rgba(255,255,255,.025); }
+.ops-week-day-head { display:flex; justify-content:space-between; align-items:center; padding-bottom:8px; margin-bottom:8px; border-bottom:1px solid var(--card-border); color:var(--text-dim); font-size:11px; }
+.ops-week-day-head b { color:var(--text); font-size:13px; }
+.ops-week-item { display:grid; grid-template-columns:34px 20px 1fr; gap:4px; align-items:center; padding:5px 0; font-size:9.5px; color:var(--text-dim); white-space:nowrap; overflow:hidden; }
+.ops-week-item span:last-child { overflow:hidden; text-overflow:ellipsis; }
+.ops-week-item b { color:var(--instagram); }
+.ops-week-item.status-failed { color:var(--danger); }
+.ops-week-item.status-canceled { opacity:.35; text-decoration:line-through; }
+.ops-week-empty,.ops-week-more { color:var(--text-faint); font-size:10px; padding:5px 0; }
+
 .ops-quick-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
