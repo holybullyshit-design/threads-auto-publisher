@@ -1344,14 +1344,38 @@ function renderCalendar() {
     if (key === todayKey) cell.classList.add("today");
     if (key === state.selectedDay) cell.classList.add("selected");
 
-    const maxRows = 3;
-    const rows = dayPosts.slice(0, maxRows).map((p) => {
-      const platform = p.platform === "instagram" ? "IG" : "TH";
-      const time = new Date(p.scheduledAt).toLocaleTimeString("ko-KR", { hour: "2-digit", minute: "2-digit", hour12: false });
-      return `<span class="calendar-post-row status-${p.status}" style="--account-color:${getAccountColor(p.accountId)}" title="${escapeHtml(p.accountLabel)} · ${STATUS_LABEL[p.status] || p.status}"><b>${platform}</b> ${time} ${escapeHtml(p.accountLabel || "계정")}</span>`;
-    }).join("");
-    const more = dayPosts.length > maxRows ? `<span class="calendar-more">+${dayPosts.length - maxRows}건 더보기</span>` : "";
-    cell.innerHTML = `<span class="calendar-day-num">${day}</span><div class="calendar-posts">${rows}${more}</div>`;
+    // 하루에 계정마다 여러 건씩(최대 3~4건) 쌓이면 한 줄씩 다 나열해선 한눈에 안 들어온다.
+    // 그래서 "계정별 몇 건" 요약 칩으로 묶어서 보여주고, 개별 글 목록은 날짜를 클릭했을 때
+    // renderDayDetail()에서 보여준다 (2026-08-29, 사용자가 실제 화면 보고 요청).
+    // 취소된 글은 이 요약에서 뺀다 - 안 그러면 몇 달 전에 취소한 계정이 "아직도 예정된 것처럼"
+    // 매일 1건씩 잡혀 보여서, 정작 "지금 실제로 뭐가 예정돼 있나"를 한눈에 보기 어려워진다.
+    // 취소 이력 자체는 날짜 클릭 시 상세 목록(renderDayDetail)에서 그대로 확인 가능하다.
+    const activeDayPosts = dayPosts.filter((p) => p.status !== "canceled");
+    const byAccount = new Map(); // accountId -> { label, count, hasFailed, allPublished }
+    activeDayPosts.forEach((p) => {
+      const key = p.accountId || p.accountLabel || "unknown";
+      if (!byAccount.has(key)) {
+        byAccount.set(key, { label: p.accountLabel || "계정", accountId: p.accountId, count: 0, hasFailed: false, allPublished: true });
+      }
+      const entry = byAccount.get(key);
+      entry.count += 1;
+      if (p.status === "failed") entry.hasFailed = true;
+      if (p.status !== "published") entry.allPublished = false;
+    });
+    const totalCount = activeDayPosts.length;
+    const chips = [...byAccount.values()]
+      .sort((a, b) => b.count - a.count)
+      .map((a) => {
+        const stateClass = a.hasFailed ? "has-failed" : a.allPublished ? "all-published" : "";
+        return `<span class="calendar-account-chip ${stateClass}" style="--account-color:${getAccountColor(a.accountId)}" title="${escapeHtml(a.label)} ${a.count}건">
+          <span class="calendar-account-dot"></span>
+          <span class="calendar-account-name">${escapeHtml(a.label)}</span>
+          <span class="calendar-account-count">${a.count}</span>
+        </span>`;
+      })
+      .join("");
+    const totalBadge = totalCount > 0 ? `<span class="calendar-day-total">${totalCount}건</span>` : "";
+    cell.innerHTML = `<div class="calendar-day-head"><span class="calendar-day-num">${day}</span>${totalBadge}</div><div class="calendar-posts">${chips}</div>`;
     cell.addEventListener("click", () => {
       state.selectedDay = state.selectedDay === key ? null : key;
       renderCalendar();

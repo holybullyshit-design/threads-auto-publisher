@@ -611,11 +611,58 @@ textarea#draft-text {
   gap: 10px;
 }
 
-.calendar-posts { display:flex; flex-direction:column; gap:4px; margin-top:7px; min-width:0; }
-.calendar-post-row { display:block; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; border-left:3px solid var(--account-color); border-radius:5px; padding:3px 5px; background:rgba(255,255,255,.045); color:var(--text-dim); font-size:10px; }
-.calendar-post-row.status-published { opacity:.72; }
-.calendar-post-row.status-failed { background:var(--danger-soft); color:var(--danger); }
-.calendar-post-row.status-canceled { opacity:.35; text-decoration:line-through; }
+.calendar-posts { display:flex; flex-direction:column; gap:4px; margin-top:6px; min-width:0; }
+
+/* 하루 칸 안에서 "이 계정 몇 건" 요약 칩. 개별 글은 날짜 클릭 시 아래 상세 목록에서 본다. */
+.calendar-account-chip {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
+  padding: 3px 6px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.045);
+  border-left: 3px solid var(--account-color);
+}
+.calendar-account-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--account-color);
+  flex-shrink: 0;
+}
+.calendar-account-name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 11px;
+  color: var(--text);
+}
+.calendar-account-count {
+  flex-shrink: 0;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--text-dim);
+  font-variant-numeric: tabular-nums;
+}
+.calendar-account-chip.all-published { opacity: 0.55; }
+.calendar-account-chip.has-failed { border-left-color: var(--danger); background: var(--danger-soft); }
+.calendar-account-chip.has-failed .calendar-account-count { color: var(--danger); }
+
+.calendar-day-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px;
+}
+.calendar-day-total {
+  font-size: 9.5px;
+  font-weight: 700;
+  color: var(--text-faint);
+  font-variant-numeric: tabular-nums;
+}
 
 .calendar-nav {
   display: flex;
@@ -676,7 +723,7 @@ textarea#draft-text {
 }
 
 .calendar-day {
-  min-height: 58px;
+  min-height: 108px;
   border: 1px solid var(--card-border);
   border-radius: 8px;
   background: var(--bg-elevated);
