@@ -174,7 +174,10 @@ function switchTab(tabName) {
   if (tabName === "schedule") loadSchedule();
   if (tabName === "instagram" && window.loadInstagramDashboard) window.loadInstagramDashboard();
   if (tabName === "accounts") renderAccountList();
-  if (tabName === "ops") loadOps();
+  if (tabName === "ops") {
+    loadOps();
+    loadOpsInsights();
+  }
 }
 
 // ================= 관제탑 =================
@@ -288,6 +291,85 @@ function renderOps(data) {
           .join("")
       : `<p class="hint-text">아직 기록이 없습니다 — 매주 성장 리서치 작업이 실행되면 여기 쌓입니다.</p>`;
 }
+
+// ================= 관제탑 · 성과 분석 (실제 Threads 조회수/좋아요/답글) =================
+function fmtNum(n) {
+  return typeof n === "number" ? n.toLocaleString("ko-KR") : "-";
+}
+
+async function loadOpsInsights(force = false) {
+  const updated = document.getElementById("ops-insights-updated");
+  const btn = document.getElementById("ops-insights-refresh-btn");
+  updated.textContent = force ? "Threads에서 최신 데이터를 가져오는 중... (계정이 많으면 잠시 걸릴 수 있어요)" : "불러오는 중...";
+  if (btn) btn.disabled = true;
+  try {
+    const res = await fetch(force ? "/api/ops/insights/refresh" : "/api/ops/insights", {
+      method: force ? "POST" : "GET",
+      headers: force ? { "Content-Type": "application/json" } : undefined,
+      body: force ? JSON.stringify({ force: true }) : undefined,
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || "성과 데이터를 불러오지 못했습니다.");
+    renderOpsInsights(data);
+  } catch (err) {
+    updated.textContent = "불러오기 실패: " + err.message;
+  } finally {
+    if (btn) btn.disabled = false;
+  }
+}
+
+function renderOpsInsights(data) {
+  const gen = new Date(data.generatedAt);
+  document.getElementById("ops-insights-updated").textContent =
+    `${gen.toLocaleDateString("ko-KR", { month: "long", day: "numeric" })} ${gen.toLocaleTimeString("ko-KR", { hour: "2-digit", minute: "2-digit" })} 기준 · 계정당 최근 발행 글 최대 12개 추적`;
+
+  const list = document.getElementById("ops-insights-list");
+  list.innerHTML = (data.accounts || [])
+    .map((a) => {
+      if (a.noData) {
+        return `<div class="ops-insight-account">
+          <div class="ops-insight-account-head"><span class="ops-insight-account-name">${escapeHtml(a.label)}</span></div>
+          <p class="hint-text">아직 데이터가 없습니다 — 잠시 후 자동으로 채워집니다.</p>
+        </div>`;
+      }
+      if (a.error) {
+        return `<div class="ops-insight-account">
+          <div class="ops-insight-account-head"><span class="ops-insight-account-name">${escapeHtml(a.label)}</span></div>
+          <p class="hint-text">불러오기 실패: ${escapeHtml(a.error)}</p>
+        </div>`;
+      }
+      const changeBadge =
+        a.viewsChangePct === null
+          ? ""
+          : a.viewsChangePct >= 0
+          ? `<span class="ops-insight-change up">▲ ${a.viewsChangePct}%</span>`
+          : `<span class="ops-insight-change down">▼ ${Math.abs(a.viewsChangePct)}%</span>`;
+      const topPost = a.topPost
+        ? `<div class="ops-insight-top"><span class="ops-insight-top-label">최고 성과</span><span class="ops-insight-top-text">${escapeHtml(a.topPost.text)}</span><span class="ops-insight-top-nums">조회 ${fmtNum(a.topPost.views)} · 답글 ${fmtNum(a.topPost.replies)}</span></div>`
+        : "";
+      return `<div class="ops-insight-account">
+        <div class="ops-insight-account-head">
+          <span class="ops-insight-account-name">${escapeHtml(a.label)}</span>
+          <span class="ops-insight-followers">팔로워 ${fmtNum(a.followersCount)}</span>
+        </div>
+        <div class="ops-insight-nums">
+          <div class="ops-insight-num"><b>${fmtNum(a.viewsRecent7d)}</b><span>7일 조회수</span>${changeBadge}</div>
+          <div class="ops-insight-num"><b>${fmtNum(a.likes)}</b><span>좋아요</span></div>
+          <div class="ops-insight-num"><b>${fmtNum(a.replies)}</b><span>답글</span></div>
+          <div class="ops-insight-num"><b>${fmtNum(a.reposts)}</b><span>리포스트</span></div>
+        </div>
+        ${topPost}
+      </div>`;
+    })
+    .join("") || `<p class="hint-text">연동된 Threads 계정이 없습니다.</p>`;
+
+  const recs = document.getElementById("ops-insights-recs");
+  recs.innerHTML = (data.recommendations || []).length
+    ? `<div class="ops-insights-recs-title">💡 노출을 늘리려면</div><ul>${data.recommendations.map((r) => `<li>${escapeHtml(r)}</li>`).join("")}</ul>`
+    : "";
+}
+
+document.getElementById("ops-insights-refresh-btn")?.addEventListener("click", () => loadOpsInsights(true));
 
 el.tabButtons.forEach((btn) => {
   btn.addEventListener("click", () => switchTab(btn.dataset.tab));
@@ -1968,3 +2050,4 @@ Promise.all([loadMeta(), loadAccounts(), loadPersonaPresets(), loadPartnersPrese
 
 // 관제탑이 첫 화면이라 클릭 없이도 바로 데이터를 채운다.
 loadOps();
+loadOpsInsights();
