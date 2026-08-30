@@ -247,7 +247,10 @@ function buildDecisionRows() {
   } catch (e) {
     statusOutput = "";
   }
-  const lines = statusOutput.split("\n").map((l) => l.trim()).filter(Boolean);
+  // NOTE: don't .trim() before slicing — porcelain's leading space (unstaged
+  // changes look like " M path") is part of the fixed-width status prefix;
+  // trimming it first shifts slice(3) and eats the filename's first letter.
+  const lines = statusOutput.split("\n").filter((l) => l.trim().length > 0);
 
   if (lines.length === 0) {
     return `      <div class="decision-row resolved">
