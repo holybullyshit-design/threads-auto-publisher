@@ -1,6 +1,7 @@
 const DEFAULT_GRAPH_BASE = "https://graph.instagram.com";
 const DEFAULT_GRAPH_VERSION = "v24.0";
 const MAX_CAPTION_LENGTH = 2200;
+const { assertPublicCaption, captionMatches } = require('./instagramCaption');
 
 function getConfig(overrides = {}) {
   const userId = overrides.userId || process.env.INSTAGRAM_USER_ID;
@@ -36,6 +37,7 @@ async function graphRequest(config, pathname, { method = "GET", params = {} } = 
 }
 
 function assertCarousel({ imageUrls, caption }) {
+  assertPublicCaption(caption);
   if (!Array.isArray(imageUrls) || imageUrls.length < 2 || imageUrls.length > 10) throw Object.assign(new Error("인스타그램 캐러셀은 2~10장이어야 합니다."), { code: "INVALID_CAROUSEL" });
   if (caption?.length > MAX_CAPTION_LENGTH) throw Object.assign(new Error("캡션이 2,200자를 초과했습니다."), { code: "INVALID_CAPTION" });
   for (const url of imageUrls) if (!/^https:\/\//.test(url || "")) throw Object.assign(new Error("이미지는 HTTPS 공개 URL이어야 합니다."), { code: "INVALID_IMAGE_URL" });
@@ -70,6 +72,12 @@ async function findPublishedByMarker(marker, overrides = {}) {
   return match || null;
 }
 
+async function findPublishedByCaption(caption, legacyMarker, overrides = {}) {
+  const config = getConfig(overrides);
+  const recent = await graphRequest(config, `${config.userId}/media`, { params: { fields: "id,caption,timestamp,permalink", limit: "25" } });
+  return (recent.data || []).find(media => captionMatches(media.caption, caption, legacyMarker)) || null;
+}
+
 async function publishCarousel({ imageUrls, caption, ...overrides }) {
   assertCarousel({ imageUrls, caption });
   const config = getConfig(overrides);
@@ -85,4 +93,4 @@ async function publishCarousel({ imageUrls, caption, ...overrides }) {
   return { publishedId: published.id, containerId: parent.id, childContainerIds: children };
 }
 
-module.exports = { MAX_CAPTION_LENGTH, assertCarousel, preflightInstagram, publishCarousel, findPublishedByMarker, waitForContainer, graphRequest, getConfig };
+module.exports = { MAX_CAPTION_LENGTH, assertCarousel, preflightInstagram, publishCarousel, findPublishedByMarker, findPublishedByCaption, waitForContainer, graphRequest, getConfig };
