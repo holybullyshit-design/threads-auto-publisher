@@ -15,9 +15,17 @@ const accountsStore = require("../server/lib/accountsStore");
 const { readSchedule, writeSchedule } = require("../server/lib/githubStore");
 const { withJitter } = require("../server/lib/scheduleStore");
 const { writeThreadDraft, TOPICS, pickTopicIds, pickHookFormatIds } = require("../server/skills/taebaekSajuDraftWriter");
+const { computeOptimalSlots } = require("./lib/optimalSlots");
 
 const RETRY_ATTEMPTS = 3;
-const COMPREHENSIVE_SLOTS_KST = ["10:30", "15:00", "19:30"];
+// 2026-08-30: "몇 시에 올릴지"를 매번 새로 정하지 않고, 실제 Threads Insights 데이터에서
+// 코드로 계산한다(tools/lib/optimalSlots.js - LLM 호출 없음, 토큰 비용 0). 서버가 매시간
+// 백그라운드로 데이터를 갱신하니, 이 파일을 다시 실행할 때마다 자동으로 최신 데이터 기준으로
+// 재계산된다 - 사람이 다시 판단할 필요도, 대화로 다시 분석할 필요도 없다.
+// 하루를(새벽 제외) 5등분해서 구간마다 대표 시각을 뽑되, 그 구간 안에서 실제 조회수가 높았던
+// 쪽으로 시각을 당긴다 - "하루 전체에 골고루 분산" + "데이터가 좋은 쪽으로 미세조정"을 동시에
+// 만족시킨다. 표본이 아직 부족하면(계정 초기 등) 조용히 기존 안전값으로 대체된다.
+const COMPREHENSIVE_ACCOUNT_LABELS = ["팔자명가", "팔자궤도", "팔자장인"];
 const MORNING_SLOT_KST = "09:00";
 
 const VIRAL_PROFILES = {
@@ -144,8 +152,16 @@ async function main() {
   const account = findAccount();
   if (!account) throw new Error(`계정을 찾을 수 없습니다: "${ACCOUNT_LABEL}"`);
 
-  const slotsPerDay = MODE === "comprehensive" ? COMPREHENSIVE_SLOTS_KST.length : 1;
-  const dailySlotTimes = MODE === "comprehensive" ? COMPREHENSIVE_SLOTS_KST : [MORNING_SLOT_KST];
+  let comprehensiveSlots = null;
+  if (MODE === "comprehensive") {
+    const { slots, usedFallback } = computeOptimalSlots(COMPREHENSIVE_ACCOUNT_LABELS, 5);
+    comprehensiveSlots = slots;
+    console.log(
+      `시간대 ${usedFallback ? "(데이터 부족 - 기본값 사용)" : "(실측 데이터 기반 자동 계산)"}: ${slots.join(", ")}`
+    );
+  }
+  const slotsPerDay = MODE === "comprehensive" ? comprehensiveSlots.length : 1;
+  const dailySlotTimes = MODE === "comprehensive" ? comprehensiveSlots : [MORNING_SLOT_KST];
 
   const { posts: currentPosts } = await readSchedule();
   const existingCounts = countExistingByDate(currentPosts, account.id, MODE);
