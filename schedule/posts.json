@@ -2838,8 +2838,11 @@
     "scheduledAt": "2026-08-30T06:10:33.302Z",
     "createdAt": "2026-08-28T11:59:51.055Z",
     "publishedAt": null,
-    "publishedId": null,
-    "error": null
+    "publishedId": "18104826662603339",
+    "error": null,
+    "chainPublishedIds": [
+      "18104826662603339"
+    ]
   },
   {
     "id": "3720969e-91ec-4cab-bc33-1cb853f9fb65",
