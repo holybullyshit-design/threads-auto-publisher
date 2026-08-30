@@ -106,7 +106,16 @@ async function main() {
       console.log(`  -> ${RETRY_ATTEMPTS}번 다 실패, 이 글은 기존 내용 그대로 둠: ${err.message}`);
       continue;
     }
-    await saveOneUpdate(post.id, { text: draft.text, replyChain: draft.replyChain, regenV2: true });
+    // 저장 자체가 실패해도(GitHub 동시 쓰기 충돌 등) 이 글 하나만 건너뛰고 나머지는 계속
+    // 처리한다 - 안 그러면 배치 중간에 한 번 충돌났다고 뒤에 남은 글 전부가 처리 안 된 채로
+    // 스크립트가 죽어버린다(2026-08-30 실측: 42/55에서 이렇게 멈췄었음). regenV2 표시가
+    // 안 붙은 글은 다음 재실행 때 다시 시도된다.
+    try {
+      await saveOneUpdate(post.id, { text: draft.text, replyChain: draft.replyChain, regenV2: true });
+    } catch (err) {
+      console.log(`  -> 저장 실패(다음 재실행 때 다시 시도됨): ${err.message}`);
+      continue;
+    }
     done++;
     console.log(`  -> 교체됨. 소재: ${draft.topic} / 훅: ${draft.hookFormat} / 파트 ${1 + draft.replyChain.length}개`);
   }

@@ -82,9 +82,12 @@ function rebaseOnto(remote, base, mine) {
 }
 
 // posts 배열 전체를 다시 저장한다. 동시 수정 충돌(409/422) 시, basePosts(수정 전 스냅샷)가
-// 있으면 우리가 실제로 바꾼 부분만 최신 내용 위에 다시 얹어서(rebase) 1회 재시도한다.
+// 있으면 우리가 실제로 바꾼 부분만 최신 내용 위에 다시 얹어서(rebase) 재시도한다.
 // basePosts가 없으면(과거 호출부 호환용) 예전처럼 통째로 덮어쓴다 — 이 경우 그 사이 다른
 // 곳의 변경을 덮어쓸 위험이 있으니, 새로 쓰는 코드는 반드시 basePosts를 넘길 것.
+// 2026-08-30: 동시에 쓰는 곳이 늘면서(로컬 배치 스크립트 + GitHub Actions 발행 + Codex 작업)
+// 재시도 1번으로는 부족해서 연속 충돌이 나는 걸 실측함 - 최대 3번까지 재시도한다.
+const WRITE_SCHEDULE_MAX_ATTEMPTS = 3;
 async function writeSchedule(posts, { sha, message, basePosts } = {}, attempt = 0) {
   const { repo } = getConfig();
   const content = Buffer.from(JSON.stringify(posts, null, 2), "utf8").toString("base64");
@@ -104,7 +107,7 @@ async function writeSchedule(posts, { sha, message, basePosts } = {}, attempt = 
     return { sha: data.content.sha };
   }
 
-  if ((res.status === 409 || res.status === 422) && attempt === 0) {
+  if ((res.status === 409 || res.status === 422) && attempt < WRITE_SCHEDULE_MAX_ATTEMPTS - 1) {
     // 다른 곳(Actions 등)에서 먼저 커밋한 경우: 최신 내용을 다시 읽어서
     // - basePosts가 있으면: 우리가 실제로 바꾼 글만 최신 내용 위에 얹어서 재시도
     // - 없으면: 예전 동작대로 그냥 우리 posts로 덮어써서 재시도(위험 감수)
