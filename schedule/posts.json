@@ -6508,5 +6508,60 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null
+  },
+  {
+    "id": "5757dca6-753d-448a-a328-d26445e5db64",
+    "platform": "instagram",
+    "accountKey": "yeonliji",
+    "accountId": "knot_saju",
+    "accountLabel": "연리지 실타래",
+    "title": "소띠와 양띠는 정말 만나면 안 될까?",
+    "displayTitle": "소띠와 양띠는 정말 만나면 안 될까?",
+    "contentSeries": "연리지 사주 관계기록",
+    "text": "소띠와 양띠는 정말 만나면 안 될까?\n\n우리는 잘 만나고 있었는데, 띠만으로 끝을 정해야 하는 걸까?\n\n충(沖)\n소띠는 축(丑), 양띠는 미(未)에 대응해. 축과 미는 충표에서 마주 보는 한 쌍. 싫어하는 동물이어서 정한 관계가 아니야.\n\n띠와 일주는 다른 정보\n띠는 출생 연도의 지지를 말해. 태어난 월·일·시의 글자는 담지 못하지. 같은 띠 조합도 원국 전체는 서로 달라.\n\n이 질문에 적용하면\n축·미는 충표에서 정해진 대응 관계야. 전체 궁합을 계산한 점수나 두 사람의 미래를 확정한 결과는 아니야.\n\n개인 풀이에서는\n실제 연지가 축·미인지, 다른 기둥의 관계는 무엇인지, 연초 출생이라면 어떤 경계 기준을 썼는지.\n\n상극인 띠라는 말을 들었다면 무엇부터 확인하고 싶나요?\n댓글에 ‘상극’ 키워드와 함께 궁금한 점을 남겨주세요.\n\n창작 상황과 전통 명리 규칙을 설명한 콘텐츠이며 개인 출생 정보를 분석한 결과가 아닙니다. 사주는 관계의 결과를 보장하지 않습니다. 연락 거절과 안전을 존중하고 개인정보는 공개 댓글에 남기지 마세요.\n\n#연리지실타래 #띠궁합 #궁합 #충 #사주풀이",
+    "contentHash": "730b626e89b0c28cd947b3998d154d298362649a9534603be249139b060fae02",
+    "dedupeKey": "instagram:yeonliji:730b626e89b0c28cd947b3998d154d298362649a9534603be249139b060fae02",
+    "images": [],
+    "status": "publishing",
+    "deliveryMode": "immediate",
+    "scheduledAt": "2026-08-30T09:46:12.406Z",
+    "createdAt": "2026-08-30T09:46:12.406Z",
+    "publishedAt": null,
+    "publishedId": null,
+    "permalink": null,
+    "expectedLocalDate": "2026-08-30",
+    "publishAttemptedAt": "2026-08-30T09:46:12.406Z",
+    "validation": {
+      "status": "passed",
+      "scope": "technical-only",
+      "requiresHumanReview": true,
+      "checks": {
+        "slideCount": true,
+        "imageUniqueness": true,
+        "dimensions": "1080x1350",
+        "textSeparation": true,
+        "noFooterSignature": true
+      },
+      "imageHashes": [
+        "029d28c09eb0d0218557a8ead5a3f0f4bbeb1666415fc0fd1bd9986dae6f8ba0",
+        "43fc997703460bc254f1f401deb8a693be75090a0564d8115c8a50b46a9003eb",
+        "f302efe399876cb35ba85eef999e48dcbdcf2bb746d382bc3de69e2c4ea8f58e",
+        "59ec8f20378d87695ce39117a4ef49e9e7d97d2370e9ca9ac9367f6812303bee",
+        "ad09df55ac0b10f736b63ec052d4cd0c8a197fcb078c22fa5fa29e7f161cfcd6",
+        "420c1fe5be261d0aedae6ed82314eefbeaf03effadb1807fc1622ba6ddd2e61c",
+        "da55970ec172a3ea363ac4ca9d63f1f189246fd96a46809161785e55d6d0e0aa"
+      ],
+      "panelHashes": [
+        "fdcc59ce773c46f42f77777b565e3a2109d7b622dbd76322e2648b9769506f33",
+        "6b2b23e8a297360d07dd51f5a7ffb4353a6956ee13cc7ec6aafbf6f5e8498be6",
+        "312af7025106d4677c1bc2c1228f5292d24c9dc5ef7349b5f92227021c53deaa",
+        "42e90c4e54d38087cfb1600529fcf5ae39c6592dc8c98442417aa0d4f0ba9eb9",
+        "445b1455ad7cd346f94f616b017edc5cff84d14d74073bf452abfc160325f306",
+        "89e37f8a26758da6745d0a077248403eb0a74db1cf4000041b211a5f0d68b620"
+      ],
+      "humanApprovedAt": "2026-08-30T09:46:12.406Z"
+    },
+    "error": null,
+    "retryCount": 0
   }
 ]
