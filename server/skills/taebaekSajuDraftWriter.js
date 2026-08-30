@@ -35,6 +35,37 @@ function pickRandom(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
+// 띠 이름으로 최근 출생연도 N개를 계산한다(갑자년 기준 산식 - 순수 계산이라 명리학
+// 판별법이 아니라 그냥 달력 사실이다, 지어내는 것 없음). 벤치마크 채널(2026-08-30 사용자가
+// 직접 캡처해서 보여준 예시들 - saju.myungdang, saju.philosopher 등)을 보면 "OO띠"보다
+// "1993년생" 처럼 구체적 연도로 부르는 글이 훨씬 개인적으로 와닿는다는 게 확인돼서,
+// 훅 형태 중 하나(birthYear)와 띠 기반 소재들이 이 값을 실제로 쓸 수 있게 계산해서 준다.
+function recentBirthYears(animalName, count = 4, fromYear = new Date().getFullYear()) {
+  const idx = ANIMALS.indexOf(animalName);
+  if (idx === -1) return [];
+  // 실제 Threads 타겟 독자층(성인)을 벗어난 어린이/유아 연도(예: 올해·작년생)를 예시로
+  // 들면 어색하다 - 최소 18년 전부터 거슬러 올라가서 뽑는다.
+  const years = [];
+  let y = fromYear - 18;
+  while (years.length < count) {
+    if (((((y - 4) % 12) + 12) % 12) === idx) years.push(y);
+    y -= 1;
+  }
+  return years;
+}
+
+// 삼합 그룹 지지 배열(예: [11,3,7] 해묘미)을 받아서 "돼지(1995·2007·2019), 토끼(...), 양(...)"
+// 형태의 한 줄로 만든다. 훅 형태가 "birthYear"일 때는 이 줄을 직접 인용하고, 다른 훅 형태에서도
+// 참고용으로 쓸 수 있다(전부 강제는 아님 - 훅 형태 지시문에서 필요할 때만 쓰라고 안내함).
+function animalYearsLine(branchIndices) {
+  const parts = branchIndices.map((b) => {
+    const animal = ANIMALS[b];
+    const years = recentBirthYears(animal, 3);
+    return `${animal}(${years.join("·")})`;
+  });
+  return `출생연도 예시(최근 3회): ${parts.join(", ")}`;
+}
+
 // 순수 무작위 추첨(pickRandom)만으로 한 번에 여러 개를 뽑으면, 확률상 같은 소재가
 // 몰리는 경우가 실제로 생긴다(2026-08-28 실측: 11개 중 도화살이 6번). 그래서 여러 개를
 // 한 번에 뽑을 땐 "카드 뭉치를 섞어서 한 바퀴 다 돌고 나서야 다시 섞는" 셔플백 방식을
@@ -71,8 +102,10 @@ const TOPICS = [
       const seedBranch = { "인오술(화국)": 2, "신자진(수국)": 8, "사유축(금국)": 5, "해묘미(목국)": 11 }[group];
       const roles = getSamhapRoles(seedBranch);
       const memberAnimals = roles.group.branches.map((b) => ANIMALS[b]).join("·");
+      const yearsLine = animalYearsLine(roles.group.branches);
       return `[검증된 사실 - 역마살]
 대상 띠: ${memberAnimals}띠 (${roles.group.name})
+${yearsLine}
 역마 자리: ${branchLabel(roles.역마)}
 판별법: 위 띠로 태어난 사람의 사주 원국 어딘가에 역마 자리(${branchLabel(roles.역마)})가 있으면 역마살이 성립한다.
 성격/의미: 역마는 움직임·이동·변화의 기운. 원국이 안정적이면 이직/이사/여행이 좋은 쪽으로 풀리는 역마, 원국이 흔들리는 상태에서 겹치면 불안해서 도망치고 싶은 역마로 갈린다.`;
@@ -88,8 +121,10 @@ const TOPICS = [
       const seedBranch = { "인오술(화국)": 2, "신자진(수국)": 8, "사유축(금국)": 5, "해묘미(목국)": 11 }[group];
       const roles = getSamhapRoles(seedBranch);
       const memberAnimals = roles.group.branches.map((b) => ANIMALS[b]).join("·");
+      const yearsLine = animalYearsLine(roles.group.branches);
       return `[검증된 사실 - 도화살]
 대상 띠: ${memberAnimals}띠 (${roles.group.name})
+${yearsLine}
 도화 자리: ${branchLabel(roles.도화)}
 판별법: 위 띠로 태어난 사람의 사주 원국 어딘가에 도화 자리(${branchLabel(roles.도화)})가 있으면 도화살이 성립한다.
 성격/의미: 본인 의지와 무관하게 사람을 끌어당기는 매력. 원국에서 힘 있게 자리잡으면 매력으로 쓰이고, 원국이 흔들리는 상태에서 겹치면 관계가 계속 꼬이는 소모전이 된다.`;
@@ -105,8 +140,10 @@ const TOPICS = [
       const seedBranch = { "인오술(화국)": 2, "신자진(수국)": 8, "사유축(금국)": 5, "해묘미(목국)": 11 }[group];
       const roles = getSamhapRoles(seedBranch);
       const memberAnimals = roles.group.branches.map((b) => ANIMALS[b]).join("·");
+      const yearsLine = animalYearsLine(roles.group.branches);
       return `[검증된 사실 - 화개살]
 대상 띠: ${memberAnimals}띠 (${roles.group.name})
+${yearsLine}
 화개 자리: ${branchLabel(roles.화개)}
 판별법: 위 띠로 태어난 사람의 사주 원국 어딘가에 화개 자리(${branchLabel(roles.화개)})가 있으면 화개살이 성립한다.
 성격/의미: 밖으로 뻗치기보다 안으로 응축·몰입하는 기운. 예술·종교·학문 쪽으로 잘 풀리는 살이며(옛날엔 수행자 팔자로도 봄), 원국이 약하면 몰입이 아니라 고립으로 흐르기도 한다.`;
@@ -191,8 +228,10 @@ const TOPICS = [
       const info = getSamjaeInfo(seedBranch);
       const memberAnimals = info.samhapGroup.branches.map((b) => ANIMALS[b]).join("·");
       const samjaeYears = info.samjaeBanghap.branches.map((b) => ANIMALS[b]).join("·");
+      const yearsLine = animalYearsLine(info.samhapGroup.branches);
       return `[검증된 사실 - 삼재]
 대상 띠: ${memberAnimals}띠 (${info.samhapGroup.name})
+${yearsLine}
 삼재에 해당하는 방합: ${info.samjaeBanghap.name}
 삼재 3년의 띠(그 해의 지지): ${samjaeYears}
 판별법: ${memberAnimals}띠는 ${info.samjaeBanghap.name} 3년 동안 삼재를 겪는다(정통 방합 기준 공식).
@@ -243,6 +282,37 @@ const HOOK_FORMATS = [
     instruction: `직접 질문형: "이런 사람들 특징 아는 사람?", "이거 겪어본 사람?" 같은 짧고 직접적인
     질문 하나로 시작한 뒤(이 질문 자체가 후킹 역할을 한다), 번호 없이 상황을 1~2문장으로 던진다.`,
   },
+  {
+    id: "countdown",
+    instruction: `역순 카운트다운형: 제목/후킹 도입부(홑화살괄호 제목 또는 1~2줄 도입 문장)로 시작한 뒤,
+    "1위. ... 2위. ... 3위. ..." 처럼 순위만 먼저 짧게 나열한다. 그다음 답글에서는 등수가
+    낮은 것부터 거꾸로("3위" 먼저, "1위"를 마지막에) 하나씩 자세히 설명한다. 검증된 사실 안에
+    순위를 매길 수 있는 대상(띠·일간)이 3개 이상 있을 때 쓴다. 마지막 파트 초반에는 앞서 다룬
+    대상들의 공통점을 한두 문장으로 짧게 정리한 뒤 CTA로 넘어간다.`,
+  },
+  {
+    id: "birthYear",
+    instruction: `구체적 출생연도형: 검증된 사실에 있는 "출생연도 예시" 줄을 그대로 활용해서, 띠 이름
+    대신(또는 띠 이름과 함께) "1993년생", "2005년생"처럼 실제 연도로 대상을 부른다. 제목/도입부
+    에서 "OO년생 여러분" 또는 "이 글 본 OOO띠 — 1977, 1989, 2001년생" 식으로 구체적 연도를
+    먼저 던지고, 이어지는 설명에서도 계속 그 연도로 지칭한다(예: "1993년생은 9월 중순..."). 절대
+    출생연도 예시 줄에 없는 연도를 지어내지 않는다 — 주어진 연도만 그대로 쓴다.`,
+  },
+  {
+    id: "scenarioAdvice",
+    instruction: `상황 조언형: "[대상]이 이러면, 한 번 더 생각해보세요" 같은 실전 조언 프레임으로
+    시작한다(홑화살괄호 제목 없이 이 한 줄 자체가 도입부다). 그 뒤 각 파트에서 대상(일간/신살
+    보유자)별로 아주 구체적인 일상 장면 하나를 가정하고("퇴사하겠다고 하면", "갑자기 연락을
+    끊으면" 같은), 그 상황에서 어떻게 반응/대응하면 좋을지 짧고 단정적인 문장으로 조언한다.
+    설명체가 아니라 "~하세요/~해보세요" 명령형·조언형 어미를 쓴다.`,
+  },
+  {
+    id: "directAddress",
+    instruction: `직접 호명형: "이 글 본 [대상] 집중해", "[대상]이면 그냥 넘기지 마" 처럼 독자를
+    화면 너머에서 바로 부르는 한 줄로 시작한다. 그다음 짧게 무엇에 대한 이야기인지 1줄로
+    예고하고 번호/순위로 넘어간다(list나 topRank처럼 이어가도 된다). 도입 호명 문장 없이 바로
+    번호부터 시작하지 않는다.`,
+  },
 ];
 
 // 관찰 -> 설명으로 넘어가는 연결 문장도 매번 "이상하죠 / 기분 탓 아닙니다"로 고정하면 티가 난다.
@@ -253,7 +323,30 @@ const BRIDGE_STYLES = [
   `별도의 "기분 탓 아니다"류 연결 문장 없이, 곧바로 명리학적 설명으로 자연스럽게 넘어간다.`,
 ];
 
-function buildSystemPrompt(factsBlock, cta, partCount, hookFormat, bridgeStyle, accountLabel, domainFraming, speechLevel, extraBans) {
+// 마무리도 항상 "CTA 문장 툭 붙이기"로만 끝나면 매번 같은 뒷맛이 남는다(2026-08-30 실측
+// 지적 - 벤치마크 채널들은 종합 정리 문단, 캐치프레이즈 나열, 단서/caveat 문단 등 마무리
+// 방식 자체가 다양했다). 마지막 파트에서 CTA 문장 앞에 어떤 식으로 숨을 고르고 넘어갈지를
+// 여기서 정한다.
+const CLOSING_STYLES = [
+  {
+    id: "plain",
+    instruction: `별도 마무리 문단 없이, 마지막 내용 문장 다음 줄에 바로 CTA 문장을 붙인다.`,
+  },
+  {
+    id: "synthesis",
+    instruction: `마지막 파트 초반에, 앞서 다룬 대상들을 한 줄씩 요약해서 나열한 뒤("[A]는 ~하고,
+    [B]는 ~하고" 식), "그런데 같은 [소재]라도 사람마다 다르다"는 취지의 caveat 문장을 1~2줄
+    덧붙인다(예: "원국의 다른 글자, 대운·세운에 따라 갈린다"). 그다음 CTA로 넘어간다.`,
+  },
+  {
+    id: "rhetorical",
+    instruction: `마지막 파트에서, 독자가 스스로에게 묻게 만드는 짧은 질문 2~4개를 줄바꿈으로
+    나열한다(예: "왜 나만 자꾸 이런 일을 겪을까", "이게 진짜 내 얘기인지 궁금하다면"). 그다음
+    바로 이어서 CTA 문장을 붙인다.`,
+  },
+];
+
+function buildSystemPrompt(factsBlock, cta, partCount, hookFormat, bridgeStyle, closingStyle, accountLabel, domainFraming, speechLevel, extraBans) {
   const defaultIdentity = `이 계정은 연리지실타래/아해사주/팔자명가 같은 고정 페르소나 계정과 다릅니다 — 소재마다 스타일이 다양하고,
 목표는 댓글 유도가 아니라 "많은 사람이 끝까지 읽고 프로필까지 눌러보게" 만드는 조회수/체류시간입니다.`;
   // domainFraming이 있으면 = 이 계정은 원래 고정 페르소나 계정인데(연리지실타래/아해사주),
@@ -281,6 +374,9 @@ ${hookFormat.instruction}
 [이번 글의 관찰->설명 연결 방식]
 ${bridgeStyle}
 
+[이번 글의 마무리 방식]
+${closingStyle.instruction}
+
 [반드시 지킬 구조 규칙]
 1. **본문 맨 첫 줄부터 리스트/랭킹/키워드를 바로 던지지 않는다.** 위 [이번 글의 훅 형태]에서
    설명한 대로, 항상 실제 제목 문장을 담은 홑화살괄호(예: <이런 사람이 귀한 사주다>) 또는
@@ -291,7 +387,11 @@ ${bridgeStyle}
    그리고 다음 파트 맨 앞에서 그 문장을 이어서 완성한다. 마지막 파트만 완결해도 된다.
 4. 오행/십성/일간을 설명할 땐 가능하면 그 오행의 성질을 구체적 사물에 빗댄 은유(예: 계수=이슬,
    신금=보석, 갑목=큰 나무)를 섞어서 기억에 남게 쓴다.
-5. 마지막 파트 끝에 아래 문장을 정확히 그대로 포함한다:
+5. **추상적인 성격 묘사로 끝내지 말고, 구체적인 일상 장면·행동으로 바꿔서 쓴다** (예: "성격이
+   급하다" 대신 "결제하려다 손이 멈춘다", "예민하다" 대신 "카드값으로 남은 열정" 같은 식). 이건
+   list 형태에만 해당하는 게 아니라 이번 글 전체에 적용한다.
+6. 위 [이번 글의 마무리 방식]에서 설명한 순서로 마무리한 뒤, 마지막 파트 끝에 아래 문장을
+   정확히 그대로 포함한다:
    "${cta}"
 
 [절대 규칙 - 사실 근거]
@@ -350,10 +450,11 @@ async function writeThreadDraft({
   const factsBlock = topic.build(dateKey || new Date().toISOString().slice(0, 10));
   const cta = pickRandom(CTA_POOL);
   const bridgeStyle = pickRandom(BRIDGE_STYLES);
+  const closingStyle = pickRandom(CLOSING_STYLES);
   const partCount = 3 + Math.floor(Math.random() * 3); // 3~5
 
   const raw = await runSkill({
-    system: buildSystemPrompt(factsBlock, cta, partCount, hookFormat, bridgeStyle, accountLabel, domainFraming, speechLevel, extraBans),
+    system: buildSystemPrompt(factsBlock, cta, partCount, hookFormat, bridgeStyle, closingStyle, accountLabel, domainFraming, speechLevel, extraBans),
     userMessage: buildUserMessage(topic, accountLabel),
   });
 
