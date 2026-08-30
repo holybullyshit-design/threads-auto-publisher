@@ -6088,8 +6088,11 @@
     "scheduledAt": "2026-08-30T09:37:58.976Z",
     "createdAt": "2026-08-30T03:44:21.708Z",
     "publishedAt": null,
-    "publishedId": null,
-    "error": null
+    "publishedId": "18101386697349204",
+    "error": null,
+    "chainPublishedIds": [
+      "18101386697349204"
+    ]
   },
   {
     "id": "b3916899-f598-4e27-bc4e-057d16ca548a",
