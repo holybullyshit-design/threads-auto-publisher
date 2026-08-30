@@ -1,65 +1,39 @@
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <title>자동화 관제탑</title>
 
 <style>
+  /* 데스크탑 앱(public/style.css)의 실제 다크 테마 토큰을 그대로 가져왔다 - 폰에서 봐도
+     "같은 제품"처럼 느껴지게 하려고. 앱 자체가 다크 전용이라 이 페이지도 다크 하나로 간다. */
   :root {
-    --bg: #f1f2f4;
-    --surface: #ffffff;
-    --surface-2: #e7e9ed;
-    --text: #14171c;
-    --text-muted: #565d68;
-    --border: #dadde2;
-    --accent: #a6650a;
-    --accent-soft: #f3e4cc;
-    --good: #2f7b4f;
-    --good-soft: #e1f0e6;
-    --attn: #b23a2e;
-    --attn-soft: #fbe6e3;
-    --shadow: 0 1px 2px rgba(20, 23, 28, 0.04), 0 8px 24px rgba(20, 23, 28, 0.05);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #0d1013;
-      --surface: #171b20;
-      --surface-2: #1d2229;
-      --text: #e7e9ec;
-      --text-muted: #9ba3ad;
-      --border: #2a2f36;
-      --accent: #e4a63b;
-      --accent-soft: #3a2e12;
-      --good: #4fae79;
-      --good-soft: #123423;
-      --attn: #e2685a;
-      --attn-soft: #3a1a16;
-      --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.35);
-    }
-  }
-
-  :root[data-theme="dark"] {
-    --bg: #0d1013;
-    --surface: #171b20;
-    --surface-2: #1d2229;
-    --text: #e7e9ec;
-    --text-muted: #9ba3ad;
-    --border: #2a2f36;
-    --accent: #e4a63b;
-    --accent-soft: #3a2e12;
-    --good: #4fae79;
-    --good-soft: #123423;
-    --attn: #e2685a;
-    --attn-soft: #3a1a16;
+    --bg: #12151a;
+    --surface: #1b1f26;
+    --surface-2: #191d23;
+    --border: rgba(255, 255, 255, 0.08);
+    --border-hover: rgba(255, 255, 255, 0.16);
+    --text: #eef1f4;
+    --text-dim: #99a3af;
+    --text-faint: #6b7581;
+    --accent: #5b8def;
+    --accent-strong: #7ba3f5;
+    --accent-soft: rgba(91, 141, 239, 0.14);
+    --good: #34c98f;
+    --good-soft: rgba(52, 201, 143, 0.14);
+    --danger: #f0655f;
+    --danger-soft: rgba(240, 101, 95, 0.14);
     --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.35);
   }
 
   * { box-sizing: border-box; }
 
-  body {
+  html, body {
     background: var(--bg);
+  }
+
+  body {
     color: var(--text);
-    font-family: "IBM Plex Sans KR", "IBM Plex Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
     line-height: 1.5;
-    padding: clamp(16px, 4vw, 56px);
+    padding: 16px 16px 48px;
     -webkit-font-smoothing: antialiased;
   }
 
@@ -69,273 +43,282 @@
   }
 
   .wrap {
-    max-width: 1180px;
+    max-width: 640px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 20px;
   }
 
   /* header */
   header {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 16px;
-    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 16px;
     border-bottom: 1px solid var(--border);
-    padding-bottom: 20px;
   }
-
-  .eyebrow {
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 12px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin: 0 0 8px;
-    font-weight: 600;
+  .header-badge {
+    width: 40px; height: 40px;
+    border-radius: 11px;
+    background: var(--accent-soft);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 19px;
+    flex-shrink: 0;
   }
-
+  .header-titles { flex: 1; min-width: 0; }
   h1 {
     margin: 0;
-    font-size: clamp(24px, 3.4vw, 34px);
-    font-weight: 700;
+    font-size: 18px;
+    font-weight: 800;
     letter-spacing: -0.01em;
-    text-wrap: balance;
   }
-
-  header .meta {
-    font-size: 13px;
-    color: var(--text-muted);
+  .header-meta {
+    margin-top: 2px;
+    font-size: 11.5px;
+    color: var(--text-faint);
   }
-  header .meta .mono { display: block; font-size: 13px; color: var(--text); margin-top: 2px; }
-
-  /* status strip */
-  .accounts {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-    gap: 12px;
-  }
-
-  .acct-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 16px 16px 14px;
-    box-shadow: var(--shadow);
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    min-width: 0;
-  }
-
-  .acct-name {
-    font-weight: 600;
-    font-size: 14.5px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .platform-chips { display: flex; gap: 6px; flex-wrap: wrap; }
-  .chip {
+  .live-pill {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
     font-size: 10.5px;
-    font-weight: 600;
-    letter-spacing: 0.03em;
-    padding: 2px 7px;
+    font-weight: 700;
+    color: var(--good);
+    background: var(--good-soft);
+    padding: 4px 9px;
     border-radius: 100px;
-    background: var(--surface-2);
-    color: var(--text-muted);
+    white-space: nowrap;
   }
-
-  .acct-numbers {
-    display: flex;
-    align-items: baseline;
-    gap: 10px;
-    flex-wrap: wrap;
+  .live-pill::before {
+    content: "";
+    width: 5px; height: 5px; border-radius: 50%;
+    background: var(--good);
   }
-  .acct-numbers .num { font-size: 22px; font-weight: 600; }
-  .acct-numbers .label { font-size: 11.5px; color: var(--text-muted); }
-  .acct-numbers .divider { width: 1px; height: 22px; background: var(--border); }
-
-  .bar-track {
-    height: 5px;
-    border-radius: 3px;
-    background: var(--surface-2);
-    overflow: hidden;
-  }
-  .bar-fill { height: 100%; background: var(--accent); border-radius: 3px; }
 
   /* section shells */
   .section-title {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin: 0 0 14px;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    color: var(--text-muted);
+    gap: 8px;
+    margin: 0 0 12px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: var(--text-dim);
     text-transform: uppercase;
   }
   .section-title .dot {
-    width: 7px; height: 7px; border-radius: 50%; background: var(--accent);
+    width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
     flex-shrink: 0;
-  }
-
-  .grid-2 {
-    display: grid;
-    grid-template-columns: 1.3fr 1fr;
-    gap: 20px;
-    align-items: start;
-  }
-  @media (max-width: 860px) {
-    .grid-2 { grid-template-columns: 1fr; }
   }
 
   .panel {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 18px 20px;
+    border-radius: 14px;
+    padding: 16px;
     box-shadow: var(--shadow);
-    min-width: 0;
-    overflow-x: auto;
   }
 
-  /* queue list */
+  /* stat cards */
+  .stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .stat-card {
+    border-radius: 13px;
+    padding: 14px;
+    color: #fff;
+  }
+  .stat-label { font-size: 11px; opacity: 0.85; margin-bottom: 6px; }
+  .stat-value { font-size: 24px; font-weight: 800; font-variant-numeric: tabular-nums; }
+  .stat-unit { font-size: 12px; font-weight: 500; opacity: 0.8; margin-left: 2px; }
+  .grad-blue { background: linear-gradient(135deg, #1c2c4d, #3a5da3); }
+  .grad-teal { background: linear-gradient(135deg, #103a36, #1f9584); }
+  .grad-purple { background: linear-gradient(135deg, #2a2350, #6a55c2); }
+  .grad-red { background: linear-gradient(135deg, #421d1a, #a3453b); }
+
+  /* 7-day strip */
+  .week-strip {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 2px;
+    margin: 0 -16px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .week-day {
+    flex: 0 0 108px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .week-day.today { border-color: var(--accent); background: var(--accent-soft); }
+  .week-day-head {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--text-dim);
+    font-weight: 600;
+  }
+  .week-day.today .week-day-head { color: var(--accent-strong); }
+  .week-day-total {
+    font-size: 18px;
+    font-weight: 800;
+  }
+  .week-chips { display: flex; flex-direction: column; gap: 3px; }
+  .week-chip {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 9.5px;
+    color: var(--text-dim);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .week-chip-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--acct-color, var(--accent)); flex-shrink: 0; }
+  .week-chip b { margin-left: auto; padding-left: 3px; color: var(--text); font-weight: 700; }
+  .week-empty { font-size: 10px; color: var(--text-faint); }
+
+  /* account cards */
+  .accounts {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .acct-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--acct-color, var(--accent));
+    border-radius: 12px;
+    padding: 13px 14px;
+    box-shadow: var(--shadow);
+  }
+  .acct-top { display: flex; align-items: center; gap: 8px; }
+  .acct-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--acct-color, var(--accent)); flex-shrink: 0; }
+  .acct-name { font-weight: 700; font-size: 14px; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .acct-failed { font-size: 10.5px; font-weight: 700; color: var(--danger); background: var(--danger-soft); padding: 2px 7px; border-radius: 100px; flex-shrink: 0; }
+  .acct-handle {
+    display: inline-block;
+    margin-top: 4px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    color: var(--text-faint);
+    text-decoration: none;
+  }
+  .acct-handle:hover { color: var(--accent-strong); }
+  .platform-chips { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 8px; }
+  .chip {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    padding: 2px 7px;
+    border-radius: 100px;
+    background: var(--surface-2);
+    color: var(--text-dim);
+  }
+  .acct-numbers { display: flex; align-items: baseline; gap: 8px; margin-top: 9px; }
+  .acct-numbers .num { font-size: 18px; font-weight: 700; }
+  .acct-numbers .label { font-size: 11px; color: var(--text-dim); }
+  .acct-numbers .divider { width: 1px; height: 16px; background: var(--border); }
+  .bar-track { height: 4px; border-radius: 3px; background: var(--surface-2); overflow: hidden; margin-top: 9px; }
+  .bar-fill { height: 100%; background: var(--acct-color, var(--accent)); border-radius: 3px; }
+
+  /* queue */
   .queue { display: flex; flex-direction: column; }
   .queue-row {
-    display: grid;
-    grid-template-columns: 90px 96px 1fr;
-    gap: 12px;
-    align-items: baseline;
-    padding: 11px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px 0;
     border-bottom: 1px solid var(--border);
   }
   .queue-row:last-child { border-bottom: none; }
-  .queue-time { font-size: 13px; font-weight: 600; color: var(--accent); }
-  .queue-time .day { display: block; font-size: 10.5px; font-weight: 500; color: var(--text-muted); margin-top: 1px; }
-  .queue-acct { font-size: 12.5px; color: var(--text-muted); }
-  .queue-text {
-    font-size: 13.5px;
-    color: var(--text);
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
+  .queue-top-line { display: flex; align-items: baseline; gap: 10px; }
+  .queue-time { flex-shrink: 0; font-size: 13px; font-weight: 700; color: var(--accent-strong); }
+  .queue-time .day { display: inline; font-size: 9.5px; font-weight: 500; color: var(--text-faint); margin-left: 4px; }
+  .queue-text { flex: 1; min-width: 0; font-size: 13px; color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .queue-acct { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--text-dim); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .queue-acct-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--acct-color, var(--accent)); flex-shrink: 0; }
 
-  @media (max-width: 480px) {
-    .queue-row {
-      grid-template-columns: 1fr 1fr;
-      grid-template-areas: "time acct" "text text";
-      row-gap: 4px;
-    }
-    .queue-time { grid-area: time; }
-    .queue-acct { grid-area: acct; text-align: right; }
-    .queue-text { grid-area: text; white-space: normal; }
-  }
-
-  /* pipeline timeline */
+  /* pipeline */
   .pipeline { display: flex; flex-direction: column; gap: 0; }
-  .pipe-row {
-    display: flex;
-    gap: 12px;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--border);
-  }
+  .pipe-row { display: flex; gap: 11px; padding: 11px 0; border-bottom: 1px solid var(--border); }
   .pipe-row:last-child { border-bottom: none; }
-  .pipe-rail {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 3px;
-  }
-  .pipe-dot {
-    width: 9px; height: 9px; border-radius: 50%;
-    background: var(--good);
-    box-shadow: 0 0 0 3px var(--good-soft);
-    flex-shrink: 0;
-  }
-  .pipe-dot.idle { background: var(--text-muted); box-shadow: 0 0 0 3px var(--surface-2); }
+  .pipe-rail { display: flex; flex-direction: column; align-items: center; padding-top: 3px; }
+  .pipe-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--good); box-shadow: 0 0 0 3px var(--good-soft); flex-shrink: 0; }
+  .pipe-dot.idle { background: var(--text-faint); box-shadow: 0 0 0 3px var(--surface-2); }
   .pipe-body { flex: 1; min-width: 0; }
   .pipe-head { display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
-  .pipe-name { font-size: 13.5px; font-weight: 600; }
-  .pipe-desc { font-size: 12.5px; color: var(--text-muted); margin-top: 2px; }
-  .pipe-next { font-size: 11.5px; color: var(--text-muted); margin-top: 4px; }
-  .pipe-next .mono { color: var(--text); }
-
-  .status-pill {
-    font-size: 10.5px;
-    font-weight: 600;
-    padding: 2px 8px;
-    border-radius: 100px;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
+  .pipe-name { font-size: 13px; font-weight: 700; }
+  .pipe-desc { font-size: 11.5px; color: var(--text-dim); margin-top: 2px; line-height: 1.5; }
+  .pipe-next { font-size: 11px; color: var(--text-faint); margin-top: 4px; }
+  .pipe-next .mono { color: var(--text-dim); }
+  .status-pill { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 100px; white-space: nowrap; flex-shrink: 0; }
   .status-pill.live { background: var(--good-soft); color: var(--good); }
-  .status-pill.manual { background: var(--surface-2); color: var(--text-muted); }
+  .status-pill.manual { background: var(--surface-2); color: var(--text-dim); }
 
   /* decisions */
-  .decisions { display: flex; flex-direction: column; gap: 10px; }
-  .decision-row {
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-    padding: 13px 14px;
-    border-radius: 10px;
-    border: 1px solid var(--border);
-  }
-  .decision-row.open { background: var(--attn-soft); border-color: transparent; }
-  .decision-row.resolved { background: var(--good-soft); border-color: transparent; }
-  .decision-mark {
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 11px;
-    font-weight: 600;
-    padding: 2px 8px;
-    border-radius: 6px;
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
-  .decision-row.open .decision-mark { background: var(--attn); color: #fff; }
+  .decisions { display: flex; flex-direction: column; gap: 8px; }
+  .decision-row { display: flex; gap: 10px; align-items: flex-start; padding: 11px 12px; border-radius: 10px; }
+  .decision-row.open { background: var(--danger-soft); }
+  .decision-row.resolved { background: var(--good-soft); }
+  .decision-mark { font-family: "IBM Plex Mono", monospace; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 6px; flex-shrink: 0; margin-top: 1px; }
+  .decision-row.open .decision-mark { background: var(--danger); color: #fff; }
   .decision-row.resolved .decision-mark { background: var(--good); color: #fff; }
   .decision-copy { min-width: 0; }
-  .decision-copy .title { font-size: 13.5px; font-weight: 600; }
-  .decision-copy .detail { font-size: 12.5px; color: var(--text-muted); margin-top: 3px; word-break: break-word; }
+  .decision-copy .title { font-size: 13px; font-weight: 700; }
+  .decision-copy .detail { font-size: 11.5px; color: var(--text-dim); margin-top: 2px; word-break: break-word; }
 
-  /* benchmark log */
-  .log-entries { display: flex; flex-direction: column; gap: 14px; }
-  .log-entry { border-left: 2px solid var(--accent); padding-left: 12px; }
-  .log-entry .log-date { font-size: 11px; color: var(--text-muted); margin-bottom: 4px; }
-  .log-entry ul { margin: 0; padding-left: 18px; font-size: 13px; }
+  /* logs */
+  .log-entries { display: flex; flex-direction: column; gap: 12px; }
+  .log-entry { border-left: 2px solid var(--accent); padding-left: 11px; }
+  .log-entry .log-date { font-size: 10.5px; color: var(--text-faint); margin-bottom: 4px; }
+  .log-entry ul { margin: 0; padding-left: 16px; font-size: 12.5px; color: var(--text); }
   .log-entry li { margin-bottom: 3px; }
-  .log-empty { font-size: 13px; color: var(--text-muted); }
+  .log-empty { font-size: 12.5px; color: var(--text-dim); margin: 0; }
 
   footer {
-    font-size: 12px;
-    color: var(--text-muted);
+    font-size: 11px;
+    color: var(--text-faint);
     border-top: 1px solid var(--border);
-    padding-top: 16px;
+    padding-top: 14px;
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 8px;
+    flex-direction: column;
+    gap: 4px;
   }
 </style>
 
 <div class="wrap">
 
   <header>
-    <div>
-      <p class="eyebrow">Threads · Instagram 자동 발행 시스템</p>
+    <span class="header-badge">🛰️</span>
+    <div class="header-titles">
       <h1>자동화 관제탑</h1>
+      <div class="header-meta mono">{{GENERATED_AT}}</div>
     </div>
-    <div class="meta">
-      스냅샷 생성 시각
-      <span class="mono">{{GENERATED_AT}}</span>
-    </div>
+    <span class="live-pill">매시간 자동갱신</span>
   </header>
+
+  <div class="stats">
+{{STAT_CARDS}}
+  </div>
+
+  <section class="panel">
+    <p class="section-title"><span class="dot"></span>7일 미리보기</p>
+    <div class="week-strip">
+{{WEEK_STRIP}}
+    </div>
+  </section>
 
   <section>
     <p class="section-title"><span class="dot"></span>계정 현황 · 전체 {{TOTAL_POSTS}}건</p>
@@ -344,67 +327,71 @@
     </div>
   </section>
 
-  <div class="grid-2">
-
-    <section class="panel">
-      <p class="section-title"><span class="dot"></span>다음 예약 발행 (KST)</p>
-      <div class="queue">
+  <section class="panel">
+    <p class="section-title"><span class="dot"></span>다음 예약 발행 (KST)</p>
+    <div class="queue">
 {{QUEUE_ROWS}}
+    </div>
+  </section>
+
+  <section class="panel">
+    <p class="section-title"><span class="dot"></span>가동 중인 자동화</p>
+    <div class="pipeline">
+
+      <div class="pipe-row">
+        <div class="pipe-rail"><div class="pipe-dot"></div></div>
+        <div class="pipe-body">
+          <div class="pipe-head">
+            <span class="pipe-name">예약 발행 (GitHub Actions)</span>
+            <span class="status-pill live">5분마다</span>
+          </div>
+          <p class="pipe-desc">예정 시각 도래한 스레드/인스타 게시물을 자동 발행</p>
+        </div>
       </div>
-    </section>
 
-    <div style="display:flex; flex-direction:column; gap:20px;">
-
-      <section class="panel">
-        <p class="section-title"><span class="dot"></span>가동 중인 자동화</p>
-        <div class="pipeline">
-
-          <div class="pipe-row">
-            <div class="pipe-rail"><div class="pipe-dot"></div></div>
-            <div class="pipe-body">
-              <div class="pipe-head">
-                <span class="pipe-name">예약 발행 (GitHub Actions)</span>
-                <span class="status-pill live">5분마다</span>
-              </div>
-              <p class="pipe-desc">publish-scheduled.yml — 예정 시각 도래한 스레드/인스타 게시물을 자동 발행</p>
-            </div>
+      <div class="pipe-row">
+        <div class="pipe-rail"><div class="pipe-dot"></div></div>
+        <div class="pipe-body">
+          <div class="pipe-head">
+            <span class="pipe-name">이 관제탑 자체 갱신</span>
+            <span class="status-pill live">매시간</span>
           </div>
-
-          <div class="pipe-row">
-            <div class="pipe-rail"><div class="pipe-dot"></div></div>
-            <div class="pipe-body">
-              <div class="pipe-head">
-                <span class="pipe-name">팔자장인 벤치마크 점검</span>
-                <span class="status-pill live">매주 월</span>
-              </div>
-              <p class="pipe-desc">@saju.myungdang · @taebaek_saju 로그인 후 심층 분석 → 훅/구조 반영 제안</p>
-              <p class="pipe-next">다음 실행 <span class="mono">{{NEXT_MONDAY}}</span></p>
-            </div>
-          </div>
-
-          <div class="pipe-row">
-            <div class="pipe-rail"><div class="pipe-dot idle"></div></div>
-            <div class="pipe-body">
-              <div class="pipe-head">
-                <span class="pipe-name">인스타 콘텐츠 준비</span>
-                <span class="status-pill manual">수동 실행</span>
-              </div>
-              <p class="pipe-desc">prepare-instagram.yml — 날짜 범위 지정해서 필요할 때만 실행</p>
-            </div>
-          </div>
-
+          <p class="pipe-desc">클라우드 루틴이 최신 데이터로 이 페이지를 republish — 맥북이 자고 있어도 동작</p>
         </div>
-      </section>
+      </div>
 
-      <section class="panel">
-        <p class="section-title"><span class="dot"></span>확인 필요</p>
-        <div class="decisions">
-{{DECISION_ROWS}}
+      <div class="pipe-row">
+        <div class="pipe-rail"><div class="pipe-dot"></div></div>
+        <div class="pipe-body">
+          <div class="pipe-head">
+            <span class="pipe-name">팔자장인 벤치마크 점검</span>
+            <span class="status-pill live">매주 월</span>
+          </div>
+          <p class="pipe-desc">@saju.myungdang · @taebaek_saju 로그인 후 심층 분석 → 훅/구조 반영 제안</p>
+          <p class="pipe-next">다음 실행 <span class="mono">{{NEXT_MONDAY}}</span></p>
         </div>
-      </section>
+      </div>
+
+      <div class="pipe-row">
+        <div class="pipe-rail"><div class="pipe-dot idle"></div></div>
+        <div class="pipe-body">
+          <div class="pipe-head">
+            <span class="pipe-name">인스타 콘텐츠 준비</span>
+            <span class="status-pill manual">수동 실행</span>
+          </div>
+          <p class="pipe-desc">날짜 범위 지정해서 필요할 때만 실행</p>
+        </div>
+      </div>
 
     </div>
-  </div>
+  </section>
+
+  <section class="panel">
+    <p class="section-title"><span class="dot"></span>확인 필요</p>
+    <div class="decisions">
+{{DECISION_ROWS}}
+    </div>
+  </section>
 
   <section class="panel">
     <p class="section-title"><span class="dot"></span>팔자장인 벤치마크 기록</p>
@@ -413,9 +400,16 @@
     </div>
   </section>
 
+  <section class="panel">
+    <p class="section-title"><span class="dot"></span>성장 리서치 기록</p>
+    <div class="log-entries">
+{{GROWTH_LOG}}
+    </div>
+  </section>
+
   <footer>
-    <span>threads-auto-publisher · schedule/posts.json 기준 스냅샷</span>
-    <span>매주 월요일 벤치마크 점검 시 자동 갱신</span>
+    <span>threads-auto-publisher · schedule/posts.json 기준</span>
+    <span>클라우드 루틴이 매시간 자동으로 새로 고침 (맥북 상태 무관)</span>
   </footer>
 
 </div>
