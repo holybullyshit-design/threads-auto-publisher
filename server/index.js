@@ -786,7 +786,9 @@ function buildOpsSummary(posts) {
   const weeklyTimeline = Array.from({ length: 7 }, (_, offset) => {
     const day = new Date(weekStart); day.setUTCDate(day.getUTCDate() + offset);
     const key = day.toISOString().slice(0, 10);
-    const items = posts.filter((p) => p.scheduledAt && kstDateKeyForOps(p.scheduledAt) === key)
+    // 취소된 글은 여기서 아예 뺀다 - 취소선 처리해서 보여줬더니 사용자가 "취소한 건데 왜 아직도
+    // 보이지?"로 헷갈려했다(2026-08-30). 캘린더의 activeDayPosts와 동일한 원칙.
+    const items = posts.filter((p) => p.scheduledAt && p.status !== "canceled" && kstDateKeyForOps(p.scheduledAt) === key)
       .sort((a, b) => new Date(a.scheduledAt) - new Date(b.scheduledAt))
       .map((p) => { const k = toKst(p.scheduledAt); return { id: p.id, time: `${String(k.hour).padStart(2,"0")}:${String(k.minute).padStart(2,"0")}`, account: p.accountLabel || "", platform: p.platform === "instagram" ? "IG" : "TH", status: p.status, title: p.title || String(p.text || "").replace(/\s+/g," ").slice(0,30) }; });
     return { key, label: `${day.getUTCMonth()+1}/${day.getUTCDate()}`, weekday: WEEKDAY_KO[day.getUTCDay()], items };
