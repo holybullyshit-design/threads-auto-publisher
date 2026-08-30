@@ -22,7 +22,8 @@
 //                                (GitHub Actions에서는 자동 토큰 + github.repository로 채움)
 
 const { publishTextPost, publishImagePost } = require("../server/lib/threadsClient");
-const { publishCarousel, findPublishedByMarker } = require("../server/lib/instagramClient");
+const { publishCarousel, findPublishedByCaption } = require("../server/lib/instagramClient");
+const { publicCaption } = require("../server/lib/instagramCaption");
 const { readSchedule, writeSchedule } = require("../server/lib/githubStore");
 
 const MAX_AUTO_RETRIES = 3;
@@ -56,11 +57,11 @@ function loadInstagramAccounts() {
 // (전체 posts를 끝에 몰아서 한 번에 저장하지 않는다 - 위 설명 참고)
 async function persistPostResult(postId, fields) {
   const { posts, sha } = await readSchedule();
-  const basePosts = posts.slice();
+  const basePosts = posts.map(p => ({...p}));
   const target = posts.find((p) => p.id === postId);
   if (!target) {
     console.error(`[경고] ${postId} 글을 최신 목록에서 못 찾았습니다 - 결과 저장을 건너뜁니다.`);
-    return;
+    throw new Error('결과를 저장할 예약이 없어 발행을 중단했습니다.');
   }
   Object.assign(target, fields);
   await writeSchedule(posts, { sha, message: `chore: update status for ${postId} [skip ci]`, basePosts });
@@ -79,23 +80,32 @@ async function main() {
 
   for (const post of due) {
     if (post.platform === "instagram") {
+      let publishStarted = false;
+      let instagramResult;
       try {
         if (post.validation?.status !== "passed" || !post.contentHash) throw Object.assign(new Error("검수 통과 증거가 없어 게시를 차단했습니다."), { code: "VALIDATION_REQUIRED" });
         const accountKey = post.accountKey || "palja";
         const credentials = loadInstagramAccounts()[accountKey];
         if (!credentials?.userId || !credentials?.accessToken) throw Object.assign(new Error(`${accountKey} Instagram 클라우드 시크릿이 없습니다.`), { code: "MISSING_INSTAGRAM_CONFIG" });
         const marker = post.publishMarker || `#자동게시_${accountKey}_${String(post.id).slice(0, 8)}`;
-        const existing = await findPublishedByMarker(marker, credentials);
-        const caption = String(post.text || "").includes(marker) ? post.text : `${post.text}\n\n${marker}`;
+        const caption = publicCaption(post.text);
+        const existing = await findPublishedByCaption(caption, marker, credentials);
+        if (!existing) {
+          // Persist BEFORE the external side effect. A crash or uncertain API response must
+          // never cause an automatic second publication. Manual reconciliation is required.
+          await persistPostResult(post.id, {status:"publishing", publishAttemptedAt:new Date().toISOString(), error:null});
+          publishStarted = true;
+        }
         const result = existing ? { publishedId: existing.id, recoveredDuplicate: true } : await publishCarousel({ imageUrls: post.images, caption, ...credentials });
+        instagramResult = result;
         console.log(`[인스타그램 성공] ${post.id} → ${result.publishedId}${result.recoveredDuplicate ? " (기존 게시물 회수)" : ""}`);
         await persistPostResult(post.id, { status: "published", publishedAt: new Date().toISOString(), publishedId: result.publishedId, error: null });
       } catch (err) {
         const retryCount = (post.retryCount || 0) + 1;
-        const fatal = ["VALIDATION_REQUIRED", "INVALID_CAROUSEL", "INVALID_CAPTION", "INVALID_IMAGE_URL", "MISSING_INSTAGRAM_CONFIG"].includes(err.code);
-        const status = fatal || retryCount >= MAX_AUTO_RETRIES ? "failed" : "scheduled";
+        const fatal = ["VALIDATION_REQUIRED", "INVALID_CAROUSEL", "INVALID_CAPTION", "INTERNAL_CAPTION", "INVALID_IMAGE_URL", "MISSING_INSTAGRAM_CONFIG"].includes(err.code);
+        const status = publishStarted || instagramResult || fatal || retryCount >= MAX_AUTO_RETRIES ? "failed" : "scheduled";
         console.error(`[인스타그램 ${status === "failed" ? "최종 실패" : "재시도 예정"}] ${post.id}: ${err.message}`);
-        await persistPostResult(post.id, { status, retryCount, error: err.message });
+        await persistPostResult(post.id, { status, retryCount, ...(instagramResult?.publishedId ? {publishedId:instagramResult.publishedId} : {}), error: publishStarted ? `게시 결과 수동 확인 필요 — 자동 재게시 금지: ${err.message}` : err.message });
       }
       continue;
     }
@@ -216,7 +226,9 @@ async function main() {
   }
 }
 
-main().catch((err) => {
+if (require.main === module) main().catch((err) => {
   console.error("스케줄 발행 스크립트 실행 중 오류:", err);
   process.exit(1);
 });
+
+module.exports = { main };
