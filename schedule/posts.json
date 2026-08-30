@@ -2986,8 +2986,11 @@
     "scheduledAt": "2026-08-30T01:21:13.514Z",
     "createdAt": "2026-08-28T12:08:30.065Z",
     "publishedAt": null,
-    "publishedId": null,
-    "error": null
+    "publishedId": "18110172749014124",
+    "error": null,
+    "chainPublishedIds": [
+      "18110172749014124"
+    ]
   },
   {
     "id": "16dabcf6-3831-4efc-b7f8-66433fb0e3f1",
