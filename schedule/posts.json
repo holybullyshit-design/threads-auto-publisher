@@ -6210,8 +6210,11 @@
     "scheduledAt": "2026-08-30T11:55:31.131Z",
     "createdAt": "2026-08-30T03:45:26.865Z",
     "publishedAt": null,
-    "publishedId": null,
-    "error": null
+    "publishedId": "18091862300135408",
+    "error": null,
+    "chainPublishedIds": [
+      "18091862300135408"
+    ]
   },
   {
     "id": "bb33e7df-d0fb-47b4-894c-2d1ecb40e420",
