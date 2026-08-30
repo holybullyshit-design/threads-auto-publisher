@@ -487,11 +487,11 @@
     "accountId": "6b8b637e-1629-4844-9a1f-9728c420154e",
     "accountLabel": "엄마가 직접 써본 꿀템",
     "text": "차 안에서 신호대기 중에 뒷자리에서 갑자기\n\n\"엄마, 신호등도 밥 먹어?\"\n\nㅋㅋㅋ뭔소리야 하고 물어봤더니\n\n\"빨간불일 때 쉬고 있잖아\"\n\n...그게 쉬는 거였구나 몰랐네\n\n애매하게 논리적이라 반박을 못하고 그냥 \"어 맞아\" 하고 넘어감",
-    "status": "scheduled",
+    "status": "published",
     "scheduledAt": "2026-08-30T12:01:42.499Z",
     "createdAt": "2026-08-24T02:38:00.154Z",
-    "publishedAt": null,
-    "publishedId": null,
+    "publishedAt": "2026-08-30T12:03:00.140Z",
+    "publishedId": "18082494116704200",
     "error": null
   },
   {
