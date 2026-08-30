@@ -1388,7 +1388,31 @@ textarea#draft-text {
 .ops-log-entry ul { margin: 0; padding-left: 18px; font-size: 13px; }
 .ops-log-entry li { margin-bottom: 3px; }
 
+/* 성과 분석 (실제 Threads Insights API) */
+.ops-insight-account { padding: 14px 0; border-bottom: 1px solid var(--card-border); }
+.ops-insight-account:last-child { border-bottom: none; }
+.ops-insight-account-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
+.ops-insight-account-name { font-weight: 700; font-size: 14px; }
+.ops-insight-followers { font-size: 11.5px; color: var(--text-dim); }
+.ops-insight-nums { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.ops-insight-num { display: flex; flex-direction: column; gap: 2px; position: relative; }
+.ops-insight-num b { font-size: 17px; font-variant-numeric: tabular-nums; }
+.ops-insight-num span { font-size: 10.5px; color: var(--text-faint); }
+.ops-insight-change { position: absolute; top: 0; right: 0; font-size: 10px; font-weight: 700; }
+.ops-insight-change.up { color: var(--success); }
+.ops-insight-change.down { color: var(--danger); }
+.ops-insight-top { margin-top: 10px; padding: 9px 11px; border-radius: 9px; background: rgba(255,255,255,.03); display: flex; flex-direction: column; gap: 3px; }
+.ops-insight-top-label { font-size: 9.5px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--accent-strong); }
+.ops-insight-top-text { font-size: 12.5px; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ops-insight-top-nums { font-size: 11px; color: var(--text-dim); }
+.ops-insights-recs { margin-top: 4px; }
+.ops-insights-recs-title { font-size: 12.5px; font-weight: 700; margin: 14px 0 8px; padding-top: 14px; border-top: 1px solid var(--card-border); }
+.ops-insights-recs ul { margin: 0; padding-left: 18px; font-size: 12.5px; line-height: 1.6; color: var(--text-dim); }
+.ops-insights-recs li { margin-bottom: 6px; }
+.ops-insights-recs li:last-child { margin-bottom: 0; }
+
 @media (max-width: 720px) {
+  .ops-insight-nums { grid-template-columns: repeat(2, 1fr); row-gap: 12px; }
   .ops-grid-2 { grid-template-columns: 1fr; }
   .ops-queue-row { grid-template-columns: 1fr 1fr; grid-template-areas: "time acct" "text text"; row-gap: 3px; }
   .ops-queue-time { grid-area: time; }
