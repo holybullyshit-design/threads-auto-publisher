@@ -301,14 +301,98 @@ function buildLogSection(fileName, emptyText) {
     .join("\n");
 }
 
+// ---------- 성과 분석 (실제 Threads Insights API) ----------
+// 로컬 서버(server/index.js)가 매시간 백그라운드로 Threads Insights를 가져와서
+// tools/ops-dashboard/insights-summary.json으로 GitHub에 커밋해둔다(server/lib/githubStore.js
+// writeJsonFile). 이 스크립트는 클라우드 루틴이 fresh git clone에서 돌리기 때문에 계정
+// 토큰(data/accounts.json)에 접근할 수 없다 - 그래서 여기선 그 요약 파일을 그냥 읽기만 한다.
+// 숫자/추천 계산 로직 자체는 server/lib/insightsSummary.js와 동일해야 하므로(안 갈라지게)
+// 그 파일을 그대로 require해서 쓴다.
+function fmtNum(n) {
+  return typeof n === "number" ? n.toLocaleString("ko-KR") : "-";
+}
+
+function loadInsightsSummary() {
+  try {
+    const raw = fs.readFileSync(path.join(DIR, "insights-summary.json"), "utf8");
+    return JSON.parse(raw);
+  } catch (e) {
+    return null;
+  }
+}
+
+function buildInsightsSection() {
+  const summary = loadInsightsSummary();
+  if (!summary || !Array.isArray(summary.accounts) || summary.accounts.length === 0) {
+    return {
+      updated: "아직 데이터가 없습니다 — 로컬 앱이 다음 갱신 주기에 채웁니다.",
+      rows: `<p class="log-empty">아직 데이터가 없습니다.</p>`,
+      recs: "",
+    };
+  }
+
+  const gen = new Date(summary.generatedAt);
+  const updated = `${gen.getMonth() + 1}월 ${gen.getDate()}일 ${pad2(toKst(gen).hour)}:${pad2(toKst(gen).minute)} 기준 (로컬 앱 기준 시각) · 계정당 최근 발행 글 최대 12개 추적`;
+
+  const rows = summary.accounts
+    .map((a) => {
+      const meta = accountMeta(a.label);
+      if (a.noData) {
+        return `        <div class="insight-account">
+          <div class="insight-account-head"><span class="insight-account-name">${escapeHtml(a.label)}</span></div>
+          <p class="log-empty">아직 데이터가 없습니다.</p>
+        </div>`;
+      }
+      if (a.error) {
+        return `        <div class="insight-account">
+          <div class="insight-account-head"><span class="insight-account-name">${escapeHtml(a.label)}</span></div>
+          <p class="log-empty">불러오기 실패: ${escapeHtml(a.error)}</p>
+        </div>`;
+      }
+      const changeBadge =
+        a.viewsChangePct === null
+          ? ""
+          : a.viewsChangePct >= 0
+          ? `<span class="insight-change up">▲ ${a.viewsChangePct}%</span>`
+          : `<span class="insight-change down">▼ ${Math.abs(a.viewsChangePct)}%</span>`;
+      const topPost = a.topPost
+        ? `<div class="insight-top"><span class="insight-top-label">최고 성과</span><span class="insight-top-text">${escapeHtml(a.topPost.text)}</span><span class="insight-top-nums">조회 ${fmtNum(a.topPost.views)} · 답글 ${fmtNum(a.topPost.replies)}</span></div>`
+        : "";
+      return `        <div class="insight-account" style="--acct-color:${meta.color}">
+          <div class="insight-account-head">
+            <span class="insight-account-dot"></span><span class="insight-account-name">${escapeHtml(a.label)}</span>
+            <span class="insight-followers">팔로워 ${fmtNum(a.followersCount)}</span>
+          </div>
+          <div class="insight-nums">
+            <div class="insight-num"><b class="mono">${fmtNum(a.viewsRecent7d)}</b><span>7일 조회수</span>${changeBadge}</div>
+            <div class="insight-num"><b class="mono">${fmtNum(a.likes)}</b><span>좋아요</span></div>
+            <div class="insight-num"><b class="mono">${fmtNum(a.replies)}</b><span>답글</span></div>
+            <div class="insight-num"><b class="mono">${fmtNum(a.reposts)}</b><span>리포스트</span></div>
+          </div>
+          ${topPost}
+        </div>`;
+    })
+    .join("\n");
+
+  const recs = (summary.recommendations || []).length
+    ? `<div class="insight-recs-title">💡 노출을 늘리려면</div><ul>${summary.recommendations.map((r) => `<li>${escapeHtml(r)}</li>`).join("")}</ul>`
+    : "";
+
+  return { updated, rows, recs };
+}
+
 function main() {
   const posts = loadPosts();
   const template = fs.readFileSync(path.join(DIR, "template.html"), "utf8");
+  const insights = buildInsightsSection();
 
   const output = template
     .replace("{{GENERATED_AT}}", formatGeneratedAt())
     .replace("{{TOTAL_POSTS}}", String(posts.length))
     .replace("{{STAT_CARDS}}", buildStatCards(posts))
+    .replace("{{INSIGHTS_UPDATED}}", insights.updated)
+    .replace("{{INSIGHTS_ROWS}}", insights.rows)
+    .replace("{{INSIGHTS_RECS}}", insights.recs)
     .replace("{{WEEK_STRIP}}", buildWeekStrip(posts))
     .replace("{{ACCOUNT_CARDS}}", buildAccountCards(posts))
     .replace("{{QUEUE_ROWS}}", buildQueueRows(posts))

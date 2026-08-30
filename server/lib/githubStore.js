@@ -117,4 +117,28 @@ async function writeSchedule(posts, { sha, message, basePosts } = {}, attempt = 
   throw new Error(`GitHub에 예약 목록을 저장하지 못했습니다: ${body.message || res.status}`);
 }
 
-module.exports = { readSchedule, writeSchedule, SCHEDULE_PATH };
+// 임의의 JSON 파일 하나를 GitHub에 통째로 덮어쓴다 (마지막에 쓴 내용이 이긴다 - schedule/
+// posts.json처럼 여러 곳에서 동시에 건드리는 파일이 아니라, 한 곳(로컬 서버의 성과 분석
+// 배경 갱신)에서만 쓰는 요약 데이터라 rebase 같은 병합 로직이 필요 없다).
+// 파일이 아직 없으면(첫 실행) sha 없이 새로 만든다.
+async function writeJsonFile(filePath, data, message) {
+  const { repo } = getConfig();
+  const content = Buffer.from(JSON.stringify(data, null, 2), "utf8").toString("base64");
+
+  const existing = await githubRequest(`/repos/${repo}/contents/${filePath}`);
+  const sha = existing.ok ? (await existing.json()).sha : undefined;
+
+  const res = await githubRequest(`/repos/${repo}/contents/${filePath}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message: message || `chore: update ${filePath}`, content, sha }),
+  });
+  if (!res.ok) {
+    const body = await res.json().catch(() => ({}));
+    throw new Error(`GitHub에 ${filePath}를 저장하지 못했습니다: ${body.message || res.status}`);
+  }
+  const data2 = await res.json();
+  return { sha: data2.content.sha };
+}
+
+module.exports = { readSchedule, writeSchedule, writeJsonFile, SCHEDULE_PATH };

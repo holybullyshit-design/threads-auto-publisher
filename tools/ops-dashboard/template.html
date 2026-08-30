@@ -233,6 +233,31 @@
   .bar-track { height: 4px; border-radius: 3px; background: var(--surface-2); overflow: hidden; margin-top: 9px; }
   .bar-fill { height: 100%; background: var(--acct-color, var(--accent)); border-radius: 3px; }
 
+  /* 성과 분석 (실제 Threads Insights API) */
+  .insight-updated { margin: 0 0 12px; font-size: 11px; color: var(--text-faint); }
+  .insight-accounts { display: flex; flex-direction: column; }
+  .insight-account { padding: 14px 0; border-bottom: 1px solid var(--border); }
+  .insight-account:last-child { border-bottom: none; }
+  .insight-account-head { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .insight-account-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--acct-color, var(--accent)); flex-shrink: 0; }
+  .insight-account-name { font-weight: 700; font-size: 14px; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .insight-followers { font-size: 11px; color: var(--text-dim); flex-shrink: 0; }
+  .insight-nums { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px 14px; row-gap: 12px; }
+  .insight-num { display: flex; flex-direction: column; gap: 2px; position: relative; }
+  .insight-num b { font-size: 16px; }
+  .insight-num span { font-size: 10px; color: var(--text-faint); }
+  .insight-change { position: absolute; top: 0; right: 0; font-size: 9.5px; font-weight: 700; }
+  .insight-change.up { color: var(--good); }
+  .insight-change.down { color: var(--danger); }
+  .insight-top { margin-top: 10px; padding: 9px 11px; border-radius: 9px; background: var(--surface-2); display: flex; flex-direction: column; gap: 3px; }
+  .insight-top-label { font-size: 9px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--accent-strong); }
+  .insight-top-text { font-size: 12px; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .insight-top-nums { font-size: 10.5px; color: var(--text-dim); }
+  .insight-recs-title { font-size: 12px; font-weight: 700; margin: 14px 0 8px; padding-top: 14px; border-top: 1px solid var(--border); }
+  .insight-recs ul { margin: 0; padding-left: 18px; font-size: 12px; line-height: 1.6; color: var(--text-dim); }
+  .insight-recs li { margin-bottom: 6px; }
+  .insight-recs li:last-child { margin-bottom: 0; }
+
   /* queue */
   .queue { display: flex; flex-direction: column; }
   .queue-row {
@@ -312,6 +337,17 @@
   <div class="stats">
 {{STAT_CARDS}}
   </div>
+
+  <section class="panel">
+    <p class="section-title"><span class="dot"></span>성과 분석 · 실제 Threads 데이터</p>
+    <p class="insight-updated">{{INSIGHTS_UPDATED}}</p>
+    <div class="insight-accounts">
+{{INSIGHTS_ROWS}}
+    </div>
+    <div class="insight-recs">
+{{INSIGHTS_RECS}}
+    </div>
+  </section>
 
   <section class="panel">
     <p class="section-title"><span class="dot"></span>7일 미리보기</p>
