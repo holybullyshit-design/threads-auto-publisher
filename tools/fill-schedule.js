@@ -15,7 +15,7 @@ const accountsStore = require("../server/lib/accountsStore");
 const { readSchedule, writeSchedule } = require("../server/lib/githubStore");
 const { withJitter } = require("../server/lib/scheduleStore");
 const { writeThreadDraft, TOPICS, pickTopicIds, pickHookFormatIds } = require("../server/skills/taebaekSajuDraftWriter");
-const { computeOptimalSlots } = require("./lib/optimalSlots");
+const { computeSlotsWithMorningAnchor } = require("./lib/optimalSlots");
 
 const RETRY_ATTEMPTS = 3;
 // 2026-08-30: "몇 시에 올릴지"를 매번 새로 정하지 않고, 실제 Threads Insights 데이터에서
@@ -163,21 +163,21 @@ async function main() {
 
   let dailySlotTimes;
   if (MODE === "comprehensive") {
-    const { slots, usedFallback } = computeOptimalSlots(COMPREHENSIVE_ACCOUNT_LABELS, 5);
+    const { slots, usedFallback } = computeSlotsWithMorningAnchor(COMPREHENSIVE_ACCOUNT_LABELS, 5);
     dailySlotTimes = slots;
     console.log(
-      `시간대 ${usedFallback ? "(데이터 부족 - 기본값 사용)" : "(실측 데이터 기반 자동 계산)"}: ${slots.join(", ")}`
+      `시간대 ${usedFallback ? "(데이터 부족 - 기본값 사용)" : "(통근시간 고정 + 나머지 실측 데이터 기반)"}: ${slots.join(", ")}`
     );
   } else {
     // 연리지실타래/아해사주의 바이럴 슬롯도 같은 계산기를 쓴다 - 팔자명가/팔자궤도/팔자장인과
     // 같은 장르(바이럴 클리프행어)라 풀링해서 표본을 늘린다.
-    const { slots, usedFallback } = computeOptimalSlots(
+    const { slots, usedFallback } = computeSlotsWithMorningAnchor(
       [...COMPREHENSIVE_ACCOUNT_LABELS, ...Object.keys(VIRAL_PROFILES)],
       VIRAL_MORNING_DAILY_SLOTS
     );
     dailySlotTimes = slots;
     console.log(
-      `시간대 ${usedFallback ? "(데이터 부족 - 기본값 사용)" : "(실측 데이터 기반 자동 계산)"}: ${slots.join(", ")}`
+      `시간대 ${usedFallback ? "(데이터 부족 - 기본값 사용)" : "(통근시간 고정 + 나머지 실측 데이터 기반)"}: ${slots.join(", ")}`
     );
   }
   const slotsPerDay = dailySlotTimes.length;

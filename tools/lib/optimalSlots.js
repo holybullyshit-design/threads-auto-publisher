@@ -88,13 +88,13 @@ function computeBucketAverages(accountLabels, bucketSizeHours = 3) {
 
 // accountLabels 그룹에 대해 하루 slotCount개의 발행 시각(KST, "HH:MM")을 데이터 기반으로
 // 정한다. 표본이 거의 없으면 조용히 FALLBACK_SLOTS_KST를 쓴다(값을 지어내지 않는다).
-function computeOptimalSlots(accountLabels, slotCount = 5) {
+function computeOptimalSlots(accountLabels, slotCount = 5, dayStartHour = DEAD_ZONE_END_HOUR) {
   const samples = collectSamples(accountLabels);
   if (samples.length < slotCount * 2) {
     return { slots: FALLBACK_SLOTS_KST.slice(0, slotCount), usedFallback: true, zones: [] };
   }
 
-  const dayStart = DEAD_ZONE_END_HOUR * 60;
+  const dayStart = dayStartHour * 60;
   const dayEnd = 24 * 60;
   const zoneWidth = (dayEnd - dayStart) / slotCount;
 
@@ -131,4 +131,22 @@ function computeOptimalSlots(accountLabels, slotCount = 5) {
   return { slots: slots.map(minutesToHHMM), usedFallback: false, zones };
 }
 
-module.exports = { computeOptimalSlots, computeBucketAverages, FALLBACK_SLOTS_KST };
+// 2026-08-30 3차 변경: 사용자가 "스레드 잘하는 사람들은 오전 7-9시에 하나씩 올린다는데
+// 우리는 그 시간대에 하나도 없다"고 지적 - 실제로 지금까지의 자체 데이터에서 이 구간이
+// 안 좋게 나온 건, 표본이 워낙 적은 상태에서 원래도 이 구간을 아예 배제(DEAD_ZONE_END_HOUR)
+// 하고 있었기 때문이지 "7-9시가 나쁘다"는 근거가 있어서가 아니었다. 그래서 이 구간 하나는
+// 일반적인 소셜미디어 통근 시간대 상식을 믿고 고정으로 항상 넣고, 나머지 슬롯만 실측
+// 데이터로 최적화한다 - "데이터 기반 + 통근시간 확보"를 동시에 만족시키는 절충.
+const MORNING_ANCHOR_KST = "08:00";
+
+function computeSlotsWithMorningAnchor(accountLabels, totalSlotCount, anchorTime = MORNING_ANCHOR_KST) {
+  if (totalSlotCount < 2) return computeOptimalSlots(accountLabels, totalSlotCount);
+  const remaining = totalSlotCount - 1;
+  // 나머지 슬롯은 통근 시간(8시대) 바로 다음인 9.5시부터 자정까지에서 뽑는다 - 고정 슬롯과
+  // 너무 붙어서 30분 간격으로 몰리는 걸 방지.
+  const { slots: rest, usedFallback, zones } = computeOptimalSlots(accountLabels, remaining, 9.5);
+  const slots = [anchorTime, ...rest].sort();
+  return { slots, usedFallback, zones };
+}
+
+module.exports = { computeOptimalSlots, computeSlotsWithMorningAnchor, computeBucketAverages, FALLBACK_SLOTS_KST, MORNING_ANCHOR_KST };
