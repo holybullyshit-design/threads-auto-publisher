@@ -26,7 +26,11 @@ const RETRY_ATTEMPTS = 3;
 // 쪽으로 시각을 당긴다 - "하루 전체에 골고루 분산" + "데이터가 좋은 쪽으로 미세조정"을 동시에
 // 만족시킨다. 표본이 아직 부족하면(계정 초기 등) 조용히 기존 안전값으로 대체된다.
 const COMPREHENSIVE_ACCOUNT_LABELS = ["팔자명가", "팔자궤도", "팔자장인"];
-const MORNING_SLOT_KST = "09:00";
+// 2026-08-30 2차 변경: 연리지실타래/아해사주도 "바이럴(팔자장인 스타일)" 슬롯을 하루 1개에서
+// 4개로 늘리고, 시간도 고정 09:00이 아니라 데이터 기반으로 하루에 분산시킨다(사용자 요청).
+// 댓글 유도형(생년월일시 남기는 상담체, 오후 5시경 1개)은 이 스크립트가 만드는 게 아니라
+// 완전히 별도 경로에서 생성되는 기존 글이라 - 손대지 않는다.
+const VIRAL_MORNING_DAILY_SLOTS = 4;
 
 const VIRAL_PROFILES = {
   "연리지 실타래": {
@@ -94,19 +98,23 @@ function addDaysStr(dateStr, days) {
 // 이미 있는 스케줄에서, "이 날짜에 이미 몇 개가 있는지"를 구한다(시:분 정확히 일치가 아니라
 // 같은 KST 날짜에 이미 채워진 슬롯 개수로 판단 - 지터 때문에 정확한 시:분은 매번 흔들리므로).
 //
-// viral-morning 모드에서는 반드시 "오전(정오 이전)" 슬롯만 세야 한다 - 연리지실타래/아해사주는
-// 원래 매일 오후 5시에 댓글유도 글이 이미 하나씩 예약돼 있는데, 이걸 그냥 "그날 이미 1개
-// 있음"으로 세버리면 오전 슬롯을 하나도 안 채우게 된다(2026-08-29 실측: 실제로 이 버그로
-// 0개가 채워짐 - 다행히 저장 전에 잡음). 오후 슬롯과 오전 슬롯은 서로 다른 몫이라 반드시
-// 시간대로 구분해서 세야 한다.
+// viral-morning 모드에서는 "바이럴 슬롯"만 세야 한다 - 연리지실타래/아해사주는 원래 매일
+// 오후 5시경 댓글유도 글이 완전히 다른 경로로 하나씩 예약돼 있는데, 이걸 그냥 "그날 이미
+// N개 있음"으로 세버리면 바이럴 슬롯이 그만큼 덜 채워진다(2026-08-29 실측: 이 버그로 0개가
+// 채워짐 - 다행히 저장 전에 잡음).
+// 이 스크립트가 만든 글에는 viralEngine:true 표시를 남기므로 그걸로 정확히 구분하고,
+// 표시가 없는 옛날 글(이 필드가 생기기 전, 전부 정오 이전에만 있었음)은 예전처럼 "정오 이전
+// = 바이럴"로 집계한다(하위 호환).
 function countExistingByDate(posts, accountId, mode) {
   const counts = {};
   posts
     .filter((p) => p.accountId === accountId && p.status !== "canceled" && p.platform !== "instagram")
     .filter((p) => {
       if (mode !== "viral-morning") return true;
+      if (p.viralEngine === true) return true;
+      if (p.viralEngine === false) return false;
       const { hour } = toKstDateHour(p.scheduledAt);
-      return hour < 12; // 정오 이전만 "오전 슬롯"으로 집계
+      return hour < 12; // 표시 없는 옛날 글 - 정오 이전만 "바이럴 슬롯"으로 집계
     })
     .forEach((p) => {
       const { date } = toKstDateHour(p.scheduledAt);
@@ -143,6 +151,7 @@ async function saveOnePost(account, draft, when) {
     publishedAt: null,
     publishedId: null,
     error: null,
+    viralEngine: true, // 이 스크립트(taebaekSajuDraftWriter 엔진)로 만든 글 표시 - countExistingByDate 참고
   };
   await writeSchedule(posts.concat([newPost]), { sha, message: `chore: fill 1 slot for ${ACCOUNT_LABEL}`, basePosts });
   return newPost;
@@ -152,16 +161,26 @@ async function main() {
   const account = findAccount();
   if (!account) throw new Error(`계정을 찾을 수 없습니다: "${ACCOUNT_LABEL}"`);
 
-  let comprehensiveSlots = null;
+  let dailySlotTimes;
   if (MODE === "comprehensive") {
     const { slots, usedFallback } = computeOptimalSlots(COMPREHENSIVE_ACCOUNT_LABELS, 5);
-    comprehensiveSlots = slots;
+    dailySlotTimes = slots;
+    console.log(
+      `시간대 ${usedFallback ? "(데이터 부족 - 기본값 사용)" : "(실측 데이터 기반 자동 계산)"}: ${slots.join(", ")}`
+    );
+  } else {
+    // 연리지실타래/아해사주의 바이럴 슬롯도 같은 계산기를 쓴다 - 팔자명가/팔자궤도/팔자장인과
+    // 같은 장르(바이럴 클리프행어)라 풀링해서 표본을 늘린다.
+    const { slots, usedFallback } = computeOptimalSlots(
+      [...COMPREHENSIVE_ACCOUNT_LABELS, ...Object.keys(VIRAL_PROFILES)],
+      VIRAL_MORNING_DAILY_SLOTS
+    );
+    dailySlotTimes = slots;
     console.log(
       `시간대 ${usedFallback ? "(데이터 부족 - 기본값 사용)" : "(실측 데이터 기반 자동 계산)"}: ${slots.join(", ")}`
     );
   }
-  const slotsPerDay = MODE === "comprehensive" ? comprehensiveSlots.length : 1;
-  const dailySlotTimes = MODE === "comprehensive" ? comprehensiveSlots : [MORNING_SLOT_KST];
+  const slotsPerDay = dailySlotTimes.length;
 
   const { posts: currentPosts } = await readSchedule();
   const existingCounts = countExistingByDate(currentPosts, account.id, MODE);
