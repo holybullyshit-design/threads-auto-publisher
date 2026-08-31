@@ -7189,5 +7189,60 @@
     "publishedId": null,
     "error": null,
     "viralEngine": true
+  },
+  {
+    "id": "3b0ad141-b0d1-41c8-b3fb-2d107b861b12",
+    "platform": "instagram",
+    "accountKey": "yeonliji",
+    "accountId": "knot_saju",
+    "accountLabel": "연리지 실타래",
+    "title": "돈 이야기를 하면 왜 사랑까지 의심할까?",
+    "displayTitle": "돈 때문에 다투는 부부, 재성만 많으면 해결될까?",
+    "contentSeries": "연리지 사주 관계기록",
+    "text": "돈 때문에 다투는 부부, 재성만 많으면 해결될까?\n\n같은 돈을 보면서 우리는 다른 미래를 생각했다.\n\n재성(財星)\n일간이 극하는 오행을 재성으로 묶어. 음양에 따라 편재와 정재로 나뉘어. 통장 잔고를 그대로 뜻하는 건 아니야.\n\n정재(正財) · 편재(偏財)\n갑(甲)에게 무(戊)는 편재, 기(己)는 정재야. 같은 토라도 음양에 따라 관계가 달라.\n\n이 질문에 적용하면\n갑에게 무토와 기토는 서로 다른 재성이야. 하지만 그 글자의 존재만으로 저축액이나 소비 습관을 산출하지는 않아.\n\n개인 풀이에서는\n각자의 일간에서 재성이 무엇인지, 그 글자가 원국 어디에 있는지, 실제 지출·저축 합의는 별도로 나눠 봐.\n\n돈을 모으는 방식과 쓰는 방식 중 어디에서 가장 많이 달랐나요?\n댓글에 ‘생활궁합’ 키워드와 함께 궁금한 점을 남겨주세요.\n\n창작 상황과 전통 명리 규칙을 설명한 콘텐츠이며 개인 출생 정보를 분석한 결과가 아닙니다. 사주는 관계의 결과를 보장하지 않습니다. 연락 거절과 안전을 존중하고 개인정보는 공개 댓글에 남기지 마세요.\n\n#연리지실타래 #부부궁합 #결혼고민 #재성 #사주풀이",
+    "contentHash": "a748ed2299b620a56155edb26c27fca2e23a1787e93ff426662b6c007717fec1",
+    "dedupeKey": "instagram:yeonliji:a748ed2299b620a56155edb26c27fca2e23a1787e93ff426662b6c007717fec1",
+    "images": [],
+    "status": "publishing",
+    "deliveryMode": "immediate",
+    "scheduledAt": "2026-08-31T01:56:51.557Z",
+    "createdAt": "2026-08-31T01:56:51.557Z",
+    "publishedAt": null,
+    "publishedId": null,
+    "permalink": null,
+    "expectedLocalDate": "2026-08-31",
+    "publishAttemptedAt": "2026-08-31T01:56:51.557Z",
+    "validation": {
+      "status": "passed",
+      "scope": "technical-only",
+      "requiresHumanReview": true,
+      "checks": {
+        "slideCount": true,
+        "imageUniqueness": true,
+        "dimensions": "1080x1350",
+        "textSeparation": true,
+        "noFooterSignature": true
+      },
+      "imageHashes": [
+        "c6a837f4c4d37dc23cf088604ab1a6e0afc5df7161a9c529f7989115f9f36f83",
+        "8a80966837d0ee799c5de1565dbc9e6cbc924843e09a83c6f6f4e06ddb1acc28",
+        "f0379c2a515a42cf8b5b32f7a38024ddd5e4e1895f572ac8469916acbb67c8b6",
+        "31bacc3b96d80833d7cc9c43cb26aac57fd4c98b93c47824f0e313fae47909a8",
+        "a9d56d7bb02d58992ed2f215771ab2e0835674fddc3b22ccaec017a370cc1b9c",
+        "52d5da987fdcc27f0ba2127165476d99b14e7dce4a403fea5a34133ff156e9d1",
+        "fa29a4459659a89b0404c73393e08d4107d8a8a23468bf71571016d3f3e8a0ef"
+      ],
+      "panelHashes": [
+        "a01c6472b53aa59192f0a6130f93bb05d7588d1bac3f68b8db4ea0e2eebd961f",
+        "37dc111d04c5de109e9ba288e4af97b9dce45c95dc308f4bfd7d7a3f3b686d77",
+        "1c1969e1dc7aa755ac61d79431e424e33d093a8598f554fe59dcbfcf422c2903",
+        "c4f2e5f58ff5dc68eff53bd48e4e23d3189a81904b1d63038f183f2397beda6c",
+        "8ef7627560d2453b29a6a23b113d12064592406ae7b9fac22d33b6eb21833f88",
+        "b4d1470a9545295afba31b5399c94a2466f45667a028793e5d5dc9c7bfe21f05"
+      ],
+      "humanApprovedAt": "2026-08-31T01:56:51.557Z"
+    },
+    "error": null,
+    "retryCount": 0
   }
 ]
