@@ -3344,9 +3344,12 @@
     "scheduledAt": "2026-08-31T10:30:49.502Z",
     "createdAt": "2026-08-28T12:24:07.314Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17946050481271352",
     "error": null,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "17946050481271352"
+    ]
   },
   {
     "id": "49db2016-105a-4d6e-8c2b-9a40a92c15e6",
