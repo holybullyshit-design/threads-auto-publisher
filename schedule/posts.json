@@ -569,7 +569,8 @@
     "createdAt": "2026-08-24T07:37:39.761Z",
     "publishedAt": null,
     "publishedId": null,
-    "error": null
+    "error": "Invalid parameter",
+    "retryCount": 1
   },
   {
     "id": "b1c4e544-8adf-4992-9f9b-d87e83a8aa9a",
