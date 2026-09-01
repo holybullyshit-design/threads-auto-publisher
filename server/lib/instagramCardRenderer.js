@@ -32,6 +32,7 @@ function getBrowser() {
 }
 
 async function renderFortunePackage(pkg, { pages = [0, 1, 2, 3, 4, 5, 6], format = "jpg" } = {}) {
+  if(process.env.PALJA_CANVAS_MODULE) return require('./paljaNativeRenderer').renderNative(pkg,{pages,format});
   const browser = await getBrowser();
   const page = await browser.newPage();
   await page.setViewport({ width: 1440, height: 1400, deviceScaleFactor: 1 });

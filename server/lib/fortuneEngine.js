@@ -1,5 +1,6 @@
 const crypto = require("crypto");
 const { Solar } = require("lunar-javascript");
+const { applyEdition } = require('./paljaSeptember2026');
 
 const STEMS = [..."甲乙丙丁戊己庚辛壬癸"];
 const BRANCHES = [..."子丑寅卯辰巳午未申酉戌亥"];
@@ -123,9 +124,10 @@ function generateFortunePackage(dateKey, { startDate = "2026-08-26" } = {}) {
     { type: "promo", title, cal: calendar, fixed: true },
   ];
   const result = { schemaVersion: 1, brand: "팔자명가", platform: "instagram", date: dateKey, publishTimeKst: "06:00", calendar, readings, slides, caption: buildCaption(dateKey, readings, hashIndex(dateKey, 3)), generatedAt: new Date().toISOString() };
+  applyEdition(result);
   const validation = validateFortunePackage(result);
   result.validation = validation;
-  result.contentHash = crypto.createHash("sha256").update(JSON.stringify({ date: result.date, calendar: result.calendar, readings: result.readings, caption: result.caption })).digest("hex");
+  result.contentHash = crypto.createHash("sha256").update(JSON.stringify({ date: result.date, calendar: result.calendar, readings: result.readings, caption: result.caption, ...(result.editorial ? {editorial:result.editorial,slides:result.slides} : {}) })).digest("hex");
   return result;
 }
 
@@ -142,10 +144,15 @@ function validateFortunePackage(pkg) {
   }
   const recalculated = calculateCalendar(pkg.date);
   if (JSON.stringify(recalculated) !== JSON.stringify(pkg.calendar)) errors.push("날짜와 만세력 결과가 일치하지 않습니다.");
-  if (!pkg.caption?.includes("인간만사 새옹지마")) errors.push("댓글 유도 문구가 누락되었습니다.");
+  if (pkg.editorial) {
+    if (!pkg.caption?.includes(pkg.editorial.question) || !pkg.caption?.includes('댓글')) errors.push('주제별 질문이 누락되었습니다.');
+    const lines = (pkg.readings || []).flatMap(r => r.lines || []);
+    if(new Set(lines).size !== 48) errors.push('48개 생활 조언에 중복이 있습니다.');
+    if(/#자동게시_|#팔자명가\d{8}|7,000|2,100/.test(JSON.stringify(pkg))) errors.push('내부 표시 또는 미확인 실적 문구가 있습니다.');
+  } else if (!pkg.caption?.includes("인간만사 새옹지마")) errors.push("댓글 유도 문구가 누락되었습니다.");
   if ((pkg.caption || "").length > 2200) errors.push("인스타그램 캡션 2,200자를 초과했습니다.");
   if (errors.length) throw Object.assign(new Error(`게시 차단: ${errors.join(" ")}`), { code: "FORTUNE_VALIDATION_FAILED", status: 422, errors });
-  return { status: "passed", checkedAt: new Date().toISOString(), checks: 8 };
+  return { status: "passed", checkedAt: new Date().toISOString(), checks: pkg.editorial ? 11 : 8 };
 }
 
 function generateDateRange(startDate, endDate) {
