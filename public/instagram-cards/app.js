@@ -37,7 +37,7 @@ function backdrop(c){const g=c.createLinearGradient(0,0,0,1350);g.addColorStop(0
 function dailyBackdrop(c,shade=.42){if(darkBrandBg.complete)c.drawImage(darkBrandBg,0,0,1080,1350);else backdrop(c);c.fillStyle=`rgba(3,8,12,${shade})`;c.fillRect(0,0,1080,1350);c.strokeStyle='#c99b48';c.lineWidth=3;c.strokeRect(24,24,1032,1302);c.strokeStyle='rgba(223,188,111,.42)';c.lineWidth=1;c.strokeRect(37,37,1006,1276)}
 function ganzhiKo(v){return stemsKo[stems.indexOf(v[0])]+branchesKo[branches.indexOf(v[1])]}
 function header(c,s){c.textAlign='center';c.fillStyle='#ffe5a1';c.shadowColor='#d29a39';c.shadowBlur=15;c.font='74px "PaljaBrush","AppleMyungjo",serif';c.fillText(`${s.title} 오늘의 띠별 운세`,540,92);c.shadowBlur=0;c.fillStyle='#d0b77e';c.font='700 22px "Apple SD Gothic Neo",sans-serif';c.fillText(`팔자명가  ·  ${ganzhiKo(s.cal.year)}년 ${ganzhiKo(s.cal.month)}월 ${ganzhiKo(s.cal.day)}일`,540,137);c.strokeStyle='#c79a49';c.lineWidth=2;c.beginPath();c.moveTo(110,162);c.lineTo(970,162);c.stroke();c.textAlign='left'}
-function render(){const s=state.slides[state.page],cv=document.querySelector('#card'),c=cv.getContext('2d');c.clearRect(0,0,1080,1350);if(s.type==='cover'||s.type==='list')dailyBackdrop(c,s.type==='list'?.58:.30);else backdrop(c);if(s.type==='list')header(c,s);if(s.type==='cover')drawCover(c,s);if(s.type==='list')drawList(c,s);if(s.type==='message')drawMessage(c,s);if(s.type==='promo')drawPromo(c,s);grain(c);document.querySelector('#pageLabel').textContent=`${state.page+1} / ${state.slides.length}`}
+function render(){const s=state.slides[state.page],cv=document.querySelector('#card'),c=cv.getContext('2d');c.clearRect(0,0,1080,1350);if(s.type==='cover'||s.type==='list')dailyBackdrop(c,s.type==='list'?.58:.30);else backdrop(c);if(s.type==='list')header(c,s);if(s.editorial){drawEditorial(c,s)}else{if(s.type==='cover')drawCover(c,s);if(s.type==='message')drawMessage(c,s);if(s.type==='promo')drawPromo(c,s)}if(s.type==='list')drawList(c,s);grain(c);document.querySelector('#pageLabel').textContent=`${state.page+1} / ${state.slides.length}`}
 function drawZodiac(c,index,x,y,w,h){if(!zodiacSprite.complete||!zodiacSprite.naturalWidth)return;const sw=zodiacSprite.naturalWidth/4,sh=zodiacSprite.naturalHeight/3,sx=(index%4)*sw,sy=Math.floor(index/4)*sh;c.save();c.beginPath();c.roundRect(x,y,w,h,12);c.clip();c.drawImage(zodiacSprite,sx,sy,sw,sh,x,y,w,h);c.restore()}
 function drawZodiacDisc(c,index,x,y,size,accent){if(!zodiacSprite.complete||!zodiacSprite.naturalWidth)return;const sw=zodiacSprite.naturalWidth/4,sh=zodiacSprite.naturalHeight/3,sx=(index%4)*sw,sy=Math.floor(index/4)*sh;c.save();c.shadowColor=accent;c.shadowBlur=22;c.fillStyle='#efe2c8';c.beginPath();c.arc(x+size/2,y+size/2,size/2,0,Math.PI*2);c.fill();c.shadowBlur=0;c.beginPath();c.arc(x+size/2,y+size/2,size/2-5,0,Math.PI*2);c.clip();c.drawImage(zodiacSprite,sx,sy,sw,sh,x,y,size,size);c.restore();c.strokeStyle=accent;c.lineWidth=6;c.beginPath();c.arc(x+size/2,y+size/2,size/2+2,0,Math.PI*2);c.stroke();c.strokeStyle='#e5c77d';c.lineWidth=2;c.beginPath();c.arc(x+size/2,y+size/2,size/2+12,0,Math.PI*2);c.stroke()}
 function titleFont(size){return `700 ${size}px "AppleMyungjo","Apple SD Gothic Neo",serif`}
@@ -57,6 +57,53 @@ const now=new Date(),kst=new Date(now.toLocaleString('en-US',{timeZone:'Asia/Seo
 
 // Node/Puppeteer 자동화는 브라우저의 근사 계산을 쓰지 않고,
 // 서버에서 lunar-javascript로 검증한 7장 패키지만 주입한다.
+function editorialText(c,text,y,size=36,color='#f5e8c8',max=880){
+  c.textAlign='center'; c.fillStyle=color;
+  c.font=`700 ${size}px "Apple SD Gothic Neo", "Noto Sans CJK KR", sans-serif`;
+  if(c.measureText(text).width>max) throw new Error('편집 원고 가로 넘침: '+text);
+  c.fillText(text,540,y);
+}
+function drawEditorial(c,s){
+  const e=s.editorial;
+  if(s.type==='cover'){
+    dailyBackdrop(c,.48);
+    editorialText(c,'팔자명가 · 오늘의 띠별 운세',94,28,'#e3ba69');
+    editorialText(c,s.title,195,55,'#ffe7a6');
+    e.hook.forEach((text,i)=>editorialText(c,text,310+i*102,82,'#ffe7a6',960));
+    editorialText(c,`${ganzhiKo(s.cal.year)}년 · ${ganzhiKo(s.cal.month)}월 · ${ganzhiKo(s.cal.day)}일`,486,29,'#dfc285');
+    drawZodiacDisc(c,s.cal.dayBranch,355,548,370,'#b64c3d');
+    editorialText(c,`일진(日辰) · ${ganzhiKo(s.cal.day)}(${s.cal.day})`,1012,38,'#ffe7a6');
+    editorialText(c,e.topic,1086,31);
+    editorialText(c,'넘겨서 내 띠·생년의 생활 조언을 확인하세요',1190,31);
+    editorialText(c,'전통 명리 참고 콘텐츠 · 개인 운세와는 다릅니다',1252,23,'#c6b591');
+  }else if(s.type==='message'){
+    dailyBackdrop(c,.72);
+    editorialText(c,`${s.title} · 오늘의 명리 한 가지`,135,31,'#e3ba69');
+    editorialText(c,e.lessonTitle,278,47,'#ffe7a6',940);
+    e.lesson.forEach((text,i)=>{
+      c.fillStyle='rgba(9,15,20,.9)';roundRect(c,65,359+i*147,950,115,18);
+      editorialText(c,text,429+i*147,30,'#f5e8c8',916);
+    });
+    e.takeaway.forEach((text,i)=>editorialText(c,text,1065+i*59,34,'#ffe0a0',940));
+    editorialText(c,'띠와 일진의 관계는 개인 원국 전체의 풀이가 아닙니다',1260,23,'#c6b591',960);
+  }else if(s.type==='promo'){
+    c.drawImage(lightBrandBg,0,0,1080,1350);
+    drawLogo(c,470,85,140);
+    editorialText(c,'운세를 읽고, 내 선택으로',335,53,'#4b3325',940);
+    editorialText(c,e.topic,420,31,'#805c36');
+    const prompts=['내 띠의 문장 중 필요한 한 줄 고르기','오늘의 일정에 적용할 행동 하나 정하기','내일, 실제로 어땠는지 돌아보기'];
+    prompts.forEach((text,i)=>{
+      c.fillStyle='rgba(255,252,242,.86)';roundRect(c,90,501+i*108,900,84,16);
+      editorialText(c,`${i+1}. ${text}`,555+i*108,32,'#4b3325',840);
+    });
+    editorialText(c,e.question,943,34,'#4b3325',960);
+    c.fillStyle='rgba(255,252,242,.9)';roundRect(c,65,1010,950,112,24);
+    editorialText(c,e.cta,1079,32,'#9f3f31',916);
+    editorialText(c,'개인 사주 상담 안내는 프로필에서 확인하세요',1220,28,'#614b35');
+    editorialText(c,'공개 댓글에 생년월일 등 개인정보는 남기지 마세요',1280,22,'#806a52');
+  }
+  c.textAlign='left';
+}
 window.PaljaCards={
   async renderPackage(pkg,page=0){
     state.slides=pkg.slides;

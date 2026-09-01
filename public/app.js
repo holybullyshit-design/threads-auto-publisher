@@ -177,6 +177,7 @@ function switchTab(tabName) {
   if (tabName === "ops") {
     loadOps();
     loadOpsInsights();
+    window.loadInstagramAnalytics?.();
   }
 }
 
