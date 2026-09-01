@@ -8848,5 +8848,65 @@
     "publishedId": null,
     "error": null,
     "viralEngine": true
+  },
+  {
+    "id": "938f8d8f-876f-4c1f-a17a-9892f1448b51",
+    "platform": "instagram",
+    "accountKey": "yeonliji",
+    "accountId": "knot_saju",
+    "accountLabel": "연리지 실타래",
+    "text": "합이 있는 궁합이면 결혼해도 괜찮을까?\n\n축하받을 일인데 혼자 고민하는 내가 이상한 줄 알았다.\n\n합(合)\n합은 정해진 간지 조합을 가리켜. 천간합과 지지합은 구분해서 확인해. 사람이 좋다는 느낌만으로 정하지 않아.\n\n천간합 · 지지육합\n갑(甲)·기(己)는 천간합, 자(子)·축(丑)은 지지의 육합이야. 어느 기둥의 글자인지도 함께 적어야 해.\n\n이 질문에 적용하면\n천간에서 성립한 합만으로는 연·월·일·시의 지지 관계를 다 본 게 아니야. 합 하나를 결혼의 합격증으로 쓰지 않아.\n\n개인 풀이에서는\n어떤 글자와 자리의 합인지, 다른 지지 관계는 무엇인지, 생활·가족·돈에 대한 합의도 함께 점검해.\n\n결혼 전에 궁합으로 가장 확인하고 싶은 것은 무엇인가요?\n댓글에 ‘결혼궁합’ 키워드와 함께 궁금한 점을 남겨주세요.\n\n창작 상황과 전통 명리 규칙을 설명한 콘텐츠이며 개인 출생 정보를 분석한 결과가 아닙니다. 사주는 관계의 결과를 보장하지 않습니다. 연락 거절과 안전을 존중하고 개인정보는 공개 댓글에 남기지 마세요.\n\n#연리지실타래 #부부궁합 #결혼고민 #합 #사주풀이",
+    "title": "결혼을 앞두고 확신이 줄었다면",
+    "contentSeries": "연리지 사주 관계기록",
+    "images": [
+      "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@953eb9d35a1475ed6be56029d76802e8e697b8ed/images/fe6ac69e-f127-4b9e-aabf-369ef2dbe736.jpg",
+      "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@953eb9d35a1475ed6be56029d76802e8e697b8ed/images/bb3f8f0f-78cc-4af7-8aed-551a659c5e8d.jpg",
+      "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@953eb9d35a1475ed6be56029d76802e8e697b8ed/images/f79965b3-b3f1-4236-b4a3-d2ec9dfb29ea.jpg",
+      "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@953eb9d35a1475ed6be56029d76802e8e697b8ed/images/4b8a4fd7-58c6-480e-b4f1-831f35933597.jpg",
+      "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@953eb9d35a1475ed6be56029d76802e8e697b8ed/images/f7c5ca7b-41a6-415b-bebc-47156de14059.jpg",
+      "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@953eb9d35a1475ed6be56029d76802e8e697b8ed/images/08884ca3-8e5e-4ee9-84fa-d12f6a9c95dc.jpg",
+      "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@953eb9d35a1475ed6be56029d76802e8e697b8ed/images/e6a4ae82-17dc-408c-a832-dd7415f55963.jpg"
+    ],
+    "status": "scheduled",
+    "scheduledAt": "2026-09-02T06:33:00.000Z",
+    "expectedLocalDate": "2026-09-02",
+    "exactTimeKst": "15:33",
+    "dedupeKey": "instagram:yeonliji:a06e24f469dd24aec8d5341c3aeb42b87c62ad4d021905352022f7cd1107faa1",
+    "contentHash": "a06e24f469dd24aec8d5341c3aeb42b87c62ad4d021905352022f7cd1107faa1",
+    "validation": {
+      "status": "passed",
+      "scope": "technical-only",
+      "requiresHumanReview": true,
+      "checks": {
+        "slideCount": true,
+        "imageUniqueness": true,
+        "dimensions": "1080x1350",
+        "textSeparation": true,
+        "noFooterSignature": true
+      },
+      "imageHashes": [
+        "68779769857c8216a6eec1d7afdfa029ff9ca8f3990e4ed2568511a54394bd94",
+        "1353d95bf2312da29f11399c506b6c17da09cdfa9b58f88bc1af392ff0920b02",
+        "7a2af8e497e7d14b1a18e7ee360fb9ed24623ceee6728a10ba359aac92674745",
+        "0787b45cc04c5dd39de415fef9f929f011ff5e947d71338b2711b4a4958428c5",
+        "88a3fbe2d48c6fe33d545a3b5a1ae9e93694538798c6c11ffea40dccf758b0dd",
+        "2e4485ba812d462c7f7ccc475e6ad37c1a4c6ab737737fe922793eb966286eea",
+        "0bd3c31cddc9b98e91fca7505e5fd1e9be1e7a8d8fedee1dfb6ea4b2e30ffdde"
+      ],
+      "panelHashes": [
+        "5bb8b39c6975331b12896a8b32029964bb1ad4efb1119ff0f51a84ec48feecc4",
+        "942119f1243108d9a14db0f74c8968e649097e8c2fc60fbe8eb6203ba3b74600",
+        "1cabe8b7abed94b6b5b2bb3b2aaf3e541a0e419d7dddb982b55480cfeee2ec3b",
+        "e3ba9c38e61476a82b1c6db3f204c8da8d91284d9116d5a90506a3c7fc95f9ac",
+        "9f31503c63971ea391ce6db0b1bafb482000e7ab110a7c191828ede9f320942f",
+        "10224dc98be0f71b8a3325b826dd92f926f9d4140b14c5af68588c4eabeb2d39"
+      ],
+      "humanApprovedAt": "2026-09-01T23:14:02.503Z"
+    },
+    "createdAt": "2026-09-01T23:14:02.504Z",
+    "publishedAt": null,
+    "publishedId": null,
+    "error": null,
+    "retryCount": 0
   }
 ]
