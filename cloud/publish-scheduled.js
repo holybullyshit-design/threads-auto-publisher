@@ -84,6 +84,7 @@ async function main() {
       let instagramResult;
       try {
         if (post.validation?.status !== "passed" || !post.contentHash) throw Object.assign(new Error("검수 통과 증거가 없어 게시를 차단했습니다."), { code: "VALIDATION_REQUIRED" });
+        if (post.mediaType === 'REELS') require('../server/lib/instagramReels').assertReelPost(post);
         const accountKey = post.accountKey || "palja";
         const credentials = loadInstagramAccounts()[accountKey];
         if (!credentials?.userId || !credentials?.accessToken) throw Object.assign(new Error(`${accountKey} Instagram 클라우드 시크릿이 없습니다.`), { code: "MISSING_INSTAGRAM_CONFIG" });
@@ -93,16 +94,20 @@ async function main() {
         if (!existing) {
           // Persist BEFORE the external side effect. A crash or uncertain API response must
           // never cause an automatic second publication. Manual reconciliation is required.
-          await persistPostResult(post.id, {status:"publishing", publishAttemptedAt:new Date().toISOString(), error:null});
+          if (post.mediaType === 'REELS') await require('../server/lib/instagramReels').claimScheduledReel(post);
+          else await persistPostResult(post.id, {status:"publishing", publishAttemptedAt:new Date().toISOString(), error:null});
           publishStarted = true;
         }
-        const result = existing ? { publishedId: existing.id, recoveredDuplicate: true } : await publishCarousel({ imageUrls: post.images, caption, ...credentials });
+        const result = existing ? { publishedId: existing.id, recoveredDuplicate: true } : post.mediaType === 'REELS'
+          ? await require('../server/lib/instagramReels').publishScheduledReel(post, credentials)
+          : await publishCarousel({ imageUrls: post.images, caption, ...credentials });
         instagramResult = result;
         console.log(`[인스타그램 성공] ${post.id} → ${result.publishedId}${result.recoveredDuplicate ? " (기존 게시물 회수)" : ""}`);
         await persistPostResult(post.id, { status: "published", publishedAt: new Date().toISOString(), publishedId: result.publishedId, error: null });
       } catch (err) {
+        if (err.code === 'REEL_ALREADY_CLAIMED') { console.log(`[릴스 건너뜀] ${post.id}: ${err.message}`); continue; }
         const retryCount = (post.retryCount || 0) + 1;
-        const fatal = ["VALIDATION_REQUIRED", "INVALID_CAROUSEL", "INVALID_CAPTION", "INTERNAL_CAPTION", "INVALID_IMAGE_URL", "MISSING_INSTAGRAM_CONFIG"].includes(err.code);
+        const fatal = ["INVALID_REEL", "REEL_INTEGRITY", "REEL_ACCOUNT_MISMATCH", "VALIDATION_REQUIRED", "INVALID_CAROUSEL", "INVALID_CAPTION", "INTERNAL_CAPTION", "INVALID_IMAGE_URL", "MISSING_INSTAGRAM_CONFIG"].includes(err.code);
         const status = publishStarted || instagramResult || fatal || retryCount >= MAX_AUTO_RETRIES ? "failed" : "scheduled";
         console.error(`[인스타그램 ${status === "failed" ? "최종 실패" : "재시도 예정"}] ${post.id}: ${err.message}`);
         await persistPostResult(post.id, { status, retryCount, ...(instagramResult?.publishedId ? {publishedId:instagramResult.publishedId} : {}), error: publishStarted ? `게시 결과 수동 확인 필요 — 자동 재게시 금지: ${err.message}` : err.message });
