@@ -85,6 +85,18 @@ function formatNextMonday() {
   return `${next.getUTCMonth() + 1}/${next.getUTCDate()} (월) 09:09`;
 }
 
+// 다음 사주 벤치마크 채널(수동 "Run now" 실행 시 볼 채널) - benchmark-rotation.json의
+// nextIndex가 가리키는 채널. 이 작업엔 정해진 시간표가 없어서(사용자가 누를 때만 실행),
+// NEXT_MONDAY처럼 날짜를 계산하지 않고 그냥 다음 채널 이름만 보여준다.
+function loadNextBenchmarkChannel() {
+  try {
+    const raw = fs.readFileSync(path.join(DIR, "benchmark-rotation.json"), "utf8");
+    const { channels, nextIndex } = JSON.parse(raw);
+    if (Array.isArray(channels) && channels.length) return channels[nextIndex % channels.length];
+  } catch {}
+  return "-";
+}
+
 function loadPosts() {
   const raw = fs.readFileSync(path.join(ROOT, "schedule", "posts.json"), "utf8");
   return JSON.parse(raw);
@@ -397,8 +409,9 @@ function main() {
     .replace("{{ACCOUNT_CARDS}}", buildAccountCards(posts))
     .replace("{{QUEUE_ROWS}}", buildQueueRows(posts))
     .replace("{{NEXT_MONDAY}}", formatNextMonday())
+    .replace("{{NEXT_BENCHMARK_CHANNEL}}", loadNextBenchmarkChannel())
     .replace("{{DECISION_ROWS}}", buildDecisionRows())
-    .replace("{{BENCHMARK_LOG}}", buildLogSection("benchmark-log.json", "아직 기록이 없습니다 — 다음 월요일 벤치마크 점검에서 첫 기록이 남습니다."))
+    .replace("{{BENCHMARK_LOG}}", buildLogSection("benchmark-log.json", "아직 기록이 없습니다 — 사이드바 Scheduled의 \"사주 벤치마크 채널 점검\" Run now를 누르면 기록이 남습니다."))
     .replace("{{GROWTH_LOG}}", buildLogSection("growth-research-log.json", "아직 기록이 없습니다 — 다음 월요일 성장 리서치에서 첫 기록이 남습니다."));
 
   const outPath = path.join(DIR, "output.html");
