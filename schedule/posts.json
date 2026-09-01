@@ -516,13 +516,13 @@
       "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@70e5502031ff9c951bdbdb2bfcda0e2586e0e140/images/86158612-1518-4c6d-a303-575c3edacb33.jpg"
     ],
     "replyText": "아들이 미친듯이 흡입할 정도면 인정.. 직화향 진짜 제대로임\n\nhttps://link.coupang.com/a/gtlOGs3wOq\nhttps://link.coupang.com/a/gtlOGs3wOq",
-    "status": "failed",
-    "scheduledAt": "2026-09-01T11:42:06.782Z",
+    "status": "scheduled",
+    "scheduledAt": "2026-09-01T23:31:42.996Z",
     "createdAt": "2026-08-24T07:37:39.761Z",
     "publishedAt": null,
     "publishedId": null,
-    "error": "Invalid parameter",
-    "retryCount": 3
+    "error": null,
+    "retryCount": 0
   },
   {
     "id": "b1c4e544-8adf-4992-9f9b-d87e83a8aa9a",
