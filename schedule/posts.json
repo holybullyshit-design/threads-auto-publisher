@@ -8908,5 +8908,65 @@
     "publishedId": null,
     "error": null,
     "retryCount": 0
+  },
+  {
+    "id": "f59bbbfb-052b-4ad3-8357-19142858c677",
+    "platform": "instagram",
+    "accountKey": "yeonliji",
+    "accountId": "knot_saju",
+    "accountLabel": "연리지 실타래",
+    "text": "재회했는데 또 같은 갈등, 궁합의 충도 사라질까?\n\n처음 며칠은 좋았는데 익숙한 서운함이 다시 찾아왔다.\n\n충(沖)\n지지충은 열두 지지에서 서로 마주 놓인 글자의 관계야. 갈등이 생겼다는 이유로 충이라 하진 않아.\n\n자오충(子午沖)\n자(子)·오(午), 묘(卯)·유(酉)는 충. 연지끼리인지 일지끼리인지 구분해야 해. 자리 없이 충 하나만 세면 설명이 빠져.\n\n이 질문에 적용하면\n태어난 일지의 자오 관계가 충이었다면 다시 만났다는 사실이 그 글자를 바꾸진 않아. 현재 운의 글자는 별도로 대조해야 해.\n\n개인 풀이에서는\n태어난 명식끼리의 관계, 재회 시점에 더해진 운의 관계, 반복하지 않기로 합의한 행동을 함께 살펴.\n\n다시 만난다면 꼭 달라졌으면 하는 한 가지는 무엇인가요?\n댓글에 ‘새시작’ 키워드와 함께 궁금한 점을 남겨주세요.\n\n창작 상황과 전통 명리 규칙을 설명한 콘텐츠이며 개인 출생 정보를 분석한 결과가 아닙니다. 사주는 관계의 결과를 보장하지 않습니다. 연락 거절과 안전을 존중하고 개인정보는 공개 댓글에 남기지 마세요.\n\n#연리지실타래 #재회운 #재회고민 #충 #사주풀이",
+    "title": "다시 만났는데 같은 이유로 또 싸운다면",
+    "contentSeries": "연리지 사주 관계기록",
+    "images": [
+      "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@77a4e5b862fd0468da0a8fe903f79d0f2e3a88c7/images/b84ad1f6-58ba-48e4-b523-199b3662dc51.jpg",
+      "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@77a4e5b862fd0468da0a8fe903f79d0f2e3a88c7/images/e4e79732-ddf4-4ba8-b516-647192aeabd3.jpg",
+      "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@77a4e5b862fd0468da0a8fe903f79d0f2e3a88c7/images/d5d3a841-a63b-48c5-bcbe-c0adcb39a82e.jpg",
+      "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@77a4e5b862fd0468da0a8fe903f79d0f2e3a88c7/images/fd974b4a-b4dd-4db5-b286-2162bed71db8.jpg",
+      "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@77a4e5b862fd0468da0a8fe903f79d0f2e3a88c7/images/0d169b86-6352-4ab3-b565-6a2495596f08.jpg",
+      "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@77a4e5b862fd0468da0a8fe903f79d0f2e3a88c7/images/fb2dc775-2001-4dc2-b925-d4ae9313af11.jpg",
+      "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@77a4e5b862fd0468da0a8fe903f79d0f2e3a88c7/images/413f1b34-152e-4ec4-a186-883520f7c31f.jpg"
+    ],
+    "status": "scheduled",
+    "scheduledAt": "2026-09-03T05:44:00.000Z",
+    "expectedLocalDate": "2026-09-03",
+    "exactTimeKst": "14:44",
+    "dedupeKey": "instagram:yeonliji:db29b7d526b373cd228c9a5239fd3b4cd87238c3867c089d7536a1ab626caef8",
+    "contentHash": "db29b7d526b373cd228c9a5239fd3b4cd87238c3867c089d7536a1ab626caef8",
+    "validation": {
+      "status": "passed",
+      "scope": "technical-only",
+      "requiresHumanReview": true,
+      "checks": {
+        "slideCount": true,
+        "imageUniqueness": true,
+        "dimensions": "1080x1350",
+        "textSeparation": true,
+        "noFooterSignature": true
+      },
+      "imageHashes": [
+        "cd74545bfd4a3bb5796c7b2a6a648a6198441bc7fc3e9559b51b3f9131a141ab",
+        "9590257ed09a927333c00c9e7ffb3913c06b083800f3f2c9fe08eb2a48c04d96",
+        "37fc7acdad01618cf5698fd26149dad0d442fe35cb57a3156a3c80c8e59cb516",
+        "10b635541d5f8924bafff5ccf154d96e73f0c9c15d1b4e54696775c278974aad",
+        "c9cf6409aa5eac313ea439e84c1e09b57ea4f8b108985b8aba4e0db522f79c33",
+        "8ebdda18115a0db65a36f5b902e01957b33d3870027e8e9fb7dc5af5c93e332c",
+        "656f01f15525c657a19ee88c775159c6c85cc406ace2e962220756dcf80ccd67"
+      ],
+      "panelHashes": [
+        "416dd42b07e20062a9d3cbeb3386d9909e5f7a9057d301345e06dcad55703918",
+        "2b0c8e10a3398a8273d752c72127ea3420ec1a6e6bee31a56fca16a4efb4ba7a",
+        "64a46ca2227ac113a37f48291b9e8ee2f027f02a7068f954a054de57ac57b502",
+        "f4a794aeebd95546633a77997455b580197feb80650a8ac6b199ad5ea6185282",
+        "e1a0f4d5c60311fad14a974e5761071515f3a13bd1388d99d5b39afba6fdd3d5",
+        "5adb866500ad234e76d8dc8af3c46b495c1e5ca544fa5303db7dda6339953a3f"
+      ],
+      "humanApprovedAt": "2026-09-01T23:18:11.087Z"
+    },
+    "createdAt": "2026-09-01T23:18:11.087Z",
+    "publishedAt": null,
+    "publishedId": null,
+    "error": null,
+    "retryCount": 0
   }
 ]
