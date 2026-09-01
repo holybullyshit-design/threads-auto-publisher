@@ -18,10 +18,13 @@ echo "▶ ${DEST} 생성 중..."
 rm -rf "$DEST"
 mkdir -p "$MACOS_DIR" "$RESOURCES_DIR"
 
-# 1) 실행 스크립트: launcher.sh.template의 자리표시자를 실제 경로로 치환
-LAUNCHER="$MACOS_DIR/ThreadsAutoPublisher"
-sed "s#__PROJECT_DIR__#${PROJECT_DIR}#g" "$SCRIPT_DIR/launcher.sh.template" > "$LAUNCHER"
-chmod +x "$LAUNCHER"
+# 1) 실제 실행 로직은 Resources에 두고, macOS가 확실히 인식하는
+# 작은 네이티브 실행 파일이 해당 스크립트를 호출하게 한다.
+LAUNCHER_SCRIPT="$RESOURCES_DIR/launcher.sh"
+sed "s#__PROJECT_DIR__#${PROJECT_DIR}#g" "$SCRIPT_DIR/launcher.sh.template" > "$LAUNCHER_SCRIPT"
+chmod +x "$LAUNCHER_SCRIPT"
+xcrun clang -O2 "$SCRIPT_DIR/launcher.c" -o "$MACOS_DIR/ThreadsAutoPublisher"
+chmod +x "$MACOS_DIR/ThreadsAutoPublisher"
 
 # 2) Info.plist
 cat > "$CONTENTS_DIR/Info.plist" <<PLIST
@@ -36,9 +39,9 @@ cat > "$CONTENTS_DIR/Info.plist" <<PLIST
   <key>CFBundleIdentifier</key>
   <string>com.local.threads-auto-publisher</string>
   <key>CFBundleVersion</key>
-  <string>1.0</string>
+  <string>1.1</string>
   <key>CFBundleShortVersionString</key>
-  <string>1.0</string>
+  <string>1.1</string>
   <key>CFBundlePackageType</key>
   <string>APPL</string>
   <key>CFBundleExecutable</key>
@@ -60,6 +63,7 @@ fi
 
 # Finder가 새 아이콘/앱을 바로 인식하도록 갱신
 touch "$DEST"
+codesign --force --deep --sign - "$DEST"
 
 echo "✅ 완료: 바탕화면에 \"${APP_NAME}.app\" 이 생성되었습니다."
-echo "   더블클릭하면 Terminal 창이 열리며 서버가 실행되고, 브라우저가 자동으로 열립니다."
+echo "   더블클릭하면 서버가 백그라운드에서 실행되고 브라우저가 자동으로 열립니다."

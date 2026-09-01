@@ -1,18 +1,49 @@
 #!/bin/bash
-# .app 번들 안에 들어가는 실행 스크립트.
-# build-app.sh가 이 템플릿의 __PROJECT_DIR__ 를 실제 경로로 치환해서 복사한다.
 
 PROJECT_DIR="__PROJECT_DIR__"
+APP_URL="http://localhost:4321/"
+LOG_DIR="$PROJECT_DIR/data"
+LOG_FILE="$LOG_DIR/app-launch.log"
 
-# Finder에서 더블클릭으로 실행하면 PATH가 매우 제한적이라
-# Homebrew/공식 설치본 node 위치를 직접 추가해준다.
-export PATH="/usr/local/bin:/opt/homebrew/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.claude/local:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+mkdir -p "$LOG_DIR"
 
-# 로그를 보면서 실행할 수 있도록 Terminal.app에서 npm start를 띄운다.
-# (서버가 뜨면 서버 코드가 알아서 기본 브라우저를 자동으로 연다)
-osascript <<EOF
-tell application "Terminal"
-  activate
-  do script "cd \"$PROJECT_DIR\" && export PATH=\"/usr/local/bin:/opt/homebrew/bin:\$PATH\" && npm start"
-end tell
-EOF
+# 앱을 다시 실행하면 기존 로컬 서버를 종료하고 최신 코드·PATH로 재시작한다.
+if /usr/bin/curl -fsS --max-time 2 "$APP_URL" >/dev/null 2>&1; then
+  RUNNING_PID="$(/usr/sbin/lsof -tiTCP:4321 -sTCP:LISTEN 2>/dev/null | head -n 1)"
+  if [ -n "$RUNNING_PID" ]; then
+    kill "$RUNNING_PID" 2>/dev/null || true
+    for _ in $(seq 1 20); do
+      /usr/bin/curl -fsS --max-time 1 "$APP_URL" >/dev/null 2>&1 || break
+      sleep 0.25
+    done
+  fi
+fi
+
+NODE_BIN=""
+for candidate in /opt/homebrew/bin/node /usr/local/bin/node /usr/bin/node; do
+  if [ -x "$candidate" ]; then NODE_BIN="$candidate"; break; fi
+done
+
+if [ -z "$NODE_BIN" ]; then
+  printf '%s\n' "Node.js를 찾지 못했습니다. /opt/homebrew/bin 또는 /usr/local/bin에 Node.js를 설치해주세요." > "$LOG_FILE"
+  /usr/bin/open -a TextEdit "$LOG_FILE"
+  exit 1
+fi
+
+cd "$PROJECT_DIR" || exit 1
+printf '\n[%s] 팔자명가 스레드 + Instagram 자동화 시작\n' "$(date '+%Y-%m-%d %H:%M:%S')" >> "$LOG_FILE"
+/usr/bin/nohup "$NODE_BIN" server/index.js >> "$LOG_FILE" 2>&1 &
+
+# 서버가 준비될 때까지 최대 20초 기다린 뒤 브라우저를 연다.
+for _ in $(seq 1 40); do
+  if /usr/bin/curl -fsS --max-time 2 "$APP_URL" >/dev/null 2>&1; then
+    /usr/bin/open "$APP_URL"
+    exit 0
+  fi
+  sleep 0.5
+done
+
+printf '%s\n' "서버 시작에 실패했습니다. 아래 로그를 확인해주세요." >> "$LOG_FILE"
+/usr/bin/open -a TextEdit "$LOG_FILE"
+exit 1
