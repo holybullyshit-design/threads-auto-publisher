@@ -22,9 +22,18 @@ async function callGraphApi(path, params) {
   const data = await response.json().catch(() => ({}));
 
   if (!response.ok) {
-    const message =
-      data?.error?.message || `Threads API 요청이 실패했습니다 (HTTP ${response.status})`;
-    const err = new Error(message);
+    // Meta의 최상위 error.message는 "Invalid parameter"처럼 너무 뭉뚱그려진 경우가 많아서
+    // (2026-09-02 실측: 실제 원인 파악이 안 돼 사후 진단이 불가능했던 사고) error_user_msg/
+    // error_user_title/code/subcode/fbtrace_id까지 최대한 붙여서 error 메시지 자체에 남긴다 -
+    // 이러면 나중에 err.message 하나만 저장/로그해도(cloud/publish-scheduled.js 등) 원인이 보인다.
+    const e = data?.error || {};
+    const parts = [e.message || `Threads API 요청이 실패했습니다 (HTTP ${response.status})`];
+    if (e.error_user_title) parts.push(e.error_user_title);
+    if (e.error_user_msg) parts.push(e.error_user_msg);
+    const codeBits = [e.code, e.error_subcode].filter((v) => v !== undefined).join("/");
+    if (codeBits) parts.push(`code ${codeBits}`);
+    if (e.fbtrace_id) parts.push(`fbtrace_id ${e.fbtrace_id}`);
+    const err = new Error(parts.join(" — "));
     err.status = response.status;
     err.details = data;
     throw err;
