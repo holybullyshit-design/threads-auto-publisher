@@ -1,0 +1,144 @@
+{
+  "title": "재회운이 좋다는데 연락해도 될까?",
+  "series": "연리지 관계기록",
+  "topicId": "timing",
+  "topic": {
+    "id": "timing",
+    "category": "재회",
+    "title": "재회운이 좋다는데 연락해도 될까?",
+    "hook": "운의 흐름과 상대의 대답은 같은 것이 아니야",
+    "sajuKeyword": "대운·세운"
+  },
+  "accountKey": "yeonliji",
+  "accountId": "knot_saju",
+  "accountLabel": "연리지 실타래",
+  "date": "2026-08-30",
+  "time": "18:00",
+  "cards": [
+    {
+      "eyebrow": "연리지 관계기록",
+      "title": [
+        "재회운이 좋다는데 연락해도 될까?"
+      ],
+      "body": [
+        "운의 흐름과 상대의 대답은 같은 것이 아니야"
+      ]
+    },
+    {
+      "eyebrow": "연지의 이야기",
+      "title": [
+        "좋은 때라는 말을",
+        "듣고 휴대폰을 들었다"
+      ],
+      "body": [
+        "보내지 못한 문장이",
+        "다시 화면 위에 떠올랐다."
+      ]
+    },
+    {
+      "eyebrow": "말하지 못한 마음",
+      "title": [
+        "기회가 온다는 말에",
+        "답까지 기대하고 있었다"
+      ],
+      "body": [
+        "내가 준비됐다는 것과",
+        "상대도 원한다는 것은 달랐다."
+      ]
+    },
+    {
+      "eyebrow": "사주 한 스푼 · 대운·세운",
+      "title": [
+        "대운·세운",
+        "어떤 뜻일까?"
+      ],
+      "body": [
+        "대운은 긴 주기, 세운은 한 해를 살펴.",
+        "전통 명리에서 명식과 함께 해석해."
+      ]
+    },
+    {
+      "eyebrow": "관계를 함께 읽기",
+      "title": [
+        "연락을 원하지 않는다는 뜻을 들었다면"
+      ],
+      "body": [
+        "운의 해석과 무관하게 그 의사를 존중해."
+      ]
+    },
+    {
+      "eyebrow": "오늘 풀어볼 매듭",
+      "title": [
+        "연락할 수 있는 관계라면 짧은 안부로."
+      ],
+      "body": [
+        "대답이 없어도 멈출 준비가 필요해."
+      ]
+    },
+    {
+      "eyebrow": "우리의 다음 이야기",
+      "title": [
+        "다시 연락하기 전 무엇부터 확인할까요?"
+      ],
+      "body": [
+        "댓글에 ‘시기’이라고 남겨줘.",
+        "괜찮다면 네 이야기도 함께 들려줘."
+      ],
+      "final": true
+    }
+  ],
+  "caption": "재회운이 좋다는데 연락해도 될까?\n\n보내지 못한 문장이 다시 화면 위에 떠올랐다.\n내가 준비됐다는 것과 상대도 원한다는 것은 달랐다.\n\n대운·세운: 대운은 긴 주기, 세운은 한 해를 살펴. 전통 명리에서 명식과 함께 해석해.\n연락을 원하지 않는다는 뜻을 들었다면 운의 해석과 무관하게 그 의사를 존중해.\n\n다시 연락하기 전 무엇부터 확인할까요?\n댓글에 ‘시기’과 함께 편한 만큼 이야기해주세요.\n\n사주는 전통적인 해석이며 관계의 결과를 보장하지 않습니다. 생년월일 등 개인정보는 공개 댓글에 남기지 마세요.\n\n#연리지실타래 #재회고민 #재회운 #대운세운",
+  "contentHash": "799b28ac478bc1eb5db427a5e18763820e9cec13aa9b0b4474d7ee4370183463",
+  "generation": {
+    "scenes": [
+      "looking at phone in morning",
+      "unsent blank message",
+      "imagining a meeting",
+      "seasons changing",
+      "setting phone aside respectfully",
+      "walking forward with loose thread"
+    ],
+    "model": "gpt-image-2",
+    "requestId": "req_de64d5e6d76f496a9827d69e7d935f00",
+    "referenceLocked": true
+  },
+  "id": "yeonliji-2026-08-30-timing-1bd4305a",
+  "files": [
+    "card-01.jpg",
+    "card-02.jpg",
+    "card-03.jpg",
+    "card-04.jpg",
+    "card-05.jpg",
+    "card-06.jpg",
+    "card-07.jpg"
+  ],
+  "createdAt": "2026-08-30T06:18:36.696Z",
+  "validation": {
+    "status": "passed",
+    "scope": "technical-only",
+    "requiresHumanReview": true,
+    "checks": {
+      "slideCount": true,
+      "imageUniqueness": true,
+      "dimensions": "1080x1350",
+      "textSeparation": true
+    },
+    "imageHashes": [
+      "d261c7b506c84238d07b024c6e1f32dd88bcb4c03b4b0120329643fd46a38235",
+      "1ffd4f49d1a65554cccc103e77cb7248023399ac5d0b92c5fd1ad254ebf72a96",
+      "dbdca6983ad78a434f85f7a30db96d91802522fb7d0f9b38580423eac3fc3227",
+      "a6b827480431e9921d66fda3728886055ab2c4812a7d10f523977652288a0070",
+      "622e0c1bd186c8b51821d1a048470bb6c6c662d12456399c69ba9d68b38dae74",
+      "cd85f135271af1685794ebc6b4c800be6344eea540c70284b6316c8354aa90b7",
+      "2a6cb414aed7f1fb861e481709e66264ebf1ba187fc77bf69972fea548c5cd24"
+    ],
+    "panelHashes": [
+      "94c3a13bf65e6e5de20d2b634091942e33dafa1bbb2f468acd0b98efe791062b",
+      "dd8067207f5d04fd9cfff1178f7dc40939e5702a815d4d5b2f95889e622bcf9d",
+      "fe63c480be59a4092040e91163d46f5a16fc75e23df5aa4945dc8855f8699886",
+      "098ecadccb5cd2070955319eaa12ed3430de343cb012856c400130d1f6b70de9",
+      "54618ce090d65ee63e6d4d59c9fdc0f5dc251f9635d3be0bc0f68de8976c8bc3",
+      "ae2774ee33dcc4aac19d9373266c1062d91145f114d972746348022eaf291e80"
+    ]
+  }
+}

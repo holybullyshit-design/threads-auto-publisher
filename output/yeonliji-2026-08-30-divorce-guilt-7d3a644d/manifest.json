@@ -1,0 +1,144 @@
+{
+  "title": "관계를 끝내고 싶은 내가 나쁜 사람일까?",
+  "series": "연리지 관계기록",
+  "topicId": "divorce-guilt",
+  "topic": {
+    "id": "divorce-guilt",
+    "category": "이혼·관계 정리",
+    "title": "관계를 끝내고 싶은 내가 나쁜 사람일까?",
+    "hook": "미안함이 내 마음을 대신 결정하지 않도록",
+    "sajuKeyword": "궁합"
+  },
+  "accountKey": "yeonliji",
+  "accountId": "knot_saju",
+  "accountLabel": "연리지 실타래",
+  "date": "2026-08-30",
+  "time": "18:00",
+  "cards": [
+    {
+      "eyebrow": "연리지 관계기록",
+      "title": [
+        "관계를 끝내고 싶은 내가 나쁜 사람일까?"
+      ],
+      "body": [
+        "미안함이 내 마음을 대신 결정하지 않도록"
+      ]
+    },
+    {
+      "eyebrow": "연지의 이야기",
+      "title": [
+        "상대를 미워하지 않는데",
+        "함께 사는 건 힘들었다"
+      ],
+      "body": [
+        "좋았던 순간이 떠오르면",
+        "내가 너무 이기적인 것 같았다."
+      ]
+    },
+    {
+      "eyebrow": "말하지 못한 마음",
+      "title": [
+        "고마웠던 기억과",
+        "지금 힘든 마음은 함께 있어"
+      ],
+      "body": [
+        "한쪽을 지워야만",
+        "다른 쪽을 인정할 수 있는 건 아니었다."
+      ]
+    },
+    {
+      "eyebrow": "사주 한 스푼 · 궁합",
+      "title": [
+        "궁합",
+        "어떤 뜻일까?"
+      ],
+      "body": [
+        "궁합은 두 명식의 관계를 살피는 해석이야.",
+        "관계를 유지하라는 의무를 부여하진 않아."
+      ]
+    },
+    {
+      "eyebrow": "관계를 함께 읽기",
+      "title": [
+        "좋았던 궁합이라는 말도 현재를 대신 못 해."
+      ],
+      "body": [
+        "존중과 안전, 현실을 함께 살펴야 해."
+      ]
+    },
+    {
+      "eyebrow": "오늘 풀어볼 매듭",
+      "title": [
+        "상대를 평가하기 전에 나의 상태를 적어보자."
+      ],
+      "body": [
+        "힘들다는 마음까지 부정하지는 말자."
+      ]
+    },
+    {
+      "eyebrow": "우리의 다음 이야기",
+      "title": [
+        "고마움과 힘듦이 함께 남아 있다면?"
+      ],
+      "body": [
+        "댓글에 ‘마음의자리’이라고 남겨줘.",
+        "괜찮다면 네 이야기도 함께 들려줘."
+      ],
+      "final": true
+    }
+  ],
+  "caption": "관계를 끝내고 싶은 내가 나쁜 사람일까?\n\n좋았던 순간이 떠오르면 내가 너무 이기적인 것 같았다.\n한쪽을 지워야만 다른 쪽을 인정할 수 있는 건 아니었다.\n\n궁합: 궁합은 두 명식의 관계를 살피는 해석이야. 관계를 유지하라는 의무를 부여하진 않아.\n좋았던 궁합이라는 말도 현재를 대신 못 해. 존중과 안전, 현실을 함께 살펴야 해.\n\n고마움과 힘듦이 함께 남아 있다면?\n댓글에 ‘마음의자리’과 함께 편한 만큼 이야기해주세요.\n\n사주는 전통적인 해석이며 관계의 결과를 보장하지 않습니다. 생년월일 등 개인정보는 공개 댓글에 남기지 마세요.\n\n#연리지실타래 #관계고민 #관계정리 #궁합",
+  "contentHash": "9082277d01f1f54719cfe8ec5cb834b609e0651cfdbaba7f73111c83343a620c",
+  "generation": {
+    "scenes": [
+      "holding old gift",
+      "tired at dining table",
+      "mixed emotions",
+      "two loose knots",
+      "reflecting in notebook",
+      "quiet window light"
+    ],
+    "model": "gpt-image-2",
+    "requestId": "req_016875d2c3084b47be21b1ad9c7249d7",
+    "referenceLocked": true
+  },
+  "id": "yeonliji-2026-08-30-divorce-guilt-7d3a644d",
+  "files": [
+    "card-01.jpg",
+    "card-02.jpg",
+    "card-03.jpg",
+    "card-04.jpg",
+    "card-05.jpg",
+    "card-06.jpg",
+    "card-07.jpg"
+  ],
+  "createdAt": "2026-08-30T07:48:35.052Z",
+  "validation": {
+    "status": "passed",
+    "scope": "technical-only",
+    "requiresHumanReview": true,
+    "checks": {
+      "slideCount": true,
+      "imageUniqueness": true,
+      "dimensions": "1080x1350",
+      "textSeparation": true
+    },
+    "imageHashes": [
+      "db62392f9074ab506112b9e17ec8aff461eabce544a52391f7fe6eddd208b236",
+      "252ff5b00576336724a283fa1382ae35559a8c67dd4164b9139eed9ff0616b04",
+      "44ad12bb1353681b85070f8206b3acc82eb92147147bbd800aadb733f1ced3d7",
+      "902d7981dd669d3f7844520ed5659394e0536d288b3a7f9fe1fad039212f4cfe",
+      "5f90ee0d3fa9add005b3672ff284b6076b02b6c9ffad36f851594ffe785edff3",
+      "c417091d653689f02e53749debef18be0ea3401459b01e9a549feaa2f06ef7c2",
+      "6258e057833041e7c35c26c0397b17247ca2a21842e0c4d313fa79a373e9742f"
+    ],
+    "panelHashes": [
+      "14ff0a080d4fb7dc3d2883d3266dae2daffc7615e09c2b171b8c271c2e41b6dc",
+      "9d96b7aad88f35d980a338d6a3484c13145bad697c7e7a535a1a41672cf42677",
+      "5e2493c3ed3e600a61a8391afff8c73d7e844991d3d17eed1fe8a8874b612dc5",
+      "0889a2fe3df80331095b2f024f2e14a2136d7e2c803d0ff01c508226e90c54c3",
+      "b771dfc39c760cd4d7037256aba3d8057922008b14091ea9a38f7726a408d020",
+      "6023cb1bef8f18c90b44cd437511f57c790052a9c902a650409a84bbdd32b6f0"
+    ]
+  }
+}

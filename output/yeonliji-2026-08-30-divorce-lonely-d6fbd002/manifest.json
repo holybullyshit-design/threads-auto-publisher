@@ -1,0 +1,144 @@
+{
+  "title": "같이 사는데 더 외롭다는 마음",
+  "series": "연리지 관계기록",
+  "topicId": "divorce-lonely",
+  "topic": {
+    "id": "divorce-lonely",
+    "category": "이혼·관계 정리",
+    "title": "같이 사는데 더 외롭다는 마음",
+    "hook": "부부라는 이름만으로 채워지지 않는 것",
+    "sajuKeyword": "일지"
+  },
+  "accountKey": "yeonliji",
+  "accountId": "knot_saju",
+  "accountLabel": "연리지 실타래",
+  "date": "2026-08-30",
+  "time": "18:00",
+  "cards": [
+    {
+      "eyebrow": "연리지 관계기록",
+      "title": [
+        "같이 사는데 더 외롭다는 마음"
+      ],
+      "body": [
+        "부부라는 이름만으로 채워지지 않는 것"
+      ]
+    },
+    {
+      "eyebrow": "연지의 이야기",
+      "title": [
+        "같은 소파에 앉아도",
+        "각자의 화면만 보고 있었다"
+      ],
+      "body": [
+        "오늘 있었던 일을 말하다가",
+        "어느 순간 혼잣말이 됐다."
+      ]
+    },
+    {
+      "eyebrow": "말하지 못한 마음",
+      "title": [
+        "함께 산다는 것과",
+        "함께 느낀다는 건 달랐다"
+      ],
+      "body": [
+        "사소한 대화를 포기할수록",
+        "우리 사이의 공백은 커졌다."
+      ]
+    },
+    {
+      "eyebrow": "사주 한 스푼 · 일지",
+      "title": [
+        "일지",
+        "어떤 뜻일까?"
+      ],
+      "body": [
+        "일지는 태어난 날의 지지야.",
+        "전통 명리에서 배우자궁으로 살피기도 해."
+      ]
+    },
+    {
+      "eyebrow": "관계를 함께 읽기",
+      "title": [
+        "일지만으로 결혼 생활을 단정하진 않아."
+      ],
+      "body": [
+        "실제로 마음을 주고받는지도 보아야 해."
+      ]
+    },
+    {
+      "eyebrow": "오늘 풀어볼 매듭",
+      "title": [
+        "오늘은 휴대폰을 내려놓고 10분."
+      ],
+      "body": [
+        "해결책 없이 서로의 하루만 들어보자."
+      ]
+    },
+    {
+      "eyebrow": "우리의 다음 이야기",
+      "title": [
+        "함께 있어도 외로웠던 순간이 있나요?"
+      ],
+      "body": [
+        "댓글에 ‘틈’이라고 남겨줘.",
+        "괜찮다면 네 이야기도 함께 들려줘."
+      ],
+      "final": true
+    }
+  ],
+  "caption": "같이 사는데 더 외롭다는 마음\n\n오늘 있었던 일을 말하다가 어느 순간 혼잣말이 됐다.\n사소한 대화를 포기할수록 우리 사이의 공백은 커졌다.\n\n일지: 일지는 태어난 날의 지지야. 전통 명리에서 배우자궁으로 살피기도 해.\n일지만으로 결혼 생활을 단정하진 않아. 실제로 마음을 주고받는지도 보아야 해.\n\n함께 있어도 외로웠던 순간이 있나요?\n댓글에 ‘틈’과 함께 편한 만큼 이야기해주세요.\n\n사주는 전통적인 해석이며 관계의 결과를 보장하지 않습니다. 생년월일 등 개인정보는 공개 댓글에 남기지 마세요.\n\n#연리지실타래 #관계고민 #관계정리 #일지",
+  "contentHash": "d706e8481277bcbb451b08f61239ac17e9d50323dc27c822503a43fc9dcb40a1",
+  "generation": {
+    "scenes": [
+      "two adults on sofa",
+      "ignored conversation",
+      "empty space between chairs",
+      "two thread spools",
+      "phones put aside",
+      "listening over tea"
+    ],
+    "model": "gpt-image-2",
+    "requestId": "req_d7b3360d378941a69c751ccfa8006599",
+    "referenceLocked": true
+  },
+  "id": "yeonliji-2026-08-30-divorce-lonely-d6fbd002",
+  "files": [
+    "card-01.jpg",
+    "card-02.jpg",
+    "card-03.jpg",
+    "card-04.jpg",
+    "card-05.jpg",
+    "card-06.jpg",
+    "card-07.jpg"
+  ],
+  "createdAt": "2026-08-30T02:28:03.918Z",
+  "validation": {
+    "status": "passed",
+    "scope": "technical-only",
+    "requiresHumanReview": true,
+    "checks": {
+      "slideCount": true,
+      "imageUniqueness": true,
+      "dimensions": "1080x1350",
+      "textSeparation": true
+    },
+    "imageHashes": [
+      "a2570100f55293be39c8013c39cf71dbc79d2cb58bc5490d55d74f229a8f4b5a",
+      "b68a7abd0ba997c4ac65e3909dc089071f3f91362b54107714baa9ff8899b0e1",
+      "8e7a4b285c95ab1b1dedceaa75e390f8166334b12e14d1a8d574e02ef606ff65",
+      "32cd1cb3bd917081adf5658a156af5896cbcd803926e7aaa48a3bbc51980d088",
+      "e671a88c13151de8de66dbac2d1a44bbda5bb11208327bc01993f853cd5f5557",
+      "9dcbd8491ff80a6cef5498165f4a35e94a214e7f284eac3ed56da9263e32cee5",
+      "055b08b27d5111727ae4527c903399dbc0a60cc8d29553a4d044259ff0636256"
+    ],
+    "panelHashes": [
+      "7fe1f4f9e5977ad73d1eb34385ea89de689c13c69ed1ea0aee4b5d0bffd3bc41",
+      "a1a70fb7eaec2a23945a775300bd1e42776442ff401c7b2ffda8a5707551714b",
+      "6e1efe1816be51d8ed25a095ea18230faaeed56d02aef34667027583d2bcabbc",
+      "f4579ec4fe6cafc3ceaeb654378dbe57c598189dbf375a51e864922cbb0b0469",
+      "c0f24772db5c2ca291b2dee48ecf7fdc2ac00dfa957ff1d2416b41790ccbe369",
+      "49edd52f308b2c412ad0df465b93522d157273fd001177ee28c377bca0013dd4"
+    ]
+  }
+}

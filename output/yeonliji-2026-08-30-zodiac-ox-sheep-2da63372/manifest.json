@@ -1,0 +1,251 @@
+{
+  "title": "소띠와 양띠는 정말 만나면 안 될까?",
+  "displayTitle": "소띠와 양띠는 정말 만나면 안 될까?",
+  "series": "연리지 사주 관계기록",
+  "topicId": "zodiac-ox-sheep",
+  "topic": {
+    "id": "zodiac-ox-sheep",
+    "category": "띠 궁합",
+    "title": "소띠와 양띠는 정말 만나면 안 될까?",
+    "displayTitle": "소띠와 양띠는 정말 만나면 안 될까?",
+    "hook": "축미충이라는 규칙과 관계의 결정은 달라",
+    "sajuKeyword": "충",
+    "evidenceKey": "zodiac-chong"
+  },
+  "accountKey": "yeonliji",
+  "accountId": "knot_saju",
+  "accountLabel": "연리지 실타래",
+  "date": "2026-08-30",
+  "time": "18:00",
+  "cards": [
+    {
+      "role": "hook",
+      "eyebrow": "궁합(宮合)",
+      "title": [
+        "소띠와 양띠는",
+        "정말 만나면 안 될까?"
+      ],
+      "body": [
+        "축미충이라는 규칙과 관계의 결정은 달라"
+      ],
+      "accentTitleLine": 0,
+      "note": "명리 규칙으로 풀어보는 관계 이야기"
+    },
+    {
+      "role": "situation",
+      "eyebrow": "연지의 이야기 · 창작 장면",
+      "title": [
+        "상극인 띠라는 말에",
+        "좋았던 마음이 흔들렸다."
+      ],
+      "body": [
+        "우리는 잘 만나고 있었는데,",
+        "띠만으로 끝을 정해야 하는 걸까?"
+      ]
+    },
+    {
+      "role": "concept",
+      "eyebrow": "충(沖)",
+      "title": [
+        "소띠와 양띠가",
+        "충이라는 말의 근거."
+      ],
+      "body": [
+        "소띠는 축(丑), 양띠는 미(未)에 대응해.",
+        "축과 미는 충표에서 마주 보는 한 쌍.",
+        "싫어하는 동물이어서 정한 관계가 아니야."
+      ],
+      "accentTitleLine": 0,
+      "evidenceRefs": [
+        "zodiac-chong.1"
+      ]
+    },
+    {
+      "role": "condition",
+      "eyebrow": "띠와 일주는 다른 정보",
+      "title": [
+        "연지 한 쌍으로는",
+        "빠지는 자리가 있어."
+      ],
+      "body": [
+        "띠는 출생 연도의 지지를 말해.",
+        "태어난 월·일·시의 글자는 담지 못하지.",
+        "같은 띠 조합도 원국 전체는 서로 달라."
+      ],
+      "accentTitleLine": 0,
+      "evidenceRefs": [
+        "zodiac-chong.2"
+      ]
+    },
+    {
+      "role": "comparison",
+      "eyebrow": "이 질문에 적용하면",
+      "title": [
+        "충의 짝이라는 말이지",
+        "이별 확률을 뜻하진 않아."
+      ],
+      "body": [
+        "축·미는 충표에서 정해진 대응 관계야.",
+        "전체 궁합을 계산한 점수나",
+        "두 사람의 미래를 확정한 결과는 아니야."
+      ],
+      "accentTitleLine": 0,
+      "evidenceRefs": [
+        "zodiac-chong.1",
+        "zodiac-chong.2"
+      ]
+    },
+    {
+      "role": "application",
+      "eyebrow": "개인 풀이에서 확인할 것",
+      "title": [
+        "띠가 상극이라는 말을 들으면",
+        "확인할 세 가지."
+      ],
+      "body": [
+        "실제 연지가 축·미인지,",
+        "다른 기둥의 관계는 무엇인지,",
+        "연초 출생이라면 어떤 경계 기준을 썼는지."
+      ],
+      "evidenceRefs": [
+        "zodiac-chong.1",
+        "zodiac-chong.2"
+      ]
+    },
+    {
+      "role": "participation",
+      "eyebrow": "당신의 인연 이야기",
+      "title": [
+        "상극인 띠라는 말을 들었다면",
+        "무엇부터 확인하고 싶나요?"
+      ],
+      "body": [
+        "댓글에 ‘상극’ 키워드와 함께",
+        "궁금한 점을 한 줄 남겨주세요."
+      ],
+      "note": "생년월일 등 개인정보는 남기지 마세요",
+      "final": true
+    }
+  ],
+  "caption": "소띠와 양띠는 정말 만나면 안 될까?\n\n우리는 잘 만나고 있었는데, 띠만으로 끝을 정해야 하는 걸까?\n\n충(沖)\n소띠는 축(丑), 양띠는 미(未)에 대응해. 축과 미는 충표에서 마주 보는 한 쌍. 싫어하는 동물이어서 정한 관계가 아니야.\n\n띠와 일주는 다른 정보\n띠는 출생 연도의 지지를 말해. 태어난 월·일·시의 글자는 담지 못하지. 같은 띠 조합도 원국 전체는 서로 달라.\n\n이 질문에 적용하면\n축·미는 충표에서 정해진 대응 관계야. 전체 궁합을 계산한 점수나 두 사람의 미래를 확정한 결과는 아니야.\n\n개인 풀이에서는\n실제 연지가 축·미인지, 다른 기둥의 관계는 무엇인지, 연초 출생이라면 어떤 경계 기준을 썼는지.\n\n상극인 띠라는 말을 들었다면 무엇부터 확인하고 싶나요?\n댓글에 ‘상극’ 키워드와 함께 궁금한 점을 남겨주세요.\n\n창작 상황과 전통 명리 규칙을 설명한 콘텐츠이며 개인 출생 정보를 분석한 결과가 아닙니다. 사주는 관계의 결과를 보장하지 않습니다. 연락 거절과 안전을 존중하고 개인정보는 공개 댓글에 남기지 마세요.\n\n#연리지실타래 #띠궁합 #궁합 #충 #사주풀이",
+  "factPack": {
+    "version": "yeonliji-evidence-v1",
+    "key": "zodiac-chong",
+    "kind": "traditional-rule-example",
+    "sources": [
+      {
+        "title": "lunar-javascript 1.7.7 · 간지·오행·십신·합충 규칙",
+        "url": "https://github.com/6tail/lunar-javascript/blob/master/lunar.js",
+        "version": "1.7.7"
+      }
+    ],
+    "examples": {
+      "pair": {
+        "a": "丑",
+        "b": "未",
+        "he": false,
+        "chong": true
+      }
+    },
+    "facts": [
+      {
+        "id": "zodiac-chong.1",
+        "label": "충(沖)",
+        "title": [
+          "소띠와 양띠가",
+          "충이라는 말의 근거."
+        ],
+        "body": [
+          "소띠는 축(丑), 양띠는 미(未)에 대응해.",
+          "축과 미는 충표에서 마주 보는 한 쌍.",
+          "싫어하는 동물이어서 정한 관계가 아니야."
+        ],
+        "rule": "HE_ZHI_6 / CHONG / SHENG_XIAO",
+        "source": "https://github.com/6tail/lunar-javascript/blob/master/lunar.js"
+      },
+      {
+        "id": "zodiac-chong.2",
+        "label": "띠와 일주는 다른 정보",
+        "title": [
+          "연지 한 쌍으로는",
+          "빠지는 자리가 있어."
+        ],
+        "body": [
+          "띠는 출생 연도의 지지를 말해.",
+          "태어난 월·일·시의 글자는 담지 못하지.",
+          "같은 띠 조합도 원국 전체는 서로 달라."
+        ],
+        "rule": "EightChar.getYearZhi / getMonthZhi / getDayZhi / getTimeZhi",
+        "source": "https://github.com/6tail/lunar-javascript/blob/master/lunar.js"
+      }
+    ],
+    "limits": [
+      "계산과 규칙은 검증 대상이며 관계 결과를 과학적으로 예측한다는 뜻은 아닙니다.",
+      "창작 사례이며 개인 출생 정보를 분석하지 않았습니다."
+    ],
+    "personalBirthDataUsed": false
+  },
+  "contentHash": "730b626e89b0c28cd947b3998d154d298362649a9534603be249139b060fae02",
+  "editorial": {
+    "presentationVersion": "yeonliji-editorial-v4",
+    "copyRevision": "yeonliji-editorial-v4",
+    "requiresHumanReview": true,
+    "prompt": "연리지 실타래 사주 웹툰 제작 기준 v4\n20~40대 여성의 관계 고민을 다루되 심리 조언으로 명리 설명을 대체하지 않는다.\n입력은 주제별 LESSON과 계산 가능한 factPack이다. 미등록 주제·근거가 없으면 생성 중단. 기존 원고로 대체하지 않는다.\n7장: 명리 관점의 질문 → 창작 상황 → 근거 개념 → 계산/규칙 예시 → 질문에 적용 → 개인 풀이 확인 사항 → 주제 관련 댓글.\n3~5장은 근거ID를 연결한다. 단어 정의 하나로 끝내거나 모든 주제를 같은 설명으로 돌리지 않는다.\n원국·일간·일지·십성·합충·띠·일진 중 해당 주제에 필요한 것만 사용한다. 개인 출생 정보 없이 개인 명식·대운·확률을 꾸며내지 않는다.\n날짜형 콘텐츠는 선택 날짜에서 일진을 계산한다. 띠 관계는 검증된 지지 표에서 가져온다. 날짜 변경 시 날짜형 시안 재제작·재승인.\n계산 규칙과 전통 해석은 구분하며 전통 해석을 과학적 예측이라고 하지 않는다. 미검증 신살로 바람·이혼·성격을 단정하지 않는다.\n고정 여성 캐릭터·타래·크림/자두색·기존 그림체 유지. 새 그림에 글자를 그리지 않고 검수한 글을 별도 합성.\n핵심어 첫 소개에 선택적으로 한자를 병기. 한 장에 강조 한 곳. 제목 2~3줄, 본문 2~4줄. 공개 하단 이름·페이지번호·내부ID 금지.\n캡션과 해시태그는 실제 카드의 주제와 명리 근거에서 구성. 미구현 DM·복을 미끼로 댓글 강요·번호만 남기기 금지.\n제목뿐 아니라 중심 질문·풀이·결론·대사를 비교하고 유사성 경고를 검수자에게 보여준다.\n원고·근거·그림의 버전을 기록한다. 생성은 승인이나 예약이 아니다. 최종 이미지 7장 육안 검수 전 품질 완료라고 표시하지 않는다.\n선택 주제: 소띠와 양띠는 정말 만나면 안 될까?\n근거: zodiac-chong",
+    "contentBinding": "82461a3d9aa9a0118777d473ca0f542e4e46eb55c428e2f269aa3a355b7862af"
+  },
+  "generation": {
+    "scenes": [
+      "woman looking at two animal charms",
+      "couple walking",
+      "ox and sheep charms on desk",
+      "opposite thread spools",
+      "comparing blank pages",
+      "woman calmly talking"
+    ],
+    "model": "gpt-image-2",
+    "requestId": "req_cb46dc8dd01244db970b2043a9488000",
+    "referenceLocked": true,
+    "source": "image-provider",
+    "reusedFromDraftId": null
+  },
+  "id": "yeonliji-2026-08-30-zodiac-ox-sheep-2da63372",
+  "files": [
+    "card-01.jpg",
+    "card-02.jpg",
+    "card-03.jpg",
+    "card-04.jpg",
+    "card-05.jpg",
+    "card-06.jpg",
+    "card-07.jpg"
+  ],
+  "createdAt": "2026-08-30T09:28:52.450Z",
+  "validation": {
+    "status": "passed",
+    "scope": "technical-only",
+    "requiresHumanReview": true,
+    "checks": {
+      "slideCount": true,
+      "imageUniqueness": true,
+      "dimensions": "1080x1350",
+      "textSeparation": true,
+      "noFooterSignature": true
+    },
+    "imageHashes": [
+      "029d28c09eb0d0218557a8ead5a3f0f4bbeb1666415fc0fd1bd9986dae6f8ba0",
+      "43fc997703460bc254f1f401deb8a693be75090a0564d8115c8a50b46a9003eb",
+      "f302efe399876cb35ba85eef999e48dcbdcf2bb746d382bc3de69e2c4ea8f58e",
+      "59ec8f20378d87695ce39117a4ef49e9e7d97d2370e9ca9ac9367f6812303bee",
+      "ad09df55ac0b10f736b63ec052d4cd0c8a197fcb078c22fa5fa29e7f161cfcd6",
+      "420c1fe5be261d0aedae6ed82314eefbeaf03effadb1807fc1622ba6ddd2e61c",
+      "da55970ec172a3ea363ac4ca9d63f1f189246fd96a46809161785e55d6d0e0aa"
+    ],
+    "panelHashes": [
+      "fdcc59ce773c46f42f77777b565e3a2109d7b622dbd76322e2648b9769506f33",
+      "6b2b23e8a297360d07dd51f5a7ffb4353a6956ee13cc7ec6aafbf6f5e8498be6",
+      "312af7025106d4677c1bc2c1228f5292d24c9dc5ef7349b5f92227021c53deaa",
+      "42e90c4e54d38087cfb1600529fcf5ae39c6592dc8c98442417aa0d4f0ba9eb9",
+      "445b1455ad7cd346f94f616b017edc5cff84d14d74073bf452abfc160325f306",
+      "89e37f8a26758da6745d0a077248403eb0a74db1cf4000041b211a5f0d68b620"
+    ]
+  }
+}

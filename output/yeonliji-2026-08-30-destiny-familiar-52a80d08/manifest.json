@@ -1,0 +1,148 @@
+{
+  "title": "처음 만났는데 오래 안 사람 같았다",
+  "series": "연리지 관계기록",
+  "topicId": "destiny-familiar",
+  "topic": {
+    "id": "destiny-familiar",
+    "category": "운명·인연",
+    "title": "처음 만났는데 오래 안 사람 같았다",
+    "hook": "익숙한 느낌과 믿을 수 있는 사람의 차이",
+    "sajuKeyword": "일주"
+  },
+  "accountKey": "yeonliji",
+  "accountId": "knot_saju",
+  "accountLabel": "연리지 실타래",
+  "date": "2026-08-30",
+  "time": "18:00",
+  "cards": [
+    {
+      "eyebrow": "연리지 관계기록",
+      "title": [
+        "처음 만났는데 오래 안 사람 같았다"
+      ],
+      "body": [
+        "익숙한 느낌과 믿을 수 있는 사람의 차이"
+      ]
+    },
+    {
+      "eyebrow": "연지의 이야기",
+      "title": [
+        "말하지 않아도 통하는",
+        "느낌이 들었다"
+      ],
+      "body": [
+        "처음 만난 사람인데",
+        "벌써 내 편 같았다."
+      ]
+    },
+    {
+      "eyebrow": "말하지 못한 마음",
+      "title": [
+        "빨리 가까워지는 마음에",
+        "시간도 필요했다"
+      ],
+      "body": [
+        "익숙함이 좋았지만",
+        "아직 모르는 모습도 많았다."
+      ]
+    },
+    {
+      "eyebrow": "사주 한 스푼 · 일주",
+      "title": [
+        "일주",
+        "어떤 뜻일까?"
+      ],
+      "body": [
+        "일주는 태어난 날의 천간·지지 조합이야.",
+        "같은 일주여도 같은 삶을 살지는 않아."
+      ]
+    },
+    {
+      "eyebrow": "한 가지로 단정하지 않기",
+      "title": [
+        "우리의 관계는",
+        "한 단어보다 크니까"
+      ],
+      "body": [
+        "일주의 공통점만으로 신뢰를 정하진 말자.",
+        "말과 행동이 맞는지 천천히 지켜봐도 돼."
+      ]
+    },
+    {
+      "eyebrow": "오늘 풀어볼 매듭",
+      "title": [
+        "다음 장면은",
+        "조금 다르게"
+      ],
+      "body": [
+        "설렘을 줄일 필요는 없어.",
+        "약속이 지켜지는 시간을 함께 쌓아보자."
+      ]
+    },
+    {
+      "eyebrow": "우리의 다음 이야기",
+      "title": [
+        "첫 만남부터 익숙했던 사람이 있나요?"
+      ],
+      "body": [
+        "댓글에 ‘익숙함’이라고 남겨줘.",
+        "괜찮다면 네 이야기도 함께 들려줘."
+      ],
+      "final": true
+    }
+  ],
+  "caption": "처음 만났는데 오래 안 사람 같았다\n\n처음 만난 사람인데 벌써 내 편 같았다.\n익숙함이 좋았지만 아직 모르는 모습도 많았다.\n\n일주: 일주는 태어난 날의 천간·지지 조합이야. 같은 일주여도 같은 삶을 살지는 않아.\n일주의 공통점만으로 신뢰를 정하진 말자. 말과 행동이 맞는지 천천히 지켜봐도 돼.\n\n첫 만남부터 익숙했던 사람이 있나요?\n댓글에 ‘익숙함’과 함께 편한 만큼 이야기해주세요.\n\n사주는 전통적인 해석이며 관계의 결과를 보장하지 않습니다. 생년월일 등 개인정보는 공개 댓글에 남기지 마세요.\n\n#연리지실타래 #연애고민 #재회 #궁합 #사주이야기",
+  "contentHash": "87c5fec97a027fb018a78e8e3047dda356d8aa74536026b23634300aa3d87520",
+  "generation": {
+    "scenes": [
+      "first meeting",
+      "easy laughter",
+      "watching a clock",
+      "matching thread colors",
+      "keeping a small promise",
+      "walking calmly together"
+    ],
+    "model": "gpt-image-2",
+    "requestId": "req_7417712de1e447299fd02b7fabb6289f",
+    "referenceLocked": true
+  },
+  "id": "yeonliji-2026-08-30-destiny-familiar-52a80d08",
+  "files": [
+    "card-01.jpg",
+    "card-02.jpg",
+    "card-03.jpg",
+    "card-04.jpg",
+    "card-05.jpg",
+    "card-06.jpg",
+    "card-07.jpg"
+  ],
+  "createdAt": "2026-08-30T01:36:31.936Z",
+  "validation": {
+    "status": "passed",
+    "scope": "technical-only",
+    "requiresHumanReview": true,
+    "checks": {
+      "slideCount": true,
+      "imageUniqueness": true,
+      "dimensions": "1080x1350",
+      "textSeparation": true
+    },
+    "imageHashes": [
+      "3dc10d39ab11118dc90660444a3eb95c836d5c72bb3e5608d30c24729198fbbd",
+      "03c7189f00456a874dc965ff85956e4991ed117b3bf4b9b37deba10a2dbecf1e",
+      "98a13ae5f12949d0ce1e05642c53f6e9fd9afd5b54d6915fa99ec140cbd5fea8",
+      "44682e2e8d22a50e35cdbe3fba451b571c3320a767138e032384466ac1f5b012",
+      "2f1d7e73bf2139f8196abcec43d9f57051711660aebb933716a266978b155fc0",
+      "8088339a5cc693b513b7980fe514c6ff23df50f618d71ebb702ee580711bd500",
+      "8ae11e14283de145473b75271404b3339093c03f968918a9749843492bd82983"
+    ],
+    "panelHashes": [
+      "379eec065c4bd95f41df7045c70f3a9256558bf6bf1e2dc7e3e91cc5db0c3e04",
+      "58bbb55efe63ebf435f3469e2419aec61e96804d204287a9ae78dd2b3add90dd",
+      "0969b78fdde48f835f79104c73652d153354176141fab0ce94b3e98386ee2cea",
+      "d17910048829d15a00eba6f1214dad4da6a2a81b99968fe7532077fd7f5e0988",
+      "b1d5b4cd581bdd83460c64af4cc5a2ce819a5253a30a14973d1ad57540fbf3da",
+      "c09a99e3c98cb8f6ed19390144bbe24a882063b1951e30f5616641b371a3bbea"
+    ]
+  }
+}
