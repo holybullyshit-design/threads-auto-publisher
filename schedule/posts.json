@@ -947,7 +947,8 @@
     "createdAt": "2026-08-24T09:11:14.400Z",
     "publishedAt": null,
     "publishedId": null,
-    "error": null
+    "error": "Invalid parameter",
+    "retryCount": 1
   },
   {
     "id": "4e84e23a-92f3-457d-a5c9-1882fb7d7058",
