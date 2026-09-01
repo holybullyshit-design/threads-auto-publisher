@@ -34,18 +34,33 @@ instagramAuthStore.load();
 
 const app = express();
 const PORT = Number(process.env.PORT) || 4321;
+const STUDIO_PREVIEW_ONLY = process.env.STUDIO_PREVIEW_ONLY === '1';
 const INSTAGRAM_PUBLIC_REDIRECT_URI = "https://threads-publish-pinger.threadsautopub.workers.dev/oauth/instagram/callback";
 const INSTAGRAM_ACCOUNT_CATALOG = Object.freeze({
   palja: { key: "palja", label: "팔자명가", expectedUsername: "saju_orbit", contentReady: true },
-  yeonliji: { key: "yeonliji", label: "연리지 실타래", expectedUsername: "", contentReady: false },
+  yeonliji: { key: "yeonliji", label: "연리지 실타래", expectedUsername: "knot_saju", contentReady: false },
 });
 
 app.use(express.json({ limit: "15mb" })); // 캡처 이미지(base64) 업로드를 받을 수 있도록 넉넉하게
+app.use((req,res,next)=>{
+  if(!STUDIO_PREVIEW_ONLY) return next();
+  const readOnly=req.method==='GET' && (['/','/api/meta','/api/instagram/yeonliji/plan','/api/instagram/yeonliji/topics','/api/instagram/yeonliji/studio','/api/instagram/accounts'].includes(req.path) || req.path.startsWith('/api/instagram/yeonliji/card/') || !req.path.startsWith('/api/'));
+  const freeRecompose=req.method==='POST' && req.path==='/api/instagram/yeonliji/generate' && req.body?.mode==='recompose';
+  if(readOnly || freeRecompose) return next();
+  res.status(403).json({error:'검증 전용 화면에서는 유료 생성·게시·예약·계정 변경을 실행하지 않습니다.'});
+});
 app.use(express.static(path.join(__dirname, "..", "public")));
+app.use("/api/ops/instagram",(req,res,next)=>{
+  const modulePath=path.join(__dirname,"lib/instagramAnalyticsRouter.js");
+  if(!fs.existsSync(modulePath)) return res.status(503).json({error:"Instagram 분석 기능을 업데이트 중입니다. 계정 권한 연결은 이용할 수 있습니다."});
+  return require(modulePath)(req,res,next);
+});
 
 // ---------- 메타 정보 ----------
 app.get("/api/meta", (req, res) => {
   res.json({
+    appVersion: 'yeonliji-studio-20260830-v6-insights',
+    previewOnly: STUDIO_PREVIEW_ONLY,
     maxTextLength: MAX_TEXT_LENGTH,
     threadsOAuthConfigured: threadsOAuth.isConfigured(),
     externalImageSearchConfigured: externalImageSearch.isConfigured(),
@@ -62,6 +77,21 @@ app.get("/api/instagram/content", (req, res) => {
 });
 
 // ---------- Instagram 연리지 실타래 검수·승인 작업실 ----------
+app.get('/api/instagram/yeonliji/topics', async (req,res) => {
+  try { res.json(await yeonlijiAutomation.getTopics(String(req.query.avoid || '').split(',').slice(0,30))); }
+  catch(err) { handleError(res,err); }
+});
+
+app.post('/api/instagram/yeonliji/generate', async (req,res) => {
+  try { res.status(201).json(await yeonlijiAutomation.generateDraft(req.body || {})); }
+  catch(err) { handleError(res,err); }
+});
+
+app.get('/api/instagram/yeonliji/plan', (req,res) => {
+  try { res.json(yeonlijiAutomation.previewPlan(String(req.query.topicId || ''),{date:String(req.query.date || ''),time:String(req.query.time || '')})); }
+  catch(err) { handleError(res,err); }
+});
+
 app.get("/api/instagram/yeonliji/studio", async (req, res) => {
   try { res.json(await yeonlijiAutomation.getStudio()); }
   catch (err) { handleError(res, err); }
@@ -71,11 +101,23 @@ app.get("/api/instagram/yeonliji/card/:draftId/:page.jpg", (req, res) => {
   try { res.sendFile(yeonlijiAutomation.readCard(req.params.draftId, req.params.page)); }
   catch (err) { handleError(res, err); }
 });
+app.post('/api/instagram/yeonliji/publish-now',async(req,res)=>{
+  try{
+    if(req.body?.confirm!==true) return res.status(400).json({error:'최종 시안 승인이 필요합니다.'});
+    res.json(await yeonlijiAutomation.publishApprovedDraftNow(String(req.body.draftId||'')));
+  }catch(err){handleError(res,err);}
+});
+app.post('/api/instagram/yeonliji/reschedule',async(req,res)=>{
+  try{
+    if(req.body?.confirm!==true) return res.status(400).json({error:'시간 변경 승인이 필요합니다.'});
+    res.json(await yeonlijiAutomation.rescheduleApprovedDraft(String(req.body.draftId||''),{date:req.body.date,time:req.body.time}));
+  }catch(err){handleError(res,err);}
+});
 
 app.post("/api/instagram/yeonliji/schedule", async (req, res) => {
   try {
     if (req.body?.confirm !== true) return res.status(400).json({ error: "최종 시안 승인(confirm=true)이 필요합니다." });
-    res.status(201).json(await yeonlijiAutomation.scheduleApprovedDraft(String(req.body?.draftId || "")));
+    res.status(201).json(await yeonlijiAutomation.scheduleApprovedDraft(String(req.body?.draftId || ""), {date:req.body?.date,time:req.body?.time}));
   } catch (err) { handleError(res, err); }
 });
 
@@ -155,8 +197,9 @@ app.get("/oauth/instagram/start", (req, res) => {
     const accountKey = String(req.query.accountKey || "palja");
     const target = INSTAGRAM_ACCOUNT_CATALOG[accountKey];
     if (!target) return res.status(400).send("지원하지 않는 Instagram 계정입니다.");
-    instagramOAuthStates.set(state, { createdAt: Date.now(), accountKey, label: target.label });
-    res.redirect(instagramOAuth.buildAuthorizeUrl(state));
+    const insights=req.query.insights==="1";
+    instagramOAuthStates.set(state, { createdAt: Date.now(), accountKey, label: target.label, insights });
+    res.redirect(instagramOAuth.buildAuthorizeUrl(state,{insights}));
   } catch (err) { res.status(500).send(`설정 오류: ${err.message}`); }
 });
 
@@ -174,6 +217,13 @@ app.get("/oauth/instagram/callback", async (req, res) => {
     const short = await instagramOAuth.exchangeCode(String(code || ""));
     const long = await instagramOAuth.exchangeLongToken(short.accessToken);
     const profile = await instagramOAuth.fetchProfile(long.accessToken);
+    const expectedUsername=INSTAGRAM_ACCOUNT_CATALOG[oauthState.accountKey].expectedUsername;
+    if(profile.username!==expectedUsername) throw new Error("@"+expectedUsername+" 계정을 선택해야 합니다. 기존 계정 연결은 변경하지 않았습니다.");
+    if(oauthState.insights) {
+      const client=require("./lib/instagramClient");
+      try { await client.graphRequest(client.getConfig({userId:profile.user_id,accessToken:long.accessToken}),profile.user_id+"/insights",{params:{metric:"views",period:"day",metric_type:"total_value"}}); }
+      catch { throw new Error("통계 조회 권한이 아직 허용되지 않았습니다. Meta 앱의 Instagram 이용 사례에서 instagram_business_manage_insights 권한을 추가한 뒤 다시 승인해주세요. 기존 게시 연결은 유지했습니다."); }
+    }
     const expiresAt = Date.now() + long.expiresIn * 1000;
     instagramAuthStore.saveAccount({
       key: oauthState.accountKey,
@@ -968,6 +1018,8 @@ function handleError(res, err) {
 app.listen(PORT, () => {
   const url = `http://localhost:${PORT}`;
   console.log(`\n팔자명가 스레드 + Instagram 자동화 앱이 실행되었습니다: ${url}\n`);
+  if(STUDIO_PREVIEW_ONLY) { console.log('검증 전용: 자동 외부 작업·유료 생성·게시·예약 비활성'); return; }
+  if(process.env.APP_MANUAL_ONLY==='1') { console.log('수동 작업 화면: 배경 Insights 갱신·자동 브라우저 열기 비활성. 버튼 기능은 정상 동작합니다.'); return; }
 
   if (process.platform === "darwin") {
     exec(`open "${url}"`);
