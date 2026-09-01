@@ -7,6 +7,7 @@
 <link rel="stylesheet" as="style" crossorigin
   href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
 <link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="instagram-analytics.css" />
 </head>
 <body>
 <div class="app">
@@ -62,7 +63,8 @@
         <span class="ig-kicker">YEONLIJI RELATIONSHIP STORIES</span>
         <h2>연애의 매듭을 사주로 풀어보는 7장 이야기</h2>
         <p>기획 → 캐릭터·무드 잠금 → 7장 제작 → 오타·흐름·중복 검수 → 내가 승인 → 예약</p>
-        <div class="ig-pipeline"><span>관계 공감 후킹</span><b>→</b><span>사주 10~20%</span><b>→</b><span>7장 웹툰</span><b>→</b><span>명시적 승인</span></div>
+        <div class="ig-pipeline"><span>관계 공감 후킹</span><b>→</b><span>명리 근거·일진 계산</span><b>→</b><span>7장 웹툰</span><b>→</b><span>명시적 승인</span></div>
+        <p id="ig-y-engine-version">원고 엔진 버전 확인 중</p>
       </div>
 
       <div class="card ig-topic-studio">
@@ -73,16 +75,19 @@
           </div>
           <button id="ig-y-refresh-topics" class="btn btn-secondary btn-small ig-inline-btn" type="button">↻ 다른 주제 10개 보기</button>
         </div>
-        <p class="hint-text ig-topic-help">10개 중 마음에 드는 주제를 한 번 누르면 선택됩니다. 아직 이미지는 만들지 않으니 편하게 둘러보세요.</p>
+        <p class="hint-text ig-topic-help" id="ig-y-topic-count">미사용 주제를 추천합니다. 주제를 누른 다음 아래 이미지 생성 버튼을 눌러주세요.</p>
         <div id="ig-y-topic-grid" class="ig-topic-grid" role="listbox" aria-label="연리지 실타래 추천 주제 10개">
           <div class="ig-topic-loading"><span class="ig-mini-spinner" aria-hidden="true"></span>주제 10개를 준비하고 있습니다…</div>
         </div>
         <div id="ig-y-selected-topic" class="ig-selected-topic hidden" aria-live="polite"></div>
         <div class="ig-create-settings">
-          <label>게시 날짜<input id="ig-y-create-date" type="date" class="select-input"></label>
-          <label>게시 시간<input id="ig-y-create-time" type="time" class="select-input" value="18:00"></label>
+          <label>시안의 예정 날짜<input id="ig-y-create-date" type="date" class="select-input"></label>
+          <label>예정 시간 (한국 시간)<input id="ig-y-create-time" type="time" class="select-input"></label>
         </div>
         <button id="ig-y-generate" class="btn btn-primary ig-generate-btn" type="button" disabled>주제를 먼저 선택해주세요</button>
+        <button id="ig-y-preview-plan" class="btn btn-secondary" type="button" disabled>7장 원고·명리 근거 먼저 보기 (무료)</button>
+        <div id="ig-y-plan-preview" class="ig-copy-review" aria-live="polite"></div>
+        <p class="hint-text">원고 미리보기와 기존 그림의 원고 업데이트는 추가 API 비용이 없습니다. 새 그림 생성은 API 비용 동의 후 실행합니다. 생성만으로 예약·게시되지 않습니다.</p>
         <div id="ig-y-generate-progress" class="ig-generate-progress hidden" role="status" aria-live="polite">
           <div class="ig-progress-head"><b>7장 시안을 만들고 있습니다</b><span id="ig-y-generate-elapsed">00:00</span></div>
           <div class="ig-progress-track"><i></i></div>
@@ -100,17 +105,27 @@
           <div><span class="ig-step-label">STEP 3</span><label class="field-label" style="margin:4px 0 0;">제작 시안 크게 보고 검수·승인</label></div>
           <div class="ig-draft-actions"><button id="ig-y-refresh-drafts" class="btn btn-secondary btn-small ig-inline-btn" type="button">↻ 시안 새로고침</button><span id="ig-y-draft-status" class="meta-badge">시안 확인 중</span></div>
         </div>
-        <div class="ig-range-row"><label>시안<select id="ig-y-draft-select" class="select-input"></select></label><label>예약 시각<input id="ig-y-schedule-display" class="select-input" readonly></label></div>
+        <div class="ig-range-row"><label>시안<select id="ig-y-draft-select" class="select-input"></select></label><label>현재 저장된 시각<output id="ig-y-schedule-display" class="select-input"></output></label></div>
+        <div class="ig-create-settings">
+          <label>예약 날짜 — 변경 가능<input id="ig-y-schedule-date" type="date" class="select-input"></label>
+          <label>예약 시간 — 변경 가능 (한국 시간)<input id="ig-y-schedule-time" type="time" class="select-input"></label>
+        </div>
+        <p class="hint-text">오후 6시 고정이 아닙니다. 날짜·시간을 직접 바꿔 예약하거나, 검수 후 ‘지금 바로 게시’를 누르세요. 예약은 클라우드 실행 주기에 따라 선택 시각 이후 처리될 수 있습니다.</p>
         <div id="ig-y-empty" class="ig-draft-empty hidden"><b>아직 볼 수 있는 시안이 없습니다.</b><span>위에서 주제를 하나 고른 뒤 ‘7장 이미지 시안 만들기’를 눌러주세요.</span></div>
         <div id="ig-y-preview-body">
           <div id="ig-y-summary" class="ig-calendar-summary"></div>
           <p class="ig-image-tip">사진을 누르면 원본 크기로 크게 볼 수 있습니다.</p>
           <div id="ig-y-card-grid" class="ig-card-grid"></div>
-          <button id="ig-y-regenerate" class="btn btn-secondary" type="button" disabled>같은 주제로 이미지 다시 만들기</button>
+          <button id="ig-y-regenerate" class="btn btn-secondary" type="button" disabled>기존 그림으로 원고·한자 업데이트 (추가 API 비용 없음)</button>
+          <p class="hint-text">위 예약 날짜·시간으로 새 시안을 만듭니다. 기존 그림과 원본 시안은 유지하며, 바뀐 내용에 장면이 어울리는지 다시 확인해주세요.</p>
+          <div id="ig-y-evidence" class="ig-copy-review"></div>
           <details class="ig-caption-box" open><summary>7장 문구·Instagram 캡션 검수</summary><div id="ig-y-copy-review" class="ig-copy-review"></div><pre id="ig-y-caption"></pre></details>
           <div id="ig-y-checks" class="ig-qa-grid"></div>
+          <p class="hint-text">자동 검사는 파일 규격·완전 동일 이미지·문구 분리만 확인합니다. 캐릭터, 내용, 오타, 장면의 유사성은 확대해서 직접 검수해주세요.</p>
+          <p class="hint-text" id="ig-y-schedule-target">연리지 실타래 @knot_saju의 선택한 시안만 처리합니다. 다른 시안과 팔자명가 예약은 변경하지 않습니다.</p>
           <label class="ig-confirm"><input id="ig-y-confirm" type="checkbox"> 7장 이미지·오타·흐름·사주 표현·캡션을 모두 확인했고 이 시안을 승인합니다.</label>
           <button id="ig-y-schedule" class="btn btn-primary" type="button" disabled>승인한 시안 예약하기</button>
+          <button id="ig-y-publish-now" class="btn btn-secondary" type="button" disabled>지금 바로 게시 · @knot_saju</button>
         </div>
         <p id="ig-y-result" class="hint-text"></p><p id="ig-y-error" class="error-text"></p>
       </div>
@@ -419,6 +434,15 @@
       <p id="ops-insight-text">분석 중...</p>
     </div>
 
+    <div class="card ops-insights-card" id="ops-instagram">
+      <div class="ia-heading"><div><span class="ia-eyebrow">INSTAGRAM INSIGHTS</span><h2>Instagram 성과 · 개선 실험</h2><p>얼마나 도달했고, 어떤 게시물에 반응했는지 확인하세요.</p></div><div class="ia-controls"><label>조회 기간<select id="ia-period"><option value="7">최근 7일</option><option value="30">최근 30일</option></select></label><button class="btn btn-secondary" id="ia-refresh" type="button">데이터 새로고침</button></div></div>
+      <p id="ig-analytics-message" class="hint-text" role="status" aria-live="polite">Instagram 실제 데이터를 불러옵니다…</p>
+      <div id="ig-analytics-dashboard"></div>
+      <details class="ia-connection"><summary>계정 연결 관리 · 통계 권한에 문제가 있을 때만</summary><div class="ig-draft-actions">
+        <button class="btn btn-secondary ig-inline-btn" type="button" onclick="connectInstagramInsights('palja').catch(e=>document.getElementById('ig-analytics-message').textContent=e.message)">팔자명가 통계 권한 연결</button>
+        <button class="btn btn-secondary ig-inline-btn" type="button" onclick="connectInstagramInsights('yeonliji').catch(e=>document.getElementById('ig-analytics-message').textContent=e.message)">연리지 통계 권한 연결</button>
+      </div></details>
+    </div>
     <div class="card ops-insights-card">
       <div class="preview-header">
         <label class="field-label" style="margin:0;">성과 분석 · 실제 Threads 데이터</label>
@@ -477,5 +501,6 @@
 
 <script src="app.js"></script>
 <script src="instagram.js"></script>
+<script src="instagram-analytics.js"></script>
 </body>
 </html>

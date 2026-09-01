@@ -10,7 +10,7 @@ const CACHE_DIR = path.join(__dirname, "..", "..", "data", "instagram-cache");
 async function renderCard(date, pageNumber) {
   if (!Number.isInteger(pageNumber) || pageNumber < 1 || pageNumber > 7) throw Object.assign(new Error("카드 번호는 1~7이어야 합니다."), { status: 400 });
   const pkg = generateFortunePackage(date);
-  const dir = path.join(CACHE_DIR, date);
+  const dir = path.join(CACHE_DIR, date, pkg.contentHash);
   const file = path.join(dir, `${pageNumber}.jpg`);
   if (fs.existsSync(file)) return { buffer: fs.readFileSync(file), pkg };
   const [rendered] = await renderFortunePackage(pkg, { pages: [pageNumber - 1] });
@@ -36,18 +36,16 @@ async function prepareAndScheduleRange(startDate, endDate) {
   if (packages.length > 75) throw Object.assign(new Error("한 번에 최대 75일까지 예약할 수 있습니다."), { status: 400 });
   // 먼저 전체 날짜의 만세력·문구·중복 검사를 모두 끝낸 후에만 외부 저장소를 건드린다.
   const prepared = [];
-  let fixedUrls = null;
-  for (const [index, pkg] of packages.entries()) {
-    const pages = index === 0 ? [0, 1, 2, 3, 4, 5, 6] : [0, 1, 2, 3, 4];
-    const rendered = await renderFortunePackage(pkg, { pages });
+  for (const pkg of packages) {
+    // Every package may have a different lesson and CTA; never reuse another date's tail.
+    const rendered = await renderFortunePackage(pkg);
     const urls = await mediaHost.publishImages(rendered.map(({ buffer, ext }) => ({ buffer, ext })));
-    if (index === 0) fixedUrls = urls.slice(5, 7);
     prepared.push({
       date: pkg.date,
       caption: pkg.caption,
       contentHash: pkg.contentHash,
       validation: pkg.validation,
-      images: [...urls.slice(0, 5), ...fixedUrls],
+      images: urls,
     });
   }
   const posts = await scheduleStore.addInstagramBatch(prepared);

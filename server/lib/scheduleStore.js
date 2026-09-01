@@ -1,5 +1,5 @@
 const crypto = require("crypto");
-const { readSchedule, writeSchedule } = require("./githubStore");
+const { readSchedule, writeSchedule, atomicUpdateSchedule } = require("./githubStore");
 
 // 매일 정확히 같은 분·초에 게시되면 "자동화 패턴"으로 감지될 위험이 있다(Threads 스팸 정책 —
 // 봇처럼 보이는 규칙적인 패턴을 스팸 신호로 본다). 그래서 예약 시각에 ±15분 랜덤 오차를 자동으로 준다.
@@ -104,11 +104,6 @@ async function addInstagramPost(item) {
   if (!/^\d{2}:\d{2}$/.test(item.time)) throw Object.assign(new Error("예약 시각은 HH:MM 형식이어야 합니다."), { status: 400 });
 
   const dedupeKey = item.dedupeKey || `instagram:${item.accountKey}:${item.date}:${item.contentHash}`;
-  const { posts, sha } = await readSchedule();
-  const basePosts = posts.slice();
-  if (posts.some((post) => post.status !== "canceled" && post.dedupeKey === dedupeKey)) {
-    throw Object.assign(new Error("같은 계정·콘텐츠의 Instagram 예약이 이미 있습니다."), { status: 409, code: "DUPLICATE_INSTAGRAM_CONTENT" });
-  }
   const post = {
     id: crypto.randomUUID(), platform: "instagram", accountKey: item.accountKey,
     accountId: item.accountId, accountLabel: item.accountLabel, text: item.caption,
@@ -118,9 +113,13 @@ async function addInstagramPost(item) {
     validation: item.validation, createdAt: new Date().toISOString(), publishedAt: null,
     publishedId: null, error: null, retryCount: 0,
   };
-  posts.push(post);
-  await writeSchedule(posts, { sha, message: `chore: schedule Instagram ${item.accountKey} ${item.date} ${item.time}`, basePosts });
-  return post;
+  return atomicUpdateSchedule(posts=>{
+    if(posts.some(p=>p.status!=="canceled" && p.platform==="instagram" && p.accountKey===item.accountKey &&
+      (p.dedupeKey===dedupeKey || p.contentHash===item.contentHash || (item.title && p.title===item.title)))) {
+      throw Object.assign(new Error("같은 계정·콘텐츠의 게시 또는 예약 기록이 이미 있습니다."),{status:409,code:"DUPLICATE_INSTAGRAM_CONTENT"});
+    }
+    posts.push(post);return post;
+  },`chore: schedule Instagram ${item.accountKey} ${item.date} ${item.time}`);
 }
 
 // 계정별로 최근에 이미 만든 글 목록 (게시완료 + 예약중, 취소/실패 제외)

@@ -1419,3 +1419,195 @@ textarea#draft-text {
   .ops-queue-acct { grid-area: acct; text-align: right; }
   .ops-queue-text { grid-area: text; white-space: normal; }
 }
+
+/* 연리지 실타래: 주제 선택 → 이미지 시안 → 승인 */
+.ig-topic-studio {
+  border-color: rgba(188, 77, 104, 0.3);
+  background: linear-gradient(145deg, rgba(135, 45, 70, 0.1), var(--card-bg) 48%);
+}
+
+.ig-step-label {
+  display: block;
+  color: #dc8d9b;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+}
+
+.ig-topic-header,
+.ig-draft-header { gap: 14px; }
+
+.ig-inline-btn {
+  width: auto;
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 8px 12px;
+}
+
+.ig-topic-help { margin: 0 0 14px; }
+
+.ig-topic-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.ig-topic-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 9px;
+  min-height: 138px;
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 12px;
+  background: rgba(10, 12, 16, 0.38);
+  color: var(--text);
+  font-family: var(--font);
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.14s, border-color 0.14s, background 0.14s, box-shadow 0.14s;
+}
+
+.ig-topic-card:hover {
+  transform: translateY(-1px);
+  border-color: rgba(226, 133, 149, 0.5);
+  background: rgba(126, 42, 65, 0.12);
+}
+
+.ig-topic-card.selected {
+  border-color: #df8696;
+  background: rgba(154, 53, 79, 0.18);
+  box-shadow: inset 0 0 0 1px rgba(223, 134, 150, 0.18), 0 8px 24px rgba(0, 0, 0, 0.16);
+}
+
+.ig-topic-number {
+  grid-row: 1 / span 2;
+  color: #ce7587;
+  font: 21px/1 Georgia, serif;
+}
+
+.ig-topic-category {
+  color: #d98d9a;
+  font-size: 10px;
+  font-weight: 750;
+}
+
+.ig-topic-card b,
+.ig-topic-card small,
+.ig-topic-card i { grid-column: 2; display: block; }
+.ig-topic-card b { margin-top: 2px; font-size: 14px; line-height: 1.35; }
+.ig-topic-card small { color: var(--text-dim); font-size: 11px; line-height: 1.45; }
+.ig-topic-card i { align-self: end; margin-top: 6px; color: #c89da5; font-size: 10px; font-style: normal; }
+
+.ig-topic-loading,
+.ig-topic-restart {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 120px;
+  padding: 20px;
+  border: 1px dashed rgba(255, 255, 255, 0.11);
+  border-radius: 12px;
+  color: var(--text-dim);
+  font-size: 12px;
+  text-align: center;
+}
+
+.ig-topic-restart { flex-direction: column; }
+.ig-topic-restart b { color: var(--danger); font-size: 13px; }
+.ig-topic-restart span { max-width: 600px; line-height: 1.55; }
+
+.ig-mini-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(222, 130, 147, 0.2);
+  border-top-color: #de8293;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.ig-selected-topic {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 3px 11px;
+  margin-top: 12px;
+  padding: 13px 15px;
+  border: 1px solid rgba(52, 201, 143, 0.24);
+  border-radius: 10px;
+  background: rgba(52, 201, 143, 0.07);
+}
+
+.ig-selected-topic span { grid-row: 1 / span 2; color: var(--success); font-size: 11px; font-weight: 750; }
+.ig-selected-topic b { color: var(--text); font-size: 13px; }
+.ig-selected-topic small { grid-column: 2; color: var(--text-dim); font-size: 11px; }
+
+.ig-create-settings {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 14px 0 10px;
+}
+
+.ig-create-settings label {
+  color: var(--text-dim);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.ig-create-settings input { width: 100%; margin-top: 5px; }
+.ig-generate-btn { min-height: 49px; background: linear-gradient(90deg, #c95e76, #e08a94); color: #241014; }
+.ig-generate-btn:hover { background: linear-gradient(90deg, #d76d82, #ea9ba3); }
+
+.ig-generate-progress {
+  margin-top: 12px;
+  padding: 14px;
+  border: 1px solid rgba(222, 130, 147, 0.2);
+  border-radius: 11px;
+  background: rgba(139, 45, 70, 0.08);
+}
+
+.ig-progress-head { display: flex; justify-content: space-between; gap: 10px; font-size: 12px; }
+.ig-progress-head b { color: #efb2bc; }
+.ig-progress-head span { color: var(--text-dim); font-variant-numeric: tabular-nums; }
+.ig-progress-track { height: 6px; margin: 10px 0; overflow: hidden; border-radius: 99px; background: rgba(255, 255, 255, 0.07); }
+.ig-progress-track i { display: block; width: 42%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #c95770, #efacb5); animation: ig-progress-slide 1.7s ease-in-out infinite alternate; }
+.ig-generate-progress p { margin: 0; color: var(--text-dim); font-size: 11px; line-height: 1.5; }
+
+@keyframes ig-progress-slide {
+  from { transform: translateX(-25%); }
+  to { transform: translateX(165%); }
+}
+
+.ig-draft-actions { display: flex; align-items: center; gap: 8px; }
+.ig-draft-empty {
+  display: grid;
+  place-items: center;
+  gap: 6px;
+  min-height: 180px;
+  margin-top: 12px;
+  padding: 25px;
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  text-align: center;
+}
+.ig-draft-empty b { color: var(--text); font-size: 14px; }
+.ig-draft-empty span { color: var(--text-dim); font-size: 12px; }
+.ig-image-tip { margin: -2px 0 9px; color: #d296a1; font-size: 11px; }
+.ig-card-grid figure a { display: block; position: relative; overflow: hidden; }
+.ig-card-grid figure a:after { content: "크게 보기 ↗"; position: absolute; right: 7px; bottom: 7px; padding: 4px 6px; border-radius: 5px; background: rgba(0, 0, 0, 0.7); color: #fff; font-size: 9px; opacity: 0; transition: opacity 0.14s; }
+.ig-card-grid figure a:hover:after { opacity: 1; }
+.ig-card-grid figure a:hover img { transform: scale(1.015); }
+.ig-card-grid figure img { transition: transform 0.16s; }
+#ig-y-regenerate { margin-top: 12px; }
+
+@media (max-width: 720px) {
+  .ig-topic-header,
+  .ig-draft-header { align-items: flex-start; flex-direction: column; }
+  .ig-topic-grid,
+  .ig-create-settings { grid-template-columns: 1fr; }
+  .ig-topic-card { min-height: 128px; }
+  .ig-draft-actions { width: 100%; justify-content: space-between; }
+}

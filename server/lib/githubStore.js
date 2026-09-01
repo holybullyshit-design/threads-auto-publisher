@@ -55,9 +55,8 @@ async function readSchedule() {
   let posts = [];
   try {
     posts = JSON.parse(content);
-  } catch {
-    posts = [];
-  }
+  } catch { throw new Error('예약 목록 JSON이 손상되어 읽기·쓰기를 중단했습니다.'); }
+  if(!Array.isArray(posts)) throw new Error('예약 목록 형식이 올바르지 않습니다.');
   return { posts, sha: data.sha };
 }
 
@@ -144,4 +143,21 @@ async function writeJsonFile(filePath, data, message) {
   return { sha: data2.content.sha };
 }
 
-module.exports = { readSchedule, writeSchedule, writeJsonFile, SCHEDULE_PATH };
+// Re-evaluate the mutation after a SHA conflict; never merge a stale publish claim.
+async function atomicUpdateSchedule(mutate, message) {
+  const {repo}=getConfig();
+  for(let attempt=0;attempt<3;attempt++){
+    const {posts,sha}=await readSchedule(),next=structuredClone(posts);
+    const result=mutate(next);
+    if(JSON.stringify(next)===JSON.stringify(posts)) return result;
+    const res=await githubRequest(`/repos/${repo}/contents/${SCHEDULE_PATH}`,{
+      method:'PUT',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({sha:sha||undefined,message,content:Buffer.from(JSON.stringify(next,null,2)).toString('base64')})
+    });
+    if(res.ok) return result;
+    if(res.status===409||res.status===422) continue;
+    throw new Error('게시 기록 저장 실패 (HTTP '+res.status+'). 자동 재시도하지 않습니다.');
+  }
+  throw new Error('동시 변경이 있어 처리를 중단했습니다. 상태를 다시 확인해주세요.');
+}
+module.exports = { readSchedule, writeSchedule, writeJsonFile, atomicUpdateSchedule, SCHEDULE_PATH };

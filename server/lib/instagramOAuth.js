@@ -7,6 +7,7 @@ const LONG_TOKEN_URL = "https://graph.instagram.com/access_token";
 const REFRESH_URL = "https://graph.instagram.com/refresh_access_token";
 const PROFILE_URL = "https://graph.instagram.com/v24.0/me";
 const SCOPES = "instagram_business_basic,instagram_business_content_publish";
+const INSIGHTS_SCOPE = "instagram_business_manage_insights";
 
 function getConfig() {
   const appId = process.env.INSTAGRAM_APP_ID;
@@ -24,13 +25,13 @@ function isConfigured() {
   return Boolean(process.env.INSTAGRAM_APP_ID && process.env.INSTAGRAM_APP_SECRET && process.env.INSTAGRAM_REDIRECT_URI);
 }
 
-function buildAuthorizeUrl(state) {
+function buildAuthorizeUrl(state, { insights = false } = {}) {
   const { appId, redirectUri } = getConfig();
   const url = new URL(AUTHORIZE_URL);
   url.searchParams.set("client_id", appId);
   url.searchParams.set("redirect_uri", redirectUri);
   url.searchParams.set("response_type", "code");
-  url.searchParams.set("scope", SCOPES);
+  url.searchParams.set("scope", insights ? SCOPES + "," + INSIGHTS_SCOPE : SCOPES);
   url.searchParams.set("state", state);
   url.searchParams.set("enable_fb_login", "0");
   url.searchParams.set("force_authentication", "1");
@@ -70,7 +71,9 @@ async function exchangeLongToken(shortToken) {
 
 async function fetchProfile(accessToken) {
   const url = new URL(PROFILE_URL);
-  url.searchParams.set("fields", "user_id,username,name,account_type");
+  // Identity is all the callback needs; optional profile fields can fail for
+  // otherwise valid Instagram Login grants.
+  url.searchParams.set("fields", "user_id,username");
   url.searchParams.set("access_token", accessToken);
   const response = await fetch(url);
   const data = await response.json().catch(() => ({}));
@@ -92,4 +95,4 @@ async function refreshLongToken(accessToken) {
   return { accessToken: data.access_token, expiresIn: Number(data.expires_in || 0) };
 }
 
-module.exports = { isConfigured, buildAuthorizeUrl, exchangeCode, exchangeLongToken, fetchProfile, refreshLongToken, SCOPES };
+module.exports = { isConfigured, buildAuthorizeUrl, exchangeCode, exchangeLongToken, fetchProfile, refreshLongToken, SCOPES, INSIGHTS_SCOPE };

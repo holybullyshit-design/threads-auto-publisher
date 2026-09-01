@@ -31,6 +31,16 @@ test("Instagram OAuth 설정이 없으면 연결을 시작하지 않는다", () 
   assert.throws(() => instagramOAuth.buildAuthorizeUrl("state"), /Instagram 앱 ID/);
 });
 
+test("통계 연결에서만 통계 읽기 권한을 추가하고 게시 권한은 유지한다", () => {
+  withConfig();
+  const url = new URL(instagramOAuth.buildAuthorizeUrl("insights-state", { insights: true }));
+  assert.deepEqual(url.searchParams.get("scope").split(","), [
+    "instagram_business_basic", "instagram_business_content_publish", "instagram_business_manage_insights",
+  ]);
+  assert.equal(url.searchParams.get("state"), "insights-state");
+  assert.equal(new URL(instagramOAuth.buildAuthorizeUrl("normal")).searchParams.get("scope"), instagramOAuth.SCOPES);
+});
+
 test("단기 토큰 응답과 60일 장기 토큰 응답을 정확히 해석한다", async () => {
   withConfig();
   const originalFetch = global.fetch;
@@ -47,4 +57,14 @@ test("단기 토큰 응답과 60일 장기 토큰 응답을 정확히 해석한�
   } finally {
     global.fetch = originalFetch;
   }
+});
+
+test("승인 후 계정 확인은 연결에 필요한 최소 필드만 요청한다", async () => {
+  const originalFetch = global.fetch;
+  global.fetch = async url => {
+    assert.equal(new URL(url).searchParams.get("fields"), "user_id,username");
+    return { ok: true, json: async () => ({user_id: "9988", username: "knot_saju"}) };
+  };
+  try { assert.equal((await instagramOAuth.fetchProfile("test-token")).username, "knot_saju"); }
+  finally { global.fetch = originalFetch; }
 });
