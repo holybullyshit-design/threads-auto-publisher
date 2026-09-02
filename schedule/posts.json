@@ -4530,8 +4530,11 @@
     "scheduledAt": "2026-09-02T00:04:43.991Z",
     "createdAt": "2026-08-29T05:30:35.330Z",
     "publishedAt": null,
-    "publishedId": null,
-    "error": null
+    "publishedId": "17974838051922465",
+    "error": null,
+    "chainPublishedIds": [
+      "17974838051922465"
+    ]
   },
   {
     "id": "db520bdf-f9af-4624-876a-67a7008b0187",
