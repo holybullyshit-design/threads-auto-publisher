@@ -4308,8 +4308,11 @@
     "scheduledAt": "2026-09-01T23:53:10.398Z",
     "createdAt": "2026-08-29T03:27:23.497Z",
     "publishedAt": null,
-    "publishedId": null,
-    "error": null
+    "publishedId": "18442098301132523",
+    "error": null,
+    "chainPublishedIds": [
+      "18442098301132523"
+    ]
   },
   {
     "id": "f6a4497b-13d7-4ef1-9fea-cbe11d147f4a",
