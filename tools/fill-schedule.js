@@ -132,6 +132,37 @@ function countExistingByDate(posts, accountId, mode) {
   return counts;
 }
 
+// 계정의 "그 날짜에 이미 예약된 실제 시:분" 목록 - 댓글유도 글처럼 완전히 다른 경로로 생긴
+// 글까지 전부 포함한다(viralEngine 플래그나 상태와 무관하게, canceled만 제외). 아래
+// MIN_GAP_MINUTES 충돌 회피에서 쓴다.
+function buildExistingTimesByDate(posts, accountId) {
+  const byDate = {};
+  posts
+    .filter((p) => p.accountId === accountId && p.status !== "canceled" && p.platform !== "instagram" && p.scheduledAt)
+    .forEach((p) => {
+      const { date } = toKstDateHour(p.scheduledAt);
+      (byDate[date] = byDate[date] || []).push(new Date(p.scheduledAt).getTime());
+    });
+  return byDate;
+}
+
+// 2026-09-02 실측: 연리지실타래/아해사주가 매일 오후 5시경 댓글유도 글과 바이럴 4번째 슬롯이
+// 같은 17시대를 노려서, 1분~15분 간격으로 두 글이 거의 붙어서 나가고 있었다(심한 날은 18초
+// 차이). 팔자궤도도 같은 시각이 두 번 겹친 사례 1건 발견 - 서로 다른 실행이 같은 계산 결과를
+// 검증 없이 그대로 써서 생긴 우연. 그래서 새 슬롯 시각을 정할 때, 그 날짜에 이미 있는 실제
+// 시각들(댓글유도 글 포함)과 최소 간격을 강제한다 - 너무 가까우면 뒤로 밀어낸다.
+const MIN_GAP_MINUTES = 45;
+function resolveCollisionFreeTime(candidateUtcMs, existingTimesMs) {
+  let t = candidateUtcMs;
+  const minGapMs = MIN_GAP_MINUTES * 60 * 1000;
+  for (let guard = 0; guard < 20; guard++) {
+    const clash = existingTimesMs.find((e) => Math.abs(e - t) < minGapMs);
+    if (!clash) return t;
+    t += minGapMs; // 겹치면 최소 간격만큼 뒤로 민다 - 같은 방향으로만 밀어야 순서가 안 꼬인다
+  }
+  return t; // 20번 밀어도 안 풀리면(사실상 불가능한 밀집) 마지막 값 그대로 반환
+}
+
 async function writeThreadDraftWithRetry(args) {
   let lastErr;
   for (let attempt = 1; attempt <= RETRY_ATTEMPTS; attempt++) {
@@ -193,18 +224,25 @@ async function main() {
 
   const { posts: currentPosts } = await readSchedule();
   const existingCounts = countExistingByDate(currentPosts, account.id, MODE);
+  const existingTimesByDate = buildExistingTimesByDate(currentPosts, account.id);
 
   // 날짜별로 "이미 채워진 개수"만큼은 빼고, 부족한 만큼만 오늘 목표(slotsPerDay)에 채운다.
-  const jobs = []; // { dateStr, slotTime }
+  const jobs = []; // { dateStr, slotTime, utcTime }
   const todayStr = nowKst().toISOString().slice(0, 10);
   let cursor = todayStr;
   while (cursor <= END_DATE) {
     const already = existingCounts[cursor] || 0;
     const need = Math.max(0, slotsPerDay - already);
+    const dayExisting = (existingTimesByDate[cursor] = existingTimesByDate[cursor] || []);
     for (let i = 0; i < need; i++) {
       const slotTime = dailySlotTimes[(already + i) % dailySlotTimes.length];
-      const utcTime = kstSlotToUtc(cursor, slotTime);
-      if (utcTime.getTime() > Date.now()) jobs.push({ dateStr: cursor, slotTime });
+      // 지터(±15분)를 먼저 적용한 뒤에 충돌 회피를 해야, 지터가 다시 다른 글과 가깝게 만드는
+      // 걸 막을 수 있다 - 순서를 반대로 하면(회피 먼저, 지터 나중) 지터가 회피 결과를 무효화함.
+      const jitteredMs = withJitter(kstSlotToUtc(cursor, slotTime)).getTime();
+      const utcMs = resolveCollisionFreeTime(jitteredMs, dayExisting);
+      dayExisting.push(utcMs); // 같은 날짜의 다음 잡(job)도 이 시각을 피해가도록 바로 등록
+      const utcTime = new Date(utcMs);
+      if (utcTime.getTime() > Date.now()) jobs.push({ dateStr: cursor, slotTime, utcTime });
     }
     cursor = addDaysStr(cursor, 1);
   }
@@ -223,7 +261,7 @@ async function main() {
 
   let saved = 0;
   for (let i = 0; i < jobs.length; i++) {
-    const { dateStr, slotTime } = jobs[i];
+    const { dateStr, slotTime, utcTime: plannedUtcTime } = jobs[i];
     console.log(`[${i + 1}/${jobs.length}] 생성 중... (예정: ${dateStr} ${slotTime} KST)`);
     let draft;
     try {
@@ -241,8 +279,9 @@ async function main() {
       console.log(`  -> ${RETRY_ATTEMPTS}번 다 실패, 이 슬롯은 건너뜀: ${err.message}`);
       continue;
     }
-    const when = withJitter(kstSlotToUtc(dateStr, slotTime));
-    await saveOnePost(account, draft, when);
+    // 이미 지터+충돌회피까지 끝낸 시각을 그대로 쓴다 - 여기서 다시 계산하면(kstSlotToUtc를
+    // 다시 부르면) 위에서 구한 충돌회피 결과가 통째로 날아간다.
+    await saveOnePost(account, draft, plannedUtcTime);
     saved++;
     console.log(`  -> 저장됨. 소재: ${draft.topic} / 훅: ${draft.hookFormat} / 파트 ${1 + draft.replyChain.length}개`);
   }
