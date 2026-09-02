@@ -6810,9 +6810,12 @@
     "scheduledAt": "2026-09-01T23:48:00.000Z",
     "createdAt": "2026-09-01T06:57:43.379Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18143709604590872",
     "error": null,
-    "viralEngine": true
+    "viralEngine": true,
+    "chainPublishedIds": [
+      "18143709604590872"
+    ]
   },
   {
     "id": "92e48739-faae-48b1-889c-ed873aaac991",
