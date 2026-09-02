@@ -6934,9 +6934,12 @@
     "scheduledAt": "2026-09-02T02:13:20.729Z",
     "createdAt": "2026-09-01T07:10:52.730Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17906709498508723",
     "error": null,
-    "viralEngine": true
+    "viralEngine": true,
+    "chainPublishedIds": [
+      "17906709498508723"
+    ]
   },
   {
     "id": "508aab29-77d4-478e-a178-26cb194f9d06",
