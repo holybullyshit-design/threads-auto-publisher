@@ -35,19 +35,30 @@ function minutesToHHMM(totalMinutes) {
   return `${String(h).padStart(2, "0")}:${String(m % 60).padStart(2, "0")}`;
 }
 
-// tools/fill-schedule.js와 동일한 로직(그 파일 주석 참고, 3차 개정 - 간격 2~3시간 엄수 우선).
-// 오전 코어(7~9시)만 고정 앵커, 나머지는 순서대로 2~3시간씩 쌓는다 - "코어 시간대 커버 +
-// 21시 이후 마감 + 간격 2~3시간"을 동시에 만족시키려던 이전 버전이 산수상 불가능해서(사용자
-// 확인 결과 간격 엄수가 우선) 되돌렸다.
-function generateDailySlots() {
+// tools/fill-schedule.js와 동일한 로직(그 파일 주석 참고, 4차 개정 - 앵커 회피 방식).
+// 오전 코어(7~9시)만 고정 앵커, 나머지는 순서대로 2~3시간씩 쌓는다. 댓글유도 글(anchorMin,
+// KST 분 단위)이 있으면 그 시각과 2시간 미만으로 가까워지는 슬롯을 "앵커+2시간"으로 건너뛰어
+// 피해간다 - "5개 만들고 가까운 거 버리기" 방식은 버린 자리 양옆 간격이 안 보장돼서 실측으로
+// 2시간 미만 간격 사고가 났었다.
+function generateDailySlots(count = 5, anchorMin = null) {
   const AM_CORE_START = 7 * 60, AM_CORE_END = 9 * 60;
   const MIN_GAP_MIN = 120, MAX_GAP_MIN = 180;
+  const ANCHOR_MARGIN_MIN = 120;
 
   const slots = [AM_CORE_START + Math.random() * (AM_CORE_END - AM_CORE_START)];
-  for (let i = 1; i < 5; i++) {
-    slots.push(slots[slots.length - 1] + MIN_GAP_MIN + Math.random() * (MAX_GAP_MIN - MIN_GAP_MIN));
+  while (slots.length < count) {
+    let next = slots[slots.length - 1] + MIN_GAP_MIN + Math.random() * (MAX_GAP_MIN - MIN_GAP_MIN);
+    if (anchorMin !== null && Math.abs(next - anchorMin) < ANCHOR_MARGIN_MIN) {
+      next = anchorMin + ANCHOR_MARGIN_MIN;
+    }
+    slots.push(next);
   }
   return slots.map(minutesToHHMM);
+}
+
+function msToKstMinuteOfDay(ms) {
+  const k = new Date(ms + 9 * 60 * 60 * 1000);
+  return k.getUTCHours() * 60 + k.getUTCMinutes();
 }
 
 function isViralPost(p) {
@@ -79,23 +90,8 @@ async function main() {
           if (targets.length === 0) continue;
         }
 
-        let slots = generateDailySlots();
-        if (VIRAL_ACCOUNTS.has(acct)) {
-          // 오전코어(0) 앵커만 버리지 않는다 - 나머지(1~4) 중에서 댓글유도 글과 가장 가까운
-          // 자리를 대신하게 한다(fill-schedule.js와 동일한 이유 - 그 파일 주석 참고).
-          const DROPPABLE_INDICES = [1, 2, 3, 4];
-          const slotMs = slots.map((hhmm) => kstSlotToUtc(day, hhmm).getTime());
-          let dropIdx = DROPPABLE_INDICES[0];
-          if (anchorMs !== null) {
-            let best = Infinity;
-            DROPPABLE_INDICES.forEach((idx) => {
-              const dist = Math.abs(slotMs[idx] - anchorMs);
-              if (dist < best) { best = dist; dropIdx = idx; }
-            });
-          }
-          slots = slots.filter((_, idx) => idx !== dropIdx);
-        }
-        slots = slots.slice(0, targets.length); // 대상 개수만큼만(보통 정확히 맞음)
+        const anchorMin = anchorMs !== null ? msToKstMinuteOfDay(anchorMs) : null;
+        let slots = generateDailySlots(targets.length, anchorMin); // 앵커 있으면 자동 회피
 
         targets.forEach((p, idx) => {
           const hhmm = slots[idx % slots.length];

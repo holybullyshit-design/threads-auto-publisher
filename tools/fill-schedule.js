@@ -92,6 +92,12 @@ function toKstDateHour(iso) {
   return { date: k.toISOString().slice(0, 10), hour: k.getUTCHours() };
 }
 
+// 절대 시각(ms)을 KST 기준 "하루 중 몇 분째"로 바꾼다 - generateDailySlots의 앵커 회피에 씀.
+function msToKstMinuteOfDay(ms) {
+  const k = new Date(ms + 9 * 60 * 60 * 1000);
+  return k.getUTCHours() * 60 + k.getUTCMinutes();
+}
+
 function addDaysStr(dateStr, days) {
   return new Date(Date.parse(`${dateStr}T00:00:00Z`) + days * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
 }
@@ -200,17 +206,28 @@ function minutesToHHMM(totalMinutes) {
 // 최대 12시간 - 07~08시 시작이면 아무리 늦어도 19~20시가 한계라 21시 이후 마감과 충돌).
 // 사용자에게 우선순위를 확인한 결과 - "간격 2~3시간 엄수"가 우선이고, 저녁 코어(19~21시)는
 // "간격을 최대(3시간)쪽으로 당기면 자주 걸리는" 정도로 충분하다고 결정됨. 그래서 1번째 글만
-// 오전 코어(07:00~09:00)에 고정하고, 나머지 4개는 그냥 2~3시간 간격을 순서대로 쌓는다 -
-// 이러면 산술적으로 마지막 글은 항상 15:00~21:00 사이에 들어온다(21시를 절대 못 넘지만,
-// 21시를 억지로 넘기려던 이전 설계가 2~3시간 간격을 어겼던 근본 원인이었다).
+// 오전 코어(07:00~09:00)에 고정하고, 나머지는 그냥 2~3시간 간격을 순서대로 쌓는다.
 // "매일 새로 랜덤 계산"하라는 지시도 있어서, 이 함수를 날짜마다 새로 호출한다(호출부 참고).
-function generateDailySlots() {
+//
+// 2026-09-02 4차 개정: 연리지실타래/아해사주는 댓글유도 글(다른 경로, 내가 시각을 못 바꿈)이
+// 하루 안 어딘가에 이미 박혀있는데, 예전엔 "5개 생성 후 그 글과 가장 가까운 걸 버리는" 방식을
+// 썼다 - 그런데 이러면 "버리고 남은 두 슬롯 사이" 간격은 안 보장돼서, 댓글유도 글 바로 옆
+// 슬롯이 2시간 미만으로 붙는 사고가 실측 9건 나왔다. 그래서 "장애물 회피" 방식으로 바꿨다:
+// 시퀀스를 순서대로 쌓다가 앵커(댓글유도 글) 시각과 2시간 미만으로 가까워지면, 그 슬롯을
+// 아예 "앵커 시각 + 2시간"으로 건너뛰고 이어간다 - 앵커 자체는 절대 건드리지 않고, 내가
+// 만드는 슬롯만 앵커를 피해서 최소 2시간 여유를 항상 확보한다.
+function generateDailySlots(count = 5, anchorMin = null) {
   const AM_CORE_START = 7 * 60, AM_CORE_END = 9 * 60; // 07:00~09:00
   const MIN_GAP_MIN = 120, MAX_GAP_MIN = 180; // 2~3시간, 예외 없이 매 구간 적용
+  const ANCHOR_MARGIN_MIN = 120; // 앵커와의 최소 여유도 동일하게 2시간
 
   const slots = [AM_CORE_START + Math.random() * (AM_CORE_END - AM_CORE_START)];
-  for (let i = 1; i < 5; i++) {
-    slots.push(slots[slots.length - 1] + MIN_GAP_MIN + Math.random() * (MAX_GAP_MIN - MIN_GAP_MIN));
+  while (slots.length < count) {
+    let next = slots[slots.length - 1] + MIN_GAP_MIN + Math.random() * (MAX_GAP_MIN - MIN_GAP_MIN);
+    if (anchorMin !== null && Math.abs(next - anchorMin) < ANCHOR_MARGIN_MIN) {
+      next = anchorMin + ANCHOR_MARGIN_MIN; // 앵커에 너무 가까우면 앵커 이후로 넘겨서 순서를 지킨다
+    }
+    slots.push(next);
   }
   return slots.map(minutesToHHMM);
 }
@@ -249,26 +266,12 @@ async function main() {
     const already = existingCounts[cursor] || 0;
     const need = Math.max(0, targetSlotsPerDay - already);
     if (need > 0) {
-      let dayLabels = generateDailySlots(); // "07:12" 같은 라벨 5개(오전 코어 앵커 + 2~3시간 간격), 매일 새로 뽑음
+      let anchorMin = null;
       if (MODE === "viral-morning") {
-        // generateDailySlots()는 항상 정렬된 [오전코어, +2~3h, +2~3h, +2~3h, +2~3h] 순서로
-        // 나온다. 댓글유도 글 하나를 위해 자리 하나를 뺄 때, 오전코어(0) 앵커만 절대 버리지
-        // 않는다(가운데~마지막 1~4 중에서 댓글유도 글과 가장 가까운 걸 골라 그 자리를
-        // 대신하게 한다 - 그래야 실제 5개(내 4개+댓글유도 1개) 전체 간격이 여전히 2~3시간대로
-        // 유지된다).
-        const DROPPABLE_INDICES = [1, 2, 3, 4];
         const nonViral = nonViralTimesByDate[cursor] || [];
-        const dayMs = dayLabels.map((hhmm) => kstSlotToUtc(cursor, hhmm).getTime());
-        let dropIdx = DROPPABLE_INDICES[0]; // 기본값: 댓글유도 글이 아직 없으면 중간 슬롯 하나를 버림
-        if (nonViral.length > 0) {
-          let best = Infinity;
-          DROPPABLE_INDICES.forEach((idx) => {
-            const dist = Math.min(...nonViral.map((n) => Math.abs(n - dayMs[idx])));
-            if (dist < best) { best = dist; dropIdx = idx; }
-          });
-        }
-        dayLabels = dayLabels.filter((_, idx) => idx !== dropIdx);
+        if (nonViral.length > 0) anchorMin = msToKstMinuteOfDay(nonViral[0]); // 댓글유도 글의 KST 분(minute-of-day)
       }
+      const dayLabels = generateDailySlots(targetSlotsPerDay, anchorMin); // 매일 새로 뽑음, 앵커 있으면 자동 회피
       console.log(`  ${cursor} 슬롯: ${dayLabels.join(", ")}`);
 
       const dayExisting = (existingTimesByDate[cursor] = existingTimesByDate[cursor] || []);
