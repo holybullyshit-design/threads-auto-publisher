@@ -104,7 +104,16 @@ async function main() {
 
         targets.forEach((p, idx) => {
           const hhmm = slots[idx % slots.length];
-          const newIso = kstSlotToUtc(day, hhmm).toISOString();
+          const newMs = kstSlotToUtc(day, hhmm).getTime();
+          // 2026-09-02 실측 사고: "오늘"처럼 하루가 이미 반쯤 지난 날짜를 재배치하면, 새로
+          // 뽑은 07~09시/중간 슬롯이 지금 시각보다 과거일 수 있다 - 그런 시각을 그대로 넣으면
+          // 그 글이 "이미 지난 예약"이 되어 다음 5분 주기 실행 때 곧바로(다른 계정 것과 함께)
+          // 한꺼번에 발행돼버린다(실제로 5개 계정에서 전부 발생, 15시~15시42분 사이에 몰아서
+          // 게시됨). 그래서 지금 시각 + 여유(SAFETY_BUFFER_MS)보다 이른 시각은 아예 배정하지
+          // 않고 그 글의 기존 예약 시각을 그대로 둔다.
+          const SAFETY_BUFFER_MS = 15 * 60 * 1000;
+          if (newMs <= Date.now() + SAFETY_BUFFER_MS) return;
+          const newIso = new Date(newMs).toISOString();
           if (newIso !== p.scheduledAt) {
             changes.push({ account: acct, day, id: p.id, before: p.scheduledAt, after: newIso, text: (p.text || "").slice(0, 25) });
             if (!DRY_RUN) p.scheduledAt = newIso;
