@@ -2690,9 +2690,12 @@
     "scheduledAt": "2026-09-02T06:11:42.464Z",
     "createdAt": "2026-08-29T01:32:56.077Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17980788138074507",
     "error": null,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "17980788138074507"
+    ]
   },
   {
     "id": "b6099635-6f20-4440-be3b-bdc8a31cdde8",
