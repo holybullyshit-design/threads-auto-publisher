@@ -553,11 +553,11 @@
     "accountId": "6b8b637e-1629-4844-9a1f-9728c420154e",
     "accountLabel": "엄마가 직접 써본 꿀템",
     "text": "딸아 너 방금 나한테 논리로 이긴 거 알아?\n\n동생 장난감 뺏은 거 혼내는데\n\"엄마, 근데 엄마도 아까 내 과자 한입만 하고 안 물어봤잖아\"\n\n...\n\n\"그거랑 이거랑 같아? 다르잖아\"\n\"뭐가 다른데. 허락 안 받고 가져간 거 똑같은데\"\n\n할 말이 없어서 그냥 \"밥 먹자\" 함",
-    "status": "scheduled",
+    "status": "published",
     "scheduledAt": "2026-09-02T22:21:34.467Z",
     "createdAt": "2026-08-24T07:52:17.165Z",
-    "publishedAt": null,
-    "publishedId": null,
+    "publishedAt": "2026-09-02T22:26:08.168Z",
+    "publishedId": "18115649407990665",
     "error": null
   },
   {
