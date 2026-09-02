@@ -15,21 +15,13 @@ const accountsStore = require("../server/lib/accountsStore");
 const { readSchedule, writeSchedule } = require("../server/lib/githubStore");
 const { withJitter } = require("../server/lib/scheduleStore");
 const { writeThreadDraft, TOPICS, pickTopicIds, pickHookFormatIds } = require("../server/skills/taebaekSajuDraftWriter");
-const { computeSlotsWithMorningAnchor } = require("./lib/optimalSlots");
 
 const RETRY_ATTEMPTS = 3;
-// 2026-08-30: "몇 시에 올릴지"를 매번 새로 정하지 않고, 실제 Threads Insights 데이터에서
-// 코드로 계산한다(tools/lib/optimalSlots.js - LLM 호출 없음, 토큰 비용 0). 서버가 매시간
-// 백그라운드로 데이터를 갱신하니, 이 파일을 다시 실행할 때마다 자동으로 최신 데이터 기준으로
-// 재계산된다 - 사람이 다시 판단할 필요도, 대화로 다시 분석할 필요도 없다.
-// 하루를(새벽 제외) 5등분해서 구간마다 대표 시각을 뽑되, 그 구간 안에서 실제 조회수가 높았던
-// 쪽으로 시각을 당긴다 - "하루 전체에 골고루 분산" + "데이터가 좋은 쪽으로 미세조정"을 동시에
-// 만족시킨다. 표본이 아직 부족하면(계정 초기 등) 조용히 기존 안전값으로 대체된다.
-const COMPREHENSIVE_ACCOUNT_LABELS = ["팔자명가", "팔자궤도", "팔자장인"];
-// 2026-08-30 2차 변경: 연리지실타래/아해사주도 "바이럴(팔자장인 스타일)" 슬롯을 하루 1개에서
-// 4개로 늘리고, 시간도 고정 09:00이 아니라 데이터 기반으로 하루에 분산시킨다(사용자 요청).
-// 댓글 유도형(생년월일시 남기는 상담체, 오후 5시경 1개)은 이 스크립트가 만드는 게 아니라
-// 완전히 별도 경로에서 생성되는 기존 글이라 - 손대지 않는다.
+// 2026-09-02: 시간대 배치는 데이터 기반 계산(computeSlotsWithMorningAnchor, tools/lib/optimalSlots.js)
+// 대신 사용자가 준 명시적 규칙(generateDailySlots 참고 - 07~08시 시작, 글당 2~3시간 간격,
+// 22시 마지노선, 매일 새로 랜덤)을 쓴다. optimalSlots.js 자체는 남겨뒀다(다른 곳에서 참고용).
+// 댓글 유도형(생년월일시 남기는 상담체, 연리지실타래/아해사주 하루 1개)은 이 스크립트가 만드는
+// 게 아니라 완전히 별도 경로에서 생성되는 기존 글이라 - 손대지 않는다(시간도 고정 가정 안 함).
 const VIRAL_MORNING_DAILY_SLOTS = 4;
 
 const VIRAL_PROFILES = {
@@ -197,52 +189,92 @@ async function saveOnePost(account, draft, when) {
   return newPost;
 }
 
+function minutesToHHMM(totalMinutes) {
+  const m = Math.round(totalMinutes);
+  const h = Math.floor(m / 60);
+  return `${String(h).padStart(2, "0")}:${String(m % 60).padStart(2, "0")}`;
+}
+
+// 2026-09-02 사용자 지시: 데이터 기반 시간대 계산(computeSlotsWithMorningAnchor) 대신, 하루
+// 5개 기준 명시적 규칙을 쓴다 - 첫 글은 아침 7~8시 사이(출근하는 사람도 보게), 마지막 글은
+// 오후 10시(22:00)를 절대 넘기지 않고, 글과 글 사이는 최소 2시간~최대 3시간. "매일 새로
+// 랜덤 계산"하라는 지시도 있어서, 실행할 때마다 한 번 계산해서 모든 날짜에 재사용하지 않고
+// 이 함수를 날짜마다 새로 호출한다(호출부 참고) - 매일 리듬이 조금씩 달라진다.
+function generateDailySlots(count = 5) {
+  const DAY_START_MIN = 7 * 60; // 07:00
+  const DAY_START_SPAN_MIN = 60; // ~08:00까지
+  const MAX_END_MIN = 22 * 60; // 22:00 마지노선
+  const MIN_GAP_MIN = 120;
+  const MAX_GAP_MIN = 180;
+  const slots = [DAY_START_MIN + Math.random() * DAY_START_SPAN_MIN];
+  for (let i = 1; i < count; i++) {
+    const gap = MIN_GAP_MIN + Math.random() * (MAX_GAP_MIN - MIN_GAP_MIN);
+    slots.push(Math.min(slots[slots.length - 1] + gap, MAX_END_MIN));
+  }
+  return slots.map(minutesToHHMM);
+}
+
 async function main() {
   const account = findAccount();
   if (!account) throw new Error(`계정을 찾을 수 없습니다: "${ACCOUNT_LABEL}"`);
 
-  let dailySlotTimes;
-  if (MODE === "comprehensive") {
-    const { slots, usedFallback } = computeSlotsWithMorningAnchor(COMPREHENSIVE_ACCOUNT_LABELS, 5);
-    dailySlotTimes = slots;
-    console.log(
-      `시간대 ${usedFallback ? "(데이터 부족 - 기본값 사용)" : "(통근시간 고정 + 나머지 실측 데이터 기반)"}: ${slots.join(", ")}`
-    );
-  } else {
-    // 연리지실타래/아해사주의 바이럴 슬롯도 같은 계산기를 쓴다 - 팔자명가/팔자궤도/팔자장인과
-    // 같은 장르(바이럴 클리프행어)라 풀링해서 표본을 늘린다.
-    const { slots, usedFallback } = computeSlotsWithMorningAnchor(
-      [...COMPREHENSIVE_ACCOUNT_LABELS, ...Object.keys(VIRAL_PROFILES)],
-      VIRAL_MORNING_DAILY_SLOTS
-    );
-    dailySlotTimes = slots;
-    console.log(
-      `시간대 ${usedFallback ? "(데이터 부족 - 기본값 사용)" : "(통근시간 고정 + 나머지 실측 데이터 기반)"}: ${slots.join(", ")}`
-    );
-  }
-  const slotsPerDay = dailySlotTimes.length;
+  // viral-morning(연리지실타래/아해사주)은 하루 5개 중 1개(댓글유도 글)가 완전히 다른 경로에서
+  // 생기므로, 목표 개수는 4로 고정하되 시간 슬롯 자체는 매일 5개를 계산한 뒤 그 날 이미 있는
+  // "바이럴이 아닌" 글(=댓글유도 글, 어떤 시각이든 무관 - 17시라고 고정하지 않는다)과 가장
+  // 가까운 슬롯 하나를 버리고 나머지 4개를 쓴다. 그 날 댓글유도 글이 아직 없으면 그냥 마지막
+  // (가장 늦은) 슬롯을 버린다.
+  const targetSlotsPerDay = MODE === "comprehensive" ? 5 : VIRAL_MORNING_DAILY_SLOTS;
 
   const { posts: currentPosts } = await readSchedule();
   const existingCounts = countExistingByDate(currentPosts, account.id, MODE);
   const existingTimesByDate = buildExistingTimesByDate(currentPosts, account.id);
+  // viral-morning 전용: "바이럴 아닌" 글(댓글유도 등)만 날짜별로 따로 뽑아둔다.
+  const nonViralTimesByDate = {};
+  if (MODE === "viral-morning") {
+    currentPosts
+      .filter((p) => p.accountId === account.id && p.status !== "canceled" && p.platform !== "instagram" && p.scheduledAt)
+      .filter((p) => !(p.viralEngine === true || (p.viralEngine === undefined && toKstDateHour(p.scheduledAt).hour < 12)))
+      .forEach((p) => {
+        const { date } = toKstDateHour(p.scheduledAt);
+        (nonViralTimesByDate[date] = nonViralTimesByDate[date] || []).push(new Date(p.scheduledAt).getTime());
+      });
+  }
 
-  // 날짜별로 "이미 채워진 개수"만큼은 빼고, 부족한 만큼만 오늘 목표(slotsPerDay)에 채운다.
+  // 날짜별로 "이미 채워진 개수"만큼은 빼고, 부족한 만큼만 오늘 목표(targetSlotsPerDay)에 채운다.
   const jobs = []; // { dateStr, slotTime, utcTime }
   const todayStr = nowKst().toISOString().slice(0, 10);
   let cursor = todayStr;
   while (cursor <= END_DATE) {
     const already = existingCounts[cursor] || 0;
-    const need = Math.max(0, slotsPerDay - already);
-    const dayExisting = (existingTimesByDate[cursor] = existingTimesByDate[cursor] || []);
-    for (let i = 0; i < need; i++) {
-      const slotTime = dailySlotTimes[(already + i) % dailySlotTimes.length];
-      // 지터(±15분)를 먼저 적용한 뒤에 충돌 회피를 해야, 지터가 다시 다른 글과 가깝게 만드는
-      // 걸 막을 수 있다 - 순서를 반대로 하면(회피 먼저, 지터 나중) 지터가 회피 결과를 무효화함.
-      const jitteredMs = withJitter(kstSlotToUtc(cursor, slotTime)).getTime();
-      const utcMs = resolveCollisionFreeTime(jitteredMs, dayExisting);
-      dayExisting.push(utcMs); // 같은 날짜의 다음 잡(job)도 이 시각을 피해가도록 바로 등록
-      const utcTime = new Date(utcMs);
-      if (utcTime.getTime() > Date.now()) jobs.push({ dateStr: cursor, slotTime, utcTime });
+    const need = Math.max(0, targetSlotsPerDay - already);
+    if (need > 0) {
+      let dayLabels = generateDailySlots(5); // "07:12" 같은 라벨 5개, 매일 새로 뽑음
+      if (MODE === "viral-morning") {
+        const nonViral = nonViralTimesByDate[cursor] || [];
+        const dayMs = dayLabels.map((hhmm) => kstSlotToUtc(cursor, hhmm).getTime());
+        let dropIdx = dayLabels.length - 1; // 기본값: 댓글유도 글이 아직 없으면 제일 늦은 슬롯을 버림
+        if (nonViral.length > 0) {
+          let best = Infinity;
+          dayMs.forEach((ms, idx) => {
+            const dist = Math.min(...nonViral.map((n) => Math.abs(n - ms)));
+            if (dist < best) { best = dist; dropIdx = idx; }
+          });
+        }
+        dayLabels = dayLabels.filter((_, idx) => idx !== dropIdx);
+      }
+      console.log(`  ${cursor} 슬롯: ${dayLabels.join(", ")}`);
+
+      const dayExisting = (existingTimesByDate[cursor] = existingTimesByDate[cursor] || []);
+      for (let i = 0; i < need; i++) {
+        const slotTime = dayLabels[(already + i) % dayLabels.length];
+        // 지터(±15분)를 먼저 적용한 뒤에 충돌 회피를 해야, 지터가 다시 다른 글과 가깝게 만드는
+        // 걸 막을 수 있다 - 순서를 반대로 하면(회피 먼저, 지터 나중) 지터가 회피 결과를 무효화함.
+        const jitteredMs = withJitter(kstSlotToUtc(cursor, slotTime)).getTime();
+        const utcMs = resolveCollisionFreeTime(jitteredMs, dayExisting);
+        dayExisting.push(utcMs); // 같은 날짜의 다음 잡(job)도 이 시각을 피해가도록 바로 등록
+        const utcTime = new Date(utcMs);
+        if (utcTime.getTime() > Date.now()) jobs.push({ dateStr: cursor, slotTime, utcTime });
+      }
     }
     cursor = addDaysStr(cursor, 1);
   }
