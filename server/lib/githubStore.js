@@ -51,7 +51,21 @@ async function readSchedule() {
   }
 
   const data = await res.json();
-  const content = Buffer.from(data.content, "base64").toString("utf8");
+  // Contents API는 파일이 1MB 넘으면 응답의 content 필드를 아예 비워서 준다(공식 제약사항 -
+  // "1MB 초과 파일은 Git Data API(blobs)를 대신 쓰라"). 2026-09-02 실측: 예약 글이 쌓여
+  // schedule/posts.json이 처음으로 1MB를 넘겼는데, 이 케이스를 안 가리고 그냥 base64
+  // 디코드하면 빈 문자열 -> JSON.parse 실패로 이어져서 "손상됐다"고 오판할 뻔했다(다행히
+  // 안전하게 멈추기만 하고 실제로 덮어쓰지는 않음 - 그래도 이후 모든 예약 읽기/쓰기가
+  // 막히는 건 마찬가지라 반드시 고쳐야 함). content가 비어 있으면 Git Blobs API로 대신 받는다
+  // (해당 API는 1MB 제약이 없음).
+  let raw = data.content;
+  if (!raw) {
+    const blobRes = await githubRequest(`/repos/${repo}/git/blobs/${data.sha}`);
+    if (!blobRes.ok) throw new Error(`GitHub에서 큰 예약 목록 파일을 못 읽었습니다 (blob API HTTP ${blobRes.status}).`);
+    const blobData = await blobRes.json();
+    raw = blobData.content;
+  }
+  const content = Buffer.from(raw || "", "base64").toString("utf8");
   let posts = [];
   try {
     posts = JSON.parse(content);
