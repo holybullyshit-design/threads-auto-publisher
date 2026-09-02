@@ -35,24 +35,19 @@ function minutesToHHMM(totalMinutes) {
   return `${String(h).padStart(2, "0")}:${String(m % 60).padStart(2, "0")}`;
 }
 
-// tools/fill-schedule.js와 동일한 로직(그 파일 주석 참고) - 오전 코어(7~9시)/저녁 코어
-// (19~21시) 앵커 + 마지막 글 21시 이후.
+// tools/fill-schedule.js와 동일한 로직(그 파일 주석 참고, 3차 개정 - 간격 2~3시간 엄수 우선).
+// 오전 코어(7~9시)만 고정 앵커, 나머지는 순서대로 2~3시간씩 쌓는다 - "코어 시간대 커버 +
+// 21시 이후 마감 + 간격 2~3시간"을 동시에 만족시키려던 이전 버전이 산수상 불가능해서(사용자
+// 확인 결과 간격 엄수가 우선) 되돌렸다.
 function generateDailySlots() {
   const AM_CORE_START = 7 * 60, AM_CORE_END = 9 * 60;
-  const PM_CORE_START = 19 * 60, PM_CORE_END = 21 * 60;
-  const LAST_START = 21 * 60, LAST_END = 22 * 60;
-  const LAST_MIN_GAP_FROM_PM_CORE = 60;
+  const MIN_GAP_MIN = 120, MAX_GAP_MIN = 180;
 
-  const post1 = AM_CORE_START + Math.random() * (AM_CORE_END - AM_CORE_START);
-  const post4 = PM_CORE_START + Math.random() * (PM_CORE_END - PM_CORE_START);
-  let post5 = LAST_START + Math.random() * (LAST_END - LAST_START);
-  if (post5 - post4 < LAST_MIN_GAP_FROM_PM_CORE) post5 = post4 + LAST_MIN_GAP_FROM_PM_CORE;
-
-  const step = (post4 - post1) / 3;
-  const post2 = post1 + step * (0.8 + Math.random() * 0.4);
-  const post3 = post2 + step * (0.8 + Math.random() * 0.4);
-
-  return [post1, post2, post3, post4, post5].sort((a, b) => a - b).map(minutesToHHMM);
+  const slots = [AM_CORE_START + Math.random() * (AM_CORE_END - AM_CORE_START)];
+  for (let i = 1; i < 5; i++) {
+    slots.push(slots[slots.length - 1] + MIN_GAP_MIN + Math.random() * (MAX_GAP_MIN - MIN_GAP_MIN));
+  }
+  return slots.map(minutesToHHMM);
 }
 
 function isViralPost(p) {
@@ -86,9 +81,9 @@ async function main() {
 
         let slots = generateDailySlots();
         if (VIRAL_ACCOUNTS.has(acct)) {
-          // 오전코어(0)/저녁코어(3)/마지막(4) 앵커는 버리지 않는다 - 가운데(1,2)만 후보
-          // (fill-schedule.js와 동일한 이유 - 그 파일 주석 참고).
-          const DROPPABLE_INDICES = [1, 2];
+          // 오전코어(0) 앵커만 버리지 않는다 - 나머지(1~4) 중에서 댓글유도 글과 가장 가까운
+          // 자리를 대신하게 한다(fill-schedule.js와 동일한 이유 - 그 파일 주석 참고).
+          const DROPPABLE_INDICES = [1, 2, 3, 4];
           const slotMs = slots.map((hhmm) => kstSlotToUtc(day, hhmm).getTime());
           let dropIdx = DROPPABLE_INDICES[0];
           if (anchorMs !== null) {

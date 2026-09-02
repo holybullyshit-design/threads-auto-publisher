@@ -195,35 +195,24 @@ function minutesToHHMM(totalMinutes) {
   return `${String(h).padStart(2, "0")}:${String(m % 60).padStart(2, "0")}`;
 }
 
-// 2026-09-02 사용자 지시(2차 - Threads 코어 시간대 반영): 데이터 기반 시간대 계산
-// (computeSlotsWithMorningAnchor) 대신 하루 5개 기준 명시적 규칙을 쓴다.
-// Threads가 가장 활발한 "코어 시간"이 오전 7~9시 / 저녁 19~21시라는 사용자 지침에 따라:
-//  - 1번째 글: 07:00~09:00 사이(오전 코어) - 반드시 이 구간에 1개
-//  - 4번째 글: 19:00~21:00 사이(저녁 코어) - 반드시 이 구간에 1개
-//  - 5번째(마지막) 글: 21:00~22:00 사이 - "끝나는 시간은 21시 이후"
-//  - 2/3번째 글은 1번째~4번째 사이를 대략 3등분한 지점 근처(약간의 지터)에 배치
-// 두 코어 구간을 모두 고정 앵커로 박아버리면(하루 5개, 4개 간격) 산수상 "글마다 2~3시간"을
-// 모든 구간에서 지키긴 불가능하다(07~21시는 14시간, 4구간 균등 분배해도 3.5시간) - 그래서
-// 이번엔 "코어 시간대 커버 + 마지막 글 21시 이후"를 우선하고, 중간 2개는 균등 배치로 간격을
-// 자연스럽게 채운다. "매일 새로 랜덤 계산"하라는 지시도 있어서, 이 함수를 날짜마다 새로
-// 호출한다(호출부 참고) - 매일 리듬이 조금씩 달라진다.
+// 2026-09-02 사용자 지시(3차 - 간격 엄수 우선): "코어 시간대(오전 7~9시/저녁 19~21시) 커버"와
+// "글마다 2~3시간 간격 엄수" 둘 다 채우려 했더니 산수상 불가능했다(4개 구간, 최대 3시간씩이면
+// 최대 12시간 - 07~08시 시작이면 아무리 늦어도 19~20시가 한계라 21시 이후 마감과 충돌).
+// 사용자에게 우선순위를 확인한 결과 - "간격 2~3시간 엄수"가 우선이고, 저녁 코어(19~21시)는
+// "간격을 최대(3시간)쪽으로 당기면 자주 걸리는" 정도로 충분하다고 결정됨. 그래서 1번째 글만
+// 오전 코어(07:00~09:00)에 고정하고, 나머지 4개는 그냥 2~3시간 간격을 순서대로 쌓는다 -
+// 이러면 산술적으로 마지막 글은 항상 15:00~21:00 사이에 들어온다(21시를 절대 못 넘지만,
+// 21시를 억지로 넘기려던 이전 설계가 2~3시간 간격을 어겼던 근본 원인이었다).
+// "매일 새로 랜덤 계산"하라는 지시도 있어서, 이 함수를 날짜마다 새로 호출한다(호출부 참고).
 function generateDailySlots() {
   const AM_CORE_START = 7 * 60, AM_CORE_END = 9 * 60; // 07:00~09:00
-  const PM_CORE_START = 19 * 60, PM_CORE_END = 21 * 60; // 19:00~21:00
-  const LAST_START = 21 * 60, LAST_END = 22 * 60; // 21:00~22:00
-  const LAST_MIN_GAP_FROM_PM_CORE = 60; // 저녁 코어 글과 마지막 글이 너무 붙지 않게 최소 60분
+  const MIN_GAP_MIN = 120, MAX_GAP_MIN = 180; // 2~3시간, 예외 없이 매 구간 적용
 
-  const post1 = AM_CORE_START + Math.random() * (AM_CORE_END - AM_CORE_START);
-  const post4 = PM_CORE_START + Math.random() * (PM_CORE_END - PM_CORE_START);
-  let post5 = LAST_START + Math.random() * (LAST_END - LAST_START);
-  if (post5 - post4 < LAST_MIN_GAP_FROM_PM_CORE) post5 = post4 + LAST_MIN_GAP_FROM_PM_CORE;
-
-  // post1~post4 사이를 3등분한 지점 근처(80~120%)에 post2, post3을 놓는다.
-  const step = (post4 - post1) / 3;
-  const post2 = post1 + step * (0.8 + Math.random() * 0.4);
-  const post3 = post2 + step * (0.8 + Math.random() * 0.4);
-
-  return [post1, post2, post3, post4, post5].sort((a, b) => a - b).map(minutesToHHMM);
+  const slots = [AM_CORE_START + Math.random() * (AM_CORE_END - AM_CORE_START)];
+  for (let i = 1; i < 5; i++) {
+    slots.push(slots[slots.length - 1] + MIN_GAP_MIN + Math.random() * (MAX_GAP_MIN - MIN_GAP_MIN));
+  }
+  return slots.map(minutesToHHMM);
 }
 
 async function main() {
@@ -260,14 +249,14 @@ async function main() {
     const already = existingCounts[cursor] || 0;
     const need = Math.max(0, targetSlotsPerDay - already);
     if (need > 0) {
-      let dayLabels = generateDailySlots(); // "07:12" 같은 라벨 5개(오전/저녁 코어 앵커 포함), 매일 새로 뽑음
+      let dayLabels = generateDailySlots(); // "07:12" 같은 라벨 5개(오전 코어 앵커 + 2~3시간 간격), 매일 새로 뽑음
       if (MODE === "viral-morning") {
-        // generateDailySlots()는 항상 정렬된 [오전코어, 중간, 중간, 저녁코어, 마지막] 순서로
-        // 나온다. 댓글유도 글 하나를 위해 자리 하나를 뺄 때, 오전코어(0)/저녁코어(3)/마지막(4)
-        // 앵커는 절대 버리지 않는다 - 가운데 두 개(1,2) 중에서만 고른다. 안 그러면 댓글유도
-        // 글이 하필 19~21시 근처에 뜬 날, 저녁 코어 앵커가 지워져서 "19~21시에 꼭 1개" 규칙이
-        // 깨진다(2026-09-02 실측으로 확인된 버그).
-        const DROPPABLE_INDICES = [1, 2];
+        // generateDailySlots()는 항상 정렬된 [오전코어, +2~3h, +2~3h, +2~3h, +2~3h] 순서로
+        // 나온다. 댓글유도 글 하나를 위해 자리 하나를 뺄 때, 오전코어(0) 앵커만 절대 버리지
+        // 않는다(가운데~마지막 1~4 중에서 댓글유도 글과 가장 가까운 걸 골라 그 자리를
+        // 대신하게 한다 - 그래야 실제 5개(내 4개+댓글유도 1개) 전체 간격이 여전히 2~3시간대로
+        // 유지된다).
+        const DROPPABLE_INDICES = [1, 2, 3, 4];
         const nonViral = nonViralTimesByDate[cursor] || [];
         const dayMs = dayLabels.map((hhmm) => kstSlotToUtc(cursor, hhmm).getTime());
         let dropIdx = DROPPABLE_INDICES[0]; // 기본값: 댓글유도 글이 아직 없으면 중간 슬롯 하나를 버림
