@@ -35,18 +35,24 @@ function minutesToHHMM(totalMinutes) {
   return `${String(h).padStart(2, "0")}:${String(m % 60).padStart(2, "0")}`;
 }
 
-function generateDailySlots(count = 5) {
-  const DAY_START_MIN = 7 * 60;
-  const DAY_START_SPAN_MIN = 60;
-  const MAX_END_MIN = 22 * 60;
-  const MIN_GAP_MIN = 120;
-  const MAX_GAP_MIN = 180;
-  const slots = [DAY_START_MIN + Math.random() * DAY_START_SPAN_MIN];
-  for (let i = 1; i < count; i++) {
-    const gap = MIN_GAP_MIN + Math.random() * (MAX_GAP_MIN - MIN_GAP_MIN);
-    slots.push(Math.min(slots[slots.length - 1] + gap, MAX_END_MIN));
-  }
-  return slots.map(minutesToHHMM);
+// tools/fill-schedule.js와 동일한 로직(그 파일 주석 참고) - 오전 코어(7~9시)/저녁 코어
+// (19~21시) 앵커 + 마지막 글 21시 이후.
+function generateDailySlots() {
+  const AM_CORE_START = 7 * 60, AM_CORE_END = 9 * 60;
+  const PM_CORE_START = 19 * 60, PM_CORE_END = 21 * 60;
+  const LAST_START = 21 * 60, LAST_END = 22 * 60;
+  const LAST_MIN_GAP_FROM_PM_CORE = 60;
+
+  const post1 = AM_CORE_START + Math.random() * (AM_CORE_END - AM_CORE_START);
+  const post4 = PM_CORE_START + Math.random() * (PM_CORE_END - PM_CORE_START);
+  let post5 = LAST_START + Math.random() * (LAST_END - LAST_START);
+  if (post5 - post4 < LAST_MIN_GAP_FROM_PM_CORE) post5 = post4 + LAST_MIN_GAP_FROM_PM_CORE;
+
+  const step = (post4 - post1) / 3;
+  const post2 = post1 + step * (0.8 + Math.random() * 0.4);
+  const post3 = post2 + step * (0.8 + Math.random() * 0.4);
+
+  return [post1, post2, post3, post4, post5].sort((a, b) => a - b).map(minutesToHHMM);
 }
 
 function isViralPost(p) {
@@ -78,14 +84,17 @@ async function main() {
           if (targets.length === 0) continue;
         }
 
-        let slots = generateDailySlots(5);
+        let slots = generateDailySlots();
         if (VIRAL_ACCOUNTS.has(acct)) {
+          // 오전코어(0)/저녁코어(3)/마지막(4) 앵커는 버리지 않는다 - 가운데(1,2)만 후보
+          // (fill-schedule.js와 동일한 이유 - 그 파일 주석 참고).
+          const DROPPABLE_INDICES = [1, 2];
           const slotMs = slots.map((hhmm) => kstSlotToUtc(day, hhmm).getTime());
-          let dropIdx = slots.length - 1;
+          let dropIdx = DROPPABLE_INDICES[0];
           if (anchorMs !== null) {
             let best = Infinity;
-            slotMs.forEach((ms, idx) => {
-              const dist = Math.abs(ms - anchorMs);
+            DROPPABLE_INDICES.forEach((idx) => {
+              const dist = Math.abs(slotMs[idx] - anchorMs);
               if (dist < best) { best = dist; dropIdx = idx; }
             });
           }
