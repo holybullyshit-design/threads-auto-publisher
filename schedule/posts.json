@@ -12492,7 +12492,7 @@
     "text": "신월(申月) 안에 미뤄진 계약·입금 다시 움직일 년생\n정산과 계약은 기다리기보다 빠진 조건을 다시 맞추는 데서 움직입니다.\n\n명리 포인트: 申子辰 삼합 · 巳申六合\n원숭이띠 — 미뤄둔 확인 연락\n쥐띠 — 금액·날짜 재점검\n용띠 — 소개받은 거래 검토\n\n내 년생이 있다면 댓글에 ‘계약’을 남겨주세요.\n놓치기 쉬운 항목 1개와 확인 순서 3단계를 정리해드립니다.\n개인 흐름은 생년월일시에 따라 달라지므로, 영상은 절기 기준 띠 흐름으로 참고해 주세요.\n\n#팔자명가 #계약운 #입금운 #9월운세 #띠별운세 #년생운세",
     "videoUrl": "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@3ba69546e53bacf9c54c348573792e36df665a74/images/edd73e10-fbc3-410f-9694-1ad412228826.mp4",
     "videoSha256": "7a3af163d06daa016dfdc6f6308f3b0672745967982c2008da4f2dcb68dab356",
-    "status": "scheduled",
+    "status": "publishing",
     "scheduledAt": "2026-09-03T03:45:00.000Z",
     "expectedLocalDate": "2026-09-03",
     "exactTimeKst": "12:45",
@@ -12530,7 +12530,8 @@
     "publishedId": null,
     "error": null,
     "retryCount": 0,
-    "contentHash": "9b852a773a9f22d8bcd2aa6ce92150a94edf23444d0a072e1c36bf8fa169d7cf"
+    "contentHash": "9b852a773a9f22d8bcd2aa6ce92150a94edf23444d0a072e1c36bf8fa169d7cf",
+    "publishAttemptedAt": "2026-09-03T03:49:08.017Z"
   },
   {
     "id": "9981bbfc-9559-4c17-87bf-cc3e2cce4e74",
