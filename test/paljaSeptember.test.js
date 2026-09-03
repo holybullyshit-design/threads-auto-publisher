@@ -1,5 +1,7 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
 const {generateFortunePackage,validateFortunePackage} = require('../server/lib/fortuneEngine');
 const {editions} = require('../server/lib/paljaSeptember2026');
 const {assertPublicCaption} = require('../server/lib/instagramCaption');
@@ -33,4 +35,10 @@ test('중복 생활 문구와 내부 게시 코드는 검수를 통과하지 못
 test('기존 8월 콘텐츠는 이번 편집에 영향을 받지 않는다',()=>{
   const p=generateFortunePackage('2026-08-31');assert.equal(p.editorial,undefined);
   assert.equal(p.slides[5].fixed,true);assert.match(p.caption,/#팔자명가20260831/);
+});
+test('주제별 편집 원고도 표지는 날짜와 오늘의 운세 형식을 고정한다',()=>{
+  const source=fs.readFileSync(path.join(__dirname,'../public/instagram-cards/app.js'),'utf8');
+  const branch=source.match(/if\(s\.type==='cover'\)\{([\s\S]*?)\}else if\(s\.type==='message'\)/)?.[1]||'';
+  assert.match(branch,/drawCover\(c,s\)/);
+  assert.doesNotMatch(branch,/e\.hook|editorialText/);
 });
