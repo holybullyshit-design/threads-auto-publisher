@@ -12655,7 +12655,7 @@
     "text": "가을 문턱에서 집·명의·보증 문제 결론 날 년생\n말로만 미뤄온 집과 문서 문제는 조건을 적어볼수록 답이 선명해집니다.\n\n명리 포인트: 申月 金氣 · 문서·정리 흐름\n원숭이띠 — 비교표 작성\n닭띠 — 계약 조항 확인\n개띠 — 가족 합의부터\n\n내 년생이 있다면 댓글에 ‘이사’을 남겨주세요.\n계약서에서 볼 항목 3개와 돈 새는 지점 1개를 정리해드립니다.\n개인 흐름은 생년월일시에 따라 달라지므로, 영상은 절기 기준 띠 흐름으로 참고해 주세요.\n\n#팔자명가 #이사운 #문서운 #부동산운 #띠별운세 #년생운세",
     "videoUrl": "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@3ba69546e53bacf9c54c348573792e36df665a74/images/25ff78db-a37c-48a4-b2b5-9779dc4c400b.mp4",
     "videoSha256": "823264448354780c8af4f215eb352926f996edd1b91018b113829cd2838b7f44",
-    "status": "scheduled",
+    "status": "publishing",
     "scheduledAt": "2026-09-03T12:30:00.000Z",
     "expectedLocalDate": "2026-09-03",
     "exactTimeKst": "21:30",
@@ -12693,7 +12693,8 @@
     "publishedId": null,
     "error": null,
     "retryCount": 0,
-    "contentHash": "c6c3de6827923b379bd72c109ac7c62e12b5f63964920f9226acfb63e14c1cdf"
+    "contentHash": "c6c3de6827923b379bd72c109ac7c62e12b5f63964920f9226acfb63e14c1cdf",
+    "publishAttemptedAt": "2026-09-03T12:31:32.796Z"
   },
   {
     "id": "379bee8a-fb71-4a3f-8fb5-ae8d85cfb37c",
