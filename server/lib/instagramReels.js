@@ -1,4 +1,4 @@
-// Reviewed 5-second Palja Reels. No generated tracking tags in public captions.
+// Reviewed 8-second, two-screen Palja Reels. No generated tracking tags in public captions.
 const crypto = require('node:crypto');
 const { getConfig, graphRequest, waitForContainer } = require('./instagramClient');
 const { assertPublicCaption, publicCaption } = require('./instagramCaption');
@@ -23,7 +23,9 @@ function assertReelPost(post) {
     throw fail('승인 후 영상·캡션·예약 정보가 바뀌어 발행을 차단했습니다.', 'REEL_INTEGRITY');
   const v=post.validation;
   if(v?.status!=='passed' || v?.visualReview!=='passed' || v?.captionReview!=='passed' ||
-    v?.duration!==5 || v?.width!==1080 || v?.height!==1920 || v?.frames!==150)
+    v?.duration!==8 || v?.width!==1080 || v?.height!==1920 || v?.frames!==240 ||
+    v?.screenCount!==2 || v?.fontSystem!=='premium-myeongjo' || v?.audio?.present!==true ||
+    v?.audio?.sampleRate!==48000 || v?.audio?.channels!==2)
     throw fail('릴스 최종 검수 증거가 없습니다.', 'VALIDATION_REQUIRED');
   if(!Number.isFinite(Date.parse(post.scheduledAt))) throw fail('예약 날짜가 올바르지 않습니다.');
 }
