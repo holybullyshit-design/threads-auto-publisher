@@ -4006,9 +4006,12 @@
     "scheduledAt": "2026-09-03T22:55:00.000Z",
     "createdAt": "2026-08-29T02:59:29.386Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18193205041383516",
     "error": null,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "18193205041383516"
+    ]
   },
   {
     "id": "93a93ac9-af05-4f28-bebc-d14931ff4a34",
