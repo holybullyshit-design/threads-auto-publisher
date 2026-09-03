@@ -1,0 +1,67 @@
+# 스레드 자동화 프로그램 — Claude Code 작업 지침
+
+이 파일은 세션마다 자동으로 로드된다. **매번 사용자가 다시 설명하지 않아도 되게, 여기 있는
+규칙은 예외 없이 그대로 지킬 것.** 규칙을 바꾸고 싶으면 코드만 고치지 말고 이 파일도 같이
+갱신한다 — 그래야 다음 세션(나 자신 포함)이 옛날 규칙으로 되돌아가지 않는다.
+
+## 프로젝트 개요
+
+- 로컬 경로: `~/Desktop/스레드 자동화 프로그램`, GitHub: `holybullyshit-design/threads-auto-publisher`
+- Node/Express 로컬 앱 + GitHub Actions(5분마다)로 클라우드에서도 예약 발행됨 — 맥북이 꺼져 있어도 동작
+- 예약 데이터는 로컬 파일이 아니라 **GitHub Contents API로 직접** 읽고 쓴다(`server/lib/githubStore.js`) — `schedule/posts.json`을 로컬에서 직접 편집하지 말 것, 항상 `readSchedule`/`writeSchedule`/`atomicUpdateSchedule`을 통해서만 쓴다.
+- 계정 6개: 사주 5개(연리지실타래/아해사주/팔자명가/팔자궤도/팔자장인) + 파트너스 1개(엄마가 직접 써본 꿀템)
+- 다른 세션(Codex 등)이 동시에 같은 저장소를 건드릴 수 있다 — **커밋 전엔 항상 `git pull --no-rebase --no-edit origin main`** 먼저 하고, 겹치는 작업 파일은 함부로 덮어쓰지 않는다.
+
+## 사주 Threads 5개 계정 — 예약 시간 규칙 (2026-09-02 확정)
+
+하루 5개, 계정마다 아래 규칙을 **예외 없이** 지킨다:
+
+1. **첫 글은 오전 07:00~09:00 사이**
+2. **글과 글 사이 간격은 최소 2시간 ~ 최대 3시간** (이게 최우선 규칙 — 21시 마감이나 저녁 코어 커버 같은 다른 목표보다 이 간격 규칙이 항상 이긴다. 산수상 다 같이는 못 만족하니, 충돌하면 항상 간격을 지킨다)
+3. **매일 새로 랜덤 계산** — 하나의 고정 패턴을 여러 날 재사용하지 않는다(기계적으로 보이면 안 됨)
+4. **연리지실타래 / 아해사주**: 하루 5개 중 1개는 "댓글유도 글"(생년월일시 남기는 상담체)이고, 이건 **완전히 다른 경로에서 생성**된다 — 이 프로그램의 시간 배치 스크립트가 절대 이 글의 시각을 건드리지 않는다. 대신 이 글을 "앵커(장애물)"로 취급해서, 나머지 4개(바이럴)를 배치할 때 앵커와 2시간 미만으로 가까워지면 앵커+2시간으로 건너뛰어 피해간다.
+
+**구현**: `tools/fill-schedule.js`의 `generateDailySlots(count, anchorMin)` 함수가 이 규칙 전체를 담당한다. 시간대를 다시 손댈 일이 있으면 여기부터 보고, `tools/rebalance-daily-times.js`(이미 예약된 기존 글의 시각을 같은 규칙으로 재배치하는 도구)도 반드시 같이 맞춘다 — 두 파일의 `generateDailySlots`는 항상 동일해야 한다.
+
+**빈 슬롯 채우기**: `node tools/fill-schedule.js viral-morning "<연리지 실타래|아해사주>" <종료일>` / `node tools/fill-schedule.js comprehensive "<팔자명가|팔자궤도|팔자장인>" <종료일>` — 계정 5개를 **동시에 병렬로 실행하지 말 것**(같은 스케줄 파일에 쓰기 충돌 위험, 실제로 이 때문에 순차 실행으로 바꿈). 하나 끝나고 다음.
+
+## 절대 하지 말 것 (실제로 사고 났던 것들)
+
+1. **재배치 스크립트가 "이미 지난 시각"을 예약에 넣지 않게 할 것.** 오늘처럼 하루가 반쯤 지난 날짜를 재배치할 때, 새로 뽑은 시각이 현재 시각보다 과거일 수 있다 — 이걸 그대로 넣으면 다음 5분 주기 실행 때 그 글이 곧바로(다른 계정 것과 함께) 발행돼버린다. **실제로 5개 계정 전부에서 발생한 사고**(2026-09-02, 15:00~15:42 사이 여러 계정 글이 1~13분 간격으로 몰아서 게시됨, 이미 게시되어 되돌릴 수 없었음). `tools/rebalance-daily-times.js`는 새 시각이 `Date.now() + 15분`보다 이르면 그 글을 건드리지 않고 넘어가도록 이미 고쳐져 있다 — 이 안전장치를 제거하지 말 것.
+2. **schedule/posts.json이 1MB를 넘으면 GitHub Contents API가 `content` 필드를 비워서 응답한다** (공식 제약, 1MB 초과 파일은 Git Blobs API를 써야 함). `server/lib/githubStore.js`의 `readSchedule()`이 이미 이 경우를 감지해서 Blobs API로 대신 읽도록 고쳐져 있다 — 이 분기를 지우지 말 것. 예약이 계속 쌓이니 이 문제는 다시 나타날 수 있다(파일이 더 커지면).
+3. **"예약된 시간표"만 확인하고 끝내지 말 것.** `scheduledAt`(의도)이 멀쩡해 보여도 실제로 몇 시에 게시됐는지(`publishedAt`, 실제 결과)는 다를 수 있다. 예약/시간 배치 관련 작업을 검증할 땐 **반드시 최근 `status: published`인 글들의 실제 `publishedAt` 간격도 확인**한다 — 그래야 이미 발행된 사고를 놓치지 않는다.
+4. **같은 write 스크립트를 실수로 두 번 연달아 실행하지 말 것.** (`| head`와 `| tail`을 따로 파이핑하려다 스크립트를 두 번 돌린 적 있음 — 매번 새 랜덤값을 쓰는 스크립트라 결과가 꼬인다) 결과를 여러 각도로 보고 싶으면 한 번 실행한 출력을 변수/파일에 저장해서 재사용한다.
+5. **파괴적이거나 대량으로 스케줄을 바꾸는 스크립트는 새로 만들 때마다 `--dry-run`으로 먼저 미리보기.** (`tools/fix-time-collisions.js`, `tools/rebalance-daily-times.js`, `tools/purge-canceled.js` 전부 `--dry-run` 지원)
+6. **취소(canceled) 상태 글은 완전 삭제한다** (soft-cancel로 남겨두지 않음) — `tools/purge-canceled.js` 참고. status만 바뀌고 레코드가 남아있으면 캘린더 상세 목록에 계속 보여서 혼동을 준다.
+
+## 스케줄 변경 후 검증 체크리스트
+
+시간/예약 관련 작업을 했으면 커밋 전에 반드시:
+
+```
+node -e "
+require('dotenv').config();
+const { readSchedule } = require('./server/lib/githubStore');
+(async()=>{
+  const {posts} = await readSchedule();
+  const accounts=['연리지 실타래','아해사주','팔자명가','팔자궤도','팔자장인'];
+  const now=Date.now();
+  let bad=0;
+  for(const acct of accounts){
+    const list=posts.filter(p=>p.accountLabel===acct&&p.status==='scheduled'&&p.platform!=='instagram'&&p.scheduledAt).map(p=>new Date(p.scheduledAt).getTime()).sort((a,b)=>a-b);
+    for(let i=1;i<list.length;i++){
+      const gapMin=(list[i]-list[i-1])/60000;
+      if(gapMin < 119){ console.log('간격 위반:', acct, new Date(list[i-1]).toISOString(),'|',new Date(list[i]).toISOString(), gapMin.toFixed(1)+'분'); bad++; }
+    }
+  }
+  const overdue = posts.filter(p=>accounts.includes(p.accountLabel)&&p.status==='scheduled'&&p.platform!=='instagram'&&p.scheduledAt&&new Date(p.scheduledAt).getTime()<now).length;
+  console.log('2시간 미만 간격 위반:', bad, '건 / 이미 지난 예약:', overdue, '건');
+})();
+"
+```
+
+둘 다 0건이어야 정상. 위반이 있으면 커밋하지 말고 원인부터 찾는다.
+
+## npm test
+
+코드(스킬/엔진/스토어 등) 관련 작업 후엔 `npm test` 통과 확인 후 커밋한다(55개 테스트, 전부 통과해야 함).

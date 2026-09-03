@@ -77,7 +77,14 @@ async function main() {
       const byDate = {};
       mine.forEach((p) => (byDate[toKstDateHour(p.scheduledAt).date] = byDate[toKstDateHour(p.scheduledAt).date] || []).push(p));
 
+      const todayStr = new Date(Date.now() + 9 * 3600 * 1000).toISOString().slice(0, 10);
       for (const day of Object.keys(byDate)) {
+        // 오늘(부분일)은 재배치하지 않는다 - 이미 몇 개는 발행돼서 남은 대상 개수가 원래
+        // 목표(4/5)보다 적은데, generateDailySlots는 항상 "07~09시 시작"부터 다시 계산하니
+        // 이미 지난 시각은 SAFETY_BUFFER로 건너뛰고 옛 시각을 유지하면서, 나머지만 새로
+        // 계산된 값으로 바뀌어 서로 안 맞는 시각 두 종류가 섞여버린다(2026-09-03 실측:
+        // 2~47분짜리 잔여 간격 위반 5건 발생). 오늘 분은 그대로 둔다.
+        if (day === todayStr) continue;
         const dayPosts = byDate[day].sort((a, b) => new Date(a.scheduledAt) - new Date(b.scheduledAt));
         let targets = dayPosts; // 재배치 대상(순서 유지)
         let anchorMs = null; // 건드리지 않는 기준 시각(댓글유도 글)

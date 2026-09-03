@@ -149,7 +149,13 @@ function buildExistingTimesByDate(posts, accountId) {
 // 차이). 팔자궤도도 같은 시각이 두 번 겹친 사례 1건 발견 - 서로 다른 실행이 같은 계산 결과를
 // 검증 없이 그대로 써서 생긴 우연. 그래서 새 슬롯 시각을 정할 때, 그 날짜에 이미 있는 실제
 // 시각들(댓글유도 글 포함)과 최소 간격을 강제한다 - 너무 가까우면 뒤로 밀어낸다.
-const MIN_GAP_MINUTES = 45;
+// 2026-09-02 재조정: 규칙 자체가 "글마다 2~3시간"으로 확정된 뒤에도 이 값이 45분에 머물러
+// 있어서, "이미 4/5 채워진 날에 1개만 추가로 채우기" 같은 부분 재실행에서 57~118분짜리
+// 위반이 실측으로 남아있었다(generateDailySlots의 앵커 회피는 그 날 새로 뽑는 슬롯끼리만
+// 알고, 이전 실행에서 이미 저장된 슬롯은 여기 45분 안전장치로만 걸러졌기 때문). 규칙과
+// 맞춰서 120분으로 올림 - 이제 부분 재실행을 몇 번을 해도 최종 결과가 2시간 미만으로
+// 붙을 수 없다.
+const MIN_GAP_MINUTES = 120;
 function resolveCollisionFreeTime(candidateUtcMs, existingTimesMs) {
   let t = candidateUtcMs;
   const minGapMs = MIN_GAP_MINUTES * 60 * 1000;
