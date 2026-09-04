@@ -12832,7 +12832,7 @@
     "text": "오늘 넘기면 받을 돈 확인이 늦어질 년생\n환급·미수금·정산은 오늘 한 번 더 확인해야 주말 뒤로 밀리지 않습니다.\n\n명리 포인트: 申月 · 유통·정산 흐름\n쥐띠 — 환급 내역 조회\n용띠 — 미수금 기한 확인\n원숭이띠 — 청구서 재전송\n\n내 년생이 있다면 댓글에 ‘입금’을 남겨주세요.\n받을 돈 체크 3개와 독촉 아닌 문장 1개를 정리해드립니다.\n개인 흐름은 생년월일시에 따라 달라지므로, 영상은 절기 기준 띠 흐름으로 참고해 주세요.\n\n#팔자명가 #정산운 #환급운 #재물운 #띠별운세 #년생운세",
     "videoUrl": "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@3ba69546e53bacf9c54c348573792e36df665a74/images/de749a2c-2d29-4848-9bc6-a33492a1e05c.mp4",
     "videoSha256": "c8470a45da4fbbf0c0c1108106ec1462c39e07da167d9f6435ecfbe11c39f377",
-    "status": "scheduled",
+    "status": "publishing",
     "scheduledAt": "2026-09-04T06:30:00.000Z",
     "expectedLocalDate": "2026-09-04",
     "exactTimeKst": "15:30",
@@ -12870,7 +12870,8 @@
     "publishedId": null,
     "error": null,
     "retryCount": 0,
-    "contentHash": "004a43f54743cf2f271871389c0da774fb7686e2843fc727ae28ea939f2fc90f"
+    "contentHash": "004a43f54743cf2f271871389c0da774fb7686e2843fc727ae28ea939f2fc90f",
+    "publishAttemptedAt": "2026-09-04T06:31:20.054Z"
   },
   {
     "id": "1b4fdf5e-970c-49b0-ac24-3d6fc722b627",
