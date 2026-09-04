@@ -66,6 +66,33 @@ const CHEONEULGWIIN_TABLE = {
   신: [6, 2], // 오(6)·인(2)
 };
 
+// 2026-09-03 소재 확장(사용자 지시 - 벤치마크 채널 대비 소재 폭이 좁다는 지적): 백호살/
+// 괴강살/홍염살/문창귀인/원진살 추가. 전부 명리학에서 표준적으로 통용되는 정통 판별표를
+// 그대로 코드에 박아넣은 것 — 위의 다른 표들과 동일한 원칙(AI가 기억으로 지어내지 않고
+// 여기서 계산된 값만 근거로 쓴다).
+
+// 백호살(白虎殺): 일주(일간+일지)가 아래 7개 갑자 중 하나일 때 성립하는 정통 판별법.
+const BAEKHO_ILJU = ["갑진", "을미", "병술", "정축", "무진", "임술", "계축"];
+
+// 괴강살(魁罡殺): 일주가 아래 4개 갑자(경진·경술·임진·임술) 중 하나일 때 성립(좁은 정의,
+// 가장 널리 쓰이는 표준 버전).
+const GOEGANG_ILJU = ["경진", "경술", "임진", "임술"];
+
+// 홍염살(紅艶殺): 일간 기준 특정 지지가 사주 원국에 있으면 성립(정통 판별표).
+const HONGYEOM_TABLE = { 갑: 6, 을: 6, 병: 2, 정: 7, 무: 4, 기: 4, 경: 10, 신: 9, 임: 0, 계: 8 };
+
+// 문창귀인(文昌貴人): 일간 기준 특정 지지가 원국에 있으면 성립(정통 판별표) - 학문/문서운 길신.
+const MUNCHANG_TABLE = { 갑: 5, 을: 6, 병: 8, 정: 9, 무: 8, 기: 9, 경: 11, 신: 0, 임: 2, 계: 3 };
+
+// 원진살(怨嗔殺): 년지(띠) 기준 서로 원진 관계인 짝. (자-미, 축-오, 인-유, 묘-신, 진-해, 사-술)
+const WONJIN_PAIRS = [
+  [0, 7], [1, 6], [2, 9], [3, 8], [4, 11], [5, 10],
+];
+function getWonjinPartner(branchIndex) {
+  const pair = WONJIN_PAIRS.find((p) => p.includes(branchIndex));
+  return pair.find((b) => b !== branchIndex);
+}
+
 // 삼재: 띠(년지) 삼합 그룹과 "충"하는 방합(계절 3글자) 기준. (해묘미 삼재=사오미 방합 등 검증됨)
 const BANGHAP = [
   { name: "인묘진(봄/목방)", element: "목", branches: [2, 3, 4] },
@@ -112,8 +139,14 @@ module.exports = {
   SAMHAP_GROUPS,
   YANGIN_TABLE,
   CHEONEULGWIIN_TABLE,
+  BAEKHO_ILJU,
+  GOEGANG_ILJU,
+  HONGYEOM_TABLE,
+  MUNCHANG_TABLE,
+  WONJIN_PAIRS,
   branchLabel,
   getSamhapRoles,
   getSamjaeInfo,
   getVerifiedCalendarFacts,
+  getWonjinPartner,
 };
