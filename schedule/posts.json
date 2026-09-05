@@ -14511,7 +14511,7 @@
       "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@c28ef480f499ae4049dd7ffc8cb0dedccaf8da3c/images/a21dda36-a37a-4300-b8c0-72cf2ac7c5b8.jpg",
       "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@c28ef480f499ae4049dd7ffc8cb0dedccaf8da3c/images/41de1cb1-e288-4518-946c-d8c18990f2c6.jpg"
     ],
-    "status": "scheduled",
+    "status": "publishing",
     "scheduledAt": "2026-09-05T21:00:00.000Z",
     "expectedLocalDate": "2026-09-06",
     "exactTimeKst": "06:00",
@@ -14528,7 +14528,8 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "retryCount": 0
+    "retryCount": 0,
+    "publishAttemptedAt": "2026-09-05T21:00:56.213Z"
   },
   {
     "id": "e2ca1e8f-7ca0-49e2-85c3-107e5c9bf597",
