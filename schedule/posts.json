@@ -4840,8 +4840,11 @@
     "scheduledAt": "2026-09-05T23:02:00.000Z",
     "createdAt": "2026-08-29T05:33:37.295Z",
     "publishedAt": null,
-    "publishedId": null,
-    "error": null
+    "publishedId": "18114825064948076",
+    "error": null,
+    "chainPublishedIds": [
+      "18114825064948076"
+    ]
   },
   {
     "id": "64f9aa03-ffe3-4b49-84ba-05b47df73221",
