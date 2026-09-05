@@ -8260,9 +8260,12 @@
     "scheduledAt": "2026-09-05T06:22:00.000Z",
     "createdAt": "2026-09-01T07:28:57.745Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17991905120992906",
     "error": null,
-    "viralEngine": true
+    "viralEngine": true,
+    "chainPublishedIds": [
+      "17991905120992906"
+    ]
   },
   {
     "id": "938f8d8f-876f-4c1f-a17a-9892f1448b51",
