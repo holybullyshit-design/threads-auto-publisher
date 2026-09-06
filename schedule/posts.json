@@ -4330,9 +4330,12 @@
     "scheduledAt": "2026-09-06T23:16:00.000Z",
     "createdAt": "2026-08-29T03:10:42.139Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17904829005557094",
     "error": null,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "17904829005557094"
+    ]
   },
   {
     "id": "44d030bb-312e-4ffe-bbd5-4d2fd1fdd172",
