@@ -8557,9 +8557,12 @@
     "scheduledAt": "2026-09-06T06:38:00.000Z",
     "createdAt": "2026-09-02T02:40:20.693Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18096428612574844",
     "error": null,
-    "viralEngine": true
+    "viralEngine": true,
+    "chainPublishedIds": [
+      "18096428612574844"
+    ]
   },
   {
     "id": "c6c3421b-4e0f-4f91-bf13-75349f340132",
