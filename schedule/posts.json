@@ -3707,8 +3707,11 @@
     "scheduledAt": "2026-09-06T23:07:00.000Z",
     "createdAt": "2026-08-29T02:35:20.203Z",
     "publishedAt": null,
-    "publishedId": null,
-    "error": null
+    "publishedId": "18098869172040077",
+    "error": null,
+    "chainPublishedIds": [
+      "18098869172040077"
+    ]
   },
   {
     "id": "ca6847ef-0157-40d3-984a-e04dd5fe2327",
