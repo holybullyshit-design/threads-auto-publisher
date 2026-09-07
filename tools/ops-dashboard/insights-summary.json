@@ -1,14 +1,14 @@
 {
-  "generatedAt": "2026-09-07T09:05:30.998Z",
+  "generatedAt": "2026-09-07T09:15:40.594Z",
   "accounts": [
     {
       "id": "273c125f-56b7-4aa1-8abc-89df16bfbe2a",
       "label": "연리지 실타래",
       "followersCount": 987,
-      "viewsRecent7d": 33208,
-      "viewsChangePct": 181,
-      "likes": 303,
-      "replies": 393,
+      "viewsRecent7d": 34697,
+      "viewsChangePct": 193,
+      "likes": 312,
+      "replies": 394,
       "reposts": 47,
       "topPost": {
         "text": "이혼 얘기까진 안 갔는데, 집에 들어가기 싫어지는 사람. 애들 때문에 참고 사는데 그 이유마저 흐릿해지는 사",
@@ -19,19 +19,19 @@
       },
       "timeBuckets": {
         "morning": 537,
-        "afternoon": 615,
+        "afternoon": 619,
         "evening": 424
       },
       "trackedPosts": 48,
-      "fetchedAt": "2026-09-07T08:05:26.659Z",
+      "fetchedAt": "2026-09-07T09:15:25.544Z",
       "error": null
     },
     {
       "id": "e0331659-96f0-4f5f-9aef-d89e0ed2a6a3",
       "label": "아해사주",
       "followersCount": 686,
-      "viewsRecent7d": 11430,
-      "viewsChangePct": 10,
+      "viewsRecent7d": 11545,
+      "viewsChangePct": 11,
       "likes": 97,
       "replies": 209,
       "reposts": 15,
@@ -48,14 +48,14 @@
         "evening": 486
       },
       "trackedPosts": 47,
-      "fetchedAt": "2026-09-07T08:05:28.462Z",
+      "fetchedAt": "2026-09-07T09:15:28.261Z",
       "error": null
     },
     {
       "id": "44d8bd24-6bf7-4b3a-9241-ddfb2b12c3b0",
       "label": "팔자명가",
       "followersCount": 1023,
-      "viewsRecent7d": 16918,
+      "viewsRecent7d": 16937,
       "viewsChangePct": -10,
       "likes": 244,
       "replies": 76,
@@ -73,7 +73,7 @@
         "evening": 415
       },
       "trackedPosts": 52,
-      "fetchedAt": "2026-09-07T08:05:31.121Z",
+      "fetchedAt": "2026-09-07T09:15:28.952Z",
       "error": null
     },
     {
@@ -105,7 +105,7 @@
       "id": "d2c9ae3f-67c9-42bf-b9f8-e8000b61abff",
       "label": "팔자장인",
       "followersCount": 33,
-      "viewsRecent7d": 41969,
+      "viewsRecent7d": 42169,
       "viewsChangePct": 46,
       "likes": 349,
       "replies": 27,
@@ -119,20 +119,20 @@
       },
       "timeBuckets": {
         "morning": 906,
-        "afternoon": 563,
+        "afternoon": 564,
         "evening": 1379
       },
       "trackedPosts": 49,
-      "fetchedAt": "2026-09-07T08:05:35.589Z",
+      "fetchedAt": "2026-09-07T09:15:33.938Z",
       "error": null
     },
     {
       "id": "cf6a4ba2-da74-4fc1-ae5a-72e1b1477287",
       "label": "팔자궤도",
       "followersCount": 270,
-      "viewsRecent7d": 29052,
-      "viewsChangePct": 153,
-      "likes": 223,
+      "viewsRecent7d": 29458,
+      "viewsChangePct": 157,
+      "likes": 224,
       "replies": 6,
       "reposts": 7,
       "topPost": {
@@ -144,17 +144,17 @@
       },
       "timeBuckets": {
         "morning": 476,
-        "afternoon": 572,
+        "afternoon": 578,
         "evening": 516
       },
       "trackedPosts": 48,
-      "fetchedAt": "2026-09-07T08:05:36.918Z",
+      "fetchedAt": "2026-09-07T09:15:37.318Z",
       "error": null
     }
   ],
   "recommendations": [
     "'연리지 실타래' — 오후(12-18시) 발행 글이 저녁(18-24시) 발행 글보다 평균 조회수가 1.5배 높습니다. 오후(12-18시) 비중을 늘려보세요.",
-    "'연리지 실타래' — 최근 7일 조회수가 지난 주 대비 181% 상승 중입니다. 지금 통하는 주제/훅 패턴을 유지하세요.",
+    "'연리지 실타래' — 최근 7일 조회수가 지난 주 대비 193% 상승 중입니다. 지금 통하는 주제/훅 패턴을 유지하세요.",
     "'연리지 실타래' 최고 성과 글: \"이혼 얘기까진 안 갔는데, 집에 들어가기 싫어지는 사람. 애들 때문에 참고 사는데 그 이유마저 흐릿해지는 사\" — 조회수 3,546 · 답글 105건. 비슷한 훅/주제를 반복 활용해볼 만합니다.",
     "'아해사주' — 저녁(18-24시) 발행 글이 오전(0-12시) 발행 글보다 평균 조회수가 1.5배 높습니다. 저녁(18-24시) 비중을 늘려보세요.",
     "'아해사주' 최고 성과 글: \"〈또래보다 늦되어 보이는데 어느 순간 훌쩍 앞서가는 아이 사주〉 말도 늦게 트이고 걸음마도 남들보다 더뎠는데\" — 조회수 3,649 · 답글 87건. 비슷한 훅/주제를 반복 활용해볼 만합니다.",
@@ -166,7 +166,7 @@
     "'팔자장인' — 저녁(18-24시) 발행 글이 오후(12-18시) 발행 글보다 평균 조회수가 2.4배 높습니다. 저녁(18-24시) 비중을 늘려보세요.",
     "'팔자장인' — 최근 7일 조회수가 지난 주 대비 46% 상승 중입니다. 지금 통하는 주제/훅 패턴을 유지하세요.",
     "'팔자장인' 최고 성과 글: \"죄송하지만, 일간이 임수인데 사주에 자(쥐) 자리 있으면 이미 날 서 있는 사람입니다. 결정할 때 손이 안 \" — 조회수 7,558 · 답글 17건. 비슷한 훅/주제를 반복 활용해볼 만합니다.",
-    "'팔자궤도' — 최근 7일 조회수가 지난 주 대비 153% 상승 중입니다. 지금 통하는 주제/훅 패턴을 유지하세요.",
+    "'팔자궤도' — 최근 7일 조회수가 지난 주 대비 157% 상승 중입니다. 지금 통하는 주제/훅 패턴을 유지하세요.",
     "'팔자궤도' 최고 성과 글: \"죄송하지만, 목 일간이면 이번 달 그냥 못 넘어갑니다. 병오년 병신월. 신금이 떠 있는 달이에요. 목을 정면\" — 조회수 3,051 · 답글 3건. 비슷한 훅/주제를 반복 활용해볼 만합니다."
   ]
 }
