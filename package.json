@@ -12,7 +12,7 @@
     "start": "node server/index.js",
     "palja:reels:prepare": "node tools/palja/prepare-reels.js",
     "palja:reels:publish-reviewed": "node tools/palja/publish-reviewed-reels.js",
-    "test": "node --test test/fortuneEngine.test.js test/instagramClient.test.js test/instagramOAuth.test.js test/instagramAuthStore.test.js test/scheduleTime.test.js test/yeonlijiStudio.test.js test/yeonlijiEditorial.test.js test/yeonlijiEvidence.test.js test/instagramPublication.test.js test/yeonlijiDelivery.test.js test/instagramAnalytics.test.js test/paljaReels.test.js test/youtubeOAuth.test.js test/youtubeClient.test.js test/youtubeShorts.test.js",
+    "test": "node --test test/fortuneEngine.test.js test/instagramClient.test.js test/instagramOAuth.test.js test/instagramAuthStore.test.js test/scheduleTime.test.js test/yeonlijiStudio.test.js test/yeonlijiEditorial.test.js test/yeonlijiEvidence.test.js test/instagramPublication.test.js test/yeonlijiDelivery.test.js test/instagramAnalytics.test.js test/paljaReels.test.js",
     "test:render": "node --test test/instagramRender.test.js"
   },
   "dependencies": {

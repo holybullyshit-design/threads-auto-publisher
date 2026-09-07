@@ -33,10 +33,6 @@ jobs:
           INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
           INSTAGRAM_ACCOUNTS_JSON: ${{ secrets.INSTAGRAM_ACCOUNTS_JSON }}
           INSTAGRAM_GRAPH_VERSION: ${{ vars.INSTAGRAM_GRAPH_VERSION || 'v24.0' }}
-          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
-          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
-          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
-          YOUTUBE_PUBLIC_UPLOAD_ENABLED: ${{ vars.YOUTUBE_PUBLIC_UPLOAD_ENABLED || '0' }}
           # schedule/posts.json을 로컬 git 커밋이 아니라 GitHub Contents API로 직접 읽고 쓴다
           # (githubStore.js) - 로컬 앱의 다른 쓰기 작업과 동시에 일어나도 충돌 시 자동으로
           # 안전하게 재시도된다. 2026-08-29: 예전 방식(plain git commit && push, 별도 스텝)은

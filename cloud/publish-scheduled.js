@@ -79,25 +79,6 @@ async function main() {
   }
 
   for (const post of due) {
-    if (post.platform === "youtube") {
-      let claimed = false;
-      try {
-        const { assertYouTubeShort, publishScheduledShort } = require("../server/lib/youtubeShorts");
-        assertYouTubeShort(post);
-        await persistPostResult(post.id, { status: "publishing", publishAttemptedAt: new Date().toISOString(), error: null });
-        claimed = true;
-        const result = await publishScheduledShort({ ...post, status: "publishing" });
-        await persistPostResult(post.id, { status: "published", publishedAt: new Date().toISOString(), publishedId: result.publishedId, error: null });
-        console.log(`[YouTube 성공] ${post.id} → ${result.publishedId}`);
-      } catch (err) {
-        const fatal = ["INVALID_YOUTUBE_SHORT", "YOUTUBE_SHORT_INTEGRITY", "YOUTUBE_VALIDATION_REQUIRED", "YOUTUBE_AUDIO_LICENSE_BLOCKED", "YOUTUBE_PUBLIC_NOT_ENABLED", "MISSING_YOUTUBE_CONFIG", "YOUTUBE_RESULT_UNCERTAIN"].includes(err.code);
-        const retryCount = (post.retryCount || 0) + 1;
-        const status = claimed || fatal || retryCount >= MAX_AUTO_RETRIES ? "failed" : "scheduled";
-        await persistPostResult(post.id, { status, retryCount, error: claimed ? `게시 결과 수동 확인 필요 — 자동 재게시 금지: ${err.message}` : err.message });
-        console.error(`[YouTube ${status === "failed" ? "최종 실패" : "재시도 예정"}] ${post.id}: ${err.message}`);
-      }
-      continue;
-    }
     if (post.platform === "instagram") {
       let publishStarted = false;
       let instagramResult;

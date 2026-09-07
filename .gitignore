@@ -7,7 +7,7 @@ npm-debug.log*
 # 계정(Threads 액세스 토큰 등) 로컬 저장소 - 절대 커밋하지 않음
 data/
 
-# Google/YouTube OAuth 클라이언트 보안 파일 - 절대 커밋하지 않음
+# OAuth 클라이언트 보안 파일 - 절대 커밋하지 않음
 server/private/
 
 # 이미지 호스팅용 별도 공개 저장소 (자체 git 저장소라 메인 repo 추적에서 제외)
@@ -15,3 +15,4 @@ media-host/
 
 # 자동화 관제탑 대시보드 - 매번 재생성되는 산출물이라 git에 안 올림 (template.html/generate.js/benchmark-log.json만 추적)
 tools/ops-dashboard/output.html
+output/

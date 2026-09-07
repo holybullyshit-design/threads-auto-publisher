@@ -29,8 +29,6 @@ const { preflightInstagram } = require("./lib/instagramClient");
 const instagramOAuth = require("./lib/instagramOAuth");
 const instagramAuthStore = require("./lib/instagramAuthStore");
 const yeonlijiAutomation = require("./lib/yeonlijiAutomation");
-const youtubeOAuth = require("./lib/youtubeOAuth");
-const youtubeAuthStore = require("./lib/youtubeAuthStore");
 
 instagramAuthStore.loadOAuthConfig();
 instagramAuthStore.load();
@@ -39,7 +37,6 @@ const app = express();
 const PORT = Number(process.env.PORT) || 4321;
 const STUDIO_PREVIEW_ONLY = process.env.STUDIO_PREVIEW_ONLY === '1';
 const INSTAGRAM_PUBLIC_REDIRECT_URI = "https://threads-publish-pinger.threadsautopub.workers.dev/oauth/instagram/callback";
-const YOUTUBE_EXPECTED_CHANNEL_ID = "UCUsStA-7a8TNT0ENBVNcxWQ";
 const INSTAGRAM_ACCOUNT_CATALOG = Object.freeze({
   palja: { key: "palja", label: "팔자명가", expectedUsername: "saju_orbit", contentReady: true },
   yeonliji: { key: "yeonliji", label: "연리지 실타래", expectedUsername: "knot_saju", contentReady: false },
@@ -72,58 +69,6 @@ app.get("/api/meta", (req, res) => {
     instagramOAuthConfigured: instagramOAuth.isConfigured(),
   });
 });
-
-// ---------- YouTube 팔자명가 계정 연결 ----------
-// Google은 공개 HTTPS 주소로 승인 코드를 돌려보내고, 사용자가 그 주소를 로컬 앱에
-// 붙여넣는다. Instagram 연결과 같은 구조라 localhost를 외부에 공개하지 않아도 된다.
-const youtubeOAuthStates = new Map();
-
-app.get("/api/youtube/status", (req, res) => {
-  res.json({ oauthConfigured: youtubeOAuth.isConfigured(), expectedChannelId: YOUTUBE_EXPECTED_CHANNEL_ID, ...youtubeAuthStore.publicStatus() });
-});
-
-app.post("/api/youtube/oauth/start", (req, res) => {
-  try {
-    const state = crypto.randomBytes(24).toString("hex");
-    youtubeOAuthStates.set(state, { createdAt: Date.now() });
-    res.json({ state, authorizeUrl: youtubeOAuth.buildAuthorizeUrl(state) });
-  } catch (err) { handleError(res, err); }
-});
-
-app.get("/oauth/youtube/callback", async (req, res) => {
-  const state = String(req.query.state || "");
-  const pending = youtubeOAuthStates.get(state);
-  youtubeOAuthStates.delete(state);
-  if (!pending || Date.now() - pending.createdAt > 10 * 60 * 1000) return res.status(400).json({ status: "error", error: "만료되었거나 올바르지 않은 YouTube 연결 요청입니다." });
-  if (req.query.error) return res.status(400).json({ status: "error", error: String(req.query.error_description || req.query.error) });
-  try {
-    const token = await youtubeOAuth.exchangeCode(String(req.query.code || ""));
-    const refreshToken = token.refresh_token || youtubeAuthStore.load()?.refreshToken;
-    if (!refreshToken) throw Object.assign(new Error("Google에서 갱신 토큰을 받지 못했습니다. 계정 연결을 다시 승인해주세요."), { status: 422 });
-    const channel = await youtubeOAuth.fetchOwnChannel(token.access_token);
-    if (channel.id !== YOUTUBE_EXPECTED_CHANNEL_ID) throw Object.assign(new Error(`팔자명가 YouTube 채널이 아닙니다. 선택된 채널: ${channel.title || channel.id}`), { status: 409, code: "YOUTUBE_CHANNEL_MISMATCH" });
-    youtubeAuthStore.save({ refreshToken, channelId: channel.id, channelTitle: channel.title, scope: token.scope });
-    let cloudSynced = false;
-    let cloudSyncError = null;
-    try { await syncYouTubeSecretsToGitHub(refreshToken); cloudSynced = true; }
-    catch (syncError) { cloudSyncError = syncError.message; }
-    res.json({ status: "done", channelId: channel.id, channelTitle: channel.title, cloudSynced, cloudSyncError });
-  } catch (err) { res.status(err.status || 500).json({ status: "error", error: err.message }); }
-});
-
-function syncYouTubeSecretsToGitHub(refreshToken) {
-  const repo = process.env.GITHUB_REPO;
-  if (!repo) return Promise.reject(new Error("GITHUB_REPO가 설정되지 않아 YouTube 클라우드 동기화를 건너뜁니다."));
-  const client = youtubeOAuth.loadClientConfig();
-  const secrets = { YOUTUBE_CLIENT_ID: client.clientId, YOUTUBE_CLIENT_SECRET: client.clientSecret, YOUTUBE_REFRESH_TOKEN: refreshToken };
-  return Promise.all(Object.entries(secrets).map(([name, value]) => new Promise((resolve, reject) => {
-    const child = execFile("gh", ["secret", "set", name, "--repo", repo], { timeout: 30000 }, (err, stdout, stderr) => {
-      if (err) return reject(new Error(`${name} 동기화 실패: ${stderr || err.message}`));
-      resolve();
-    });
-    child.stdin.end(value);
-  })));
-}
 
 // ---------- Instagram 팔자명가 오늘의 운세 ----------
 app.get("/api/instagram/content", (req, res) => {
