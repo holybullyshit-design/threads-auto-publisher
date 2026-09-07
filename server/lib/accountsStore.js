@@ -92,6 +92,12 @@ function validatePersona(persona) {
     ctaInstruction: persona.ctaInstruction || "",
     closingLine: persona.closingLine || "",
     referenceExample: persona.referenceExample || "",
+    // 2026-09-07: 매일 똑같은 연결문장/CTA/클로징이 반복되지 않도록, 고정 문자열 대신
+    // 골라 쓸 수 있는 풀(pool)도 저장한다 - 없으면(옛 계정) undefined로 남고
+    // sajuDraftWriter.js가 위 고정 필드로 폴백한다.
+    bridgeOptions: Array.isArray(persona.bridgeOptions) ? persona.bridgeOptions : undefined,
+    ctaOptions: Array.isArray(persona.ctaOptions) ? persona.ctaOptions : undefined,
+    closingOptions: Array.isArray(persona.closingOptions) ? persona.closingOptions : undefined,
   };
 }
 

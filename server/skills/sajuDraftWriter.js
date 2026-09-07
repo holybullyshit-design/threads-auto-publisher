@@ -8,13 +8,31 @@ function findCategory(persona, categoryId) {
   return persona.categories.find((c) => c.id === categoryId);
 }
 
+function pickRandom(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
 // 카테고리별로 CTA/클로징을 다르게 써야 하는 경우가 있다 (예: "임신운"은 아직 아이가
 // 없는 상태라 "아이의 생년월일시"나 "아이의 기질" 같은, 이미 아이가 있다는 걸 전제하는
 // 페르소나 기본 문구를 그대로 쓰면 말이 안 된다). category.ctaInstruction/closingLine이
-// 있으면 그걸 우선 쓰고, 없으면 페르소나 기본값으로 자연스럽게 폴백한다.
+// 있으면 그걸 우선 쓰고, 없으면 페르소나의 CTA/클로징 풀(pool)에서 매번 하나를 골라 쓴다
+// (ctaOptions/closingOptions가 없는 옛 페르소나는 고정 문자열 ctaInstruction/closingLine로
+// 그대로 폴백 - 하위호환).
 function buildSystemPrompt(persona, category) {
-  const ctaInstruction = category?.ctaInstruction || persona.ctaInstruction;
-  const closingLine = category?.closingLine || persona.closingLine;
+  const ctaInstruction =
+    category?.ctaInstruction ||
+    (Array.isArray(persona.ctaOptions) && persona.ctaOptions.length ? pickRandom(persona.ctaOptions) : persona.ctaInstruction);
+  const closingLine =
+    category?.closingLine ||
+    (Array.isArray(persona.closingOptions) && persona.closingOptions.length ? pickRandom(persona.closingOptions) : persona.closingLine);
+  // 2026-09-07: 매일 똑같은 "반드시 이 문장을 넣어라"가 있으면 소재가 달라도 글의 뼈대가
+  // 매번 똑같아 보인다(실측: 이게 반복되던 2주간 댓글유도 글 반응이 붕괴) - bridgeOptions가
+  // 있는 페르소나는 이 섹션으로 매번 다른 문장을 주고, 없는 옛 페르소나는 styleGuide 안의
+  // 기존 지시문을 그대로 쓰게 비워둔다.
+  const bridgeSection =
+    Array.isArray(persona.bridgeOptions) && persona.bridgeOptions.length
+      ? `\n[이번 글의 연결 문장 - 아래 뜻/톤을 살려서 자연스럽게 녹여라. 토씨 그대로 베끼지 말 것]\n${pickRandom(persona.bridgeOptions)}\n`
+      : "";
 
   return `당신은 한국 Threads(스레드)에서 사주(명리학) 콘텐츠를 연재하는 계정의 전속 작가 "saju-draft-writer"입니다.
 이 계정은 이미 확고한 문체와 구조를 가지고 있고, 당신의 임무는 새로운 주제로 "이 채널이 썼을 법한" 글을 그대로 재현하는 것입니다.
@@ -22,8 +40,9 @@ function buildSystemPrompt(persona, category) {
 [이 채널의 말투]
 기본 어체: ${persona.speechLevel}
 ${persona.styleGuide}
-
+${bridgeSection}
 [CTA(참여 유도) 방식 - 이 카테고리 기준]
+아래 뜻을 담아 자연스럽게 요청 문장을 써라(예시로 준 표현을 그대로 베끼지 말고, 같은 정보를 요청하는 다른 문장으로):
 ${ctaInstruction}
 
 [클로징 문구 - 이 카테고리 기준]
