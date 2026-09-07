@@ -5470,9 +5470,12 @@
     "scheduledAt": "2026-09-07T07:46:00.000Z",
     "createdAt": "2026-08-30T03:04:28.759Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18183180871415592",
     "error": null,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "18183180871415592"
+    ]
   },
   {
     "id": "b4676e03-e911-4edb-bbf8-e5414d78d558",
