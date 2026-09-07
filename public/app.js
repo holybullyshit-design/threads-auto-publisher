@@ -119,6 +119,9 @@ const el = {
   viewCalendarBtn: document.getElementById("view-calendar-btn"),
   viewListBtn: document.getElementById("view-list-btn"),
   dayDetail: document.getElementById("day-detail"),
+  igReelScheduleBoard: document.getElementById("ig-reel-schedule-board"),
+  igReelScheduleRefresh: document.getElementById("ig-reel-schedule-refresh"),
+  igReelOpenCalendar: document.getElementById("ig-reel-open-calendar"),
 
   newAccountLabel: document.getElementById("new-account-label"),
   newAccountUserId: document.getElementById("new-account-userid"),
@@ -172,7 +175,10 @@ function switchTab(tabName) {
     panel.classList.toggle("hidden", name !== tabName);
   });
   if (tabName === "schedule") loadSchedule();
-  if (tabName === "instagram" && window.loadInstagramDashboard) window.loadInstagramDashboard();
+  if (tabName === "instagram") {
+    if (window.loadInstagramDashboard) window.loadInstagramDashboard();
+    loadInstagramReelSchedule();
+  }
   if (tabName === "accounts") renderAccountList();
   if (tabName === "ops") {
     loadOps();
@@ -1293,15 +1299,62 @@ async function loadSchedule() {
   }
 }
 
+function safeReelVideoUrl(value) {
+  try {
+    const url = new URL(String(value || ""));
+    return url.protocol === "https:" && url.hostname === "cdn.jsdelivr.net" && url.pathname.endsWith(".mp4") ? url.href : "";
+  } catch { return ""; }
+}
+
+function instagramKindLabel(post) {
+  if (post.platform !== "instagram") return "Threads";
+  return post.mediaType === "REELS" ? "Instagram · 릴스" : "Instagram · 카드";
+}
+
+async function loadInstagramReelSchedule() {
+  if (!el.igReelScheduleBoard) return;
+  el.igReelScheduleBoard.innerHTML = `<p class="hint-text">릴스 예약을 불러오는 중입니다.</p>`;
+  try {
+    const res = await fetch("/api/schedule");
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || "릴스 예약을 불러오지 못했습니다.");
+    const reels = (data.posts || [])
+      .filter((post) => post.platform === "instagram" && post.accountKey === "palja" && post.mediaType === "REELS" && post.status !== "canceled")
+      .sort((a, b) => new Date(b.scheduledAt) - new Date(a.scheduledAt))
+      // 하루 3회 릴스 실험을 일주일 단위로 한 화면에서 검수할 수 있어야 한다.
+      // 취소 이력을 제외한 최근 30건까지 보여주면 이번 주 전체(게시 1 + 예약 17)가 잘리지 않는다.
+      .slice(0, 30);
+    if (!reels.length) {
+      el.igReelScheduleBoard.innerHTML = `<p class="empty-text">등록된 팔자명가 릴스 예약이 없습니다.</p>`;
+      return;
+    }
+    el.igReelScheduleBoard.innerHTML = reels.map((post) => {
+      const statusClass = `status-${post.status}`;
+      const statusLabel = STATUS_LABEL[post.status] || post.status;
+      const when = new Date(post.scheduledAt).toLocaleString("ko-KR", { timeZone: "Asia/Seoul", year: "numeric", month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" });
+      const videoUrl = safeReelVideoUrl(post.videoUrl);
+      return `<article class="ig-reel-reservation">
+        ${videoUrl ? `<video src="${escapeHtml(videoUrl)}" muted playsinline preload="metadata" aria-label="${escapeHtml(post.title || "팔자명가 릴스 시안")}"></video>` : `<div class="ig-reel-video-missing">영상 없음</div>`}
+        <div class="ig-reel-reservation-copy">
+          <div class="ig-reel-reservation-head"><strong>${escapeHtml(post.title || "제목 없음")}</strong><span class="status-badge ${statusClass}">${statusLabel}</span></div>
+          <span class="ig-reel-time">${escapeHtml(when)} KST</span>
+          <small>5초 릴스 · @saju_orbit</small>
+        </div>
+      </article>`;
+    }).join("");
+  } catch (error) {
+    el.igReelScheduleBoard.innerHTML = `<p class="error-text">${escapeHtml(error.message)}</p>`;
+  }
+}
+
 function seedAccountColors() {
   // 계정 목록 순서대로 색을 먼저 배정해서, 범례/달력/목록에서 항상 같은 색이 나오게 한다.
   state.accounts.forEach((acc) => getAccountColor(acc.id));
   state.schedulePosts.forEach((p) => getAccountColor(p.accountId));
 }
 
-// 이 탭(예약 목록)은 스레드 전용이다 — Instagram 게시물은 별도 "Instagram 운세" 탭에서
-// 관리하므로 여기서는 항상 제외한다. 스레드 안에서는 사주(3계정)/파트너스(1계정)가 섞여
-// 헷갈릴 수 있어서, 그 둘만 전체/사주/파트너스로 걸러볼 수 있게 한다.
+// 하나의 콘텐츠 캘린더에서 Instagram과 Threads 예약을 함께 보여준다.
+// 플랫폼 필터로 분리하고, Instagram 안에서는 카드와 릴스를 별도 유형으로 표시한다.
 function getPostGroup(post) {
   if (post.platform === "instagram") return "instagram";
   const acc = state.accounts.find((a) => a.id === post.accountId);
@@ -1417,10 +1470,12 @@ function renderCalendar() {
       // 다르다(Instagram 쪽은 "saju_orbit" 고정값) - platform까지 키에 넣어야 서로 다른 두 칩으로
       // 안 뭉개지고, 라벨에 (IG) 표시를 붙여서 왜 "팔자명가"가 두 줄인지 헷갈리지 않게 한다.
       const platform = p.platform === "instagram" ? "instagram" : "threads";
-      const key = `${p.accountId || p.accountLabel || "unknown"}|${platform}`;
+      const mediaKind = platform === "instagram" ? (p.mediaType === "REELS" ? "reel" : "card") : "post";
+      const key = `${p.accountId || p.accountLabel || "unknown"}|${platform}|${mediaKind}`;
       if (!byAccount.has(key)) {
-        const label = (p.accountLabel || "계정") + (platform === "instagram" ? " (IG)" : "");
-        byAccount.set(key, { label, accountId: p.accountId, count: 0, hasFailed: false, allPublished: true });
+        const suffix = platform === "instagram" ? (mediaKind === "reel" ? " (IG 릴스)" : " (IG 카드)") : "";
+        const label = (p.accountLabel || "계정") + suffix;
+        byAccount.set(key, { label, accountId: `${p.accountId}|${mediaKind}`, count: 0, hasFailed: false, allPublished: true });
       }
       const entry = byAccount.get(key);
       entry.count += 1;
@@ -1488,7 +1543,7 @@ function renderPostCards(container, posts, emptyText) {
     const when = new Date(post.scheduledAt).toLocaleString("ko-KR");
     const statusClass = `status-${post.status}`;
     const statusLabel = STATUS_LABEL[post.status] || post.status;
-    const platformLabel = post.platform === "instagram" ? "Instagram" : "Threads";
+    const platformLabel = instagramKindLabel(post);
 
     const imagesHtml =
       Array.isArray(post.images) && post.images.length > 0
@@ -1496,6 +1551,11 @@ function renderPostCards(container, posts, emptyText) {
             .map((url) => `<img src="${escapeHtml(url)}" alt="첨부 이미지" />`)
             .join("")}</div>`
         : "";
+    const videoUrl = safeReelVideoUrl(post.videoUrl);
+    const videoHtml = post.mediaType === "REELS" && videoUrl
+      ? `<div class="schedule-item-video"><video src="${escapeHtml(videoUrl)}" muted playsinline controls preload="metadata" aria-label="${escapeHtml(post.title || "예약 릴스")}"></video></div>`
+      : "";
+    const titleHtml = post.title ? `<h3 class="schedule-item-title">${escapeHtml(post.title)}</h3>` : "";
     const replyHtml = post.replyText
       ? `<div class="schedule-item-reply">💬 답글: ${escapeHtml(post.replyText)}</div>`
       : "";
@@ -1614,6 +1674,8 @@ function renderPostCards(container, posts, emptyText) {
         <span>${platformLabel} · ${escapeHtml(post.accountLabel || "계정 미상")} · 예약: ${when}</span>
         <span class="status-badge ${statusClass}">${statusLabel}</span>
       </div>
+      ${titleHtml}
+      ${videoHtml}
       <div class="schedule-item-text">${totalParts > 1 ? `<span class="schedule-item-chain-label">1/${totalParts}</span>` : ""}${escapeHtml(post.text)}</div>
       ${chainHtml}
       ${imagesHtml}
@@ -1651,6 +1713,13 @@ function renderPostCards(container, posts, emptyText) {
     container.appendChild(item);
   });
 }
+
+el.igReelScheduleRefresh?.addEventListener("click", loadInstagramReelSchedule);
+el.igReelOpenCalendar?.addEventListener("click", () => {
+  state.scheduleGroupFilter = "instagram";
+  document.querySelectorAll("#group-filter .mode-btn").forEach((btn) => btn.classList.toggle("selected", btn.dataset.group === "instagram"));
+  switchTab("schedule");
+});
 
 async function uploadScheduleEditImage(file) {
   if (!file?.type?.startsWith("image/")) throw new Error("이미지 파일만 추가할 수 있습니다.");
