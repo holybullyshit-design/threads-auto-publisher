@@ -4412,9 +4412,12 @@
     "scheduledAt": "2026-09-07T06:52:00.000Z",
     "createdAt": "2026-08-29T03:15:16.153Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18622425355051699",
     "error": null,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "18622425355051699"
+    ]
   },
   {
     "id": "d711568f-4ad1-4f85-97dd-db55b48da10d",
