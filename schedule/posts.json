@@ -14006,7 +14006,7 @@
     "text": "이번 주 안에 못 받은 돈을 다시 받아낼 년생\n못 받은 돈은 감정 섞인 독촉보다 증빙과 기한을 함께 보낼 때 움직입니다.\n\n명리 포인트: 巳酉丑 삼합 · 재물 정리\n뱀띠 — 대화 기록 정리\n닭띠 — 청구 근거 첨부\n소띠 — 최종 기한 제시\n\n내 년생이 있다면 댓글에 ‘정산’을 남겨주세요.\n독촉 아닌 문장와 증빙 순서 3단계를 정리해드립니다.\n개인 흐름은 생년월일시에 따라 달라지므로, 영상은 절기 기준 띠 흐름으로 참고해 주세요.\n\n#팔자명가 #미수금 #정산운 #입금운 #띠별운세 #년생운세",
     "videoUrl": "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@3ba69546e53bacf9c54c348573792e36df665a74/images/0d2ab476-7334-4e3e-8d7a-d95452aeb268.mp4",
     "videoSha256": "0eb952ff4bd455cbb4a57df24c52d51f73cd13557ca07ebc3ed42271b756cd5a",
-    "status": "scheduled",
+    "status": "publishing",
     "scheduledAt": "2026-09-07T22:30:00.000Z",
     "expectedLocalDate": "2026-09-08",
     "exactTimeKst": "07:30",
@@ -14044,7 +14044,8 @@
     "publishedId": null,
     "error": null,
     "retryCount": 0,
-    "contentHash": "fbb03888346e57ac89ab0b069c0b6756a252b06dfca2aa86dfc53adbbd967602"
+    "contentHash": "fbb03888346e57ac89ab0b069c0b6756a252b06dfca2aa86dfc53adbbd967602",
+    "publishAttemptedAt": "2026-09-07T22:30:58.328Z"
   },
   {
     "id": "c8715c4c-49cd-44ac-88ca-428aa710968f",
