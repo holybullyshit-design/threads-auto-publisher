@@ -5021,8 +5021,11 @@
     "scheduledAt": "2026-09-07T23:13:00.000Z",
     "createdAt": "2026-08-29T05:35:23.317Z",
     "publishedAt": null,
-    "publishedId": null,
-    "error": null
+    "publishedId": "18095469968087989",
+    "error": null,
+    "chainPublishedIds": [
+      "18095469968087989"
+    ]
   },
   {
     "id": "6be6a3e2-5d01-4d52-8701-1fc6c1c0aaeb",
