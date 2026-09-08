@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-09-08T08:04:03.408Z",
+  "generatedAt": "2026-09-08T09:04:08.878Z",
   "accounts": [
     {
       "id": "273c125f-56b7-4aa1-8abc-89df16bfbe2a",
       "label": "연리지 실타래",
       "followersCount": 985,
-      "viewsRecent7d": 40936,
-      "viewsChangePct": 172,
-      "likes": 342,
+      "viewsRecent7d": 41085,
+      "viewsChangePct": 173,
+      "likes": 343,
       "replies": 329,
       "reposts": 44,
       "topPost": {
@@ -19,19 +19,19 @@
       },
       "timeBuckets": {
         "morning": 554,
-        "afternoon": 813,
+        "afternoon": 787,
         "evening": 424
       },
-      "trackedPosts": 51,
-      "fetchedAt": "2026-09-08T07:03:57.607Z",
+      "trackedPosts": 52,
+      "fetchedAt": "2026-09-08T09:03:57.331Z",
       "error": null
     },
     {
       "id": "e0331659-96f0-4f5f-9aef-d89e0ed2a6a3",
       "label": "아해사주",
       "followersCount": 686,
-      "viewsRecent7d": 11639,
-      "viewsChangePct": 9,
+      "viewsRecent7d": 12044,
+      "viewsChangePct": 13,
       "likes": 92,
       "replies": 146,
       "reposts": 13,
@@ -44,18 +44,18 @@
       },
       "timeBuckets": {
         "morning": 314,
-        "afternoon": 338,
+        "afternoon": 325,
         "evening": 487
       },
-      "trackedPosts": 50,
-      "fetchedAt": "2026-09-08T07:03:59.557Z",
+      "trackedPosts": 51,
+      "fetchedAt": "2026-09-08T09:03:59.177Z",
       "error": null
     },
     {
       "id": "44d8bd24-6bf7-4b3a-9241-ddfb2b12c3b0",
       "label": "팔자명가",
       "followersCount": 1021,
-      "viewsRecent7d": 13087,
+      "viewsRecent7d": 13095,
       "viewsChangePct": -40,
       "likes": 232,
       "replies": 29,
@@ -73,14 +73,14 @@
         "evening": 416
       },
       "trackedPosts": 56,
-      "fetchedAt": "2026-09-08T07:04:00.880Z",
+      "fetchedAt": "2026-09-08T09:04:01.033Z",
       "error": null
     },
     {
       "id": "6b8b637e-1629-4844-9a1f-9728c420154e",
       "label": "엄마가 직접 써본 꿀템",
       "followersCount": 1,
-      "viewsRecent7d": 52,
+      "viewsRecent7d": 53,
       "viewsChangePct": -75,
       "likes": 23,
       "replies": 1,
@@ -98,16 +98,16 @@
         "evening": 18
       },
       "trackedPosts": 28,
-      "fetchedAt": "2026-09-08T07:04:02.789Z",
+      "fetchedAt": "2026-09-08T09:04:02.586Z",
       "error": null
     },
     {
       "id": "d2c9ae3f-67c9-42bf-b9f8-e8000b61abff",
       "label": "팔자장인",
       "followersCount": 33,
-      "viewsRecent7d": 43871,
-      "viewsChangePct": 40,
-      "likes": 368,
+      "viewsRecent7d": 45100,
+      "viewsChangePct": 44,
+      "likes": 385,
       "replies": 27,
       "reposts": 12,
       "topPost": {
@@ -118,23 +118,23 @@
         "publishedAt": "2026-09-02T23:02:12.404Z"
       },
       "timeBuckets": {
-        "morning": 870,
-        "afternoon": 591,
+        "morning": 871,
+        "afternoon": 571,
         "evening": 1285
       },
-      "trackedPosts": 54,
-      "fetchedAt": "2026-09-08T07:04:04.548Z",
+      "trackedPosts": 55,
+      "fetchedAt": "2026-09-08T09:04:04.147Z",
       "error": null
     },
     {
       "id": "cf6a4ba2-da74-4fc1-ae5a-72e1b1477287",
       "label": "팔자궤도",
       "followersCount": 272,
-      "viewsRecent7d": 27457,
-      "viewsChangePct": 50,
-      "likes": 243,
-      "replies": 9,
-      "reposts": 8,
+      "viewsRecent7d": 28490,
+      "viewsChangePct": 55,
+      "likes": 246,
+      "replies": 13,
+      "reposts": 9,
       "topPost": {
         "text": "죄송하지만, 뱀띠·닭띠·소띠는 2026년부터 3년간 겨울이 유독 힘듭니다. 정확히는 매년 겨울마다요. 연말만",
         "views": 4189,
@@ -143,18 +143,18 @@
         "publishedAt": "2026-09-06T23:26:35.764Z"
       },
       "timeBuckets": {
-        "morning": 609,
-        "afternoon": 566,
+        "morning": 611,
+        "afternoon": 540,
         "evening": 485
       },
-      "trackedPosts": 52,
-      "fetchedAt": "2026-09-08T07:04:05.899Z",
+      "trackedPosts": 53,
+      "fetchedAt": "2026-09-08T09:04:06.127Z",
       "error": null
     }
   ],
   "recommendations": [
     "'연리지 실타래' — 오후(12-18시) 발행 글이 저녁(18-24시) 발행 글보다 평균 조회수가 1.9배 높습니다. 오후(12-18시) 비중을 늘려보세요.",
-    "'연리지 실타래' — 최근 7일 조회수가 지난 주 대비 172% 상승 중입니다. 지금 통하는 주제/훅 패턴을 유지하세요.",
+    "'연리지 실타래' — 최근 7일 조회수가 지난 주 대비 173% 상승 중입니다. 지금 통하는 주제/훅 패턴을 유지하세요.",
     "'연리지 실타래' 최고 성과 글: \"이혼 얘기까진 안 갔는데, 집에 들어가기 싫어지는 사람. 애들 때문에 참고 사는데 그 이유마저 흐릿해지는 사\" — 조회수 3,546 · 답글 105건. 비슷한 훅/주제를 반복 활용해볼 만합니다.",
     "'아해사주' — 저녁(18-24시) 발행 글이 오전(0-12시) 발행 글보다 평균 조회수가 1.6배 높습니다. 저녁(18-24시) 비중을 늘려보세요.",
     "'아해사주' 최고 성과 글: \"〈또래보다 늦되어 보이는데 어느 순간 훌쩍 앞서가는 아이 사주〉 말도 늦게 트이고 걸음마도 남들보다 더뎠는데\" — 조회수 3,649 · 답글 87건. 비슷한 훅/주제를 반복 활용해볼 만합니다.",
@@ -164,10 +164,10 @@
     "'엄마가 직접 써본 꿀템' — 오전(0-12시) 발행 글이 오후(12-18시) 발행 글보다 평균 조회수가 5.8배 높습니다. 오전(0-12시) 비중을 늘려보세요.",
     "'엄마가 직접 써본 꿀템' — 최근 7일 조회수가 지난 주 대비 75% 감소했습니다. 최근 훅/주제 변화를 점검해볼 시점입니다.",
     "'엄마가 직접 써본 꿀템' 최고 성과 글: \"아침 7시 40분. \"옷 입어\" 세 번째 말했는데 아직도 팬티 바람으로 공룡 장난감 들고 있음ㅋㅋ \"5분 안\" — 조회수 900 · 답글 4건. 비슷한 훅/주제를 반복 활용해볼 만합니다.",
-    "'팔자장인' — 저녁(18-24시) 발행 글이 오후(12-18시) 발행 글보다 평균 조회수가 2.2배 높습니다. 저녁(18-24시) 비중을 늘려보세요.",
-    "'팔자장인' — 최근 7일 조회수가 지난 주 대비 40% 상승 중입니다. 지금 통하는 주제/훅 패턴을 유지하세요.",
+    "'팔자장인' — 저녁(18-24시) 발행 글이 오후(12-18시) 발행 글보다 평균 조회수가 2.3배 높습니다. 저녁(18-24시) 비중을 늘려보세요.",
+    "'팔자장인' — 최근 7일 조회수가 지난 주 대비 44% 상승 중입니다. 지금 통하는 주제/훅 패턴을 유지하세요.",
     "'팔자장인' 최고 성과 글: \"죄송하지만, 일간이 임수인데 사주에 자(쥐) 자리 있으면 이미 날 서 있는 사람입니다. 결정할 때 손이 안 \" — 조회수 7,558 · 답글 17건. 비슷한 훅/주제를 반복 활용해볼 만합니다.",
-    "'팔자궤도' — 최근 7일 조회수가 지난 주 대비 50% 상승 중입니다. 지금 통하는 주제/훅 패턴을 유지하세요.",
+    "'팔자궤도' — 최근 7일 조회수가 지난 주 대비 55% 상승 중입니다. 지금 통하는 주제/훅 패턴을 유지하세요.",
     "'팔자궤도' 최고 성과 글: \"죄송하지만, 뱀띠·닭띠·소띠는 2026년부터 3년간 겨울이 유독 힘듭니다. 정확히는 매년 겨울마다요. 연말만\" — 조회수 4,189 · 답글 2건. 비슷한 훅/주제를 반복 활용해볼 만합니다."
   ]
 }
