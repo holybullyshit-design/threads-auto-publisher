@@ -4479,9 +4479,12 @@
     "scheduledAt": "2026-09-08T02:28:00.000Z",
     "createdAt": "2026-08-29T03:17:12.585Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18079177439342019",
     "error": null,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "18079177439342019"
+    ]
   },
   {
     "id": "0c8c6ff6-9fe4-47b5-a37d-edb36542fbf3",
