@@ -14305,7 +14305,7 @@
     "text": "이번 주 투자에서 급하게 들어가면 손해 보기 쉬운 년생\n좋다는 말보다 내 손실 한도와 빠져나올 조건부터 적어야 할 때입니다.\n\n명리 포인트: 子酉破 · 卯酉沖\n쥐띠 — 소문 추격 금지\n닭띠 — 한 종목 집중 점검\n토끼띠 — 충동매수 하루 보류\n\n내 년생이 있다면 댓글에 ‘투자’을 남겨주세요.\n매수 전 질문 3개와 멈출 손실 기준를 정리해드립니다.\n개인 흐름은 생년월일시에 따라 달라지므로, 영상은 절기 기준 띠 흐름으로 참고해 주세요.\n\n#팔자명가 #투자운 #재물운 #금전운 #띠별운세 #년생운세",
     "videoUrl": "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@3ba69546e53bacf9c54c348573792e36df665a74/images/9a54e40b-a4e5-4a1d-9549-d28519c938c9.mp4",
     "videoSha256": "0a9ed0e28a7bd94a7ccb007aa517d9f1dd5200aae6def630d0b670526470685e",
-    "status": "scheduled",
+    "status": "publishing",
     "scheduledAt": "2026-09-08T22:30:00.000Z",
     "expectedLocalDate": "2026-09-09",
     "exactTimeKst": "07:30",
@@ -14343,7 +14343,8 @@
     "publishedId": null,
     "error": null,
     "retryCount": 0,
-    "contentHash": "769498b1a7b90d46bfc5c2079a52cadfab97265a60bbd0b7a5d558f06209f7dc"
+    "contentHash": "769498b1a7b90d46bfc5c2079a52cadfab97265a60bbd0b7a5d558f06209f7dc",
+    "publishAttemptedAt": "2026-09-08T22:30:51.406Z"
   },
   {
     "id": "7ddf3eb9-047c-4e59-83ca-f43ccd4d8817",
