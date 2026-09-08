@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-09-08T11:04:04.961Z",
+  "generatedAt": "2026-09-08T12:04:12.581Z",
   "accounts": [
     {
       "id": "273c125f-56b7-4aa1-8abc-89df16bfbe2a",
       "label": "연리지 실타래",
       "followersCount": 985,
-      "viewsRecent7d": 41438,
+      "viewsRecent7d": 41585,
       "viewsChangePct": 176,
-      "likes": 343,
+      "likes": 344,
       "replies": 330,
       "reposts": 44,
       "topPost": {
@@ -18,20 +18,20 @@
         "publishedAt": "2026-08-27T08:00:53.650Z"
       },
       "timeBuckets": {
-        "morning": 554,
-        "afternoon": 787,
+        "morning": 556,
+        "afternoon": 790,
         "evening": 318
       },
       "trackedPosts": 53,
-      "fetchedAt": "2026-09-08T11:03:57.224Z",
+      "fetchedAt": "2026-09-08T12:03:58.026Z",
       "error": null
     },
     {
       "id": "e0331659-96f0-4f5f-9aef-d89e0ed2a6a3",
       "label": "아해사주",
       "followersCount": 686,
-      "viewsRecent7d": 12345,
-      "viewsChangePct": 15,
+      "viewsRecent7d": 12487,
+      "viewsChangePct": 17,
       "likes": 93,
       "replies": 146,
       "reposts": 13,
@@ -48,14 +48,14 @@
         "evening": 417
       },
       "trackedPosts": 52,
-      "fetchedAt": "2026-09-08T11:03:58.289Z",
+      "fetchedAt": "2026-09-08T12:04:00.229Z",
       "error": null
     },
     {
       "id": "44d8bd24-6bf7-4b3a-9241-ddfb2b12c3b0",
       "label": "팔자명가",
       "followersCount": 1021,
-      "viewsRecent7d": 13106,
+      "viewsRecent7d": 13115,
       "viewsChangePct": -40,
       "likes": 232,
       "replies": 29,
@@ -73,7 +73,7 @@
         "evening": 388
       },
       "trackedPosts": 57,
-      "fetchedAt": "2026-09-08T11:03:59.301Z",
+      "fetchedAt": "2026-09-08T12:04:02.663Z",
       "error": null
     },
     {
@@ -98,17 +98,17 @@
         "evening": 18
       },
       "trackedPosts": 28,
-      "fetchedAt": "2026-09-08T11:04:01.629Z",
+      "fetchedAt": "2026-09-08T12:04:04.663Z",
       "error": null
     },
     {
       "id": "d2c9ae3f-67c9-42bf-b9f8-e8000b61abff",
       "label": "팔자장인",
       "followersCount": 33,
-      "viewsRecent7d": 46019,
-      "viewsChangePct": 47,
-      "likes": 392,
-      "replies": 27,
+      "viewsRecent7d": 46412,
+      "viewsChangePct": 48,
+      "likes": 393,
+      "replies": 28,
       "reposts": 13,
       "topPost": {
         "text": "죄송하지만, 일간이 임수인데 사주에 자(쥐) 자리 있으면 이미 날 서 있는 사람입니다. 결정할 때 손이 안 ",
@@ -119,20 +119,20 @@
       },
       "timeBuckets": {
         "morning": 871,
-        "afternoon": 583,
+        "afternoon": 608,
         "evening": 1285
       },
       "trackedPosts": 55,
-      "fetchedAt": "2026-09-08T11:04:02.283Z",
+      "fetchedAt": "2026-09-08T12:04:07.806Z",
       "error": null
     },
     {
       "id": "cf6a4ba2-da74-4fc1-ae5a-72e1b1477287",
       "label": "팔자궤도",
       "followersCount": 272,
-      "viewsRecent7d": 29538,
-      "viewsChangePct": 61,
-      "likes": 251,
+      "viewsRecent7d": 30372,
+      "viewsChangePct": 66,
+      "likes": 254,
       "replies": 13,
       "reposts": 9,
       "topPost": {
@@ -144,11 +144,11 @@
       },
       "timeBuckets": {
         "morning": 611,
-        "afternoon": 540,
+        "afternoon": 587,
         "evening": 453
       },
       "trackedPosts": 54,
-      "fetchedAt": "2026-09-08T11:04:03.345Z",
+      "fetchedAt": "2026-09-08T12:04:09.622Z",
       "error": null
     }
   ],
@@ -163,10 +163,10 @@
     "'엄마가 직접 써본 꿀템' — 오전(0-12시) 발행 글이 오후(12-18시) 발행 글보다 평균 조회수가 5.8배 높습니다. 오전(0-12시) 비중을 늘려보세요.",
     "'엄마가 직접 써본 꿀템' — 최근 7일 조회수가 지난 주 대비 74% 감소했습니다. 최근 훅/주제 변화를 점검해볼 시점입니다.",
     "'엄마가 직접 써본 꿀템' 최고 성과 글: \"아침 7시 40분. \"옷 입어\" 세 번째 말했는데 아직도 팬티 바람으로 공룡 장난감 들고 있음ㅋㅋ \"5분 안\" — 조회수 900 · 답글 4건. 비슷한 훅/주제를 반복 활용해볼 만합니다.",
-    "'팔자장인' — 저녁(18-24시) 발행 글이 오후(12-18시) 발행 글보다 평균 조회수가 2.2배 높습니다. 저녁(18-24시) 비중을 늘려보세요.",
-    "'팔자장인' — 최근 7일 조회수가 지난 주 대비 47% 상승 중입니다. 지금 통하는 주제/훅 패턴을 유지하세요.",
+    "'팔자장인' — 저녁(18-24시) 발행 글이 오후(12-18시) 발행 글보다 평균 조회수가 2.1배 높습니다. 저녁(18-24시) 비중을 늘려보세요.",
+    "'팔자장인' — 최근 7일 조회수가 지난 주 대비 48% 상승 중입니다. 지금 통하는 주제/훅 패턴을 유지하세요.",
     "'팔자장인' 최고 성과 글: \"죄송하지만, 일간이 임수인데 사주에 자(쥐) 자리 있으면 이미 날 서 있는 사람입니다. 결정할 때 손이 안 \" — 조회수 7,558 · 답글 17건. 비슷한 훅/주제를 반복 활용해볼 만합니다.",
-    "'팔자궤도' — 최근 7일 조회수가 지난 주 대비 61% 상승 중입니다. 지금 통하는 주제/훅 패턴을 유지하세요.",
+    "'팔자궤도' — 최근 7일 조회수가 지난 주 대비 66% 상승 중입니다. 지금 통하는 주제/훅 패턴을 유지하세요.",
     "'팔자궤도' 최고 성과 글: \"죄송하지만, 뱀띠·닭띠·소띠는 2026년부터 3년간 겨울이 유독 힘듭니다. 정확히는 매년 겨울마다요. 연말만\" — 조회수 4,189 · 답글 2건. 비슷한 훅/주제를 반복 활용해볼 만합니다."
   ]
 }
