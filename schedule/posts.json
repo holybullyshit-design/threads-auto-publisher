@@ -5107,8 +5107,11 @@
     "scheduledAt": "2026-09-08T23:20:00.000Z",
     "createdAt": "2026-08-29T05:35:55.952Z",
     "publishedAt": null,
-    "publishedId": null,
-    "error": null
+    "publishedId": "18096667907380708",
+    "error": null,
+    "chainPublishedIds": [
+      "18096667907380708"
+    ]
   },
   {
     "id": "5be8b47d-24fe-4923-bfd3-a0c4dc036216",
