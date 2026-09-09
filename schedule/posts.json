@@ -9121,9 +9121,12 @@
     "scheduledAt": "2026-09-09T05:55:00.000Z",
     "createdAt": "2026-09-02T02:49:00.980Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18394200637201196",
     "error": null,
-    "viralEngine": true
+    "viralEngine": true,
+    "chainPublishedIds": [
+      "18394200637201196"
+    ]
   },
   {
     "id": "10506019-4c71-4a63-98c2-ce444a0f9882",
