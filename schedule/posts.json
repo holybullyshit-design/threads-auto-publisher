@@ -3285,8 +3285,7 @@
     "createdAt": "2026-08-29T02:03:18.005Z",
     "publishedAt": null,
     "publishedId": null,
-    "error": null,
-    "regenV2": true
+    "error": null
   },
   {
     "id": "3b6ee169-c98d-4951-ad98-0f73de44dc99",
@@ -4035,8 +4034,7 @@
     "createdAt": "2026-08-29T02:48:44.994Z",
     "publishedAt": null,
     "publishedId": null,
-    "error": null,
-    "regenV2": true
+    "error": null
   },
   {
     "id": "85c2aeb8-f5bb-4f7d-b8d3-10c4c40484b2",
@@ -4732,8 +4730,7 @@
     "createdAt": "2026-08-29T03:24:34.738Z",
     "publishedAt": null,
     "publishedId": null,
-    "error": null,
-    "regenV2": true
+    "error": null
   },
   {
     "id": "6e202d48-0fef-416c-bfe2-3daca0854d50",
@@ -5779,8 +5776,7 @@
     "createdAt": "2026-08-30T03:09:40.576Z",
     "publishedAt": null,
     "publishedId": null,
-    "error": null,
-    "regenV2": true
+    "error": null
   },
   {
     "id": "f1dcbb00-f24a-4654-8c2c-1f77fab3e33b",
@@ -5797,8 +5793,7 @@
     "createdAt": "2026-08-30T03:10:56.803Z",
     "publishedAt": null,
     "publishedId": null,
-    "error": null,
-    "regenV2": true
+    "error": null
   },
   {
     "id": "aebd4784-e4ef-4cc7-aa67-edff94d4264e",
@@ -6308,8 +6303,7 @@
     "createdAt": "2026-08-30T03:42:00.765Z",
     "publishedAt": null,
     "publishedId": null,
-    "error": null,
-    "regenV2": true
+    "error": null
   },
   {
     "id": "18521892-0cb9-47c6-b27a-f50382e10dae",
@@ -6327,8 +6321,7 @@
     "createdAt": "2026-08-30T03:43:03.102Z",
     "publishedAt": null,
     "publishedId": null,
-    "error": null,
-    "regenV2": true
+    "error": null
   },
   {
     "id": "00ecffab-a2f0-421b-8272-c8230e568787",
@@ -6898,8 +6891,7 @@
     "createdAt": "2026-08-30T06:25:26.223Z",
     "publishedAt": null,
     "publishedId": null,
-    "error": null,
-    "regenV2": true
+    "error": null
   },
   {
     "id": "bd1cb36d-b4bc-4456-af56-703c3b9d457f",
@@ -6915,8 +6907,7 @@
     "createdAt": "2026-08-30T06:25:55.858Z",
     "publishedAt": null,
     "publishedId": null,
-    "error": null,
-    "regenV2": true
+    "error": null
   },
   {
     "id": "5757dca6-753d-448a-a328-d26445e5db64",
@@ -9928,8 +9919,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "a641624f-4b56-4dc0-a749-51380f57a621",
@@ -9948,8 +9938,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "94845393-a168-4e84-979d-3a4dbcb4eed0",
@@ -9968,8 +9957,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "fb754396-bbdd-47f7-a3d9-5e0e8ea8c315",
@@ -9986,8 +9974,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "0a755729-d583-4fc9-85f9-c2e9d039dc71",
@@ -10004,8 +9991,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "a05c495e-610e-4592-9c38-3f63770a4c37",
@@ -10024,8 +10010,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "b6715291-610c-43f9-b944-c630cd87bb09",
@@ -10043,8 +10028,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "ba3cc6d8-6324-4795-95ca-ef0d98ee99a1",
@@ -10061,8 +10045,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "428b76fc-0a3b-4c4d-baa2-d05a337a4163",
@@ -10080,8 +10063,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "1d8cccea-18b3-4a29-a323-2d1e88cfa6d6",
@@ -10098,8 +10080,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "de710f94-229a-49b4-81da-eb22bf6a9629",
@@ -10117,8 +10098,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "1d99c9c1-e430-405c-9e77-35dda3fd510e",
@@ -10135,8 +10115,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "ebea9ced-55a6-4654-8c10-fccbcfe76dbe",
@@ -10153,8 +10132,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "f3af3bf8-c80c-4b51-a554-24f4443250e5",
@@ -10172,8 +10150,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "1e8cc0a2-c3fe-48c1-b3fa-7ef69fb5d7a6",
@@ -10190,8 +10167,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "dff40d10-caa1-42d5-85f4-104cbf759a0c",
@@ -10208,8 +10184,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "bb95038d-0b89-464f-894c-65cab22dee8c",
@@ -10227,8 +10202,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "97cb15d8-a66a-44c0-805d-116e3115b639",
@@ -10247,8 +10221,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "3b3d49c6-2014-4b0e-84cc-a9a5d6caced5",
@@ -10266,8 +10239,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "745e7464-c5ea-4fab-8de1-6eecc108913e",
@@ -10286,8 +10258,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "b3899625-f024-4d18-ad69-d82fa7a2108b",
@@ -10306,8 +10277,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "870c4186-c0a5-409f-b417-6bf651668f74",
@@ -10325,8 +10295,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "fd58a192-5348-4681-95f7-2c252de83522",
@@ -10344,8 +10313,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "211d4706-ca9d-4c05-8742-a36a5660c6ee",
@@ -10362,8 +10330,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "38ab5e4b-a7ff-4044-a7c0-ace6b8b4d825",
@@ -10380,8 +10347,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "d976812f-fc28-4b63-8746-0c6c9ecd741b",
@@ -10400,8 +10366,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "bb41b1f3-2f3f-42d8-b625-623dd9b162e5",
@@ -10418,8 +10383,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "52a7dd99-ef12-4774-bcc3-b34c163547c5",
@@ -10437,8 +10401,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "b15db73d-e82f-4289-9c37-5b7bd7f7f42a",
@@ -10456,8 +10419,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "d6df4b84-a9b0-49c9-83ce-ea0eced78843",
@@ -10475,8 +10437,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "ee3293c8-200a-40aa-87d1-57aea896554c",
@@ -11556,8 +11517,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "1d9dcafc-3feb-4a72-b901-5ca12c4c7119",
@@ -11574,8 +11534,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "093b8e1e-08b9-4ce9-b386-ff1669fe0606",
@@ -11592,8 +11551,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "08335dfb-ab33-472c-833a-0825b0871400",
@@ -11611,8 +11569,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "4be3b60e-b237-47b0-b7bf-f3f51bc5a614",
@@ -11631,8 +11588,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "d4fa851a-36b3-4fe1-ad7f-573a58564969",
@@ -11651,8 +11607,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "7ceca320-2e76-400b-a287-d84c176b20d5",
@@ -11671,8 +11626,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "c7c33bb1-4ea0-442d-aa32-008c933b4cd5",
@@ -11690,8 +11644,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "12c6ab3b-a72d-4eec-94c9-5930ecc8b53b",
@@ -11708,8 +11661,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "efb4fdff-ff79-485d-b826-cbe8ea6eb61f",
@@ -11726,8 +11678,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "b16d074a-07e1-47d0-8a83-02e3edecb3fa",
@@ -11746,8 +11697,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "5ab28055-8517-4f62-a9cf-b93bb4f7660a",
@@ -11765,8 +11715,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "a2db051b-d9f0-4c9a-b577-43aef3879a77",
@@ -11783,8 +11732,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "357679eb-161d-4687-b8de-7d8cc888d681",
@@ -11803,8 +11751,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "00ab963e-8b93-434d-8689-e6dd2edc9bf3",
@@ -11822,8 +11769,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "066e0483-d4f2-40a4-9be5-e1f65e4efe9d",
@@ -11842,8 +11788,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "2d7208ae-c703-4230-912f-c2ee876aacab",
@@ -11862,8 +11807,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "6e5599c6-f359-4f71-b5ac-acf33fcb27ae",
@@ -11881,8 +11825,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "8e30c9a3-828d-4257-b73f-bd5d3e2318f6",
@@ -11900,8 +11843,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "2ce818af-9c2b-43db-8d68-059b0f34df02",
@@ -11920,8 +11862,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "828db237-a645-4e48-9912-c151dc259a27",
@@ -11939,8 +11880,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "77bc42d9-c812-4f60-af7e-c4aa14a3aaa5",
@@ -11958,8 +11898,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "5da66662-e069-4bb1-b69e-1011da082ca6",
@@ -11978,8 +11917,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "485516c3-52ef-4f86-bb7f-04345a3d78a5",
@@ -11997,8 +11935,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "6d157ce1-86c4-430d-a055-f00a34b30a1b",
@@ -12015,8 +11952,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "dbad5da4-1440-4174-8a52-7a7218831d7f",
@@ -12034,8 +11970,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "30447e38-6569-40d1-922f-6323f473a623",
@@ -12052,8 +11987,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "e9491092-2b18-4600-84e8-c748e4a1089e",
@@ -12070,8 +12004,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "5922a477-b0a3-4d54-afb7-111d5d745f54",
@@ -12088,8 +12021,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "f37bcfd6-2c76-41e2-96b2-54033a242b89",
@@ -12106,8 +12038,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "ba500b91-21ed-4ba3-9daa-cf1c03d2b08a",
@@ -12126,8 +12057,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "5badc809-f1c3-48d1-a168-280082b1f63e",
@@ -12145,8 +12075,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "afc867e4-471c-45fe-9d33-8c5e64034a03",
@@ -12163,8 +12092,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "567624ce-99c3-41aa-bc97-a4a30401c19f",
@@ -12183,8 +12111,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "517060b8-4e61-4432-9960-4833490b3a56",
@@ -12203,8 +12130,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "4b28b04f-c7f9-4a64-a70b-5637aadfbcf2",
@@ -12221,8 +12147,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "9727c6ae-4fd5-4cde-9b37-d42cc627046d",
@@ -12239,8 +12164,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "fff66051-47ca-45a8-a76a-48e2cddb3ce8",
@@ -12258,8 +12182,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "e0245bb3-377b-49a1-a408-61bfd6b012c5",
@@ -12278,8 +12201,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "3e86f81e-92ed-4ce5-a14e-f64a565cb83e",
@@ -12296,8 +12218,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "ac4b7823-f5b6-42eb-ac30-63e5593ab3b0",
@@ -12314,8 +12235,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "7a34c936-62fc-480e-b019-bc0cc0d79d88",
@@ -12333,8 +12253,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "d45122fd-e380-4947-aafb-e8c430809748",
@@ -12351,8 +12270,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "7f547ddb-ac4b-42f3-857d-b166882e2b22",
@@ -12371,8 +12289,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "02afa682-77a7-4a0d-87ea-d118cd4f57d5",
@@ -12390,8 +12307,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "ecd891de-0d4c-49b7-a486-5202d89b3099",
@@ -12410,8 +12326,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "e8cb38f0-e694-4041-b5bb-40b748569e2b",
@@ -12429,8 +12344,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "c9a11013-99ec-4e48-afa5-528e4b552081",
@@ -12448,8 +12362,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "773fda50-b0c0-4689-84e9-2917f121375e",
@@ -12466,8 +12379,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "6761cbe2-28c3-41f7-8d6a-e9f177b2240b",
@@ -12484,8 +12396,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "3c099e73-ac5e-4e3d-8075-fd5ec8565de8",
@@ -12504,8 +12415,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "7570c4cf-1d26-4516-89b5-80004570c64f",
@@ -12522,8 +12432,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "332b106d-8a55-4c3c-9d98-d90daa473083",
@@ -12542,8 +12451,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "a09fe84a-86dc-4760-aeef-45ba7f910cc8",
@@ -12561,8 +12469,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "85ec4860-6c0c-4667-80bb-2208335b5962",
@@ -12580,8 +12487,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "6b7983ec-4a6b-42f0-9fdd-3fcc2848874c",
@@ -12598,8 +12504,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "91803930-aff3-4f52-90f4-3cf9853c3266",
@@ -12617,8 +12522,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "2db5bcd7-8222-4e66-8f69-5adf9e9cca27",
@@ -12635,8 +12539,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "d0b267c2-9205-4afb-bcb9-59ccc1eca6b2",
@@ -12653,8 +12556,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "914b6aa5-333d-47ee-8191-0663ec951ed6",
@@ -12672,8 +12574,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "a0727a00-08f9-4ba0-bc4d-3b1738a387af",
@@ -12690,8 +12591,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "df0cd254-c2f2-46a2-b467-042880fa3186",
@@ -12709,8 +12609,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "b893a668-3e70-4629-9d44-b2c89f8023ee",
@@ -12729,8 +12628,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "c6025a86-9930-4e61-9cc4-bbb6400db3dc",
@@ -12748,8 +12646,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "337b084f-6ed0-4df0-975c-6736ede28db2",
@@ -12766,8 +12663,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "8954aa77-144f-4b44-a610-153dcd6d7561",
@@ -12786,8 +12682,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "7c250b28-206e-4a86-b1ae-b59ea25f2e69",
@@ -12805,8 +12700,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "9827626b-8266-4da1-809f-be2bf35fe50e",
@@ -12824,8 +12718,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "079ef84d-1893-4795-903c-dc3724a2028f",
@@ -12843,8 +12736,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "a8a7159f-7823-401f-b3c0-1dfabb62b633",
@@ -12861,8 +12753,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "bed3311c-7d65-4f69-98dc-c46c8f06cf31",
@@ -12879,8 +12770,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "42a01a18-5997-4bb3-8a8e-693bedbe99f7",
@@ -12897,8 +12787,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "747e1a6b-f837-4ad7-b3f0-157543d7ddd2",
@@ -12917,8 +12806,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "e86cc35c-e6ab-41ab-a2c2-d446dfe28f11",
@@ -12935,8 +12823,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "4ef47856-f629-4d84-96ac-e381140574ac",
@@ -12954,8 +12841,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "025c4490-b3de-447c-89c1-188c239e2837",
@@ -12972,8 +12858,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "f0c37b14-dedd-4e73-9ca6-2325ba55d91b",
@@ -12990,8 +12875,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "78a18e59-0998-427a-b44e-e4d6a37bbbe5",
@@ -13009,8 +12893,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "3ffb37be-d71b-4604-9ea0-5b60196161cb",
@@ -13027,8 +12910,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "c94c74d4-02bb-4d06-8354-2f114bf15dd6",
@@ -13046,8 +12928,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "b05c5d9e-46e5-4ee6-8805-427ae837003d",
@@ -13065,8 +12946,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "5f74bb1b-c89c-4f54-981a-4724611c4764",
@@ -13085,8 +12965,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "69f3caa7-b6ca-4754-a65a-badc6ed3f2ea",
@@ -13104,8 +12983,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "f5bc3ac8-9f2c-4976-b55b-4af14105237b",
@@ -13124,8 +13002,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "eb713dde-273f-4942-82b9-7c1500f487b9",
@@ -13144,8 +13021,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "fd9d4e70-6e1d-4077-b02b-f7394c319ad1",
@@ -13162,8 +13038,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "868ed28c-0922-4f98-8034-bd85d62e3c03",
@@ -13180,8 +13055,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "3f3654a1-8286-468e-8c20-9f20d6843892",
@@ -13200,8 +13074,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "76c7c34b-bb56-44db-a931-0cc719b92877",
@@ -13220,8 +13093,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "571a6e95-29a5-4f5d-9edb-7c0e7044a0ae",
@@ -13238,8 +13110,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "1c745d18-94fe-434e-b523-74fd7009a39a",
@@ -13258,8 +13129,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "f757be1e-9dde-46c6-8c36-715cfaca59eb",
@@ -13277,8 +13147,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "ddfa3b7d-414e-4ece-aa23-2f22a32c739e",
@@ -13313,8 +13182,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "1fd7e380-372f-4810-bc9f-57290b86ae95",
@@ -13332,8 +13200,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "cd8a9f89-31e2-4164-bddf-0daa63698156",
@@ -13351,8 +13218,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "c90b9b3b-ee17-487c-ac08-e20369f87642",
@@ -13370,8 +13236,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "b1e6b0e8-4045-4941-acd0-f07380d3fdf2",
@@ -13388,8 +13253,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "97136cf6-4340-42bd-961e-d717fcd635bb",
@@ -13407,8 +13271,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "1e8ba184-9835-4c33-9819-452b27a1851d",
@@ -13425,8 +13288,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "6d1bcbd8-39e8-4b2a-b891-0d0097c67285",
@@ -13445,8 +13307,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "4c8b4be1-5eb2-4ba2-94b3-248c292364f2",
@@ -13463,8 +13324,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "76ac5dd7-5cb1-42a1-a415-d9ec983863c7",
@@ -13482,8 +13342,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "9e08b7c8-693e-483e-98f6-5863eb758a03",
@@ -13500,8 +13359,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "c238334c-bd04-43ed-b765-09164b223766",
@@ -13519,8 +13377,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "ed0515fd-1036-40c3-8570-94a44b2e1932",
@@ -13537,8 +13394,7 @@
     "publishedAt": null,
     "publishedId": null,
     "error": null,
-    "viralEngine": true,
-    "regenV2": true
+    "viralEngine": true
   },
   {
     "id": "bf4c1803-4813-4e22-b78e-89afc518150c",
