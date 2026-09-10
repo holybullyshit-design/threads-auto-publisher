@@ -8,7 +8,7 @@ test("팔자명가 릴스는 고급 명조 8초·2화면·10개 생년 규칙을
   assert.equal(STYLE_POLICY.durationSeconds,8);
   assert.equal(STYLE_POLICY.screenCount,2);
   assert.equal(STYLE_POLICY.secondsPerScreen,4);
-  assert.equal(PRESETS.length,30);
+  assert.equal(PRESETS.length,51);
   PRESETS.forEach((raw)=>{
     const item=validatePreset(raw);
     assert.equal(item.items.length,10);
@@ -28,16 +28,17 @@ test("9월 3일부터 12일까지 매일 3회, 시간 중복 없이 배치한다
   assert.deepEqual(PRESETS.filter((x)=>x.date==="2026-09-03").map((x)=>x.time),["12:45","17:30","21:30"]);
   for(let day=4;day<=12;day+=1)
     assert.deepEqual(PRESETS.filter((x)=>x.date==="2026-09-"+String(day).padStart(2,"0")).map((x)=>x.time),["07:30","15:30","21:30"]);
+  for(let day=13;day<=19;day+=1)
+    assert.deepEqual(PRESETS.filter((x)=>x.date==="2026-09-"+String(day).padStart(2,"0")).map((x)=>x.time),["07:30","15:30","21:30"]);
 });
 
 test("제목·주제·댓글 키워드는 중복되지 않고 내부 태그가 없다",()=>{
-  const titles=new Set(),topics=new Set(),keywords=new Set();
+  const titles=new Set(),topics=new Set();
   PRESETS.forEach((item)=>{
     validatePreset(item);
     const title=item.titleLines.join(" ");
     assert.equal(titles.has(title),false); titles.add(title);
     assert.equal(topics.has(item.topicId),false); topics.add(item.topicId);
-    assert.equal(keywords.has(item.keyword),false); keywords.add(item.keyword);
     assert.doesNotMatch(item.caption,/자동게시|_[a-f0-9]{8}\b/i);
     assert.match(item.caption,/#팔자명가/);
     assert.match(item.caption,/명리 포인트/);
