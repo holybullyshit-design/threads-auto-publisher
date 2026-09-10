@@ -6957,8 +6957,11 @@
     "scheduledAt": "2026-09-10T10:08:00.000Z",
     "createdAt": "2026-08-30T06:25:55.858Z",
     "publishedAt": null,
-    "publishedId": null,
-    "error": null
+    "publishedId": "18111448100276396",
+    "error": null,
+    "chainPublishedIds": [
+      "18111448100276396"
+    ]
   },
   {
     "id": "5757dca6-753d-448a-a328-d26445e5db64",
