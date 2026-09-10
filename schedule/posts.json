@@ -4037,8 +4037,11 @@
     "scheduledAt": "2026-09-10T07:11:00.000Z",
     "createdAt": "2026-08-29T02:48:44.994Z",
     "publishedAt": null,
-    "publishedId": null,
-    "error": null
+    "publishedId": "17894638656605058",
+    "error": null,
+    "chainPublishedIds": [
+      "17894638656605058"
+    ]
   },
   {
     "id": "85c2aeb8-f5bb-4f7d-b8d3-10c4c40484b2",
