@@ -6906,8 +6906,11 @@
     "scheduledAt": "2026-09-10T04:37:00.000Z",
     "createdAt": "2026-08-30T06:25:26.223Z",
     "publishedAt": null,
-    "publishedId": null,
-    "error": null
+    "publishedId": "17891502114610600",
+    "error": null,
+    "chainPublishedIds": [
+      "17891502114610600"
+    ]
   },
   {
     "id": "bd1cb36d-b4bc-4456-af56-703c3b9d457f",
