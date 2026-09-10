@@ -130,6 +130,19 @@ function getVerifiedCalendarFacts(dateKey) {
   };
 }
 
+// 2026-09-10 벤치마크 실측(@taebaek_saju 로그인 확인) 반영: 이 계정은 같은 신살이라도
+// "어느 기둥(년주/월주/일주/시주)에 있는지"별로 결과를 4갈래로 나눠서 보여주는 장치를 자주
+// 쓴다("년주 괴강/월주 괴강/일주 괴강/시주 괴강" 식). 이건 새 판별표가 아니라 명리학에서
+// 표준적으로 쓰이는 "사주 네 기둥이 각각 어느 인생 영역을 상징하는지"에 대한 정통 해석
+// 원칙을 신살 설명에 적용한 것 - 코드로 어느 기둥인지 계산하지 않고(독자 본인이 자기
+// 사주에서 확인해야 아는 영역), 이 관점 자체를 참고용 사실로 제공한다.
+const PILLAR_MEANINGS = {
+  년주: "조상·어린 시절·집안 배경, 초년운",
+  월주: "부모·형제·사회생활 진입기, 청년기 흐름",
+  일주: "나 자신과 배우자 자리, 인생의 중심축",
+  시주: "자녀·말년·내가 마지막에 이루는 것",
+};
+
 module.exports = {
   BRANCHES_KO,
   ANIMALS,
@@ -144,6 +157,7 @@ module.exports = {
   HONGYEOM_TABLE,
   MUNCHANG_TABLE,
   WONJIN_PAIRS,
+  PILLAR_MEANINGS,
   branchLabel,
   getSamhapRoles,
   getSamjaeInfo,
