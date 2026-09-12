@@ -9749,10 +9749,13 @@
     "scheduledAt": "2026-09-12T06:01:00.000Z",
     "createdAt": "2026-09-02T03:50:20.264Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17891313921673454",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "17891313921673454"
+    ]
   },
   {
     "id": "1d8cccea-18b3-4a29-a323-2d1e88cfa6d6",
