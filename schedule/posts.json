@@ -9930,10 +9930,13 @@
     "scheduledAt": "2026-09-12T05:23:00.000Z",
     "createdAt": "2026-09-02T04:04:37.329Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17881726947510970",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "17881726947510970"
+    ]
   },
   {
     "id": "3b3d49c6-2014-4b0e-84cc-a9a5d6caced5",
