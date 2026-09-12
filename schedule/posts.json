@@ -9976,10 +9976,13 @@
     "scheduledAt": "2026-09-12T08:11:00.000Z",
     "createdAt": "2026-09-02T04:06:04.185Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18020974907868528",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "18020974907868528"
+    ]
   },
   {
     "id": "745e7464-c5ea-4fab-8de1-6eecc108913e",
