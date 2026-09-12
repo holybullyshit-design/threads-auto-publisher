@@ -12481,10 +12481,13 @@
     "scheduledAt": "2026-09-12T22:56:00.000Z",
     "createdAt": "2026-09-02T15:41:19.519Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18074295929443131",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "18074295929443131"
+    ]
   },
   {
     "id": "a0727a00-08f9-4ba0-bc4d-3b1738a387af",
