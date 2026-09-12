@@ -15010,7 +15010,7 @@
     "text": "다음 주 전 큰 주문·수주 소식 잡을 수 있는 년생\n좋은 거래운은 빠른 답과 정확한 견적서가 있을 때 내 것이 됩니다.\n\n명리 포인트: 辰酉六合 · 巳酉丑 삼합\n용띠 — 소개 거래 확인\n닭띠 — 견적 숫자 재검토\n뱀띠 — 계약 범위 명시\n\n내 년생이 있다면 댓글에 ‘주문’을 남겨주세요.\n수주 전 질문 3개와 가격 협상 답변 문장를 정리해드립니다.\n개인 흐름은 생년월일시에 따라 달라지므로, 영상은 절기 기준 띠 흐름으로 참고해 주세요.\n\n#팔자명가 #수주운 #거래운 #사업운 #띠별운세 #년생운세",
     "videoUrl": "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@3ba69546e53bacf9c54c348573792e36df665a74/images/1291954e-7905-4980-a47a-b648772c9ba2.mp4",
     "videoSha256": "d3f979a61060731f0dbcba22e67e35dec55daba50e5b7ef9bfa43056f7e86241",
-    "status": "scheduled",
+    "status": "publishing",
     "scheduledAt": "2026-09-10T22:30:00.000Z",
     "expectedLocalDate": "2026-09-11",
     "exactTimeKst": "07:30",
@@ -15048,7 +15048,8 @@
     "publishedId": null,
     "error": null,
     "retryCount": 0,
-    "contentHash": "4a4a09f6bca57506a44c47c860c3734efc40a69f65837680488e40618afd064d"
+    "contentHash": "4a4a09f6bca57506a44c47c860c3734efc40a69f65837680488e40618afd064d",
+    "publishAttemptedAt": "2026-09-12T02:33:52.109Z"
   },
   {
     "id": "d613dff1-90ff-4da6-9f60-33bb1802162e",
