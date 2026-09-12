@@ -10403,10 +10403,13 @@
     "scheduledAt": "2026-09-12T02:31:00.000Z",
     "createdAt": "2026-09-02T04:03:02.006Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18109768573872867",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "18109768573872867"
+    ]
   },
   {
     "id": "97cb15d8-a66a-44c0-805d-116e3115b639",
