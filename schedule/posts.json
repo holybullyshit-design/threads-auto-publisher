@@ -14596,7 +14596,7 @@
     "text": "주말 직전 잊었던 사람에게 소식 올 수 있는 년생\n연락이 와도 재회 가능성과 외로움은 구분해야 같은 상처를 반복하지 않습니다.\n\n명리 포인트: 卯酉沖 · 辰酉六合\n토끼띠 — 답장 하루 보류\n닭띠 — 헤어진 이유 확인\n용띠 — 바뀐 행동 보기\n\n내 년생이 있다면 댓글에 ‘연락’을 남겨주세요.\n답장 가능한 신호 2개와 만나기 전 질문 3개를 정리해드립니다.\n개인 흐름은 생년월일시에 따라 달라지므로, 영상은 절기 기준 띠 흐름으로 참고해 주세요.\n\n#팔자명가 #재회운 #연락운 #인연운 #띠별운세 #년생운세",
     "videoUrl": "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@3ba69546e53bacf9c54c348573792e36df665a74/images/fdea3c82-9226-46f2-88a4-8ba0b0963a1b.mp4",
     "videoSha256": "ceea20e74be80914b4b8a144c2b42d0f8fdf36e8ef6f5e13553fdf2bc0916c79",
-    "status": "scheduled",
+    "status": "failed",
     "scheduledAt": "2026-09-19T22:30:00.000Z",
     "expectedLocalDate": "2026-09-11",
     "exactTimeKst": "21:30",
@@ -14632,8 +14632,8 @@
     "createdAt": "2026-09-03T03:19:22.905Z",
     "publishedAt": null,
     "publishedId": null,
-    "error": null,
-    "retryCount": 0,
+    "error": "승인 후 영상·캡션·예약 정보가 바뀌어 발행을 차단했습니다.",
+    "retryCount": 1,
     "contentHash": "e0f7cc3729ce5f73e1bea0792a4a566956256ca6a3932b60fa65b5358e49f513"
   },
   {
