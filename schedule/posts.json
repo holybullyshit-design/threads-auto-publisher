@@ -673,11 +673,11 @@
     "accountId": "6b8b637e-1629-4844-9a1f-9728c420154e",
     "accountLabel": "엄마가 직접 써본 꿀템",
     "text": "낮잠 시간에 애 재우고 나도 같이 눈 감으려다가, 그냥 앉아있었다.\n\n거실 불도 안 켜고, 폰도 안 보고.\n\n십오 분? 이십 분?\n\n그냥 소파에 앉아서 아무것도 안 했다.\n\n애 숨소리 들리고, 창밖에 매미 소리 나고.\n\n이상하게 그게 그렇게 좋았다.\n\n뭘 한 것도 아닌데 왜 눈물 날 뻔했지.",
-    "status": "scheduled",
+    "status": "published",
     "scheduledAt": "2026-09-12T22:00:51.135Z",
     "createdAt": "2026-08-24T07:54:43.395Z",
-    "publishedAt": null,
-    "publishedId": null,
+    "publishedAt": "2026-09-12T22:15:30.002Z",
+    "publishedId": "18125632175478389",
     "error": null
   },
   {
