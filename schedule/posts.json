@@ -15063,7 +15063,7 @@
     "text": "이번 시험에서 마지막 점수 한 칸 올라갈 년생\n새 문제보다 자주 틀린 유형을 한 번 더 보는 것이 합격선에 가깝습니다.\n\n명리 포인트: 印星 · 복습·문서·자격\n토끼띠 — 실수 유형 표시\n양띠 — 암기카드 압축\n돼지띠 — 실전 시간 배분\n\n내 년생이 있다면 댓글에 ‘시험’을 남겨주세요.\n마지막 복습법와 전날 버릴 것 1개를 정리해드립니다.\n개인 흐름은 생년월일시에 따라 달라지므로, 영상은 절기 기준 띠 흐름으로 참고해 주세요.\n\n#팔자명가 #자격증운 #합격운 #시험운 #띠별운세 #년생운세",
     "videoUrl": "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@3ba69546e53bacf9c54c348573792e36df665a74/images/46e5a22d-5276-4f4d-a9ed-b74c5bda6164.mp4",
     "videoSha256": "5313605ff6dc1ddf411253b7a48d3421eb62a03fdf052a6bb75015f4feac53a6",
-    "status": "scheduled",
+    "status": "publishing",
     "scheduledAt": "2026-09-11T06:30:00.000Z",
     "expectedLocalDate": "2026-09-11",
     "exactTimeKst": "15:30",
@@ -15101,7 +15101,8 @@
     "publishedId": null,
     "error": null,
     "retryCount": 0,
-    "contentHash": "fff208fc2751d7ed30d040871a3fb6105dc982b9ce8e97ea48c52f62b8be5e90"
+    "contentHash": "fff208fc2751d7ed30d040871a3fb6105dc982b9ce8e97ea48c52f62b8be5e90",
+    "publishAttemptedAt": "2026-09-12T02:34:35.198Z"
   },
   {
     "id": "198abbed-878d-48b0-96ee-1c66a6faa9c0",
