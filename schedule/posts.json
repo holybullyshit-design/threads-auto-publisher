@@ -11960,12 +11960,13 @@
     "createdAt": "2026-09-02T14:21:40.901Z",
     "publishedAt": null,
     "publishedId": "17919252084439193",
-    "error": null,
+    "error": "GitHub에 예약 목록을 저장하지 못했습니다: 500",
     "viralEngine": true,
     "regenV2": true,
     "chainPublishedIds": [
       "17919252084439193"
-    ]
+    ],
+    "retryCount": 1
   },
   {
     "id": "f37bcfd6-2c76-41e2-96b2-54033a242b89",
