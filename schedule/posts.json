@@ -12660,10 +12660,13 @@
     "scheduledAt": "2026-09-13T07:53:00.000Z",
     "createdAt": "2026-09-02T16:17:50.276Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18136681783623885",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "18136681783623885"
+    ]
   },
   {
     "id": "337b084f-6ed0-4df0-975c-6736ede28db2",
