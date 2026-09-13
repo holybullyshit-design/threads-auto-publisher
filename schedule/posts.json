@@ -12622,10 +12622,13 @@
     "scheduledAt": "2026-09-13T05:37:00.000Z",
     "createdAt": "2026-09-02T16:16:13.125Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18191278303393956",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "18191278303393956"
+    ]
   },
   {
     "id": "c6025a86-9930-4e61-9cc4-bbb6400db3dc",
