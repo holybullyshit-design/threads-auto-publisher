@@ -685,11 +685,11 @@
     "accountId": "6b8b637e-1629-4844-9a1f-9728c420154e",
     "accountLabel": "엄마가 직접 써본 꿀템",
     "text": "딸아 밥 먹기 싫으면 그냥 싫다고 하지, 핑계가 왜 이렇게 창의적이야.\n\n\"엄마 나 지금 배 안에 음식 창고 꽉 찼어. 더 넣으면 창고 터져\"\n\n...\n\n이번엔 숟가락 들고 한참 고민하더니\n\n\"이거 먹으면 나 이제 못 뛰어. 무거워서\"\n\n배 안에 창고가 있다는 설정은 대체 어디서 나온 건지. 다음엔 또 뭐라고 할지 궁금해서 일부러 반찬 하나 더 얹어봄.",
-    "status": "scheduled",
+    "status": "published",
     "scheduledAt": "2026-09-13T22:12:45.234Z",
     "createdAt": "2026-08-24T07:54:57.534Z",
-    "publishedAt": null,
-    "publishedId": null,
+    "publishedAt": "2026-09-13T22:15:29.937Z",
+    "publishedId": "17931129966145321",
     "error": null
   },
   {
