@@ -11661,10 +11661,13 @@
     "scheduledAt": "2026-09-14T22:34:00.000Z",
     "createdAt": "2026-09-02T12:41:06.647Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18013761095748815",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "18013761095748815"
+    ]
   },
   {
     "id": "5ab28055-8517-4f62-a9cf-b93bb4f7660a",
