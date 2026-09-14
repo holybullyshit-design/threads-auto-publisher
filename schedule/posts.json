@@ -12083,10 +12083,13 @@
     "scheduledAt": "2026-09-14T03:12:00.000Z",
     "createdAt": "2026-09-02T14:25:47.379Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18073231769709038",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "18073231769709038"
+    ]
   },
   {
     "id": "afc867e4-471c-45fe-9d33-8c5e64034a03",
