@@ -12158,10 +12158,13 @@
     "scheduledAt": "2026-09-14T07:57:00.000Z",
     "createdAt": "2026-09-02T14:27:38.079Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18147006319516754",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "18147006319516754"
+    ]
   },
   {
     "id": "517060b8-4e61-4432-9960-4833490b3a56",
