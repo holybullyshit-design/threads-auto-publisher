@@ -12808,10 +12808,13 @@
     "scheduledAt": "2026-09-14T03:16:00.000Z",
     "createdAt": "2026-09-02T17:26:49.829Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18113921033061341",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "18113921033061341"
+    ]
   },
   {
     "id": "9827626b-8266-4da1-809f-be2bf35fe50e",
