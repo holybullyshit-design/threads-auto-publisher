@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-09-14T17:54:45.468Z",
+  "generatedAt": "2026-09-14T19:48:52.815Z",
   "accounts": [
     {
       "id": "273c125f-56b7-4aa1-8abc-89df16bfbe2a",
       "label": "연리지 실타래",
       "followersCount": 990,
-      "viewsRecent7d": 66444,
+      "viewsRecent7d": 66611,
       "viewsChangePct": 49,
       "likes": 430,
       "replies": 158,
@@ -18,12 +18,12 @@
         "publishedAt": "2026-09-12T04:23:47.251Z"
       },
       "timeBuckets": {
-        "morning": 630,
-        "afternoon": 1054,
+        "morning": 661,
+        "afternoon": 1055,
         "evening": 299
       },
       "trackedPosts": 83,
-      "fetchedAt": "2026-09-14T17:54:38.493Z",
+      "fetchedAt": "2026-09-14T19:48:41.830Z",
       "error": null
     },
     {
@@ -43,12 +43,12 @@
         "publishedAt": "2026-08-28T08:00:52.797Z"
       },
       "timeBuckets": {
-        "morning": 263,
+        "morning": 264,
         "afternoon": 282,
         "evening": 417
       },
       "trackedPosts": 82,
-      "fetchedAt": "2026-09-14T17:54:40.055Z",
+      "fetchedAt": "2026-09-14T19:48:43.350Z",
       "error": null
     },
     {
@@ -69,11 +69,11 @@
       },
       "timeBuckets": {
         "morning": 360,
-        "afternoon": 184,
+        "afternoon": 185,
         "evening": 365
       },
       "trackedPosts": 83,
-      "fetchedAt": "2026-09-14T17:54:40.874Z",
+      "fetchedAt": "2026-09-14T19:48:44.813Z",
       "error": null
     },
     {
@@ -98,14 +98,14 @@
         "evening": 18
       },
       "trackedPosts": 34,
-      "fetchedAt": "2026-09-14T17:54:42.743Z",
+      "fetchedAt": "2026-09-14T19:48:46.690Z",
       "error": null
     },
     {
       "id": "d2c9ae3f-67c9-42bf-b9f8-e8000b61abff",
       "label": "팔자장인",
       "followersCount": 42,
-      "viewsRecent7d": 61339,
+      "viewsRecent7d": 61373,
       "viewsChangePct": 32,
       "likes": 536,
       "replies": 28,
@@ -118,19 +118,19 @@
         "publishedAt": "2026-09-09T05:02:33.691Z"
       },
       "timeBuckets": {
-        "morning": 920,
-        "afternoon": 1152,
+        "morning": 921,
+        "afternoon": 1156,
         "evening": 1189
       },
       "trackedPosts": 78,
-      "fetchedAt": "2026-09-14T17:54:43.344Z",
+      "fetchedAt": "2026-09-14T19:48:47.852Z",
       "error": null
     },
     {
       "id": "cf6a4ba2-da74-4fc1-ae5a-72e1b1477287",
       "label": "팔자궤도",
       "followersCount": 274,
-      "viewsRecent7d": 45829,
+      "viewsRecent7d": 45847,
       "viewsChangePct": 33,
       "likes": 355,
       "replies": 17,
@@ -144,11 +144,11 @@
       },
       "timeBuckets": {
         "morning": 966,
-        "afternoon": 644,
+        "afternoon": 647,
         "evening": 489
       },
       "trackedPosts": 78,
-      "fetchedAt": "2026-09-14T17:54:44.313Z",
+      "fetchedAt": "2026-09-14T19:48:50.242Z",
       "error": null
     }
   ],
