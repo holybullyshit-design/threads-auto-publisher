@@ -11633,10 +11633,13 @@
     "scheduledAt": "2026-09-14T10:15:00.000Z",
     "createdAt": "2026-09-02T12:39:47.998Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17924792865419765",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "17924792865419765"
+    ]
   },
   {
     "id": "b16d074a-07e1-47d0-8a83-02e3edecb3fa",
