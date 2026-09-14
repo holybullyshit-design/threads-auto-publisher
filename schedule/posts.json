@@ -13571,10 +13571,13 @@
     "scheduledAt": "2026-09-14T08:47:00.000Z",
     "createdAt": "2026-09-02T23:56:57.076Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18666454195032705",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "18666454195032705"
+    ]
   },
   {
     "id": "c238334c-bd04-43ed-b765-09164b223766",
