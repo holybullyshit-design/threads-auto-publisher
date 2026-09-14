@@ -697,11 +697,11 @@
     "accountId": "6b8b637e-1629-4844-9a1f-9728c420154e",
     "accountLabel": "엄마가 직접 써본 꿀템",
     "text": "아들 재우려고 옆에 누웠는데.\n\n10분 뒤에 코 고는 소리 나서 봤더니 남편이 먼저 감.\n\n애는 눈 말똥말똥해서 아빠 얼굴 쿡쿡 찌르고 있고, 아빠는 \"음... 자자...\" 잠꼬대만 함.\n\n결국 애가 나한테 와서 하는 말.\n\"엄마, 아빠 재워야 되는데 나 어떡해.\"\n\n...너였구나, 오늘 재워야 될 사람.",
-    "status": "scheduled",
+    "status": "published",
     "scheduledAt": "2026-09-14T21:58:56.686Z",
     "createdAt": "2026-08-24T07:55:11.754Z",
-    "publishedAt": null,
-    "publishedId": null,
+    "publishedAt": "2026-09-14T22:00:31.500Z",
+    "publishedId": "18028026878683928",
     "error": null
   },
   {
