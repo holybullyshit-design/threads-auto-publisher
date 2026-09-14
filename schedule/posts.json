@@ -11571,10 +11571,13 @@
     "scheduledAt": "2026-09-14T04:52:00.000Z",
     "createdAt": "2026-09-02T12:36:34.087Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17872661286584876",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "17872661286584876"
+    ]
   },
   {
     "id": "12c6ab3b-a72d-4eec-94c9-5930ecc8b53b",
