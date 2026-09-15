@@ -6,7 +6,7 @@
 
 ## 프로젝트 개요
 
-- 로컬 경로: `~/Desktop/스레드 자동화 프로그램`, GitHub: `holybullyshit-design/threads-auto-publisher`
+- 로컬 경로: `~/Desktop/자동화/스레드 자동화 프로그램`, GitHub: `holybullyshit-design/threads-auto-publisher`
 - Node/Express 로컬 앱 + GitHub Actions(5분마다)로 클라우드에서도 예약 발행됨 — 맥북이 꺼져 있어도 동작
 - 예약 데이터는 로컬 파일이 아니라 **GitHub Contents API로 직접** 읽고 쓴다(`server/lib/githubStore.js`) — `schedule/posts.json`을 로컬에서 직접 편집하지 말 것, 항상 `readSchedule`/`writeSchedule`/`atomicUpdateSchedule`을 통해서만 쓴다.
 - 계정 6개: 사주 5개(연리지실타래/아해사주/팔자명가/팔자궤도/팔자장인) + 파트너스 1개(엄마가 직접 써본 꿀템)
