@@ -11727,10 +11727,13 @@
     "scheduledAt": "2026-09-15T03:12:00.000Z",
     "createdAt": "2026-09-02T12:46:14.066Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18643765492046885",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "18643765492046885"
+    ]
   },
   {
     "id": "357679eb-161d-4687-b8de-7d8cc888d681",
