@@ -13102,10 +13102,13 @@
     "scheduledAt": "2026-09-15T08:21:00.000Z",
     "createdAt": "2026-09-02T18:30:58.241Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18113499205819838",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "18113499205819838"
+    ]
   },
   {
     "id": "e86cc35c-e6ab-41ab-a2c2-d446dfe28f11",
