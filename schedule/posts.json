@@ -12257,10 +12257,13 @@
     "scheduledAt": "2026-09-15T02:36:00.000Z",
     "createdAt": "2026-09-02T14:29:38.326Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17971930400942564",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "17971930400942564"
+    ]
   },
   {
     "id": "9727c6ae-4fd5-4cde-9b37-d42cc627046d",
