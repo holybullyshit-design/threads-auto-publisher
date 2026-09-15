@@ -11142,9 +11142,12 @@
     "scheduledAt": "2026-09-15T09:45:00.000Z",
     "createdAt": "2026-09-02T11:58:11.939Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17884852224684515",
     "error": null,
-    "viralEngine": true
+    "viralEngine": true,
+    "chainPublishedIds": [
+      "17884852224684515"
+    ]
   },
   {
     "id": "145d1efe-3035-4437-9b18-5b436062ce62",
