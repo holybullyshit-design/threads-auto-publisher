@@ -12964,10 +12964,13 @@
     "scheduledAt": "2026-09-15T01:07:00.000Z",
     "createdAt": "2026-09-02T17:29:44.381Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18135007978654295",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "18135007978654295"
+    ]
   },
   {
     "id": "bed3311c-7d65-4f69-98dc-c46c8f06cf31",
