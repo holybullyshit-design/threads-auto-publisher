@@ -8,6 +8,7 @@
 // 사용법:
 //   node tools/fill-schedule.js comprehensive "<팔자명가|팔자장인|팔자궤도>" <종료일 YYYY-MM-DD>
 //   node tools/fill-schedule.js viral-morning "<연리지 실타래|아해사주>" <종료일 YYYY-MM-DD>
+//   (끝에 --dry-run을 붙이면 날짜별 시각 계획만 출력하고 글은 만들지 않는다)
 
 require("dotenv").config();
 const crypto = require("crypto");
@@ -60,6 +61,7 @@ const VIRAL_PROFILES = {
   },
 };
 
+const DRY_RUN = process.argv.includes("--dry-run");
 const MODE = process.argv[2];
 const ACCOUNT_LABEL = process.argv[3];
 const END_DATE = process.argv[4];
@@ -238,6 +240,63 @@ function generateDailySlots(count = 5, anchorMin = null) {
   return slots.map(minutesToHHMM);
 }
 
+// 2026-09-15 실측 사고(직전 차단): 그 날에 이미 글이 "오후에만" 있는 부분일(예: 14:49, 17:11)을
+// 채울 때, 예전 방식은 새로 뽑은 슬롯 중 뒤쪽 칸(dayLabels[already + i])을 골랐다 - 기존 글이
+// 앞쪽 칸을 차지했다고 가정한 것. 그러면 새 글이 기존 글과 부딪혀 충돌 회피로 계속 뒤로만 밀려서
+// 아침은 비고 21시·23시·새벽에 글이 몰렸다(13:17 예정 -> 21:03 저장). 그래서 부분일은 기존 시각
+// 전부를 "고정점"으로 두고, 07~09시 시작 / 모든 간격 2~3시간 / 22시 이전 조건을 만족하는
+// 새 시각 조합을 무작위로 여러 번 시도해서 찾는다. 빈 날(고정점 없음)도 같은 함수로 처리한다.
+// 반환: 새 글 시각(UTC ms) need개 배열, 조건을 만족하는 조합을 못 찾으면 null(그 날은 건너뜀).
+function planDayTimes(dateStr, fixedUtcMs, need) {
+  const DAY_START = 7 * 60, FIRST_LATEST = 9 * 60, DAY_END = 22 * 60;
+  const MIN_GAP = 120, MAX_GAP = 180;
+  const dayZeroUtc = Date.parse(`${dateStr}T00:00:00Z`) - 9 * 60 * 60 * 1000; // KST 00:00의 UTC ms
+  const fixed = fixedUtcMs.map((ms) => Math.round((ms - dayZeroUtc) / 60000)).sort((a, b) => a - b);
+  const rand = (lo, hi) => lo + Math.random() * (hi - lo);
+
+  for (let attempt = 0; attempt < 5000; attempt++) {
+    const seq = []; // {min, isNew}
+    let fi = 0;
+    // 첫 글: 고정점이 09시 이전에 있으면 그게 첫 글, 아니면 07~09시(다음 고정점과 2시간 여유) 사이 새 글
+    if (fixed.length && fixed[0] <= FIRST_LATEST) {
+      seq.push({ min: fixed[0], isNew: false });
+      fi = 1;
+    } else {
+      const hi = Math.min(FIRST_LATEST, fixed.length ? fixed[0] - MIN_GAP : FIRST_LATEST);
+      if (hi < DAY_START) break; // 고정점이 너무 이르면 이 방식으로는 불가
+      seq.push({ min: rand(DAY_START, hi), isNew: true });
+    }
+    let newCount = seq.filter((s) => s.isNew).length;
+    let ok = true;
+    while (fi < fixed.length || newCount < need) {
+      const prev = seq[seq.length - 1].min;
+      const nextFixed = fi < fixed.length ? fixed[fi] : null;
+      // 다음 고정점까지 새 글을 하나 끼울 공간(앞뒤 2시간)이 있고, 아직 새 글이 더 필요하면 무작위로 끼울지 결정
+      const canInsert = newCount < need && (nextFixed === null || nextFixed - prev >= MIN_GAP * 2);
+      const mustInsert = newCount < need && nextFixed !== null && nextFixed - prev > MAX_GAP && canInsert;
+      if (canInsert && (nextFixed === null || mustInsert || Math.random() < 0.5)) {
+        const hi = Math.min(prev + MAX_GAP, nextFixed !== null ? nextFixed - MIN_GAP : prev + MAX_GAP);
+        if (hi < prev + MIN_GAP) { ok = false; break; }
+        seq.push({ min: rand(prev + MIN_GAP, hi), isNew: true });
+        newCount++;
+        continue;
+      }
+      if (nextFixed === null) { ok = false; break; }
+      if (nextFixed - prev < MIN_GAP) { ok = false; break; } // 고정점끼리/직전 새 글과 2시간 미만이면 실패
+      seq.push({ min: nextFixed, isNew: false });
+      fi++;
+    }
+    if (!ok || newCount !== need) continue;
+    const mins = seq.map((s) => Math.round(s.min));
+    if (mins[mins.length - 1] > DAY_END) continue;
+    let gapsOk = true;
+    for (let i = 1; i < mins.length; i++) if (mins[i] - mins[i - 1] < MIN_GAP) gapsOk = false;
+    if (!gapsOk) continue;
+    return seq.filter((s) => s.isNew).map((s) => dayZeroUtc + Math.round(s.min) * 60000);
+  }
+  return null;
+}
+
 async function main() {
   const account = findAccount();
   if (!account) throw new Error(`계정을 찾을 수 없습니다: "${ACCOUNT_LABEL}"`);
@@ -272,30 +331,29 @@ async function main() {
     const already = existingCounts[cursor] || 0;
     const need = Math.max(0, targetSlotsPerDay - already);
     if (need > 0) {
-      let anchorMin = null;
-      if (MODE === "viral-morning") {
-        const nonViral = nonViralTimesByDate[cursor] || [];
-        if (nonViral.length > 0) anchorMin = msToKstMinuteOfDay(nonViral[0]); // 댓글유도 글의 KST 분(minute-of-day)
-      }
-      const dayLabels = generateDailySlots(targetSlotsPerDay, anchorMin); // 매일 새로 뽑음, 앵커 있으면 자동 회피
-      console.log(`  ${cursor} 슬롯: ${dayLabels.join(", ")}`);
-
-      const dayExisting = (existingTimesByDate[cursor] = existingTimesByDate[cursor] || []);
-      for (let i = 0; i < need; i++) {
-        const slotTime = dayLabels[(already + i) % dayLabels.length];
-        // 지터(±15분)를 먼저 적용한 뒤에 충돌 회피를 해야, 지터가 다시 다른 글과 가깝게 만드는
-        // 걸 막을 수 있다 - 순서를 반대로 하면(회피 먼저, 지터 나중) 지터가 회피 결과를 무효화함.
-        const jitteredMs = withJitter(kstSlotToUtc(cursor, slotTime)).getTime();
-        const utcMs = resolveCollisionFreeTime(jitteredMs, dayExisting);
-        dayExisting.push(utcMs); // 같은 날짜의 다음 잡(job)도 이 시각을 피해가도록 바로 등록
-        const utcTime = new Date(utcMs);
-        if (utcTime.getTime() > Date.now()) jobs.push({ dateStr: cursor, slotTime, utcTime });
+      // 그 날 이미 있는 모든 글 시각(댓글유도 글 포함)을 고정점으로 두고 새 시각을 계획한다
+      // (planDayTimes 주석 참고 - 예전 dayLabels[already + i] 방식의 뒤로 밀림 사고 대응).
+      const dayExisting = existingTimesByDate[cursor] || [];
+      const planned = planDayTimes(cursor, dayExisting, need);
+      if (!planned) {
+        console.log(`  ${cursor}: 기존 글 사이에 규칙(07~09시 시작/2시간 이상 간격/22시 이전)에 맞는 자리가 없어 건너뜀 - 확인 필요`);
+      } else {
+        const labels = planned.map((ms) => minutesToHHMM(msToKstMinuteOfDay(ms)));
+        const fixedLabels = dayExisting.map((ms) => minutesToHHMM(msToKstMinuteOfDay(ms))).sort();
+        console.log(`  ${cursor} 기존: ${fixedLabels.join(", ") || "없음"} / 새로: ${labels.join(", ")}`);
+        planned.forEach((utcMs, i) => {
+          if (utcMs > Date.now() + 15 * 60 * 1000) jobs.push({ dateStr: cursor, slotTime: labels[i], utcTime: new Date(utcMs) });
+        });
       }
     }
     cursor = addDaysStr(cursor, 1);
   }
 
   console.log(`계정: ${account.label} / 모드: ${MODE} / 채울 슬롯: ${jobs.length}개 (오늘 ~ ${END_DATE}, 이미 있는 건 건너뜀)`);
+  if (DRY_RUN) {
+    console.log("[dry-run] 시각 계획만 출력하고 종료 - 글 생성/저장 안 함.");
+    return;
+  }
   if (jobs.length === 0) {
     console.log("채울 슬롯이 없습니다 (이미 다 차있음). 종료.");
     return;
