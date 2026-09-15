@@ -11792,10 +11792,13 @@
     "scheduledAt": "2026-09-15T07:22:00.000Z",
     "createdAt": "2026-09-02T12:48:13.103Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18004768979785564",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "18004768979785564"
+    ]
   },
   {
     "id": "066e0483-d4f2-40a4-9be5-e1f65e4efe9d",
