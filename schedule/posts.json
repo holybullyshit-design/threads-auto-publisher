@@ -13021,10 +13021,13 @@
     "scheduledAt": "2026-09-15T03:47:00.000Z",
     "createdAt": "2026-09-02T17:31:11.934Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18121012613316811",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "18121012613316811"
+    ]
   },
   {
     "id": "42a01a18-5997-4bb3-8a8e-693bedbe99f7",
