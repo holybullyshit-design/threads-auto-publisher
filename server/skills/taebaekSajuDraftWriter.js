@@ -717,6 +717,13 @@ async function writeThreadDraft({
     throw new Error(`파트 내용이 비정상입니다(자리표시자/영어 혼잣말 잔존 또는 너무 짧음). 원문: ${raw.slice(0, 200)}`);
   }
 
+  // 2026-09-15 실측: 프롬프트에 "파트당 500자 이하"를 적어도 515자짜리 파트가 나와 예약까지
+  // 들어간 적이 있다. Threads는 500자를 넘으면 발행 자체가 실패하므로 여기서 걸러 재시도시킨다.
+  const tooLong = parts.findIndex((p) => p.length > 500);
+  if (tooLong !== -1) {
+    throw new Error(`파트 ${tooLong + 1}이 Threads 제한(500자)을 넘습니다(${parts[tooLong].length}자).`);
+  }
+
   return {
     topic: topic.label,
     hookFormat: hookFormat.id,
