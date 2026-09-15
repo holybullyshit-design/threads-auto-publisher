@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-09-15T02:45:41.548Z",
+  "generatedAt": "2026-09-15T03:05:21.902Z",
   "accounts": [
     {
       "id": "273c125f-56b7-4aa1-8abc-89df16bfbe2a",
       "label": "연리지 실타래",
       "followersCount": 989,
-      "viewsRecent7d": 68392,
-      "viewsChangePct": 53,
+      "viewsRecent7d": 68817,
+      "viewsChangePct": 54,
       "likes": 432,
       "replies": 160,
       "reposts": 29,
@@ -23,14 +23,14 @@
         "evening": 300
       },
       "trackedPosts": 85,
-      "fetchedAt": "2026-09-15T02:05:15.545Z",
+      "fetchedAt": "2026-09-15T03:05:17.801Z",
       "error": null
     },
     {
       "id": "e0331659-96f0-4f5f-9aef-d89e0ed2a6a3",
       "label": "아해사주",
       "followersCount": 680,
-      "viewsRecent7d": 8953,
+      "viewsRecent7d": 9017,
       "viewsChangePct": -33,
       "likes": 40,
       "replies": 14,
@@ -48,7 +48,7 @@
         "evening": 417
       },
       "trackedPosts": 84,
-      "fetchedAt": "2026-09-15T02:05:17.265Z",
+      "fetchedAt": "2026-09-15T03:05:18.752Z",
       "error": null
     },
     {
@@ -73,7 +73,7 @@
         "evening": 365
       },
       "trackedPosts": 85,
-      "fetchedAt": "2026-09-15T02:05:18.625Z",
+      "fetchedAt": "2026-09-15T03:05:19.553Z",
       "error": null
     },
     {
@@ -143,18 +143,18 @@
         "publishedAt": "2026-09-09T02:57:33.203Z"
       },
       "timeBuckets": {
-        "morning": 943,
+        "morning": 913,
         "afternoon": 647,
         "evening": 489
       },
-      "trackedPosts": 79,
+      "trackedPosts": 80,
       "fetchedAt": "2026-09-15T02:45:38.947Z",
       "error": null
     }
   ],
   "recommendations": [
     "'연리지 실타래' — 오후(12-18시) 발행 글이 저녁(18-24시) 발행 글보다 평균 조회수가 3.5배 높습니다. 오후(12-18시) 비중을 늘려보세요.",
-    "'연리지 실타래' — 최근 7일 조회수가 지난 주 대비 53% 상승 중입니다. 지금 통하는 주제/훅 패턴을 유지하세요.",
+    "'연리지 실타래' — 최근 7일 조회수가 지난 주 대비 54% 상승 중입니다. 지금 통하는 주제/훅 패턴을 유지하세요.",
     "'연리지 실타래' 최고 성과 글: \"<천을귀인, 있는 자리에 따라 순위가 갈린다> 일간이 정 화인 사람들. 사주 어딘가에 해(돼지띠) 자나 유(\" — 조회수 18,539 · 답글 11건. 비슷한 훅/주제를 반복 활용해볼 만합니다.",
     "'아해사주' — 저녁(18-24시) 발행 글이 오전(0-12시) 발행 글보다 평균 조회수가 1.7배 높습니다. 저녁(18-24시) 비중을 늘려보세요.",
     "'아해사주' — 최근 7일 조회수가 지난 주 대비 33% 감소했습니다. 최근 훅/주제 변화를 점검해볼 시점입니다.",
