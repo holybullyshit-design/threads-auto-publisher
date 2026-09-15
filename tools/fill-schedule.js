@@ -249,12 +249,14 @@ function generateDailySlots(count = 5, anchorMin = null) {
 // 반환: 새 글 시각(UTC ms) need개 배열, 조건을 만족하는 조합을 못 찾으면 null(그 날은 건너뜀).
 function planDayTimes(dateStr, fixedUtcMs, need) {
   const DAY_START = 7 * 60, FIRST_LATEST = 9 * 60, DAY_END = 22 * 60;
-  const MIN_GAP = 120, MAX_GAP = 180;
+  // 최소 간격을 122분으로 둔다 - 기존 글 시각에 초가 붙어 있으면(예: 17:09:40) 분 단위 반올림
+  // 때문에 실제 간격이 119.x분이 되는 경우가 실측으로 나와서, 2분 여유를 둬서 항상 120분 이상 보장.
+  const MIN_GAP = 122, MAX_GAP = 180;
   const dayZeroUtc = Date.parse(`${dateStr}T00:00:00Z`) - 9 * 60 * 60 * 1000; // KST 00:00의 UTC ms
   const fixed = fixedUtcMs.map((ms) => Math.round((ms - dayZeroUtc) / 60000)).sort((a, b) => a - b);
   const rand = (lo, hi) => lo + Math.random() * (hi - lo);
 
-  for (let attempt = 0; attempt < 5000; attempt++) {
+  for (let attempt = 0; attempt < 8000; attempt++) {
     const seq = []; // {min, isNew}
     let fi = 0;
     // 첫 글: 고정점이 09시 이전에 있으면 그게 첫 글, 아니면 07~09시(다음 고정점과 2시간 여유) 사이 새 글
@@ -290,7 +292,14 @@ function planDayTimes(dateStr, fixedUtcMs, need) {
     const mins = seq.map((s) => Math.round(s.min));
     if (mins[mins.length - 1] > DAY_END) continue;
     let gapsOk = true;
-    for (let i = 1; i < mins.length; i++) if (mins[i] - mins[i - 1] < MIN_GAP) gapsOk = false;
+    for (let i = 1; i < mins.length; i++) {
+      const g = mins[i] - mins[i - 1];
+      if (g < MIN_GAP) gapsOk = false;
+      // 2026-09-15 실측: 댓글유도 앵커 앞에서 새 글끼리 일찍 끝나 앵커까지 214~235분이 벌어짐.
+      // 처음 4000번은 "새 글이 끼인 간격은 3시간 이하"까지 요구하고, 그래도 못 찾을 때만
+      // 최소 간격(2시간)만 지키는 조합을 허용한다(규칙상 최소 간격이 최우선).
+      if (attempt < 4000 && g > MAX_GAP && (seq[i].isNew || seq[i - 1].isNew)) gapsOk = false;
+    }
     if (!gapsOk) continue;
     return seq.filter((s) => s.isNew).map((s) => dayZeroUtc + Math.round(s.min) * 60000);
   }
