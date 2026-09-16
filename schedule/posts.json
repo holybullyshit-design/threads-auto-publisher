@@ -12019,10 +12019,13 @@
     "scheduledAt": "2026-09-16T22:33:00.000Z",
     "createdAt": "2026-09-02T12:57:26.567Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18116959097057328",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "18116959097057328"
+    ]
   },
   {
     "id": "77bc42d9-c812-4f60-af7e-c4aa14a3aaa5",
