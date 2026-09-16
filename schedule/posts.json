@@ -12454,10 +12454,13 @@
     "scheduledAt": "2026-09-16T01:10:00.000Z",
     "createdAt": "2026-09-02T14:38:49.625Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18022402979860104",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "18022402979860104"
+    ]
   },
   {
     "id": "7a34c936-62fc-480e-b019-bc0cc0d79d88",
