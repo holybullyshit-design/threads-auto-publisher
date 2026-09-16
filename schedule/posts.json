@@ -13388,10 +13388,13 @@
     "scheduledAt": "2026-09-16T23:33:00.000Z",
     "createdAt": "2026-09-02T23:16:23.596Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17891209602435312",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "17891209602435312"
+    ]
   },
   {
     "id": "3ffb37be-d71b-4604-9ea0-5b60196161cb",
