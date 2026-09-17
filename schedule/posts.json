@@ -12762,10 +12762,13 @@
     "scheduledAt": "2026-09-17T06:55:00.000Z",
     "createdAt": "2026-09-02T14:47:51.378Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18235912186316020",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "18235912186316020"
+    ]
   },
   {
     "id": "773fda50-b0c0-4689-84e9-2917f121375e",
