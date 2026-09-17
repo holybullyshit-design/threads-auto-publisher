@@ -12137,10 +12137,13 @@
     "scheduledAt": "2026-09-17T06:20:00.000Z",
     "createdAt": "2026-09-02T13:01:28.933Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18379663909238932",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "18379663909238932"
+    ]
   },
   {
     "id": "6d157ce1-86c4-430d-a055-f00a34b30a1b",
