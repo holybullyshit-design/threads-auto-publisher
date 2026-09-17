@@ -13790,9 +13790,12 @@
     "scheduledAt": "2026-09-17T09:46:00.000Z",
     "createdAt": "2026-09-02T23:38:02.794Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18104445917225286",
     "error": null,
-    "viralEngine": true
+    "viralEngine": true,
+    "chainPublishedIds": [
+      "18104445917225286"
+    ]
   },
   {
     "id": "d9dd2163-8b9a-4bf4-8bad-86e6279857ba",
