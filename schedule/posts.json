@@ -13535,10 +13535,13 @@
     "scheduledAt": "2026-09-17T06:53:00.000Z",
     "createdAt": "2026-09-02T23:18:26.238Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17906401878474363",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "17906401878474363"
+    ]
   },
   {
     "id": "5f74bb1b-c89c-4f54-981a-4724611c4764",
