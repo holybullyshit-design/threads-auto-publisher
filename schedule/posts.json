@@ -12669,10 +12669,13 @@
     "scheduledAt": "2026-09-17T01:14:00.000Z",
     "createdAt": "2026-09-02T14:45:37.856Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18040052039827440",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "18040052039827440"
+    ]
   },
   {
     "id": "e8cb38f0-e694-4041-b5bb-40b748569e2b",
