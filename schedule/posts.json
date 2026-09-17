@@ -12715,10 +12715,13 @@
     "scheduledAt": "2026-09-17T04:13:00.000Z",
     "createdAt": "2026-09-02T14:47:13.231Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17935055430381123",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "17935055430381123"
+    ]
   },
   {
     "id": "c9a11013-99ec-4e48-afa5-528e4b552081",
