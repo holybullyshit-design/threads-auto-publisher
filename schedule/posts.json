@@ -12922,10 +12922,13 @@
     "scheduledAt": "2026-09-18T05:37:00.000Z",
     "createdAt": "2026-09-02T14:53:18.212Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17892701817674266",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "17892701817674266"
+    ]
   },
   {
     "id": "a09fe84a-86dc-4760-aeef-45ba7f910cc8",
