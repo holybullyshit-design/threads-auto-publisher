@@ -14073,10 +14073,13 @@
     "scheduledAt": "2026-09-18T22:46:00.000Z",
     "createdAt": "2026-09-02T23:46:47.728Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18117194830966374",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "18117194830966374"
+    ]
   },
   {
     "id": "6d1bcbd8-39e8-4b2a-b891-0d0097c67285",
