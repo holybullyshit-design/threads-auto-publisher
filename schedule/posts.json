@@ -13911,10 +13911,13 @@
     "scheduledAt": "2026-09-18T02:17:00.000Z",
     "createdAt": "2026-09-02T23:41:53.699Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18352822882220300",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "18352822882220300"
+    ]
   },
   {
     "id": "c90b9b3b-ee17-487c-ac08-e20369f87642",
