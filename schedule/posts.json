@@ -13700,10 +13700,13 @@
     "scheduledAt": "2026-09-18T04:17:00.000Z",
     "createdAt": "2026-09-02T23:22:05.648Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17917803030447802",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "17917803030447802"
+    ]
   },
   {
     "id": "fd9d4e70-6e1d-4077-b02b-f7394c319ad1",
