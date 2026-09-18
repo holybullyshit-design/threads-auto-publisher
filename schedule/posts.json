@@ -12851,10 +12851,13 @@
     "scheduledAt": "2026-09-18T00:32:00.000Z",
     "createdAt": "2026-09-02T14:51:07.841Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18067266665593815",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "18067266665593815"
+    ]
   },
   {
     "id": "7570c4cf-1d26-4516-89b5-80004570c64f",
