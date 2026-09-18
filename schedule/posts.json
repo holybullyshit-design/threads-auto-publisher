@@ -14005,10 +14005,13 @@
     "scheduledAt": "2026-09-18T07:11:00.000Z",
     "createdAt": "2026-09-02T23:45:00.633Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18059922722529452",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "18059922722529452"
+    ]
   },
   {
     "id": "97136cf6-4340-42bd-961e-d717fcd635bb",
