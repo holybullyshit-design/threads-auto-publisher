@@ -12888,10 +12888,13 @@
     "scheduledAt": "2026-09-18T03:02:00.000Z",
     "createdAt": "2026-09-02T14:52:47.935Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18194695864376261",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "18194695864376261"
+    ]
   },
   {
     "id": "332b106d-8a55-4c3c-9d98-d90daa473083",
