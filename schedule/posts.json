@@ -14123,10 +14123,13 @@
     "scheduledAt": "2026-09-19T01:11:00.000Z",
     "createdAt": "2026-09-02T23:54:23.454Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18144163255566362",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "18144163255566362"
+    ]
   },
   {
     "id": "4c8b4be1-5eb2-4ba2-94b3-248c292364f2",
