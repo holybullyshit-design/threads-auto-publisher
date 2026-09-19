@@ -13861,10 +13861,13 @@
     "scheduledAt": "2026-09-19T01:54:00.000Z",
     "createdAt": "2026-09-02T23:31:43.691Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18142611115607762",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "18142611115607762"
+    ]
   },
   {
     "id": "571a6e95-29a5-4f5d-9edb-7c0e7044a0ae",
