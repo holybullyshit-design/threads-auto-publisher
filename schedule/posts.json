@@ -9889,10 +9889,13 @@
     "scheduledAt": "2026-09-20T08:00:00.000Z",
     "createdAt": "2026-09-02T03:57:18.936Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18048759917606278",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "18048759917606278"
+    ]
   },
   {
     "id": "1e8cc0a2-c3fe-48c1-b3fa-7ef69fb5d7a6",
