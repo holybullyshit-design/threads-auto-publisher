@@ -9918,10 +9918,13 @@
     "scheduledAt": "2026-09-20T10:12:00.000Z",
     "createdAt": "2026-09-02T03:58:50.672Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18131631103662912",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "18131631103662912"
+    ]
   },
   {
     "id": "dff40d10-caa1-42d5-85f4-104cbf759a0c",
