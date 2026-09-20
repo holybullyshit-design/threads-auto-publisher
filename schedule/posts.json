@@ -9836,10 +9836,13 @@
     "scheduledAt": "2026-09-20T02:52:00.000Z",
     "createdAt": "2026-09-02T03:54:28.082Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18020222963924477",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "18020222963924477"
+    ]
   },
   {
     "id": "ebea9ced-55a6-4654-8c10-fccbcfe76dbe",
