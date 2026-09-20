@@ -10204,10 +10204,13 @@
     "scheduledAt": "2026-09-20T22:05:00.000Z",
     "createdAt": "2026-09-02T04:17:03.179Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18088649741679741",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "18088649741679741"
+    ]
   },
   {
     "id": "bb41b1f3-2f3f-42d8-b625-623dd9b162e5",
