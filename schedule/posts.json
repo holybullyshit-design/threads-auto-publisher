@@ -9861,10 +9861,13 @@
     "scheduledAt": "2026-09-20T05:45:00.000Z",
     "createdAt": "2026-09-02T03:56:07.500Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18140213818559794",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "18140213818559794"
+    ]
   },
   {
     "id": "f3af3bf8-c80c-4b51-a554-24f4443250e5",
