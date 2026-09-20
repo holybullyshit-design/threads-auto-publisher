@@ -9681,10 +9681,13 @@
     "scheduledAt": "2026-09-20T08:11:00.000Z",
     "createdAt": "2026-09-02T03:42:26.881Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18107012654583173",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "18107012654583173"
+    ]
   },
   {
     "id": "a05c495e-610e-4592-9c38-3f63770a4c37",
