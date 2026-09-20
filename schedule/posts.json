@@ -9706,10 +9706,13 @@
     "scheduledAt": "2026-09-20T23:18:00.000Z",
     "createdAt": "2026-09-02T03:43:00.977Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18163899784485071",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "18163899784485071"
+    ]
   },
   {
     "id": "b6715291-610c-43f9-b944-c630cd87bb09",
