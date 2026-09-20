@@ -9941,10 +9941,13 @@
     "scheduledAt": "2026-09-20T22:00:00.000Z",
     "createdAt": "2026-09-02T04:02:29.724Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18115300555784769",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "18115300555784769"
+    ]
   },
   {
     "id": "bb95038d-0b89-464f-894c-65cab22dee8c",
