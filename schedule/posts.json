@@ -10155,10 +10155,13 @@
     "scheduledAt": "2026-09-20T07:01:00.000Z",
     "createdAt": "2026-09-02T04:14:02.367Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18110049179032576",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "18110049179032576"
+    ]
   },
   {
     "id": "d976812f-fc28-4b63-8746-0c6c9ecd741b",
