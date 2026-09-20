@@ -9811,10 +9811,13 @@
     "scheduledAt": "2026-09-19T23:52:00.000Z",
     "createdAt": "2026-09-02T03:53:26.884Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17935774740380006",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "17935774740380006"
+    ]
   },
   {
     "id": "1d99c9c1-e430-405c-9e77-35dda3fd510e",
