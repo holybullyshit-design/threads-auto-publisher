@@ -17702,9 +17702,12 @@
     "scheduledAt": "2026-09-21T02:37:00.000Z",
     "createdAt": "2026-09-15T05:39:33.282Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18114122228019732",
     "error": null,
-    "viralEngine": true
+    "viralEngine": true,
+    "chainPublishedIds": [
+      "18114122228019732"
+    ]
   },
   {
     "id": "e3671ce3-7729-47db-a71e-61fea8915ca2",
