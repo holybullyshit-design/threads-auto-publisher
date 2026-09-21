@@ -20133,9 +20133,12 @@
     "scheduledAt": "2026-09-21T22:14:00.000Z",
     "createdAt": "2026-09-15T08:04:49.343Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18073600826459588",
     "error": null,
-    "viralEngine": true
+    "viralEngine": true,
+    "chainPublishedIds": [
+      "18073600826459588"
+    ]
   },
   {
     "id": "9b0b7733-3dce-443e-b5fc-47b2ff4bb86d",
