@@ -17829,7 +17829,7 @@
     "text": "카드값 빠지기 전 새는 돈부터 막아야 목돈이 남는 생년\n재물운은 큰 수입보다 결제일 전에 반복 지출을 끊을 때 체감됩니다.\n\n명리 포인트: 比劫이 강할 때 반복 지출을 먼저 정리\n소띠 — 자동결제 검색하기\n말띠 — 이번 달 할부 합계 보기\n돼지띠 — 공동비용 나누기\n\n내 생년이 있다면 댓글에 ‘카드값’라고 남겨주세요.\n오늘 막아야 할 돈 구멍:\n1. 안 쓰는 구독 해지하기\n2. 소비 한도를 숫자로 정하기\n3. 결제 알림을 켜두기\n\n개인의 흐름은 생년월일시 전체에 따라 달라질 수 있습니다.\n\n#팔자명가 #재물운 #소비운 #통장관리 #띠별운세 #년생운세",
     "videoUrl": "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@3728d9c616d27ec862d54e23a937f647917cf257/images/ce72458a-3f5b-4c9c-be81-186deefbc2cc.mp4",
     "videoSha256": "c2b47511ccea6be1efca3a50d9e8e8261448f0611c2984bf92ccec9025900d6b",
-    "status": "scheduled",
+    "status": "publishing",
     "scheduledAt": "2026-09-21T06:30:00.000Z",
     "expectedLocalDate": "2026-09-21",
     "exactTimeKst": "15:30",
@@ -17868,7 +17868,8 @@
     "publishedId": null,
     "error": null,
     "retryCount": 0,
-    "contentHash": "0b325a5ae8201d8f87170fcdd9323f67817ace429e276c9e0206ff8d866e8433"
+    "contentHash": "0b325a5ae8201d8f87170fcdd9323f67817ace429e276c9e0206ff8d866e8433",
+    "publishAttemptedAt": "2026-09-21T06:30:59.259Z"
   },
   {
     "id": "7c6e6bc4-850e-4045-bfee-2657aaba05d5",
