@@ -19426,9 +19426,12 @@
     "scheduledAt": "2026-09-21T07:22:00.000Z",
     "createdAt": "2026-09-15T05:44:59.148Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18386461600230658",
     "error": null,
-    "viralEngine": true
+    "viralEngine": true,
+    "chainPublishedIds": [
+      "18386461600230658"
+    ]
   },
   {
     "id": "a0bb5ba1-a280-4f43-a3ea-5722008185aa",
