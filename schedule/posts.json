@@ -9733,10 +9733,13 @@
     "scheduledAt": "2026-09-21T01:33:00.000Z",
     "createdAt": "2026-09-02T03:48:19.117Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18121686202918595",
     "error": null,
     "viralEngine": true,
-    "regenV2": true
+    "regenV2": true,
+    "chainPublishedIds": [
+      "18121686202918595"
+    ]
   },
   {
     "id": "ba3cc6d8-6324-4795-95ca-ef0d98ee99a1",
