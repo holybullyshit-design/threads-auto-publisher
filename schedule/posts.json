@@ -19767,9 +19767,12 @@
     "scheduledAt": "2026-09-21T05:04:00.000Z",
     "createdAt": "2026-09-15T06:02:41.643Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18219524971339696",
     "error": null,
-    "viralEngine": true
+    "viralEngine": true,
+    "chainPublishedIds": [
+      "18219524971339696"
+    ]
   },
   {
     "id": "773beb17-8d7a-49ea-956b-5650611541e2",
