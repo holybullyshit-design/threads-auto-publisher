@@ -89,11 +89,18 @@ function shuffled(arr) {
   return copy;
 }
 
+// 2026-09-22 실측(9/13~9/21 팔자장인·팔자궤도 71건): 돈/이번 달 운세 같은 "시기형" 소재는
+// 글당 평균 666회인데, 띠·일주·신살을 직접 지목하는 소재는 평균 1,317회로 2배였다. 그래서
+// 시기형(재성/관성)은 셔플백에 1장만, 나머지 소재는 3장씩 넣어서 등장 빈도를 1/3로 줄인다
+// (완전히 빼지는 않는다 - 소재 다양성 자체는 유지해야 반복처럼 안 보인다).
+const LOW_PERFORMING_TOPIC_IDS = new Set(["sipseong-jaeseong", "sipseong-gwanseong"]);
+
 function pickTopicIds(count, topicIds = TOPICS.map((t) => t.id)) {
+  const weighted = topicIds.flatMap((id) => (LOW_PERFORMING_TOPIC_IDS.has(id) ? [id] : [id, id, id]));
   const result = [];
   let bag = [];
   while (result.length < count) {
-    if (bag.length === 0) bag = shuffled(topicIds);
+    if (bag.length === 0) bag = shuffled(weighted);
     result.push(bag.pop());
   }
   return result;
