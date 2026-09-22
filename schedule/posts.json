@@ -20112,11 +20112,14 @@
     "scheduledAt": "2026-09-22T22:37:00.000Z",
     "createdAt": "2026-09-15T08:11:00.569Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18086949035674366",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
-    "regenV3": true
+    "regenV3": true,
+    "chainPublishedIds": [
+      "18086949035674366"
+    ]
   },
   {
     "id": "f6949573-5875-4e39-beda-c46de256ad7f",
