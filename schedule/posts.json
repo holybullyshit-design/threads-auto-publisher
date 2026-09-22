@@ -21045,11 +21045,14 @@
     "scheduledAt": "2026-09-22T23:43:00.000Z",
     "createdAt": "2026-09-15T09:01:27.849Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18099334862572995",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
-    "regenV3": true
+    "regenV3": true,
+    "chainPublishedIds": [
+      "18099334862572995"
+    ]
   },
   {
     "id": "f1f7f82e-54d2-4c7d-bd57-7ebf4485f2f2",
