@@ -9,5 +9,7 @@
     "@atelier.destiny",
     "@halla_saju"
   ],
-  "nextIndex": 4
+  "nextIndex": 4,
+  "primaryChannel": "@taebaek_saju",
+  "note": "@taebaek_saju는 사용자가 지정한 1순위 기준 채널 - 매번 먼저 분석한다. channels/nextIndex는 보조 채널 순환용."
 }
