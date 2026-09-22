@@ -20086,9 +20086,12 @@
     "scheduledAt": "2026-09-22T08:26:00.000Z",
     "createdAt": "2026-09-15T08:09:34.583Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17987666049113650",
     "error": null,
-    "viralEngine": true
+    "viralEngine": true,
+    "chainPublishedIds": [
+      "17987666049113650"
+    ]
   },
   {
     "id": "8ce6e6db-1d7e-4c1d-8246-47bf6abb67a6",
