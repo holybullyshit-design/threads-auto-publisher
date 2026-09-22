@@ -11,12 +11,20 @@
 //     "이미 채워진 건 건너뛴다"와 같은 원칙).
 //
 // 사용법:
-//   node tools/regenerate-scheduled.js "<팔자명가|팔자궤도|팔자장인>" <시작일> <종료일 YYYY-MM-DD>
+//   node tools/regenerate-scheduled.js "<계정라벨>" <시작일> <종료일 YYYY-MM-DD> [--dry-run]
 
 require("dotenv").config();
 const accountsStore = require("../server/lib/accountsStore");
 const { readSchedule, writeSchedule } = require("../server/lib/githubStore");
-const { writeThreadDraft, pickTopicIds, pickHookFormatIds } = require("../server/skills/taebaekSajuDraftWriter");
+const { writeThreadDraft, TOPICS, pickTopicIds, pickHookFormatIds } = require("../server/skills/taebaekSajuDraftWriter");
+const { VIRAL_PROFILES } = require("../server/config/viralProfiles");
+
+const DRY_RUN = process.argv.includes("--dry-run");
+// 하루 1개를 댓글유도 글로 바꿀 계정(조회수는 높은데 팔로워 전환이 없는 두 계정)
+const COMMENT_CTA_ACCOUNTS = new Set(["팔자장인", "팔자궤도"]);
+const kstDate = (iso) => new Date(new Date(iso).getTime() + 9 * 3600 * 1000).toISOString().slice(0, 10);
+// 연리지실타래/아해사주의 댓글유도 글: 다른 경로에서 생성된 글이라 내용도 시각도 건드리지 않는다.
+const isForeignAnchor = (p) => p.viralEngine !== true && /생년월일/.test(p.text || "");
 
 const RETRY_ATTEMPTS = 3;
 
@@ -74,7 +82,8 @@ async function main() {
         p.accountId === account.id &&
         p.platform !== "instagram" &&
         p.status === "scheduled" &&
-        !p.regenV2 &&
+        !p.regenV3 &&
+        !isForeignAnchor(p) &&
         new Date(p.scheduledAt) >= start &&
         new Date(p.scheduledAt) <= end
     )
@@ -86,8 +95,23 @@ async function main() {
     return;
   }
 
-  const topicIds = pickTopicIds(targets.length);
+  const profile = VIRAL_PROFILES[ACCOUNT_LABEL] || null;
+  const topicPool = profile ? TOPICS.filter((t) => profile.topicIds.includes(t.id)) : null;
+  const topicIds = pickTopicIds(targets.length, profile ? profile.topicIds : undefined);
   const hookFormatIds = pickHookFormatIds(targets.length);
+
+  // 팔자장인/팔자궤도: 날짜별 마지막 글을 댓글유도 글로 지정한다(하루 1개).
+  const commentCtaIds = new Set();
+  if (COMMENT_CTA_ACCOUNTS.has(ACCOUNT_LABEL)) {
+    const byDate = {};
+    targets.forEach((p) => ((byDate[kstDate(p.scheduledAt)] = byDate[kstDate(p.scheduledAt)] || []).push(p)));
+    Object.values(byDate).forEach((list) => commentCtaIds.add(list[list.length - 1].id));
+  }
+  if (DRY_RUN) {
+    console.log(`[dry-run] 대상 ${targets.length}건 / 댓글유도로 바꿀 글 ${commentCtaIds.size}건`);
+    targets.forEach((p) => console.log(`   ${kstDate(p.scheduledAt)} ${new Date(new Date(p.scheduledAt).getTime() + 9 * 3600e3).toISOString().slice(11, 16)}${commentCtaIds.has(p.id) ? " ← 댓글유도" : ""}`));
+    return;
+  }
 
   let done = 0;
   for (let i = 0; i < targets.length; i++) {
@@ -101,6 +125,11 @@ async function main() {
         topicId: topicIds[i],
         hookFormatId: hookFormatIds[i],
         accountLabel: ACCOUNT_LABEL,
+        topicPool: topicPool || undefined,
+        domainFraming: profile ? profile.domainFraming : undefined,
+        speechLevel: profile ? profile.speechLevel : undefined,
+        extraBans: profile ? profile.extraBans : undefined,
+        ctaMode: commentCtaIds.has(post.id) ? "comment" : undefined,
       });
     } catch (err) {
       console.log(`  -> ${RETRY_ATTEMPTS}번 다 실패, 이 글은 기존 내용 그대로 둠: ${err.message}`);
@@ -111,13 +140,13 @@ async function main() {
     // 스크립트가 죽어버린다(2026-08-30 실측: 42/55에서 이렇게 멈췄었음). regenV2 표시가
     // 안 붙은 글은 다음 재실행 때 다시 시도된다.
     try {
-      await saveOneUpdate(post.id, { text: draft.text, replyChain: draft.replyChain, regenV2: true });
+      await saveOneUpdate(post.id, { text: draft.text, replyChain: draft.replyChain, regenV2: true, regenV3: true });
     } catch (err) {
       console.log(`  -> 저장 실패(다음 재실행 때 다시 시도됨): ${err.message}`);
       continue;
     }
     done++;
-    console.log(`  -> 교체됨. 소재: ${draft.topic} / 훅: ${draft.hookFormat} / 파트 ${1 + draft.replyChain.length}개`);
+    console.log(`  -> 교체됨. 소재: ${draft.topic} / 훅: ${draft.hookFormat} / 파트 ${1 + draft.replyChain.length}개${commentCtaIds.has(post.id) ? " / 댓글유도" : ""}`);
   }
 
   console.log(`\n완료: ${ACCOUNT_LABEL} - ${done}/${targets.length}건 교체 (${START_DATE} ~ ${END_DATE}).`);

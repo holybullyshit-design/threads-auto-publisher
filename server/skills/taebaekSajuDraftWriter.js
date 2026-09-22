@@ -62,6 +62,18 @@ function findBannedPhrase(text) {
   return BANNED_BENCHMARK_PHRASES.find((phrase) => text.includes(phrase)) || null;
 }
 
+// 2026-09-22: 팔자장인/팔자궤도는 조회수는 폭발하는데(주 9만) 팔로워 전환이 거의 없다(54명·293명).
+// 연리지실타래(팔로워 1,001)와의 유일한 차이가 "하루 1개 댓글유도 글"이라, 이 두 계정도 하루 한 편은
+// 프로필 링크 대신 댓글에 생년월일시를 남겨달라고 요청하는 글로 만든다(ctaMode: "comment").
+// 문장은 우리 표현으로 쓴다 - 다른 채널 문구를 그대로 쓰지 않는다(BANNED_BENCHMARK_PHRASES 참고).
+const COMMENT_CTA_POOL = [
+  "내 경우는 어느 쪽인지 궁금하면, 댓글에 생년월일시(양력/음력)와 성별만 남겨주세요. 올라온 순서대로 짚어드릴게요.",
+  "본인 사주가 여기 해당하는지 보고 싶으면, 댓글에 생년월일시와 성별, 고민 한 줄만 적어주세요. 하나씩 답글 달아드릴게요.",
+  "댓글에 생년월일시(양력/음력 구분)와 성별을 남겨주세요. 어느 자리에 걸려 있는지 확인해서 답글로 알려드릴게요.",
+  "내 원국은 어떤지 궁금하면 댓글로 생년월일시와 성별만 주세요. 읽는 대로 순서대로 봐드릴게요.",
+  "댓글에 생년월일시·성별·지금 제일 걸리는 고민 하나를 적어주시면, 그 부분부터 짚어서 답글 드릴게요.",
+];
+
 function pickRandom(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
@@ -565,7 +577,7 @@ const CLOSING_STYLES = [
   },
 ];
 
-function buildSystemPrompt(factsBlock, cta, partCount, hookFormat, bridgeStyle, closingStyle, accountLabel, domainFraming, speechLevel, extraBans) {
+function buildSystemPrompt(factsBlock, cta, partCount, hookFormat, bridgeStyle, closingStyle, accountLabel, domainFraming, speechLevel, extraBans, commentMode) {
   const defaultIdentity = `이 계정은 연리지실타래/아해사주/팔자명가 같은 고정 페르소나 계정과 다릅니다 — 소재마다 스타일이 다양하고,
 목표는 댓글 유도가 아니라 "많은 사람이 끝까지 읽고 프로필까지 눌러보게" 만드는 조회수/체류시간입니다.`;
   // domainFraming이 있으면 = 이 계정은 원래 고정 페르소나 계정인데(연리지실타래/아해사주),
@@ -655,6 +667,9 @@ ${openingRule}
    (태어난 날·태어난 시간·대운·세운 중 이 소재에 실제로 필요한 것). 매번 같은 문장 틀을 쓰지 말고,
    이번 글에서 다룬 내용과 자연스럽게 이어지는 문장으로 새로 쓴다. "정확한 건 원국을 봐야 한다"
    같은 막연한 한 줄로 대체하지 않는다.
+   ${commentMode ? `이번 글은 "댓글유도 글"이다 - 정보 갭 뒤에, 프로필로 보내는 대신 댓글에 정보를
+   남기면 직접 봐주겠다는 흐름으로 자연스럽게 이어간다. 부담스럽지 않게, 이미 글을 끝까지 읽은
+   사람에게 한 걸음만 더 권하는 톤으로 쓴다(재촉·선착순 같은 압박 표현은 쓰지 않는다).` : ""}
 
 [절대 금지 - 표현 베끼기]
 아래 표현은 다른 사주 채널의 고유 문장이므로 어떤 파트에서도 쓰지 않는다(비슷하게 변형해서도 쓰지
@@ -712,6 +727,7 @@ async function writeThreadDraft({
   // 소재를 그 계정 컨셉(연애/육아 등) 렌즈로 재해석하라는 지시문
   speechLevel, // "반말" | "존댓말" - 지정 안 하면 훅 형태 예시들의 기본 톤을 그대로 따름
   extraBans, // 이 계정에서 절대 다루면 안 되는 추가 주제(예: 아해사주의 임신/난임 금지)
+  ctaMode, // "comment"면 프로필 CTA 대신 댓글에 생년월일시를 남겨달라는 CTA로 마무리한다
 } = {}) {
   const pool = topicPool || TOPICS;
   const hookFormat = hookFormatId ? HOOK_FORMATS.find((h) => h.id === hookFormatId) : pickRandom(HOOK_FORMATS);
@@ -733,7 +749,8 @@ async function writeThreadDraft({
     if (!topic) throw Object.assign(new Error(`알 수 없는 소재: ${topicId}`), { status: 400 });
     factsBlock = topic.build(effectiveDateKey);
   }
-  const cta = pickRandom(CTA_POOL);
+  const commentMode = ctaMode === "comment";
+  const cta = pickRandom(commentMode ? COMMENT_CTA_POOL : CTA_POOL);
   const bridgeStyle = pickRandom(BRIDGE_STYLES);
   const closingStyle = pickRandom(CLOSING_STYLES);
   // 2026-09-10 벤치마크 실측(@taebaek_saju): 소재가 풍부하면(띠 4개+개운법 등) 7파트짜리 글도
@@ -742,7 +759,7 @@ async function writeThreadDraft({
   const partCount = 3 + Math.floor(Math.random() * 4); // 3~6
 
   const raw = await runSkill({
-    system: buildSystemPrompt(factsBlock, cta, partCount, hookFormat, bridgeStyle, closingStyle, accountLabel, domainFraming, speechLevel, extraBans),
+    system: buildSystemPrompt(factsBlock, cta, partCount, hookFormat, bridgeStyle, closingStyle, accountLabel, domainFraming, speechLevel, extraBans, commentMode),
     userMessage: buildUserMessage(topic, accountLabel),
   });
 
@@ -800,4 +817,4 @@ function pickHookFormatIds(count) {
   return pickTopicIds(count, HOOK_FORMATS.map((h) => h.id)); // 셔플백 로직 재사용
 }
 
-module.exports = { writeThreadDraft, TOPICS, HOOK_FORMATS, CTA_POOL, pickTopicIds, pickHookFormatIds };
+module.exports = { writeThreadDraft, TOPICS, HOOK_FORMATS, CTA_POOL, COMMENT_CTA_POOL, BANNED_BENCHMARK_PHRASES, pickTopicIds, pickHookFormatIds };
