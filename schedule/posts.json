@@ -20462,11 +20462,14 @@
     "scheduledAt": "2026-09-22T23:30:00.000Z",
     "createdAt": "2026-09-15T08:28:13.513Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18130930030764486",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
-    "regenV3": true
+    "regenV3": true,
+    "chainPublishedIds": [
+      "18130930030764486"
+    ]
   },
   {
     "id": "18eca78f-6d94-4165-9458-2c2c99aa18da",
