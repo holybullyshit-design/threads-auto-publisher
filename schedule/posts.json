@@ -18281,7 +18281,7 @@
     "text": "9월 끝나기 전 잊었던 환급금이 다시 보일 생년\n횡재를 기다리기보다 미정산·환급·만료 포인트를 확인할 때 실제 돈이 움직입니다.\n\n명리 포인트: 巳酉丑 삼합이 흩어진 재물을 모으는 흐름\n뱀띠 — 환급 내역 조회하기\n닭띠 — 미수금 목록 열기\n소띠 — 포인트 만료일 보기\n\n내 생년이 있다면 댓글에 ‘환급금’라고 남겨주세요.\n숨은 돈을 찾는 순서:\n1. 공식 조회부터 확인하기\n2. 수수료와 기한 비교하기\n3. 입금 예정일 기록하기\n\n개인의 흐름은 생년월일시 전체에 따라 달라질 수 있습니다.\n\n#팔자명가 #환급운 #재물운 #정산운 #띠별운세 #년생운세",
     "videoUrl": "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@3728d9c616d27ec862d54e23a937f647917cf257/images/91101a69-a4b3-45f8-8af7-1e20399f2a51.mp4",
     "videoSha256": "ebfa74effce37ec8b707d7e4099ddeeab34ec51109efe29c21c3e1def9832fdb",
-    "status": "scheduled",
+    "status": "publishing",
     "scheduledAt": "2026-09-23T22:30:00.000Z",
     "expectedLocalDate": "2026-09-24",
     "exactTimeKst": "07:30",
@@ -18320,7 +18320,8 @@
     "publishedId": null,
     "error": null,
     "retryCount": 0,
-    "contentHash": "7e139eb5c304f236c2a5ec483bf63c426897f9893fb3f2ec98f1b4f27bb16b91"
+    "contentHash": "7e139eb5c304f236c2a5ec483bf63c426897f9893fb3f2ec98f1b4f27bb16b91",
+    "publishAttemptedAt": "2026-09-23T22:30:48.284Z"
   },
   {
     "id": "444f2a68-df5f-476e-8a91-fe2295676242",
