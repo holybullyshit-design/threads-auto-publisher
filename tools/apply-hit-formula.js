@@ -41,8 +41,15 @@ async function saveOne(postId, fields) {
       && kD(p.scheduledAt) >= START && kD(p.scheduledAt) <= END
       && new Date(p.scheduledAt).getTime() > now + 30 * 60000
       && !p.hitFormula && !isCommentPost(p));
+    // 2026-09-23 실측 사고: 재시도 목적의 2회차 실행에서 "이미 적용된 글"만 건너뛰다 보니
+    // 그 날의 다음 글이 새로 뽑혀서 하루 2건이 적용됐다. 그 날 그 계정에 이미 적용된 글이
+    // 하나라도 있으면 그 날짜는 통째로 건너뛴다.
+    const doneDates = new Set(
+      posts.filter((p) => p.accountLabel === acct && p.hitFormula && p.scheduledAt).map((p) => kD(p.scheduledAt))
+    );
     const byDate = {};
-    mine.forEach((p) => ((byDate[kD(p.scheduledAt)] = byDate[kD(p.scheduledAt)] || []).push(p)));
+    mine.filter((p) => !doneDates.has(kD(p.scheduledAt)))
+      .forEach((p) => ((byDate[kD(p.scheduledAt)] = byDate[kD(p.scheduledAt)] || []).push(p)));
     Object.keys(byDate).sort().forEach((d) => {
       const best = byDate[d].sort((a, b) => Math.abs(kMin(a.scheduledAt) - TARGET_MIN[acct]) - Math.abs(kMin(b.scheduledAt) - TARGET_MIN[acct]))[0];
       picks.push({ acct, date: d, post: best });
