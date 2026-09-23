@@ -20499,11 +20499,14 @@
     "scheduledAt": "2026-09-23T02:28:00.000Z",
     "createdAt": "2026-09-15T08:29:32.119Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18101538344128193",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
-    "regenV3": true
+    "regenV3": true,
+    "chainPublishedIds": [
+      "18101538344128193"
+    ]
   },
   {
     "id": "09d56df9-7cf6-47ce-b715-b3f593715529",
