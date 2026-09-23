@@ -577,7 +577,28 @@ const CLOSING_STYLES = [
   },
 ];
 
-function buildSystemPrompt(factsBlock, cta, partCount, hookFormat, bridgeStyle, closingStyle, accountLabel, domainFraming, speechLevel, extraBans, commentMode) {
+// 2026-09-23 우리 채널 실측(계정당 110여 건)에서 뽑은 "터진 글 공식". CLAUDE.md의
+// "우리 채널에서 실제로 터진 글 공식" 항목과 같은 내용이며, hitFormula 옵션을 켜면
+// 이 규칙이 시스템 프롬프트에 추가된다. 10월부터는 기본값으로 쓸 예정.
+const HIT_FORMULA_TOPIC_IDS = ["yeokma", "dohwa", "hwagae", "samjae", "wonjin"]; // 띠 기반 = 연도 지목이 가능한 소재
+const HIT_FORMULA_HOOK_IDS = ["topRank", "countdown", "birthYear", "contrastAB", "apology"];
+const HIT_FORMULA_RULE = `
+[이번 글은 "터진 글 공식"을 그대로 적용한다 - 우리 계정 실측 상위 글에서 뽑은 구조다]
+1) 대상을 띠 3개 묶음으로 부르고, 각 띠마다 최근 출생연도를 괄호로 같이 적는다
+   (예: 호랑이띠(1998·1986·1974)). [검증된 사실]의 "출생연도 예시" 줄에 있는 연도만 쓴다.
+   연도 없이 띠 이름만 쓰지 않는다 - 독자가 2초 안에 자기를 찾게 만드는 게 목적이다.
+2) "2단 판별" 구조를 반드시 쓴다. 먼저 띠로 1차 지목해서 끌어들인 다음("이 셋 아니면 아예
+   해당도 안 됩니다" 류), "근데 이 띠라고 다 해당되는 건 아니다 - 원국에 OO 자리가 있어야
+   성립한다"로 2차 조건을 건다. 이 2차 조건 공개를 클리프행어 지점으로 삼는다.
+3) 순위(TOP 3 또는 자리별 1~3위)를 매길 수 있으면 매기고, 3위 → 1위 역순으로 공개한다.
+4) 가능하면 통념을 뒤집는다(나쁘다고 알려진 살이 오히려 풀리는 경우, 좋은 줄 알았는데
+   조건이 붙는 경우). 겁주기보다 "나한테 좋은 게 있다"는 쪽이 더 잘 읽힌다.
+5) 한쪽으로 단정하지 말고 양면으로 갈라 보여준다(원국에서 힘 있게 자리잡으면 이렇게 쓰이고,
+   흔들리는 상태에서 겹치면 이렇게 꼬인다).
+6) 성격 형용사 대신 생활 장면으로 쓴다(예: "단톡방에서 유독 반응이 먼저 온다").
+`;
+
+function buildSystemPrompt(factsBlock, cta, partCount, hookFormat, bridgeStyle, closingStyle, accountLabel, domainFraming, speechLevel, extraBans, commentMode, hitFormula) {
   const defaultIdentity = `이 계정은 연리지실타래/아해사주/팔자명가 같은 고정 페르소나 계정과 다릅니다 — 소재마다 스타일이 다양하고,
 목표는 댓글 유도가 아니라 "많은 사람이 끝까지 읽고 프로필까지 눌러보게" 만드는 조회수/체류시간입니다.`;
   // domainFraming이 있으면 = 이 계정은 원래 고정 페르소나 계정인데(연리지실타래/아해사주),
@@ -610,6 +631,7 @@ ${identity}
 매번 같은 틀로 찍어내면 안 됩니다 — 이번 글에 배정된 훅 형태/연결 방식을 그대로 따르세요.
 ${speechRule}${bansRule}
 
+${hitFormula ? HIT_FORMULA_RULE : ""}
 [이번 글의 훅(본문 시작) 형태]
 ${hookFormat.instruction}
 
@@ -728,8 +750,15 @@ async function writeThreadDraft({
   speechLevel, // "반말" | "존댓말" - 지정 안 하면 훅 형태 예시들의 기본 톤을 그대로 따름
   extraBans, // 이 계정에서 절대 다루면 안 되는 추가 주제(예: 아해사주의 임신/난임 금지)
   ctaMode, // "comment"면 프로필 CTA 대신 댓글에 생년월일시를 남겨달라는 CTA로 마무리한다
+  hitFormula, // true면 우리 채널 실측 "터진 글 공식"(띠+연도 지목 / 2단 판별 / 역순 순위 등)을 적용
 } = {}) {
-  const pool = topicPool || TOPICS;
+  let pool = topicPool || TOPICS;
+  if (hitFormula) {
+    // 띠+연도 지목이 가능한 소재와, 순위/대조/연도형 훅으로 좁힌다.
+    const narrowed = pool.filter((t) => HIT_FORMULA_TOPIC_IDS.includes(t.id));
+    if (narrowed.length) pool = narrowed;
+    if (!hookFormatId) hookFormatId = pickRandom(HIT_FORMULA_HOOK_IDS);
+  }
   const hookFormat = hookFormatId ? HOOK_FORMATS.find((h) => h.id === hookFormatId) : pickRandom(HOOK_FORMATS);
   if (!hookFormat) throw Object.assign(new Error(`알 수 없는 훅 형태: ${hookFormatId}`), { status: 400 });
 
@@ -759,7 +788,7 @@ async function writeThreadDraft({
   const partCount = 3 + Math.floor(Math.random() * 4); // 3~6
 
   const raw = await runSkill({
-    system: buildSystemPrompt(factsBlock, cta, partCount, hookFormat, bridgeStyle, closingStyle, accountLabel, domainFraming, speechLevel, extraBans, commentMode),
+    system: buildSystemPrompt(factsBlock, cta, partCount, hookFormat, bridgeStyle, closingStyle, accountLabel, domainFraming, speechLevel, extraBans, commentMode, Boolean(hitFormula)),
     userMessage: buildUserMessage(topic, accountLabel),
   });
 
@@ -817,4 +846,4 @@ function pickHookFormatIds(count) {
   return pickTopicIds(count, HOOK_FORMATS.map((h) => h.id)); // 셔플백 로직 재사용
 }
 
-module.exports = { writeThreadDraft, TOPICS, HOOK_FORMATS, CTA_POOL, COMMENT_CTA_POOL, BANNED_BENCHMARK_PHRASES, pickTopicIds, pickHookFormatIds };
+module.exports = { writeThreadDraft, TOPICS, HOOK_FORMATS, CTA_POOL, COMMENT_CTA_POOL, BANNED_BENCHMARK_PHRASES, HIT_FORMULA_TOPIC_IDS, pickTopicIds, pickHookFormatIds };
