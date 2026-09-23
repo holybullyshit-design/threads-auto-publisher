@@ -20606,11 +20606,14 @@
     "scheduledAt": "2026-09-23T10:32:00.000Z",
     "createdAt": "2026-09-15T08:32:39.805Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18270965356307106",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
-    "regenV3": true
+    "regenV3": true,
+    "chainPublishedIds": [
+      "18270965356307106"
+    ]
   },
   {
     "id": "a5e6dd91-0dc6-4232-939e-d03c51785db0",
