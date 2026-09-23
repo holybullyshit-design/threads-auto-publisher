@@ -20563,11 +20563,14 @@
     "scheduledAt": "2026-09-23T07:40:00.000Z",
     "createdAt": "2026-09-15T08:31:37.483Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18074334005459551",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
-    "regenV3": true
+    "regenV3": true,
+    "chainPublishedIds": [
+      "18074334005459551"
+    ]
   },
   {
     "id": "415d5039-668f-4d90-aea2-9b613068bb47",
