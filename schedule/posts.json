@@ -20172,11 +20172,14 @@
     "scheduledAt": "2026-09-23T03:58:00.000Z",
     "createdAt": "2026-09-15T08:13:29.561Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18118133419986447",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
-    "regenV3": true
+    "regenV3": true,
+    "chainPublishedIds": [
+      "18118133419986447"
+    ]
   },
   {
     "id": "24dc85aa-d083-427c-854b-d2f8f83a55bd",
