@@ -20803,11 +20803,14 @@
     "scheduledAt": "2026-09-23T01:13:00.000Z",
     "createdAt": "2026-09-15T08:46:04.369Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18088758275455164",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
-    "regenV3": true
+    "regenV3": true,
+    "chainPublishedIds": [
+      "18088758275455164"
+    ]
   },
   {
     "id": "660c222b-266a-49f4-99d2-87adf9d2f5c8",
