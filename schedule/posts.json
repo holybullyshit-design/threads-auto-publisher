@@ -21095,11 +21095,14 @@
     "scheduledAt": "2026-09-23T02:24:00.000Z",
     "createdAt": "2026-09-15T09:02:40.615Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18127435615691326",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
-    "regenV3": true
+    "regenV3": true,
+    "chainPublishedIds": [
+      "18127435615691326"
+    ]
   },
   {
     "id": "d012ada4-6014-492d-90c7-93ac2a1f1614",
