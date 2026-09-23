@@ -20631,12 +20631,15 @@
     "scheduledAt": "2026-09-23T22:05:00.000Z",
     "createdAt": "2026-09-15T08:33:55.892Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18172137604453381",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
     "regenV3": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18172137604453381"
+    ]
   },
   {
     "id": "8d734f7a-3b39-4c1c-ac9c-86172475ea05",
