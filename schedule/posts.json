@@ -21244,12 +21244,15 @@
     "scheduledAt": "2026-09-23T22:36:00.000Z",
     "createdAt": "2026-09-15T09:05:58.534Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18114938984050188",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
     "regenV3": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18114938984050188"
+    ]
   },
   {
     "id": "b1903ceb-0b98-4fff-be82-cba7762e4782",
