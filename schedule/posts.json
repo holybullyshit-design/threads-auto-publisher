@@ -20531,11 +20531,14 @@
     "scheduledAt": "2026-09-23T05:08:00.000Z",
     "createdAt": "2026-09-15T08:30:44.341Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18033021584668385",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
-    "regenV3": true
+    "regenV3": true,
+    "chainPublishedIds": [
+      "18033021584668385"
+    ]
   },
   {
     "id": "9598cc46-5511-4cc9-8c48-ed6a442bb4d2",
