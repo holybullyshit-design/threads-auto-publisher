@@ -21107,11 +21107,14 @@
     "scheduledAt": "2026-09-24T10:43:00.000Z",
     "createdAt": "2026-09-15T08:54:52.554Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18016513034739461",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
-    "regenV3": true
+    "regenV3": true,
+    "chainPublishedIds": [
+      "18016513034739461"
+    ]
   },
   {
     "id": "8981d8df-a033-4258-8bb5-387e345609b6",
