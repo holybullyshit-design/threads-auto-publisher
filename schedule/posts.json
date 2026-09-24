@@ -22450,12 +22450,15 @@
     "scheduledAt": "2026-09-24T22:52:00.000Z",
     "createdAt": "2026-09-15T10:18:35.996Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18121774885913299",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
     "regenV3": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18121774885913299"
+    ]
   },
   {
     "id": "fded677d-ba12-407c-9613-6d7b9a61875c",
