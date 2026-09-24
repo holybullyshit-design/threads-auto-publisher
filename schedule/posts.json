@@ -20301,12 +20301,15 @@
     "scheduledAt": "2026-09-24T02:00:00.000Z",
     "createdAt": "2026-09-15T08:17:24.365Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18124021183861357",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
     "regenV3": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18124021183861357"
+    ]
   },
   {
     "id": "a1a2a3a2-29d8-40ff-9d32-18b84a0a17b9",
