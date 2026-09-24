@@ -21569,12 +21569,15 @@
     "scheduledAt": "2026-09-24T22:51:00.000Z",
     "createdAt": "2026-09-15T09:28:05.488Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18102069596032928",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
     "regenV3": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18102069596032928"
+    ]
   },
   {
     "id": "04fe086a-6d59-421c-a9ce-a0daa014a15f",
