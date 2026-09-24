@@ -20673,12 +20673,15 @@
     "scheduledAt": "2026-09-24T00:37:00.000Z",
     "createdAt": "2026-09-15T08:35:03.111Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17989119300021971",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
     "regenV3": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "17989119300021971"
+    ]
   },
   {
     "id": "34309a5a-24df-4899-805d-abd8586a3323",
