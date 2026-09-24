@@ -20329,11 +20329,14 @@
     "scheduledAt": "2026-09-24T04:46:00.000Z",
     "createdAt": "2026-09-15T08:18:52.603Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18162710185487329",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
-    "regenV3": true
+    "regenV3": true,
+    "chainPublishedIds": [
+      "18162710185487329"
+    ]
   },
   {
     "id": "e51c39b5-4b57-4e44-ab9d-10f311869c93",
