@@ -22269,12 +22269,15 @@
     "scheduledAt": "2026-09-25T03:25:00.000Z",
     "createdAt": "2026-09-15T10:05:22.290Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17876686995562706",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
     "regenV3": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "17876686995562706"
+    ]
   },
   {
     "id": "786a5d7e-50f3-446b-99e7-0aefbfb6a121",
