@@ -22070,12 +22070,15 @@
     "scheduledAt": "2026-09-25T23:10:00.000Z",
     "createdAt": "2026-09-15T09:51:50.991Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18113904317115354",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
     "regenV3": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18113904317115354"
+    ]
   },
   {
     "id": "9e0bb297-a238-46d5-98e5-b0ba45e765c1",
