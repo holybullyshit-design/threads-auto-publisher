@@ -21684,11 +21684,14 @@
     "scheduledAt": "2026-09-25T09:26:00.000Z",
     "createdAt": "2026-09-15T09:32:54.710Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18116969341754655",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
-    "regenV3": true
+    "regenV3": true,
+    "chainPublishedIds": [
+      "18116969341754655"
+    ]
   },
   {
     "id": "cfd01bbf-11a8-410b-905a-ba683f540ba3",
