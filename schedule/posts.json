@@ -21984,11 +21984,14 @@
     "scheduledAt": "2026-09-25T06:35:00.000Z",
     "createdAt": "2026-09-15T09:49:37.173Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18097321835560290",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
-    "regenV3": true
+    "regenV3": true,
+    "chainPublishedIds": [
+      "18097321835560290"
+    ]
   },
   {
     "id": "b3cff286-70d4-40d5-b735-9cb450ba63e4",
