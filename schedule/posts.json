@@ -21919,12 +21919,15 @@
     "scheduledAt": "2026-09-25T01:45:00.000Z",
     "createdAt": "2026-09-15T09:47:19.454Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17914768356463330",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
     "regenV3": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "17914768356463330"
+    ]
   },
   {
     "id": "4e10fc23-4938-4c99-8b22-67beb8db232a",
