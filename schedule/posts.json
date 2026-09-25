@@ -22653,12 +22653,15 @@
     "scheduledAt": "2026-09-25T22:30:00.000Z",
     "createdAt": "2026-09-15T10:23:46.487Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17904210300594419",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
     "regenV3": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17904210300594419"
+    ]
   },
   {
     "id": "6d5af289-ebe6-431e-8f89-d0311a7e9048",
