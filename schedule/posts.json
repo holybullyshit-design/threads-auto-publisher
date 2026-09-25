@@ -22237,11 +22237,14 @@
     "scheduledAt": "2026-09-25T01:07:00.000Z",
     "createdAt": "2026-09-15T10:03:58.983Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18266114098305581",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
-    "regenV3": true
+    "regenV3": true,
+    "chainPublishedIds": [
+      "18266114098305581"
+    ]
   },
   {
     "id": "c27d5512-efc0-494b-8c2e-7bf8ff01a842",
