@@ -21952,11 +21952,14 @@
     "scheduledAt": "2026-09-25T04:06:00.000Z",
     "createdAt": "2026-09-15T09:48:27.216Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18112649609329733",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
-    "regenV3": true
+    "regenV3": true,
+    "chainPublishedIds": [
+      "18112649609329733"
+    ]
   },
   {
     "id": "0683066e-5d7f-4cc7-90a2-142c20b1856d",
