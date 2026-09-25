@@ -22371,11 +22371,14 @@
     "scheduledAt": "2026-09-25T22:12:00.000Z",
     "createdAt": "2026-09-15T10:08:00.196Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18126123469849714",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
-    "regenV3": true
+    "regenV3": true,
+    "chainPublishedIds": [
+      "18126123469849714"
+    ]
   },
   {
     "id": "5864cfc8-f7d0-4993-95aa-ea4f55b58496",
