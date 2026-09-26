@@ -1,15 +1,15 @@
 {
-  "generatedAt": "2026-09-26T12:00:23.233Z",
+  "generatedAt": "2026-09-26T13:00:29.390Z",
   "accounts": [
     {
       "id": "273c125f-56b7-4aa1-8abc-89df16bfbe2a",
       "label": "연리지 실타래",
-      "followersCount": 1022,
-      "viewsRecent7d": 109502,
-      "viewsChangePct": 84,
-      "likes": 636,
-      "replies": 91,
-      "reposts": 31,
+      "followersCount": 1023,
+      "viewsRecent7d": 110507,
+      "viewsChangePct": 86,
+      "likes": 641,
+      "replies": 92,
+      "reposts": 32,
       "topPost": {
         "text": "<천을귀인, 있는 자리에 따라 순위가 갈린다> 일간이 정 화인 사람들. 사주 어딘가에 해(돼지띠) 자나 유(",
         "views": 18539,
@@ -23,14 +23,14 @@
         "evening": 1028
       },
       "trackedPosts": 132,
-      "fetchedAt": "2026-09-26T11:03:35.785Z",
+      "fetchedAt": "2026-09-26T13:00:23.131Z",
       "error": null
     },
     {
       "id": "e0331659-96f0-4f5f-9aef-d89e0ed2a6a3",
       "label": "아해사주",
       "followersCount": 689,
-      "viewsRecent7d": 7026,
+      "viewsRecent7d": 7079,
       "viewsChangePct": -19,
       "likes": 23,
       "replies": 32,
@@ -48,14 +48,14 @@
         "evening": 285
       },
       "trackedPosts": 131,
-      "fetchedAt": "2026-09-26T11:03:38.049Z",
+      "fetchedAt": "2026-09-26T13:00:23.970Z",
       "error": null
     },
     {
       "id": "44d8bd24-6bf7-4b3a-9241-ddfb2b12c3b0",
       "label": "팔자명가",
       "followersCount": 1009,
-      "viewsRecent7d": 539,
+      "viewsRecent7d": 542,
       "viewsChangePct": -30,
       "likes": 8,
       "replies": 0,
@@ -73,7 +73,7 @@
         "evening": 294
       },
       "trackedPosts": 120,
-      "fetchedAt": "2026-09-26T11:03:39.439Z",
+      "fetchedAt": "2026-09-26T13:00:26.351Z",
       "error": null
     },
     {
@@ -98,14 +98,14 @@
         "evening": 18
       },
       "trackedPosts": 46,
-      "fetchedAt": "2026-09-26T11:03:42.248Z",
+      "fetchedAt": "2026-09-26T13:00:27.041Z",
       "error": null
     },
     {
       "id": "d2c9ae3f-67c9-42bf-b9f8-e8000b61abff",
       "label": "팔자장인",
       "followersCount": 57,
-      "viewsRecent7d": 65564,
+      "viewsRecent7d": 65903,
       "viewsChangePct": -17,
       "likes": 431,
       "replies": 24,
@@ -123,16 +123,16 @@
         "evening": 969
       },
       "trackedPosts": 126,
-      "fetchedAt": "2026-09-26T11:03:44.518Z",
+      "fetchedAt": "2026-09-26T13:00:27.619Z",
       "error": null
     },
     {
       "id": "cf6a4ba2-da74-4fc1-ae5a-72e1b1477287",
       "label": "팔자궤도",
       "followersCount": 309,
-      "viewsRecent7d": 102006,
-      "viewsChangePct": 16,
-      "likes": 827,
+      "viewsRecent7d": 102262,
+      "viewsChangePct": 17,
+      "likes": 828,
       "replies": 20,
       "reposts": 23,
       "topPost": {
@@ -148,12 +148,12 @@
         "evening": 540
       },
       "trackedPosts": 127,
-      "fetchedAt": "2026-09-26T11:03:46.900Z",
+      "fetchedAt": "2026-09-26T13:00:28.294Z",
       "error": null
     }
   ],
   "recommendations": [
-    "'연리지 실타래' — 최근 7일 조회수가 지난 주 대비 84% 상승 중입니다. 지금 통하는 주제/훅 패턴을 유지하세요.",
+    "'연리지 실타래' — 최근 7일 조회수가 지난 주 대비 86% 상승 중입니다. 지금 통하는 주제/훅 패턴을 유지하세요.",
     "'연리지 실타래' 최고 성과 글: \"<천을귀인, 있는 자리에 따라 순위가 갈린다> 일간이 정 화인 사람들. 사주 어딘가에 해(돼지띠) 자나 유(\" — 조회수 18,539 · 답글 11건. 비슷한 훅/주제를 반복 활용해볼 만합니다.",
     "'아해사주' 최고 성과 글: \"〈또래보다 늦되어 보이는데 어느 순간 훌쩍 앞서가는 아이 사주〉 말도 늦게 트이고 걸음마도 남들보다 더뎠는데\" — 조회수 3,649 · 답글 87건. 비슷한 훅/주제를 반복 활용해볼 만합니다.",
     "'팔자명가' — 저녁(18-24시) 발행 글이 오후(12-18시) 발행 글보다 평균 조회수가 2.2배 높습니다. 저녁(18-24시) 비중을 늘려보세요.",
