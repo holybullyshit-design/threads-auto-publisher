@@ -22709,11 +22709,14 @@
     "scheduledAt": "2026-09-26T00:43:00.000Z",
     "createdAt": "2026-09-15T10:25:06.079Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18012671888957218",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
-    "regenV3": true
+    "regenV3": true,
+    "chainPublishedIds": [
+      "18012671888957218"
+    ]
   },
   {
     "id": "39d96dba-775b-44a4-a18b-1b9bf732ae88",
