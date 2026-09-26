@@ -22174,11 +22174,14 @@
     "scheduledAt": "2026-09-26T22:17:00.000Z",
     "createdAt": "2026-09-15T10:28:16.705Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18181209595425155",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
-    "regenV3": true
+    "regenV3": true,
+    "chainPublishedIds": [
+      "18181209595425155"
+    ]
   },
   {
     "id": "426a0d8f-0aec-4a43-a1e4-2abf86a2ad3a",
