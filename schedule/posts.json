@@ -21554,12 +21554,15 @@
     "scheduledAt": "2026-09-26T22:52:00.000Z",
     "createdAt": "2026-09-15T09:56:57.237Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18146886568521074",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
     "regenV3": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18146886568521074"
+    ]
   },
   {
     "id": "fde91401-c52e-410c-ab3b-f435d3381893",
