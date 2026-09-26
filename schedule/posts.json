@@ -21185,12 +21185,15 @@
     "scheduledAt": "2026-09-26T23:01:00.000Z",
     "createdAt": "2026-09-15T09:39:37.540Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18113066480088439",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
     "regenV3": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18113066480088439"
+    ]
   },
   {
     "id": "4f1428bf-437b-4d5d-97ae-d68de3a43795",
