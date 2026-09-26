@@ -21759,12 +21759,15 @@
     "scheduledAt": "2026-09-26T01:41:00.000Z",
     "createdAt": "2026-09-15T09:34:54.668Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18129201082757900",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
     "regenV3": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18129201082757900"
+    ]
   },
   {
     "id": "01c4260b-890c-4631-83d0-123228eb7405",
