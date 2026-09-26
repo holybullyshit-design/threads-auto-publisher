@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-09-26T11:00:40.675Z",
+  "generatedAt": "2026-09-26T12:00:23.233Z",
   "accounts": [
     {
       "id": "273c125f-56b7-4aa1-8abc-89df16bfbe2a",
       "label": "연리지 실타래",
       "followersCount": 1022,
-      "viewsRecent7d": 109474,
+      "viewsRecent7d": 109502,
       "viewsChangePct": 84,
       "likes": 636,
       "replies": 91,
@@ -23,15 +23,15 @@
         "evening": 1028
       },
       "trackedPosts": 132,
-      "fetchedAt": "2026-09-26T11:00:25.958Z",
+      "fetchedAt": "2026-09-26T11:03:35.785Z",
       "error": null
     },
     {
       "id": "e0331659-96f0-4f5f-9aef-d89e0ed2a6a3",
       "label": "아해사주",
       "followersCount": 689,
-      "viewsRecent7d": 7020,
-      "viewsChangePct": -20,
+      "viewsRecent7d": 7026,
+      "viewsChangePct": -19,
       "likes": 23,
       "replies": 32,
       "reposts": 4,
@@ -48,7 +48,7 @@
         "evening": 285
       },
       "trackedPosts": 131,
-      "fetchedAt": "2026-09-26T11:00:27.778Z",
+      "fetchedAt": "2026-09-26T11:03:38.049Z",
       "error": null
     },
     {
@@ -73,7 +73,7 @@
         "evening": 294
       },
       "trackedPosts": 120,
-      "fetchedAt": "2026-09-26T11:00:29.500Z",
+      "fetchedAt": "2026-09-26T11:03:39.439Z",
       "error": null
     },
     {
@@ -98,14 +98,14 @@
         "evening": 18
       },
       "trackedPosts": 46,
-      "fetchedAt": "2026-09-26T11:00:31.978Z",
+      "fetchedAt": "2026-09-26T11:03:42.248Z",
       "error": null
     },
     {
       "id": "d2c9ae3f-67c9-42bf-b9f8-e8000b61abff",
       "label": "팔자장인",
       "followersCount": 57,
-      "viewsRecent7d": 65549,
+      "viewsRecent7d": 65564,
       "viewsChangePct": -17,
       "likes": 431,
       "replies": 24,
@@ -123,14 +123,14 @@
         "evening": 969
       },
       "trackedPosts": 126,
-      "fetchedAt": "2026-09-26T11:00:34.607Z",
+      "fetchedAt": "2026-09-26T11:03:44.518Z",
       "error": null
     },
     {
       "id": "cf6a4ba2-da74-4fc1-ae5a-72e1b1477287",
       "label": "팔자궤도",
       "followersCount": 309,
-      "viewsRecent7d": 101993,
+      "viewsRecent7d": 102006,
       "viewsChangePct": 16,
       "likes": 827,
       "replies": 20,
@@ -148,14 +148,13 @@
         "evening": 540
       },
       "trackedPosts": 127,
-      "fetchedAt": "2026-09-26T11:00:37.770Z",
+      "fetchedAt": "2026-09-26T11:03:46.900Z",
       "error": null
     }
   ],
   "recommendations": [
     "'연리지 실타래' — 최근 7일 조회수가 지난 주 대비 84% 상승 중입니다. 지금 통하는 주제/훅 패턴을 유지하세요.",
     "'연리지 실타래' 최고 성과 글: \"<천을귀인, 있는 자리에 따라 순위가 갈린다> 일간이 정 화인 사람들. 사주 어딘가에 해(돼지띠) 자나 유(\" — 조회수 18,539 · 답글 11건. 비슷한 훅/주제를 반복 활용해볼 만합니다.",
-    "'아해사주' — 최근 7일 조회수가 지난 주 대비 20% 감소했습니다. 최근 훅/주제 변화를 점검해볼 시점입니다.",
     "'아해사주' 최고 성과 글: \"〈또래보다 늦되어 보이는데 어느 순간 훌쩍 앞서가는 아이 사주〉 말도 늦게 트이고 걸음마도 남들보다 더뎠는데\" — 조회수 3,649 · 답글 87건. 비슷한 훅/주제를 반복 활용해볼 만합니다.",
     "'팔자명가' — 저녁(18-24시) 발행 글이 오후(12-18시) 발행 글보다 평균 조회수가 2.2배 높습니다. 저녁(18-24시) 비중을 늘려보세요.",
     "'팔자명가' — 최근 7일 조회수가 지난 주 대비 30% 감소했습니다. 최근 훅/주제 변화를 점검해볼 시점입니다.",
