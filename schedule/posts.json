@@ -21874,11 +21874,14 @@
     "scheduledAt": "2026-09-26T22:40:00.000Z",
     "createdAt": "2026-09-15T10:13:12.558Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18025780271856818",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
-    "regenV3": true
+    "regenV3": true,
+    "chainPublishedIds": [
+      "18025780271856818"
+    ]
   },
   {
     "id": "ecc91e35-b36a-4bc4-b56c-5946b5339267",
