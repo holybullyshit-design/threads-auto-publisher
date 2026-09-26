@@ -28,6 +28,18 @@ const VIRAL_MORNING_DAILY_SLOTS = 4;
 const { VIRAL_PROFILES } = require("../server/config/viralProfiles");
 
 const DRY_RUN = process.argv.includes("--dry-run");
+// 2026-09-26 사용자 지시: "터진 글 공식"(CLAUDE.md 참고)을 전량이 아니라 8:2 비율로 섞는다.
+// 전부 같은 공식으로 찍으면 계정이 기계적으로 보이기 때문. --hit-ratio=0.8이 기본값이고,
+// 5개 중 4개(인덱스 % 5 !== 4)에 공식을 적용해 정확히 8:2가 되게 배분한다.
+const HIT_RATIO = (() => {
+  const arg = process.argv.find((a) => a.startsWith("--hit-ratio="));
+  return arg ? Number(arg.split("=")[1]) : 0.8;
+})();
+// 계정별 하루 발행 개수를 덮어쓸 때 사용(예: 노출 제한 중인 팔자명가는 --per-day=2).
+const PER_DAY_OVERRIDE = (() => {
+  const arg = process.argv.find((a) => a.startsWith("--per-day="));
+  return arg ? Number(arg.split("=")[1]) : null;
+})();
 const MODE = process.argv[2];
 const ACCOUNT_LABEL = process.argv[3];
 const END_DATE = process.argv[4];
@@ -148,7 +160,7 @@ async function writeThreadDraftWithRetry(args) {
   throw lastErr;
 }
 
-async function saveOnePost(account, draft, when) {
+async function saveOnePost(account, draft, when, hitFormula) {
   const { posts, sha } = await readSchedule();
   const basePosts = posts.slice();
   const newPost = {
@@ -164,6 +176,7 @@ async function saveOnePost(account, draft, when) {
     publishedId: null,
     error: null,
     viralEngine: true, // 이 스크립트(taebaekSajuDraftWriter 엔진)로 만든 글 표시 - countExistingByDate 참고
+    hitFormula: Boolean(hitFormula), // "터진 글 공식" 적용 여부 - 나중에 성과 비교에 쓴다
   };
   await writeSchedule(posts.concat([newPost]), { sha, message: `chore: fill 1 slot for ${ACCOUNT_LABEL}`, basePosts });
   return newPost;
@@ -281,7 +294,7 @@ async function main() {
   // "바이럴이 아닌" 글(=댓글유도 글, 어떤 시각이든 무관 - 17시라고 고정하지 않는다)과 가장
   // 가까운 슬롯 하나를 버리고 나머지 4개를 쓴다. 그 날 댓글유도 글이 아직 없으면 그냥 마지막
   // (가장 늦은) 슬롯을 버린다.
-  const targetSlotsPerDay = MODE === "comprehensive" ? 5 : VIRAL_MORNING_DAILY_SLOTS;
+  const targetSlotsPerDay = PER_DAY_OVERRIDE || (MODE === "comprehensive" ? 5 : VIRAL_MORNING_DAILY_SLOTS);
 
   const { posts: currentPosts } = await readSchedule();
   const existingCounts = countExistingByDate(currentPosts, account.id, MODE);
@@ -309,7 +322,15 @@ async function main() {
       // 그 날 이미 있는 모든 글 시각(댓글유도 글 포함)을 고정점으로 두고 새 시각을 계획한다
       // (planDayTimes 주석 참고 - 예전 dayLabels[already + i] 방식의 뒤로 밀림 사고 대응).
       const dayExisting = existingTimesByDate[cursor] || [];
-      const planned = planDayTimes(cursor, dayExisting, need);
+      let planned = planDayTimes(cursor, dayExisting, need);
+      // 하루 2개만 올리는 계정(노출 제한 중인 팔자명가)은 오전에 몰리면 하루 커버리지가 나빠진다.
+      // 빈 날에 2개를 새로 넣는 경우엔 오전(07~09시) + 저녁(17~19시)으로 벌린다.
+      if (planned && PER_DAY_OVERRIDE === 2 && need === 2 && dayExisting.length === 0) {
+        const dayZero = Date.parse(`${cursor}T00:00:00Z`) - 9 * 3600 * 1000;
+        const morning = 7 * 60 + Math.floor(Math.random() * 110); // 07:00~08:50
+        const evening = 17 * 60 + Math.floor(Math.random() * 120); // 17:00~19:00
+        planned = [dayZero + morning * 60000, dayZero + evening * 60000];
+      }
       if (!planned) {
         console.log(`  ${cursor}: 기존 글 사이에 규칙(07~09시 시작/2시간 이상 간격/22시 이전)에 맞는 자리가 없어 건너뜀 - 확인 필요`);
       } else {
@@ -334,6 +355,10 @@ async function main() {
     return;
   }
 
+  // 공식 적용 여부를 잡 순서대로 배분한다(5개 중 4개 = 80%).
+  const hitFlags = jobs.map((_, i) => (HIT_RATIO >= 1 ? true : HIT_RATIO <= 0 ? false : i % Math.round(1 / (1 - HIT_RATIO)) !== Math.round(1 / (1 - HIT_RATIO)) - 1));
+  console.log(`  터진 글 공식 적용: ${hitFlags.filter(Boolean).length}/${jobs.length}건 (비율 ${HIT_RATIO})`);
+
   const profile = MODE === "viral-morning" ? VIRAL_PROFILES[ACCOUNT_LABEL] : null;
   const topicPool = profile ? TOPICS.filter((t) => profile.topicIds.includes(t.id)) : TOPICS;
   const poolIds = profile ? profile.topicIds : undefined;
@@ -346,10 +371,12 @@ async function main() {
     console.log(`[${i + 1}/${jobs.length}] 생성 중... (예정: ${dateStr} ${slotTime} KST)`);
     let draft;
     try {
+      // 공식 적용 글은 소재/훅을 엔진이 공식 전용 목록에서 고르게 둔다(여기서 지정하면 충돌).
       draft = await writeThreadDraftWithRetry({
         dateKey: dateStr,
-        topicId: topicIds[i],
-        hookFormatId: hookFormatIds[i],
+        hitFormula: hitFlags[i] || undefined,
+        topicId: hitFlags[i] ? undefined : topicIds[i],
+        hookFormatId: hitFlags[i] ? undefined : hookFormatIds[i],
         accountLabel: ACCOUNT_LABEL,
         topicPool: profile ? topicPool : undefined,
         domainFraming: profile ? profile.domainFraming : undefined,
@@ -362,9 +389,9 @@ async function main() {
     }
     // 이미 지터+충돌회피까지 끝낸 시각을 그대로 쓴다 - 여기서 다시 계산하면(kstSlotToUtc를
     // 다시 부르면) 위에서 구한 충돌회피 결과가 통째로 날아간다.
-    await saveOnePost(account, draft, plannedUtcTime);
+    await saveOnePost(account, draft, plannedUtcTime, hitFlags[i]);
     saved++;
-    console.log(`  -> 저장됨. 소재: ${draft.topic} / 훅: ${draft.hookFormat} / 파트 ${1 + draft.replyChain.length}개`);
+    console.log(`  -> 저장됨. 소재: ${draft.topic} / 훅: ${draft.hookFormat} / 파트 ${1 + draft.replyChain.length}개${hitFlags[i] ? " / 공식" : ""}`);
   }
 
   console.log(`\n완료: ${ACCOUNT_LABEL} - ${saved}/${jobs.length}건 추가 (${END_DATE}까지).`);
