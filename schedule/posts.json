@@ -21301,11 +21301,14 @@
     "scheduledAt": "2026-09-27T09:40:00.000Z",
     "createdAt": "2026-09-15T09:45:05.139Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17949927762316943",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
-    "regenV3": true
+    "regenV3": true,
+    "chainPublishedIds": [
+      "17949927762316943"
+    ]
   },
   {
     "id": "a00c1f1d-2d5a-4b1d-aeff-f81a9a16cf03",
