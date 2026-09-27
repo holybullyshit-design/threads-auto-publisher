@@ -22228,12 +22228,15 @@
     "scheduledAt": "2026-09-27T00:40:00.000Z",
     "createdAt": "2026-09-15T10:29:40.736Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17923956525202341",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
     "regenV3": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17923956525202341"
+    ]
   },
   {
     "id": "288b082f-26b0-4147-8d4b-3aa293585397",
