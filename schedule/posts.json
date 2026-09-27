@@ -21968,12 +21968,15 @@
     "scheduledAt": "2026-09-27T03:47:00.000Z",
     "createdAt": "2026-09-15T10:15:48.396Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17932422822145556",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
     "regenV3": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "17932422822145556"
+    ]
   },
   {
     "id": "ec801a46-3244-41f7-9493-d1cf00fe7b3e",
