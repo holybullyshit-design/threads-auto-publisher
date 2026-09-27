@@ -22007,12 +22007,15 @@
     "scheduledAt": "2026-09-27T05:56:00.000Z",
     "createdAt": "2026-09-15T10:16:55.123Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18031882859849935",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
     "regenV3": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18031882859849935"
+    ]
   },
   {
     "id": "f2666953-ea8b-4280-96a0-3c9030fdcfb2",
