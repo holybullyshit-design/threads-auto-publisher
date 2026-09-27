@@ -22277,12 +22277,15 @@
     "scheduledAt": "2026-09-27T02:57:00.000Z",
     "createdAt": "2026-09-15T10:30:50.886Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18121933837913196",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
     "regenV3": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18121933837913196"
+    ]
   },
   {
     "id": "46cec044-1a8a-4ab4-adbc-3f4105312421",
