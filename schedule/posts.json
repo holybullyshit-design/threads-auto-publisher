@@ -23373,12 +23373,15 @@
     "scheduledAt": "2026-09-27T22:30:00.000Z",
     "createdAt": "2026-09-15T11:37:52.931Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17949921183277767",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
     "regenV3": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17949921183277767"
+    ]
   },
   {
     "id": "c1c10582-233c-4219-9046-b19cbad009e7",
