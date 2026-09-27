@@ -9,7 +9,13 @@
 
 const { execFile } = require("child_process");
 
-const TIMEOUT_MS = 120000; // 2분
+// 2026-09-27 실측 사고: 전역 설정(~/.claude/settings.json)이 model=opus, effortLevel=high로
+// 바뀌면서 이 CLI 호출까지 그 설정을 물려받아, 글 한 편에 생각 토큰 12,000개·2분 47초·$0.81이
+// 들었다(엔진 타임아웃 2분을 넘겨 50건 중 49건이 실패). 초안 작성은 무거운 추론이 필요한
+// 작업이 아니므로 모델과 추론 수준을 여기서 못박는다. 바꾸고 싶으면 환경변수로 덮어쓴다.
+const SKILL_MODEL = process.env.CLAUDE_SKILL_MODEL || "sonnet";
+const SKILL_EFFORT = process.env.CLAUDE_SKILL_EFFORT || "medium";
+const TIMEOUT_MS = Number(process.env.CLAUDE_SKILL_TIMEOUT_MS || 300000); // 5분
 
 function runSkill({ system, userMessage }) {
   return new Promise((resolve, reject) => {
@@ -24,6 +30,10 @@ function runSkill({ system, userMessage }) {
         "json",
         "--permission-mode",
         "dontAsk",
+        "--model",
+        SKILL_MODEL,
+        "--effort",
+        SKILL_EFFORT,
       ],
       { timeout: TIMEOUT_MS, maxBuffer: 20 * 1024 * 1024 },
       (err, stdout, stderr) => {
@@ -36,7 +46,7 @@ function runSkill({ system, userMessage }) {
             );
           }
           if (err.killed) {
-            return reject(new Error("claude CLI 응답이 시간 초과되었습니다 (2분). 다시 시도해주세요."));
+            return reject(new Error(`claude CLI 응답이 시간 초과되었습니다 (${Math.round(TIMEOUT_MS / 60000)}분). 다시 시도해주세요.`));
           }
           return reject(new Error(`claude CLI 실행 실패: ${stderr || err.message}`));
         }
