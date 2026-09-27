@@ -21691,11 +21691,14 @@
     "scheduledAt": "2026-09-27T08:37:00.000Z",
     "createdAt": "2026-09-15T10:01:17.510Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17967208142963520",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
-    "regenV3": true
+    "regenV3": true,
+    "chainPublishedIds": [
+      "17967208142963520"
+    ]
   },
   {
     "id": "261eabdf-b2ce-44d6-83c2-d7a8b7615474",
