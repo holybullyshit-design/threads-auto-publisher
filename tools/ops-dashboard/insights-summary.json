@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-27T10:42:51.079Z",
+  "generatedAt": "2026-09-27T11:42:47.988Z",
   "accounts": [
     {
       "id": "273c125f-56b7-4aa1-8abc-89df16bfbe2a",
@@ -98,14 +98,14 @@
         "evening": 18
       },
       "trackedPosts": 47,
-      "fetchedAt": "2026-09-27T09:42:49.601Z",
+      "fetchedAt": "2026-09-27T11:42:45.558Z",
       "error": null
     },
     {
       "id": "d2c9ae3f-67c9-42bf-b9f8-e8000b61abff",
       "label": "팔자장인",
       "followersCount": 57,
-      "viewsRecent7d": 51171,
+      "viewsRecent7d": 51464,
       "viewsChangePct": -45,
       "likes": 438,
       "replies": 24,
@@ -123,16 +123,16 @@
         "evening": 971
       },
       "trackedPosts": 131,
-      "fetchedAt": "2026-09-27T09:42:51.727Z",
+      "fetchedAt": "2026-09-27T11:42:46.068Z",
       "error": null
     },
     {
       "id": "cf6a4ba2-da74-4fc1-ae5a-72e1b1477287",
       "label": "팔자궤도",
       "followersCount": 309,
-      "viewsRecent7d": 93012,
-      "viewsChangePct": 2,
-      "likes": 821,
+      "viewsRecent7d": 95756,
+      "viewsChangePct": 5,
+      "likes": 844,
       "replies": 20,
       "reposts": 23,
       "topPost": {
@@ -148,7 +148,7 @@
         "evening": 548
       },
       "trackedPosts": 132,
-      "fetchedAt": "2026-09-27T09:42:52.869Z",
+      "fetchedAt": "2026-09-27T11:42:46.680Z",
       "error": null
     }
   ],
