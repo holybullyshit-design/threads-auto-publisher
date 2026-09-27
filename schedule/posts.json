@@ -22512,12 +22512,15 @@
     "scheduledAt": "2026-09-27T23:18:00.000Z",
     "createdAt": "2026-09-15T10:50:16.511Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17910315603522275",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
     "regenV3": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17910315603522275"
+    ]
   },
   {
     "id": "be7d2617-7dff-4f49-bd6e-ab475b7f8c82",
