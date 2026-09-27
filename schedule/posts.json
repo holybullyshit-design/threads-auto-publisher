@@ -21217,12 +21217,15 @@
     "scheduledAt": "2026-09-27T01:35:00.000Z",
     "createdAt": "2026-09-15T09:40:30.692Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18088891052682357",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
     "regenV3": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18088891052682357"
+    ]
   },
   {
     "id": "67b2be5f-aca2-45f8-8504-16397dd5a050",
