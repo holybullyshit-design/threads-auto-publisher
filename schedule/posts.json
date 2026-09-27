@@ -22832,12 +22832,15 @@
     "scheduledAt": "2026-09-27T23:26:00.000Z",
     "createdAt": "2026-09-15T11:07:30.049Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18104069201367809",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
     "regenV3": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18104069201367809"
+    ]
   },
   {
     "id": "d7e4ad0f-9397-4821-818b-cd36a688e6b1",
