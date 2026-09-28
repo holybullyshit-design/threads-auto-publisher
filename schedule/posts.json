@@ -22566,11 +22566,14 @@
     "scheduledAt": "2026-09-28T03:43:00.000Z",
     "createdAt": "2026-09-15T10:52:27.243Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17961492030225997",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
-    "regenV3": true
+    "regenV3": true,
+    "chainPublishedIds": [
+      "17961492030225997"
+    ]
   },
   {
     "id": "da905c4c-6c83-4fd2-bd51-9a007f1cfaa0",
