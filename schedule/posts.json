@@ -23005,12 +23005,15 @@
     "scheduledAt": "2026-09-28T22:38:00.000Z",
     "createdAt": "2026-09-15T11:13:07.052Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18144777457565591",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
     "regenV3": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18144777457565591"
+    ]
   },
   {
     "id": "9f6ef91e-25bc-40d9-9131-d6584cdf6f2d",
