@@ -22539,12 +22539,15 @@
     "scheduledAt": "2026-09-28T01:28:00.000Z",
     "createdAt": "2026-09-15T10:51:28.746Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18112217597120044",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
     "regenV3": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18112217597120044"
+    ]
   },
   {
     "id": "47aad9e2-91f3-4295-86cd-df81f194764b",
