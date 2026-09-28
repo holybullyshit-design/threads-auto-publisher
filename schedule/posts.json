@@ -22866,12 +22866,15 @@
     "scheduledAt": "2026-09-28T01:38:00.000Z",
     "createdAt": "2026-09-15T11:08:40.310Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18031521812672533",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
     "regenV3": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18031521812672533"
+    ]
   },
   {
     "id": "16150a40-31d5-4429-b30d-a9ea7aa36fe8",
