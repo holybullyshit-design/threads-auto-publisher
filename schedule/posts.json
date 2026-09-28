@@ -23900,7 +23900,7 @@
     "text": "월말 전에 막힌 돈이 돌아오는 띠 TOP 3\n\n명리 근거: 사유축 삼합은 흩어진 정산·미수금·환급을 한곳으로 모으는 기운입니다.\n1위 뱀띠 (1977·1989·2001년생) — 청구와 독촉의 타이밍이 살아남\n2위 닭띠 (1981·1993·2005년생) — 숫자와 증빙을 정리할수록 유리\n3위 소띠 (1973·1985·1997년생) — 늦어진 돈을 끝까지 회수하는 힘\n\n오늘 실제로 돈을 움직이는 순서\n1. 금액과 근거를 첫 줄에 쓰기\n2. 입금일을 ‘언제쯤’ 대신 날짜로 묻기\n3. 답이 없을 때 다음 절차까지 알리기\n\n받을 돈이 있다면 저장하고 오늘 한 번 확인하세요\n※ 띠 운세는 전체 사주 중 한 축을 보는 콘텐츠입니다.\n\n#팔자명가 #입금운 #재물운 #정산운",
     "videoUrl": "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@e2fe5056ee3e8de442183889a1aee991255ebd37/images/921e632c-6439-4ace-a110-b9419438fbf6.mp4",
     "videoSha256": "b313d88ea0fcab3edc10347c1603a31044edb7cbc16887274816d1faa8d1b234",
-    "status": "scheduled",
+    "status": "publishing",
     "scheduledAt": "2026-09-28T00:00:00.000Z",
     "expectedLocalDate": "2026-09-28",
     "exactTimeKst": "09:00",
@@ -23940,7 +23940,8 @@
     "publishedId": null,
     "error": null,
     "retryCount": 0,
-    "contentHash": "c5545fdf0855579e4924e18e17943e86069b4708524ef71addfe888fda4c121d"
+    "contentHash": "c5545fdf0855579e4924e18e17943e86069b4708524ef71addfe888fda4c121d",
+    "publishAttemptedAt": "2026-09-28T00:01:11.758Z"
   },
   {
     "id": "8ce21c5f-233b-4415-96ae-cfdf7ea2f286",
