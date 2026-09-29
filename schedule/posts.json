@@ -23803,12 +23803,15 @@
     "scheduledAt": "2026-09-29T22:08:00.000Z",
     "createdAt": "2026-09-15T11:47:56.093Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18088244783678121",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
     "regenV3": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18088244783678121"
+    ]
   },
   {
     "id": "38e381ef-2c63-43b4-8924-13c5b2876ca8",
