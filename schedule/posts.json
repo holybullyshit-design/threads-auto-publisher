@@ -23041,12 +23041,15 @@
     "scheduledAt": "2026-09-29T00:41:00.000Z",
     "createdAt": "2026-09-15T11:14:06.253Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18124888057909470",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
     "regenV3": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18124888057909470"
+    ]
   },
   {
     "id": "d7f68d7f-2457-4f36-95cc-cdee65388502",
