@@ -22745,11 +22745,14 @@
     "scheduledAt": "2026-09-29T06:40:00.000Z",
     "createdAt": "2026-09-15T10:59:26.013Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18110414791887680",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
-    "regenV3": true
+    "regenV3": true,
+    "chainPublishedIds": [
+      "18110414791887680"
+    ]
   },
   {
     "id": "6314874f-5ae8-4219-a770-0a4f99559ab2",
