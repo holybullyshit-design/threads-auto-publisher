@@ -23358,11 +23358,14 @@
     "scheduledAt": "2026-09-29T00:53:00.000Z",
     "createdAt": "2026-09-15T11:29:49.067Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18087280073699650",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
-    "regenV3": true
+    "regenV3": true,
+    "chainPublishedIds": [
+      "18087280073699650"
+    ]
   },
   {
     "id": "1695fe98-d743-4972-a6d3-61d82b764dc4",
