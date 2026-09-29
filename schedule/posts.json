@@ -23433,12 +23433,15 @@
     "scheduledAt": "2026-09-29T05:58:00.000Z",
     "createdAt": "2026-09-15T11:31:38.569Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18094837793550531",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
     "regenV3": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18094837793550531"
+    ]
   },
   {
     "id": "1f976863-8a59-4999-a6e9-98886bae6439",
