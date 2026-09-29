@@ -22771,11 +22771,14 @@
     "scheduledAt": "2026-09-29T08:47:00.000Z",
     "createdAt": "2026-09-15T11:00:30.412Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18117432616995935",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
-    "regenV3": true
+    "regenV3": true,
+    "chainPublishedIds": [
+      "18117432616995935"
+    ]
   },
   {
     "id": "cfa22c16-506b-477a-adbc-5cf913eb00aa",
