@@ -29995,10 +29995,13 @@
     "scheduledAt": "2026-09-30T23:45:00.000Z",
     "createdAt": "2026-09-27T11:20:21.261Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17967017223190640",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17967017223190640"
+    ]
   },
   {
     "id": "e27eccd4-8817-4b23-8487-82fb5ad456c6",
