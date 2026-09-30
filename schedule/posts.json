@@ -23861,12 +23861,15 @@
     "scheduledAt": "2026-09-30T00:43:00.000Z",
     "createdAt": "2026-09-15T11:49:05.311Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17881493514689757",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
     "regenV3": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "17881493514689757"
+    ]
   },
   {
     "id": "e0b9ec46-d7e7-42bc-ab4d-ebf0f86a9b69",
