@@ -23286,11 +23286,14 @@
     "scheduledAt": "2026-09-30T07:23:00.000Z",
     "createdAt": "2026-09-15T11:21:46.663Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18116868646967607",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
-    "regenV3": true
+    "regenV3": true,
+    "chainPublishedIds": [
+      "18116868646967607"
+    ]
   },
   {
     "id": "5779360d-2c34-47b7-a1ee-89aae45f0dea",
