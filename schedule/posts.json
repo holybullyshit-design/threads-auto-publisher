@@ -23945,11 +23945,14 @@
     "scheduledAt": "2026-09-30T05:48:00.000Z",
     "createdAt": "2026-09-15T11:52:03.840Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17938379760374688",
     "error": null,
     "viralEngine": true,
     "regenV2": true,
-    "regenV3": true
+    "regenV3": true,
+    "chainPublishedIds": [
+      "17938379760374688"
+    ]
   },
   {
     "id": "edd18f66-6d08-4495-91e7-656fb4ac2e9b",
