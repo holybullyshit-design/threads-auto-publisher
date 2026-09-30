@@ -28137,10 +28137,13 @@
     "scheduledAt": "2026-09-30T22:17:00.000Z",
     "createdAt": "2026-09-27T10:09:15.755Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18123283765923887",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18123283765923887"
+    ]
   },
   {
     "id": "b8c29e77-8ae1-40f7-bf0a-6cbd48eb9225",
