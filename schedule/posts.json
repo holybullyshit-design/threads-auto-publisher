@@ -28305,10 +28305,13 @@
     "scheduledAt": "2026-10-01T23:38:00.000Z",
     "createdAt": "2026-09-27T10:12:09.206Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17920026276605602",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17920026276605602"
+    ]
   },
   {
     "id": "885dabb7-1392-4cd3-966f-6554c73b6b06",
