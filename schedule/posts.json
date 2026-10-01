@@ -28476,10 +28476,13 @@
     "scheduledAt": "2026-10-01T00:43:00.000Z",
     "createdAt": "2026-09-27T10:32:55.610Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18027979358913113",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18027979358913113"
+    ]
   },
   {
     "id": "f8fd7d5c-8971-4c64-891b-8c6c9268ec96",
