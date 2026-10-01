@@ -28170,10 +28170,13 @@
     "scheduledAt": "2026-10-01T00:41:00.000Z",
     "createdAt": "2026-09-27T10:09:44.884Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17911988532470185",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17911988532470185"
+    ]
   },
   {
     "id": "c83a4a68-6d20-4b0f-afb7-4f94a97057ea",
