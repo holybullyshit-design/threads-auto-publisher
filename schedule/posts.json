@@ -30149,10 +30149,13 @@
     "scheduledAt": "2026-10-01T22:26:00.000Z",
     "createdAt": "2026-09-27T11:21:24.943Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17912195694287602",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17912195694287602"
+    ]
   },
   {
     "id": "c0e483d8-a94f-4f02-9e59-38dbc3794820",
