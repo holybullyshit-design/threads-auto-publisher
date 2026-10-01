@@ -30115,10 +30115,13 @@
     "scheduledAt": "2026-10-01T08:40:00.000Z",
     "createdAt": "2026-09-27T11:20:48.706Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17865024393675086",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17865024393675086"
+    ]
   },
   {
     "id": "455bfed9-7a47-438b-b5ed-0da0c5da6d1e",
