@@ -29310,10 +29310,13 @@
     "scheduledAt": "2026-10-01T04:19:00.000Z",
     "createdAt": "2026-09-27T10:56:48.102Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17944541586085858",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17944541586085858"
+    ]
   },
   {
     "id": "36961e3f-2670-4f28-8315-c04b3381e6f2",
