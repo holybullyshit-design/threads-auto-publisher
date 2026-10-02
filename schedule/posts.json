@@ -28641,10 +28641,13 @@
     "scheduledAt": "2026-10-02T01:29:00.000Z",
     "createdAt": "2026-09-27T10:34:58.924Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17889351444616760",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17889351444616760"
+    ]
   },
   {
     "id": "0eeb16c7-2c01-4267-bdfc-329a78feeaf8",
