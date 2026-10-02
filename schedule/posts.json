@@ -29443,10 +29443,13 @@
     "scheduledAt": "2026-10-02T01:16:00.000Z",
     "createdAt": "2026-09-27T10:58:21.402Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17933609772146342",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17933609772146342"
+    ]
   },
   {
     "id": "46bc20c6-5b26-4fc2-b70f-afddcfe53e81",
