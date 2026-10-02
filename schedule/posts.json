@@ -27400,10 +27400,13 @@
     "scheduledAt": "2026-10-02T09:28:00.000Z",
     "createdAt": "2026-09-27T09:44:22.254Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18161328307492622",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18161328307492622"
+    ]
   },
   {
     "id": "62c455d0-dfa5-43f5-a844-1bfc2a664861",
