@@ -30327,10 +30327,13 @@
     "scheduledAt": "2026-10-02T22:54:00.000Z",
     "createdAt": "2026-09-27T11:22:52.282Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17982912180093279",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "17982912180093279"
+    ]
   },
   {
     "id": "253ce083-5e83-43a7-803a-cdffe477845b",
