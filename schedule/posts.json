@@ -28784,10 +28784,13 @@
     "scheduledAt": "2026-10-02T23:46:00.000Z",
     "createdAt": "2026-09-27T10:36:28.830Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18011761499763508",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18011761499763508"
+    ]
   },
   {
     "id": "191f2f41-d821-4bff-9afb-9dfde33bed21",
