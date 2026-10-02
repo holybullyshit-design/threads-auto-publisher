@@ -28367,10 +28367,13 @@
     "scheduledAt": "2026-10-02T04:51:00.000Z",
     "createdAt": "2026-09-27T10:13:01.509Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18096998258562513",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18096998258562513"
+    ]
   },
   {
     "id": "72e59792-fd12-42b8-b777-5e8af7da8e9a",
