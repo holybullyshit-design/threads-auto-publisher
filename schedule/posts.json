@@ -27562,10 +27562,13 @@
     "scheduledAt": "2026-10-03T23:37:00.000Z",
     "createdAt": "2026-09-27T09:48:16.054Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18155797378541813",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18155797378541813"
+    ]
   },
   {
     "id": "7e2c94b7-07a0-469b-ad08-ea12e1513900",
