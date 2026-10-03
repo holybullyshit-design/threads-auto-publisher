@@ -28595,10 +28595,13 @@
     "scheduledAt": "2026-10-03T08:51:00.000Z",
     "createdAt": "2026-09-27T10:16:19.474Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17931902319404908",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "17931902319404908"
+    ]
   },
   {
     "id": "5c03d22f-539b-4f12-a43c-546793d3c32a",
