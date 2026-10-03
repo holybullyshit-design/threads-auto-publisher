@@ -28495,10 +28495,13 @@
     "scheduledAt": "2026-10-03T00:47:00.000Z",
     "createdAt": "2026-09-27T10:14:58.632Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18103295153573992",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18103295153573992"
+    ]
   },
   {
     "id": "7a23d878-a5b3-4052-917e-24da423b8192",
