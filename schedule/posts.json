@@ -29736,10 +29736,13 @@
     "scheduledAt": "2026-10-03T05:50:00.000Z",
     "createdAt": "2026-09-27T11:01:07.251Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18627752599040233",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18627752599040233"
+    ]
   },
   {
     "id": "8d6047ee-a1c8-4463-b599-ffa0cad7779d",
