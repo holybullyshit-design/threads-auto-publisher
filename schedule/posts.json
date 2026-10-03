@@ -28826,10 +28826,13 @@
     "scheduledAt": "2026-10-03T02:15:00.000Z",
     "createdAt": "2026-09-27T10:37:23.875Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18131242777835361",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18131242777835361"
+    ]
   },
   {
     "id": "da5a04c9-322a-4c2d-a165-117c8a9f7b6a",
