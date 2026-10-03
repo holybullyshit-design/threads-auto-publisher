@@ -30767,10 +30767,13 @@
     "scheduledAt": "2026-10-03T22:26:00.000Z",
     "createdAt": "2026-09-27T11:32:47.514Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18105444749620707",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18105444749620707"
+    ]
   },
   {
     "id": "a0dab76a-2940-43d0-b676-372fc50fc7bd",
