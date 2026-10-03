@@ -30444,10 +30444,13 @@
     "scheduledAt": "2026-10-03T08:37:00.000Z",
     "createdAt": "2026-09-27T11:23:25.501Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18113381573087020",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18113381573087020"
+    ]
   },
   {
     "id": "59a14a4e-d58b-48c1-a42a-c2110171495e",
