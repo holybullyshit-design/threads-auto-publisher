@@ -28864,10 +28864,13 @@
     "scheduledAt": "2026-10-03T05:03:00.000Z",
     "createdAt": "2026-09-27T10:37:52.303Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18168467392481562",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18168467392481562"
+    ]
   },
   {
     "id": "0f9bad23-0eb8-41d4-b0c3-05f2fc9e6f10",
