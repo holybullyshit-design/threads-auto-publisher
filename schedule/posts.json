@@ -28532,10 +28532,13 @@
     "scheduledAt": "2026-10-03T03:35:00.000Z",
     "createdAt": "2026-09-27T10:15:22.445Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17899611285600011",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17899611285600011"
+    ]
   },
   {
     "id": "6bbfea7d-30ab-4945-845a-581716cbcfe1",
