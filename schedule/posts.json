@@ -27535,10 +27535,13 @@
     "scheduledAt": "2026-10-03T09:37:00.000Z",
     "createdAt": "2026-09-27T09:47:18.428Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18344305138253701",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18344305138253701"
+    ]
   },
   {
     "id": "69545cee-7705-47eb-abf2-9dfd38f13d58",
