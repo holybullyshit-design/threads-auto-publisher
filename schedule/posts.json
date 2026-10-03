@@ -27456,10 +27456,13 @@
     "scheduledAt": "2026-10-03T02:01:00.000Z",
     "createdAt": "2026-09-27T09:45:19.952Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17988837966112042",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17988837966112042"
+    ]
   },
   {
     "id": "b9aa5aec-4751-45fb-9eb8-4c28b088210e",
