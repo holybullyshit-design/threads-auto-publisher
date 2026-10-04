@@ -30814,10 +30814,13 @@
     "scheduledAt": "2026-10-04T00:50:00.000Z",
     "createdAt": "2026-09-27T11:33:16.919Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17977713755919015",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17977713755919015"
+    ]
   },
   {
     "id": "99be0034-a21a-4333-9644-aee2b22098ee",
