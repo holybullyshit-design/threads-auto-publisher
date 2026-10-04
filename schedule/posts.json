@@ -29011,10 +29011,13 @@
     "scheduledAt": "2026-10-04T05:06:00.000Z",
     "createdAt": "2026-09-27T10:40:14.730Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18281184367288278",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18281184367288278"
+    ]
   },
   {
     "id": "262451d3-0904-4598-affa-03bf874d1d9f",
