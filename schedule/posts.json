@@ -28949,10 +28949,13 @@
     "scheduledAt": "2026-10-03T23:52:00.000Z",
     "createdAt": "2026-09-27T10:39:20.118Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17934966501400911",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17934966501400911"
+    ]
   },
   {
     "id": "904398cc-e5c6-4f0d-96d1-c43f86bb8a69",
