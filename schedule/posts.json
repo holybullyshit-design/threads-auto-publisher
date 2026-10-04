@@ -27639,10 +27639,13 @@
     "scheduledAt": "2026-10-04T07:12:00.000Z",
     "createdAt": "2026-09-27T09:50:41.283Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17910784578538339",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17910784578538339"
+    ]
   },
   {
     "id": "e5827724-ad5d-4725-adb0-647028d617c5",
