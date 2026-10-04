@@ -27662,10 +27662,13 @@
     "scheduledAt": "2026-10-04T09:43:00.000Z",
     "createdAt": "2026-09-27T09:52:05.140Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18014240765961740",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18014240765961740"
+    ]
   },
   {
     "id": "30a02d6b-260d-4279-930d-384fb78a34f3",
