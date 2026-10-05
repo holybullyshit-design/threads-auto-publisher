@@ -27813,10 +27813,13 @@
     "scheduledAt": "2026-10-05T22:50:00.000Z",
     "createdAt": "2026-09-27T09:54:54.730Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17882522187523202",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "17882522187523202"
+    ]
   },
   {
     "id": "e0e22a04-e0cb-4b2a-88b9-2d0234dffcf5",
