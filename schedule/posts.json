@@ -30038,10 +30038,13 @@
     "scheduledAt": "2026-10-05T02:53:00.000Z",
     "createdAt": "2026-09-27T11:04:55.580Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18122106151914109",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18122106151914109"
+    ]
   },
   {
     "id": "e6af5c38-db96-41b1-8f27-b6a42ed7efa5",
