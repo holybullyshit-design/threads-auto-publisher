@@ -30725,10 +30725,13 @@
     "scheduledAt": "2026-10-05T09:37:00.000Z",
     "createdAt": "2026-09-27T11:25:57.708Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17971988181157700",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "17971988181157700"
+    ]
   },
   {
     "id": "97abbed6-d6a6-4b50-8ad2-18f337ce92de",
