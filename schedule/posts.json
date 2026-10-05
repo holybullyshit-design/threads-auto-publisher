@@ -31179,10 +31179,13 @@
     "scheduledAt": "2026-10-05T09:10:00.000Z",
     "createdAt": "2026-09-27T11:38:15.806Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18113825633152272",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18113825633152272"
+    ]
   },
   {
     "id": "5c9feef5-f461-4828-9f28-553f6154e610",
