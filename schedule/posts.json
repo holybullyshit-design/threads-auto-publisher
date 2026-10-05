@@ -31144,10 +31144,13 @@
     "scheduledAt": "2026-10-05T06:44:00.000Z",
     "createdAt": "2026-09-27T11:37:16.351Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18179052397429270",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18179052397429270"
+    ]
   },
   {
     "id": "1a99eb90-ad04-414c-9ee9-1fc1b3a9a411",
