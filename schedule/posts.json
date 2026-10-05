@@ -27785,10 +27785,13 @@
     "scheduledAt": "2026-10-05T08:17:00.000Z",
     "createdAt": "2026-09-27T09:54:26.867Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18099627761419266",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18099627761419266"
+    ]
   },
   {
     "id": "dc946f97-b855-44dc-ad41-b08ee1f6f173",
