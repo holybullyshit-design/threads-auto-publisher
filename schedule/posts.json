@@ -27761,10 +27761,13 @@
     "scheduledAt": "2026-10-05T05:24:00.000Z",
     "createdAt": "2026-09-27T09:53:53.136Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18147223648571490",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18147223648571490"
+    ]
   },
   {
     "id": "82dd1339-5cfb-41ac-b8d9-d89bfffd894e",
