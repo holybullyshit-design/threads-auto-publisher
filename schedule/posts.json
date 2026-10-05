@@ -30772,10 +30772,13 @@
     "scheduledAt": "2026-10-05T23:06:00.000Z",
     "createdAt": "2026-09-27T11:26:20.428Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18004770825005415",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18004770825005415"
+    ]
   },
   {
     "id": "a77a6393-2aa8-44fe-8758-87fa60853db1",
