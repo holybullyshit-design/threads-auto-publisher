@@ -29169,10 +29169,13 @@
     "scheduledAt": "2026-10-05T05:51:00.000Z",
     "createdAt": "2026-09-27T10:43:04.549Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17915771394460755",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "17915771394460755"
+    ]
   },
   {
     "id": "0d3bd753-2367-406e-8f26-5a8bc22a5edd",
