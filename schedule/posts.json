@@ -29201,10 +29201,13 @@
     "scheduledAt": "2026-10-05T22:41:00.000Z",
     "createdAt": "2026-09-27T10:43:33.888Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17949789309055153",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17949789309055153"
+    ]
   },
   {
     "id": "4263f2ea-7ea7-4d83-a99f-d4237a2fff72",
