@@ -31101,10 +31101,13 @@
     "scheduledAt": "2026-10-05T03:53:00.000Z",
     "createdAt": "2026-09-27T11:36:44.277Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18145956229499508",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18145956229499508"
+    ]
   },
   {
     "id": "b0992e6f-0cdd-4fde-80dd-d69bbd169366",
