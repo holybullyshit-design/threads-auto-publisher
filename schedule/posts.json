@@ -27714,10 +27714,13 @@
     "scheduledAt": "2026-10-05T00:15:00.000Z",
     "createdAt": "2026-09-27T09:53:00.752Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18005145080790872",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18005145080790872"
+    ]
   },
   {
     "id": "1f5becea-64a0-4363-b813-89c28403eef6",
