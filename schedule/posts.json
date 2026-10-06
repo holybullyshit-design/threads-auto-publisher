@@ -31241,10 +31241,13 @@
     "scheduledAt": "2026-10-05T23:57:00.000Z",
     "createdAt": "2026-09-27T11:38:43.434Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18114671627585824",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18114671627585824"
+    ]
   },
   {
     "id": "a1466331-a79b-451e-a35f-35015b3fdaa0",
