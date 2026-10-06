@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-06T16:12:46.379Z",
+  "generatedAt": "2026-10-06T18:12:57.340Z",
   "accounts": [
     {
       "id": "273c125f-56b7-4aa1-8abc-89df16bfbe2a",
       "label": "연리지 실타래",
       "followersCount": 1018,
-      "viewsRecent7d": 66959,
+      "viewsRecent7d": 67075,
       "viewsChangePct": -41,
       "likes": 610,
       "replies": 58,
@@ -19,18 +19,18 @@
       },
       "timeBuckets": {
         "morning": 1070,
-        "afternoon": 915,
+        "afternoon": 916,
         "evening": 1029
       },
       "trackedPosts": 159,
-      "fetchedAt": "2026-10-06T16:12:35.120Z",
+      "fetchedAt": "2026-10-06T18:12:49.789Z",
       "error": null
     },
     {
       "id": "e0331659-96f0-4f5f-9aef-d89e0ed2a6a3",
       "label": "아해사주",
       "followersCount": 687,
-      "viewsRecent7d": 16598,
+      "viewsRecent7d": 16674,
       "viewsChangePct": 31,
       "likes": 88,
       "replies": 38,
@@ -48,14 +48,14 @@
         "evening": 285
       },
       "trackedPosts": 158,
-      "fetchedAt": "2026-10-06T16:12:36.857Z",
+      "fetchedAt": "2026-10-06T18:12:50.879Z",
       "error": null
     },
     {
       "id": "44d8bd24-6bf7-4b3a-9241-ddfb2b12c3b0",
       "label": "팔자명가",
       "followersCount": 1005,
-      "viewsRecent7d": 417,
+      "viewsRecent7d": 418,
       "viewsChangePct": -21,
       "likes": 2,
       "replies": 0,
@@ -73,7 +73,7 @@
         "evening": 246
       },
       "trackedPosts": 138,
-      "fetchedAt": "2026-10-06T16:12:38.739Z",
+      "fetchedAt": "2026-10-06T18:12:51.759Z",
       "error": null
     },
     {
@@ -98,14 +98,14 @@
         "evening": 18
       },
       "trackedPosts": 50,
-      "fetchedAt": "2026-10-06T16:12:40.055Z",
+      "fetchedAt": "2026-10-06T18:12:52.820Z",
       "error": null
     },
     {
       "id": "d2c9ae3f-67c9-42bf-b9f8-e8000b61abff",
       "label": "팔자장인",
       "followersCount": 67,
-      "viewsRecent7d": 64080,
+      "viewsRecent7d": 64520,
       "viewsChangePct": -37,
       "likes": 491,
       "replies": 33,
@@ -123,16 +123,16 @@
         "evening": 986
       },
       "trackedPosts": 153,
-      "fetchedAt": "2026-10-06T16:12:42.479Z",
+      "fetchedAt": "2026-10-06T18:12:53.930Z",
       "error": null
     },
     {
       "id": "cf6a4ba2-da74-4fc1-ae5a-72e1b1477287",
       "label": "팔자궤도",
       "followersCount": 316,
-      "viewsRecent7d": 92640,
-      "viewsChangePct": -12,
-      "likes": 683,
+      "viewsRecent7d": 93910,
+      "viewsChangePct": -11,
+      "likes": 690,
       "replies": 49,
       "reposts": 11,
       "topPost": {
@@ -145,10 +145,10 @@
       "timeBuckets": {
         "morning": 1302,
         "afternoon": 1123,
-        "evening": 507
+        "evening": 516
       },
       "trackedPosts": 154,
-      "fetchedAt": "2026-10-06T16:12:43.630Z",
+      "fetchedAt": "2026-10-06T18:12:55.041Z",
       "error": null
     }
   ],
@@ -164,7 +164,7 @@
     "'엄마가 직접 써본 꿀템' 최고 성과 글: \"아침 7시 40분. \"옷 입어\" 세 번째 말했는데 아직도 팬티 바람으로 공룡 장난감 들고 있음ㅋㅋ \"5분 안\" — 조회수 900 · 답글 4건. 비슷한 훅/주제를 반복 활용해볼 만합니다.",
     "'팔자장인' — 최근 7일 조회수가 지난 주 대비 37% 감소했습니다. 최근 훅/주제 변화를 점검해볼 시점입니다.",
     "'팔자장인' 최고 성과 글: \"<이 세 띠, 도화살 TOP 3다> 이 셋 아니면 아예 해당도 안 됩니다. TOP 3 1위. 호랑이띠 (19\" — 조회수 18,374 · 답글 4건. 비슷한 훅/주제를 반복 활용해볼 만합니다.",
-    "'팔자궤도' — 오전(0-12시) 발행 글이 저녁(18-24시) 발행 글보다 평균 조회수가 2.6배 높습니다. 오전(0-12시) 비중을 늘려보세요.",
+    "'팔자궤도' — 오전(0-12시) 발행 글이 저녁(18-24시) 발행 글보다 평균 조회수가 2.5배 높습니다. 오전(0-12시) 비중을 늘려보세요.",
     "'팔자궤도' 최고 성과 글: \"죄송하지만, 원숭이·쥐·용띠는 내년 삼재 명단에 이미 올라가 있습니다. 원숭이띠(2004·1992·1980)\" — 조회수 13,477 · 답글 34건. 비슷한 훅/주제를 반복 활용해볼 만합니다."
   ]
 }
