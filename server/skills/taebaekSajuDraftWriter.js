@@ -25,6 +25,7 @@ const {
   getVerifiedCalendarFacts,
   sipseongRelation,
 } = require("../lib/sajuFacts");
+const { checkSajuClaims } = require("../lib/sajuClaimChecker");
 
 // 2026-09-10 사용자 지시: "프로필 확인해보세요" 류는 클릭해서 뭘 하면 되는지가 없어서
 // 조회수 대비 전환이 거의 안 됨(실측: 팔자장인/팔자궤도 조회수 대비 팔로워·답글 전환율이
@@ -845,6 +846,14 @@ async function writeThreadDraft({
   const tooLong = parts.findIndex((p) => p.length > 500);
   if (tooLong !== -1) {
     throw new Error(`파트 ${tooLong + 1}이 Threads 제한(500자)을 넘습니다(${parts[tooLong].length}자).`);
+  }
+
+  // 2026-10-06: 소재별 사실 블록을 잘 만드는 것만으로는 두 번 깨졌다(삼재 시기, 만세력 한자
+  // 색인). 그래서 완성된 글 자체를 판별표와 대조하는 층을 마지막에 한 번 더 통과시킨다.
+  // 검사기는 "글이 명확하게 단정한 것"만 잡는다(거짓 양성 0 기준으로 맞춰둠 - sajuClaimChecker 참고).
+  const claimIssues = checkSajuClaims(parts.join("\n\n"), { dateKey: effectiveDateKey });
+  if (claimIssues.length) {
+    throw new Error(`명리 사실 검증 실패: ${claimIssues.join(" / ")} - 사실에 맞게 다시 씁니다.`);
   }
 
   // 2026-10-06 사고 대응: 삼재 글에서 시기를 지어내 틀린 글이 발행됐다(원숭이·쥐·용띠 삼재는

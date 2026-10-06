@@ -4,6 +4,8 @@
 
 const { runSkill } = require("../lib/claudeCliEngine");
 
+const { checkSajuClaims } = require("../lib/sajuClaimChecker");
+
 function findCategory(persona, categoryId) {
   return persona.categories.find((c) => c.id === categoryId);
 }
@@ -87,7 +89,7 @@ function buildUserMessage(category, recentTexts) {
 댓글/DM으로 생년월일시를 남기고 싶어지는 내용으로 부탁해.${avoidSection}`;
 }
 
-async function writeDraft({ account, categoryId, recentTexts = [] }) {
+async function writeDraft({ account, categoryId, recentTexts = [], dateKey }) {
   const category = findCategory(account.persona, categoryId);
   if (!category) {
     const err = new Error(`이 계정에 없는 카테고리입니다: ${categoryId}`);
@@ -100,6 +102,14 @@ async function writeDraft({ account, categoryId, recentTexts = [] }) {
     userMessage: buildUserMessage(category, recentTexts),
     maxTokens: 700,
   });
+
+  // 2026-10-06: 이 경로는 사실 블록이 아예 없다(페르소나 문체만 주고 쓰게 한다). 그래서 명리
+  // 주장이 들어가면 전부 AI가 기억으로 쓴 것이다 - 삼재 사고와 같은 위험이 그대로 있다.
+  // 완성된 글을 판별표와 대조해서, 단정한 주장이 틀리면 실패시킨다(호출부가 재시도한다).
+  const issues = checkSajuClaims(draft, { dateKey });
+  if (issues.length) {
+    throw new Error(`명리 사실 검증 실패: ${issues.join(" / ")} - 사실에 맞게 다시 씁니다.`);
+  }
 
   return { draft, category };
 }

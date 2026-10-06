@@ -184,7 +184,7 @@ async function main() {
     console.log(`[${i + 1}/${jobs.length}] 생성 중... (예정: ${dateStr} ${label} KST / 소재: ${categoryId})`);
     let text;
     try {
-      text = await writeDraftWithRetry({ account, categoryId, recentTexts: recentTexts.slice(0, 5) });
+      text = await writeDraftWithRetry({ account, categoryId, recentTexts: recentTexts.slice(0, 5), dateKey: dateStr });
     } catch (err) {
       console.log(`  -> ${RETRY_ATTEMPTS}번 다 실패, 이 슬롯은 건너뜀: ${err.message}`);
       continue;
