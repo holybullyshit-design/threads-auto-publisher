@@ -31465,10 +31465,13 @@
     "scheduledAt": "2026-10-06T22:24:00.000Z",
     "createdAt": "2026-09-27T11:43:26.097Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18127642075874089",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18127642075874089"
+    ]
   },
   {
     "id": "e7552914-d246-4d74-9191-c488597610bf",
