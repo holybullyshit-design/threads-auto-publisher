@@ -30145,10 +30145,13 @@
     "scheduledAt": "2026-10-06T00:52:00.000Z",
     "createdAt": "2026-09-27T11:06:57.301Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17918737311446170",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17918737311446170"
+    ]
   },
   {
     "id": "2a3fde08-f44f-47fa-bb07-296051e16f1e",
