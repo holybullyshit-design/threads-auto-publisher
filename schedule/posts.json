@@ -27862,10 +27862,13 @@
     "scheduledAt": "2026-10-06T04:05:00.000Z",
     "createdAt": "2026-09-27T09:56:14.461Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18394127548161665",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18394127548161665"
+    ]
   },
   {
     "id": "e49de19d-df52-4c87-9546-9cb05051a18f",
