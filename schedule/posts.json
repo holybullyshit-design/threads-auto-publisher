@@ -30183,10 +30183,13 @@
     "scheduledAt": "2026-10-06T03:11:00.000Z",
     "createdAt": "2026-09-27T11:08:25.657Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18117062414062536",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18117062414062536"
+    ]
   },
   {
     "id": "162fdfce-112f-477c-aedd-26c825418e3a",
