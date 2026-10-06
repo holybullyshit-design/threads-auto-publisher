@@ -31331,10 +31331,13 @@
     "scheduledAt": "2026-10-06T05:18:00.000Z",
     "createdAt": "2026-09-27T11:41:12.335Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17952163065293322",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17952163065293322"
+    ]
   },
   {
     "id": "7963e9af-a22a-476d-9cc9-8ebd920a7217",
