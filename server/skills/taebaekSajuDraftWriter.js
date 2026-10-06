@@ -23,6 +23,7 @@ const {
   getSamhapRoles,
   getSamjaeInfo,
   getVerifiedCalendarFacts,
+  sipseongRelation,
 } = require("../lib/sajuFacts");
 
 // 2026-09-10 사용자 지시: "프로필 확인해보세요" 류는 클릭해서 뭘 하면 되는지가 없어서
@@ -239,14 +240,17 @@ ${yearsLine}
       const el = pickRandom(elements);
       const jaeseong = SIPSEONG_TABLE[el].재성;
       const bigeop = SIPSEONG_TABLE[el].비겁;
+      // 2026-10-06 사고 교훈: 관계를 "스스로 판단해서 쓰라"고 넘기면 AI가 지어낸다.
+      // 표에서 읽은 결과를 사실로 못 박는다(월 오행도 undefined로 새던 걸 고쳤다).
+      const rel = sipseongRelation(el, cal.monthStemElement);
       return `[검증된 사실 - 재성/시기]
 기준 날짜: ${cal.korean} (${cal.dateKey})
-이번 달 오행: ${cal.monthStemElement}
+이번 달(월간) 오행: ${cal.monthStemElement}
 대상 일간: ${el} 일간
 이 일간의 재성(財星, 재물운) 오행: ${jaeseong}
 이 일간의 비겁(比劫) 오행: ${bigeop}
 십성 원리: 일간과 같은 오행이 강해지는 시기(비겁운)엔 재성이 상대적으로 눌리고, 일간이 극(剋)하는 오행이 강해지는 시기(재성운)엔 재물운이 좋아진다.
-현재 이번 달 오행(${cal.monthStemElement})이 이 일간(${el})한테 비겁인지 재성인지 관계를 스스로 판단해서, 그 관계에 맞는 내용으로 쓸 것. (같은 오행=비겁, 일간이 극하는 오행=재성)`;
+관계(반드시 이대로, 스스로 바꿔 판단하지 말 것): 이번 달 오행 ${cal.monthStemElement}은 ${el} 일간에게 **${rel}**이다. 이 관계에 맞는 내용으로만 쓸 것 - 다른 십성으로 바꿔 쓰면 틀린 글이 된다.`;
     },
   },
   {
@@ -258,13 +262,14 @@ ${yearsLine}
       const elements = ["목", "화", "토", "금", "수"];
       const el = pickRandom(elements);
       const gwanseong = SIPSEONG_TABLE[el].관성;
+      const rel = sipseongRelation(el, cal.monthStemElement);
       return `[검증된 사실 - 관성/시기]
 기준 날짜: ${cal.korean} (${cal.dateKey})
-이번 달 오행: ${cal.monthStemElement}
+이번 달(월간) 오행: ${cal.monthStemElement}
 대상 일간: ${el} 일간
 이 일간의 관성(官星, 직장·명예운) 오행: ${gwanseong}
 십성 원리: 일간을 극(剋)하는 오행이 관성이다 — 나를 통제하고 자리 잡게 만드는 힘.
-현재 이번 달 오행(${cal.monthStemElement})이 이 일간(${el})의 관성에 해당하는지 스스로 판단해서, 맞으면 "직장/조직에서 부딪히거나 인정받는 시기"로, 아니면 다른 십성 관계로 자연스럽게 풀어서 쓸 것.`;
+관계(반드시 이대로, 스스로 바꿔 판단하지 말 것): 이번 달 오행 ${cal.monthStemElement}은 ${el} 일간에게 **${rel}**이다. ${rel === "관성" ? '관성이 맞으니 "직장/조직에서 부딪히거나 인정받는 시기"로 쓸 것.' : `관성이 아니라 ${rel}이므로, 관성운이 온 것처럼 쓰면 틀린 글이 된다 - ${rel} 관계로 풀어 쓸 것.`}`;
     },
   },
   // 2026-09-03 소재 확장(벤치마크 채널 대비 소재 폭이 좁다는 사용자 지적 - 8개뿐이던 소재를

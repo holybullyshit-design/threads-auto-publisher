@@ -155,11 +155,35 @@ function getSamjaeInfo(yearBranchIndex, refDate) {
 }
 
 // 오늘/특정 날짜 기준 검증된 년주·월주·일주 (lunar-javascript 기반, fortuneEngine.js 재사용)
+// 2026-10-06 발견: calculateCalendar는 간지를 **한자**로 돌려주는데(丙午/丁酉/癸丑) 여기서
+// 한글 배열(STEMS_KO/BRANCHES_KO)에 indexOf를 걸어서 전부 -1이 나오고 있었다 →
+// yearBranchIndex=-1, monthBranchIndex=-1, monthStemElement=undefined. 그 결과 재성/관성
+// 시기형 소재의 사실 블록이 "이번 달 오행: undefined"로 나가서, 십성 관계를 AI가 통째로
+// 지어내고 있었다(삼재 사고와 같은 종류 - 계산할 수 있는 걸 AI에게 맡긴 것).
+// 한자 배열로 색인하고, 결과가 유효한지 단정(assert)해서 다시 조용히 깨지지 않게 한다.
+const STEMS_CN = [..."甲乙丙丁戊己庚辛壬癸"];
+const BRANCHES_CN = [..."子丑寅卯辰巳午未申酉戌亥"];
+
+// 간지 한 글자(한자 또는 한글)를 인덱스로 바꾼다 - 둘 중 어느 표기로 와도 받는다.
+function stemIndex(ch) {
+  const i = STEMS_CN.indexOf(ch);
+  return i !== -1 ? i : STEMS_KO.indexOf(ch);
+}
+function branchIndex(ch) {
+  const i = BRANCHES_CN.indexOf(ch);
+  return i !== -1 ? i : BRANCHES_KO.indexOf(ch);
+}
+
 function getVerifiedCalendarFacts(dateKey) {
   const cal = calculateCalendar(dateKey);
-  const yearBranch = BRANCHES_KO.indexOf(cal.year[1]);
-  const monthBranch = BRANCHES_KO.indexOf(cal.month[1]);
-  const monthStem = STEMS_KO.indexOf(cal.month[0]);
+  const yearBranch = branchIndex(cal.year[1]);
+  const monthBranch = branchIndex(cal.month[1]);
+  const monthStem = stemIndex(cal.month[0]);
+  const yearStem = stemIndex(cal.year[0]);
+  if (yearBranch === -1 || monthBranch === -1 || monthStem === -1 || yearStem === -1) {
+    // 조용히 undefined를 흘려보내면 사실 블록에 그대로 박혀서 AI가 지어내게 된다 - 바로 실패.
+    throw new Error(`만세력 간지 해석 실패(${dateKey}): year=${cal.year} month=${cal.month} - 표기 체계를 확인하세요.`);
+  }
   return {
     dateKey,
     korean: cal.korean, // "병오년 · 병신월 · 갑술일" 형태
@@ -168,8 +192,21 @@ function getVerifiedCalendarFacts(dateKey) {
     dayGanji: cal.day,
     yearBranchIndex: yearBranch,
     monthBranchIndex: monthBranch,
+    yearStemElement: STEM_ELEMENT[yearStem],
     monthStemElement: STEM_ELEMENT[monthStem],
+    monthBranchAnimal: ANIMALS[monthBranch],
+    yearAnimal: ANIMALS[yearBranch],
   };
+}
+
+// 일간 오행이 "상대 오행"을 만났을 때의 십성 관계를 표에서 그대로 읽는다(계산 가능한 사실을
+// AI에게 판단시키지 않기 위함 - 2026-10-06 사고 교훈).
+function sipseongRelation(dayElement, otherElement) {
+  const row = SIPSEONG_TABLE[dayElement];
+  if (!row) throw new Error(`알 수 없는 일간 오행: ${dayElement}`);
+  const name = Object.keys(row).find((k) => row[k] === otherElement);
+  if (!name) throw new Error(`십성 관계를 찾지 못했습니다: ${dayElement} 일간 vs ${otherElement}`);
+  return name;
 }
 
 // 2026-09-10 벤치마크 실측(@taebaek_saju 로그인 확인) 반영: 이 계정은 같은 신살이라도
@@ -204,5 +241,6 @@ module.exports = {
   getSamhapRoles,
   getSamjaeInfo,
   getVerifiedCalendarFacts,
+  sipseongRelation,
   getWonjinPartner,
 };
