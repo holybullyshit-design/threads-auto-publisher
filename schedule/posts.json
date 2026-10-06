@@ -30289,10 +30289,13 @@
     "scheduledAt": "2026-10-06T23:18:00.000Z",
     "createdAt": "2026-09-27T11:10:28.186Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18105935777264678",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18105935777264678"
+    ]
   },
   {
     "id": "68c580d1-666d-46f1-ae67-ddb4bb1e3e4b",
