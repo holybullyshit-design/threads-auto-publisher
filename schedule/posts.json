@@ -31424,10 +31424,13 @@
     "scheduledAt": "2026-10-06T11:00:00.000Z",
     "createdAt": "2026-09-27T11:42:56.471Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18110221628160758",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18110221628160758"
+    ]
   },
   {
     "id": "7963dff5-0937-42ef-99b4-51ecee39aeb8",
