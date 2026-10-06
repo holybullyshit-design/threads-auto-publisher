@@ -27943,10 +27943,13 @@
     "scheduledAt": "2026-10-06T23:25:00.000Z",
     "createdAt": "2026-09-27T09:57:49.403Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18112704269518405",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18112704269518405"
+    ]
   },
   {
     "id": "a7b74e4b-aa3a-4b3a-87a1-dfce9a973aad",
