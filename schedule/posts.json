@@ -31380,10 +31380,13 @@
     "scheduledAt": "2026-10-06T08:05:00.000Z",
     "createdAt": "2026-09-27T11:42:24.706Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17909017356557115",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17909017356557115"
+    ]
   },
   {
     "id": "96f6d32c-9ee7-42e9-80c6-64f6086868ff",
