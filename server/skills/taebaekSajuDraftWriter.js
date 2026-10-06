@@ -341,20 +341,28 @@ ${yearsLine}
     id: "samjae",
     label: "삼재(띠 기반)",
     format: "시기형",
-    build() {
+    build(dateKey) {
       const groupIdx = Math.floor(Math.random() * 4);
       const group = ["인오술(화국)", "신자진(수국)", "사유축(금국)", "해묘미(목국)"][groupIdx];
       const seedBranch = { "인오술(화국)": 2, "신자진(수국)": 8, "사유축(금국)": 5, "해묘미(목국)": 11 }[group];
-      const info = getSamjaeInfo(seedBranch);
+      const info = getSamjaeInfo(seedBranch, dateKey);
       const memberAnimals = info.samhapGroup.branches.map((b) => ANIMALS[b]).join("·");
       const samjaeYears = info.samjaeBanghap.branches.map((b) => ANIMALS[b]).join("·");
       const yearsLine = animalYearsLine(info.samhapGroup.branches);
+      // 2026-10-06 사고 대응: 연도를 안 주면 AI가 "내년부터 3년" 식으로 시기를 지어낸다.
+      // 실제 연도와 "지금 몇 년째인지 / 몇 년 남았는지 / 직전 삼재는 언제 끝났는지"를 못 박는다.
+      const NTH = { 1: "들삼재(첫해)", 2: "눌삼재(둘째 해)", 3: "날삼재(마지막 해)" };
+      const timing =
+        info.status === "current"
+          ? `시기(반드시 이대로): 이 삼재는 ${info.startYear}년에 시작해서 ${info.endYear}년에 끝난다. 글을 쓰는 지금은 ${info.refYear}년이고 ${info.nthYear}번째 해 - ${NTH[info.nthYear]}다. 즉 "이미 지나는 중"이고, 끝나는 해는 ${info.endYear}년이다.`
+          : `시기(반드시 이대로): 이 띠의 삼재는 ${info.startYear}년~${info.endYear}년이다. 글을 쓰는 지금은 ${info.refYear}년이라 아직 ${info.yearsUntilStart}년 남았다(올해도 내년도 아니다). 직전 삼재는 ${info.prevEndYear}년에 이미 끝났으므로, 이 띠 독자는 "삼재 끝난 지 얼마 안 됐다"고 알고 있다 - 지금 삼재라고 쓰면 틀린 글이 된다.`;
       return `[검증된 사실 - 삼재]
 대상 띠: ${memberAnimals}띠 (${info.samhapGroup.name})
 ${yearsLine}
 삼재에 해당하는 방합: ${info.samjaeBanghap.name}
 삼재 3년의 띠(그 해의 지지): ${samjaeYears}
 판별법: ${memberAnimals}띠는 ${info.samjaeBanghap.name} 3년 동안 삼재를 겪는다(정통 방합 기준 공식).
+${timing}
 의미: 삼재라고 다 나쁜 게 아니다. 원국에 그 삼재 방합 오행이 이미 자리잡고 있으면 오히려 정리·결실의 시기로 풀리기도 한다.`;
     },
   },
@@ -832,6 +840,45 @@ async function writeThreadDraft({
   const tooLong = parts.findIndex((p) => p.length > 500);
   if (tooLong !== -1) {
     throw new Error(`파트 ${tooLong + 1}이 Threads 제한(500자)을 넘습니다(${parts[tooLong].length}자).`);
+  }
+
+  // 2026-10-06 사고 대응: 삼재 글에서 시기를 지어내 틀린 글이 발행됐다(원숭이·쥐·용띠 삼재는
+  // 2022~2024에 끝났는데 "내년 삼재 명단"으로 발행 → 답글 28건 중 24건이 틀렸다는 지적,
+  // 명리를 아는 독자가 정답까지 적어놨다). 사실 블록에 실제 연도를 넣었지만 그래도 AI가
+  // "내년부터/올해부터/앞으로 3년"으로 흘릴 수 있으니, 삼재 글은 여기서 한 번 더 막는다.
+  //  - 삼재가 진행 중이 아닌 띠(=올해가 구간 밖)인데 "올해/내년/지금부터/앞으로 3년"으로
+  //    임박했다고 쓰면 실패 처리.
+  //  - 시작연도를 숫자로 안 적은 삼재 글도 실패 처리(연도를 쓰게 강제해야 독자가 검증 가능).
+  if (topic.id === "samjae") {
+    const joined = parts.join("\n");
+    const groupBranch = { "인오술": 2, "신자진": 8, "사유축": 5, "해묘미": 11 };
+    const groupKey = Object.keys(groupBranch).find((g) => joined.includes(g)) || null;
+    // 본문에 삼합 이름이 없으면 띠 이름으로 역추적한다.
+    const byAnimals = [
+      { key: "인오술", animals: ["호랑이", "말", "개"] },
+      { key: "신자진", animals: ["원숭이", "쥐", "용"] },
+      { key: "사유축", animals: ["뱀", "닭", "소"] },
+      { key: "해묘미", animals: ["돼지", "토끼", "양"] },
+    ].find((g) => g.animals.every((a) => joined.includes(a)));
+    const key = groupKey || (byAnimals && byAnimals.key);
+    if (key) {
+      const info = getSamjaeInfo(groupBranch[key], effectiveDateKey);
+      if (!joined.includes(String(info.startYear))) {
+        throw new Error(
+          `삼재 글에 실제 시작연도(${info.startYear}년)가 숫자로 안 적혀 있습니다 - 독자가 검증할 수 있게 연도를 명시해 다시 씁니다.`
+        );
+      }
+      if (info.status !== "current") {
+        const imminent = ["올해부터", "내년부터", "내년 삼재", "지금부터 3년", "앞으로 3년", "올해가 삼재", "내년이 삼재"].find((w) =>
+          joined.includes(w)
+        );
+        if (imminent) {
+          throw new Error(
+            `삼재 시기가 틀렸습니다("${imminent}"). ${key} 띠의 삼재는 ${info.startYear}~${info.endYear}년이고 지금은 ${info.refYear}년입니다(직전 삼재는 ${info.prevEndYear}년에 끝남) - 시기를 사실대로 다시 씁니다.`
+          );
+        }
+      }
+    }
   }
 
   return {

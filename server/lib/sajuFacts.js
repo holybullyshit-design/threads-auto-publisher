@@ -103,13 +103,55 @@ const BANGHAP = [
 // 삼합 오행 -> 삼재에 해당하는 방합(마주보는 계절)
 const SAMJAE_BANGHAP_BY_ELEMENT = { 화: "금방", 수: "목방", 금: "수방", 목: "화방" };
 
-function getSamjaeInfo(yearBranchIndex) {
+// 2026-10-06 사고 대응: 방합 매핑표는 맞는데 "그게 몇 년도냐"를 아무도 알려주지 않아서,
+// AI가 시기를 "내년부터 3년" / "앞으로 3년" 식으로 지어냈다(실측: 원숭이·쥐·용띠 삼재는
+// 2022~2024에 이미 끝났는데 "내년 삼재 명단"이라고 발행 → 답글 28건 중 24건이 틀렸다는
+// 지적). 그래서 삼재 3년이 실제 몇 년도인지, 기준일 시점에 과거/현재/미래 중 어디인지까지
+// 계산해서 같이 넘긴다. 시기 문장은 반드시 이 값만 쓰게 한다.
+//
+// 지지 인덱스(자=0)와 서력의 대응: 1984년이 갑자년(자, 인덱스 0)이므로
+// branchIndexOfYear(y) = (y - 1984) mod 12.
+function branchIndexOfYear(year) {
+  return ((((year - 1984) % 12) + 12) % 12);
+}
+// 기준연도 이후(또는 포함) 처음으로 그 방합 3년이 시작되는 해를 찾는다.
+function banghapStartYearNear(banghap, refYear) {
+  const startBranch = banghap.branches[0];
+  let start = refYear;
+  while (branchIndexOfYear(start) !== startBranch) start -= 1;
+  return start; // refYear 이하에서 가장 가까운 시작연도
+}
+
+function getSamjaeInfo(yearBranchIndex, refDate) {
   const group = findSamhapGroup(yearBranchIndex);
   const targetBanghapName = { 화: "신유술(가을/금방)", 수: "인묘진(봄/목방)", 금: "해자축(겨울/수방)", 목: "사오미(여름/화방)" }[
     group.element
   ];
   const banghap = BANGHAP.find((b) => b.name === targetBanghapName);
-  return { samhapGroup: group, samjaeBanghap: banghap };
+
+  const ref = refDate ? new Date(refDate) : new Date();
+  const refYear = new Date(ref.getTime() + 9 * 3600 * 1000).getUTCFullYear(); // KST 기준 연도
+  const lastStart = banghapStartYearNear(banghap, refYear);
+  const lastEnd = lastStart + 2;
+  // 기준연도가 3년 구간 안에 있으면 "진행 중", 지나갔으면 다음 주기(12년 뒤)가 다음 삼재.
+  const isCurrent = refYear >= lastStart && refYear <= lastEnd;
+  const startYear = isCurrent || refYear < lastStart ? lastStart : lastStart + 12;
+  const endYear = startYear + 2;
+  const status = isCurrent ? "current" : "future"; // 과거 구간은 위에서 다음 주기로 밀렸으므로 미래
+  const nthYear = isCurrent ? refYear - startYear + 1 : null; // 1=들삼재, 2=눌삼재, 3=날삼재
+  const prevEndYear = isCurrent ? null : lastEnd; // 직전 삼재가 끝난 해(이미 끝났음을 밝히는 데 씀)
+
+  return {
+    samhapGroup: group,
+    samjaeBanghap: banghap,
+    refYear,
+    startYear,
+    endYear,
+    status,
+    nthYear,
+    prevEndYear,
+    yearsUntilStart: status === "future" ? startYear - refYear : 0,
+  };
 }
 
 // 오늘/특정 날짜 기준 검증된 년주·월주·일주 (lunar-javascript 기반, fortuneEngine.js 재사용)
