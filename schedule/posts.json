@@ -29386,10 +29386,13 @@
     "scheduledAt": "2026-10-07T02:30:00.000Z",
     "createdAt": "2026-09-27T10:46:10.270Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18150376849551264",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18150376849551264"
+    ]
   },
   {
     "id": "e4b18059-9608-48a7-9bf4-5df6bb8dbd5c",
