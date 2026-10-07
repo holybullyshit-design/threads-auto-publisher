@@ -118,11 +118,15 @@ test("오행 글자 수 합은 항상 8이다(시간을 알 때)", () => {
 // ── 신살 ──
 
 test("신살은 원국에 실제로 그 지지가 있을 때만 성립한다", () => {
-  const chart = buildChart(CASES[0]); // 경오 신사 경진 계미 (말띠)
+  const chart = buildChart(CASES[0]); // 경오 신사 경진 계미 (지지 오·사·진·미)
   const k = analyzeSinsal(chart, analyzeStrength(chart), { refDate: "2026-10-07" });
-  // 말띠(인오술)의 도화 자리는 묘다. 이 원국 지지는 오·사·진·미라 묘가 없다 → 성립 안 함.
-  assert.strictEqual(k.byId.dohwa.targetBranches[0], "묘");
-  assert.strictEqual(k.byId.dohwa.found, false, "원국에 묘가 없는데 도화살이 성립했다");
+  // 도화(앱 방식) = 사왕지 자·오·묘·유. 지지에 오가 있으므로 성립한다.
+  assert.deepStrictEqual(k.byId.dohwa.targetBranches, ["자", "오", "묘", "유"]);
+  assert.strictEqual(k.byId.dohwa.found, true);
+  // 삼합 기준으로는 말띠(인오술)의 도화가 묘인데 원국에 묘가 없어 미성립 - 두 방식이 갈린다.
+  assert.strictEqual(k.byId.dohwa.samhapBased.found, false);
+  // 화개(앱 방식) = 사고지 진·술·축·미. 지지에 진·미가 있으므로 성립.
+  assert.strictEqual(k.byId.hwagae.found, true);
   // 일주가 경진이므로 괴강살은 성립해야 한다.
   assert.strictEqual(k.byId.goegang.found, true);
   // 일간 경의 천을귀인은 축·미. 시지가 미라 성립해야 한다.
@@ -133,14 +137,21 @@ test("신살은 원국에 실제로 그 지지가 있을 때만 성립한다", (
   assert.strictEqual(k.found.length + k.notFoundNames.length, k.all.length);
 });
 
-test("신살 판별 기준이 sajuFacts의 정통 표와 같다(표를 두 군데 두지 않는다)", () => {
+test("신살 판별 기준이 단일 출처를 유지한다(표를 두 군데 두지 않는다)", () => {
+  const LITERAL = { yeokma: ["인", "신", "사", "해"], dohwa: ["자", "오", "묘", "유"], hwagae: ["진", "술", "축", "미"] };
   for (const c of CASES) {
     const chart = buildChart(c);
     const k = analyzeSinsal(chart);
+    // 앱 방식(기본)은 고정된 글자 집합이다.
+    for (const [id, set] of Object.entries(LITERAL)) {
+      assert.deepStrictEqual(k.byId[id].targetBranches, set, `${id} 글자 집합`);
+    }
+    // 삼합 기준은 sajuFacts의 정통 표에서 그대로 와야 한다(표를 복제하지 않는다).
     const roles = F.getSamhapRoles(chart.pillars.year.branchIndex);
-    assert.strictEqual(k.byId.yeokma.targetBranches[0], N.BRANCH_KO[roles.역마]);
-    assert.strictEqual(k.byId.dohwa.targetBranches[0], N.BRANCH_KO[roles.도화]);
-    assert.strictEqual(k.byId.hwagae.targetBranches[0], N.BRANCH_KO[roles.화개]);
+    assert.deepStrictEqual(k.byId.yeokma.samhapBased.targetBranches, [N.BRANCH_KO[roles.역마]]);
+    assert.deepStrictEqual(k.byId.dohwa.samhapBased.targetBranches, [N.BRANCH_KO[roles.도화]]);
+    assert.deepStrictEqual(k.byId.hwagae.samhapBased.targetBranches, [N.BRANCH_KO[roles.화개]]);
+    // 일주 기반 신살도 sajuFacts의 목록을 그대로 쓴다.
     assert.deepStrictEqual(k.byId.baekho.targetBranches, F.BAEKHO_ILJU);
     assert.deepStrictEqual(k.byId.goegang.targetBranches, F.GOEGANG_ILJU);
   }

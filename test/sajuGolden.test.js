@@ -44,15 +44,42 @@ const G1 = {
   },
 };
 
-// 아직 원인을 못 찾은 것 — 추측으로 코드를 맞추지 않는다.
-const UNRESOLVED = [
-  "도화살: 앱은 생일·생시(오)에 도화살을 표시하는데, 정통 도화결(신자진見유 / 사유축見오 / 인오술見묘 / 해묘미見자)로는 년지 진→유, 일지 오→묘라 어느 쪽으로도 오가 나오지 않는다. 앱이 쓰는 기준을 확인해야 한다.",
-  "협록: 앱은 생월·생시에만 표시하는데, 우리 판정(건록 사를 끼는 진·오 쌍)은 네 기둥 전부를 잡는다(년·월이 진, 일·시가 오라 조합이 여러 개). 기둥 위치 제한 규칙을 확인해야 한다.",
-];
+// ── 정답지 2: 1990-11-19 21:58 여자 (경기도), 양력 입력 ──
+// 신약 사주 + 여자(대운 역행) 케이스. 정답지1이 못 덮던 구간을 메운다.
+const G2 = {
+  input: { year: 1990, month: 11, day: 19, hour: 21, minute: 58, gender: "female" },
+  expect: {
+    solarDate: "1990-11-19",
+    lunarDate: "1990-10-03",
+    pillars: { year: "경오", month: "정해", day: "무자", time: "계해" },
+    tenGodStem: { year: "식신", month: "정인", day: "일간", time: "정재" },
+    tenGodBranchPrimary: { year: "정인", month: "편재", day: "정재", time: "편재" },
+    hiddenStems: { year: "병기정", month: "무갑임", day: "임계", time: "무갑임" },
+    twelveStage: { year: "제왕", month: "절", day: "태", time: "절" },
+    elementPercent: { 목: 0, 화: 25, 토: 12.5, 금: 12.5, 수: 50 },
+    criteria: { 득령: false, 득지: false, 득시: false, 득세: false },
+    verdict: "신약",
+    yongsinTop: "토",
+    sinsalByPillar: {
+      도화살: ["year", "day"],
+      현침살: ["year"],
+      양인살: ["year"],
+      관귀학관: ["month", "time"],
+      역마살: ["month", "time"],
+      천문성: ["month", "time"],
+    },
+  },
+};
 
-test("[정답지1] 네 기둥·십성·지장간·12운성이 앱과 일치한다", () => {
-  const c = buildChart(G1.input);
-  const e = G1.expect;
+// 정답지 2건으로 풀린 것 — 앱은 역마·도화·화개를 **삼합 기준이 아니라 "글자 자체"로** 판정한다.
+//   역마 = 인·신·사·해(사생지) / 도화 = 자·오·묘·유(사왕지) / 화개 = 진·술·축·미(사고지)
+// 두 사주 6/6 전부 일치했다. 정통 삼합 기준(신자진見유 등)과는 결과가 다르므로, 엔진은 둘 다
+// 계산하고 삼합 기준은 samhapBased에 따로 담는다(우리 Threads 글은 지금까지 삼합 기준을 썼다).
+// 협록도 "월지와 시지가 건록을 끼는 경우"로 좁혀서 2건 모두 맞췄다.
+
+function assertPillars(G) {
+  const c = buildChart(G.input);
+  const e = G.expect;
   assert.strictEqual(c.solarDate, e.solarDate);
   assert.strictEqual(c.lunarDate, e.lunarDate);
   for (const key of ["year", "month", "day", "time"]) {
@@ -63,41 +90,66 @@ test("[정답지1] 네 기둥·십성·지장간·12운성이 앱과 일치한�
     assert.strictEqual(p.hiddenStems.map((h) => h.stem).join(""), e.hiddenStems[key], `${key} 지장간`);
     assert.strictEqual(p.twelveStage, e.twelveStage[key], `${key} 12운성`);
   }
+}
+test("[정답지] 네 기둥·십성·지장간·12운성이 앱과 일치한다", () => {
+  assertPillars(G1);
+  assertPillars(G2);
 });
 
-test("[정답지1] 오행%가 앱과 일치한다(여덟 글자 균등 집계)", () => {
+test("[정답지] 오행%가 앱과 일치한다(여덟 글자 균등 집계)", () => {
+  for (const G of [G1, G2]) {
+    assert.deepStrictEqual(analyzeStrength(buildChart(G.input)).elementPercent, G.expect.elementPercent);
+  }
   const s = analyzeStrength(buildChart(G1.input));
-  assert.deepStrictEqual(s.elementPercent, G1.expect.elementPercent);
   // 내가 처음 쓰던 "지장간 배분 + 자리 가중치" 방식으로 돌아가면 이 테스트가 깨진다.
   assert.notDeepStrictEqual(s.elementPercent, s.weightedElementPercent, "두 집계가 같아지면 둘 중 하나가 고장난 것");
 });
 
-test("[정답지1] 신강약이 득령·득지·득시·득세로 앱과 일치한다", () => {
-  const s = analyzeStrength(buildChart(G1.input));
-  for (const k of ["득령", "득지", "득시", "득세"]) {
-    assert.strictEqual(s.criteria[k].ok, G1.expect.criteria[k], `${k} (${s.criteria[k].basis})`);
+test("[정답지] 신강약이 득령·득지·득시·득세로 앱과 일치한다", () => {
+  for (const G of [G1, G2]) {
+    const s = analyzeStrength(buildChart(G.input));
+    for (const k of ["득령", "득지", "득시", "득세"]) {
+      assert.strictEqual(s.criteria[k].ok, G.expect.criteria[k], `${k} (${s.criteria[k].basis})`);
+    }
+    assert.strictEqual(s.verdict, G.expect.verdict, "8단계 판정");
+    assert.strictEqual(s.verdictConfirmed, true, "두 정답지의 패턴은 확인된 것으로 표시돼야 한다");
+    assert.strictEqual(s.yongsinCandidateElements[0], G.expect.yongsinTop, "억부 용신 1순위");
+    assert.strictEqual(s.yongsinAsserted, false, "용신은 후보로만 둔다");
   }
-  assert.strictEqual(s.verdict, G1.expect.verdict);
-  assert.strictEqual(s.verdictConfirmed, true, "이 패턴은 정답지로 확인된 것이어야 한다");
-  assert.strictEqual(s.tendency, "신강", "중화신강은 억부 관점에서 신강 쪽이다");
-  assert.strictEqual(s.yongsinCandidateElements[0], G1.expect.yongsinTop, "억부 용신 1순위");
-  assert.strictEqual(s.yongsinAsserted, false, "용신은 후보로만 둔다");
+  // 중화신강은 억부 관점에서 신강 쪽, 신약은 신약 쪽
+  assert.strictEqual(analyzeStrength(buildChart(G1.input)).tendency, "신강");
+  assert.strictEqual(analyzeStrength(buildChart(G2.input)).tendency, "신약");
 });
 
-test("[정답지1] 확인된 신살이 기둥까지 일치한다", () => {
-  const c = buildChart(G1.input);
+test("[정답지] 신살이 기둥까지 일치한다", () => {
+  for (const G of [G1, G2]) assertSinsal(G);
+});
+function assertSinsal(G) {
+  const c = buildChart(G.input);
   const k = analyzeSinsal(c, analyzeStrength(c));
-  for (const [name, pillars] of Object.entries(G1.expect.sinsalByPillar)) {
+  for (const [name, pillars] of Object.entries(G.expect.sinsalByPillar)) {
     const found = k.all.find((x) => x.name === name);
     assert.ok(found, `${name}을 판정하지 않는다`);
     assert.strictEqual(found.found, true, `${name}이 성립하지 않는다고 나온다`);
     assert.deepStrictEqual(found.at.map((a) => a.pillar).sort(), pillars.slice().sort(), `${name}의 기둥`);
   }
+}
+
+test("역마·도화·화개는 글자 기준(앱 방식)과 삼합 기준을 둘 다 들고 있다", () => {
+  // 두 방식은 결과가 다르다. 앱 방식을 기본(found)으로 쓰되, 우리 Threads 글이 써 온 삼합
+  // 기준도 버리지 않고 samhapBased에 남긴다 - 어느 쪽으로 글을 쓸지는 사용자가 정한다.
+  const c = buildChart(G1.input); // 무진 병진 병오 갑오 (년지 진 = 신자진)
+  const k = analyzeSinsal(c, analyzeStrength(c));
+  const dohwa = k.byId.dohwa;
+  assert.deepStrictEqual(dohwa.targetBranches, ["자", "오", "묘", "유"], "앱 방식은 사왕지 전체");
+  assert.strictEqual(dohwa.found, true, "지지에 오가 있으므로 앱 방식으로는 성립");
+  assert.deepStrictEqual(dohwa.samhapBased.targetBranches, ["유"], "삼합 기준은 신자진→유");
+  assert.strictEqual(dohwa.samhapBased.found, false, "원국에 유가 없으므로 삼합 기준으로는 미성립");
 });
 
-test("미해결 항목은 숨기지 않고 기록해둔다", () => {
-  // 이 테스트는 "모르는 걸 안다고 하지 않는다"는 약속이다. 해결되면 UNRESOLVED에서 지우고
-  // 위 테스트에 단언을 추가한다.
-  assert.ok(UNRESOLVED.length > 0, "미해결이 없어졌다면 이 테스트를 지우고 단언으로 옮길 것");
-  for (const item of UNRESOLVED) assert.match(item, /확인해야 한다/);
+test("천문성은 아직 확정 아님을 표시한다", () => {
+  // 묘·해로만 확인했고 술·미가 들어간 정답지가 없다. 모르는 걸 안다고 하지 않는다.
+  const c = buildChart(G2.input);
+  const k = analyzeSinsal(c, analyzeStrength(c));
+  assert.ok(k.byId.cheonmunseong.unverified, "확인 안 된 판별표는 그렇다고 표시해야 한다");
 });

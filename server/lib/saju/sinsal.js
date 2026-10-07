@@ -71,20 +71,38 @@ function analyzeSinsal(chart, strength = null, opts = {}) {
   const roles = F.getSamhapRoles(yearBranchIndex);
   const out = [];
 
-  // ── 년지(띠) 삼합 기준 신살: 역마·도화·화개 ──
+  // ── 역마·도화·화개 ──
+  // 2026-10-07: 정답지 2건(1988-04-21 남 / 1990-11-19 여)으로 확인한 결과, 사용자가 쓰는 만세력
+  // 앱은 이 셋을 **삼합 기준이 아니라 "글자 자체"로** 판정한다. 6/6 전부 일치했다:
+  //   역마 = 인·신·사·해(사생지) / 도화 = 자·오·묘·유(사왕지) / 화개 = 진·술·축·미(사고지)
+  // 정통 삼합 기준(신자진見유 등)과는 결과가 다르다 - 우리 Threads 글은 지금까지 삼합 기준으로
+  // 써 왔으므로(sajuFacts.js), 둘 다 계산해서 따로 돌려준다. 기본(found)은 **앱 방식**이고,
+  // 삼합 기준 결과는 samhapBased에 담는다. 어느 쪽으로 글을 쓸지는 사용자가 정한다.
+  const LITERAL_SETS = {
+    yeokma: { name: "역마살", branches: ["인", "신", "사", "해"], label: "사생지" },
+    dohwa: { name: "도화살", branches: ["자", "오", "묘", "유"], label: "사왕지" },
+    hwagae: { name: "화개살", branches: ["진", "술", "축", "미"], label: "사고지" },
+  };
   const samhapName = roles.group.name;
-  for (const [id, name, target] of [
-    ["yeokma", "역마살", roles.역마],
-    ["dohwa", "도화살", roles.도화],
-    ["hwagae", "화개살", roles.화개],
-  ]) {
-    out.push(result({
-      id, name,
-      basis: `${chart.yearAnimal}띠(${samhapName}) 기준 ${name} 자리는 ${toKoBranch(target)}(${N.ANIMAL_KO[target]}띠)`,
-      targets: [toKoBranch(target)],
-      hits: findBranches(chart, [target]),
+  for (const [id, def] of Object.entries(LITERAL_SETS)) {
+    const targetIdx = def.branches.map((b) => N.branchIndex(b));
+    const samhapTarget = roles[def.name.replace("살", "")];
+    const entry = result({
+      id, name: def.name,
+      basis: `${def.name}은 ${def.label}(${def.branches.join("·")})가 원국에 있으면 성립`,
+      targets: def.branches,
+      hits: findBranches(chart, targetIdx),
       strength,
-    }));
+    });
+    // 정통 삼합 기준 결과도 같이 담아둔다(우리 Threads 글이 쓰는 방식).
+    const samhapHits = findBranches(chart, [samhapTarget]);
+    entry.samhapBased = {
+      basis: `${chart.yearAnimal}띠(${samhapName}) 기준 ${def.name} 자리는 ${toKoBranch(samhapTarget)}(${N.ANIMAL_KO[samhapTarget]}띠)`,
+      targetBranches: [toKoBranch(samhapTarget)],
+      found: samhapHits.length > 0,
+      at: samhapHits.map((h) => ({ pillar: h.pillar, label: h.label, branch: h.branch })),
+    };
+    out.push(entry);
   }
 
   // ── 일간 기준 신살 ──
@@ -147,31 +165,32 @@ function analyzeSinsal(chart, strength = null, opts = {}) {
     }));
   }
 
-  // ── 협록(夾祿) ── 일간의 건록 자리가 원국의 두 지지 사이에 "끼어" 있으면 성립.
-  // 정답지에서 앱이 생월 진(辰)·생시 오(午)에 협록을 표시했다 - 병 일간의 건록은 사(巳)이고,
-  // 진과 오 사이에 사가 끼기 때문이다.
+  // ── 협록(夾祿) ── 일간의 건록 자리를 **월지와 시지가 앞뒤로 끼고 있을 때** 성립한다.
+  // 2026-10-07: 처음엔 "네 기둥 중 어느 두 지지든 끼면 성립"으로 만들었는데, 정답지1(1988)에서
+  // 앱은 생월·생시에만 표시했다(지지가 진·진·오·오라 내 방식은 네 기둥 전부를 잡았다).
+  // 일지를 사이에 둔 월지·시지가 건록을 끼는 구조로 좁히니 정답지 2건과 모두 맞는다
+  //   1988: 월지 진 - [건록 사] - 시지 오 → 성립, 생월·생시 ✓
+  //   1990: 월지 해 - 시지 해 → 건록 사를 끼지 못함 → 미성립 ✓
   const geonrok = GEONROK_BY_STEM[dayStem];
   const hyeoprokHits = [];
-  if (geonrok !== undefined) {
-    const slots = branchSlots(chart);
-    for (let i = 0; i < slots.length; i++) {
-      for (let j = i + 1; j < slots.length; j++) {
-        const a = slots[i].branchIndex;
-        const b = slots[j].branchIndex;
-        // 두 지지가 건록을 사이에 두고 한 칸씩 떨어져 있어야 한다(…진·[사]·오…).
-        const pair = ((a + 1) % 12 === geonrok && (geonrok + 1) % 12 === b) || ((b + 1) % 12 === geonrok && (geonrok + 1) % 12 === a);
-        if (pair) { hyeoprokHits.push(slots[i]); hyeoprokHits.push(slots[j]); }
+  if (geonrok !== undefined && chart.pillars.time) {
+    const m = chart.pillars.month.branchIndex;
+    const t = chart.pillars.time.branchIndex;
+    const brackets = (a, b) => (a + 1) % 12 === geonrok && (geonrok + 1) % 12 === b;
+    if (brackets(m, t) || brackets(t, m)) {
+      for (const key of ["month", "time"]) {
+        const p = chart.pillars[key];
+        hyeoprokHits.push({ pillar: key, label: p.label, branch: p.branch, meaning: p.meaning, element: p.branchElement });
       }
     }
   }
-  const hyeoprokUnique = hyeoprokHits.filter((h, i) => hyeoprokHits.findIndex((x) => x.pillar === h.pillar) === i);
   out.push(result({
     id: "hyeoprok", name: "협록",
     basis: geonrok === undefined
       ? `일간 ${dayStem}의 건록을 찾을 수 없음`
-      : `일간 ${dayStem}의 건록은 ${toKoBranch(geonrok)} - 원국의 두 지지가 그 앞뒤에서 끼고 있으면 성립`,
+      : `일간 ${dayStem}의 건록은 ${toKoBranch(geonrok)} - 월지와 시지가 그 앞뒤에서 끼고 있으면 성립`,
     targets: geonrok === undefined ? [] : [toKoBranch(geonrok)],
-    hits: hyeoprokUnique,
+    hits: hyeoprokHits,
     strength,
   }));
 
@@ -191,6 +210,30 @@ function analyzeSinsal(chart, strength = null, opts = {}) {
     hits: hyeonchimHits,
     strength,
   }));
+
+  // ── 관귀학관(官貴學館) ── 일간 기준. 정답지 2건으로 확인했다(1988 병→신 미성립 / 1990 무→해 성립).
+  const GWANGWI = { 갑: "사", 을: "사", 병: "신", 정: "신", 무: "해", 기: "해", 경: "인", 신: "인", 임: "신", 계: "신" };
+  const gwTarget = GWANGWI[dayStem];
+  out.push(result({
+    id: "gwangwihakgwan", name: "관귀학관",
+    basis: `일간 ${dayStem} 기준 관귀학관 자리는 ${gwTarget}`,
+    targets: [gwTarget],
+    hits: findBranches(chart, [N.branchIndex(gwTarget)]),
+    strength,
+  }));
+
+  // ── 천문성(天文星) ── 묘·술·해·미. 정답지 2건과 모순은 없지만(1990 해에만 성립, 1988 미성립),
+  // 술·미가 들어간 사주로는 아직 확인하지 못했다 - 확정된 게 아니라고 표시해둔다.
+  const CHEONMUN = ["묘", "술", "해", "미"];
+  const cheonmun = result({
+    id: "cheonmunseong", name: "천문성",
+    basis: `천문성 글자는 ${CHEONMUN.join("·")}`,
+    targets: CHEONMUN,
+    hits: findBranches(chart, CHEONMUN.map((b) => N.branchIndex(b))),
+    strength,
+  });
+  cheonmun.unverified = "묘·해로만 확인했고 술·미가 들어간 정답지가 아직 없다";
+  out.push(cheonmun);
 
   // ── 공망 ── 일주 기준 순(旬)의 빈 자리. 원국에 그 지지가 있으면 그 기둥이 공망이다.
   const emptyIdx = chart.emptyBranches.map((b) => N.branchIndex(b));

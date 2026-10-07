@@ -86,7 +86,11 @@ function judgeFourCriteria(chart) {
 // 주의: 이 8단계 매핑은 **검증된 사례가 아직 하나뿐**이다(득령✗ + 나머지 3개 → 중화신강,
 // 1988-04-21 12:31 남 사례로 확인). 다른 단계는 추가 정답지가 들어오면 다시 맞춰야 한다.
 // 그래서 결과에 confirmed 플래그를 달아서, 검증 안 된 단계임을 숨기지 않는다.
-const CONFIRMED_PATTERNS = new Set(["0111"]); // 득령·득지·득시·득세 순서의 0/1 문자열
+// 정답지로 직접 확인된 패턴만 confirmed로 표시한다(득령·득지·득시·득세 순서의 0/1 문자열).
+//   "0111" → 중화신강 (1988-04-21 12:31 남)
+//   "0000" → 신약     (1990-11-19 21:58 여)
+// 나머지는 두 점 사이를 보간한 것이라 확인된 척하지 않는다.
+const CONFIRMED_PATTERNS = new Set(["0111", "0000"]);
 function scaleFrom(criteria) {
   const g = criteria.득령.ok ? 1 : 0;
   const j = criteria.득지.ok ? 1 : 0;
@@ -100,10 +104,9 @@ function scaleFrom(criteria) {
   else if (g && others === 2) level = "태강";
   else if (g && others === 1) level = "신강";
   else if (g && others === 0) level = "중화신강";
-  else if (!g && others === 3) level = "중화신강"; // ← 정답지로 확인된 케이스
+  else if (!g && others === 3) level = "중화신강"; // ← 정답지1로 확인
   else if (!g && others === 2) level = "중화신약";
-  else if (!g && others === 1) level = "신약";
-  else level = "극약";
+  else level = "신약"; // others 0~1 ← others=0은 정답지2로 확인(앱도 "신약", "극약"이 아니다)
 
   // 억부 용신은 "신강 쪽이냐 신약 쪽이냐"로 갈린다. 8단계는 전부 어느 한쪽에 속한다
   // (중화신강은 신강 쪽, 중화신약은 신약 쪽) - 중립으로 묶으면 용신 후보가 비어버린다.
