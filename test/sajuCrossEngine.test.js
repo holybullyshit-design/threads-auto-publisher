@@ -154,3 +154,22 @@ test("같은 입력은 언제나 같은 결과다 — 보정을 넣어도 결정
   const a = JSON.stringify(buildChart(birth));
   for (let i = 0; i < 20; i++) assert.strictEqual(JSON.stringify(buildChart(birth)), a);
 });
+
+test("한국 표준시 UTC+8:30 구간(1954-03-21~1961-08-10)은 경고를 달고 단정하지 않는다", () => {
+  // 외부 엔진 교차 검증으로 **잡히지 않는** 구멍이다 — manseryeok·lunar-javascript 둘 다 이
+  // 표준시 이력을 모르므로 "외부 엔진과 일치"가 "맞다"는 뜻이 아니다. 정답지도 이 구간이 없다.
+  // 그래서 보정을 추측으로 넣지 않고, 이 구간임을 알리는 경고만 단다.
+  const inside = buildChart({ year: 1957, month: 6, day: 15, hour: 10, minute: 20, gender: "male" });
+  assert.ok(inside.warnings.some((w) => w.includes("UTC+8:30")), "구간 내인데 경고가 없다");
+  // 경계 바로 안/바깥
+  assert.ok(buildChart({ year: 1954, month: 3, day: 21, hour: 10, minute: 0, gender: "male" }).warnings.some((w) => w.includes("UTC+8:30")));
+  assert.ok(!buildChart({ year: 1954, month: 3, day: 20, hour: 10, minute: 0, gender: "male" }).warnings.some((w) => w.includes("UTC+8:30")));
+  assert.ok(!buildChart({ year: 1961, month: 8, day: 10, hour: 10, minute: 0, gender: "male" }).warnings.some((w) => w.includes("UTC+8:30")));
+  // 시간을 모르면 시주를 안 쓰므로 이 경고는 붙지 않는다.
+  assert.ok(!buildChart({ year: 1957, month: 6, day: 15, gender: "male" }).warnings.some((w) => w.includes("UTC+8:30")));
+  // 정답지 2건에는 붙지 않는다(거짓 양성 0).
+  for (const b of [[1988, 4, 21, 12, 31], [1990, 11, 19, 21, 58]]) {
+    assert.ok(!buildChart({ year: b[0], month: b[1], day: b[2], hour: b[3], minute: b[4], gender: "male" }).warnings.length,
+      `${b.join("-")}에 경고가 잘못 붙었다`);
+  }
+});

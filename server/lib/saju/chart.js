@@ -78,6 +78,25 @@ function jieqiBoundaryWarning(solar) {
   return null;
 }
 
+
+// 한국 표준시가 UTC+8:30이던 구간 경고 — 1954-03-21 ~ 1961-08-10 사이에 태어난 사람은
+// 당시 시계가 지금보다 30분 느렸다(동경 127.5° 기준). 이 구간의 출생 시각을 지금 기준으로
+// 그대로 읽으면 시지가 한 칸 밀릴 수 있고, 자시 경계면 일주까지 밀린다.
+//
+// 왜 고치지 않고 경고만 하나(2026-10-07): 보정을 적용하는 유파와 안 하는 유파가 갈리고,
+// **우리 정답지(사용자 만세력 앱)에 이 구간 사주가 한 건도 없다.** 어느 쪽인지 모르는 채
+// 추측으로 30분을 더하면 그게 바로 지금까지 세 번 사고 난 방식이다. 외부 엔진 교차 검증도
+// 여기선 못 쓴다 — manseryeok·lunar-javascript 둘 다 이 이력을 아예 모르기 때문에 "일치"가
+// "맞다"는 뜻이 아니다. 이 구간 정답지가 들어오면 유파를 확정하고 보정을 구현한다.
+const KST_830_FROM = Date.UTC(1954, 2, 21);   // 1954-03-21
+const KST_830_TO = Date.UTC(1961, 7, 10);     // 1961-08-10
+function koreaStandardTimeWarning(solar, timeUnknown) {
+  if (timeUnknown) return null;  // 시주를 안 쓰므로 영향 없음
+  const ms = Date.UTC(solar.getYear(), solar.getMonth() - 1, solar.getDay());
+  if (ms < KST_830_FROM || ms >= KST_830_TO) return null;
+  return "1954-03-21 ~ 1961-08-10 사이 출생입니다. 이 기간 한국 표준시는 UTC+8:30으로 지금보다 30분 느렸습니다. 30분 보정을 적용하는 유파에서는 시지(경계에 걸치면 일주까지)가 달라질 수 있어, 이 구간은 시주를 단독으로 단정하지 않습니다.";
+}
+
 // 간지 한 쌍에서 납음·공망을 읽는다. 값이 없으면 undefined를 흘리지 않고 throw한다
 // (undefined가 사실 블록까지 새어나가 "이번 달 오행: undefined"로 발행된 사고가 있었다).
 function nayinOf(hanja) {
@@ -224,6 +243,10 @@ function buildChart(input = {}) {
   }
   {
     const w = jieqiBoundaryWarning(solar);
+    if (w) chart.warnings.push(w);
+  }
+  {
+    const w = koreaStandardTimeWarning(solar, timeUnknown);
     if (w) chart.warnings.push(w);
   }
   // 라이브러리 핸들을 그대로 들고 있으면 대운 계산(luck.js)에서 재사용할 수 있다.
