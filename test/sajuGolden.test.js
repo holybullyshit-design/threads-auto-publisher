@@ -230,3 +230,33 @@ test("신강약 8단계 중 네 단계는 낼 수 없다고 밝힌다", () => {
     assert.ok(!["극약", "태약", "태강", "극왕"].includes(v), `도달 불가 단계가 나왔다: ${v}`);
   }
 });
+
+test("12신살 — 년지 기준·일지 기준 두 표와 앱 조합", () => {
+  // 확정 경위(2026-10-07): 정답지3 앱 값은 년(술)=월살·월(인)=지살·일(자)=재살·시(신)=역마살로,
+  // 년지(인오술) 기준으로는 3개만 맞고 년주가 어긋났다. 외부 만세력(SAZU)이 **두 기준을 모두**
+  // 출력하는 걸 보고 확정했다 — 앱은 월·일·시를 년지 기준으로, 년주만 일지 기준으로 쓴다.
+  // 두 표 각각은 외부 만세력과 글자 단위로 전부 일치한다(8/8).
+  const { analyzeTwelveSinsal } = require("../server/lib/saju/sinsal");
+  const t = analyzeTwelveSinsal(buildChart(G3.input));
+  assert.deepStrictEqual(t.byYearBranch, { year: "화개", month: "지살", day: "재살", time: "역마" });
+  assert.deepStrictEqual(t.byDayBranch, { year: "월살", month: "역마", day: "장성", time: "지살" });
+  assert.deepStrictEqual(t.appView, { year: "월살", month: "지살", day: "재살", time: "역마" });
+});
+
+test("12신살 표 자체의 불변식 — 기준마다 열둘이 한 번씩", () => {
+  const { twelveSinsalOf } = require("../server/lib/saju/sinsal");
+  const BR = ["자", "축", "인", "묘", "진", "사", "오", "미", "신", "유", "술", "해"];
+  const ORDER = ["겁살", "재살", "천살", "지살", "년살", "월살", "망신", "장성", "반안", "역마", "육해", "화개"];
+  for (const anchor of BR) {
+    const seen = BR.map((b) => twelveSinsalOf(anchor, b));
+    assert.strictEqual(new Set(seen).size, 12, `${anchor} 기준에서 12신살이 중복된다`);
+    for (const v of seen) assert.ok(ORDER.includes(v), `${anchor}/${v}`);
+    // 같은 삼합 그룹이면 표가 같아야 한다(기준은 삼합국이지 글자 하나가 아니다).
+  }
+  for (const group of [["신", "자", "진"], ["인", "오", "술"], ["사", "유", "축"], ["해", "묘", "미"]]) {
+    const base = BR.map((b) => twelveSinsalOf(group[0], b)).join(",");
+    for (const a of group.slice(1)) {
+      assert.strictEqual(BR.map((b) => twelveSinsalOf(a, b)).join(","), base, `${group.join("")} 안에서 표가 갈린다`);
+    }
+  }
+});

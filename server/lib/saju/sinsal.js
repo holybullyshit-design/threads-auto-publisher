@@ -65,6 +65,61 @@ function result({ id, name, basis, targets, hits, strength, note }) {
  * @param {object} opts { refDate } 삼재 판정 기준일(없으면 삼재는 계산하지 않는다 - 현재시각에
  *   의존하면 결정론이 깨지므로 반드시 인자로 받는다)
  */
+// ── 12신살 ────────────────────────────────────────────────────────────────
+// 삼합국의 절(絶) 자리에서 겁살이 시작해 지지 순서대로 열둘이 돈다.
+//   신자진(수국) 겁살=사 / 인오술(화국) 겁살=해 / 사유축(금국) 겁살=인 / 해묘미(목국) 겁살=신
+//
+// 검증(2026-10-07): 정답지3(1958-02-28 15:44 남, 무술 갑인 병자 병신)의 앱 값과
+// 외부 만세력(SAZU)이 **두 기준을 둘 다 출력**하는 걸로 교차 확인했다.
+//   년지(술=인오술) 기준 → 시(신)=역마 · 일(자)=재살 · 월(인)=지살 · 년(술)=화개
+//   일지(자=신자진) 기준 → 시(신)=지살 · 일(자)=장성 · 월(인)=역마 · 년(술)=월살
+// 두 표 모두 외부 만세력과 글자 단위로 일치했다.
+//
+// **사용자 앱은 월·일·시를 년지 기준으로, 년주만 일지 기준으로 표시한다**(4/4 일치).
+// 년주를 자기 자신(년지)으로 판정하면 뜻이 없으니 일지로 교차해 보는 방식이다.
+// 그래서 엔진은 두 기준을 다 계산해 담고(byYearBranch / byDayBranch), 앱과 같은 조합을
+// appView로 따로 만든다. 섞어 쓰지 말고 용도에 맞는 걸 골라 쓸 것.
+const TWELVE_SINSAL_ORDER = ["겁살", "재살", "천살", "지살", "년살", "월살", "망신", "장성", "반안", "역마", "육해", "화개"];
+// 삼합 그룹별 겁살 시작 지지
+const GEOPSAL_START = {
+  신: "사", 자: "사", 진: "사",   // 수국
+  인: "해", 오: "해", 술: "해",   // 화국
+  사: "인", 유: "인", 축: "인",   // 금국
+  해: "신", 묘: "신", 미: "신",   // 목국
+};
+
+function twelveSinsalOf(anchorBranch, targetBranch) {
+  const start = N.BRANCH_KO.indexOf(GEOPSAL_START[anchorBranch]);
+  const bi = N.BRANCH_KO.indexOf(targetBranch);
+  if (start === -1 || bi === -1) throw new Error(`12신살 도출 실패: 기준 ${anchorBranch}, 대상 ${targetBranch}`);
+  return TWELVE_SINSAL_ORDER[(bi - start + 12) % 12];
+}
+
+function twelveSinsalTable(chart, anchorBranch) {
+  const out = {};
+  for (const key of chart.pillarOrder) {
+    out[key] = twelveSinsalOf(anchorBranch, chart.pillars[key].branch);
+  }
+  return out;
+}
+
+function analyzeTwelveSinsal(chart) {
+  const byYearBranch = twelveSinsalTable(chart, chart.pillars.year.branch);
+  const byDayBranch = twelveSinsalTable(chart, chart.pillars.day.branch);
+  // 앱 화면과 같은 조합: 년주는 일지 기준, 나머지는 년지 기준.
+  const appView = { ...byYearBranch, year: byDayBranch.year };
+  return {
+    order: TWELVE_SINSAL_ORDER,
+    yearAnchor: chart.pillars.year.branch,
+    dayAnchor: chart.pillars.day.branch,
+    byYearBranch,
+    byDayBranch,
+    appView,
+    basis: "삼합국의 절(絶) 자리에서 겁살이 시작해 지지 순서대로 열둘이 돈다",
+    note: "앱 화면은 월·일·시를 년지 기준으로, 년주만 일지 기준으로 표시한다(appView). 두 기준을 섞어 한 줄에 쓰지 말 것.",
+  };
+}
+
 function analyzeSinsal(chart, strength = null, opts = {}) {
   const dayStem = chart.dayStem;
   const yearBranchIndex = chart.pillars.year.branchIndex;
@@ -288,4 +343,4 @@ function analyzeSinsal(chart, strength = null, opts = {}) {
   };
 }
 
-module.exports = { analyzeSinsal };
+module.exports = { analyzeSinsal, analyzeTwelveSinsal, twelveSinsalOf };
