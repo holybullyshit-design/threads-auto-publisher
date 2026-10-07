@@ -29422,11 +29422,14 @@
     "scheduledAt": "2026-10-07T04:54:00.000Z",
     "createdAt": "2026-09-27T10:46:34.810Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18112515965519408",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "samjaeFixed": true
+    "samjaeFixed": true,
+    "chainPublishedIds": [
+      "18112515965519408"
+    ]
   },
   {
     "id": "7d8bcab4-9383-468f-bb35-254b6990314e",
