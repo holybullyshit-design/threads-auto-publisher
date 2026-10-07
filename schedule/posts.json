@@ -30453,10 +30453,13 @@
     "scheduledAt": "2026-10-07T23:42:00.000Z",
     "createdAt": "2026-09-27T11:12:47.417Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18110178014599410",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18110178014599410"
+    ]
   },
   {
     "id": "32b5125e-faea-4c75-b195-9d9d99358571",
