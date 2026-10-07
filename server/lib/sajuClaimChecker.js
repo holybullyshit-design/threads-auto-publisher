@@ -271,7 +271,40 @@ const CHECKS2 = [
     return issues.length ? `십성 오류: ${[...new Set(issues)].join(", ")}` : null;
   },
 
-  // 11) 삼재 연도/시기
+  // 11) 천간합·천간충 — 사주 엔진(server/lib/saju/relations.js)의 정통 표와 대조한다.
+  function stemCombos(text) {
+    const issues = [];
+    const R = require("./saju/relations");
+    for (const m of text.matchAll(/([갑을병정무기경신임계])\s*([갑을병정무기경신임계])\s*합\s*([목화토금수])?/g)) {
+      const [a, b, el] = [m[1], m[2], m[3]];
+      const def = R.STEM_HAP.find((x) => (x.pair[0] === a && x.pair[1] === b) || (x.pair[0] === b && x.pair[1] === a));
+      if (!def) { issues.push(`${a}${b}합(정통 천간합은 갑기·을경·병신·정임·무계)`); continue; }
+      if (el && def.result !== el) issues.push(`${a}${b}합${el}(실제 ${a}${b}합${def.result})`);
+    }
+    for (const m of text.matchAll(/([갑을병정무기경신임계])\s*([갑을병정무기경신임계])\s*충/g)) {
+      const [a, b] = [m[1], m[2]];
+      const ok = R.STEM_CHUNG.some((p) => (p[0] === a && p[1] === b) || (p[0] === b && p[1] === a));
+      if (!ok) issues.push(`${a}${b}충(정통 천간충은 갑경·을신·병임·정계)`);
+    }
+    return issues.length ? `천간합·충 오류: ${issues.join(", ")}` : null;
+  },
+
+  // 12) 지장간 — "<지지>의 지장간은 ○○○" 처럼 단정한 경우
+  function hiddenStems(text) {
+    const E = require("./saju/elements");
+    const issues = [];
+    for (const m of text.matchAll(/([자축인묘진사오미신유술해])\s*(?:\([^)]*\))?\s*(?:의)?\s*지장간\s*(?:은|는|이|가)?\s*[:=]?\s*([가-힣]{2,3})/g)) {
+      const want = E.HIDDEN_STEMS[m[1]];
+      if (!want) continue;
+      const got = m[2];
+      // 글이 적은 글자들이 전부 실제 지장간에 들어 있어야 한다(순서·개수는 느슨하게 본다).
+      const bad = [...got].filter((ch) => "갑을병정무기경신임계".includes(ch) && !want.includes(ch));
+      if (bad.length) issues.push(`${m[1]}의 지장간에 ${bad.join("")}(실제 ${want.join("")})`);
+    }
+    return issues.length ? `지장간 오류: ${issues.join(", ")}` : null;
+  },
+
+  // 13) 삼재 연도/시기
   function samjae(text, { dateKey } = {}) {
     if (!text.includes("삼재")) return null;
     const g = detectSamhapGroup(text) || SAMHAP_BY_ANIMALS.find((x) => text.includes(x.key));
