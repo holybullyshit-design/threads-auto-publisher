@@ -129,6 +129,10 @@ function analyzeStrength(chart) {
 
   const criteria = judgeFourCriteria(chart);
   const scale = scaleFrom(criteria);
+  // 시간을 모르면 득시를 판정할 수 없어 0으로 처리된다 → 판정이 신약 쪽으로 기운다.
+  // 이걸 "신약"이라고 단정하면 틀린 말이 되므로, 확정이 아님을 명시한다.
+  const timeUnknown = chart.timeUnknown === true;
+  if (timeUnknown) scale.confirmed = false;
 
   // 억부 용신 후보: 신강 쪽이면 빼주는 오행, 신약 쪽이면 돕는 오행.
   // **단정하지 않는다**(config.ASSERT_YONGSIN=false) - 용신 선정은 학파 차이가 가장 크다.
@@ -154,7 +158,10 @@ function analyzeStrength(chart) {
     verdict: scale.level, // 8단계: 극약/태약/신약/중화신약/중화신강/신강/태강/극왕
     verdictCoarse: scale.coarse, // 3분류: 신강/중화/신약
     tendency: scale.tendency, // 억부 관점 기울기: 신강 쪽 / 신약 쪽
-    verdictConfirmed: scale.confirmed, // 정답지로 검증된 패턴인지
+    verdictConfirmed: scale.confirmed, // 정답지로 검증된 패턴인지(시간 모름이면 항상 false)
+    verdictCaveat: timeUnknown
+      ? "태어난 시간을 몰라 득시를 판정하지 못했습니다. 시주가 일간을 돕는 자리였다면 한 단계 위(신강 쪽)로 갈 수 있어, 이 판정은 확정이 아닙니다."
+      : null,
     yongsinCandidateElements,
     yongsinAsserted: CONFIG.ASSERT_YONGSIN,
     basis: `일간 ${chart.dayStem}(${de}) / 득령 ${criteria.득령.ok ? "○" : "✗"} 득지 ${criteria.득지.ok ? "○" : "✗"} 득시 ${criteria.득시.ok === null ? "-" : criteria.득시.ok ? "○" : "✗"} 득세 ${criteria.득세.ok ? "○" : "✗"} → ${scale.level}`,
