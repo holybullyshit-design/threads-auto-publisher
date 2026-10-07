@@ -31008,10 +31008,13 @@
     "scheduledAt": "2026-10-07T09:42:00.000Z",
     "createdAt": "2026-09-27T11:28:43.027Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17901391281371500",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17901391281371500"
+    ]
   },
   {
     "id": "9dbc57ff-0aa8-41ad-9cd7-7928c68e8d0f",
