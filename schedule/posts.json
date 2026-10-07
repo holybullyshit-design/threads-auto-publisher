@@ -25851,7 +25851,7 @@
     "text": "지금 사인할 계약 한 번 미룰 계약 압박에서 갈립니다\n\n명리 근거: 좋은 합은 조건을 구체화하고 나쁜 충은 확인할 시간을 빼앗는 방식으로 드러납니다.\n검토 후 진행: 용띠 · 뱀띠 · 소띠\n일단 보류: 토끼띠 · 쥐띠 · 개띠\n\n좋은 계약의 마지막 기준\n1. 질문에 서면 답변을 주는가\n2. 취소 조건을 먼저 보여주는가\n3. 비교할 시간을 허락하는가\n\n지금 필요한 답을 ‘진행’ 또는 ‘보류’로 선택해보세요\n※ 띠 운세는 전체 사주 중 한 축을 보는 콘텐츠입니다.\n\n#팔자명가 #계약운 #사기예방 #문서운",
     "videoUrl": "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@c23f2066e217b045b2d7e741c9808a1107a8a626/images/a726a6d4-3224-45c7-87fd-f2e5c071661a.mp4",
     "videoSha256": "39d878de355883b4bd70713c25e07838fd7b92794ef2e21b673261ae6c5580f7",
-    "status": "scheduled",
+    "status": "publishing",
     "scheduledAt": "2026-10-07T13:30:00.000Z",
     "expectedLocalDate": "2026-10-07",
     "exactTimeKst": "22:30",
@@ -25891,7 +25891,8 @@
     "publishedId": null,
     "error": null,
     "retryCount": 0,
-    "contentHash": "bc0eaf377e406db42aad201bbdb0cf56ee4d4038f11c3247f5996237ce2a4fc0"
+    "contentHash": "bc0eaf377e406db42aad201bbdb0cf56ee4d4038f11c3247f5996237ce2a4fc0",
+    "publishAttemptedAt": "2026-10-07T13:31:20.241Z"
   },
   {
     "id": "6781ae05-653a-42ac-9eff-c5df1a7efebd",
