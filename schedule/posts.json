@@ -31616,10 +31616,13 @@
     "scheduledAt": "2026-10-07T05:39:00.000Z",
     "createdAt": "2026-09-27T11:45:08.039Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17937280686385764",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17937280686385764"
+    ]
   },
   {
     "id": "14e49d44-4186-44c7-9404-9d1405dc4f07",
