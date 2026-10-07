@@ -28079,10 +28079,13 @@
     "scheduledAt": "2026-10-07T22:51:00.000Z",
     "createdAt": "2026-09-27T10:01:39.503Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18173227543459816",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18173227543459816"
+    ]
   },
   {
     "id": "239bdfad-f1e7-4b3f-b6c1-e16ffb172019",
