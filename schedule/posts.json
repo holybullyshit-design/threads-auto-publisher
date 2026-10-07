@@ -31566,10 +31566,13 @@
     "scheduledAt": "2026-10-07T03:05:00.000Z",
     "createdAt": "2026-09-27T11:44:33.288Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18628442218046050",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18628442218046050"
+    ]
   },
   {
     "id": "892f6808-86fc-40d7-9a09-46fda62ecd41",
