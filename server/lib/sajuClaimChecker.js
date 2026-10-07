@@ -80,33 +80,42 @@ const CHECKS = [
   // 1) 띠 ↔ 출생연도: "호랑이띠(1998·1986·1974)" / "호랑이(1998·1986)" / "1998년생 호랑이"
   function birthYears(text) {
     const issues = [];
-    for (const m of text.matchAll(/([가-힣]{1,3})띠?\s*\(\s*((?:19|20)\d{2}(?:\s*[·,、]\s*(?:19|20)\d{2})*)\s*\)/g)) {
+    // 2026-10-07 돌연변이 테스트로 드러난 버그: 예전 정규식이 `([가-힣]{1,3})띠?\s*\(` 였는데
+    // `[가-힣]{1,3}`가 욕심껏 먹어서 "양띠(" 에서 그룹1이 **"양띠"** 가 돼버렸다(띠도 한글이다).
+    // 그래서 3글자 띠(호랑이·원숭이)만 걸리고 1~2글자 띠(쥐·소·용·말·양·개·뱀·닭·토끼)는
+    // 전부 빠져나갔다. 줄 단위 검사가 덮어주고 있었지만, **한 줄에 띠가 둘이면** 그것도
+    // 건너뛰므로("양띠(…)랑 쥐띠(…)는") 완전히 무방비였다.
+    // → 띠 이름을 명시적으로 나열해서 경계를 못 박는다.
+    const ANIMAL_ALT = ANIMALS.join("|");
+
+    // ① "호랑이띠(1998·1986·1974)" / "양띠(1992·2003)" - 각 띠가 자기 괄호를 갖는 형태
+    const parenRe = new RegExp(`(${ANIMAL_ALT})띠?\\s*\\(\\s*((?:19|20)\\d{2}(?:\\s*[·,、]\\s*(?:19|20)\\d{2})*)\\s*\\)`, "g");
+    for (const m of text.matchAll(parenRe)) {
       const idx = ANIMALS.indexOf(m[1]);
-      if (idx === -1) continue;
       for (const y of m[2].split(/[·,、]/).map((x) => Number(x.trim()))) {
         if (branchOfYear(y) !== idx) issues.push(`${m[1]}띠에 ${y}년(실제 ${ANIMALS[branchOfYear(y)]}띠)`);
       }
     }
-    // "돼지띠는 2007·1995·1983년생" 형태 - **같은 줄 안에서** 띠가 연도보다 앞에 올 때만 본다.
-    // (줄을 넘어 매칭하면 "…1983년생\n토끼띠는…"에서 1983을 토끼띠로 오인한다 - 실측 오탐 원인)
+
+    // ② "돼지띠는 2007·1995·1983년생" - 괄호 없이 쓰는 형태. 같은 줄에 띠가 하나일 때만 본다
+    //    (여러 띠가 섞인 줄은 어느 띠의 연도인지 단정할 수 없다).
     for (const line of text.split(/\n/)) {
-      const am = line.match(/([가-힣]{1,3})띠/);
-      if (!am) continue;
-      const idx = ANIMALS.indexOf(am[1]);
-      if (idx === -1) continue;
-      // 그 줄에 다른 띠가 또 있으면 어느 띠의 연도인지 단정할 수 없다 - 건너뛴다.
-      if ([...line.matchAll(/([가-힣]{1,3})띠/g)].filter((x) => ANIMALS.includes(x[1])).length > 1) continue;
+      if (parenRe.test(line)) { parenRe.lastIndex = 0; continue; } // ①에서 이미 처리
+      parenRe.lastIndex = 0;
+      const animalsOnLine = [...line.matchAll(new RegExp(`(${ANIMAL_ALT})띠`, "g"))].map((x) => x[1]);
+      if (animalsOnLine.length !== 1) continue;
+      const idx = ANIMALS.indexOf(animalsOnLine[0]);
       for (const ym of line.matchAll(/((?:19|20)\d{2})\s*년?\s*생/g)) {
         const y = Number(ym[1]);
-        if (branchOfYear(y) !== idx) issues.push(`${y}년생을 ${am[1]}띠로(실제 ${ANIMALS[branchOfYear(y)]}띠)`);
+        if (branchOfYear(y) !== idx) issues.push(`${y}년생을 ${animalsOnLine[0]}띠로(실제 ${ANIMALS[branchOfYear(y)]}띠)`);
       }
       for (const ym of line.matchAll(/((?:19|20)\d{2})\s*[·,、]\s*((?:19|20)\d{2})/g)) {
         for (const y of [Number(ym[1]), Number(ym[2])]) {
-          if (branchOfYear(y) !== idx) issues.push(`${y}년을 ${am[1]}띠로(실제 ${ANIMALS[branchOfYear(y)]}띠)`);
+          if (branchOfYear(y) !== idx) issues.push(`${y}년을 ${animalsOnLine[0]}띠로(실제 ${ANIMALS[branchOfYear(y)]}띠)`);
         }
       }
     }
-    return issues.length ? `띠-출생연도 불일치: ${issues.join(", ")}` : null;
+    return issues.length ? `띠-출생연도 불일치: ${[...new Set(issues)].join(", ")}` : null;
   },
 
   // 2) 지지 ↔ 띠 병기: "묘(토끼띠)", "신(원숭이띠 글자)"
@@ -156,6 +165,25 @@ const CHECKS = [
       const isBanghapPrefix = BANGHAP_SETS.some((s) => s[0] === a && s[1] === b);
       if (isSamhapPrefix || isBanghapPrefix) continue; // "인오술 삼합" / "인묘진 방합"의 앞 두 글자
       if (YUKHAP[a] !== b) issues.push(`${a}${b}합(${a}의 육합은 ${YUKHAP[a]})`);
+    }
+    // 2026-10-07 돌연변이 테스트에서 드러난 구멍: 글은 삼합/방합을 "인오술", "신자진(申子辰)"처럼
+    // **단어 없이 세 글자로만** 쓰는 경우가 많아서, 뒤에 "삼합"이 붙은 경우만 보던 규칙이 한 글자
+    // 틀린 변형을 전혀 못 잡았다(22건 중 0건 탐지).
+    // 그렇다고 "지지 3글자 연속"을 전부 검사하면 "친구가 인사해도", "자기도 축축해져요",
+    // "유유자형", "축오해(害)" 같은 정상 텍스트가 걸린다(실측 9건). 그래서 **정통 조합과 자리별로
+    // 정확히 2글자가 일치하는 것**만 잡는다 - 그게 "한 글자 틀린 변형"의 signature다.
+    // (실측: 오탐 후보 9건은 전부 1글자 이하 일치라 걸리지 않고, 한 글자 손상은 전부 걸린다)
+    const GROUPS = [...SAMHAP_SETS.map((x) => ({ chars: x, kind: "삼합" })), ...BANGHAP_SETS.map((x) => ({ chars: x, kind: "방합" }))];
+    for (const m of text.matchAll(/[자축인묘진사오미신유술해]{3}/g)) {
+      const got = [...m[0]];
+      if (GROUPS.some((g) => g.chars.join("") === m[0])) continue; // 정상 조합
+      for (const g of GROUPS) {
+        const same = got.filter((ch, i) => ch === g.chars[i]).length;
+        if (same === 2) {
+          issues.push(`${m[0]}(정통 ${g.kind}은 ${g.chars.join("")})`);
+          break;
+        }
+      }
     }
     for (const m of text.matchAll(/([자축인묘진사오미신유술해])([자축인묘진사오미신유술해])([자축인묘진사오미신유술해])\s*삼합/g)) {
       const got = [m[1], m[2], m[3]];
@@ -316,12 +344,34 @@ const CHECKS2 = [
     if (bang && !info.samjaeBanghap.name.startsWith(bang)) {
       issues.push(`${g.key} 삼재를 ${bang}으로(실제 ${info.samjaeBanghap.name.split("(")[0]})`);
     }
-    // 진행 중이 아닌데 임박하다고 썼으면
+    // 아직 안 온 띠에게 임박하다고 썼으면
     if (info.status !== "current") {
       const w = ["올해부터", "내년부터", "내년 삼재", "지금부터 3년", "앞으로 3년", "올해가 삼재", "내년이 삼재"].find((x) => text.includes(x));
       if (w) issues.push(`"${w}"로 썼지만 ${g.key} 삼재는 ${info.startYear}~${info.endYear}년(지금 ${info.refYear}년, 직전은 ${info.prevEndYear}년에 끝남)`);
+    } else {
+      // 2026-10-07 돌연변이 테스트에서 마지막까지 안 걸리던 것: **이미 진행 중인 띠**에게
+      // "내년부터 삼재"라고 써도 통과했다(진행 중이 아닐 때만 검사했기 때문).
+      // 진행 중이면 시작 시점이 이미 지났으므로 "내년부터"는 언제나 틀리고,
+      // "올해부터"는 첫해(들삼재)일 때만 맞다.
+      if (/내년부터\s*삼재|삼재[^\n]{0,6}내년부터|내년이\s*삼재|내년\s*삼재/.test(text)) {
+        issues.push(`"내년부터"로 썼지만 ${g.key} 삼재는 ${info.startYear}년에 이미 시작해 지금 ${info.nthYear}년째다(${info.endYear}년에 끝남)`);
+      }
+      if (info.nthYear !== 1 && /올해부터\s*삼재|삼재[^\n]{0,6}올해부터/.test(text)) {
+        issues.push(`"올해부터"로 썼지만 ${g.key} 삼재는 ${info.startYear}년 시작이라 지금 ${info.nthYear}년째다`);
+      }
     }
-    // 연도를 적었으면 구간과 맞는지
+    // 연도를 적었으면 **어떤 연도로 적었는지**까지 본다. 2026-10-07 돌연변이 테스트에서,
+    // "직전 삼재는 2021년에 끝났어요"를 "2033년"으로 바꿔도 안 걸렸다 - 2033이 다음 삼재 구간
+    // 안이라 "구간 중 하나면 통과"로 빠져나간 것이다. 문구별로 맞는 값과 대조한다.
+    for (const m of text.matchAll(/직전\s*삼재[^\n]{0,12}?((?:20)\d{2})\s*년/g)) {
+      const y = Number(m[1]);
+      if (info.prevEndYear && y !== info.prevEndYear) issues.push(`직전 삼재 종료를 ${y}년으로(실제 ${info.prevEndYear}년)`);
+    }
+    for (const m of text.matchAll(/(?:이번|다음)\s*삼재[^\n]{0,12}?((?:20)\d{2})\s*년/g)) {
+      const y = Number(m[1]);
+      if (y !== info.startYear) issues.push(`이번 삼재 시작을 ${y}년으로(실제 ${info.startYear}년)`);
+    }
+    // 그 외 삼재 문장 안의 연도는 두 구간 중 하나에는 들어가야 한다.
     for (const m of text.matchAll(/((?:20)\d{2})\s*년/g)) {
       const y = Number(m[1]);
       const sent = text.split(/[.\n]/).find((s) => s.includes(m[0]) && s.includes("삼재"));
