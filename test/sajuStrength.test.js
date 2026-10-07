@@ -55,11 +55,21 @@ test("득세 판정에서 일간 한 글자를 뺀다(안 빼면 늘 유리해�
   assert.strictEqual(Number(m[2]), 7, "여덟 글자에서 일간을 뺀 7이어야 한다");
 });
 
-test("신강약은 득령·득지·득시·득세로 8단계가 매겨진다", () => {
+test("신강약 — 확인된 패턴에만 단계 이름을 붙이고 기울기는 항상 낸다", () => {
+  // 2026-10-07 변경: 단계 이름을 전부 내던 걸 그만뒀다. 앱 화면이 밝힌 분포(중화신약 10.5%)와
+  // 네 기준의 실제 분포(1득 34.8%)가 3배 넘게 어긋나 **네 기준만으로는 단계가 정해지지 않는다**는
+  // 게 확인됐기 때문이다. 확인 안 된 패턴은 verdict가 null이고 verdictNote가 이유를 설명한다.
+  // 억부용신이 갈리는 tendency는 정답지 3건 모두 맞으므로 항상 낸다.
   const levels = ["극약", "태약", "신약", "중화신약", "중화신강", "신강", "태강", "극왕"];
   for (const c of CASES) {
     const s = analyzeStrength(buildChart(c));
-    assert.ok(levels.includes(s.verdict), `알 수 없는 단계: ${s.verdict}`);
+    if (s.verdict === null) {
+      assert.ok(s.verdictNote && s.verdictNote.length > 20, "이름을 안 낼 때는 이유를 줘야 한다");
+      assert.strictEqual(s.verdictConfirmed, false);
+    } else {
+      assert.ok(levels.includes(s.verdict), `알 수 없는 단계: ${s.verdict}`);
+      assert.strictEqual(s.verdictConfirmed, true, "이름이 나왔다면 정답지로 확인된 패턴이어야 한다");
+    }
     assert.ok(["신강", "신약"].includes(s.tendency), "기울기는 신강 쪽/신약 쪽 둘 중 하나여야 한다");
     // 네 기준이 모두 판정돼 있어야 한다(시간을 아는 사주이므로 득시도 true/false).
     for (const k of ["득령", "득지", "득시", "득세"]) {
@@ -71,9 +81,9 @@ test("신강약은 득령·득지·득시·득세로 8단계가 매겨진다", (
     const monthGroup = require("../server/lib/saju/elements").elementGroupFor(chart.dayStemElement, chart.pillars.month.branchElement);
     assert.strictEqual(s.criteria.득령.ok, ["비겁", "인성"].includes(monthGroup), `득령 판정이 월지 묶음(${monthGroup})과 어긋난다`);
   }
-  // 표본에서 적어도 두 단계는 나와야 한다(전부 같으면 판정이 고장난 것).
-  const seen = new Set(CASES.map((c) => analyzeStrength(buildChart(c)).verdict));
-  assert.ok(seen.size >= 2, `단계가 한 종류뿐이다: ${[...seen].join(",")}`);
+  // 기울기는 표본에서 양쪽이 다 나와야 한다(전부 같으면 판정이 고장난 것).
+  const seen = new Set(CASES.map((c) => analyzeStrength(buildChart(c)).tendency));
+  assert.ok(seen.size >= 2, `기울기가 한 종류뿐이다: ${[...seen].join(",")}`);
 });
 
 test("검증 안 된 8단계 패턴은 그렇다고 표시한다", () => {

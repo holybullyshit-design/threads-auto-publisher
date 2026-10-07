@@ -56,8 +56,10 @@ function printOne(a, title) {
 
   console.log(`\n【오행】 ` + Object.entries(st.elementPercent).map(([e, p]) => `${e} ${p}%`).join(" · "));
   if (st.missingElements.length) console.log(`  없는 오행: ${st.missingElements.join("·")}`);
-  console.log(`\n【신강약】 ${st.verdict}${st.verdictConfirmed ? "" : " (※ 확정 아님)"}`);
+  // verdict는 정답지로 확인된 패턴에만 들어온다. 없으면 이름을 지어내지 말고 이유를 보여준다.
+  console.log(`\n【신강약】 ${st.verdict ? st.verdict : `단계 이름 없음 — ${st.tendency} 쪽`}`);
   console.log(`  ${st.basis}`);
+  if (!st.verdict && st.verdictNote) console.log(`  ※ ${st.verdictNote}`);
   if (st.verdictCaveat) console.log(`  ※ ${st.verdictCaveat}`);
   console.log(`  용신 후보(단정 아님): ${st.yongsinCandidateElements.join(" > ") || "-"}`);
 

@@ -102,9 +102,24 @@ function judgeFourCriteria(chart) {
 // → 그래서 **극약·태약·태강·극왕은 이 매핑에서 아예 나오지 않는다.** 그 네 단계가 필요하면
 //   정답지를 더 받아 점수 산식을 복원해야 한다. 지금 없는 걸 있는 척 만들지 않는다.
 const CONFIRMED_PATTERNS = new Set(["0111", "1000", "0000"]);
-// 개수 → 단계. 2득만 정답지가 없어 확정되지 않은 경계다(1득=중화신약, 3득=중화신강 사이).
-const LEVEL_BY_COUNT = ["신약", "중화신약", "중화신약", "중화신강", "신강"];
-const UNCONFIRMED_COUNT = new Set([2, 4]);
+
+// **개수 모델은 정답지 3건에 맞지만 "규칙"은 아니다 — 인구 분포가 반증한다(2026-10-07).**
+// 앱 화면은 중화신약이 "10.5%의 사람"이라고 적어 준다. 그런데 우리 엔진으로 1960~2010년생
+// 36,720건을 돌려보면 **1득이 34.8%**다. 3배 넘게 벌어진다. 득 개수는 0~4로 다섯 값뿐인데
+// 앱 척도는 여덟 단계이기도 하다. 즉 **앱은 네 기준이 아니라 더 세밀한 점수로 판정하고,
+// 네 기준은 화면에 따로 보여줄 뿐이다.**
+//   (참고 실측 - 우리 득 개수 분포: 0득 22.0% / 1득 34.8% / 2득 21.0% / 3득 16.1% / 4득 6.1%
+//    앱 분포: 극약 5.2 / 태약 16.7 / 신약 20.2 / 중화신약 10.8 / 중화신강 26.4 / 신강 13.6 /
+//    태강 5.8 / 극왕 1.4 — 어떤 식으로 묶어도 득 개수와 맞지 않는다.)
+//
+// 그래서 **확인된 세 패턴에만 단계 이름을 붙이고, 나머지는 이름을 아예 내지 않는다.**
+// 추정값을 이름으로 내보내면 그게 그대로 상담 답변에 "당신은 신강입니다"로 나간다 - 지금까지
+// 사고는 전부 그런 식이었다. 모르면 모른다고 하고, 대신 **확인된 사실**(네 기준·오행%·기울기)을
+// 준다. 기울기(신강 쪽/신약 쪽)는 억부용신이 갈리는 지점인데 정답지 3건에서 3/3 맞았다.
+const LEVEL_BY_PATTERN = { "0111": "중화신강", "1000": "중화신약", "0000": "신약" };
+// 기울기는 득 개수로 가른다(3건 전부 일치). 2득은 경계라 정답지가 들어올 때까지 신약 쪽으로 둔다
+// - 억부용신은 둘 중 하나를 골라야 하므로 비워 둘 수 없고, 약한 쪽으로 보는 게 보수적이다.
+const TENDENCY_BY_COUNT = ["신약", "신약", "신약", "신강", "신강"];
 
 function scaleFrom(criteria) {
   const g = criteria.득령.ok ? 1 : 0;
@@ -113,24 +128,22 @@ function scaleFrom(criteria) {
   const se = criteria.득세.ok ? 1 : 0;
   const count = g + j + si + se;
   const pattern = `${g}${j}${si}${se}`;
-  const level = LEVEL_BY_COUNT[count];
-
-  // 억부 용신은 "신강 쪽이냐 신약 쪽이냐"로 갈린다 - 중립으로 묶으면 용신 후보가 비어버린다.
-  // 중화신강은 신강 쪽, 중화신약은 신약 쪽(정답지3에서 앱 용신 목 = 인성으로 확인).
-  const tendency = ["극왕", "태강", "신강", "중화신강"].includes(level) ? "신강" : "신약";
-  const coarse = ["극왕", "태강", "신강"].includes(level) ? "신강"
-    : ["극약", "태약", "신약"].includes(level) ? "신약" : "중화";
+  const confirmed = CONFIRMED_PATTERNS.has(pattern);
+  const level = confirmed ? LEVEL_BY_PATTERN[pattern] : null;
+  const tendency = TENDENCY_BY_COUNT[count];
+  const coarse = level ? (["극왕", "태강", "신강"].includes(level) ? "신강"
+    : ["극약", "태약", "신약"].includes(level) ? "신약" : "중화") : null;
 
   return {
-    level,
+    level,                 // 확인된 패턴이 아니면 null — 추정 이름을 내보내지 않는다
     coarse,
-    tendency,
+    tendency,              // 억부용신이 갈리는 기울기(정답지 3/3)
     pattern,
     count,
-    confirmed: CONFIRMED_PATTERNS.has(pattern),
-    // 2득·4득은 정답지가 없다. level을 돌려주되 확정이 아님을 분리해 알린다.
-    countConfirmed: !UNCONFIRMED_COUNT.has(count),
-    scaleNote: "극약·태약·태강·극왕은 네 기준만으로 도달할 수 없어 이 엔진이 내지 않습니다(앱은 더 세밀한 점수를 쓰는 것으로 보입니다).",
+    confirmed,
+    levelNote: level
+      ? null
+      : `신강약 단계 이름은 네 기준(득령·득지·득시·득세)만으로 정해지지 않습니다. 사용자 만세력 앱의 실제 분포(중화신약 10.5%)와 네 기준의 분포(1득 34.8%)가 맞지 않아, 앱이 더 세밀한 점수를 쓴다는 것이 확인됐습니다. 그래서 확인된 패턴이 아니면 단계 이름을 내지 않고, 대신 네 기준과 ${tendency} 쪽이라는 기울기만 알려 드립니다.`,
   };
 }
 
@@ -171,16 +184,19 @@ function analyzeStrength(chart) {
     missingElements: E.ELEMENTS.filter((el) => score[el] === 0),
     strongestElement: E.ELEMENTS.slice().sort((a, b) => score[b] - score[a])[0],
     criteria,
-    verdict: scale.level, // 8단계: 극약/태약/신약/중화신약/중화신강/신강/태강/극왕
+    // 확인된 패턴이면 단계 이름, 아니면 **null**. null을 "신강"·"신약"으로 바꿔서 쓰지 말 것 -
+    // 그 추정을 상담 답변이 그대로 단정으로 옮긴다. 이름이 없을 때 쓸 것은 criteria와 tendency다.
+    verdict: scale.level,
     verdictCoarse: scale.coarse, // 3분류: 신강/중화/신약
     tendency: scale.tendency, // 억부 관점 기울기: 신강 쪽 / 신약 쪽
     verdictConfirmed: scale.confirmed, // 정답지로 검증된 패턴인지(시간 모름이면 항상 false)
+    verdictNote: scale.levelNote, // 이름을 못 내는 이유(사용자에게 그대로 보여줘도 되는 문장)
     verdictCaveat: timeUnknown
       ? "태어난 시간을 몰라 득시를 판정하지 못했습니다. 시주가 일간을 돕는 자리였다면 한 단계 위(신강 쪽)로 갈 수 있어, 이 판정은 확정이 아닙니다."
       : null,
     yongsinCandidateElements,
     yongsinAsserted: CONFIG.ASSERT_YONGSIN,
-    basis: `일간 ${chart.dayStem}(${de}) / 득령 ${criteria.득령.ok ? "○" : "✗"} 득지 ${criteria.득지.ok ? "○" : "✗"} 득시 ${criteria.득시.ok === null ? "-" : criteria.득시.ok ? "○" : "✗"} 득세 ${criteria.득세.ok ? "○" : "✗"} → ${scale.level}`,
+    basis: `일간 ${chart.dayStem}(${de}) / 득령 ${criteria.득령.ok ? "○" : "✗"} 득지 ${criteria.득지.ok ? "○" : "✗"} 득시 ${criteria.득시.ok === null ? "-" : criteria.득시.ok ? "○" : "✗"} 득세 ${criteria.득세.ok ? "○" : "✗"} → ${scale.level || `${scale.tendency} 쪽(단계 이름은 확정 안 됨)`}`,
     // 참고용(지장간까지 본 세력) - 기본 판정에는 쓰지 않는다.
     weightedElementPercent: Object.fromEntries(E.ELEMENTS.map((el) => [el, Math.round((weighted.score[el] / weighted.total) * 1000) / 10])),
   };

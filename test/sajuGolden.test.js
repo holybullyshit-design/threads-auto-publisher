@@ -260,3 +260,27 @@ test("12신살 표 자체의 불변식 — 기준마다 열둘이 한 번씩", (
     }
   }
 });
+
+test("확인 안 된 신강약 단계는 이름을 내지 않는다 — 상담 출력까지", () => {
+  // 왜(2026-10-07): 앱 화면은 중화신약이 "10.5%의 사람"이라고 밝힌다. 우리 엔진으로 1960~2010년생
+  // 36,720건을 돌리면 1득이 34.8%다. 3배 넘게 어긋나므로 **네 기준만으로는 단계가 정해지지 않는다.**
+  // 정답지 3건에 맞는다고 그 모델을 규칙으로 쓰면, 상담 답변이 "당신은 신강입니다"로 단정해 나간다.
+  // 지금까지 사고는 전부 그런 식이었다. 그래서 확인된 패턴 외에는 verdict를 null로 둔다.
+  const { analyzeStrength } = require("../server/lib/saju/strength");
+  const confirmed = [G1, G2, G3];
+  for (const G of confirmed) {
+    const s = analyzeStrength(buildChart(G.input));
+    assert.strictEqual(s.verdict, G.expect.verdict, "확인된 패턴은 이름이 나와야 한다");
+    assert.strictEqual(s.verdictConfirmed, true);
+    assert.strictEqual(s.verdictNote, null, "확인된 패턴에 안내문이 붙으면 안 된다");
+  }
+  // 미확인 패턴(4득 1111) — 이름 없음 + 이유 있음 + 기울기는 있음
+  const un = analyzeStrength(buildChart({ year: 1970, month: 4, day: 19, hour: 1, minute: 30, gender: "male" }));
+  assert.strictEqual(un.verdict, null, "확인 안 된 패턴에 단계 이름이 나왔다");
+  assert.strictEqual(un.verdictConfirmed, false);
+  assert.ok(un.verdictNote && un.verdictNote.includes("10.5%"), "이름을 못 내는 이유를 근거와 함께 줘야 한다");
+  assert.ok(["신강", "신약"].includes(un.tendency), "기울기는 억부용신이 갈리는 지점이라 항상 있어야 한다");
+  assert.ok(un.yongsinCandidateElements.length > 0, "용신 후보는 기울기에서 나오므로 비면 안 된다");
+  // basis 문자열에 "null"이 새지 않는다(실제로 샜던 버그).
+  assert.ok(!/null/.test(un.basis), `basis에 null이 샜다: ${un.basis}`);
+});

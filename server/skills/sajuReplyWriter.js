@@ -54,7 +54,7 @@ function buildFacts(a) {
 일간: ${chart.dayStem}(${chart.dayStemElement}·${chart.dayStemYinYang})
 오행 분포: ${Object.entries(strength.elementPercent).map(([e, p]) => `${e} ${p}%`).join(" / ")}
 없는 오행: ${strength.missingElements.join("·") || "없음"}
-신강약: ${strength.verdict} (${strength.basis})
+신강약: ${strength.verdict ? `${strength.verdict} (${strength.basis})` : `단계 이름은 단정하지 말 것 — ${strength.tendency} 쪽이라는 것만 확인됨 (${strength.basis})`}
 성립하는 신살: ${foundNames.join(", ") || "없음"}
 원국 안의 관계: ${a.relations.summary}
 ${a.currentDaeun ? `현재 대운: ${a.currentDaeun.ganji} (${a.currentDaeun.startAge}~${a.currentDaeun.endAge}세, 천간 ${a.currentDaeun.tenGodOfStem})` : ""}
