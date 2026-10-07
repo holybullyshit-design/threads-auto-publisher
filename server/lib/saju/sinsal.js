@@ -13,6 +13,13 @@ const { elementFooting } = require("./strength");
 
 const toKoBranch = (idx) => N.BRANCH_KO[idx];
 
+// 건록(建祿): 일간이 가장 힘을 받는 지지. 협록 판정에 쓴다.
+// 갑→인, 을→묘, 병·무→사, 정·기→오, 경→신, 신→유, 임→해, 계→자
+const GEONROK_BY_STEM = { 갑: 2, 을: 3, 병: 5, 무: 5, 정: 6, 기: 6, 경: 8, 신: 9, 임: 11, 계: 0 };
+// 현침살: 글자 모양이 바늘처럼 뾰족하다고 보는 간지.
+const HYEONCHIM_STEMS = ["갑", "신"];
+const HYEONCHIM_BRANCHES = ["묘", "오", "신", "미"];
+
 // 원국의 모든 지지를 (기둥, 지지) 목록으로 만든다.
 function branchSlots(chart) {
   return chart.pillarOrder.map((key) => ({
@@ -116,27 +123,80 @@ function analyzeSinsal(chart, strength = null, opts = {}) {
     }));
   }
 
-  // ── 일주 자체로 성립하는 신살: 백호·괴강 ──
-  const ilju = chart.pillars.day.ko;
+  // ── 간지 자체로 성립하는 신살: 백호·괴강 ──
+  // 2026-10-07 수정: 처음엔 일주만 봤는데, 정답지(1988-04-21 12:31 남)에서 앱이 **생년 무진**에
+  // 백호대살을 표시했다. 백호·괴강은 일주에서 가장 세게 보지만 다른 기둥에서도 성립한다 -
+  // 네 기둥 전부에서 찾되, 어느 기둥인지 같이 돌려준다.
   for (const [id, name, list] of [
     ["baekho", "백호살", F.BAEKHO_ILJU],
     ["goegang", "괴강살", F.GOEGANG_ILJU],
   ]) {
-    const hit = list.includes(ilju);
+    const hits = chart.pillarOrder
+      .filter((key) => list.includes(chart.pillars[key].ko))
+      .map((key) => ({
+        pillar: key, label: chart.pillars[key].label, branch: chart.pillars[key].branch,
+        meaning: chart.pillars[key].meaning, element: chart.pillars[key].branchElement,
+      }));
     out.push(result({
       id, name,
-      basis: `${name}은 일주가 ${list.join("·")} 중 하나일 때 성립 - 이 사주의 일주는 ${ilju}`,
+      basis: `${name}은 간지가 ${list.join("·")} 중 하나일 때 성립 - 이 사주의 기둥은 ${chart.pillarOrder.map((k) => chart.pillars[k].ko).join("·")}`,
       targets: list,
-      hits: hit ? [{ pillar: "day", label: "일주", branch: chart.pillars.day.branch, meaning: chart.pillars.day.meaning, element: chart.pillars.day.branchElement }] : [],
+      hits,
       strength,
+      note: hits.some((h) => h.pillar === "day") ? "일주에 걸린 백호·괴강을 가장 세게 본다" : undefined,
     }));
   }
+
+  // ── 협록(夾祿) ── 일간의 건록 자리가 원국의 두 지지 사이에 "끼어" 있으면 성립.
+  // 정답지에서 앱이 생월 진(辰)·생시 오(午)에 협록을 표시했다 - 병 일간의 건록은 사(巳)이고,
+  // 진과 오 사이에 사가 끼기 때문이다.
+  const geonrok = GEONROK_BY_STEM[dayStem];
+  const hyeoprokHits = [];
+  if (geonrok !== undefined) {
+    const slots = branchSlots(chart);
+    for (let i = 0; i < slots.length; i++) {
+      for (let j = i + 1; j < slots.length; j++) {
+        const a = slots[i].branchIndex;
+        const b = slots[j].branchIndex;
+        // 두 지지가 건록을 사이에 두고 한 칸씩 떨어져 있어야 한다(…진·[사]·오…).
+        const pair = ((a + 1) % 12 === geonrok && (geonrok + 1) % 12 === b) || ((b + 1) % 12 === geonrok && (geonrok + 1) % 12 === a);
+        if (pair) { hyeoprokHits.push(slots[i]); hyeoprokHits.push(slots[j]); }
+      }
+    }
+  }
+  const hyeoprokUnique = hyeoprokHits.filter((h, i) => hyeoprokHits.findIndex((x) => x.pillar === h.pillar) === i);
+  out.push(result({
+    id: "hyeoprok", name: "협록",
+    basis: geonrok === undefined
+      ? `일간 ${dayStem}의 건록을 찾을 수 없음`
+      : `일간 ${dayStem}의 건록은 ${toKoBranch(geonrok)} - 원국의 두 지지가 그 앞뒤에서 끼고 있으면 성립`,
+    targets: geonrok === undefined ? [] : [toKoBranch(geonrok)],
+    hits: hyeoprokUnique,
+    strength,
+  }));
+
+  // ── 현침살(懸針殺) ── 글자 모양이 바늘처럼 뾰족한 간지(갑·신(辛)·묘·오·신(申)·미)가 원국에 있으면 성립.
+  const hyeonchimHits = [];
+  for (const key of chart.pillarOrder) {
+    const p = chart.pillars[key];
+    const marks = [];
+    if (HYEONCHIM_STEMS.includes(p.stem)) marks.push(`천간 ${p.stem}`);
+    if (HYEONCHIM_BRANCHES.includes(p.branch)) marks.push(`지지 ${p.branch}`);
+    if (marks.length) hyeonchimHits.push({ pillar: key, label: p.label, branch: p.branch, meaning: p.meaning, element: p.branchElement, marks });
+  }
+  out.push(result({
+    id: "hyeonchim", name: "현침살",
+    basis: `현침살 글자는 천간 ${HYEONCHIM_STEMS.join("·")} / 지지 ${HYEONCHIM_BRANCHES.join("·")}`,
+    targets: [...HYEONCHIM_STEMS, ...HYEONCHIM_BRANCHES],
+    hits: hyeonchimHits,
+    strength,
+  }));
 
   // ── 공망 ── 일주 기준 순(旬)의 빈 자리. 원국에 그 지지가 있으면 그 기둥이 공망이다.
   const emptyIdx = chart.emptyBranches.map((b) => N.branchIndex(b));
   out.push(result({
     id: "gongmang", name: "공망",
-    basis: `일주 ${ilju} 기준 공망은 ${chart.emptyBranches.join("·")}`,
+    basis: `일주 ${chart.pillars.day.ko} 기준 공망은 ${chart.emptyBranches.join("·")}`,
     targets: chart.emptyBranches,
     hits: findBranches(chart, emptyIdx),
     strength: null, // 공망은 "비어 있다"는 뜻이라 자리의 힘으로 판정하지 않는다

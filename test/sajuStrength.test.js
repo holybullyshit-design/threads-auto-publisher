@@ -10,7 +10,7 @@
 const test = require("node:test");
 const assert = require("node:assert");
 const { buildChart } = require("../server/lib/saju/chart");
-const { analyzeStrength, elementFooting } = require("../server/lib/saju/strength");
+const { analyzeStrength, elementFooting, judgeFourCriteria } = require("../server/lib/saju/strength");
 const { analyzeSinsal } = require("../server/lib/saju/sinsal");
 const F = require("../server/lib/sajuFacts");
 const N = require("../server/lib/saju/naming");
@@ -45,27 +45,42 @@ test("같은 입력은 항상 같은 점수를 낸다(결정론)", () => {
   }
 });
 
-test("일간 자신은 세력 집계에서 빠진다(안 빼면 늘 신강이 된다)", () => {
-  assert.strictEqual(CONFIG.STRENGTH_WEIGHTS.stem.day, 0, "일간 천간 가중치는 0이어야 한다");
+test("득세 판정에서 일간 한 글자를 뺀다(안 빼면 늘 유리해진다)", () => {
+  // 일간은 당연히 자기 자신(비겁)이라, 그대로 세면 돕는 세력이 항상 한 글자 많아진다.
   const chart = buildChart(CASES[0]);
-  const s = analyzeStrength(chart);
-  // 일주 천간이 세력에 들어갔다면 detail에 "일주 천간" 항목이 있을 것이다.
-  assert.ok(!s.detail.some((d) => d.from.includes("일주 천간")), "일간이 세력 집계에 들어갔다");
-  // 일지는 들어가야 한다(일지는 세력에 포함하는 게 표준).
-  assert.ok(s.detail.some((d) => d.from.includes("일주 지지")), "일지가 세력 집계에서 빠졌다");
+  const c = judgeFourCriteria(chart);
+  assert.match(c.득세.basis, /일간 제외/, "득세 근거에 일간 제외가 명시되어야 한다");
+  const m = c.득세.basis.match(/(\d+)\/(\d+)/);
+  assert.ok(m, `득세 근거에서 숫자를 못 읽었다: ${c.득세.basis}`);
+  assert.strictEqual(Number(m[2]), 7, "여덟 글자에서 일간을 뺀 7이어야 한다");
 });
 
-test("신강·중화·신약 판정이 임계값대로 갈린다", () => {
-  const verdicts = new Set(CASES.map((c) => analyzeStrength(buildChart(c)).verdict));
-  // 표본 5개에서 적어도 두 종류는 나와야 한다(전부 같게 나오면 판정이 고장난 것).
-  assert.ok(verdicts.size >= 2, `판정이 한 종류뿐이다: ${[...verdicts].join(",")}`);
+test("신강약은 득령·득지·득시·득세로 8단계가 매겨진다", () => {
+  const levels = ["극약", "태약", "신약", "중화신약", "중화신강", "신강", "태강", "극왕"];
   for (const c of CASES) {
     const s = analyzeStrength(buildChart(c));
-    const r = s.supportPercent / 100;
-    if (s.verdict === "신강") assert.ok(r >= CONFIG.STRENGTH_THRESHOLD.strong - 0.005, `신강인데 비율이 낮다: ${s.supportPercent}%`);
-    if (s.verdict === "신약") assert.ok(r <= CONFIG.STRENGTH_THRESHOLD.weak + 0.005, `신약인데 비율이 높다: ${s.supportPercent}%`);
-    if (s.verdict === "중화") assert.ok(r > CONFIG.STRENGTH_THRESHOLD.weak - 0.005 && r < CONFIG.STRENGTH_THRESHOLD.strong + 0.005);
+    assert.ok(levels.includes(s.verdict), `알 수 없는 단계: ${s.verdict}`);
+    assert.ok(["신강", "신약"].includes(s.tendency), "기울기는 신강 쪽/신약 쪽 둘 중 하나여야 한다");
+    // 네 기준이 모두 판정돼 있어야 한다(시간을 아는 사주이므로 득시도 true/false).
+    for (const k of ["득령", "득지", "득시", "득세"]) {
+      assert.ok(typeof s.criteria[k].ok === "boolean", `${k}이 판정되지 않았다`);
+      assert.ok(s.criteria[k].basis.length > 0, `${k}의 근거가 비어 있다`);
+    }
+    // 득령은 월지가 비겁·인성일 때만 성립한다.
+    const chart = buildChart(c);
+    const monthGroup = require("../server/lib/saju/elements").elementGroupFor(chart.dayStemElement, chart.pillars.month.branchElement);
+    assert.strictEqual(s.criteria.득령.ok, ["비겁", "인성"].includes(monthGroup), `득령 판정이 월지 묶음(${monthGroup})과 어긋난다`);
   }
+  // 표본에서 적어도 두 단계는 나와야 한다(전부 같으면 판정이 고장난 것).
+  const seen = new Set(CASES.map((c) => analyzeStrength(buildChart(c)).verdict));
+  assert.ok(seen.size >= 2, `단계가 한 종류뿐이다: ${[...seen].join(",")}`);
+});
+
+test("검증 안 된 8단계 패턴은 그렇다고 표시한다", () => {
+  // 정답지가 아직 1건이라, 확인된 패턴은 "득령✗ + 나머지 3개"뿐이다. 나머지를 확인된 것처럼
+  // 속이지 않는다(모르는 걸 안다고 하지 않기).
+  const confirmedCount = CASES.filter((c) => analyzeStrength(buildChart(c)).verdictConfirmed).length;
+  assert.ok(confirmedCount < CASES.length, "전부 검증됐다고 나오면 confirmed 플래그가 고장난 것");
 });
 
 test("용신은 후보만 내고 사실로 단정하지 않는다", () => {
@@ -79,16 +94,25 @@ test("용신은 후보만 내고 사실로 단정하지 않는다", () => {
   }
 });
 
-test("자리의 힘 판정이 균등분 20% 기준으로 갈린다", () => {
+test("자리의 힘은 글자 수로 판정한다(여덟 글자 기준)", () => {
   const s = analyzeStrength(buildChart(CASES[0]));
   for (const el of ["목", "화", "토", "금", "수"]) {
     const f = elementFooting(s, el);
-    const p = s.elementPercent[el];
-    if (p >= 20) assert.strictEqual(f.footing, "자리잡음", `${el} ${p}%`);
-    else if (p < 10) assert.strictEqual(f.footing, "흔들림", `${el} ${p}%`);
-    else assert.strictEqual(f.footing, "보통", `${el} ${p}%`);
+    const n = s.elementCount[el];
+    if (n === 0) assert.strictEqual(f.footing, "없음", `${el} ${n}글자`);
+    else if (n >= 2) assert.strictEqual(f.footing, "자리잡음", `${el} ${n}글자`);
+    else assert.strictEqual(f.footing, "흔들림", `${el} ${n}글자`);
+    assert.strictEqual(f.count, n);
   }
   assert.throws(() => elementFooting(s, "쇠"), /오행이 아닙니다/);
+});
+
+test("오행 글자 수 합은 항상 8이다(시간을 알 때)", () => {
+  for (const c of CASES) {
+    const s = analyzeStrength(buildChart(c));
+    const sum = Object.values(s.elementCount).reduce((a, b) => a + b, 0);
+    assert.strictEqual(sum, 8, `글자 수 합이 8이 아니다: ${sum}`);
+  }
 });
 
 // ── 신살 ──
