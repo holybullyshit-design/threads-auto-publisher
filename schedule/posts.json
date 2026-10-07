@@ -31518,10 +31518,13 @@
     "scheduledAt": "2026-10-07T00:31:00.000Z",
     "createdAt": "2026-09-27T11:44:03.276Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18135165577645511",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18135165577645511"
+    ]
   },
   {
     "id": "175cf64d-2096-4623-9f2e-1a900a4c1b34",
