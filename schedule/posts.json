@@ -29491,11 +29491,14 @@
     "scheduledAt": "2026-10-07T22:49:00.000Z",
     "createdAt": "2026-09-27T10:48:38.136Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18111262454138188",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "samjaeFixed": true
+    "samjaeFixed": true,
+    "chainPublishedIds": [
+      "18111262454138188"
+    ]
   },
   {
     "id": "7de856e1-fe1a-47fe-9109-6e268025a5f7",
