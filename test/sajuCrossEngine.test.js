@@ -148,7 +148,7 @@ test("12운성은 (일간, 지지)에서 직접 나온다 — 라이브러리 ge
   assert.strictEqual(twelveStageOf("을", "오"), "장생");
   assert.strictEqual(twelveStageOf("을", "사"), "목욕");
   // 120조합 전부 12단계 안에서 나오고, 각 일간마다 12단계가 정확히 한 번씩 나온다.
-  const STAGES = new Set(["장생", "목욕", "관대", "임관", "제왕", "쇠", "병", "사", "묘", "절", "태", "양"]);
+  const STAGES = new Set(["장생", "목욕", "관대", "건록", "제왕", "쇠", "병", "사", "묘", "절", "태", "양"]);
   for (const st of N.STEM_KO) {
     const seen = N.BRANCH_KO.map((br) => twelveStageOf(st, br));
     for (const v of seen) assert.ok(STAGES.has(v), `${st}/${v}`);

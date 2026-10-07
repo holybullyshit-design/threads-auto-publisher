@@ -110,7 +110,8 @@ function timeStemOf(dayStemKo, timeBranchKo) {
 // 왜 직접 계산하나(2026-10-07): lunar-javascript의 getYearDiShi() 같은 getter는 그 객체가 들고
 // 있는 일간·지지에 묶여 있어서, 절기 보정 때문에 기둥을 다른 객체에서 가져오면 쓸 수 없다.
 // 라이브러리 getter에 기대다가 setSect 무시 버그를 그대로 흘린 적이 있으니(시주) 직접 센다.
-const TWELVE_STAGE_ORDER = ["장생", "목욕", "관대", "임관", "제왕", "쇠", "병", "사", "묘", "절", "태", "양"];
+// 앱 표기를 따른다 — 네 번째 단계를 만세력 앱은 "건록"으로 쓴다(임관과 같은 단계의 다른 이름).
+const TWELVE_STAGE_ORDER = ["장생", "목욕", "관대", "건록", "제왕", "쇠", "병", "사", "묘", "절", "태", "양"];
 const JANGSAENG_BRANCH = { 갑: "해", 을: "오", 병: "인", 정: "유", 무: "인", 기: "유", 경: "사", 신: "자", 임: "신", 계: "묘" };
 const YANG_STEMS = new Set(["갑", "병", "무", "경", "임"]);
 

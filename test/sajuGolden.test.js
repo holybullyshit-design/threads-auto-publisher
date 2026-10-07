@@ -261,26 +261,79 @@ test("12신살 표 자체의 불변식 — 기준마다 열둘이 한 번씩", (
   }
 });
 
-test("확인 안 된 신강약 단계는 이름을 내지 않는다 — 상담 출력까지", () => {
-  // 왜(2026-10-07): 앱 화면은 중화신약이 "10.5%의 사람"이라고 밝힌다. 우리 엔진으로 1960~2010년생
-  // 36,720건을 돌리면 1득이 34.8%다. 3배 넘게 어긋나므로 **네 기준만으로는 단계가 정해지지 않는다.**
-  // 정답지 3건에 맞는다고 그 모델을 규칙으로 쓰면, 상담 답변이 "당신은 신강입니다"로 단정해 나간다.
-  // 지금까지 사고는 전부 그런 식이었다. 그래서 확인된 패턴 외에는 verdict를 null로 둔다.
-  const { analyzeStrength } = require("../server/lib/saju/strength");
-  const confirmed = [G1, G2, G3];
-  for (const G of confirmed) {
-    const s = analyzeStrength(buildChart(G.input));
-    assert.strictEqual(s.verdict, G.expect.verdict, "확인된 패턴은 이름이 나와야 한다");
-    assert.strictEqual(s.verdictConfirmed, true);
-    assert.strictEqual(s.verdictNote, null, "확인된 패턴에 안내문이 붙으면 안 된다");
+// ── 정답지 4: 1966-10-26 10:00 남자 (서울), 양력 입력 ──
+// 이 한 건이 **신강약 산식을 확정**시켰다. 앱이 "극왕 / 1.56%의 사람"이라고 적어 줬고,
+// 비겁+인성이 정확히 100%다. 정답지 4건의 비율이 37.5·50·62.5·100 → 신약·중화신약·중화신강·극왕으로
+// 8단계와 12.5%씩 1:1로 붙는다. 같은 건으로 **대운수 버그**(라이브러리 5 vs 앱 4)도 드러났다.
+const G4 = {
+  input: { year: 1966, month: 10, day: 26, hour: 10, minute: 0, gender: "male" },
+  expect: {
+    lunarDate: "1966-09-13",
+    pillars: { year: "병오", month: "무술", day: "무오", time: "정사" },
+    tenGodStem: { year: "편인", month: "비견", day: "일간", time: "정인" },
+    tenGodBranchPrimary: { year: "정인", month: "비견", day: "정인", time: "편인" },
+    hiddenStems: { year: "병기정", month: "신정무", day: "병기정", time: "무경병" },
+    twelveStage: { year: "제왕", month: "묘", day: "제왕", time: "건록" },
+    twelveSinsal: { year: "장성", month: "화개", day: "장성", time: "망신" },
+    elementPercent: { 목: 0, 화: 62.5, 토: 37.5, 금: 0, 수: 0 },
+    criteria: { 득령: true, 득지: true, 득시: true, 득세: true },
+    supportPercent: 100,
+    verdict: "극왕",
+    daeunNumber: 4,
+    daeunDirection: "순행",
+    daeunList: ["4기해", "14경자", "24신축", "34임인", "44계묘", "54갑진", "64을사", "74병오", "84정미", "94무신"],
+  },
+};
+
+test("정답지4 — 네 기둥·음력·십성·지장간·12운성·12신살", () => {
+  const c = buildChart(G4.input);
+  const E = G4.expect;
+  const { analyzeTwelveSinsal } = require("../server/lib/saju/sinsal");
+  const t = analyzeTwelveSinsal(c);
+  assert.strictEqual(c.lunarDate, E.lunarDate);
+  for (const k of ["year", "month", "day", "time"]) {
+    assert.strictEqual(c.pillars[k].ko, E.pillars[k], `${k} 기둥`);
+    assert.strictEqual(c.pillars[k].tenGodOfStem, E.tenGodStem[k], `${k} 천간 십성`);
+    assert.strictEqual(c.pillars[k].tenGodOfBranchPrimary, E.tenGodBranchPrimary[k], `${k} 지지 십성`);
+    assert.strictEqual(c.pillars[k].hiddenStems.map((h) => h.stem).join(""), E.hiddenStems[k], `${k} 지장간`);
+    assert.strictEqual(c.pillars[k].twelveStage, E.twelveStage[k], `${k} 12운성`);
+    assert.strictEqual(t.appView[k], E.twelveSinsal[k], `${k} 12신살`);
   }
-  // 미확인 패턴(4득 1111) — 이름 없음 + 이유 있음 + 기울기는 있음
-  const un = analyzeStrength(buildChart({ year: 1970, month: 4, day: 19, hour: 1, minute: 30, gender: "male" }));
-  assert.strictEqual(un.verdict, null, "확인 안 된 패턴에 단계 이름이 나왔다");
-  assert.strictEqual(un.verdictConfirmed, false);
-  assert.ok(un.verdictNote && un.verdictNote.includes("10.5%"), "이름을 못 내는 이유를 근거와 함께 줘야 한다");
-  assert.ok(["신강", "신약"].includes(un.tendency), "기울기는 억부용신이 갈리는 지점이라 항상 있어야 한다");
-  assert.ok(un.yongsinCandidateElements.length > 0, "용신 후보는 기울기에서 나오므로 비면 안 된다");
-  // basis 문자열에 "null"이 새지 않는다(실제로 샜던 버그).
+});
+
+test("정답지4 — 대운수는 절입까지의 거리로 직접 구한다", () => {
+  // 라이브러리의 getStartAge()-1은 이 건에서 5를 줬는데 앱은 4다. 순행이면 다음 절입까지의
+  // 시간을 3일=1년으로 환산해 **반올림**한다(1958은 5.81일→2, 1966은 12.83일→4. 내림이면 1958이 1이 되어 틀린다).
+  const { daeun } = require("../server/lib/saju").analyze(G4.input, { refDate: "2026-10-07" });
+  assert.strictEqual(daeun.daeunNumber, G4.expect.daeunNumber);
+  assert.strictEqual(daeun.direction, G4.expect.daeunDirection);
+  assert.deepStrictEqual(daeun.list.slice(0, 10).map((d) => `${d.startAge}${d.ganji}`), G4.expect.daeunList);
+  assert.ok(daeun.daeunBasis.includes("입동"), `근거 문장이 비었다: ${daeun.daeunBasis}`);
+});
+
+test("신강약 산식 — 비겁+인성 비율이 단계를 정한다 (정답지 4/4)", () => {
+  // **2026-10-07 확정.** 여덟 글자 균등이라 비겁+인성 비율은 일간이 늘 비겁인 덕에
+  // 12.5%~100%의 정확히 8개 값만 나오고, 그게 8단계와 1:1로 붙는다.
+  // 폐기된 모델 두 개(득령 가중치 2 / 득 개수)로 되돌리지 말 것 — 둘 다 정답지가 반증했다.
+  const { analyzeStrength } = require("../server/lib/saju/strength");
+  const EXPECT = [
+    [G2, 37.5, "신약"],
+    [G3, 50, "중화신약"],
+    [G1, 62.5, "중화신강"],
+    [G4, 100, "극왕"],
+  ];
+  for (const [G, support, level] of EXPECT) {
+    const s = analyzeStrength(buildChart(G.input));
+    assert.strictEqual(s.supportPercent, support, `${G.input.year} 비겁+인성 비율`);
+    assert.strictEqual(s.verdict, level, `${G.input.year} 단계`);
+    assert.strictEqual(s.verdictConfirmed, true, `${G.input.year}는 정답지로 확인된 비율이다`);
+  }
+  // 아직 앱으로 확인 안 된 비율은 산식대로 내되 "확인 전"이라고 밝힌다.
+  const un = analyzeStrength(buildChart({ year: 1965, month: 1, day: 14, hour: 2, minute: 0, gender: "male" }));
+  assert.strictEqual(un.supportPercent, 75);
+  assert.strictEqual(un.verdict, "신강", "산식은 확인 안 된 비율에도 그대로 적용한다");
+  assert.strictEqual(un.verdictConfirmed, false, "직접 확인한 비율이 아니면 confirmed가 아니다");
+  assert.ok(un.verdictNote && un.verdictNote.includes("75%"), "확인 전임을 비율과 함께 밝혀야 한다");
+  // basis 문자열에 null이 새지 않는다(실제로 샜던 버그).
   assert.ok(!/null/.test(un.basis), `basis에 null이 샜다: ${un.basis}`);
 });

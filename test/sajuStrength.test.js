@@ -63,13 +63,12 @@ test("신강약 — 확인된 패턴에만 단계 이름을 붙이고 기울기�
   const levels = ["극약", "태약", "신약", "중화신약", "중화신강", "신강", "태강", "극왕"];
   for (const c of CASES) {
     const s = analyzeStrength(buildChart(c));
-    if (s.verdict === null) {
-      assert.ok(s.verdictNote && s.verdictNote.length > 20, "이름을 안 낼 때는 이유를 줘야 한다");
-      assert.strictEqual(s.verdictConfirmed, false);
-    } else {
-      assert.ok(levels.includes(s.verdict), `알 수 없는 단계: ${s.verdict}`);
-      assert.strictEqual(s.verdictConfirmed, true, "이름이 나왔다면 정답지로 확인된 패턴이어야 한다");
-    }
+    assert.ok(levels.includes(s.verdict), `알 수 없는 단계: ${s.verdict}`);
+    // 단계는 비겁+인성 비율 하나로 정해진다. 12.5 단위의 8개 값만 나온다.
+    assert.ok([12.5, 25, 37.5, 50, 62.5, 75, 87.5, 100].includes(s.supportPercent),
+      `비겁+인성 비율이 12.5 단위가 아니다: ${s.supportPercent}`);
+    assert.strictEqual(s.verdict, levels[Math.round(s.supportPercent / 12.5) - 1], "단계가 비율과 어긋난다");
+    if (!s.verdictConfirmed) assert.ok(s.verdictNote, "확인 전이면 그렇다고 밝혀야 한다");
     assert.ok(["신강", "신약"].includes(s.tendency), "기울기는 신강 쪽/신약 쪽 둘 중 하나여야 한다");
     // 네 기준이 모두 판정돼 있어야 한다(시간을 아는 사주이므로 득시도 true/false).
     for (const k of ["득령", "득지", "득시", "득세"]) {
@@ -86,11 +85,20 @@ test("신강약 — 확인된 패턴에만 단계 이름을 붙이고 기울기�
   assert.ok(seen.size >= 2, `기울기가 한 종류뿐이다: ${[...seen].join(",")}`);
 });
 
-test("검증 안 된 8단계 패턴은 그렇다고 표시한다", () => {
-  // 정답지가 아직 1건이라, 확인된 패턴은 "득령✗ + 나머지 3개"뿐이다. 나머지를 확인된 것처럼
-  // 속이지 않는다(모르는 걸 안다고 하지 않기).
-  const confirmedCount = CASES.filter((c) => analyzeStrength(buildChart(c)).verdictConfirmed).length;
-  assert.ok(confirmedCount < CASES.length, "전부 검증됐다고 나오면 confirmed 플래그가 고장난 것");
+test("앱으로 직접 확인한 비율만 confirmed로 표시한다", () => {
+  // 산식(비겁+인성 비율 → 8단계)은 정답지 4건에서 4/4 맞았지만, 실제로 앱 화면을 본 비율은
+  // 37.5·50·62.5·100% 넷뿐이다. 나머지 비율은 같은 산식으로 내되 "확인 전"이라고 밝힌다.
+  // 아직 앱으로 본 적 없는 비율(75%)은 confirmed가 아니어야 한다.
+  const un = analyzeStrength(buildChart({ year: 1965, month: 1, day: 14, hour: 2, minute: 0, gender: "male" }));
+  assert.strictEqual(un.supportPercent, 75);
+  assert.strictEqual(un.verdictConfirmed, false, "확인한 적 없는 비율이 confirmed로 나온다");
+  assert.ok(un.verdictNote, "확인 전이면 그렇다고 밝혀야 한다");
+  for (const c of CASES) {
+    const s = analyzeStrength(buildChart(c));
+    if (s.verdictConfirmed) {
+      assert.ok([37.5, 50, 62.5, 100].includes(s.supportPercent), `확인된 적 없는 비율이 confirmed다: ${s.supportPercent}`);
+    }
+  }
 });
 
 test("용신은 후보만 내고 사실로 단정하지 않는다", () => {

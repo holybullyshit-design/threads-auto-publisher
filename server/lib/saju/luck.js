@@ -13,11 +13,51 @@
 //
 // 결정론: 기준 연도를 인자로 받는다. 현재시각에 의존하지 않는다.
 
+const { Solar } = require("lunar-javascript");
+const CONFIG = require("./config");
 const N = require("./naming");
 const E = require("./elements");
 
 // 라이브러리가 세는나이로 주는 것을 만나이로 바꾼다.
 const AGE_OFFSET = -1;
+
+// ── 대운수를 직접 계산한다 (2026-10-07) ──────────────────────────────────
+// 라이브러리의 getStartAge()에서 1을 빼 쓰던 걸 그만뒀다. 정답지4(1966-10-26 10:00 남)에서
+// 라이브러리는 5를, 앱은 4를 준다. 규칙은 단순하다 — **순행이면 다음 절입까지, 역행이면 직전
+// 절입부터의 시간을 3일=1년으로 환산하고 반올림**한다. 정답지 2건(1958 경칩까지 5.81일 → 2,
+// 1966 입동까지 12.83일 → 4)에서 반올림이 둘 다 맞았다(내림은 1958에서 1이 되어 틀린다).
+// 절기 시각은 chart.js와 같은 이유로 **중국 표준시 → KST 보정**을 거친다(config.JIEQI_TZ_OFFSET_MIN).
+//
+// 중기(中氣)는 쓰지 않는다 - 대운은 절(節)에서만 갈린다.
+const JEOL_HANJA = new Set([
+  "立春", "驚蟄", "惊蛰", "清明", "淸明", "立夏", "芒種", "芒种", "小暑",
+  "立秋", "白露", "寒露", "立冬", "大雪", "小寒",
+]);
+
+function jeolMomentsAround(solar) {
+  const out = [];
+  for (const y of [solar.getYear() - 1, solar.getYear(), solar.getYear() + 1]) {
+    const table = Solar.fromYmd(y, 6, 15).getLunar().getJieQiTable();
+    for (const [hanja, at] of Object.entries(table)) {
+      if (!JEOL_HANJA.has(hanja)) continue;
+      const ms = Date.UTC(at.getYear(), at.getMonth() - 1, at.getDay(), at.getHour(), at.getMinute())
+        + CONFIG.JIEQI_TZ_OFFSET_MIN * 60000;
+      out.push({ name: N.JIEQI_KO[hanja] || hanja, ms });
+    }
+  }
+  return out.sort((a, b) => a.ms - b.ms);
+}
+
+function computeDaeunNumber(solar, forward) {
+  const birth = Date.UTC(solar.getYear(), solar.getMonth() - 1, solar.getDay(), solar.getHour(), solar.getMinute());
+  const list = jeolMomentsAround(solar);
+  const target = forward
+    ? list.find((x) => x.ms > birth)
+    : list.filter((x) => x.ms <= birth).pop();
+  if (!target) throw new Error("대운수를 정할 절입을 찾지 못했습니다");
+  const days = Math.abs(target.ms - birth) / 86400000;
+  return { number: Math.round(days / 3), days, jeol: target.name };
+}
 
 function decorate(ganjiKo, dayStem) {
   const g = N.parseGanji(ganjiKo);
@@ -64,13 +104,24 @@ function daeun(chart, count = 10) {
     });
   }
 
+  const direction = raw.length > 1 && list.length > 1
+    ? (N.branchIndex(list[1].branch) - N.branchIndex(list[0].branch) + 12) % 12 === 1 ? "순행" : "역행"
+    : null;
+
+  // 대운수는 라이브러리 값이 아니라 절입까지의 거리로 직접 구한다(위 주석 참고).
+  const dn = computeDaeunNumber(chart._solar, direction !== "역행");
+  // 대운 나이는 전부 대운수에서 10년씩 간다. 라이브러리 나이를 그대로 쓰면 여기서 통째로 밀린다.
+  for (let i = 0; i < list.length; i++) {
+    list[i].startAge = dn.number + i * 10;
+    list[i].endAge = list[i].startAge + 9;
+  }
+
   const first = list[0];
   return {
-    direction: raw.length > 1 && list.length > 1
-      ? (N.branchIndex(list[1].branch) - N.branchIndex(list[0].branch) + 12) % 12 === 1 ? "순행" : "역행"
-      : null,
-    // 대운수 = 첫 대운이 시작되는 만나이. 만세력 앱이 "대운수 : 5(병진)"으로 보여주는 그 숫자다.
-    daeunNumber: first ? first.startAge : null,
+    direction,
+    // 대운수 = 첫 대운이 시작되는 만나이. 만세력 앱이 "대운수 : 4(무술)"로 보여주는 그 숫자다.
+    daeunNumber: dn.number,
+    daeunBasis: `${direction === "역행" ? "직전" : "다음"} 절입(${dn.jeol})까지 ${dn.days.toFixed(2)}일 → 3일=1년으로 환산해 반올림`,
     // 대운이 시작되는 기준(월주)
     basePillar: chart.pillars.month.ko,
     startDate: startSolar ? startSolar.toYmd() : null,
