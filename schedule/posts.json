@@ -30412,10 +30412,13 @@
     "scheduledAt": "2026-10-07T07:22:00.000Z",
     "createdAt": "2026-09-27T11:12:15.929Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18209824759365762",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18209824759365762"
+    ]
   },
   {
     "id": "6a0aada5-0047-4099-b880-6c71f1e66118",
