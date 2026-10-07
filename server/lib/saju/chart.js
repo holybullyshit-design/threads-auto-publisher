@@ -10,6 +10,8 @@
 // 유파 선택(일주 경계·진태양시·신강약 가중치)은 전부 config.js에 못 박혀 있다.
 
 const { Solar, Lunar, LunarUtil } = require("lunar-javascript");
+// 한국 기준 음력 변환용(한국천문연구원 자료 기반). lunar-javascript는 중국 음력이라 쓰지 않는다.
+const MS = require("manseryeok");
 const CONFIG = require("./config");
 const N = require("./naming");
 const E = require("./elements");
@@ -30,16 +32,50 @@ function assertPositiveInt(v, name) {
 
 // 입력을 Solar(양력) 객체로 정규화한다. 음력이면 윤달 여부까지 받는다.
 // lunar-javascript의 Lunar.fromYmdHms는 윤달을 "월에 음수"로 표현한다(윤6월 = -6).
+// 음력↔양력은 **한국 기준**(manseryeok, 한국천문연구원 자료 기반)으로 변환한다.
+// 왜(2026-10-07): lunar-javascript는 중국 음력이라 삭(朔) 시각을 UTC+8에서 재는데, 한국은 UTC+9라
+// 월초가 하루씩 어긋나는 달이 있다. 1930~2026 전수 대조에서 **3.68%**가 달랐고, 정답지3
+// (1958-02-28)이 정확히 그 구간이었다 — 앱·manseryeok은 음력 1958-01-10, lunar-javascript는 01-11.
+// 정답지 3건 기준 manseryeok 3/3, lunar-javascript 2/3이다.
+// 음력으로 생일을 받으면 이 하루가 **명식 전체**를 바꾸므로(일주부터 어긋난다) 반드시 한국 기준을 쓴다.
+function lunarToSolarKR(year, month, day, isLeapMonth) {
+  const r = MS.lunarToSolar(year, month, day, Boolean(isLeapMonth));
+  if (!r || !r.year) throw new Error(`음력 ${year}-${month}-${day}${isLeapMonth ? "(윤달)" : ""}를 양력으로 변환할 수 없습니다`);
+  return r;
+}
+
+function solarToLunarKR(year, month, day) {
+  const r = MS.solarToLunar(year, month, day);
+  if (!r || !r.year) throw new Error(`양력 ${year}-${month}-${day}를 음력으로 변환할 수 없습니다`);
+  return r;
+}
+
 function toSolar({ year, month, day, hour, minute, calendar, isLeapMonth }) {
   assertPositiveInt(year, "년");
   assertPositiveInt(month, "월");
   assertPositiveInt(day, "일");
   if (calendar === "lunar") {
-    const m = isLeapMonth ? -Math.abs(month) : month;
-    return Lunar.fromYmdHms(year, m, day, hour, minute, 0).getSolar();
+    const g = lunarToSolarKR(year, month, day, isLeapMonth);
+    return Solar.fromYmdHms(g.year, g.month, g.day, hour, minute, 0);
   }
   if (calendar && calendar !== "solar") throw new Error(`달력 종류는 solar 또는 lunar여야 합니다: ${calendar}`);
   return Solar.fromYmdHms(year, month, day, hour, minute, 0);
+}
+
+// ── 한국 표준시가 UTC+8:30이던 구간 보정 ──────────────────────────────
+// 1954-03-21 ~ 1961-08-10 사이 한국 표준시는 동경 127.5°(UTC+8:30) 기준이라 지금보다 30분 느렸다.
+// 그 시절 시계로 적힌 출생 시각을 지금 기준(UTC+9)으로 읽으면 30분 이르게 잡혀 시지가 밀릴 수 있다.
+// 유파 확인(2026-10-07, 추측 아님): 정답지3의 앱 화면이 "양 1958/02/28 15:44"와 함께
+// "양 1958/02/28 15:42 (지역시 -32분)"을 같이 보여준다. 15:44에서 바로 32분을 빼면 15:12인데
+// 실제 표시는 15:42다 → 앱은 먼저 **+30분**을 더해 16:14로 만든 뒤 지역시 -32분을 적용한다.
+// (16:14 - 32 = 15:42) 즉 사용자의 만세력 앱은 이 보정을 **적용하는** 유파다.
+const KST_830_FROM = Date.UTC(1954, 2, 21);   // 1954-03-21
+const KST_830_TO = Date.UTC(1961, 7, 10);     // 1961-08-10
+const KST_830_SHIFT_MIN = 30;
+
+function inKst830Window(year, month, day) {
+  const ms = Date.UTC(year, month - 1, day);
+  return ms >= KST_830_FROM && ms < KST_830_TO;
 }
 
 // 진태양시 보정을 쓰는 유파에서는 시주가 달라질 수 있다. 보정폭만큼 시각을 옮겨서 **시지가 실제로
@@ -79,24 +115,6 @@ function jieqiBoundaryWarning(solar) {
 }
 
 
-// 한국 표준시가 UTC+8:30이던 구간 경고 — 1954-03-21 ~ 1961-08-10 사이에 태어난 사람은
-// 당시 시계가 지금보다 30분 느렸다(동경 127.5° 기준). 이 구간의 출생 시각을 지금 기준으로
-// 그대로 읽으면 시지가 한 칸 밀릴 수 있고, 자시 경계면 일주까지 밀린다.
-//
-// 왜 고치지 않고 경고만 하나(2026-10-07): 보정을 적용하는 유파와 안 하는 유파가 갈리고,
-// **우리 정답지(사용자 만세력 앱)에 이 구간 사주가 한 건도 없다.** 어느 쪽인지 모르는 채
-// 추측으로 30분을 더하면 그게 바로 지금까지 세 번 사고 난 방식이다. 외부 엔진 교차 검증도
-// 여기선 못 쓴다 — manseryeok·lunar-javascript 둘 다 이 이력을 아예 모르기 때문에 "일치"가
-// "맞다"는 뜻이 아니다. 이 구간 정답지가 들어오면 유파를 확정하고 보정을 구현한다.
-const KST_830_FROM = Date.UTC(1954, 2, 21);   // 1954-03-21
-const KST_830_TO = Date.UTC(1961, 7, 10);     // 1961-08-10
-function koreaStandardTimeWarning(solar, timeUnknown) {
-  if (timeUnknown) return null;  // 시주를 안 쓰므로 영향 없음
-  const ms = Date.UTC(solar.getYear(), solar.getMonth() - 1, solar.getDay());
-  if (ms < KST_830_FROM || ms >= KST_830_TO) return null;
-  return "1954-03-21 ~ 1961-08-10 사이 출생입니다. 이 기간 한국 표준시는 UTC+8:30으로 지금보다 30분 느렸습니다. 30분 보정을 적용하는 유파에서는 시지(경계에 걸치면 일주까지)가 달라질 수 있어, 이 구간은 시주를 단독으로 단정하지 않습니다.";
-}
-
 // 간지 한 쌍에서 납음·공망을 읽는다. 값이 없으면 undefined를 흘리지 않고 throw한다
 // (undefined가 사실 블록까지 새어나가 "이번 달 오행: undefined"로 발행된 사고가 있었다).
 function nayinOf(hanja) {
@@ -135,6 +153,16 @@ function buildChart(input = {}) {
   }
 
   let solar = toSolar({ ...input, hour, minute, calendar, isLeapMonth });
+
+  // 1954-03-21 ~ 1961-08-10 출생이면 당시 표준시(UTC+8:30)를 지금 기준(UTC+9)으로 옮긴다.
+  // 시간을 모르면 시주를 안 쓰므로 보정도 하지 않는다(정오로 계산 중이라 날짜가 밀 일도 없다).
+  let kst830Applied = false;
+  if (!timeUnknown && inKst830Window(solar.getYear(), solar.getMonth(), solar.getDay())) {
+    const shifted = new Date(Date.UTC(solar.getYear(), solar.getMonth() - 1, solar.getDay(), solar.getHour(), solar.getMinute()) + KST_830_SHIFT_MIN * 60000);
+    solar = Solar.fromYmdHms(shifted.getUTCFullYear(), shifted.getUTCMonth() + 1, shifted.getUTCDate(), shifted.getUTCHours(), shifted.getUTCMinutes(), 0);
+    kst830Applied = true;
+  }
+
   let trueSolarApplied = false;
   if (CONFIG.APPLY_TRUE_SOLAR_TIME && !timeUnknown) {
     // 보정은 "시각을 LONGITUDE_OFFSET_MIN만큼 옮긴 뒤 다시 만세력을 뽑는" 것이다.
@@ -217,9 +245,14 @@ function buildChart(input = {}) {
       gender, calendar, isLeapMonth: Boolean(isLeapMonth),
     },
     solarDate: solar.toYmd(),
-    lunarDate: `${lunar.getYear()}-${String(Math.abs(lunar.getMonth())).padStart(2, "0")}-${String(lunar.getDay()).padStart(2, "0")}${lunar.getMonth() < 0 ? " (윤달)" : ""}`,
+    lunarDate: (() => {
+      // 표기도 한국 기준으로 뽑는다(lunar 객체는 중국 음력이라 쓰지 않는다).
+      const kl = solarToLunarKR(solar.getYear(), solar.getMonth(), solar.getDay());
+      return `${kl.year}-${String(kl.month).padStart(2, "0")}-${String(kl.day).padStart(2, "0")}${kl.isLeapMonth ? " (윤달)" : ""}`;
+    })(),
     timeUnknown,
     trueSolarApplied,
+    kst830Applied,
     gender,
     pillars,
     pillarOrder: usedKeys,
@@ -245,9 +278,8 @@ function buildChart(input = {}) {
     const w = jieqiBoundaryWarning(solar);
     if (w) chart.warnings.push(w);
   }
-  {
-    const w = koreaStandardTimeWarning(solar, timeUnknown);
-    if (w) chart.warnings.push(w);
+  if (kst830Applied) {
+    chart.warnings.push(`1954-03-21 ~ 1961-08-10 사이 출생이라 당시 한국 표준시(UTC+8:30)를 지금 기준으로 ${KST_830_SHIFT_MIN}분 보정해 계산했습니다. 보정을 적용하지 않는 유파에서는 시주가 달라질 수 있습니다.`);
   }
   // 라이브러리 핸들을 그대로 들고 있으면 대운 계산(luck.js)에서 재사용할 수 있다.
   Object.defineProperty(chart, "_eightChar", { value: ec, enumerable: false });

@@ -94,6 +94,7 @@ test("입춘 경계에서 년주와 띠가 밀리지 않는다", () => {
 test("외부 엔진(manseryeok)과 네 기둥이 일치한다 — 절기 경계 집중 표본", () => {
   // 절기일(4·5·6·7일 / 20~23일)과 0시·23시대를 일부러 섞는다. 두 버그가 모두 여기서 드러났다.
   let n = 0;
+  let kst830Diffs = 0;
   const mismatches = [];
   for (let y = 1940; y <= 2025; y++) {
     for (let m = 1; m <= 12; m++) {
@@ -105,6 +106,10 @@ test("외부 엔진(manseryeok)과 네 기둥이 일치한다 — 절기 경계 
           // 절기 전환 시각과 겹치는 분은 양쪽 모두 단정하지 않는 구간이라 비교에서 뺀다
           // (우리는 경고를 달아 내보낸다 — 아래 테스트에서 확인).
           if (chart.warnings.some((w) => w.includes("절기"))) continue;
+          // 1954-03-21~1961-08-10은 한국 표준시가 UTC+8:30이라 우리는 30분 보정을 적용하고
+          // manseryeok은 적용하지 않는다(정답지3의 앱 화면 산수로 확인한 유파 차이). 이 구간은
+          // 교차 검증이 성립하지 않으므로 따로 센다 — 아래에서 "구간 안에만 몰려 있는지"를 본다.
+          if (chart.kst830Applied) { kst830Diffs += list.join(" ") === theirs.join(" ") ? 0 : 1; continue; }
           if (list.join(" ") !== theirs.join(" ")) {
             mismatches.push(`${y}-${m}-${d} ${hh}:${mi} | 우리 ${list.join(" ")} | manseryeok ${theirs.join(" ")}`);
           }
@@ -114,6 +119,8 @@ test("외부 엔진(manseryeok)과 네 기둥이 일치한다 — 절기 경계 
   }
   assert.ok(n > 15000, `표본이 너무 적다: ${n}`);
   assert.deepStrictEqual(mismatches, [], `외부 엔진과 불일치 ${mismatches.length}건:\n${mismatches.slice(0, 10).join("\n")}`);
+  // 표준시 구간은 당연히 갈린다. 다만 "갈리는 건 전부 이 구간뿐"이어야 한다 — 위 단언이 그걸 본다.
+  assert.ok(kst830Diffs > 0, "표준시 보정이 실제로 적용되고 있어야 한다(0이면 보정이 꺼진 것)");
 });
 
 test("절기 전환 시각에 걸치면 단정하지 않고 경고한다", () => {

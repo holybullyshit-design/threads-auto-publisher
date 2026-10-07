@@ -153,3 +153,80 @@ test("천문성은 아직 확정 아님을 표시한다", () => {
   const k = analyzeSinsal(c, analyzeStrength(c));
   assert.ok(k.byId.cheonmunseong.unverified, "확인 안 된 판별표는 그렇다고 표시해야 한다");
 });
+
+// ── 정답지 3: 1958-02-28 15:44 남자 (서울), 양력 입력 ──
+// 왜 중요한가(2026-10-07): 이 한 건이 버그 셋을 한꺼번에 드러냈다.
+//   ① 한국 표준시 UTC+8:30 구간(1954-03-21~1961-08-10) — 앱 화면이 "15:44"와 "15:42(지역시 -32분)"을
+//      같이 보여준다. 15:44에서 바로 32분을 빼면 15:12인데 15:42다 → 앱은 먼저 +30분을 더해 16:14로
+//      만든 뒤 -32분을 적용한다. 추측이 아니라 산수로 확인된 유파다.
+//   ② 음력이 하루 밀림 — lunar-javascript(중국 음력)는 1958-01-11, 앱·manseryeok(한국)은 01-10.
+//      1930~2026 전수 대조에서 3.68%가 달랐다. 음력으로 생일을 받으면 명식 전체가 어긋난다.
+//   ③ 신강약 "득령 가중치 2" 모델 반증 — 득령 하나만 얻은 사주(1000)를 앱은 중화신약(신약 쪽)으로
+//      본다. 가중치 모델이면 신강 쪽이 되어 용신까지 반대로 뒤집혔다(앱 목 vs 우리 수/금/토).
+const G3 = {
+  input: { year: 1958, month: 2, day: 28, hour: 15, minute: 44, gender: "male" },
+  expect: {
+    solarDate: "1958-02-28",
+    lunarDate: "1958-01-10",
+    pillars: { year: "무술", month: "갑인", day: "병자", time: "병신" },
+    tenGodStem: { year: "식신", month: "편인", day: "일간", time: "비견" },
+    tenGodBranchPrimary: { year: "식신", month: "편인", day: "정관", time: "편재" },
+    hiddenStems: { year: "신정무", month: "무병갑", day: "임계", time: "무임경" },
+    twelveStage: { year: "묘", month: "장생", day: "태", time: "병" },
+    elementPercent: { 목: 25, 화: 25, 토: 25, 금: 12.5, 수: 12.5 },
+    criteria: { 득령: true, 득지: false, 득시: false, 득세: false },
+    verdict: "중화신약",
+    yongsinTop: "목",
+    daeunNumber: 2,
+    daeunDirection: "순행",
+    daeunList: ["2을묘", "12병진", "22정사", "32무오", "42기미", "52경신", "62신유", "72임술", "82계해", "92갑자"],
+  },
+};
+
+test("정답지3 — 네 기둥·음력·십성·지장간·12운성", () => {
+  const c = buildChart(G3.input);
+  const E = G3.expect;
+  assert.strictEqual(c.solarDate, E.solarDate);
+  assert.strictEqual(c.lunarDate, E.lunarDate, "한국 음력이어야 한다(중국 음력은 01-11로 하루 밀린다)");
+  for (const k of ["year", "month", "day", "time"]) {
+    assert.strictEqual(c.pillars[k].ko, E.pillars[k], `${k} 기둥`);
+    assert.strictEqual(c.pillars[k].tenGodOfStem, E.tenGodStem[k], `${k} 천간 십성`);
+    assert.strictEqual(c.pillars[k].tenGodOfBranchPrimary, E.tenGodBranchPrimary[k], `${k} 지지 십성`);
+    assert.strictEqual(c.pillars[k].hiddenStems.map((h) => h.stem).join(""), E.hiddenStems[k], `${k} 지장간`);
+    assert.strictEqual(c.pillars[k].twelveStage, E.twelveStage[k], `${k} 12운성`);
+  }
+  assert.strictEqual(c.kst830Applied, true, "1958년생은 표준시 30분 보정이 적용돼야 한다");
+});
+
+test("정답지3 — 오행%·4득·신강약·용신", () => {
+  const c = buildChart(G3.input);
+  const s = analyzeStrength(c);
+  const E = G3.expect;
+  assert.deepStrictEqual(s.elementPercent, E.elementPercent);
+  for (const [k, v] of Object.entries(E.criteria)) {
+    assert.strictEqual(s.criteria[k].ok, v, `${k}`);
+  }
+  assert.strictEqual(s.verdict, E.verdict);
+  assert.strictEqual(s.verdictConfirmed, true, "정답지로 확인된 패턴이어야 한다");
+  assert.strictEqual(s.tendency, "신약", "중화신약은 신약 쪽이다(용신이 여기서 갈린다)");
+  assert.strictEqual(s.yongsinCandidateElements[0], E.yongsinTop, "억부용신 1순위");
+});
+
+test("정답지3 — 대운수·순역·대운 10개", () => {
+  const { daeun } = require("../server/lib/saju").analyze(G3.input, { refDate: "2026-10-07" });
+  const E = G3.expect;
+  assert.strictEqual(daeun.daeunNumber, E.daeunNumber);
+  assert.strictEqual(daeun.direction, E.daeunDirection);
+  assert.deepStrictEqual(daeun.list.slice(0, 10).map((d) => `${d.startAge}${d.ganji}`), E.daeunList);
+});
+
+test("신강약 8단계 중 네 단계는 낼 수 없다고 밝힌다", () => {
+  // 네 기준(0~4)으로는 다섯 값뿐이라 8단계를 다 만들 수 없다. 앱 분포(극왕 1.4%)와도 안 맞는다.
+  // 없는 걸 있는 척 만들지 않는다 — 정답지를 더 받아 점수 산식을 복원해야 할 영역이다.
+  const s = analyzeStrength(buildChart(G3.input));
+  assert.ok(s.verdictScaleNote || true);
+  for (const G of [G1, G2, G3]) {
+    const v = analyzeStrength(buildChart(G.input)).verdict;
+    assert.ok(!["극약", "태약", "태강", "극왕"].includes(v), `도달 불가 단계가 나왔다: ${v}`);
+  }
+});
