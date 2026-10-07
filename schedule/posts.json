@@ -31661,11 +31661,14 @@
     "scheduledAt": "2026-10-07T08:35:00.000Z",
     "createdAt": "2026-09-27T11:45:36.668Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18097137101563873",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18097137101563873"
+    ]
   },
   {
     "id": "3b10316d-df45-441d-af21-10f2f1a93dc8",
