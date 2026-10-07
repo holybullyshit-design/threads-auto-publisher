@@ -28027,11 +28027,14 @@
     "scheduledAt": "2026-10-07T07:06:00.000Z",
     "createdAt": "2026-09-27T10:00:35.167Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18141406738720175",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "samjaeFixed": true
+    "samjaeFixed": true,
+    "chainPublishedIds": [
+      "18141406738720175"
+    ]
   },
   {
     "id": "74f0b59d-c7d8-4efe-a276-0b14e48fde6f",
