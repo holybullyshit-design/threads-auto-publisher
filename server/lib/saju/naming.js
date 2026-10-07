@@ -52,6 +52,16 @@ const TWELVE_STAGE = {
   病: "병", 死: "사", 墓: "묘", 绝: "절", 胎: "태", 养: "양",
 };
 
+
+// 24절기 한자→한글. lunar-javascript의 절기 표 키가 한자(간체/번체 혼용)라 둘 다 받는다.
+const JIEQI_KO = {
+  立春: "입춘", 雨水: "우수", 驚蟄: "경칩", 惊蛰: "경칩", 春分: "춘분", 清明: "청명", 淸明: "청명",
+  穀雨: "곡우", 谷雨: "곡우", 立夏: "입하", 小滿: "소만", 小满: "소만", 芒種: "망종", 芒种: "망종",
+  夏至: "하지", 小暑: "소서", 大暑: "대서", 立秋: "입추", 處暑: "처서", 处暑: "처서", 白露: "백로",
+  秋分: "추분", 寒露: "한로", 霜降: "상강", 立冬: "입동", 小雪: "소설", 大雪: "대설", 冬至: "동지",
+  小寒: "소한", 大寒: "대한",
+};
+
 // 납음 30종
 const NAYIN = {
   海中金: "해중금", 炉中火: "노중화", 大林木: "대림목", 路旁土: "노방토", 剑锋金: "검봉금",
@@ -103,7 +113,7 @@ function parseGanji(ganji) {
 }
 
 module.exports = {
-  STEM_HANJA, STEM_KO, BRANCH_HANJA, BRANCH_KO, ANIMAL_KO,
+  STEM_HANJA, STEM_KO, BRANCH_HANJA, BRANCH_KO, ANIMAL_KO, JIEQI_KO,
   STEM_ELEMENT, STEM_YINYANG, BRANCH_ELEMENT, BRANCH_YINYANG,
   TEN_GOD, TEN_GOD_ALIAS, TEN_GOD_GROUP, TWELVE_STAGE, NAYIN,
   stemIndex, branchIndex, parseGanji,

@@ -80,4 +80,46 @@ function hiddenStemsOf(branchKo) {
   }));
 }
 
-module.exports = { SAENG, GEUK, ELEMENTS, HIDDEN_STEMS, hiddenStemsOf, tenGodOf, elementGroupFor };
+
+// 시주의 천간은 일간에서 결정된다 — 甲己일→甲子시, 乙庚일→丙子시, 丙辛일→戊子시,
+// 丁壬일→庚子시, 戊癸일→壬子시에서 시작해 지지 순서대로 한 칸씩 간다.
+// 왜 직접 도출하나(2026-10-07): lunar-javascript의 getTime()은 setSect를 **무시하고** 항상
+// 야자시(sect 1) 기준 시주를 돌려준다. 우리는 자정 기준(sect 2)을 쓰므로 23시대 출생자에게
+// "일주는 그날 / 시주 천간은 다음날 일간 기준"이라는 모순된 조합이 나왔다
+// (1950~2024 전수 검사: 23시대 5,400건 전부 불일치). 규칙이 단순하고 예외가 없으니 우리가 센다.
+const ZI_STEM_BY_DAY_STEM = {
+  갑: "갑", 기: "갑",
+  을: "병", 경: "병",
+  병: "무", 신: "무",
+  정: "경", 임: "경",
+  무: "임", 계: "임",
+};
+
+function timeStemOf(dayStemKo, timeBranchKo) {
+  const ziStem = ZI_STEM_BY_DAY_STEM[dayStemKo];
+  if (!ziStem) throw new Error(`시간 천간을 도출할 수 없는 일간: ${dayStemKo}`);
+  const si = N.STEM_KO.indexOf(ziStem);
+  const bi = N.BRANCH_KO.indexOf(timeBranchKo);
+  if (si === -1 || bi === -1) throw new Error(`시간 천간 도출 실패: 일간 ${dayStemKo}, 시지 ${timeBranchKo}`);
+  return N.STEM_KO[(si + bi) % 10];
+}
+
+
+// 12운성 — 일간이 각 지지에서 어느 단계인가. 일간마다 장생 자리가 정해져 있고, 양간은 순행
+// 음간은 역행한다. 표가 완전히 결정적이라 라이브러리에 의존할 이유가 없다.
+// 왜 직접 계산하나(2026-10-07): lunar-javascript의 getYearDiShi() 같은 getter는 그 객체가 들고
+// 있는 일간·지지에 묶여 있어서, 절기 보정 때문에 기둥을 다른 객체에서 가져오면 쓸 수 없다.
+// 라이브러리 getter에 기대다가 setSect 무시 버그를 그대로 흘린 적이 있으니(시주) 직접 센다.
+const TWELVE_STAGE_ORDER = ["장생", "목욕", "관대", "임관", "제왕", "쇠", "병", "사", "묘", "절", "태", "양"];
+const JANGSAENG_BRANCH = { 갑: "해", 을: "오", 병: "인", 정: "유", 무: "인", 기: "유", 경: "사", 신: "자", 임: "신", 계: "묘" };
+const YANG_STEMS = new Set(["갑", "병", "무", "경", "임"]);
+
+function twelveStageOf(dayStemKo, branchKo) {
+  const start = N.BRANCH_KO.indexOf(JANGSAENG_BRANCH[dayStemKo]);
+  const bi = N.BRANCH_KO.indexOf(branchKo);
+  if (start === -1 || bi === -1) throw new Error(`12운성 도출 실패: ${dayStemKo}, ${branchKo}`);
+  const step = YANG_STEMS.has(dayStemKo) ? (bi - start + 12) % 12 : (start - bi + 12) % 12;
+  return TWELVE_STAGE_ORDER[step];
+}
+
+module.exports = { SAENG, GEUK, ELEMENTS, HIDDEN_STEMS, hiddenStemsOf, tenGodOf, elementGroupFor, timeStemOf, twelveStageOf };

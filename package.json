@@ -12,13 +12,14 @@
     "start": "node server/index.js",
     "palja:reels:prepare": "node tools/palja/prepare-reels.js",
     "palja:reels:publish-reviewed": "node tools/palja/publish-reviewed-reels.js",
-    "test": "node --test test/fortuneEngine.test.js test/instagramClient.test.js test/instagramOAuth.test.js test/instagramAuthStore.test.js test/scheduleTime.test.js test/yeonlijiStudio.test.js test/yeonlijiEditorial.test.js test/yeonlijiEvidence.test.js test/instagramPublication.test.js test/yeonlijiDelivery.test.js test/instagramAnalytics.test.js test/paljaReels.test.js test/samjaeTiming.test.js test/sajuFactsAudit.test.js test/draftValidationPath.test.js test/sajuChart.test.js test/sajuStrength.test.js test/sajuGolden.test.js test/sajuLuck.test.js test/sajuCompat.test.js test/sajuReply.test.js",
+    "test": "node --test test/fortuneEngine.test.js test/instagramClient.test.js test/instagramOAuth.test.js test/instagramAuthStore.test.js test/scheduleTime.test.js test/yeonlijiStudio.test.js test/yeonlijiEditorial.test.js test/yeonlijiEvidence.test.js test/instagramPublication.test.js test/yeonlijiDelivery.test.js test/instagramAnalytics.test.js test/paljaReels.test.js test/samjaeTiming.test.js test/sajuFactsAudit.test.js test/draftValidationPath.test.js test/sajuChart.test.js test/sajuStrength.test.js test/sajuGolden.test.js test/sajuCrossEngine.test.js test/sajuLuck.test.js test/sajuCompat.test.js test/sajuReply.test.js",
     "test:render": "node --test test/instagramRender.test.js"
   },
   "dependencies": {
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "lunar-javascript": "^1.7.7",
+    "manseryeok": "^2.0.0",
     "puppeteer": "^25.8.0",
     "sharp": "^0.35.3"
   },
