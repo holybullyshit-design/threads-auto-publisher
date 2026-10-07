@@ -28053,11 +28053,14 @@
     "scheduledAt": "2026-10-07T09:55:00.000Z",
     "createdAt": "2026-09-27T10:01:10.115Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18152953609534389",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18152953609534389"
+    ]
   },
   {
     "id": "fef267c8-971e-41eb-b1b9-5318c3756206",
