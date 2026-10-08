@@ -31910,12 +31910,15 @@
     "scheduledAt": "2026-10-08T10:37:00.000Z",
     "createdAt": "2026-09-27T11:48:43.625Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18111780617596640",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
     "commentCta": true,
-    "samjaeFixed": true
+    "samjaeFixed": true,
+    "chainPublishedIds": [
+      "18111780617596640"
+    ]
   },
   {
     "id": "5f5bb3b9-309b-4705-be18-99d83f5fd0d7",
