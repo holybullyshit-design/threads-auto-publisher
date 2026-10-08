@@ -8,6 +8,7 @@
 const { runSkill } = require("../lib/claudeCliEngine");
 const {
   ANIMALS,
+  BRANCHES_KO,
   STEMS_KO,
   STEM_ELEMENT,
   SIPSEONG_TABLE,
@@ -26,6 +27,9 @@ const {
   sipseongRelation,
 } = require("../lib/sajuFacts");
 const { checkSajuClaims } = require("../lib/sajuClaimChecker");
+// 사실 블록에 적는 판별법을 **실제 사주로 엔진이 집행**해서 확인한다(2026-10-08 사용자 지시).
+// 표를 문장으로 렌더링만 하던 게 삼재 사고의 틈이었다 - 이제 글에 적기 전에 돌려본다.
+const Prover = require("../lib/sajuFactProver");
 
 // 2026-09-10 사용자 지시: "프로필 확인해보세요" 류는 클릭해서 뭘 하면 되는지가 없어서
 // 조회수 대비 전환이 거의 안 됨(실측: 팔자장인/팔자궤도 조회수 대비 팔로워·답글 전환율이
@@ -141,6 +145,36 @@ function pickTopicIds(count, topicIds = TOPICS.map((t) => t.id)) {
   return result;
 }
 
+// 일간 기준 신살(양인·홍염·문창)을 엔진으로 집행한 근거 줄.
+function stemProofLine(sinsalId, stem, branchIndex) {
+  const p = Prover.proveDayStemSinsal(sinsalId, stem, BRANCHES_KO[branchIndex]);
+  return [
+    `엔진 확인(실제 원국으로 계산함): ${p.provedOn} → 성립`,
+    p.counterExample ? `반례(같은 일간인데 그 자리가 없음): ${p.counterExample} → 미성립.` : null,
+  ].filter(Boolean).join("\n");
+}
+
+// 일주 자체로 성립하는 신살(백호·괴강)을 엔진으로 집행한 근거 줄.
+function iljuProofLine(sinsalId, ilju) {
+  const p = Prover.proveIljuSinsal(sinsalId, ilju);
+  return `엔진 확인(실제 원국으로 계산함): ${p.provedOn} → 일주 ${ilju}에서 성립`;
+}
+
+// 사실 블록에 넣을 "엔진이 실제로 돌려본 근거" 한 줄.
+// 성립 예시와 **반례**(같은 띠인데 그 글자가 없어서 미성립)를 둘 다 적는다 - 우리 터진 글 공식 2번
+// ("이 띠라고 다 붙는 건 아니다")을 AI가 지어내지 않고 사실로 쓰게 하려는 것이다.
+// 증명이 실패하면 여기서 throw되어 그 글은 생성되지 않는다.
+function proofLine(sinsalId, groupBranchIndices, targetIndex) {
+  const target = BRANCHES_KO[targetIndex];
+  const proofs = groupBranchIndices.map((bi) => Prover.proveSamhapSinsal(sinsalId, BRANCHES_KO[bi], target));
+  const ok = proofs.find((p) => p.provedOn);
+  const counter = proofs.find((p) => p.counterExample);
+  return [
+    `엔진 확인(실제 원국으로 계산함): ${ok.provedOn} → 성립`,
+    counter ? `반례(같은 띠인데 ${target}이 없음): ${counter.counterExample} → 미성립. "이 띠라고 다 붙는 건 아니다"를 이 근거로 쓸 것.` : null,
+  ].filter(Boolean).join("\n");
+}
+
 // 소재 뱅크 — 각 항목이 build(dateKey)를 실행하면, 그 소재에 필요한 "검증된 사실 블록"
 // 문자열을 만들어준다. AI는 이 사실만 근거로 쓰고, 새로운 명리학 규칙을 지어내면 안 된다.
 const TOPICS = [
@@ -160,6 +194,7 @@ const TOPICS = [
 ${yearsLine}
 역마 자리: ${branchLabel(roles.역마)}
 판별법: 위 띠로 태어난 사람의 사주 원국 어딘가에 역마 자리(${branchLabel(roles.역마)})가 있으면 역마살이 성립한다.
+${proofLine("yeokma", roles.group.branches, roles.역마)}
 성격/의미: 역마는 움직임·이동·변화의 기운. 원국이 안정적이면 이직/이사/여행이 좋은 쪽으로 풀리는 역마, 원국이 흔들리는 상태에서 겹치면 불안해서 도망치고 싶은 역마로 갈린다.`;
     },
   },
@@ -179,6 +214,7 @@ ${yearsLine}
 ${yearsLine}
 도화 자리: ${branchLabel(roles.도화)}
 판별법: 위 띠로 태어난 사람의 사주 원국 어딘가에 도화 자리(${branchLabel(roles.도화)})가 있으면 도화살이 성립한다.
+${proofLine("dohwa", roles.group.branches, roles.도화)}
 성격/의미: 본인 의지와 무관하게 사람을 끌어당기는 매력. 원국에서 힘 있게 자리잡으면 매력으로 쓰이고, 원국이 흔들리는 상태에서 겹치면 관계가 계속 꼬이는 소모전이 된다.`;
     },
   },
@@ -198,6 +234,7 @@ ${yearsLine}
 ${yearsLine}
 화개 자리: ${branchLabel(roles.화개)}
 판별법: 위 띠로 태어난 사람의 사주 원국 어딘가에 화개 자리(${branchLabel(roles.화개)})가 있으면 화개살이 성립한다.
+${proofLine("hwagae", roles.group.branches, roles.화개)}
 성격/의미: 밖으로 뻗치기보다 안으로 응축·몰입하는 기운. 예술·종교·학문 쪽으로 잘 풀리는 살이며(옛날엔 수행자 팔자로도 봄), 원국이 약하면 몰입이 아니라 고립으로 흐르기도 한다.`;
     },
   },
@@ -213,6 +250,7 @@ ${yearsLine}
 대상 일간: ${stem}(${STEM_ELEMENT[STEMS_KO.indexOf(stem)]}) 일간
 양인 자리: ${branchLabel(branch)}
 판별법: 일간이 ${stem}인 사람의 사주에 ${branchLabel(branch)} 자리가 있으면 양인살이 성립한다(양간에만 적용되는 정통 판별법).
+${stemProofLine("yangin", stem, branch)}
 성격/의미: 일간 기운이 가장 날카롭게 선 자리. 결단력·추진력·승부욕이 강함. 군인·의사·운동선수처럼 결단이 필요한 자리에선 무기가 되지만, 쓸 곳이 없으면 가까운 사람에게 날이 향하기도 한다.`;
     },
   },
@@ -284,6 +322,7 @@ ${yearsLine}
       return `[검증된 사실 - 백호살]
 성립 일주: ${ilju}일주
 판별법: 사주 원국의 일주(태어난 날의 간지)가 ${ilju}이면 백호살이 성립한다(정통 판별표 - 갑진·을미·병술·정축·무진·임술·계축 7개 일주 중 하나).
+${iljuProofLine("baekho", ilju)}
 성격/의미: 백호는 원래 사고·상해·급변을 상징하는 흉살이지만, 힘 있게 다스려지면 강한 결단력과 승부 근성으로 쓰인다. 감정 기복이 크고 극단으로 치닫는 경향이 있어, 스스로를 다스리는 법을 알면 오히려 위기에서 강한 사람이 된다.`;
     },
   },
@@ -296,6 +335,7 @@ ${yearsLine}
       return `[검증된 사실 - 괴강살]
 성립 일주: ${ilju}일주
 판별법: 사주 원국의 일주가 ${ilju}이면 괴강살이 성립한다(정통 판별표 - 경진·경술·임진·임술 4개 일주).
+${iljuProofLine("goegang", ilju)}
 성격/의미: 괴강은 우두머리 기운. 자존심이 강하고 결단이 빠르며 지배력·리더십이 두드러진다. 신강(身强)하고 원국이 잘 다스려지면 큰 성취를 이루지만, 제어가 안 되면 독선·충돌로 흐르기 쉽다.`;
     },
   },
@@ -311,6 +351,7 @@ ${yearsLine}
 대상 일간: ${stem} 일간
 홍염 자리: ${branchLabel(branch)}
 판별법: 일간이 ${stem}인 사람의 사주 원국에 ${branchLabel(branch)} 자리가 있으면 홍염살이 성립한다(정통 판별표).
+${stemProofLine("hongyeom", stem, branch)}
 성격/의미: 도화살이 "눈에 띄는 매력"이라면 홍염은 "스며드는 매력" — 첫인상보다 시간이 지날수록, 특히 떨어진 뒤에 오히려 그리움이 짙어지는 방식으로 작용한다. 이성 관계에서 미련·재회가 반복되는 경우가 많다.`;
     },
   },
@@ -326,6 +367,7 @@ ${yearsLine}
 대상 일간: ${stem} 일간
 문창 자리: ${branchLabel(branch)}
 판별법: 일간이 ${stem}인 사람의 사주 원국에 ${branchLabel(branch)} 자리가 있으면 문창귀인이 성립한다(정통 판별표).
+${stemProofLine("munchang", stem, branch)}
 의미: 학문·문서·표현력을 상징하는 길신. 배운 걸 정리해서 풀어내는 능력이 좋고, 시험·자격증·글쓰기·강의처럼 지식을 문서/언어로 다루는 분야에서 유독 빛을 발한다. 원국이 탁하면 재능은 있는데 정작 본인이 몰라서 안 쓰는 경우도 있다.`;
     },
   },
@@ -907,4 +949,6 @@ function pickHookFormatIds(count) {
   return pickTopicIds(count, HOOK_FORMATS.map((h) => h.id)); // 셔플백 로직 재사용
 }
 
-module.exports = { writeThreadDraft, TOPICS, HOOK_FORMATS, CTA_POOL, COMMENT_CTA_POOL, BANNED_BENCHMARK_PHRASES, HIT_FORMULA_TOPIC_IDS, pickTopicIds, pickHookFormatIds };
+// TOPICS는 테스트가 사실 블록을 직접 검증할 수 있게 함께 내보낸다
+module.exports = {
+  TOPICS, writeThreadDraft, TOPICS, HOOK_FORMATS, CTA_POOL, COMMENT_CTA_POOL, BANNED_BENCHMARK_PHRASES, HIT_FORMULA_TOPIC_IDS, pickTopicIds, pickHookFormatIds };
