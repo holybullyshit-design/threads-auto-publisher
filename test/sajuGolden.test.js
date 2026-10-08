@@ -337,3 +337,60 @@ test("신강약 산식 — 비겁+인성 비율이 단계를 정한다 (정답�
   // basis 문자열에 null이 새지 않는다(실제로 샜던 버그).
   assert.ok(!/null/.test(un.basis), `basis에 null이 샜다: ${un.basis}`);
 });
+
+// ── 정답지 5·6 (2026-10-08) ──
+// 5: 1965-01-14 밤(계해시) 남 → 앱 중화신강(26.31%), 억부용신 목
+// 6: 1967-08-14 02:00 남     → 앱 신강(14.2%),     억부용신 목
+// 6이 신강(75%)을 덮으면서 비율 산식이 6/6이 됐고, 억부용신 규칙도 이 둘로 풀렸다.
+const G5 = { input: { year: 1965, month: 1, day: 14, hour: 22, minute: 0, gender: "male" } };
+const G6 = { input: { year: 1967, month: 8, day: 14, hour: 2, minute: 0, gender: "male" } };
+
+test("신강약·억부용신 — 정답지 6건 전부 일치", () => {
+  const { analyzeStrength } = require("../server/lib/saju/strength");
+  // [사주, 비겁+인성%, 단계, 앱 억부용신 1순위]
+  const CASES = [
+    [G2.input, 37.5, "신약", "토"],
+    [G3.input, 50, "중화신약", "목"],
+    [G1.input, 62.5, "중화신강", "수"],
+    [G5.input, 62.5, "중화신강", "목"],
+    [G6.input, 75, "신강", "목"],
+    [G4.input, 100, "극왕", "금"],
+  ];
+  for (const [input, support, level, yongsin] of CASES) {
+    const s = analyzeStrength(buildChart(input));
+    const tag = `${input.year}-${input.month}`;
+    assert.strictEqual(s.supportPercent, support, `${tag} 비겁+인성 비율`);
+    assert.strictEqual(s.verdict, level, `${tag} 단계`);
+    assert.strictEqual(s.yongsinCandidateElements[0], yongsin, `${tag} 억부용신 1순위`);
+  }
+});
+
+test("억부용신은 '무엇이 과다한가'로 갈린다 — 고정 순서도, 적은 것 먼저도 아니다", () => {
+  // 이 두 가지를 각각 규칙으로 썼을 때 신강 쪽 4건 중 2건밖에 못 맞췄다. 되돌리지 말 것.
+  //   비겁 과다 → 관성 / 인성 과다 → 재성(재극인) / 극왕(종격) → 식상(순세)
+  const { analyzeStrength } = require("../server/lib/saju/strength");
+  const byTag = (input) => {
+    const s = analyzeStrength(buildChart(input));
+    return { v: s.verdict, top: s.yongsinCandidateElements[0], bi: s.groupPercent["비겁"], in: s.groupPercent["인성"] };
+  };
+  const namjinju = byTag(G5.input);   // 무토, 비겁 50 > 인성 12.5 → 관성(목)
+  assert.ok(namjinju.bi > namjinju.in);
+  assert.strictEqual(namjinju.top, "목");
+  const myeongtaejin = byTag(G6.input); // 경금, 인성 50 > 비겁 25 → 재성(목)
+  assert.ok(myeongtaejin.in > myeongtaejin.bi);
+  assert.strictEqual(myeongtaejin.top, "목");
+  const maengtaeju = byTag(G4.input);   // 무토 극왕 → 식상(금), 종격이라 단정 보류 안내가 붙는다
+  assert.strictEqual(maengtaeju.v, "극왕");
+  assert.strictEqual(maengtaeju.top, "금");
+  assert.ok(analyzeStrength(buildChart(G4.input)).yongsinNote, "종격 구간은 단정하지 말라고 알려야 한다");
+  assert.strictEqual(analyzeStrength(buildChart(G5.input)).yongsinNote, null, "종격 아닌 구간에 안내가 붙으면 안 된다");
+});
+
+test("정답지6 — 네 기둥·오행·대운수", () => {
+  const c = buildChart(G6.input);
+  const { analyzeStrength } = require("../server/lib/saju/strength");
+  assert.strictEqual(c.summary, "정미 무신 경술 정축");
+  assert.deepStrictEqual(analyzeStrength(c).elementPercent, { 목: 0, 화: 25, 토: 50, 금: 25, 수: 0 });
+  const { daeun } = require("../server/lib/saju").analyze(G6.input, { refDate: "2026-10-08" });
+  assert.strictEqual(daeun.daeunNumber, 2);
+});

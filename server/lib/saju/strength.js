@@ -173,15 +173,48 @@ function analyzeStrength(chart) {
   const timeUnknown = chart.timeUnknown === true;
   if (timeUnknown) scale.confirmed = false;
 
-  // 억부 용신 후보: 신강 쪽이면 빼주는 오행, 신약 쪽이면 돕는 오행.
+  // ── 억부 용신 후보 ────────────────────────────────────────────────────
   // **단정하지 않는다**(config.ASSERT_YONGSIN=false) - 용신 선정은 학파 차이가 가장 크다.
-  // 신강 쪽이면 빼주는 오행(관성 → 재성 → 식상 순으로 본다 - 강한 일간은 관살로 누르는 게
-  // 억부의 기본), 신약 쪽이면 돕는 오행(인성 → 비겁 순). 원국에 적거나 없는 오행을 먼저 둔다.
-  const wantGroups = scale.tendency === "신강" ? ["관성", "재성", "식상"] : ["인성", "비겁"];
-  const yongsinCandidateElements = wantGroups
+  //
+  // 정답지 6건으로 맞춘 규칙(2026-10-08). 신강 쪽은 "무엇이 과다한가"로 갈린다 —
+  // 그냥 "관성 먼저"도, "원국에 적은 것 먼저"도 둘 다 2/4밖에 못 맞췄다.
+  //
+  //   신약 쪽          → 돕는 오행을 **원국에 적은 쪽부터**(동점이면 인성).
+  //                      1990 무토(인성 화 25 / 비겁 토 12.5) → 앱 토 ✅
+  //                      1958 병화(인성 목 25 = 비겁 화 25)   → 앱 목 ✅
+  //   신강 + 비겁 과다  → **관성**으로 누른다.
+  //                      남진주 무토(비겁 50 / 인성 12.5) → 앱 목(관성) ✅
+  //                      1988  병화(비겁 50 / 인성 12.5) → 앱 수(관성) ✅
+  //   신강 + 인성 과다  → **재성**으로 인성을 극한다(재극인). 관성을 쓰면 관생인으로 더 키운다.
+  //                      명태진 경금(인성 토 50 / 비겁 금 25) → 앱 목(재성) ✅
+  //   극왕(종격 구간)   → **식상**으로 순세(順勢)한다. 거슬러 극하지 않는다.
+  //                      맹태주 무토(인성 62.5, 극왕) → 앱 금(식상) ✅
+  //
+  // 6건 전부 1순위가 맞는다. 2·3순위는 정답지가 없어 명리 통설대로 둔 것이다.
+  const strongSide = scale.tendency === "신강";
+  const inseongHeavy = (groupScore["인성"] || 0) > (groupScore["비겁"] || 0);
+  const jonggyeokZone = ["극왕", "태강"].includes(scale.level);
+
+  let wantGroups;
+  if (!strongSide) wantGroups = ["인성", "비겁"];
+  else if (jonggyeokZone) wantGroups = ["식상", "재성", "관성"];
+  else if (inseongHeavy) wantGroups = ["재성", "식상", "관성"];
+  else wantGroups = ["관성", "재성", "식상"];
+
+  let yongsinCandidateElements = wantGroups
     .map((g) => E.ELEMENTS.find((el) => E.elementGroupFor(de, el) === g))
-    .filter(Boolean)
-    .sort((a, b) => score[a] - score[b]);
+    .filter(Boolean);
+  if (!strongSide) {
+    // 신약 쪽만 "원국에 적은 쪽 먼저"로 다시 세운다(sort가 안정 정렬이라 동점이면 인성이 앞).
+    yongsinCandidateElements = yongsinCandidateElements.slice().sort((a, b) => score[a] - score[b]);
+  }
+
+  // 극왕·태강은 종격(從格) 영역이다. 앱도 이 구간에서는 **종용신을 먼저** 준다
+  // (맹태주 = "화(종용신) 금(억부용신)"). 억부 1순위는 맞췄지만 종용신 자체는 미구현이라,
+  // 이 구간에서는 단정하지 말라고 명시한다.
+  const yongsinNote = jonggyeokZone
+    ? "극왕·태강은 종격(從格)으로 보는 구간이라 억부용신만으로 단정하지 않습니다. 만세력 앱도 이 구간에서는 종용신(從用神)을 먼저 제시하는데, 종용신은 아직 엔진이 계산하지 않습니다."
+    : null;
 
   const weighted = weightedElementScore(chart);
 
@@ -207,6 +240,9 @@ function analyzeStrength(chart) {
       : null,
     yongsinCandidateElements,
     yongsinAsserted: CONFIG.ASSERT_YONGSIN,
+    yongsinNote, // 종격 구간이면 단정하지 말라는 안내(아니면 null)
+    // 조후용신은 아직 미구현이다. 앱은 월지 기준으로 따로 준다(남진주 화·맹태주 화).
+    johuYongsin: null,
     basis: `일간 ${chart.dayStem}(${de}) / 득령 ${criteria.득령.ok ? "○" : "✗"} 득지 ${criteria.득지.ok ? "○" : "✗"} 득시 ${criteria.득시.ok === null ? "-" : criteria.득시.ok ? "○" : "✗"} 득세 ${criteria.득세.ok ? "○" : "✗"} → ${scale.level} (비겁+인성 ${scale.supportPercent}%)`,
     // 참고용(지장간까지 본 세력) - 기본 판정에는 쓰지 않는다.
     weightedElementPercent: Object.fromEntries(E.ELEMENTS.map((el) => [el, Math.round((weighted.score[el] / weighted.total) * 1000) / 10])),
