@@ -37,6 +37,12 @@ function findBranches(chart, targetIndices) {
   return branchSlots(chart).filter((s) => want.has(s.branchIndex));
 }
 
+// 한글 지지 이름 목록으로 기둥을 찾는다(findBranches는 인덱스를 받는다).
+function findBranchHits(chart, branchNames) {
+  const want = new Set(branchNames);
+  return branchSlots(chart).filter((slot) => want.has(slot.branch));
+}
+
 // 신살 하나의 결과 모양을 통일한다. found=false면 "이 사주엔 없다"는 사실도 그대로 쓴다
 // (글에서 "이 셋이라고 다 붙는 건 아니다"를 근거 있게 쓸 수 있게 하려는 것).
 function result({ id, name, basis, targets, hits, strength, note }) {
@@ -51,9 +57,10 @@ function result({ id, name, basis, targets, hits, strength, note }) {
   if (note) base.note = note;
   // 걸린 자리의 오행이 이 원국에서 힘이 있는지 - 글의 양면 구조("힘 있으면 A, 흔들리면 B")에
   // 근거를 준다. 신살이 없으면 판정할 게 없다.
-  if (strength && hits.length) {
-    const el = hits[0].element;
-    base.footing = elementFooting(strength, el);
+  // 천간으로 성립하는 신살(천덕귀인·월덕귀인·교록)은 지지 오행이 없다 - 그럴 땐 자리의 힘을
+  // 판정하지 않는다. 예전엔 undefined를 그대로 넘겨 throw가 났다.
+  if (strength && hits.length && hits[0].element) {
+    base.footing = elementFooting(strength, hits[0].element);
   }
   return base;
 }
@@ -218,6 +225,97 @@ function analyzeSinsal(chart, strength = null, opts = {}) {
       strength,
       note: hits.some((h) => h.pillar === "day") ? "일주에 걸린 백호·괴강을 가장 세게 본다" : undefined,
     }));
+  }
+
+  // 괴강은 유파에 따라 표가 다르다. 위 `found`는 전통 4일주(Threads 글이 써 온 기준)이고,
+  // 사용자 만세력 앱은 여기에 **무술만** 더한다(무진은 넣지 않는다 - 정답지 2건으로 확인).
+  // 상담 풀이는 앱과 답이 같아야 하므로 appBased를 따로 담는다. 섞어 쓰지 말 것.
+  {
+    const g = out.find((x) => x.id === "goegang");
+    const appHits = chart.pillarOrder
+      .filter((key) => F.GOEGANG_ILJU_APP.includes(chart.pillars[key].ko))
+      .map((key) => ({ pillar: key, label: chart.pillars[key].label, ganji: chart.pillars[key].ko }));
+    g.appBased = {
+      basis: `만세력 앱 기준 괴강은 ${F.GOEGANG_ILJU_APP.join("·")}이다(전통 4일주 + 무술)`,
+      targetIlju: F.GOEGANG_ILJU_APP,
+      found: appHits.length > 0,
+      at: appHits,
+    };
+  }
+
+  // ── 태극귀인(太極貴人) ── 일간 기준 지지.
+  {
+    const targets = F.TAEGEUK_TABLE[chart.dayStem] || [];
+    out.push(result({
+      id: "taegeukgwiin", name: "태극귀인",
+      basis: `일간 ${chart.dayStem}의 태극귀인 자리는 ${targets.join("·")}`,
+      targets,
+      hits: findBranchHits(chart, targets),
+      strength,
+    }));
+  }
+
+  // ── 천덕귀인(天德貴人) ── 월지로 정해지는 글자 하나가 원국에 있으면 성립.
+  // 묘·유·자월만 지지를 보고 나머지는 천간을 본다.
+  {
+    const mb = chart.pillars.month.branch;
+    const target = F.CHEONDEOK_TABLE[mb];
+    const isBranch = F.CHEONDEOK_IS_BRANCH.has(mb);
+    const hits = chart.pillarOrder
+      .filter((key) => (isBranch ? chart.pillars[key].branch : chart.pillars[key].stem) === target)
+      .map((key) => ({ pillar: key, label: chart.pillars[key].label, ganji: chart.pillars[key].ko, meaning: chart.pillars[key].meaning, element: isBranch ? chart.pillars[key].branchElement : chart.pillars[key].stemElement }));
+    out.push(result({
+      id: "cheondeokgwiin", name: "천덕귀인",
+      basis: `월지 ${mb}월의 천덕귀인은 ${target}(${isBranch ? "지지" : "천간"})`,
+      targets: [target],
+      hits,
+      strength,
+    }));
+  }
+
+  // ── 월덕귀인(月德貴人) ── 월지가 속한 삼합국으로 정해지는 천간 하나.
+  {
+    const mb = chart.pillars.month.branch;
+    const target = F.WOLDEOK_TABLE[mb];
+    const hits = chart.pillarOrder
+      .filter((key) => chart.pillars[key].stem === target)
+      .map((key) => ({ pillar: key, label: chart.pillars[key].label, ganji: chart.pillars[key].ko, meaning: chart.pillars[key].meaning, element: chart.pillars[key].stemElement }));
+    out.push(result({
+      id: "woldeokgwiin", name: "월덕귀인",
+      basis: `월지 ${mb}월이 속한 삼합국의 월덕귀인은 천간 ${target}`,
+      targets: [target],
+      hits,
+      strength,
+    }));
+  }
+
+  // ── 정록(건록) ── 일간이 가장 왕성해지는 지지가 원국에 있으면 성립.
+  {
+    const target = F.GEONROK_TABLE[chart.dayStem];
+    out.push(result({
+      id: "jeongrok", name: "정록",
+      basis: `일간 ${chart.dayStem}의 건록 자리는 ${target}`,
+      targets: [target],
+      hits: findBranchHits(chart, [target]),
+      strength,
+    }));
+  }
+
+  // ── 교록(交祿) ── 일간의 록이 시지에 있고, **동시에** 시간의 록이 일지에 있을 때.
+  // 확인: 맹태주(일주 무오 / 시주 정사) - 무의 록 사가 시지에, 정의 록 오가 일지에 있어 성립.
+  //       김진화(일주 무진 / 시주 병진) - 무의 록 사도 병의 록 사도 없어 미성립.
+  {
+    let hits = [];
+    let basis = "태어난 시간을 몰라 교록은 판정하지 않습니다";
+    if (!chart.timeUnknown) {
+      const dayStem = chart.pillars.day.stem;
+      const timeStem = chart.pillars.time.stem;
+      const crossed = F.GEONROK_TABLE[dayStem] === chart.pillars.time.branch
+        && F.GEONROK_TABLE[timeStem] === chart.pillars.day.branch;
+      basis = `일간 ${dayStem}의 록은 ${F.GEONROK_TABLE[dayStem]}, 시간 ${timeStem}의 록은 ${F.GEONROK_TABLE[timeStem]} - 서로 맞바꿔 들고 있어야 성립`;
+      if (crossed) hits = [{ pillar: "time", label: chart.pillars.time.label, ganji: chart.pillars.time.ko }];
+    }
+    out.push(result({ id: "gyorok", name: "교록", basis, targets: [], hits, strength }));
   }
 
   // ── 협록(夾祿) ── 일간의 건록 자리를 **월지와 시지가 앞뒤로 끼고 있을 때** 성립한다.

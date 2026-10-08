@@ -415,3 +415,55 @@ test("정답지7 — 태강은 비겁 과다여도 식상이다(종격 구간이
   const { daeun } = require("../server/lib/saju").analyze(G7.input, { refDate: "2026-10-08" });
   assert.strictEqual(daeun.daeunNumber, 7);
 });
+
+test("신살 전수 — 앱 '신살과 길성' 표와 기둥 단위로 일치한다 (22항목)", () => {
+  // 2026-10-08: 앱 화면 2건의 "신살과 길성" 표를 글자 그대로 옮겨 고정한다.
+  // 이때 태극귀인·천덕귀인·월덕귀인·정록·교록 다섯을 새로 구현했고, 괴강 표가 유파별로
+  // 다르다는 것도 드러났다(아래 괴강 테스트 참고).
+  const { analyzeSinsal } = require("../server/lib/saju/sinsal");
+  const { analyzeStrength } = require("../server/lib/saju/strength");
+  const CASES = [
+    [{ year: 1965, month: 1, day: 14, hour: 8, minute: 22, gender: "male" }, {  // 갑진 정축 무진 병진
+      현침살: ["년주"], 백호살: ["년주", "월주", "일주"],
+      태극귀인: ["년주", "월주", "일주", "시주"], 홍염살: ["년주", "일주", "시주"],
+      화개살: ["년주", "월주", "일주", "시주"], 천을귀인: ["월주"],
+      괴강살: [], 천덕귀인: [], 월덕귀인: [], 정록: [], 교록: [],
+    }],
+    [{ year: 1966, month: 10, day: 26, hour: 10, minute: 0, gender: "male" }, {  // 병오 무술 무오 정사
+      천덕귀인: ["년주"], 월덕귀인: ["년주"], 도화살: ["년주", "일주"],
+      현침살: ["년주", "일주"], 양인살: ["년주", "일주"], 태극귀인: ["월주"],
+      화개살: ["월주"], 천문성: ["월주"], 교록: ["시주"], 정록: ["시주"], 역마살: ["시주"],
+    }],
+  ];
+  let checked = 0;
+  for (const [input, expect] of CASES) {
+    const c = buildChart(input);
+    const k = analyzeSinsal(c, analyzeStrength(c));
+    const got = {};
+    for (const x of k.all) got[x.name] = x.found ? x.at.map((a) => a.label).sort() : [];
+    for (const [name, want] of Object.entries(expect)) {
+      checked++;
+      assert.deepStrictEqual(got[name] ?? [], want.slice().sort(), `${input.year} ${name}`);
+    }
+  }
+  assert.strictEqual(checked, 22);
+});
+
+test("괴강은 유파가 갈린다 — 전통 4일주와 앱 기준(+무술)을 따로 담는다", () => {
+  // 앱은 무술을 괴강으로 보지만 **무진은 보지 않는다**(정답지 2건으로 확인).
+  // Threads 글은 전통 4일주로 나갔으므로 found는 그대로 두고 appBased를 따로 둔다. 섞지 말 것.
+  const { analyzeSinsal } = require("../server/lib/saju/sinsal");
+  const { analyzeStrength } = require("../server/lib/saju/strength");
+  const pick = (input) => {
+    const c = buildChart(input);
+    return analyzeSinsal(c, analyzeStrength(c)).all.find((x) => x.id === "goegang");
+  };
+  const musul = pick({ year: 1966, month: 10, day: 26, hour: 10, minute: 0, gender: "male" }); // 월주 무술
+  assert.strictEqual(musul.found, false, "전통 4일주 표에 무술은 없다");
+  assert.strictEqual(musul.appBased.found, true, "앱 기준으로는 무술이 괴강이다");
+  assert.deepStrictEqual(musul.appBased.at.map((a) => a.label), ["월주"]);
+
+  const mujin = pick({ year: 1965, month: 1, day: 14, hour: 8, minute: 22, gender: "male" }); // 일주 무진
+  assert.strictEqual(mujin.found, false);
+  assert.strictEqual(mujin.appBased.found, false, "앱도 무진은 괴강으로 보지 않는다 - 무진을 표에 넣지 말 것");
+});
