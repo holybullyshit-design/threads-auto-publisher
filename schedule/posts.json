@@ -30494,10 +30494,13 @@
     "scheduledAt": "2026-10-08T02:30:00.000Z",
     "createdAt": "2026-09-27T11:13:23.165Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18124554713303479",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18124554713303479"
+    ]
   },
   {
     "id": "60abdcc4-15da-4d65-a3d2-a3030bdac91c",
