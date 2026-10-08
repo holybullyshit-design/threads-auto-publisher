@@ -31188,11 +31188,14 @@
     "scheduledAt": "2026-10-08T22:38:00.000Z",
     "createdAt": "2026-09-27T11:30:48.204Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18113094953034197",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "samjaeFixed": true
+    "samjaeFixed": true,
+    "chainPublishedIds": [
+      "18113094953034197"
+    ]
   },
   {
     "id": "fe30b11c-819d-4d89-92cf-de934d9f9861",
