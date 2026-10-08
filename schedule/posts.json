@@ -28189,11 +28189,14 @@
     "scheduledAt": "2026-10-08T09:00:00.000Z",
     "createdAt": "2026-09-27T10:03:41.504Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18354187561175783",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18354187561175783"
+    ]
   },
   {
     "id": "6fd1150d-3f92-4e6e-928e-6d2ee3153b0a",
