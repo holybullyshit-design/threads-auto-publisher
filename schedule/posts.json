@@ -31821,10 +31821,13 @@
     "scheduledAt": "2026-10-08T05:20:00.000Z",
     "createdAt": "2026-09-27T11:47:11.884Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17913039300468340",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17913039300468340"
+    ]
   },
   {
     "id": "f0315153-5321-42db-91e3-8fd592aa78e3",
