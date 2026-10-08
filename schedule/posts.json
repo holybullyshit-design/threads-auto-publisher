@@ -31724,11 +31724,14 @@
     "scheduledAt": "2026-10-07T23:49:00.000Z",
     "createdAt": "2026-09-27T11:46:08.326Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18053988716648597",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "samjaeFixed": true
+    "samjaeFixed": true,
+    "chainPublishedIds": [
+      "18053988716648597"
+    ]
   },
   {
     "id": "c39ba205-a82e-41b6-abfb-5e10cc73b5cc",
