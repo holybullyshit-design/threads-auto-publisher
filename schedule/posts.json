@@ -30574,10 +30574,13 @@
     "scheduledAt": "2026-10-08T07:10:00.000Z",
     "createdAt": "2026-09-27T11:14:30.876Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18100742507455886",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18100742507455886"
+    ]
   },
   {
     "id": "9a0240c6-c9ba-4ce9-8d76-b25067a07ad9",
