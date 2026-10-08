@@ -29626,11 +29626,14 @@
     "scheduledAt": "2026-10-08T22:56:00.000Z",
     "createdAt": "2026-09-27T10:50:50.652Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18176419918452647",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "samjaeFixed": true
+    "samjaeFixed": true,
+    "chainPublishedIds": [
+      "18176419918452647"
+    ]
   },
   {
     "id": "a48a39ef-03c7-4621-ae32-1fabc7a5cc27",
