@@ -31152,11 +31152,14 @@
     "scheduledAt": "2026-10-08T08:57:00.000Z",
     "createdAt": "2026-09-27T11:30:13.069Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18084307097325368",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "samjaeFixed": true
+    "samjaeFixed": true,
+    "chainPublishedIds": [
+      "18084307097325368"
+    ]
   },
   {
     "id": "bd43e97d-1354-4f32-9211-5f0af42c5df9",
