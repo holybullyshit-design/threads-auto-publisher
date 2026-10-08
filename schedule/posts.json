@@ -31866,11 +31866,14 @@
     "scheduledAt": "2026-10-08T07:56:00.000Z",
     "createdAt": "2026-09-27T11:47:42.150Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18069915206774374",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "samjaeFixed": true
+    "samjaeFixed": true,
+    "chainPublishedIds": [
+      "18069915206774374"
+    ]
   },
   {
     "id": "e7db248f-6690-4e68-a46d-8d3ed1054d2f",
