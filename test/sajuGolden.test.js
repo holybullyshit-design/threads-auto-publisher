@@ -344,8 +344,12 @@ test("신강약 산식 — 비겁+인성 비율이 단계를 정한다 (정답�
 // 6이 신강(75%)을 덮으면서 비율 산식이 6/6이 됐고, 억부용신 규칙도 이 둘로 풀렸다.
 const G5 = { input: { year: 1965, month: 1, day: 14, hour: 22, minute: 0, gender: "male" } };
 const G6 = { input: { year: 1967, month: 8, day: 14, hour: 2, minute: 0, gender: "male" } };
+// 7: 1965-01-14 08:00(병진시) 남 → 앱 태강(6.06%), 억부용신 금
+//    태강은 종격 구간이라 비겁이 과다(62.5 > 인성 25)인데도 관성이 아니라 **식상**이다.
+//    "비겁 과다 → 관성" 규칙보다 "종격 구간 → 식상(순세)"이 먼저라는 걸 이 건이 확인해 준다.
+const G7 = { input: { year: 1965, month: 1, day: 14, hour: 8, minute: 0, gender: "male" } };
 
-test("신강약·억부용신 — 정답지 6건 전부 일치", () => {
+test("신강약·억부용신 — 정답지 7건 전부 일치", () => {
   const { analyzeStrength } = require("../server/lib/saju/strength");
   // [사주, 비겁+인성%, 단계, 앱 억부용신 1순위]
   const CASES = [
@@ -354,6 +358,7 @@ test("신강약·억부용신 — 정답지 6건 전부 일치", () => {
     [G1.input, 62.5, "중화신강", "수"],
     [G5.input, 62.5, "중화신강", "목"],
     [G6.input, 75, "신강", "목"],
+    [G7.input, 87.5, "태강", "금"],
     [G4.input, 100, "극왕", "금"],
   ];
   for (const [input, support, level, yongsin] of CASES) {
@@ -393,4 +398,20 @@ test("정답지6 — 네 기둥·오행·대운수", () => {
   assert.deepStrictEqual(analyzeStrength(c).elementPercent, { 목: 0, 화: 25, 토: 50, 금: 25, 수: 0 });
   const { daeun } = require("../server/lib/saju").analyze(G6.input, { refDate: "2026-10-08" });
   assert.strictEqual(daeun.daeunNumber, 2);
+});
+
+test("정답지7 — 태강은 비겁 과다여도 식상이다(종격 구간이 먼저)", () => {
+  const { analyzeStrength } = require("../server/lib/saju/strength");
+  const c = buildChart(G7.input);
+  const s = analyzeStrength(c);
+  assert.strictEqual(c.summary, "갑진 정축 무진 병진");
+  assert.deepStrictEqual(s.elementPercent, { 목: 12.5, 화: 25, 토: 62.5, 금: 0, 수: 0 });
+  assert.strictEqual(s.supportPercent, 87.5);
+  assert.strictEqual(s.verdict, "태강");
+  // 비겁(62.5)이 인성(25)보다 많다. 종격 구간이 아니었다면 관성(목)이 1순위였을 것이다.
+  assert.ok(s.groupPercent["비겁"] > s.groupPercent["인성"]);
+  assert.strictEqual(s.yongsinCandidateElements[0], "금", "태강은 식상으로 순세한다");
+  assert.ok(s.yongsinNote, "종격 구간은 단정하지 말라고 알려야 한다");
+  const { daeun } = require("../server/lib/saju").analyze(G7.input, { refDate: "2026-10-08" });
+  assert.strictEqual(daeun.daeunNumber, 7);
 });
