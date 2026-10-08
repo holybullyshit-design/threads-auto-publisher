@@ -29524,10 +29524,13 @@
     "scheduledAt": "2026-10-08T01:40:00.000Z",
     "createdAt": "2026-09-27T10:49:28.745Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17962069980238967",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "17962069980238967"
+    ]
   },
   {
     "id": "f25b754e-a42a-4527-abe4-564d637eb8af",
