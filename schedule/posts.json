@@ -30607,10 +30607,13 @@
     "scheduledAt": "2026-10-08T22:27:00.000Z",
     "createdAt": "2026-09-27T11:15:02.857Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18143501836617769",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18143501836617769"
+    ]
   },
   {
     "id": "af2b81f1-2d15-4ff7-9f56-513c5d64b05f",
