@@ -31773,10 +31773,13 @@
     "scheduledAt": "2026-10-08T02:39:00.000Z",
     "createdAt": "2026-09-27T11:46:42.296Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18012240344991028",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18012240344991028"
+    ]
   },
   {
     "id": "516ae547-b1dc-4004-b43e-f87c0a1e2c6d",
