@@ -28105,10 +28105,13 @@
     "scheduledAt": "2026-10-08T01:18:00.000Z",
     "createdAt": "2026-09-27T10:02:10.972Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18104370230202909",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18104370230202909"
+    ]
   },
   {
     "id": "071aba87-e697-488f-a2e8-b63246800c7b",
