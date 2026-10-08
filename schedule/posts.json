@@ -28161,10 +28161,13 @@
     "scheduledAt": "2026-10-08T06:51:00.000Z",
     "createdAt": "2026-09-27T10:03:10.419Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18013644545967979",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18013644545967979"
+    ]
   },
   {
     "id": "22d34dfb-b371-4e61-9c1a-5c56029b2706",
