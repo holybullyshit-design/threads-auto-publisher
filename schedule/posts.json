@@ -28133,10 +28133,13 @@
     "scheduledAt": "2026-10-08T04:02:00.000Z",
     "createdAt": "2026-09-27T10:02:42.727Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17957416032017045",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17957416032017045"
+    ]
   },
   {
     "id": "5e16792f-b21f-440e-af42-001e5d8673bd",
