@@ -30737,10 +30737,13 @@
     "scheduledAt": "2026-10-09T06:09:00.000Z",
     "createdAt": "2026-09-27T11:17:04.201Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18012820004760202",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18012820004760202"
+    ]
   },
   {
     "id": "a2cadf61-4ae8-4e1b-b062-98fdab152563",
