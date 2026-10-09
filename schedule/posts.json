@@ -28222,10 +28222,13 @@
     "scheduledAt": "2026-10-08T23:59:00.000Z",
     "createdAt": "2026-09-27T10:04:16.226Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17865401457677374",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "17865401457677374"
+    ]
   },
   {
     "id": "e2454184-fc87-4ecb-aba3-c626ae412bc0",
