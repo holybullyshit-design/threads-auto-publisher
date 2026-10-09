@@ -30778,10 +30778,13 @@
     "scheduledAt": "2026-10-09T23:05:00.000Z",
     "createdAt": "2026-09-27T11:17:40.943Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18335509384273090",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18335509384273090"
+    ]
   },
   {
     "id": "60d4eb14-e3f1-42d0-bf5e-67daf374283d",
