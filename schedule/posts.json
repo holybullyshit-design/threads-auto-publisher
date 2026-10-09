@@ -30688,10 +30688,13 @@
     "scheduledAt": "2026-10-09T03:19:00.000Z",
     "createdAt": "2026-09-27T11:16:32.829Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17877977154632140",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "17877977154632140"
+    ]
   },
   {
     "id": "b59d397a-53ee-471c-ad76-0511dad2d718",
