@@ -29732,10 +29732,13 @@
     "scheduledAt": "2026-10-09T05:43:00.000Z",
     "createdAt": "2026-09-27T10:52:38.849Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18115696025047616",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18115696025047616"
+    ]
   },
   {
     "id": "e2e11333-bb0a-41b0-a339-5cb619120113",
