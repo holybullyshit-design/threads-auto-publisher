@@ -28273,10 +28273,13 @@
     "scheduledAt": "2026-10-09T04:18:00.000Z",
     "createdAt": "2026-09-27T10:05:10.084Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18119673427954279",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18119673427954279"
+    ]
   },
   {
     "id": "d4315a7e-3942-4a5e-954e-bfc7c9ae0e2d",
