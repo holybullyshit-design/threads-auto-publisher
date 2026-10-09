@@ -32147,11 +32147,14 @@
     "scheduledAt": "2026-10-09T09:39:00.000Z",
     "createdAt": "2026-09-27T11:51:39.250Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18353752651216013",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18353752651216013"
+    ]
   },
   {
     "id": "459c8b6e-213a-405a-bbce-1f6bb19de8eb",
