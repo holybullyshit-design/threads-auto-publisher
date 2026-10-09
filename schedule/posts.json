@@ -32013,10 +32013,13 @@
     "scheduledAt": "2026-10-09T02:18:00.000Z",
     "createdAt": "2026-09-27T11:49:50.477Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18126726394855698",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18126726394855698"
+    ]
   },
   {
     "id": "e8499fb4-c9cf-4d0b-8a07-10c93d90523a",
