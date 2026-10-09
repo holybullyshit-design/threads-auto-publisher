@@ -32102,10 +32102,13 @@
     "scheduledAt": "2026-10-09T06:55:00.000Z",
     "createdAt": "2026-09-27T11:51:08.199Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17975117985129554",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17975117985129554"
+    ]
   },
   {
     "id": "84e567a8-a7a3-4ae4-8398-583171814af6",
