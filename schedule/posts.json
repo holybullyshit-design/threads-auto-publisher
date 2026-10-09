@@ -31295,10 +31295,13 @@
     "scheduledAt": "2026-10-09T08:35:00.000Z",
     "createdAt": "2026-09-27T11:31:13.629Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18145989055576327",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18145989055576327"
+    ]
   },
   {
     "id": "a29cafee-6658-4dd6-bfb6-fa16a61ad137",
