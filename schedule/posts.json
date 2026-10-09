@@ -29773,10 +29773,13 @@
     "scheduledAt": "2026-10-09T23:30:00.000Z",
     "createdAt": "2026-09-27T10:53:03.014Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17910216210308867",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17910216210308867"
+    ]
   },
   {
     "id": "73ea80d6-4087-495d-9541-6048dda5dff6",
