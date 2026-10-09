@@ -28300,10 +28300,13 @@
     "scheduledAt": "2026-10-09T07:15:00.000Z",
     "createdAt": "2026-09-27T10:05:48.574Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18121320938288534",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18121320938288534"
+    ]
   },
   {
     "id": "7aad4620-f9bc-4c6d-9f55-25ec539a61a3",
