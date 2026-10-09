@@ -32061,10 +32061,13 @@
     "scheduledAt": "2026-10-09T04:39:00.000Z",
     "createdAt": "2026-09-27T11:50:43.645Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18166476982484739",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18166476982484739"
+    ]
   },
   {
     "id": "6669e2b8-a01c-4774-92de-73a63a3e0a8a",
