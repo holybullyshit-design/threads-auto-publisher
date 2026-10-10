@@ -88,3 +88,29 @@ test("삼재 사실 블록에 실제 연도와 '올해도 내년도 아니다'�
   }
   assert.strictEqual(seen.size, 4, `네 삼합 모두 확인되지 않음: ${[...seen].join(",")}`);
 });
+
+test("삼재 구간 범위 표기도 검사한다 — 앞 연도가 빠져나가지 않게", () => {
+  // 2026-10-10: 예약글 440건 돌연변이 측정에서 **유일하게 놓친 1건**이 이것이었다.
+  // "2031~2033년"을 "2043~2033년"으로 바꿔도 통과했다 — 일반 연도 검사가 `년`이 붙은 연도만
+  // 보는데 범위 표기는 **앞 연도에 '년'이 안 붙기** 때문이다. 범위를 따로 본다.
+  const { checkSajuClaims } = require("../server/lib/sajuClaimChecker");
+  const base = "뱀·닭·소띠 삼재 이야기야.\n이 띠의 삼재는 2031~2033년이야.";
+  const day = { dateKey: "2026-10-24" };
+
+  // 맞는 글은 절대 잡지 않는다(검사기 제1원칙).
+  assert.deepStrictEqual(checkSajuClaims(base, day), []);
+
+  // 구간이 뒤집히면 잡는다.
+  const flipped = checkSajuClaims(base.replace("2031~2033", "2043~2033"), day);
+  assert.ok(flipped.length && /뒤집힘/.test(flipped[0]), `뒤집힌 구간을 놓쳤다: ${JSON.stringify(flipped)}`);
+
+  // 다른 띠의 구간을 가져다 쓰면 잡는다(해묘미는 2025~2027, 사유축은 2031~2033).
+  const wrong = checkSajuClaims(base.replace("2031~2033", "2025~2027"), day);
+  assert.ok(wrong.length && /2025~2027/.test(wrong[0]), `엉뚱한 구간을 놓쳤다: ${JSON.stringify(wrong)}`);
+
+  // 물결표 변형(∼, -, –)도 같이 본다.
+  for (const dash of ["∼", "-", "–"]) {
+    const t = base.replace("2031~2033", `2043${dash}2033`);
+    assert.ok(checkSajuClaims(t, day).length, `${dash} 표기를 놓쳤다`);
+  }
+});

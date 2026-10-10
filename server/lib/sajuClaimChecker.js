@@ -421,6 +421,19 @@ const CHECKS2 = [
       const y = Number(m[1]);
       if (y !== info.startYear) issues.push(`이번 삼재 시작을 ${y}년으로(실제 ${info.startYear}년)`);
     }
+    // 범위 표기("2031~2033년")는 **앞 연도에 '년'이 안 붙는다**. 아래 일반 검사는 `년`이 붙은
+    // 연도만 보기 때문에 앞 연도가 통째로 빠져나갔다 — 돌연변이 테스트에서 "2031~2033년"을
+    // "2043~2033년"으로 바꿔도 통과했다(2026-10-10, 677건 중 유일한 누락). 범위를 따로 본다.
+    for (const m of text.matchAll(/((?:20)\d{2})\s*[~∼〜\-–—]\s*((?:20)\d{2})\s*년?/g)) {
+      const sent = text.split(/[.\n]/).find((x) => x.includes(m[0]) && x.includes("삼재"));
+      if (!sent) continue;
+      const a = Number(m[1]), b = Number(m[2]);
+      if (a > b) { issues.push(`삼재 구간이 뒤집힘(${a}~${b}년)`); continue; }
+      const okPair = (a === info.startYear && b === info.endYear)
+        || (info.prevEndYear && b === info.prevEndYear && a === info.prevEndYear - 2);
+      if (!okPair) issues.push(`삼재 구간을 ${a}~${b}년으로(${g.key} 삼재는 ${info.startYear}~${info.endYear}년)`);
+    }
+
     // 그 외 삼재 문장 안의 연도는 두 구간 중 하나에는 들어가야 한다.
     for (const m of text.matchAll(/((?:20)\d{2})\s*년/g)) {
       const y = Number(m[1]);
