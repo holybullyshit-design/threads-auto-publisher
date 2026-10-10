@@ -32419,10 +32419,13 @@
     "scheduledAt": "2026-10-10T23:42:00.000Z",
     "createdAt": "2026-10-04T11:09:41.871Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18085517354334536",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18085517354334536"
+    ]
   },
   {
     "id": "3c4aa926-dfea-4995-a3da-84bd22dfe4da",
