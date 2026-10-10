@@ -28460,12 +28460,15 @@
     "scheduledAt": "2026-10-10T09:14:00.000Z",
     "createdAt": "2026-09-27T10:08:44.953Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18115802570024137",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
     "commentCta": true,
-    "samjaeFixed": true
+    "samjaeFixed": true,
+    "chainPublishedIds": [
+      "18115802570024137"
+    ]
   },
   {
     "id": "14080d9d-cddb-46c2-ae8a-76b375c069d4",
