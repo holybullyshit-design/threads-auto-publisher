@@ -28432,10 +28432,13 @@
     "scheduledAt": "2026-10-10T07:09:00.000Z",
     "createdAt": "2026-09-27T10:08:12.270Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17863137939692894",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17863137939692894"
+    ]
   },
   {
     "id": "756709e6-56a3-4f65-a48a-3c09efb447d6",
