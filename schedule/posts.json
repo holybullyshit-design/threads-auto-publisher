@@ -32375,11 +32375,14 @@
     "scheduledAt": "2026-10-10T08:42:00.000Z",
     "createdAt": "2026-09-27T11:54:27.695Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18073903649742128",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18073903649742128"
+    ]
   },
   {
     "id": "109da2b0-3957-4d64-b624-2c29b212acde",
