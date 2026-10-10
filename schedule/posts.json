@@ -30813,10 +30813,13 @@
     "scheduledAt": "2026-10-10T01:15:00.000Z",
     "createdAt": "2026-09-27T11:18:08.606Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18122090216060531",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18122090216060531"
+    ]
   },
   {
     "id": "9a3f7dd1-e99a-4a96-82f6-25a5d162f725",
