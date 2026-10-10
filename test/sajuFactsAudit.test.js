@@ -258,3 +258,26 @@ test("[회귀] 엔진이 사실로 주지 않는 영역을 단정하면 잡는�
     assert.deepStrictEqual(checkSajuClaims(t, REF), [], `오탐: ${t}`);
   }
 });
+
+test("띠-출생연도 — 연도가 띠 앞에 오는 표기도 본다(줄은 넘지 않는다)", () => {
+  // 2026-10-10: 10/31까지 글을 채운 뒤 돌연변이를 재니 `<1977·1989·2001 뱀띠 / …>` 형태에서
+  // 1977→1978로 바꿔도 통과했다. ②는 "YYYY년생"만 보고 "같은 줄에 띠 하나"를 요구해서
+  // 이 줄을 통째로 건너뛰었다. 그래서 ③(연도 묶음이 띠 바로 앞)을 추가했다.
+  //
+  // **그 첫 구현이 거짓 양성을 냈다.** `\s*`가 줄바꿈을 넘어
+  // "닭띠 2005·1993·1981년생\n뱀띠 …"의 연도를 다음 줄 뱀띠에 붙여 예약글 6건을 오탐했다.
+  // 검사기 제1원칙은 거짓 양성 0이다 — 같은 줄 안에서만 본다.
+  const { checkSajuClaims } = require("../server/lib/sajuClaimChecker");
+  const day = { dateKey: "2026-10-14" };
+
+  // 맞는 글은 절대 잡지 않는다 — 세 가지 표기 전부.
+  assert.deepStrictEqual(checkSajuClaims("<1977·1989·2001 뱀띠 / 1981·1993·2005 닭띠 / 1973·1985·1997 소띠>", day), []);
+  assert.deepStrictEqual(checkSajuClaims("닭띠 2005·1993·1981년생\n뱀띠 2001·1989·1977년생\n소띠 1997·1985·1973년생", day), []);
+  assert.deepStrictEqual(checkSajuClaims("뱀띠(2001·1989·1977)\n닭띠(2005·1993·1981)", day), []);
+
+  // 틀리면 잡는다.
+  const wrong = checkSajuClaims("<1978·1989·2001 뱀띠 / 1981·1993·2005 닭띠>", day);
+  assert.ok(wrong.length && /1978/.test(wrong[0]), `연도 선행 표기의 오류를 놓쳤다: ${JSON.stringify(wrong)}`);
+  const wrong2 = checkSajuClaims("<1977·1989·2001 뱀띠 / 1981·1993·2006 닭띠>", day);
+  assert.ok(wrong2.length && /2006/.test(wrong2[0]), `두 번째 띠의 오류를 놓쳤다: ${JSON.stringify(wrong2)}`);
+});
