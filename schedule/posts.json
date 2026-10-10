@@ -30893,10 +30893,13 @@
     "scheduledAt": "2026-10-10T05:39:00.000Z",
     "createdAt": "2026-09-27T11:19:48.000Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18115094825006391",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18115094825006391"
+    ]
   },
   {
     "id": "d9bd238e-672a-44fa-a50f-c660052323e1",
