@@ -449,6 +449,19 @@ const CHECKS2 = [
       if (!okPair) issues.push(`삼재 구간을 ${a}~${b}년으로(${g.key} 삼재는 ${info.startYear}~${info.endYear}년)`);
     }
 
+    // "삼재는 2018년에 끝난 줄 아시죠?" — **과거형**으로 끝났다고 쓴 연도는 직전 삼재 종료연도여야
+    // 한다. "직전"이라는 말이 없어도 봐야 한다(기존 검사는 "직전 삼재"가 붙은 경우만 봤다).
+    // 2026-10-10 돌연변이에서 2018→2030으로 바꿔도 통과했다 — 2030은 다음 삼재 구간 안이라
+    // 아래 일반 검사를 빠져나갔다. "끝나/끝날" 같은 미래형은 건드리지 않는다(거짓 양성 방지).
+    for (const m of text.matchAll(/((?:20)\d{2})\s*년[^\n]{0,10}?끝(?:난|났)/g)) {
+      const sent = text.split(/[.\n?!]/).find((x) => x.includes(m[0]) && x.includes("삼재"));
+      if (!sent) continue;
+      const y = Number(m[1]);
+      if (info.prevEndYear && y !== info.prevEndYear) {
+        issues.push(`"${y}년에 끝났다"고 썼지만 ${g.key} 직전 삼재는 ${info.prevEndYear}년에 끝났다`);
+      }
+    }
+
     // 그 외 삼재 문장 안의 연도는 두 구간 중 하나에는 들어가야 한다.
     for (const m of text.matchAll(/((?:20)\d{2})\s*년/g)) {
       const y = Number(m[1]);

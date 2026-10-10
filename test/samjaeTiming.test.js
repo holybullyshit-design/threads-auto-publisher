@@ -114,3 +114,18 @@ test("삼재 구간 범위 표기도 검사한다 — 앞 연도가 빠져나가
     assert.ok(checkSajuClaims(t, day).length, `${dash} 표기를 놓쳤다`);
   }
 });
+
+test("과거형으로 '끝났다'고 쓴 연도는 직전 삼재 종료연도여야 한다", () => {
+  // 2026-10-10: "삼재는 2018년에 끝난 줄 아시죠?"를 "2030년"으로 바꿔도 통과했다.
+  // 2030은 인오술의 **다음** 삼재 구간(2028~2030) 안이라 "두 구간 중 하나면 통과" 검사를
+  // 빠져나갔다. 기존 직전-종료 검사는 "직전 삼재"라는 말이 붙은 경우만 봤다.
+  // 미래형("2030년에 끝나요")은 건드리지 않는다 — 거짓 양성 방지.
+  const { checkSajuClaims } = require("../server/lib/sajuClaimChecker");
+  const day = { dateKey: "2026-10-29" };
+  const base = "호랑이·말·개띠 삼재는 2018년에 끝난 줄 아시죠?";
+
+  assert.deepStrictEqual(checkSajuClaims(base, day), [], "맞는 글을 잡으면 안 된다");
+  const wrong = checkSajuClaims(base.replace("2018", "2030"), day);
+  assert.ok(wrong.length && /끝났다/.test(wrong[0]), `과거형 연도 오류를 놓쳤다: ${JSON.stringify(wrong)}`);
+  assert.deepStrictEqual(checkSajuClaims("호랑이·말·개띠 삼재는 2030년에 끝나요.", day), [], "미래형은 잡으면 안 된다");
+});
