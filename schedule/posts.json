@@ -32234,11 +32234,14 @@
     "scheduledAt": "2026-10-10T01:29:00.000Z",
     "createdAt": "2026-09-27T11:52:40.098Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17943609657358974",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "samjaeFixed": true
+    "samjaeFixed": true,
+    "chainPublishedIds": [
+      "17943609657358974"
+    ]
   },
   {
     "id": "ed344ada-491d-4a64-a61a-173b927dec69",
