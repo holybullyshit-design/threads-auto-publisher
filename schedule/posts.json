@@ -32333,10 +32333,13 @@
     "scheduledAt": "2026-10-10T06:39:00.000Z",
     "createdAt": "2026-09-27T11:53:55.430Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18383560945231345",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18383560945231345"
+    ]
   },
   {
     "id": "f2f9e9ef-b06c-4e88-9488-c9f6ed7c537d",
