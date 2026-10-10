@@ -33411,10 +33411,13 @@
     "scheduledAt": "2026-10-10T22:29:00.000Z",
     "createdAt": "2026-10-04T11:42:03.560Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17983103660901949",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17983103660901949"
+    ]
   },
   {
     "id": "1f728390-5fa7-4073-afbe-5d37f97e5eff",
