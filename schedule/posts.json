@@ -31437,10 +31437,13 @@
     "scheduledAt": "2026-10-10T09:15:00.000Z",
     "createdAt": "2026-09-27T11:32:11.987Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18114034172109981",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18114034172109981"
+    ]
   },
   {
     "id": "dafb5e3d-c014-45f0-955b-7758e930e7d1",
