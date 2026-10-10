@@ -32915,10 +32915,13 @@
     "scheduledAt": "2026-10-10T23:05:00.000Z",
     "createdAt": "2026-10-04T11:26:21.342Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17888463831685602",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17888463831685602"
+    ]
   },
   {
     "id": "313e2e0a-e6bd-4737-ae53-a2d442b13fe4",
