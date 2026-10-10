@@ -28404,11 +28404,14 @@
     "scheduledAt": "2026-10-10T04:20:00.000Z",
     "createdAt": "2026-09-27T10:07:46.321Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18104572784632372",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "samjaeFixed": true
+    "samjaeFixed": true,
+    "chainPublishedIds": [
+      "18104572784632372"
+    ]
   },
   {
     "id": "e8f16e8c-d623-4dcd-a535-38e16135c9c5",
