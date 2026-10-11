@@ -34295,11 +34295,14 @@
     "scheduledAt": "2026-10-11T08:54:00.000Z",
     "createdAt": "2026-10-04T12:13:43.622Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17960756988227695",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "samjaeFixed": true
+    "samjaeFixed": true,
+    "chainPublishedIds": [
+      "17960756988227695"
+    ]
   },
   {
     "id": "28c89989-320c-4d0a-bfaa-2c67ea9e72f5",
