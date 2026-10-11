@@ -32446,10 +32446,13 @@
     "scheduledAt": "2026-10-11T02:31:00.000Z",
     "createdAt": "2026-10-04T11:10:12.692Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17969855286168624",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17969855286168624"
+    ]
   },
   {
     "id": "3514b52e-2b27-41b9-b2ca-1277bd877466",
