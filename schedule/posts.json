@@ -33574,12 +33574,15 @@
     "scheduledAt": "2026-10-11T22:02:00.000Z",
     "createdAt": "2026-10-04T11:44:31.831Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18114098891020419",
     "error": null,
     "viralEngine": true,
     "hitFormula": false,
     "samjaeFixed": true,
-    "claimFixed": true
+    "claimFixed": true,
+    "chainPublishedIds": [
+      "18114098891020419"
+    ]
   },
   {
     "id": "44bc660e-ce63-4a10-b9d8-16b3052a69e1",
