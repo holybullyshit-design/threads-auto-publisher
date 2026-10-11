@@ -32979,11 +32979,14 @@
     "scheduledAt": "2026-10-11T04:27:00.000Z",
     "createdAt": "2026-10-04T11:27:11.300Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18130355585506057",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "samjaeFixed": true
+    "samjaeFixed": true,
+    "chainPublishedIds": [
+      "18130355585506057"
+    ]
   },
   {
     "id": "cc5ea03e-0dd9-4dbf-b915-851b81c0dc63",
