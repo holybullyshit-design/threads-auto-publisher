@@ -32521,12 +32521,15 @@
     "scheduledAt": "2026-10-11T10:29:00.000Z",
     "createdAt": "2026-10-04T11:12:34.207Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17878890444632084",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
     "commentCta": true,
-    "samjaeFixed": true
+    "samjaeFixed": true,
+    "chainPublishedIds": [
+      "17878890444632084"
+    ]
   },
   {
     "id": "43be354b-fda2-4ec7-a7e8-e64c45448c9f",
