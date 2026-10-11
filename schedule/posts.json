@@ -33040,11 +33040,14 @@
     "scheduledAt": "2026-10-11T09:24:00.000Z",
     "createdAt": "2026-10-04T11:28:26.818Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17901847218375662",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "17901847218375662"
+    ]
   },
   {
     "id": "e7958f10-9a16-4a72-8ada-c323d43f56bb",
