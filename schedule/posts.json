@@ -32494,11 +32494,14 @@
     "scheduledAt": "2026-10-11T08:06:00.000Z",
     "createdAt": "2026-10-04T11:12:00.543Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18089071136248389",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "samjaeFixed": true
+    "samjaeFixed": true,
+    "chainPublishedIds": [
+      "18089071136248389"
+    ]
   },
   {
     "id": "ff798f93-af7e-4378-b2c5-24a76cfec76e",
