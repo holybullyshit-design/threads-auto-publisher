@@ -34343,10 +34343,13 @@
     "scheduledAt": "2026-10-11T22:05:00.000Z",
     "createdAt": "2026-10-04T12:14:18.426Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18118735211062484",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18118735211062484"
+    ]
   },
   {
     "id": "d5eeb83f-a0ce-4702-8abe-2a41a19bd74d",
