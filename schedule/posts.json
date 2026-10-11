@@ -32949,10 +32949,13 @@
     "scheduledAt": "2026-10-11T01:45:00.000Z",
     "createdAt": "2026-10-04T11:26:44.215Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17990504613056692",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17990504613056692"
+    ]
   },
   {
     "id": "3d0674f4-5d35-42bd-8373-c9ca9a90d57e",
