@@ -32656,11 +32656,14 @@
     "scheduledAt": "2026-10-12T09:16:00.000Z",
     "createdAt": "2026-10-04T11:15:37.760Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18135265687638311",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18135265687638311"
+    ]
   },
   {
     "id": "85a8f057-876e-4e9b-9367-0946ccd40bbe",
