@@ -33216,11 +33216,14 @@
     "scheduledAt": "2026-10-12T09:46:00.000Z",
     "createdAt": "2026-10-04T11:31:37.247Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18158888389528574",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18158888389528574"
+    ]
   },
   {
     "id": "301fa70a-1ed4-42b8-8b9a-66f2b1aecdec",
