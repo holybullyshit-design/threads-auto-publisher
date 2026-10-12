@@ -34191,10 +34191,13 @@
     "scheduledAt": "2026-10-12T23:34:00.000Z",
     "createdAt": "2026-10-04T12:04:32.847Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18631091200046386",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18631091200046386"
+    ]
   },
   {
     "id": "6de118c3-7d32-4904-b26e-faf3e5977f0f",
