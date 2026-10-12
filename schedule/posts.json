@@ -34133,10 +34133,13 @@
     "scheduledAt": "2026-10-12T08:30:00.000Z",
     "createdAt": "2026-10-04T12:03:58.473Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17949630420285320",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17949630420285320"
+    ]
   },
   {
     "id": "a8fe6708-78a1-4342-8592-7c73988794ec",
