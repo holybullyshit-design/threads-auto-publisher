@@ -33119,10 +33119,13 @@
     "scheduledAt": "2026-10-12T01:27:00.000Z",
     "createdAt": "2026-10-04T11:30:04.752Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18128447158693102",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18128447158693102"
+    ]
   },
   {
     "id": "188250cf-dcbc-43c1-a938-ac44e6888149",
