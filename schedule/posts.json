@@ -33613,11 +33613,14 @@
     "scheduledAt": "2026-10-12T00:30:00.000Z",
     "createdAt": "2026-10-04T11:45:20.367Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17988522906065847",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "samjaeFixed": true
+    "samjaeFixed": true,
+    "chainPublishedIds": [
+      "17988522906065847"
+    ]
   },
   {
     "id": "bec91c57-ec66-49de-ad86-7834b195ad35",
