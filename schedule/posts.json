@@ -33250,11 +33250,14 @@
     "scheduledAt": "2026-10-12T22:51:00.000Z",
     "createdAt": "2026-10-04T11:32:42.204Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18101738723244799",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "samjaeFixed": true
+    "samjaeFixed": true,
+    "chainPublishedIds": [
+      "18101738723244799"
+    ]
   },
   {
     "id": "ee3af1cd-7fbd-44a0-a929-6efa3e378fe8",
