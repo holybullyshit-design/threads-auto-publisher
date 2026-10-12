@@ -34537,11 +34537,14 @@
     "scheduledAt": "2026-10-12T23:37:00.000Z",
     "createdAt": "2026-10-04T12:15:38.009Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18057692234802689",
     "error": null,
     "viralEngine": true,
     "hitFormula": false,
-    "samjaeFixed": true
+    "samjaeFixed": true,
+    "chainPublishedIds": [
+      "18057692234802689"
+    ]
   },
   {
     "id": "ddefe4d9-352f-4d8d-9383-b48436047390",
