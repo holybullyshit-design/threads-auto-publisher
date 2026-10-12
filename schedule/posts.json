@@ -33185,10 +33185,13 @@
     "scheduledAt": "2026-10-12T07:19:00.000Z",
     "createdAt": "2026-10-04T11:31:04.571Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18395905516166851",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18395905516166851"
+    ]
   },
   {
     "id": "f1fbb183-5a08-4360-8456-720137c8300d",
