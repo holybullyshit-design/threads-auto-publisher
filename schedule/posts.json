@@ -33655,11 +33655,14 @@
     "scheduledAt": "2026-10-12T02:51:00.000Z",
     "createdAt": "2026-10-04T11:46:01.419Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18114071267020078",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "samjaeFixed": true
+    "samjaeFixed": true,
+    "chainPublishedIds": [
+      "18114071267020078"
+    ]
   },
   {
     "id": "d0451b2c-1682-4891-8cb6-a890a79b957f",
