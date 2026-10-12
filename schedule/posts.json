@@ -33153,10 +33153,13 @@
     "scheduledAt": "2026-10-12T04:24:00.000Z",
     "createdAt": "2026-10-04T11:30:35.156Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18008581751993989",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18008581751993989"
+    ]
   },
   {
     "id": "d4c10490-27b6-4835-a433-b76baf111856",
