@@ -32682,11 +32682,14 @@
     "scheduledAt": "2026-10-12T22:38:00.000Z",
     "createdAt": "2026-10-04T11:16:04.957Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18206018215334417",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "samjaeFixed": true
+    "samjaeFixed": true,
+    "chainPublishedIds": [
+      "18206018215334417"
+    ]
   },
   {
     "id": "1d58410c-33ec-4801-aca4-8e43ea2c0c84",
