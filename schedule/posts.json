@@ -34920,11 +34920,14 @@
     "scheduledAt": "2026-10-12T10:39:00.000Z",
     "createdAt": "2026-10-04T12:24:06.096Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17961221976000114",
     "error": null,
     "viralEngine": false,
     "commentAnchor": true,
-    "claimFixed": true
+    "claimFixed": true,
+    "chainPublishedIds": [
+      "17961221976000114"
+    ]
   },
   {
     "id": "7d8bf84e-b51a-4e96-88dd-6bb03da58178",
