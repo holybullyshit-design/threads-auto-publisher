@@ -34237,10 +34237,13 @@
     "scheduledAt": "2026-10-13T01:55:00.000Z",
     "createdAt": "2026-10-04T12:05:13.752Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18182949262424891",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18182949262424891"
+    ]
   },
   {
     "id": "30d3b73c-2a19-413f-a437-c448d7ae39b3",
