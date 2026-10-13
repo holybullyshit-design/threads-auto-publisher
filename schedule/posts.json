@@ -33350,10 +33350,13 @@
     "scheduledAt": "2026-10-13T06:08:00.000Z",
     "createdAt": "2026-10-04T11:34:12.346Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18127267297897120",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18127267297897120"
+    ]
   },
   {
     "id": "0460f981-7b73-4920-b5f4-f8a8e3185f3b",
