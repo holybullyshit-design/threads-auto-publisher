@@ -33318,10 +33318,13 @@
     "scheduledAt": "2026-10-13T03:58:00.000Z",
     "createdAt": "2026-10-04T11:33:35.282Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18248218144312004",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18248218144312004"
+    ]
   },
   {
     "id": "94bf5a1d-1fb7-4b3c-b538-4464b7efaa86",
