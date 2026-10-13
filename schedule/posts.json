@@ -33825,10 +33825,13 @@
     "scheduledAt": "2026-10-13T02:39:00.000Z",
     "createdAt": "2026-10-04T11:49:03.792Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18138545947528102",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18138545947528102"
+    ]
   },
   {
     "id": "df9d6914-45bf-444e-9b99-c633012399af",
