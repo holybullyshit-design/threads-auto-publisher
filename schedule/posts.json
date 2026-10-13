@@ -33377,11 +33377,14 @@
     "scheduledAt": "2026-10-13T08:18:00.000Z",
     "createdAt": "2026-10-04T11:34:47.602Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18059204543551887",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18059204543551887"
+    ]
   },
   {
     "id": "79854be5-ac14-4991-a40d-45b8b79bd35c",
