@@ -32707,11 +32707,14 @@
     "scheduledAt": "2026-10-13T01:06:00.000Z",
     "createdAt": "2026-10-04T11:16:40.586Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17984266107107863",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "samjaeFixed": true
+    "samjaeFixed": true,
+    "chainPublishedIds": [
+      "17984266107107863"
+    ]
   },
   {
     "id": "fb67f6f0-98b1-4c17-aa93-0742e405e171",
