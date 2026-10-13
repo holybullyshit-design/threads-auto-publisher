@@ -33419,11 +33419,14 @@
     "scheduledAt": "2026-10-13T23:19:00.000Z",
     "createdAt": "2026-10-04T11:35:28.913Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18116575612797654",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "samjaeFixed": true
+    "samjaeFixed": true,
+    "chainPublishedIds": [
+      "18116575612797654"
+    ]
   },
   {
     "id": "4ec3f5d8-ccb4-42e6-bc84-3420b09cb82b",
