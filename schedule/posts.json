@@ -33285,11 +33285,14 @@
     "scheduledAt": "2026-10-13T01:31:00.000Z",
     "createdAt": "2026-10-04T11:33:13.982Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18112528501870952",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "samjaeFixed": true
+    "samjaeFixed": true,
+    "chainPublishedIds": [
+      "18112528501870952"
+    ]
   },
   {
     "id": "2fed6414-1fbf-4a83-a6c7-ca45b2ea3f28",
