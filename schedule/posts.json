@@ -32732,10 +32732,13 @@
     "scheduledAt": "2026-10-13T03:08:00.000Z",
     "createdAt": "2026-10-04T11:17:08.510Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18177312442448628",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18177312442448628"
+    ]
   },
   {
     "id": "4ffb5083-4dca-4ab1-8f9c-4c4390ceca1f",
