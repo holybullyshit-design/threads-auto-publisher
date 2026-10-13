@@ -32785,11 +32785,14 @@
     "scheduledAt": "2026-10-13T08:33:00.000Z",
     "createdAt": "2026-10-04T11:18:11.996Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18134659705633060",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18134659705633060"
+    ]
   },
   {
     "id": "5dc29059-440e-42ff-8408-ea4dcd082d8e",
