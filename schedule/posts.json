@@ -32759,10 +32759,13 @@
     "scheduledAt": "2026-10-13T05:51:00.000Z",
     "createdAt": "2026-10-04T11:17:42.112Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18143097406614032",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18143097406614032"
+    ]
   },
   {
     "id": "e46d1539-fc72-495d-88f6-ca7bbf253ffa",
