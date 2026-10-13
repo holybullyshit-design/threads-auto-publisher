@@ -34705,10 +34705,13 @@
     "scheduledAt": "2026-10-13T23:10:00.000Z",
     "createdAt": "2026-10-04T12:16:44.570Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18031876034903973",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18031876034903973"
+    ]
   },
   {
     "id": "341103d4-93bd-4d3b-8298-bfe1ca45f00e",
