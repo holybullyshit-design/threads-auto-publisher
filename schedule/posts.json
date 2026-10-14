@@ -33513,10 +33513,13 @@
     "scheduledAt": "2026-10-14T06:47:00.000Z",
     "createdAt": "2026-10-04T11:37:07.689Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17997031911009559",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17997031911009559"
+    ]
   },
   {
     "id": "62b0604e-c60a-4577-860c-5b39b960f8a8",
