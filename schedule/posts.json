@@ -34506,10 +34506,13 @@
     "scheduledAt": "2026-10-14T05:58:00.000Z",
     "createdAt": "2026-10-04T12:10:01.663Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18109147235193622",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18109147235193622"
+    ]
   },
   {
     "id": "b6e8bd1c-bb8a-47ce-af56-6178292afbf5",
