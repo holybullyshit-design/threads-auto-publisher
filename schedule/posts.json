@@ -32889,10 +32889,13 @@
     "scheduledAt": "2026-10-14T06:29:00.000Z",
     "createdAt": "2026-10-04T11:20:57.639Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18142486657721192",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18142486657721192"
+    ]
   },
   {
     "id": "edd30892-0700-498c-bbe1-e9c8cef1e254",
