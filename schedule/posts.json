@@ -34422,10 +34422,13 @@
     "scheduledAt": "2026-10-14T00:49:00.000Z",
     "createdAt": "2026-10-04T12:08:48.712Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18112932797134603",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18112932797134603"
+    ]
   },
   {
     "id": "e36701d8-d410-46d3-a115-c82ea9ec2852",
