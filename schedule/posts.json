@@ -32914,11 +32914,14 @@
     "scheduledAt": "2026-10-14T08:43:00.000Z",
     "createdAt": "2026-10-04T11:21:33.193Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18129262972695371",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18129262972695371"
+    ]
   },
   {
     "id": "f9461684-7631-4f0e-be55-4d092db16fec",
