@@ -34031,11 +34031,14 @@
     "scheduledAt": "2026-10-14T05:22:00.000Z",
     "createdAt": "2026-10-04T11:54:36.174Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18117639412965823",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "samjaeFixed": true
+    "samjaeFixed": true,
+    "chainPublishedIds": [
+      "18117639412965823"
+    ]
   },
   {
     "id": "71773148-f8bd-4210-80b1-0de7ea4fc6ed",
