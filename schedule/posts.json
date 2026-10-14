@@ -33544,11 +33544,14 @@
     "scheduledAt": "2026-10-14T09:11:00.000Z",
     "createdAt": "2026-10-04T11:37:39.433Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18024640100867543",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18024640100867543"
+    ]
   },
   {
     "id": "6e15af2c-3c4b-42cb-894d-94cc95a7c8f6",
