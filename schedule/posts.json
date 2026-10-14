@@ -34817,10 +34817,13 @@
     "scheduledAt": "2026-10-14T08:43:00.000Z",
     "createdAt": "2026-10-04T12:17:05.794Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17922508098223360",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17922508098223360"
+    ]
   },
   {
     "id": "711d7130-b03c-470d-b151-b5f51c060d71",
