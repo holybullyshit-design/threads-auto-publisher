@@ -33572,11 +33572,14 @@
     "scheduledAt": "2026-10-14T23:30:00.000Z",
     "createdAt": "2026-10-04T11:38:12.504Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17912204682509776",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "samjaeFixed": true
+    "samjaeFixed": true,
+    "chainPublishedIds": [
+      "17912204682509776"
+    ]
   },
   {
     "id": "a5cef6af-e72b-446f-9d5a-4ab798634a72",
