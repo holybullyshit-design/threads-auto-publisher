@@ -34563,10 +34563,13 @@
     "scheduledAt": "2026-10-14T23:12:00.000Z",
     "createdAt": "2026-10-04T12:10:33.636Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18362485204247000",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18362485204247000"
+    ]
   },
   {
     "id": "17586ca3-2d4b-448c-b3bf-5a6be2e6e6fa",
