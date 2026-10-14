@@ -32863,10 +32863,13 @@
     "scheduledAt": "2026-10-14T04:05:00.000Z",
     "createdAt": "2026-10-04T11:20:32.051Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17969078373187781",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17969078373187781"
+    ]
   },
   {
     "id": "242814ca-d150-4331-a7a9-e66bfc66c418",
