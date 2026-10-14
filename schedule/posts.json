@@ -33993,11 +33993,14 @@
     "scheduledAt": "2026-10-14T03:13:00.000Z",
     "createdAt": "2026-10-04T11:52:47.952Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18104958728347555",
     "error": null,
     "viralEngine": true,
     "hitFormula": false,
-    "samjaeFixed": true
+    "samjaeFixed": true,
+    "chainPublishedIds": [
+      "18104958728347555"
+    ]
   },
   {
     "id": "f87ba035-ae0a-42e6-8a89-7367ab2e8e3d",
