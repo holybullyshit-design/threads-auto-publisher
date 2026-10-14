@@ -32838,10 +32838,13 @@
     "scheduledAt": "2026-10-14T01:41:00.000Z",
     "createdAt": "2026-10-04T11:19:39.540Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18142726960591736",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18142726960591736"
+    ]
   },
   {
     "id": "39855e9f-901e-46e9-b198-a17cced5cbd5",
