@@ -34860,10 +34860,13 @@
     "scheduledAt": "2026-10-14T23:14:00.000Z",
     "createdAt": "2026-10-04T12:17:39.224Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18117705646786382",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18117705646786382"
+    ]
   },
   {
     "id": "c5ca02d6-4cb9-4d26-8aba-16c5bbacddf2",
