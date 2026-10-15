@@ -33608,10 +33608,13 @@
     "scheduledAt": "2026-10-15T02:12:00.000Z",
     "createdAt": "2026-10-04T11:38:40.739Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18445300648130135",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18445300648130135"
+    ]
   },
   {
     "id": "4c6bd5d6-5af0-42e9-a51c-c0f774af46f5",
