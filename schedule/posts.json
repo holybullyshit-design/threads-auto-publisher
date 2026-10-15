@@ -35383,10 +35383,13 @@
     "scheduledAt": "2026-10-15T23:22:00.000Z",
     "createdAt": "2026-10-10T00:29:14.786Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18634789483051787",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18634789483051787"
+    ]
   },
   {
     "id": "7de47395-8e96-43c9-9c1d-80fd741066d2",
