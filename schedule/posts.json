@@ -34167,10 +34167,13 @@
     "scheduledAt": "2026-10-15T03:44:00.000Z",
     "createdAt": "2026-10-04T11:56:41.219Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18440375461176365",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18440375461176365"
+    ]
   },
   {
     "id": "633ed5fa-ef4b-4689-b850-e6b18cc22316",
