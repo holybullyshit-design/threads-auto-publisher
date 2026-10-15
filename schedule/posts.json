@@ -33640,10 +33640,13 @@
     "scheduledAt": "2026-10-15T04:38:00.000Z",
     "createdAt": "2026-10-04T11:39:21.239Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18107718311610559",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18107718311610559"
+    ]
   },
   {
     "id": "dd2469d3-cb37-43b8-b096-632c4b208c50",
