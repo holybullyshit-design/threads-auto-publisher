@@ -34205,10 +34205,13 @@
     "scheduledAt": "2026-10-15T05:57:00.000Z",
     "createdAt": "2026-10-04T11:57:23.848Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18082757855687873",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18082757855687873"
+    ]
   },
   {
     "id": "d52e3709-ea36-46e6-9422-122ab90b1f03",
