@@ -33057,11 +33057,14 @@
     "scheduledAt": "2026-10-15T09:36:00.000Z",
     "createdAt": "2026-10-04T11:25:45.108Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18013455071955897",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18013455071955897"
+    ]
   },
   {
     "id": "a6a59063-28d6-4853-8d7b-b69f9017ab4d",
