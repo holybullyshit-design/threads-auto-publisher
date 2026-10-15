@@ -34126,11 +34126,14 @@
     "scheduledAt": "2026-10-15T01:01:00.000Z",
     "createdAt": "2026-10-04T11:56:10.762Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18107968436353392",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "samjaeFixed": true
+    "samjaeFixed": true,
+    "chainPublishedIds": [
+      "18107968436353392"
+    ]
   },
   {
     "id": "6e988101-0526-4e76-9d60-10894dda71a7",
