@@ -33679,10 +33679,13 @@
     "scheduledAt": "2026-10-15T07:17:00.000Z",
     "createdAt": "2026-10-04T11:39:54.060Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17928287442184455",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17928287442184455"
+    ]
   },
   {
     "id": "12252077-7a84-4ba6-821c-5e97db4d4102",
