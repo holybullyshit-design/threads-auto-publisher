@@ -36627,10 +36627,13 @@
     "scheduledAt": "2026-10-15T23:17:00.000Z",
     "createdAt": "2026-10-10T01:22:04.998Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17896813053609771",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17896813053609771"
+    ]
   },
   {
     "id": "4776e2af-fa65-4dcb-a0b8-549a5b352c03",
