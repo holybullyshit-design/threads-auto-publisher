@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-15T07:58:58.373Z",
+  "generatedAt": "2026-10-15T08:58:42.473Z",
   "accounts": [
     {
       "id": "273c125f-56b7-4aa1-8abc-89df16bfbe2a",
@@ -44,10 +44,10 @@
       },
       "timeBuckets": {
         "morning": 262,
-        "afternoon": 256,
+        "afternoon": 253,
         "evening": 249
       },
-      "trackedPosts": 186,
+      "trackedPosts": 187,
       "fetchedAt": "2026-10-15T07:58:45.841Z",
       "error": null
     },
