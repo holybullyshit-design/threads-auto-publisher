@@ -33706,11 +33706,14 @@
     "scheduledAt": "2026-10-15T09:20:00.000Z",
     "createdAt": "2026-10-04T11:41:14.569Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18176693473399201",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18176693473399201"
+    ]
   },
   {
     "id": "c45d32ec-8b7b-4b5c-952f-e4d43123d329",
