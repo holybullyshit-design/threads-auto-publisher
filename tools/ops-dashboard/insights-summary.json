@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-10-15T12:58:41.805Z",
+  "generatedAt": "2026-10-15T13:58:48.107Z",
   "accounts": [
     {
       "id": "273c125f-56b7-4aa1-8abc-89df16bfbe2a",
       "label": "연리지 실타래",
       "followersCount": 1013,
-      "viewsRecent7d": 35061,
-      "viewsChangePct": -25,
-      "likes": 347,
+      "viewsRecent7d": 35525,
+      "viewsChangePct": -24,
+      "likes": 348,
       "replies": 21,
       "reposts": 20,
       "topPost": {
@@ -23,14 +23,14 @@
         "evening": 835
       },
       "trackedPosts": 188,
-      "fetchedAt": "2026-10-15T11:58:41.271Z",
+      "fetchedAt": "2026-10-15T13:58:42.098Z",
       "error": null
     },
     {
       "id": "e0331659-96f0-4f5f-9aef-d89e0ed2a6a3",
       "label": "아해사주",
       "followersCount": 685,
-      "viewsRecent7d": 7346,
+      "viewsRecent7d": 7411,
       "viewsChangePct": -68,
       "likes": 116,
       "replies": 7,
@@ -48,15 +48,15 @@
         "evening": 249
       },
       "trackedPosts": 187,
-      "fetchedAt": "2026-10-15T11:58:42.224Z",
+      "fetchedAt": "2026-10-15T13:58:42.728Z",
       "error": null
     },
     {
       "id": "44d8bd24-6bf7-4b3a-9241-ddfb2b12c3b0",
       "label": "팔자명가",
       "followersCount": 1003,
-      "viewsRecent7d": 437,
-      "viewsChangePct": -8,
+      "viewsRecent7d": 452,
+      "viewsChangePct": -5,
       "likes": 2,
       "replies": 0,
       "reposts": 0,
@@ -73,7 +73,7 @@
         "evening": 213
       },
       "trackedPosts": 156,
-      "fetchedAt": "2026-10-15T11:58:43.147Z",
+      "fetchedAt": "2026-10-15T13:58:43.770Z",
       "error": null
     },
     {
@@ -98,16 +98,16 @@
         "evening": 18
       },
       "trackedPosts": 50,
-      "fetchedAt": "2026-10-15T11:58:46.272Z",
+      "fetchedAt": "2026-10-15T13:58:44.574Z",
       "error": null
     },
     {
       "id": "d2c9ae3f-67c9-42bf-b9f8-e8000b61abff",
       "label": "팔자장인",
       "followersCount": 73,
-      "viewsRecent7d": 59394,
-      "viewsChangePct": -17,
-      "likes": 541,
+      "viewsRecent7d": 59743,
+      "viewsChangePct": -16,
+      "likes": 543,
       "replies": 22,
       "reposts": 11,
       "topPost": {
@@ -123,18 +123,18 @@
         "evening": 870
       },
       "trackedPosts": 182,
-      "fetchedAt": "2026-10-15T11:58:47.444Z",
+      "fetchedAt": "2026-10-15T13:58:45.357Z",
       "error": null
     },
     {
       "id": "cf6a4ba2-da74-4fc1-ae5a-72e1b1477287",
       "label": "팔자궤도",
       "followersCount": 320,
-      "viewsRecent7d": 57228,
+      "viewsRecent7d": 57595,
       "viewsChangePct": -43,
-      "likes": 627,
+      "likes": 629,
       "replies": 43,
-      "reposts": 9,
+      "reposts": 10,
       "topPost": {
         "text": "죄송하지만, 원숭이·쥐·용띠는 내년 삼재 명단에 이미 올라가 있습니다. 원숭이띠(2004·1992·1980)",
         "views": 13477,
@@ -148,12 +148,12 @@
         "evening": 586
       },
       "trackedPosts": 183,
-      "fetchedAt": "2026-10-15T11:58:48.512Z",
+      "fetchedAt": "2026-10-15T13:58:46.166Z",
       "error": null
     }
   ],
   "recommendations": [
-    "'연리지 실타래' — 최근 7일 조회수가 지난 주 대비 25% 감소했습니다. 최근 훅/주제 변화를 점검해볼 시점입니다.",
+    "'연리지 실타래' — 최근 7일 조회수가 지난 주 대비 24% 감소했습니다. 최근 훅/주제 변화를 점검해볼 시점입니다.",
     "'연리지 실타래' 최고 성과 글: \"<천을귀인, 있는 자리에 따라 순위가 갈린다> 일간이 정 화인 사람들. 사주 어딘가에 해(돼지띠) 자나 유(\" — 조회수 18,539 · 답글 11건. 비슷한 훅/주제를 반복 활용해볼 만합니다.",
     "'아해사주' — 최근 7일 조회수가 지난 주 대비 68% 감소했습니다. 최근 훅/주제 변화를 점검해볼 시점입니다.",
     "'아해사주' 최고 성과 글: \"〈또래보다 늦되어 보이는데 어느 순간 훌쩍 앞서가는 아이 사주〉 말도 늦게 트이고 걸음마도 남들보다 더뎠는데\" — 조회수 3,649 · 답글 87건. 비슷한 훅/주제를 반복 활용해볼 만합니다.",
