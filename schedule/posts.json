@@ -33000,11 +33000,14 @@
     "scheduledAt": "2026-10-15T04:50:00.000Z",
     "createdAt": "2026-10-04T11:23:27.913Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18002276513797103",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "samjaeFixed": true
+    "samjaeFixed": true,
+    "chainPublishedIds": [
+      "18002276513797103"
+    ]
   },
   {
     "id": "14fb539a-caf1-4dc1-b028-8bf97b525def",
