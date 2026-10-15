@@ -34611,10 +34611,13 @@
     "scheduledAt": "2026-10-15T01:27:00.000Z",
     "createdAt": "2026-10-04T12:11:17.189Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18113976953022583",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18113976953022583"
+    ]
   },
   {
     "id": "f25c1bf5-ce9d-4e56-9d20-653213525c64",
