@@ -34656,10 +34656,13 @@
     "scheduledAt": "2026-10-15T03:48:00.000Z",
     "createdAt": "2026-10-04T12:11:59.100Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17960761266210825",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17960761266210825"
+    ]
   },
   {
     "id": "cfcc69e7-6c83-4249-a546-3e9f8e91e0e0",
