@@ -32944,10 +32944,13 @@
     "scheduledAt": "2026-10-14T23:51:00.000Z",
     "createdAt": "2026-10-04T11:22:08.211Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18131116153834585",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18131116153834585"
+    ]
   },
   {
     "id": "f8e03eb5-728e-4279-9f2b-79c805804237",
