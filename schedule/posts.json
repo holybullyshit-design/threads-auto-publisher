@@ -42145,9 +42145,12 @@
     "scheduledAt": "2026-10-15T23:12:00.000Z",
     "createdAt": "2026-10-10T05:21:23.683Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18034521152669124",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18034521152669124"
+    ]
   }
 ]
