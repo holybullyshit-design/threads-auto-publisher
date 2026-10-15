@@ -34991,10 +34991,13 @@
     "scheduledAt": "2026-10-15T09:43:00.000Z",
     "createdAt": "2026-10-04T12:18:03.267Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18248052082315091",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18248052082315091"
+    ]
   },
   {
     "id": "1ec046ca-f48d-489e-a460-ec4ccece0822",
