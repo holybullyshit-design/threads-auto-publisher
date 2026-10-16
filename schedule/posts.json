@@ -36661,10 +36661,13 @@
     "scheduledAt": "2026-10-16T01:46:00.000Z",
     "createdAt": "2026-10-10T01:23:23.902Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17912440650515183",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17912440650515183"
+    ]
   },
   {
     "id": "3a633433-5fb3-498a-b7eb-672a3d8d98e4",
