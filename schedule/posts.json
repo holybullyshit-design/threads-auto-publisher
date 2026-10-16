@@ -36730,10 +36730,13 @@
     "scheduledAt": "2026-10-16T06:52:00.000Z",
     "createdAt": "2026-10-10T01:25:02.698Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18048686267812774",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18048686267812774"
+    ]
   },
   {
     "id": "44df1095-5eae-4e76-8660-90b7bf9cbf7b",
