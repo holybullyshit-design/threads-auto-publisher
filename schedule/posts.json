@@ -40256,11 +40256,14 @@
     "scheduledAt": "2026-10-16T08:03:00.000Z",
     "createdAt": "2026-10-10T03:43:25.612Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17980847310092755",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "17980847310092755"
+    ]
   },
   {
     "id": "04dfe37f-14d2-4ca7-8698-232f52b962d2",
