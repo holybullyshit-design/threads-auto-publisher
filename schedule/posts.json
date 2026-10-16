@@ -40112,10 +40112,13 @@
     "scheduledAt": "2026-10-16T00:04:00.000Z",
     "createdAt": "2026-10-10T03:41:12.076Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18142230427589299",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18142230427589299"
+    ]
   },
   {
     "id": "16af8690-0c11-4f99-ae58-ca011f4e8e47",
