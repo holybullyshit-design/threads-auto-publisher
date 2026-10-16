@@ -38636,11 +38636,14 @@
     "scheduledAt": "2026-10-16T09:35:00.000Z",
     "createdAt": "2026-10-10T02:44:56.070Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17925066300432407",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "17925066300432407"
+    ]
   },
   {
     "id": "c0ad3837-bdc5-4380-8d17-e511568ce016",
