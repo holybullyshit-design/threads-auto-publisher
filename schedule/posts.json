@@ -38557,10 +38557,13 @@
     "scheduledAt": "2026-10-16T03:49:00.000Z",
     "createdAt": "2026-10-10T02:43:41.665Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18630295720023917",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18630295720023917"
+    ]
   },
   {
     "id": "7f9e9b97-05a3-445a-bd85-1e60244c38a3",
