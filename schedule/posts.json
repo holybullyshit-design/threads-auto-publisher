@@ -40324,10 +40324,13 @@
     "scheduledAt": "2026-10-16T23:30:00.000Z",
     "createdAt": "2026-10-10T03:44:08.737Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18132126805682391",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18132126805682391"
+    ]
   },
   {
     "id": "83b423f3-895b-41c1-977f-3dc99622c004",
