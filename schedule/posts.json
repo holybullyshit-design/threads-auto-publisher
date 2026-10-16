@@ -38597,10 +38597,13 @@
     "scheduledAt": "2026-10-16T06:37:00.000Z",
     "createdAt": "2026-10-10T02:44:22.630Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18119455256056694",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18119455256056694"
+    ]
   },
   {
     "id": "19374743-2772-4ba7-8b17-42e12fe4a8eb",
