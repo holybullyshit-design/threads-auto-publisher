@@ -40206,10 +40206,13 @@
     "scheduledAt": "2026-10-16T05:36:00.000Z",
     "createdAt": "2026-10-10T03:42:52.491Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17954392767271156",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17954392767271156"
+    ]
   },
   {
     "id": "14fe1916-16de-45f8-b6a0-abd0481d435f",
