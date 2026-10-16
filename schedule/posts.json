@@ -38663,10 +38663,13 @@
     "scheduledAt": "2026-10-16T22:06:00.000Z",
     "createdAt": "2026-10-10T02:45:30.623Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17925364905204735",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17925364905204735"
+    ]
   },
   {
     "id": "979ef18f-4deb-400e-9189-ee00422a6486",
