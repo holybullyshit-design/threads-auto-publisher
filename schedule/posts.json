@@ -38055,10 +38055,13 @@
     "scheduledAt": "2026-10-17T08:22:00.000Z",
     "createdAt": "2026-10-10T02:21:30.009Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18131540812689957",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18131540812689957"
+    ]
   },
   {
     "id": "3921ee8f-7f64-47fc-b30a-9db954928b18",
