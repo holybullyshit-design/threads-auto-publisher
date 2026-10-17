@@ -40463,10 +40463,13 @@
     "scheduledAt": "2026-10-17T07:37:00.000Z",
     "createdAt": "2026-10-10T03:46:46.418Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18112442423170589",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18112442423170589"
+    ]
   },
   {
     "id": "e960ef9e-21df-464e-8eef-7173b51b2d49",
