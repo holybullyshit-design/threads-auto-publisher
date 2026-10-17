@@ -38864,10 +38864,13 @@
     "scheduledAt": "2026-10-17T22:27:00.000Z",
     "createdAt": "2026-10-10T02:48:48.839Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18106855760160579",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18106855760160579"
+    ]
   },
   {
     "id": "cf34ffb9-8092-4ab2-a17a-2a81d79c489a",
