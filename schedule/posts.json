@@ -40369,10 +40369,13 @@
     "scheduledAt": "2026-10-17T01:56:00.000Z",
     "createdAt": "2026-10-10T03:45:00.905Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18123082978933490",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18123082978933490"
+    ]
   },
   {
     "id": "47c50434-8ef1-4752-b8a4-110f3252e2b0",
