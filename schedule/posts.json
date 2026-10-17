@@ -35595,10 +35595,13 @@
     "scheduledAt": "2026-10-17T23:25:00.000Z",
     "createdAt": "2026-10-10T00:36:46.504Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18079142711414566",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18079142711414566"
+    ]
   },
   {
     "id": "2afd2136-5664-44d0-ac1c-cb78c3a29847",
