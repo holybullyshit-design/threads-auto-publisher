@@ -40553,10 +40553,13 @@
     "scheduledAt": "2026-10-17T23:38:00.000Z",
     "createdAt": "2026-10-10T03:47:48.878Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18123548735484414",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18123548735484414"
+    ]
   },
   {
     "id": "ac754b41-5b21-4748-b94c-03124a3683e5",
