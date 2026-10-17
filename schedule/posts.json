@@ -35541,10 +35541,13 @@
     "scheduledAt": "2026-10-17T03:33:00.000Z",
     "createdAt": "2026-10-10T00:34:18.385Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18115620079839540",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18115620079839540"
+    ]
   },
   {
     "id": "eb36b31a-8058-42c5-a760-cb3de2427700",
