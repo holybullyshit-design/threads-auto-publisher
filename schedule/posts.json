@@ -36854,10 +36854,13 @@
     "scheduledAt": "2026-10-17T07:05:00.000Z",
     "createdAt": "2026-10-10T01:27:47.881Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18131390365701365",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18131390365701365"
+    ]
   },
   {
     "id": "87ce047e-8294-44b4-9a67-e1bba543ba4f",
