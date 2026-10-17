@@ -35568,10 +35568,13 @@
     "scheduledAt": "2026-10-17T05:52:00.000Z",
     "createdAt": "2026-10-10T00:36:12.634Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17909469519565672",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17909469519565672"
+    ]
   },
   {
     "id": "684fa804-388b-49fc-924b-11ae1ca2f292",
