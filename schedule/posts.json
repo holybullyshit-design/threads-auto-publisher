@@ -40501,11 +40501,14 @@
     "scheduledAt": "2026-10-17T09:49:00.000Z",
     "createdAt": "2026-10-10T03:47:21.234Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17996219436030230",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "17996219436030230"
+    ]
   },
   {
     "id": "1c3eedfe-43fb-4288-b78d-fc94f723ffe9",
