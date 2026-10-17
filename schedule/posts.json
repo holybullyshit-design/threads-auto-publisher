@@ -38829,11 +38829,14 @@
     "scheduledAt": "2026-10-17T08:00:00.000Z",
     "createdAt": "2026-10-10T02:48:15.426Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17919845631239716",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "17919845631239716"
+    ]
   },
   {
     "id": "5954bb4d-29ef-490d-921d-e03f04055e54",
