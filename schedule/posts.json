@@ -35515,10 +35515,13 @@
     "scheduledAt": "2026-10-17T01:06:00.000Z",
     "createdAt": "2026-10-10T00:33:36.410Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18160478926503858",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18160478926503858"
+    ]
   },
   {
     "id": "de711f0c-b3e2-49e3-8306-6082f0f16253",
