@@ -38787,10 +38787,13 @@
     "scheduledAt": "2026-10-17T05:09:00.000Z",
     "createdAt": "2026-10-10T02:47:40.488Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18637749505002813",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18637749505002813"
+    ]
   },
   {
     "id": "e7c9e519-9a50-4981-9604-a48bd9776ca8",
