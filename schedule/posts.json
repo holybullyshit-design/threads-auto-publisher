@@ -38708,10 +38708,13 @@
     "scheduledAt": "2026-10-17T00:12:00.000Z",
     "createdAt": "2026-10-10T02:46:14.561Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17992340921852861",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17992340921852861"
+    ]
   },
   {
     "id": "b7484f73-ec59-4eb2-a718-ff8e024bc143",
