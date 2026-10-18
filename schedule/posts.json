@@ -40731,11 +40731,14 @@
     "scheduledAt": "2026-10-18T09:20:00.000Z",
     "createdAt": "2026-10-10T03:50:23.189Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18099836663410039",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18099836663410039"
+    ]
   },
   {
     "id": "a543ae75-34ca-4df6-98f7-1b17f53871db",
