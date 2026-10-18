@@ -37019,10 +37019,13 @@
     "scheduledAt": "2026-10-18T22:56:00.000Z",
     "createdAt": "2026-10-10T01:32:41.806Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17917235295263839",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17917235295263839"
+    ]
   },
   {
     "id": "29398c5c-ac60-4674-84e2-d097081e83cb",
