@@ -35649,10 +35649,13 @@
     "scheduledAt": "2026-10-18T04:32:00.000Z",
     "createdAt": "2026-10-10T00:38:26.935Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18119713921951282",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18119713921951282"
+    ]
   },
   {
     "id": "75a09514-3958-425d-b10c-a359a108222b",
