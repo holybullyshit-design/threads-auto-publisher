@@ -40594,10 +40594,13 @@
     "scheduledAt": "2026-10-18T02:12:00.000Z",
     "createdAt": "2026-10-10T03:48:29.956Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17996936454012850",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17996936454012850"
+    ]
   },
   {
     "id": "bc822eb4-c2b0-41ce-8ceb-6a1250e02add",
