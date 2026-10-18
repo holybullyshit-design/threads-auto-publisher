@@ -36913,10 +36913,13 @@
     "scheduledAt": "2026-10-18T01:52:00.000Z",
     "createdAt": "2026-10-10T01:29:28.235Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18107151617245463",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18107151617245463"
+    ]
   },
   {
     "id": "4f13532c-fa51-4dc4-9f30-728162cbce49",
