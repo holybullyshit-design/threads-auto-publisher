@@ -39036,11 +39036,14 @@
     "scheduledAt": "2026-10-18T08:33:00.000Z",
     "createdAt": "2026-10-10T02:51:45.316Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17917991103460835",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "17917991103460835"
+    ]
   },
   {
     "id": "51492804-4ff4-4f8c-a49b-64dfd9d977d8",
