@@ -40774,10 +40774,13 @@
     "scheduledAt": "2026-10-18T22:45:00.000Z",
     "createdAt": "2026-10-10T03:51:05.243Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18081176708523325",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18081176708523325"
+    ]
   },
   {
     "id": "bafc1c3a-f5b6-4f73-8e7f-a49310883da2",
