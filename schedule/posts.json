@@ -36949,10 +36949,13 @@
     "scheduledAt": "2026-10-18T04:21:00.000Z",
     "createdAt": "2026-10-10T01:31:24.079Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18353346571302099",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18353346571302099"
+    ]
   },
   {
     "id": "ed2b5317-224d-4c6a-bdf0-ebde60580b6d",
