@@ -40649,10 +40649,13 @@
     "scheduledAt": "2026-10-18T04:47:00.000Z",
     "createdAt": "2026-10-10T03:48:50.991Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17883123939533936",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17883123939533936"
+    ]
   },
   {
     "id": "21b669ee-382c-4ee9-be22-cff93e07660a",
