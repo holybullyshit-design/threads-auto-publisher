@@ -36987,10 +36987,13 @@
     "scheduledAt": "2026-10-18T06:50:00.000Z",
     "createdAt": "2026-10-10T01:32:02.790Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17901715749669089",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17901715749669089"
+    ]
   },
   {
     "id": "0a7a68af-1e93-47cf-9855-f17fecb8408b",
