@@ -35674,10 +35674,13 @@
     "scheduledAt": "2026-10-18T06:44:00.000Z",
     "createdAt": "2026-10-10T00:39:18.746Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17994582603023475",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17994582603023475"
+    ]
   },
   {
     "id": "4594ec78-5d3f-4c29-bf27-0ee8fe157050",
