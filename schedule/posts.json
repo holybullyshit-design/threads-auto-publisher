@@ -38994,10 +38994,13 @@
     "scheduledAt": "2026-10-18T05:50:00.000Z",
     "createdAt": "2026-10-10T02:50:58.134Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18125508598926181",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18125508598926181"
+    ]
   },
   {
     "id": "847c4427-e539-42d8-af2e-9af2afbd39ff",
