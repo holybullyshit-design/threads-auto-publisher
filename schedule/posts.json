@@ -38184,10 +38184,13 @@
     "scheduledAt": "2026-10-18T22:03:00.000Z",
     "createdAt": "2026-10-10T02:23:25.497Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18130186756825409",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18130186756825409"
+    ]
   },
   {
     "id": "b5ad599c-9570-46b9-9ed5-4ea174a57784",
