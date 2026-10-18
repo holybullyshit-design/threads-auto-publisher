@@ -40694,10 +40694,13 @@
     "scheduledAt": "2026-10-18T07:13:00.000Z",
     "createdAt": "2026-10-10T03:49:40.988Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18097421213410515",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18097421213410515"
+    ]
   },
   {
     "id": "1901c3de-0d50-4678-a627-442aa45d727f",
