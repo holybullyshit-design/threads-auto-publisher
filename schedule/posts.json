@@ -38289,10 +38289,13 @@
     "scheduledAt": "2026-10-19T23:12:00.000Z",
     "createdAt": "2026-10-10T02:24:52.675Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17904665067666272",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17904665067666272"
+    ]
   },
   {
     "id": "98cd2653-64ea-40c8-8257-5e0be523a649",
