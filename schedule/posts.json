@@ -35730,10 +35730,13 @@
     "scheduledAt": "2026-10-19T01:05:00.000Z",
     "createdAt": "2026-10-10T00:40:37.004Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18119860813974756",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18119860813974756"
+    ]
   },
   {
     "id": "4f849906-def3-4e97-83f2-8f208ceee2b9",
