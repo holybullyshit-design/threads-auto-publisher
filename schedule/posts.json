@@ -37054,10 +37054,13 @@
     "scheduledAt": "2026-10-19T01:22:00.000Z",
     "createdAt": "2026-10-10T01:33:41.923Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18115137206117920",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18115137206117920"
+    ]
   },
   {
     "id": "36c1eb6d-feae-42e2-acbe-cc845cf7bc40",
