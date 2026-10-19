@@ -40867,10 +40867,13 @@
     "scheduledAt": "2026-10-19T03:53:00.000Z",
     "createdAt": "2026-10-10T03:52:25.548Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18355852933175610",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18355852933175610"
+    ]
   },
   {
     "id": "3ce8e883-999b-4546-ad5a-6dca083fd56b",
