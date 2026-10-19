@@ -39083,10 +39083,13 @@
     "scheduledAt": "2026-10-18T23:54:00.000Z",
     "createdAt": "2026-10-10T02:52:13.507Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18120587756069100",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18120587756069100"
+    ]
   },
   {
     "id": "70569858-5125-466b-a9b2-53952a182df9",
