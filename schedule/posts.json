@@ -39231,11 +39231,14 @@
     "scheduledAt": "2026-10-19T10:02:00.000Z",
     "createdAt": "2026-10-10T02:54:47.342Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18127165028503317",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18127165028503317"
+    ]
   },
   {
     "id": "b6912113-3fe6-455e-b110-25aa6b3c0b5f",
