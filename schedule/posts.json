@@ -39200,10 +39200,13 @@
     "scheduledAt": "2026-10-19T07:42:00.000Z",
     "createdAt": "2026-10-10T02:54:13.534Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17885640918652645",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17885640918652645"
+    ]
   },
   {
     "id": "c5e892f7-4464-4985-b0e7-34291cb0c1f4",
