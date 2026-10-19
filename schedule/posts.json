@@ -39266,10 +39266,13 @@
     "scheduledAt": "2026-10-19T23:27:00.000Z",
     "createdAt": "2026-10-10T02:55:53.924Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18120081188084873",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18120081188084873"
+    ]
   },
   {
     "id": "8033c9ff-0852-40c5-803d-7e4d6d05a302",
