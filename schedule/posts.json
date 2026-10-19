@@ -40829,10 +40829,13 @@
     "scheduledAt": "2026-10-19T01:31:00.000Z",
     "createdAt": "2026-10-10T03:51:43.541Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18395036626165959",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18395036626165959"
+    ]
   },
   {
     "id": "20e2f236-fd88-4ccd-8d1f-6f57c8f01cd8",
