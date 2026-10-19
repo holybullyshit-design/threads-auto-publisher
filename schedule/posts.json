@@ -41015,10 +41015,13 @@
     "scheduledAt": "2026-10-19T23:46:00.000Z",
     "createdAt": "2026-10-10T03:54:54.735Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18116250980041885",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18116250980041885"
+    ]
   },
   {
     "id": "4d306088-564a-4a41-83f7-443f90eef572",
