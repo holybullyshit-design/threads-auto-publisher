@@ -37088,10 +37088,13 @@
     "scheduledAt": "2026-10-19T04:03:00.000Z",
     "createdAt": "2026-10-10T01:34:57.076Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18202765891327650",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18202765891327650"
+    ]
   },
   {
     "id": "652c1063-f2ba-4372-ad8e-4eb28d321a16",
