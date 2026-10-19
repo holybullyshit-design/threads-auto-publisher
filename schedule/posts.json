@@ -37121,10 +37121,13 @@
     "scheduledAt": "2026-10-19T06:36:00.000Z",
     "createdAt": "2026-10-10T01:35:46.302Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18182243164431270",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18182243164431270"
+    ]
   },
   {
     "id": "b1eb6138-15ae-412a-9c04-8d480dbd66b8",
