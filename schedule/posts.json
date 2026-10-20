@@ -38365,10 +38365,13 @@
     "scheduledAt": "2026-10-20T09:55:00.000Z",
     "createdAt": "2026-10-10T02:25:34.467Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18191482315412286",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18191482315412286"
+    ]
   },
   {
     "id": "03043c8a-076b-4933-b792-5c2506447faf",
