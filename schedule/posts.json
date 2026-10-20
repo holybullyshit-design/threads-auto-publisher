@@ -37218,10 +37218,13 @@
     "scheduledAt": "2026-10-20T04:50:00.000Z",
     "createdAt": "2026-10-10T01:38:09.293Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18136619782734900",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18136619782734900"
+    ]
   },
   {
     "id": "18b28e7d-cae6-47d3-8787-003a7831501e",
