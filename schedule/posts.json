@@ -39430,11 +39430,14 @@
     "scheduledAt": "2026-10-20T09:47:00.000Z",
     "createdAt": "2026-10-10T02:59:15.500Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18131681854744997",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18131681854744997"
+    ]
   },
   {
     "id": "5817353c-a244-4b8b-b25b-f18a837cbd79",
