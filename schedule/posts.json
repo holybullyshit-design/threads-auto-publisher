@@ -37278,10 +37278,13 @@
     "scheduledAt": "2026-10-20T23:32:00.000Z",
     "createdAt": "2026-10-10T01:39:43.019Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18017735534748513",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18017735534748513"
+    ]
   },
   {
     "id": "b81cb0b3-c743-48f7-a6f3-5ef3a8b2d33e",
