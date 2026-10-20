@@ -37185,10 +37185,13 @@
     "scheduledAt": "2026-10-20T02:37:00.000Z",
     "createdAt": "2026-10-10T01:37:19.132Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18099448448446315",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18099448448446315"
+    ]
   },
   {
     "id": "ec15db2f-d989-4150-a44d-d64995c0b3c4",
