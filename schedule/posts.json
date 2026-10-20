@@ -35883,10 +35883,13 @@
     "scheduledAt": "2026-10-20T07:46:00.000Z",
     "createdAt": "2026-10-10T00:46:06.410Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17913892485473112",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17913892485473112"
+    ]
   },
   {
     "id": "99ff3705-0c43-447c-a743-03fcea029ce5",
