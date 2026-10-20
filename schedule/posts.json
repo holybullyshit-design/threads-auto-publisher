@@ -38404,10 +38404,13 @@
     "scheduledAt": "2026-10-20T23:37:00.000Z",
     "createdAt": "2026-10-10T02:26:19.279Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18220376887342646",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18220376887342646"
+    ]
   },
   {
     "id": "22d5c5e4-1238-43e5-89c9-04a773c0ce28",
