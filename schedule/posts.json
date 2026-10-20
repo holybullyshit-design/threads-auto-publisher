@@ -41196,11 +41196,14 @@
     "scheduledAt": "2026-10-20T09:47:00.000Z",
     "createdAt": "2026-10-10T03:57:25.893Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17976982919938061",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "17976982919938061"
+    ]
   },
   {
     "id": "238f54b7-5643-4fc2-9217-85d032eb21f1",
