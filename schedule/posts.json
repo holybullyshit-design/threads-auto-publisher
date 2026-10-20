@@ -39388,10 +39388,13 @@
     "scheduledAt": "2026-10-20T07:35:00.000Z",
     "createdAt": "2026-10-10T02:58:40.583Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18018337445975850",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18018337445975850"
+    ]
   },
   {
     "id": "be6c9531-fddb-428d-97be-f99888843d76",
