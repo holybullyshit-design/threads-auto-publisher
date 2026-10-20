@@ -37243,10 +37243,13 @@
     "scheduledAt": "2026-10-20T07:00:00.000Z",
     "createdAt": "2026-10-10T01:38:45.964Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17951198568057217",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "17951198568057217"
+    ]
   },
   {
     "id": "eada1c4c-80fe-41e4-8e75-6950d3546c76",
