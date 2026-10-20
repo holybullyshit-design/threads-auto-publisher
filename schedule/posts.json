@@ -41142,10 +41142,13 @@
     "scheduledAt": "2026-10-20T07:22:00.000Z",
     "createdAt": "2026-10-10T03:56:54.522Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18057215237797662",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18057215237797662"
+    ]
   },
   {
     "id": "e26eb26a-ab2d-4118-bc70-424a7a783533",
