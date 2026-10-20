@@ -39355,10 +39355,13 @@
     "scheduledAt": "2026-10-20T05:10:00.000Z",
     "createdAt": "2026-10-10T02:57:28.894Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18104482577230082",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18104482577230082"
+    ]
   },
   {
     "id": "9bea3648-2ab5-4ac4-848b-87ee69980088",
