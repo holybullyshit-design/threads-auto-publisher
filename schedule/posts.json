@@ -41105,10 +41105,13 @@
     "scheduledAt": "2026-10-20T04:48:00.000Z",
     "createdAt": "2026-10-10T03:56:17.011Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18140430073719038",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18140430073719038"
+    ]
   },
   {
     "id": "48f686dd-3bc1-4d78-a752-35ae63405217",
