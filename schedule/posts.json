@@ -39304,10 +39304,13 @@
     "scheduledAt": "2026-10-20T02:12:00.000Z",
     "createdAt": "2026-10-10T02:56:30.114Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17952541875330253",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17952541875330253"
+    ]
   },
   {
     "id": "02d17a9f-e4dc-415b-b256-ae0e09d8757d",
