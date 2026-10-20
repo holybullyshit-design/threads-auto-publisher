@@ -39460,10 +39460,13 @@
     "scheduledAt": "2026-10-20T22:12:00.000Z",
     "createdAt": "2026-10-10T02:59:57.453Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17913828663285865",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17913828663285865"
+    ]
   },
   {
     "id": "c2c8f0ff-0071-45b2-98a8-900a656395ea",
