@@ -39504,10 +39504,13 @@
     "scheduledAt": "2026-10-21T01:07:00.000Z",
     "createdAt": "2026-10-10T03:00:32.775Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18192979903397795",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18192979903397795"
+    ]
   },
   {
     "id": "5658c118-8055-48aa-a965-972b5db3aafb",
