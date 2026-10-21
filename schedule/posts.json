@@ -35959,10 +35959,13 @@
     "scheduledAt": "2026-10-21T04:40:00.000Z",
     "createdAt": "2026-10-10T00:48:04.687Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18021251315952938",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18021251315952938"
+    ]
   },
   {
     "id": "9ddc98ad-8bb7-4c64-97dd-b88e8926e91f",
