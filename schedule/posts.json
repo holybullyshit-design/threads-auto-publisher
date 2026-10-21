@@ -41290,10 +41290,13 @@
     "scheduledAt": "2026-10-21T02:05:00.000Z",
     "createdAt": "2026-10-10T03:58:29.353Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17914140492470171",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17914140492470171"
+    ]
   },
   {
     "id": "06246263-b2f2-4489-98bb-ff463816dc1d",
