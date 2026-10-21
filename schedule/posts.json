@@ -41383,10 +41383,13 @@
     "scheduledAt": "2026-10-21T07:30:00.000Z",
     "createdAt": "2026-10-10T03:59:32.625Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18081591866374444",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18081591866374444"
+    ]
   },
   {
     "id": "53a04112-bef6-457f-a106-e84880e0bbf6",
