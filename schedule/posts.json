@@ -36011,10 +36011,13 @@
     "scheduledAt": "2026-10-21T22:35:00.000Z",
     "createdAt": "2026-10-10T00:50:03.734Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17968491846192357",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17968491846192357"
+    ]
   },
   {
     "id": "6ef905a3-c282-4bb3-a1f5-f1b0a95758fc",
