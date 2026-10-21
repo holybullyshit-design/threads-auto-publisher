@@ -37412,10 +37412,13 @@
     "scheduledAt": "2026-10-21T23:24:00.000Z",
     "createdAt": "2026-10-10T01:43:30.731Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18167580517465120",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18167580517465120"
+    ]
   },
   {
     "id": "cb15ba0b-eb49-4c0e-a751-e73ca85776f4",
