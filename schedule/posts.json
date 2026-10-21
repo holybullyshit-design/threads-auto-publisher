@@ -35933,10 +35933,13 @@
     "scheduledAt": "2026-10-21T01:53:00.000Z",
     "createdAt": "2026-10-10T00:47:22.952Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17954626224277040",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17954626224277040"
+    ]
   },
   {
     "id": "58a78d56-1861-468e-b749-fefdf72a79b8",
