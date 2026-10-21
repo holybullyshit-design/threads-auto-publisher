@@ -41425,11 +41425,14 @@
     "scheduledAt": "2026-10-21T10:07:00.000Z",
     "createdAt": "2026-10-10T04:00:12.448Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17996023704045127",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "17996023704045127"
+    ]
   },
   {
     "id": "0f6bb8bf-9fac-4192-aff8-5e63304bf8c9",
