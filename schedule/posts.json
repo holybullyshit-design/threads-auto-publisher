@@ -39680,10 +39680,13 @@
     "scheduledAt": "2026-10-21T23:34:00.000Z",
     "createdAt": "2026-10-10T03:02:47.366Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17917437372532065",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17917437372532065"
+    ]
   },
   {
     "id": "cf7205d6-0b5e-42ba-a4dc-c3c6d5ac8881",
