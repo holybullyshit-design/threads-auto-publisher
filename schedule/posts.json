@@ -39626,11 +39626,14 @@
     "scheduledAt": "2026-10-21T08:22:00.000Z",
     "createdAt": "2026-10-10T03:02:07.271Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17983497806897834",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "17983497806897834"
+    ]
   },
   {
     "id": "14d1b35c-5c0e-4ac9-8702-b83496a3d780",
