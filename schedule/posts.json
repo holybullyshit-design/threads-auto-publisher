@@ -36085,10 +36085,13 @@
     "scheduledAt": "2026-10-22T06:53:00.000Z",
     "createdAt": "2026-10-10T00:52:36.813Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18126494333475961",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18126494333475961"
+    ]
   },
   {
     "id": "023f3a65-1748-4983-a8a4-edaf1a6cf399",
