@@ -39825,11 +39825,14 @@
     "scheduledAt": "2026-10-22T10:05:00.000Z",
     "createdAt": "2026-10-10T03:05:48.571Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18115054817591143",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18115054817591143"
+    ]
   },
   {
     "id": "5038e144-82ba-4a97-8458-b59f68ecfeaa",
