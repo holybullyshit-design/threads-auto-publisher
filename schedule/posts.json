@@ -39751,10 +39751,13 @@
     "scheduledAt": "2026-10-22T04:13:00.000Z",
     "createdAt": "2026-10-10T03:04:07.475Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17976904521131696",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17976904521131696"
+    ]
   },
   {
     "id": "816b3259-9db8-4308-87ce-8ef9d3d4fd46",
