@@ -39868,10 +39868,13 @@
     "scheduledAt": "2026-10-22T23:18:00.000Z",
     "createdAt": "2026-10-10T03:06:28.149Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17937128523427886",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17937128523427886"
+    ]
   },
   {
     "id": "6c639c21-b154-40ea-ba10-655799454ec6",
