@@ -41604,10 +41604,13 @@
     "scheduledAt": "2026-10-22T07:15:00.000Z",
     "createdAt": "2026-10-10T04:04:37.101Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18115008548583361",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18115008548583361"
+    ]
   },
   {
     "id": "e3a80ecd-1d9e-4856-9743-4ea98d55dd50",
