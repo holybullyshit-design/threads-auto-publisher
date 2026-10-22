@@ -41650,11 +41650,14 @@
     "scheduledAt": "2026-10-22T10:05:00.000Z",
     "createdAt": "2026-10-10T04:05:14.160Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18113170172036354",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18113170172036354"
+    ]
   },
   {
     "id": "aa0fd44d-b77d-4bc9-9fb3-2bdaed10140e",
