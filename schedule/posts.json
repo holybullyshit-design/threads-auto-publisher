@@ -37446,10 +37446,13 @@
     "scheduledAt": "2026-10-22T01:43:00.000Z",
     "createdAt": "2026-10-10T01:44:34.227Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18104834918567786",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18104834918567786"
+    ]
   },
   {
     "id": "9d044a97-77cc-4821-bf75-c1a12000e984",
