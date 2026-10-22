@@ -39720,10 +39720,13 @@
     "scheduledAt": "2026-10-22T02:09:00.000Z",
     "createdAt": "2026-10-10T03:03:32.851Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18014401889974533",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18014401889974533"
+    ]
   },
   {
     "id": "206a66b9-6154-4b0c-b4f9-f84cebee7976",
