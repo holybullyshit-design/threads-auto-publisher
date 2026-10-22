@@ -41479,10 +41479,13 @@
     "scheduledAt": "2026-10-21T23:46:00.000Z",
     "createdAt": "2026-10-10T04:01:27.597Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18145057675589129",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18145057675589129"
+    ]
   },
   {
     "id": "5e698d04-e776-47a0-b0e9-72539c9602e4",
