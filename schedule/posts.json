@@ -36037,10 +36037,13 @@
     "scheduledAt": "2026-10-22T01:04:00.000Z",
     "createdAt": "2026-10-10T00:51:17.177Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17954842335036545",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17954842335036545"
+    ]
   },
   {
     "id": "ccaf5892-e777-4e3d-868d-ed5c9ed8d306",
