@@ -37533,10 +37533,13 @@
     "scheduledAt": "2026-10-22T22:45:00.000Z",
     "createdAt": "2026-10-10T01:46:37.719Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17994388545022460",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17994388545022460"
+    ]
   },
   {
     "id": "accd25d0-2257-4e3b-8e07-9045702b8633",
