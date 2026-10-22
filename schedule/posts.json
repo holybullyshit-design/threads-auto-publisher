@@ -41568,10 +41568,13 @@
     "scheduledAt": "2026-10-22T05:07:00.000Z",
     "createdAt": "2026-10-10T04:02:57.641Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17977003872177886",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17977003872177886"
+    ]
   },
   {
     "id": "8ca18721-8b98-403e-a46f-1b8b7173cbe0",
