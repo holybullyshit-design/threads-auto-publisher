@@ -37507,10 +37507,13 @@
     "scheduledAt": "2026-10-22T07:30:00.000Z",
     "createdAt": "2026-10-10T01:45:57.107Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18120490333935180",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18120490333935180"
+    ]
   },
   {
     "id": "44d9295b-0cc8-48a4-a408-f6795e6d761c",
