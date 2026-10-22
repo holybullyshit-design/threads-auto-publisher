@@ -41685,10 +41685,13 @@
     "scheduledAt": "2026-10-22T22:08:00.000Z",
     "createdAt": "2026-10-10T04:05:49.764Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18137337514729602",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18137337514729602"
+    ]
   },
   {
     "id": "bfd92963-bf3f-4675-b1d3-b695382d8ff6",
