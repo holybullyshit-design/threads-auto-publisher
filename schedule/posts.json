@@ -36062,10 +36062,13 @@
     "scheduledAt": "2026-10-22T03:59:00.000Z",
     "createdAt": "2026-10-10T00:51:58.431Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18643896667008364",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18643896667008364"
+    ]
   },
   {
     "id": "e968f47f-64ce-4aa0-9f8b-72d9bb042751",
