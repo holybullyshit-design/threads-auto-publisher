@@ -39786,10 +39786,13 @@
     "scheduledAt": "2026-10-22T07:10:00.000Z",
     "createdAt": "2026-10-10T03:05:16.899Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18135428251722075",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18135428251722075"
+    ]
   },
   {
     "id": "630c1359-e606-4c34-8cba-7eb7bbfd1f4e",
