@@ -41880,11 +41880,14 @@
     "scheduledAt": "2026-10-23T08:17:00.000Z",
     "createdAt": "2026-10-10T04:09:20.400Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18105599714000257",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18105599714000257"
+    ]
   },
   {
     "id": "558abe0b-a3cf-4690-a2d0-98ec3eef9f10",
