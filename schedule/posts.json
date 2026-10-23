@@ -36187,10 +36187,13 @@
     "scheduledAt": "2026-10-23T06:32:00.000Z",
     "createdAt": "2026-10-10T00:55:07.392Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18085286249339263",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18085286249339263"
+    ]
   },
   {
     "id": "862144c8-7900-4ae2-9913-fd0a94173600",
