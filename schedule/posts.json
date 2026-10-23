@@ -40061,10 +40061,13 @@
     "scheduledAt": "2026-10-23T23:38:00.000Z",
     "createdAt": "2026-10-10T03:09:56.570Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18079941146391473",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18079941146391473"
+    ]
   },
   {
     "id": "d98457a6-dc8e-40d0-9f69-feeed24105c1",
