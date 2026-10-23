@@ -39942,10 +39942,13 @@
     "scheduledAt": "2026-10-23T04:11:00.000Z",
     "createdAt": "2026-10-10T03:07:46.066Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18120344057049921",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18120344057049921"
+    ]
   },
   {
     "id": "cc6d5428-7747-49fb-add0-147e5d4dc6f3",
