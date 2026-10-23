@@ -41826,10 +41826,13 @@
     "scheduledAt": "2026-10-23T05:44:00.000Z",
     "createdAt": "2026-10-10T04:08:42.523Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18174410200458505",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18174410200458505"
+    ]
   },
   {
     "id": "829fef86-b970-48af-ba56-f4a06515f2a5",
