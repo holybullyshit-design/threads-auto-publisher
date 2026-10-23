@@ -39982,10 +39982,13 @@
     "scheduledAt": "2026-10-23T06:22:00.000Z",
     "createdAt": "2026-10-10T03:08:38.041Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18106965548205846",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18106965548205846"
+    ]
   },
   {
     "id": "67a4c356-19fb-4297-9b80-36094fa40e2a",
