@@ -38706,10 +38706,13 @@
     "scheduledAt": "2026-10-23T22:57:00.000Z",
     "createdAt": "2026-10-10T02:31:14.349Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18148000768561366",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18148000768561366"
+    ]
   },
   {
     "id": "6a2f26aa-ef58-42bb-b079-8c43516b5605",
