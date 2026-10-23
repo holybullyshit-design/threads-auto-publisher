@@ -41729,10 +41729,13 @@
     "scheduledAt": "2026-10-23T00:26:00.000Z",
     "createdAt": "2026-10-10T04:06:32.357Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17969683527186261",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17969683527186261"
+    ]
   },
   {
     "id": "958eb25b-3465-4c09-a1c8-b432d025d1c4",
