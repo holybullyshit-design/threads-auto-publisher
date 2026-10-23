@@ -38680,10 +38680,13 @@
     "scheduledAt": "2026-10-23T08:00:00.000Z",
     "createdAt": "2026-10-10T02:30:03.483Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18137107198564690",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18137107198564690"
+    ]
   },
   {
     "id": "02ebb037-20ba-40dd-acfd-90bdb9351eb9",
