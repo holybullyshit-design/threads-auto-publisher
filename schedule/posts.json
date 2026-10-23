@@ -37635,10 +37635,13 @@
     "scheduledAt": "2026-10-23T06:02:00.000Z",
     "createdAt": "2026-10-10T01:49:46.949Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17916312990534264",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17916312990534264"
+    ]
   },
   {
     "id": "138e5c40-7c9b-4dce-b583-c5f06dda118d",
