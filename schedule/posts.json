@@ -36163,10 +36163,13 @@
     "scheduledAt": "2026-10-23T04:21:00.000Z",
     "createdAt": "2026-10-10T00:54:31.610Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18397309819202597",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18397309819202597"
+    ]
   },
   {
     "id": "84fb03d3-0f1b-4bfd-99fa-1ceee9ff9163",
