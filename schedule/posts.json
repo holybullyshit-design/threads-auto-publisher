@@ -36136,10 +36136,13 @@
     "scheduledAt": "2026-10-23T01:29:00.000Z",
     "createdAt": "2026-10-10T00:53:51.576Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18645905923013910",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18645905923013910"
+    ]
   },
   {
     "id": "86660674-efed-40e4-a665-0d3bcdec953d",
