@@ -40020,11 +40020,14 @@
     "scheduledAt": "2026-10-23T08:54:00.000Z",
     "createdAt": "2026-10-10T03:09:11.282Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18219758125341506",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18219758125341506"
+    ]
   },
   {
     "id": "73ea9865-6324-4eca-9647-874b3bcacd35",
