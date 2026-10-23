@@ -41778,10 +41778,13 @@
     "scheduledAt": "2026-10-23T02:53:00.000Z",
     "createdAt": "2026-10-10T04:07:45.305Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18637327624001446",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18637327624001446"
+    ]
   },
   {
     "id": "cb25c8c3-8460-4d7b-9867-48259b8abd46",
