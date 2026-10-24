@@ -36309,10 +36309,13 @@
     "scheduledAt": "2026-10-24T22:31:00.000Z",
     "createdAt": "2026-10-10T00:58:52.903Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18106588343526413",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18106588343526413"
+    ]
   },
   {
     "id": "85ae0497-4715-467d-9b30-183711cc4e1f",
