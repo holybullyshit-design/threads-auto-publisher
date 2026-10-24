@@ -37673,10 +37673,13 @@
     "scheduledAt": "2026-10-23T23:52:00.000Z",
     "createdAt": "2026-10-10T01:50:22.179Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18098867348356231",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18098867348356231"
+    ]
   },
   {
     "id": "16c1e196-a8d0-4c03-96fa-a7bd22813f07",
