@@ -36261,10 +36261,13 @@
     "scheduledAt": "2026-10-24T04:08:00.000Z",
     "createdAt": "2026-10-10T00:57:38.808Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18081535409708890",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18081535409708890"
+    ]
   },
   {
     "id": "1c029066-6b4d-4273-8291-1c86f735528c",
