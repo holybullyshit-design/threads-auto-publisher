@@ -42100,11 +42100,14 @@
     "scheduledAt": "2026-10-24T08:31:00.000Z",
     "createdAt": "2026-10-10T04:12:57.559Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17922462411450033",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "17922462411450033"
+    ]
   },
   {
     "id": "3058e599-5ca5-43d1-803f-9967b4449019",
