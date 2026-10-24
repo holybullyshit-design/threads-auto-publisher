@@ -38779,10 +38779,13 @@
     "scheduledAt": "2026-10-24T09:19:00.000Z",
     "createdAt": "2026-10-10T02:32:02.003Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17872803093641794",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17872803093641794"
+    ]
   },
   {
     "id": "73936579-b9ad-465d-941b-6c582a0261ae",
