@@ -40136,10 +40136,13 @@
     "scheduledAt": "2026-10-24T04:29:00.000Z",
     "createdAt": "2026-10-10T03:10:59.859Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17995444986022073",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17995444986022073"
+    ]
   },
   {
     "id": "fbdf79f2-bc35-4ebb-9165-407a010999b6",
