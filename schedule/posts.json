@@ -40175,10 +40175,13 @@
     "scheduledAt": "2026-10-24T06:33:00.000Z",
     "createdAt": "2026-10-10T03:11:56.435Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17943900825090916",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17943900825090916"
+    ]
   },
   {
     "id": "88f4ccb7-0caa-4ff3-95b6-d5df46e69857",
