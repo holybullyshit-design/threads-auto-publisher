@@ -42059,10 +42059,13 @@
     "scheduledAt": "2026-10-24T05:57:00.000Z",
     "createdAt": "2026-10-10T04:12:22.065Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18110024093216656",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18110024093216656"
+    ]
   },
   {
     "id": "24ee2f71-669f-4fae-8426-c4db2ea91f3d",
