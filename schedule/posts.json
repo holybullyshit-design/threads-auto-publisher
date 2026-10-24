@@ -36237,10 +36237,13 @@
     "scheduledAt": "2026-10-24T01:56:00.000Z",
     "createdAt": "2026-10-10T00:56:45.103Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17979577661924781",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "17979577661924781"
+    ]
   },
   {
     "id": "b1eda38a-9e07-439a-81a3-332089266fb8",
