@@ -37761,10 +37761,13 @@
     "scheduledAt": "2026-10-24T06:49:00.000Z",
     "createdAt": "2026-10-10T01:53:18.662Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18416524606084098",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18416524606084098"
+    ]
   },
   {
     "id": "1f0fdf94-be57-48f6-bfc1-688c36b19872",
