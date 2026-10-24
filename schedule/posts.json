@@ -36285,10 +36285,13 @@
     "scheduledAt": "2026-10-24T06:18:00.000Z",
     "createdAt": "2026-10-10T00:58:19.041Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18015839165968745",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18015839165968745"
+    ]
   },
   {
     "id": "b7f3bad4-2ee6-47b4-a5e5-b6e1d526025c",
