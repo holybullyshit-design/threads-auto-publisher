@@ -40258,10 +40258,13 @@
     "scheduledAt": "2026-10-24T23:26:00.000Z",
     "createdAt": "2026-10-10T03:13:05.546Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17916604338530276",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17916604338530276"
+    ]
   },
   {
     "id": "54a78f6c-5068-4f68-baec-7782bb61c18b",
