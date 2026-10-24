@@ -40103,10 +40103,13 @@
     "scheduledAt": "2026-10-24T02:22:00.000Z",
     "createdAt": "2026-10-10T03:10:25.763Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17902649124599868",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17902649124599868"
+    ]
   },
   {
     "id": "e22d64cd-e118-49ab-9403-8ef041b55182",
