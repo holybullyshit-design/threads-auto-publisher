@@ -42014,10 +42014,13 @@
     "scheduledAt": "2026-10-24T03:25:00.000Z",
     "createdAt": "2026-10-10T04:11:28.467Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18125256328910012",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18125256328910012"
+    ]
   },
   {
     "id": "98973d66-eed8-4544-8e6c-a335ece1636e",
