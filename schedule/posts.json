@@ -42296,10 +42296,13 @@
     "scheduledAt": "2026-10-25T06:40:00.000Z",
     "createdAt": "2026-10-10T04:15:19.286Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17993173989105383",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17993173989105383"
+    ]
   },
   {
     "id": "89e36852-b45a-4485-9c5a-ee86acd5c283",
