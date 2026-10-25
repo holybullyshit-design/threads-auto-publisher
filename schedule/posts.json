@@ -40407,11 +40407,14 @@
     "scheduledAt": "2026-10-25T10:09:00.000Z",
     "createdAt": "2026-10-10T03:17:22.103Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18045756818835484",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18045756818835484"
+    ]
   },
   {
     "id": "4aa78bc1-f031-4be5-8fea-bdc4fea8d683",
