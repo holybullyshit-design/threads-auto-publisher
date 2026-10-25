@@ -36336,10 +36336,13 @@
     "scheduledAt": "2026-10-25T01:16:00.000Z",
     "createdAt": "2026-10-10T01:00:18.646Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18040146956836997",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18040146956836997"
+    ]
   },
   {
     "id": "12a9254f-c120-47ea-bb4e-007dcf3e3e99",
