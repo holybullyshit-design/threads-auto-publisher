@@ -40451,10 +40451,13 @@
     "scheduledAt": "2026-10-25T22:40:00.000Z",
     "createdAt": "2026-10-10T03:17:53.233Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18200273683388004",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18200273683388004"
+    ]
   },
   {
     "id": "f7316194-4611-49fd-abe9-6ecfe4743e35",
