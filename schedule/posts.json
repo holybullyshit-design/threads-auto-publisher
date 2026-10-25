@@ -42332,11 +42332,14 @@
     "scheduledAt": "2026-10-25T09:29:00.000Z",
     "createdAt": "2026-10-10T04:15:54.204Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18079094156415608",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18079094156415608"
+    ]
   },
   {
     "id": "f8fd3db2-ab6b-46ed-a2ce-ebc48e62be17",
