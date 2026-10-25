@@ -40299,10 +40299,13 @@
     "scheduledAt": "2026-10-25T02:08:00.000Z",
     "createdAt": "2026-10-10T03:14:07.799Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18148659250492515",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18148659250492515"
+    ]
   },
   {
     "id": "e7f1dd6d-cf76-42ed-a92c-8fe6a73799c9",
