@@ -38880,10 +38880,13 @@
     "scheduledAt": "2026-10-25T08:20:00.000Z",
     "createdAt": "2026-10-10T02:33:07.804Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18044305082828520",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18044305082828520"
+    ]
   },
   {
     "id": "a78ec946-cb50-4c45-9e3f-6c570be9d217",
