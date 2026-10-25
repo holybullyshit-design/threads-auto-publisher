@@ -37884,10 +37884,13 @@
     "scheduledAt": "2026-10-25T06:16:00.000Z",
     "createdAt": "2026-10-10T01:57:05.013Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18112710130896876",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18112710130896876"
+    ]
   },
   {
     "id": "6d1d83da-c610-4954-9329-22d7b7729252",
