@@ -36363,10 +36363,13 @@
     "scheduledAt": "2026-10-25T04:10:00.000Z",
     "createdAt": "2026-10-10T01:00:54.749Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18131602963829017",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18131602963829017"
+    ]
   },
   {
     "id": "30b56f46-e6cf-46e4-9aaa-96269a8c00a9",
