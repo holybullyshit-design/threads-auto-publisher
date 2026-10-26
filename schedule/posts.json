@@ -36466,10 +36466,13 @@
     "scheduledAt": "2026-10-26T04:27:00.000Z",
     "createdAt": "2026-10-10T01:03:34.631Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17895406209614657",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17895406209614657"
+    ]
   },
   {
     "id": "bf874ff9-5a30-4d83-9f07-51874da0b4c2",
