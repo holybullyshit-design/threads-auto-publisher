@@ -42439,10 +42439,13 @@
     "scheduledAt": "2026-10-26T02:16:00.000Z",
     "createdAt": "2026-10-10T04:17:18.331Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18416329591081569",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18416329591081569"
+    ]
   },
   {
     "id": "d0a30e30-ee52-47ee-bc64-89f223bda3e1",
