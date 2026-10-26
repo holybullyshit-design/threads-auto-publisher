@@ -42480,10 +42480,13 @@
     "scheduledAt": "2026-10-26T04:33:00.000Z",
     "createdAt": "2026-10-10T04:17:46.220Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17925653673439487",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17925653673439487"
+    ]
   },
   {
     "id": "1d40e091-d6ef-41ab-8ae5-5a58cdf9696b",
