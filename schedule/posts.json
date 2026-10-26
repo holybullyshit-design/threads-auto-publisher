@@ -36518,10 +36518,13 @@
     "scheduledAt": "2026-10-26T22:19:00.000Z",
     "createdAt": "2026-10-10T01:04:38.048Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17926157742426038",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17926157742426038"
+    ]
   },
   {
     "id": "a286d158-bb13-45c8-a54a-8c16c91e9e9c",
