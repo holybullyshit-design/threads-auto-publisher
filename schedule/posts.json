@@ -38982,10 +38982,13 @@
     "scheduledAt": "2026-10-26T09:27:00.000Z",
     "createdAt": "2026-10-10T02:34:16.521Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18054142550595218",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18054142550595218"
+    ]
   },
   {
     "id": "17126770-ba0b-4d8c-8238-02ea320ecc51",
