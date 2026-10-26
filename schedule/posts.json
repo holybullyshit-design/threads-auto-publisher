@@ -37978,10 +37978,13 @@
     "scheduledAt": "2026-10-26T02:58:00.000Z",
     "createdAt": "2026-10-10T01:59:37.132Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17968858935195435",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17968858935195435"
+    ]
   },
   {
     "id": "d89f5feb-ad31-457a-a61e-e230177d5535",
