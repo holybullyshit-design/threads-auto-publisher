@@ -36441,10 +36441,13 @@
     "scheduledAt": "2026-10-26T01:54:00.000Z",
     "createdAt": "2026-10-10T01:03:01.693Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17910716169480287",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17910716169480287"
+    ]
   },
   {
     "id": "53763c7b-a8f4-4b36-a408-7ab7b573d1a5",
