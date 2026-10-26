@@ -40493,10 +40493,13 @@
     "scheduledAt": "2026-10-26T01:14:00.000Z",
     "createdAt": "2026-10-10T03:18:32.605Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17914939845516561",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17914939845516561"
+    ]
   },
   {
     "id": "b52f1903-a119-478e-a2b5-f49659639441",
