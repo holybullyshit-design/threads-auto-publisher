@@ -38008,10 +38008,13 @@
     "scheduledAt": "2026-10-26T05:48:00.000Z",
     "createdAt": "2026-10-10T02:00:52.757Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18115741469011382",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18115741469011382"
+    ]
   },
   {
     "id": "f5d6bc7a-d74c-4da4-a110-e22053cb27a3",
