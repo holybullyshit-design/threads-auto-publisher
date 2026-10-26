@@ -39018,10 +39018,13 @@
     "scheduledAt": "2026-10-26T23:05:00.000Z",
     "createdAt": "2026-10-10T02:34:51.334Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17971605111231753",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17971605111231753"
+    ]
   },
   {
     "id": "6bb2605c-8d4e-4261-ad57-c96f30e05323",
