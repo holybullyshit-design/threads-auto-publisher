@@ -36492,10 +36492,13 @@
     "scheduledAt": "2026-10-26T07:21:00.000Z",
     "createdAt": "2026-10-10T01:04:09.244Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18114637370141317",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18114637370141317"
+    ]
   },
   {
     "id": "8850ecd7-7632-45ef-9088-a357a99c1582",
