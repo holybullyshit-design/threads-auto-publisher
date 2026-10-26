@@ -38041,10 +38041,13 @@
     "scheduledAt": "2026-10-26T22:03:00.000Z",
     "createdAt": "2026-10-10T02:01:30.334Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17913736491515453",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "17913736491515453"
+    ]
   },
   {
     "id": "9fed065d-6276-44ce-9446-7a8ffc59de43",
