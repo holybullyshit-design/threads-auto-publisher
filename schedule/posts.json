@@ -40566,10 +40566,13 @@
     "scheduledAt": "2026-10-26T06:20:00.000Z",
     "createdAt": "2026-10-10T03:19:37.492Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17942579541365376",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17942579541365376"
+    ]
   },
   {
     "id": "942a86b2-c3e5-4d1d-8882-bf14d71540c1",
