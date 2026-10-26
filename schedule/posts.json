@@ -40600,11 +40600,14 @@
     "scheduledAt": "2026-10-26T08:38:00.000Z",
     "createdAt": "2026-10-10T03:20:07.367Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17995962504048339",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "17995962504048339"
+    ]
   },
   {
     "id": "b457e17e-b6db-4660-b0b8-b33f3b85d519",
