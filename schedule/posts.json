@@ -42661,10 +42661,13 @@
     "scheduledAt": "2026-10-27T02:13:00.000Z",
     "createdAt": "2026-10-10T04:20:15.944Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17926191402441293",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17926191402441293"
+    ]
   },
   {
     "id": "c60d6115-7929-4b76-86a7-ea4973783046",
