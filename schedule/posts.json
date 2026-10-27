@@ -40689,10 +40689,13 @@
     "scheduledAt": "2026-10-27T02:01:00.000Z",
     "createdAt": "2026-10-10T03:21:54.212Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18387678889227890",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18387678889227890"
+    ]
   },
   {
     "id": "8e557949-d51e-4ab2-aa73-ce2df4c41e75",
