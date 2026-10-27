@@ -40798,11 +40798,14 @@
     "scheduledAt": "2026-10-27T09:39:00.000Z",
     "createdAt": "2026-10-10T03:24:23.849Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18108374951154133",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18108374951154133"
+    ]
   },
   {
     "id": "5cf02c51-7591-4c0f-887e-fca78c124eb4",
