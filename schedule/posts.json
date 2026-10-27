@@ -39075,10 +39075,13 @@
     "scheduledAt": "2026-10-27T08:39:00.000Z",
     "createdAt": "2026-10-10T02:35:33.786Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18147349885575717",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18147349885575717"
+    ]
   },
   {
     "id": "3da67fe8-76f8-473b-8d2d-38c0bfd31a19",
