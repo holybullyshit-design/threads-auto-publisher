@@ -42840,10 +42840,13 @@
     "scheduledAt": "2026-10-27T23:37:00.000Z",
     "createdAt": "2026-10-10T04:22:29.266Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18117928003805306",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18117928003805306"
+    ]
   },
   {
     "id": "014fe7b1-ad69-4441-8bbf-dcc1ce21513a",
