@@ -36541,10 +36541,13 @@
     "scheduledAt": "2026-10-27T01:09:00.000Z",
     "createdAt": "2026-10-10T01:05:11.328Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18029963060692114",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18029963060692114"
+    ]
   },
   {
     "id": "35182752-840d-4d96-ac73-b32a5cdd73cf",
