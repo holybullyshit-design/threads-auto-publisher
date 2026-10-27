@@ -42745,10 +42745,13 @@
     "scheduledAt": "2026-10-27T07:01:00.000Z",
     "createdAt": "2026-10-10T04:21:18.009Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17924152836220158",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17924152836220158"
+    ]
   },
   {
     "id": "a083f9ba-b626-4b9b-83f8-917d06e6bd36",
