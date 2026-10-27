@@ -36613,10 +36613,13 @@
     "scheduledAt": "2026-10-27T23:27:00.000Z",
     "createdAt": "2026-10-10T01:08:01.878Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17963516619251660",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "17963516619251660"
+    ]
   },
   {
     "id": "08a8ff8d-4215-4300-ae90-7cdc63dfd5d7",
