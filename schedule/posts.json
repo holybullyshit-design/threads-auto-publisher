@@ -39101,10 +39101,13 @@
     "scheduledAt": "2026-10-27T23:14:00.000Z",
     "createdAt": "2026-10-10T02:36:11.363Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18152975284540657",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18152975284540657"
+    ]
   },
   {
     "id": "9da10d4d-2ce7-4ff4-934a-558ecdce138e",
