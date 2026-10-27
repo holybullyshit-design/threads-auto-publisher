@@ -36564,10 +36564,13 @@
     "scheduledAt": "2026-10-27T03:46:00.000Z",
     "createdAt": "2026-10-10T01:06:48.086Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18102964142541191",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18102964142541191"
+    ]
   },
   {
     "id": "cc70b73b-fd49-4e5a-9387-012fb54c0890",
