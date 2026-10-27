@@ -40651,10 +40651,13 @@
     "scheduledAt": "2026-10-26T23:49:00.000Z",
     "createdAt": "2026-10-10T03:21:04.741Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18107541062122178",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18107541062122178"
+    ]
   },
   {
     "id": "5e99876b-6747-4f8c-801d-6a9a6617aa8e",
