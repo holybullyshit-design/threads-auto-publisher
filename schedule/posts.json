@@ -42786,11 +42786,14 @@
     "scheduledAt": "2026-10-27T09:59:00.000Z",
     "createdAt": "2026-10-10T04:22:00.025Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18016452569986325",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18016452569986325"
+    ]
   },
   {
     "id": "0ff7b739-0302-4278-87fc-857a36a81ebd",
