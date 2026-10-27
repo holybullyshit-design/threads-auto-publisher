@@ -38168,10 +38168,13 @@
     "scheduledAt": "2026-10-27T23:43:00.000Z",
     "createdAt": "2026-10-10T02:05:06.085Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18141117376618431",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18141117376618431"
+    ]
   },
   {
     "id": "5913eea7-14b2-4f38-a2f6-bed482cbd431",
