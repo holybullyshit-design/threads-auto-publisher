@@ -39212,10 +39212,13 @@
     "scheduledAt": "2026-10-28T22:23:00.000Z",
     "createdAt": "2026-10-10T02:37:41.058Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18422744512154181",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18422744512154181"
+    ]
   },
   {
     "id": "26bd132f-012f-4dc9-aecd-a8c7cfeddb62",
