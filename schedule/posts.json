@@ -38265,10 +38265,13 @@
     "scheduledAt": "2026-10-28T06:48:00.000Z",
     "createdAt": "2026-10-10T02:08:10.989Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18101966600065587",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18101966600065587"
+    ]
   },
   {
     "id": "88bd55aa-4904-4a2f-8a17-5c7c372ab62d",
