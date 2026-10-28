@@ -40871,10 +40871,13 @@
     "scheduledAt": "2026-10-28T00:59:00.000Z",
     "createdAt": "2026-10-10T03:25:33.441Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18342164584261134",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18342164584261134"
+    ]
   },
   {
     "id": "bf368cb7-5969-4a8c-a6c3-077e0f6afba1",
