@@ -38233,10 +38233,13 @@
     "scheduledAt": "2026-10-28T04:38:00.000Z",
     "createdAt": "2026-10-10T02:06:55.832Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17894238171683787",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17894238171683787"
+    ]
   },
   {
     "id": "ff0f6990-ff7b-4b4b-a07c-78b6ff20a01f",
