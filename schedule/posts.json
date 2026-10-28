@@ -39180,10 +39180,13 @@
     "scheduledAt": "2026-10-28T09:56:00.000Z",
     "createdAt": "2026-10-10T02:37:06.059Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17968139979195687",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17968139979195687"
+    ]
   },
   {
     "id": "85cedac1-952a-49a8-bada-c45b20562f83",
