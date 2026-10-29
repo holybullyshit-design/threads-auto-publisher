@@ -43143,10 +43143,13 @@
     "scheduledAt": "2026-10-29T02:56:00.000Z",
     "createdAt": "2026-10-10T04:26:39.126Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18111772811223241",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18111772811223241"
+    ]
   },
   {
     "id": "23f8d307-a90e-4ce7-94ae-1f774a8498f9",
