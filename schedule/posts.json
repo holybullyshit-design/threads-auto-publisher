@@ -36770,10 +36770,13 @@
     "scheduledAt": "2026-10-29T04:04:00.000Z",
     "createdAt": "2026-10-10T01:12:15.600Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18120181592100702",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18120181592100702"
+    ]
   },
   {
     "id": "25ed3a59-b01e-4504-8613-bf7cfc8c3af4",
