@@ -41188,11 +41188,14 @@
     "scheduledAt": "2026-10-29T08:14:00.000Z",
     "createdAt": "2026-10-10T03:32:13.114Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18130544731794223",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18130544731794223"
+    ]
   },
   {
     "id": "50ad0d62-5282-4105-bca3-7d3783cf20d6",
