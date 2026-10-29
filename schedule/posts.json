@@ -36817,10 +36817,13 @@
     "scheduledAt": "2026-10-29T22:59:00.000Z",
     "createdAt": "2026-10-10T01:13:31.072Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18100777802093669",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18100777802093669"
+    ]
   },
   {
     "id": "fd720035-6340-4b47-9c04-ff1dc52ebf68",
