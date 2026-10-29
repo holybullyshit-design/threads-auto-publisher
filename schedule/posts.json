@@ -41159,10 +41159,13 @@
     "scheduledAt": "2026-10-29T06:02:00.000Z",
     "createdAt": "2026-10-10T03:31:42.786Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18097109288406424",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18097109288406424"
+    ]
   },
   {
     "id": "a2ca2141-eb18-40f4-ba7a-6c5ce0c85a44",
