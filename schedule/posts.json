@@ -38389,10 +38389,13 @@
     "scheduledAt": "2026-10-29T05:25:00.000Z",
     "createdAt": "2026-10-10T02:11:51.203Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18641806450049115",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18641806450049115"
+    ]
   },
   {
     "id": "e232be04-d812-4cde-888e-22016d8b70bd",
