@@ -43189,10 +43189,13 @@
     "scheduledAt": "2026-10-29T05:08:00.000Z",
     "createdAt": "2026-10-10T04:27:50.431Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18192649408404042",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18192649408404042"
+    ]
   },
   {
     "id": "66ad606d-68c8-4f86-a5d9-47021e9ee1c8",
