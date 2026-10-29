@@ -41114,10 +41114,13 @@
     "scheduledAt": "2026-10-29T03:17:00.000Z",
     "createdAt": "2026-10-10T03:30:35.041Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17995442828844675",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17995442828844675"
+    ]
   },
   {
     "id": "e3288e2c-c670-47c0-a788-816037a4e8a1",
