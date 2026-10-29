@@ -39320,10 +39320,13 @@
     "scheduledAt": "2026-10-29T23:39:00.000Z",
     "createdAt": "2026-10-10T02:38:47.287Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18021242948955442",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18021242948955442"
+    ]
   },
   {
     "id": "5b2a9f0a-b5f9-4650-9d88-5323613e1e4e",
