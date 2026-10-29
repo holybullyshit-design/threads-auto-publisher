@@ -43270,10 +43270,13 @@
     "scheduledAt": "2026-10-29T22:00:00.000Z",
     "createdAt": "2026-10-10T04:29:27.896Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17966935619983403",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17966935619983403"
+    ]
   },
   {
     "id": "db6c9574-e5b8-471b-9b19-e88c42a6cd5d",
