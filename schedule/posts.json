@@ -38355,11 +38355,14 @@
     "scheduledAt": "2026-10-29T03:18:00.000Z",
     "createdAt": "2026-10-10T02:11:21.335Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18147454333578090",
     "error": "fetch failed",
     "viralEngine": true,
     "hitFormula": false,
-    "retryCount": 1
+    "retryCount": 1,
+    "chainPublishedIds": [
+      "18147454333578090"
+    ]
   },
   {
     "id": "3e5d0003-0986-469d-aaa6-7a84df3bd6ba",
