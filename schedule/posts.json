@@ -43232,11 +43232,14 @@
     "scheduledAt": "2026-10-29T07:35:00.000Z",
     "createdAt": "2026-10-10T04:28:52.496Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18117217144991218",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18117217144991218"
+    ]
   },
   {
     "id": "265ad486-cef6-4efb-abbc-d05ffaf6e0a4",
