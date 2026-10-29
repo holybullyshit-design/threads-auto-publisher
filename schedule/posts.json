@@ -38422,10 +38422,13 @@
     "scheduledAt": "2026-10-29T22:33:00.000Z",
     "createdAt": "2026-10-10T02:12:44.431Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17896264533427695",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17896264533427695"
+    ]
   },
   {
     "id": "8b2e7141-b9c9-4e9d-840f-05131703520b",
