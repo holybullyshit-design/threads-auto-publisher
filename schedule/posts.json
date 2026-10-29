@@ -36793,10 +36793,13 @@
     "scheduledAt": "2026-10-29T06:45:00.000Z",
     "createdAt": "2026-10-10T01:12:50.756Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17937128826407088",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17937128826407088"
+    ]
   },
   {
     "id": "b9aa8658-ff92-463b-a99f-58a2b1dde35d",
