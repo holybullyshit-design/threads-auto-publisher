@@ -38322,10 +38322,13 @@
     "scheduledAt": "2026-10-29T00:32:00.000Z",
     "createdAt": "2026-10-10T02:10:32.324Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18029025572913084",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18029025572913084"
+    ]
   },
   {
     "id": "829cbee8-2dd1-42bb-9aca-ea6a4f573d74",
