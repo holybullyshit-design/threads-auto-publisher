@@ -39281,10 +39281,13 @@
     "scheduledAt": "2026-10-29T09:10:00.000Z",
     "createdAt": "2026-10-10T02:38:13.509Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17965687698208410",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17965687698208410"
+    ]
   },
   {
     "id": "6f412685-2bee-46c8-83c9-7ae5550ea244",
