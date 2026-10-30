@@ -43325,10 +43325,13 @@
     "scheduledAt": "2026-10-30T00:12:00.000Z",
     "createdAt": "2026-10-10T04:30:09.366Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17977486454936109",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17977486454936109"
+    ]
   },
   {
     "id": "6cdc1577-6089-4cee-b4ca-bb67f6a2b927",
