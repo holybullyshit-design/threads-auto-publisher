@@ -7,7 +7,9 @@
 //  - --dry-run이 기본 사용법이다. 실제 삭제는 --yes를 같이 줘야 한다.
 //
 // 사용법:
-//   node tools/purge-scheduled-range.js <시작일> <종료일> [--yes]
+//   node tools/purge-scheduled-range.js <시작일> <종료일> [--account="계정명"] [--yes]
+//
+// --account를 주면 그 계정만 지운다(2026-10-30: 팔자명가 발행 중단에 사용).
 
 require("dotenv").config();
 const { atomicUpdateSchedule, readSchedule } = require("../server/lib/githubStore");
@@ -16,9 +18,15 @@ const SAJU = ["연리지 실타래", "아해사주", "팔자명가", "팔자궤�
 const FROM = process.argv[2];
 const TO = process.argv[3];
 const CONFIRMED = process.argv.includes("--yes");
+const ACCOUNT = (process.argv.find((a) => a.startsWith("--account=")) || "").split("=").slice(1).join("=");
+
+if (ACCOUNT && !SAJU.includes(ACCOUNT)) {
+  console.error(`거부: 알 수 없는 계정 "${ACCOUNT}". 사주 5계정 중 하나여야 합니다 - ${SAJU.join(" / ")}`);
+  process.exit(1);
+}
 
 if (!/^\d{4}-\d{2}-\d{2}$/.test(FROM || "") || !/^\d{4}-\d{2}-\d{2}$/.test(TO || "")) {
-  console.error("사용법: node tools/purge-scheduled-range.js <시작일 YYYY-MM-DD> <종료일 YYYY-MM-DD> [--yes]");
+  console.error('사용법: node tools/purge-scheduled-range.js <시작일 YYYY-MM-DD> <종료일 YYYY-MM-DD> [--account="계정명"] [--yes]');
   process.exit(1);
 }
 
@@ -34,6 +42,7 @@ function targets(posts) {
   return posts.filter(
     (p) =>
       SAJU.includes(p.accountLabel) &&
+      (!ACCOUNT || p.accountLabel === ACCOUNT) &&
       p.platform !== "instagram" &&
       p.status === "scheduled" &&
       p.scheduledAt &&
@@ -48,11 +57,11 @@ function targets(posts) {
   const byAcct = {};
   for (const p of hit) byAcct[p.accountLabel] = (byAcct[p.accountLabel] || 0) + 1;
 
-  console.log(`대상: ${FROM} ~ ${TO} / status=scheduled / 사주 5계정`);
+  console.log(`대상: ${FROM} ~ ${TO} / status=scheduled / ${ACCOUNT || "사주 5계정"}${ACCOUNT ? "" : ""} / platform=threads`);
   console.log(`지울 글: ${hit.length}건`, JSON.stringify(byAcct));
   console.log(`  그중 댓글유도(앵커): ${hit.filter((p) => p.commentAnchor).length}건 / 댓글CTA: ${hit.filter((p) => p.commentCta).length}건`);
   const published = posts.filter(
-    (p) => SAJU.includes(p.accountLabel) && p.status === "published" && p.publishedAt && kstDate(p.publishedAt) >= FROM
+    (p) => SAJU.includes(p.accountLabel) && (!ACCOUNT || p.accountLabel === ACCOUNT) && p.status === "published" && p.publishedAt && kstDate(p.publishedAt) >= FROM
   ).length;
   console.log(`  (같은 범위에서 이미 발행된 글 ${published}건은 건드리지 않습니다)`);
 
@@ -69,7 +78,7 @@ function targets(posts) {
     for (let i = posts.length - 1; i >= 0; i--) {
       if (removedIds.has(posts[i].id)) posts.splice(i, 1);
     }
-  }, `chore: purge ${hit.length} scheduled saju posts (${FROM}~${TO}) for regeneration`);
+  }, `chore: purge ${hit.length} scheduled ${ACCOUNT || "saju"} posts (${FROM}~${TO})`);
   const after = await readSchedule();
   console.log(`\n삭제 완료. 남은 대상: ${targets(after.posts).length}건 (0이어야 정상)`);
 })();
