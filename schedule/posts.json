@@ -38442,10 +38442,13 @@
     "scheduledAt": "2026-10-30T06:11:00.000Z",
     "createdAt": "2026-10-10T02:14:49.382Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18180522034434986",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18180522034434986"
+    ]
   },
   {
     "id": "bffb9c3a-5746-46a3-8fe5-ffed20045b62",
