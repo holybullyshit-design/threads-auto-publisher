@@ -43115,10 +43115,13 @@
     "scheduledAt": "2026-10-30T05:32:00.000Z",
     "createdAt": "2026-10-10T04:31:14.867Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18079756889562358",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18079756889562358"
+    ]
   },
   {
     "id": "68b44374-7adf-473c-9b47-bc71b27a08f6",
