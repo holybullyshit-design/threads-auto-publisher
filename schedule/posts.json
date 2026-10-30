@@ -41165,11 +41165,14 @@
     "scheduledAt": "2026-10-30T09:47:00.000Z",
     "createdAt": "2026-10-10T03:35:15.782Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18607086733064295",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18607086733064295"
+    ]
   },
   {
     "id": "d42b28bd-29b9-4a81-8065-835425e0e8e5",
