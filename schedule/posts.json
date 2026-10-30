@@ -38374,10 +38374,13 @@
     "scheduledAt": "2026-10-30T00:58:00.000Z",
     "createdAt": "2026-10-10T02:13:24.398Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18177802906450579",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18177802906450579"
+    ]
   },
   {
     "id": "2a29d7a3-cf49-424a-bd1d-f35c2f9d573e",
