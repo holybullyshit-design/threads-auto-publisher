@@ -44512,10 +44512,13 @@
     "scheduledAt": "2026-10-30T23:31:00.000Z",
     "createdAt": "2026-10-30T01:33:12.166Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18094369925271697",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18094369925271697"
+    ]
   },
   {
     "id": "4aaaece3-8744-4816-9ccd-d01f23426e66",
