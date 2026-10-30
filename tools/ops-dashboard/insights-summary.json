@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-10-30T04:19:21.036Z",
+  "generatedAt": "2026-10-30T05:19:20.684Z",
   "accounts": [
     {
       "id": "273c125f-56b7-4aa1-8abc-89df16bfbe2a",
       "label": "연리지 실타래",
       "followersCount": 1010,
-      "viewsRecent7d": 60845,
-      "viewsChangePct": 73,
-      "likes": 417,
+      "viewsRecent7d": 61141,
+      "viewsChangePct": 74,
+      "likes": 418,
       "replies": 29,
       "reposts": 10,
       "topPost": {
@@ -23,15 +23,15 @@
         "evening": 782
       },
       "trackedPosts": 202,
-      "fetchedAt": "2026-10-30T04:19:15.412Z",
+      "fetchedAt": "2026-10-30T05:19:16.778Z",
       "error": null
     },
     {
       "id": "e0331659-96f0-4f5f-9aef-d89e0ed2a6a3",
       "label": "아해사주",
       "followersCount": 681,
-      "viewsRecent7d": 6516,
-      "viewsChangePct": 0,
+      "viewsRecent7d": 6618,
+      "viewsChangePct": 1,
       "likes": 78,
       "replies": 5,
       "reposts": 2,
@@ -48,7 +48,7 @@
         "evening": 249
       },
       "trackedPosts": 201,
-      "fetchedAt": "2026-10-30T04:19:16.362Z",
+      "fetchedAt": "2026-10-30T05:19:17.229Z",
       "error": null
     },
     {
@@ -144,16 +144,16 @@
       },
       "timeBuckets": {
         "morning": 1137,
-        "afternoon": 1107,
+        "afternoon": 1095,
         "evening": 652
       },
-      "trackedPosts": 196,
+      "trackedPosts": 197,
       "fetchedAt": "2026-10-30T04:19:19.363Z",
       "error": null
     }
   ],
   "recommendations": [
-    "'연리지 실타래' — 최근 7일 조회수가 지난 주 대비 73% 상승 중입니다. 지금 통하는 주제/훅 패턴을 유지하세요.",
+    "'연리지 실타래' — 최근 7일 조회수가 지난 주 대비 74% 상승 중입니다. 지금 통하는 주제/훅 패턴을 유지하세요.",
     "'연리지 실타래' 최고 성과 글: \"<천을귀인, 있는 자리에 따라 순위가 갈린다> 일간이 정 화인 사람들. 사주 어딘가에 해(돼지띠) 자나 유(\" — 조회수 18,539 · 답글 11건. 비슷한 훅/주제를 반복 활용해볼 만합니다.",
     "'아해사주' 최고 성과 글: \"〈또래보다 늦되어 보이는데 어느 순간 훌쩍 앞서가는 아이 사주〉 말도 늦게 트이고 걸음마도 남들보다 더뎠는데\" — 조회수 3,649 · 답글 87건. 비슷한 훅/주제를 반복 활용해볼 만합니다.",
     "'팔자명가' — 저녁(18-24시) 발행 글이 오후(12-18시) 발행 글보다 평균 조회수가 1.7배 높습니다. 저녁(18-24시) 비중을 늘려보세요.",
