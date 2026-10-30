@@ -637,7 +637,14 @@ const CLOSING_STYLES = [
 // "우리 채널에서 실제로 터진 글 공식" 항목과 같은 내용이며, hitFormula 옵션을 켜면
 // 이 규칙이 시스템 프롬프트에 추가된다. 10월부터는 기본값으로 쓸 예정.
 const HIT_FORMULA_TOPIC_IDS = ["yeokma", "dohwa", "hwagae", "samjae", "wonjin"]; // 띠 기반 = 연도 지목이 가능한 소재
-const HIT_FORMULA_HOOK_IDS = ["topRank", "countdown", "birthYear", "contrastAB", "apology"];
+// 2026-10-30: 훅을 5개 → 10개로 넓혔다. 공식의 핵심은 "띠 3개 + 출생연도 괄호 + 2단 판별"이고
+// 그건 아래 훅 전부와 같이 쓸 수 있다. 5개만 돌리니 제목 골격이 한 가지로 수렴했다(실측:
+// "<이 세 띠, OO살 TOP 3다>"가 10월에 계정별 20~38%). themeGroup은 소재를 2~3개 묶어서
+// 띠+연도 지목이 흐려지므로 공식에서는 제외한다.
+const HIT_FORMULA_HOOK_IDS = [
+  "topRank", "countdown", "birthYear", "contrastAB", "apology",
+  "list", "directAddress", "retroReason", "assertive", "question",
+];
 const HIT_FORMULA_RULE = `
 [이번 글은 "터진 글 공식"을 그대로 적용한다 - 우리 계정 실측 상위 글에서 뽑은 구조다]
 1) 대상을 띠 3개 묶음으로 부르고, 각 띠마다 최근 출생연도를 괄호로 같이 적는다
@@ -646,7 +653,10 @@ const HIT_FORMULA_RULE = `
 2) "2단 판별" 구조를 반드시 쓴다. 먼저 띠로 1차 지목해서 끌어들인 다음("이 셋 아니면 아예
    해당도 안 됩니다" 류), "근데 이 띠라고 다 해당되는 건 아니다 - 원국에 OO 자리가 있어야
    성립한다"로 2차 조건을 건다. 이 2차 조건 공개를 클리프행어 지점으로 삼는다.
-3) 순위(TOP 3 또는 자리별 1~3위)를 매길 수 있으면 매기고, 3위 → 1위 역순으로 공개한다.
+3) 순위(TOP 3 / 자리별 1~3위)는 **훅 형태가 순위형(topRank)일 때만** 쓴다. 그때는 3위 → 1위
+   역순으로 공개한다. 그 외 훅에서는 순위를 매기지 말고, 제목에 "TOP 3"·"TOP3"·"1위"를
+   넣지 않는다 - 이 골격 하나가 과용되어 노출이 떨어진 것이 실측으로 확인됐다.
+   제목은 이번 훅 형태에 맞는 모양으로 쓰고, 지난 글과 같은 틀을 반복하지 않는다.
 4) 가능하면 통념을 뒤집는다(나쁘다고 알려진 살이 오히려 풀리는 경우, 좋은 줄 알았는데
    조건이 붙는 경우). 겁주기보다 "나한테 좋은 게 있다"는 쪽이 더 잘 읽힌다.
 5) 한쪽으로 단정하지 말고 양면으로 갈라 보여준다(원국에서 힘 있게 자리잡으면 이렇게 쓰이고,
@@ -885,6 +895,11 @@ async function writeThreadDraft({
     throw new Error(`벤치마크 채널 고유 표현이 그대로 들어갔습니다("${banned}") - 우리 표현으로 다시 씁니다.`);
   }
 
+  const overused = findOverusedTitleShape(parts[0], hookFormat.id);
+  if (overused) {
+    throw new Error(`순위형 훅이 아닌데 제목에 순위 표기("${overused}")가 들어갔습니다 - 이 골격은 과용되어 노출이 떨어졌습니다. 이번 훅 형태에 맞는 제목으로 다시 씁니다.`);
+  }
+
   const tooLong = parts.findIndex((p) => p.length > 500);
   if (tooLong !== -1) {
     throw new Error(`파트 ${tooLong + 1}이 Threads 제한(500자)을 넘습니다(${parts[tooLong].length}자).`);
@@ -945,10 +960,36 @@ async function writeThreadDraft({
   };
 }
 
-function pickHookFormatIds(count) {
-  return pickTopicIds(count, HOOK_FORMATS.map((h) => h.id)); // 셔플백 로직 재사용
+// 2026-10-30: 제목 골격 과용 차단.
+// 프롬프트에 "순위형 훅에서만 TOP 3를 쓰라"고 적는 것만으로는 안 지켜진다(벤치마크 표현 금지도
+// 같은 이유로 코드 검사를 붙여야 했다). 순위형이 아닌 훅에서 순위 제목이 나오면 재시도시킨다.
+// 순위형 훅은 셔플백에서 10개 중 1개로 돌아오므로 이 골격은 전체의 약 10%로 묶인다.
+// \b는 ASCII 기준(\w = [A-Za-z0-9_])이라 "1위" 뒤에서는 경계가 안 잡힌다 - 쓰지 않는다.
+// 제목 안만 보므로 "1위"·"순위"를 그대로 잡아도 거짓 양성이 나지 않는다.
+const RANK_TITLE_RE = /TOP\s*-?\s*3|TOP3|[1-3]위|순위/i;
+function findOverusedTitleShape(text, hookFormatId) {
+  if (hookFormatId === "topRank") return null;
+  const title = (String(text).match(/<([^>]{0,80})>/) || [, ""])[1];
+  const m = title.match(RANK_TITLE_RE);
+  return m ? m[0] : null;
+}
+
+// 훅은 가중치 없이 고르게 돌린다.
+// pickTopicIds는 id를 3장씩 넣는다(저조 소재만 1장 = 1/3 빈도로 쓰려고 만든 가중치다).
+// 훅에는 저조 목록이 없어서 그 3배 복제가 의미가 없고, 한 바퀴를 3배로 늘려 오히려 같은 훅이
+// 뭉칠 수 있다(실측: 10개 뽑으면 고유 7개). 그래서 훅은 1장씩 넣은 순수 셔플백으로 돌린다 -
+// 한 바퀴 안에서는 모든 훅이 정확히 한 번씩 나온다.
+function pickHookFormatIds(count, hookIds = HOOK_FORMATS.map((h) => h.id)) {
+  const result = [];
+  let bag = [];
+  while (result.length < count) {
+    if (bag.length === 0) bag = shuffled(hookIds);
+    result.push(bag.pop());
+  }
+  return result;
 }
 
 // TOPICS는 테스트가 사실 블록을 직접 검증할 수 있게 함께 내보낸다
 module.exports = {
-  TOPICS, writeThreadDraft, TOPICS, HOOK_FORMATS, CTA_POOL, COMMENT_CTA_POOL, BANNED_BENCHMARK_PHRASES, HIT_FORMULA_TOPIC_IDS, pickTopicIds, pickHookFormatIds };
+  TOPICS, writeThreadDraft, TOPICS, HOOK_FORMATS, CTA_POOL, COMMENT_CTA_POOL, BANNED_BENCHMARK_PHRASES,
+  HIT_FORMULA_TOPIC_IDS, HIT_FORMULA_HOOK_IDS, pickTopicIds, pickHookFormatIds, findOverusedTitleShape };

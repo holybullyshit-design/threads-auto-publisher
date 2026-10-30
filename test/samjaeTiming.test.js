@@ -129,3 +129,21 @@ test("과거형으로 '끝났다'고 쓴 연도는 직전 삼재 종료연도여
   assert.ok(wrong.length && /끝났다/.test(wrong[0]), `과거형 연도 오류를 놓쳤다: ${JSON.stringify(wrong)}`);
   assert.deepStrictEqual(checkSajuClaims("호랑이·말·개띠 삼재는 2030년에 끝나요.", day), [], "미래형은 잡으면 안 된다");
 });
+
+// 2026-10-30: 범위 표기의 **앞 연도에 `년`이 붙는** 경우를 못 봤다.
+// "2022년~2024년"을 "2034년~2024년"으로 뒤집어도 통과했다(돌연변이 515건 중 유일한 누락).
+// 두 연도가 각자는 삼재 구간 안(2034은 다음 구간·2024는 직전 구간)이라 일반 연도 검사도
+// 못 잡는다 — 구간 뒤집힘은 범위 검사만 잡을 수 있다.
+test("범위 표기의 앞 연도에 년이 붙어도 구간 뒤집힘을 잡는다", () => {
+  const { checkSajuClaims } = require("../server/lib/sajuClaimChecker");
+  const base = "원숭이띠(2004·1992·1980)\n쥐띠(2008·1996·1984)\n용띠(2000·1988·1976)\n";
+  const bad = base + "삼재는 2034년~2024년이었어요.";
+  assert.ok(
+    checkSajuClaims(bad, { dateKey: "2026-11-01" }).length > 0,
+    "뒤집힌 구간(2034년~2024년)을 잡아야 한다"
+  );
+  // 맞는 표기는 두 형태 모두 통과해야 한다(거짓 양성 0).
+  assert.deepStrictEqual(checkSajuClaims(base + "삼재는 2022년~2024년이었어요.", { dateKey: "2026-11-01" }), []);
+  assert.deepStrictEqual(checkSajuClaims(base + "삼재는 2022~2024년이었어요.", { dateKey: "2026-11-01" }), []);
+  assert.deepStrictEqual(checkSajuClaims(base + "다음 삼재는 2034년~2036년이에요.", { dateKey: "2026-11-01" }), []);
+});

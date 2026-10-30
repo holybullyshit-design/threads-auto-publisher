@@ -15,7 +15,7 @@ const crypto = require("crypto");
 const accountsStore = require("../server/lib/accountsStore");
 const { readSchedule, writeSchedule } = require("../server/lib/githubStore");
 const { withJitter } = require("../server/lib/scheduleStore");
-const { writeThreadDraft, TOPICS, pickTopicIds, pickHookFormatIds } = require("../server/skills/taebaekSajuDraftWriter");
+const { writeThreadDraft, TOPICS, pickTopicIds, pickHookFormatIds, HIT_FORMULA_TOPIC_IDS, HIT_FORMULA_HOOK_IDS } = require("../server/skills/taebaekSajuDraftWriter");
 
 const RETRY_ATTEMPTS = 3;
 // 2026-09-02: 시간대 배치는 데이터 기반 계산(computeSlotsWithMorningAnchor, tools/lib/optimalSlots.js)
@@ -151,7 +151,17 @@ async function writeThreadDraftWithRetry(args) {
   let lastErr;
   for (let attempt = 1; attempt <= RETRY_ATTEMPTS; attempt++) {
     try {
-      return await writeThreadDraft(args);
+      // 2026-10-30: 재시도에 **실패 이유를 넣어준다.**
+      // 예전엔 똑같은 args를 그대로 다시 보냈다. 그래서 모델이 같은 실수를 3번 반복하고
+      // 슬롯이 통째로 버려졌다 - 순위 제목 금지를 넣은 첫 실행에서 연리지 4건·팔자궤도 1건이
+      // 그렇게 날아갔다(96건 중 5건 = 5%). 금지 사항 칸에 직전 실패를 붙여 같은 실수를 막는다.
+      const retryArgs = attempt === 1 || !lastErr
+        ? args
+        : {
+            ...args,
+            extraBans: `${args.extraBans ? args.extraBans + "\n" : ""}직전 시도가 아래 이유로 반려됐습니다. 같은 실수를 반복하지 마세요.\n- ${lastErr.message}`,
+          };
+      return await writeThreadDraft(retryArgs);
     } catch (err) {
       lastErr = err;
       console.log(`  (시도 ${attempt}/${RETRY_ATTEMPTS} 실패: ${err.message} - 재시도)`);
@@ -364,6 +374,14 @@ async function main() {
   const poolIds = profile ? profile.topicIds : undefined;
   const topicIds = pickTopicIds(jobs.length, poolIds);
   const hookFormatIds = pickHookFormatIds(jobs.length);
+  // 2026-10-30: 공식 적용 글도 소재·훅을 셔플백에서 뽑아 넘긴다.
+  // 예전엔 공식 글에 topicId/hookFormatId를 주지 않고 엔진의 pickRandom에 맡겼는데, 그건
+  // **복원 추출**이라 같은 조합이 뭉친다. 공식 비율이 80%이므로 전체 글의 80%가 5소재×5훅
+  // 안에서 무작위로 반복됐고, 실측으로 "<이 세 띠, OO살 TOP 3다>" 한 골격이 9월 초 2~4%에서
+  // 10월 20~38%까지 올라갔다. 같은 기간 3,000회+ 터진 글 비율은 11%→3%로 무너졌다.
+  // 셔플백은 한 바퀴를 다 돌기 전에 같은 값을 다시 주지 않으므로 고르게 퍼진다.
+  const hitTopicIds = pickTopicIds(jobs.length, (poolIds || TOPICS.map((t) => t.id)).filter((id) => HIT_FORMULA_TOPIC_IDS.includes(id)));
+  const hitHookIds = pickHookFormatIds(jobs.length, HIT_FORMULA_HOOK_IDS);
 
   let saved = 0;
   for (let i = 0; i < jobs.length; i++) {
@@ -371,12 +389,12 @@ async function main() {
     console.log(`[${i + 1}/${jobs.length}] 생성 중... (예정: ${dateStr} ${slotTime} KST)`);
     let draft;
     try {
-      // 공식 적용 글은 소재/훅을 엔진이 공식 전용 목록에서 고르게 둔다(여기서 지정하면 충돌).
+      // 공식 글도 공식 전용 셔플백에서 뽑은 소재/훅을 명시해서 넘긴다(위 주석 참고).
       draft = await writeThreadDraftWithRetry({
         dateKey: dateStr,
         hitFormula: hitFlags[i] || undefined,
-        topicId: hitFlags[i] ? undefined : topicIds[i],
-        hookFormatId: hitFlags[i] ? undefined : hookFormatIds[i],
+        topicId: hitFlags[i] ? hitTopicIds[i] : topicIds[i],
+        hookFormatId: hitFlags[i] ? hitHookIds[i] : hookFormatIds[i],
         accountLabel: ACCOUNT_LABEL,
         topicPool: profile ? topicPool : undefined,
         domainFraming: profile ? profile.domainFraming : undefined,
