@@ -43139,11 +43139,14 @@
     "scheduledAt": "2026-10-30T08:11:00.000Z",
     "createdAt": "2026-10-10T04:32:02.832Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18029386376867170",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18029386376867170"
+    ]
   },
   {
     "id": "a7228307-6e48-4952-97d6-bb6bd39b7960",
