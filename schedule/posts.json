@@ -36844,10 +36844,13 @@
     "scheduledAt": "2026-10-30T01:14:00.000Z",
     "createdAt": "2026-10-10T01:14:02.217Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18100277240106153",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18100277240106153"
+    ]
   },
   {
     "id": "d8c6b276-f1db-45bc-9f3a-329d6eb18e56",
