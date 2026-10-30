@@ -43070,10 +43070,13 @@
     "scheduledAt": "2026-10-30T02:48:00.000Z",
     "createdAt": "2026-10-10T04:30:51.605Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17984812250901311",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17984812250901311"
+    ]
   },
   {
     "id": "0b6f390c-fb39-4697-83b9-3199bdffae11",
