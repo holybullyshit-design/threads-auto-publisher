@@ -43699,10 +43699,13 @@
     "scheduledAt": "2026-10-31T03:57:00.000Z",
     "createdAt": "2026-10-30T00:47:23.943Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17914151442551872",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17914151442551872"
+    ]
   },
   {
     "id": "4d051c35-1a0b-49b1-b945-e5b764c07293",
