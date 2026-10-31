@@ -16,6 +16,7 @@ const { publishTextPost, publishImagePost, MAX_TEXT_LENGTH } = require("./lib/th
 const accountsStore = require("./lib/accountsStore");
 const scheduleStore = require("./lib/scheduleStore");
 const threadsOAuth = require("./lib/threadsOAuth");
+const jobThreadsTokens = require("./lib/jobThreadsTokens");
 const threadsInsights = require("./lib/threadsInsights");
 const insightsSummary = require("./lib/insightsSummary");
 const githubStore = require("./lib/githubStore");
@@ -464,11 +465,13 @@ function syncAccountsSecretToGitHub() {
 app.post("/api/accounts/refresh-tokens", async (req, res) => {
   const accounts = accountsStore.listAccounts({ includeSecrets: true });
   const results = [];
+  const refreshedByUserId = new Map();
 
   for (const account of accounts) {
     try {
       const refreshed = await threadsOAuth.refreshLongLivedToken(account.accessToken);
       accountsStore.updateAccountToken(account.id, refreshed.accessToken);
+      refreshedByUserId.set(String(account.threadsUserId), refreshed);
       results.push({ id: account.id, label: account.label, ok: true });
     } catch (err) {
       results.push({ id: account.id, label: account.label, ok: false, error: err.message });
@@ -484,7 +487,18 @@ app.post("/api/accounts/refresh-tokens", async (req, res) => {
     syncError = err.message;
   }
 
-  res.json({ results, syncedToCloud, syncError });
+  // 채용 계정은 클라우드 시크릿 대상이 아니다. 실패해도 위 결과에 영향을 주지 않는다.
+  const jobResults = await jobThreadsTokens.refreshAll(threadsOAuth.refreshLongLivedToken, refreshedByUserId);
+
+  res.json({ results, jobResults, syncedToCloud, syncError });
+});
+
+app.get("/api/accounts/job-tokens", (req, res) => {
+  try {
+    res.json({ accounts: jobThreadsTokens.listStatus() });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 });
 
 // ---------- 초안 생성 / 다듬기 (계정 페르소나 기반) ----------

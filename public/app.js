@@ -149,6 +149,7 @@ const el = {
   accountList: document.getElementById("account-list"),
   btnRefreshTokens: document.getElementById("btn-refresh-tokens"),
   refreshTokensStatus: document.getElementById("refresh-tokens-status"),
+  jobTokensStatus: document.getElementById("job-tokens-status"),
 
   loadingOverlay: document.getElementById("loading-overlay"),
   loadingText: document.getElementById("loading-text"),
@@ -179,7 +180,10 @@ function switchTab(tabName) {
     if (window.loadInstagramDashboard) window.loadInstagramDashboard();
     loadInstagramReelSchedule();
   }
-  if (tabName === "accounts") renderAccountList();
+  if (tabName === "accounts") {
+    renderAccountList();
+    loadJobTokens();
+  }
   if (tabName === "ops") {
     loadOps();
     loadOpsInsights();
@@ -1955,15 +1959,30 @@ function tokenExpiryInfo(tokenUpdatedAt) {
   return { warn: false, label: `토큰 만료 D-${daysLeft}` };
 }
 
+async function loadJobTokens() {
+  try {
+    const res = await fetch("/api/accounts/job-tokens");
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error);
+    const summary = data.accounts
+      .map((a) => `@${a.handle} D-${Math.ceil((a.expiresAt - Date.now()) / 86400000)}`)
+      .join(" · ");
+    el.jobTokensStatus.textContent = `채용 계정도 같이 갱신돼요: ${summary}`;
+  } catch (err) {
+    el.jobTokensStatus.textContent = "⚠️ 채용 계정 토큰을 읽지 못했습니다: " + err.message;
+  }
+}
+
 async function refreshAllTokens() {
   el.refreshTokensStatus.textContent = "";
   showLoading("모든 계정 토큰을 갱신하고 있어요...");
   try {
     const res = await fetch("/api/accounts/refresh-tokens", { method: "POST" });
     const data = await res.json();
-    const okCount = data.results.filter((r) => r.ok).length;
-    const failCount = data.results.length - okCount;
-    const failDetail = data.results
+    const allResults = [...data.results, ...(data.jobResults || [])];
+    const okCount = allResults.filter((r) => r.ok).length;
+    const failCount = allResults.length - okCount;
+    const failDetail = allResults
       .filter((r) => !r.ok)
       .map((r) => `${r.label}: ${r.error}`)
       .join(" / ");
@@ -1975,6 +1994,7 @@ async function refreshAllTokens() {
 
     await loadAccounts();
     renderAccountList();
+    await loadJobTokens();
   } catch (err) {
     el.refreshTokensStatus.textContent = "갱신 요청에 실패했습니다: " + err.message;
   } finally {
