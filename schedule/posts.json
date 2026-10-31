@@ -45128,10 +45128,13 @@
     "scheduledAt": "2026-10-31T02:46:00.000Z",
     "createdAt": "2026-10-30T02:00:54.366Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18124858375879444",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18124858375879444"
+    ]
   },
   {
     "id": "16e0e34e-07c8-4acb-96e5-3f6fbb72b020",
