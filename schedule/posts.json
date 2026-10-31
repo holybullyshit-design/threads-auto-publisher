@@ -44648,11 +44648,14 @@
     "scheduledAt": "2026-10-31T09:37:00.000Z",
     "createdAt": "2026-10-30T01:35:54.405Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18571991653078100",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18571991653078100"
+    ]
   },
   {
     "id": "dfe5d792-7bf1-447c-b53a-184461e03902",
