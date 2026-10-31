@@ -44109,10 +44109,13 @@
     "scheduledAt": "2026-10-31T04:23:00.000Z",
     "createdAt": "2026-10-30T01:14:33.479Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18121638848102476",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18121638848102476"
+    ]
   },
   {
     "id": "9245853f-ec5b-428a-a8dd-4a7f9c53c382",
