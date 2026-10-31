@@ -44590,10 +44590,13 @@
     "scheduledAt": "2026-10-31T04:42:00.000Z",
     "createdAt": "2026-10-30T01:34:23.140Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18105792710202711",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18105792710202711"
+    ]
   },
   {
     "id": "776c95c8-c445-4f5f-989f-320baa254c7d",
