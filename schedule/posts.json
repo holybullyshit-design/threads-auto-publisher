@@ -44552,10 +44552,13 @@
     "scheduledAt": "2026-10-31T01:45:00.000Z",
     "createdAt": "2026-10-30T01:33:49.534Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18644982544044348",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18644982544044348"
+    ]
   },
   {
     "id": "215978e1-39f9-4572-811b-79274e2c08e2",
