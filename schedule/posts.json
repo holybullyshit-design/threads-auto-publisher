@@ -45169,10 +45169,13 @@
     "scheduledAt": "2026-10-31T05:35:00.000Z",
     "createdAt": "2026-10-30T02:01:28.791Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17996340159065186",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17996340159065186"
+    ]
   },
   {
     "id": "a91c2df3-d5ec-4112-968c-71f283cac24c",
