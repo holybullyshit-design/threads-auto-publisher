@@ -44135,10 +44135,13 @@
     "scheduledAt": "2026-10-31T06:35:00.000Z",
     "createdAt": "2026-10-30T01:15:23.915Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18434415262181548",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18434415262181548"
+    ]
   },
   {
     "id": "819463d2-179e-4f61-bdf3-54f520b62d11",
