@@ -44674,10 +44674,13 @@
     "scheduledAt": "2026-10-31T22:58:00.000Z",
     "createdAt": "2026-10-30T01:37:01.495Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18098700158648695",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18098700158648695"
+    ]
   },
   {
     "id": "8cdce0a3-6c40-4901-b82d-e494f863a680",
