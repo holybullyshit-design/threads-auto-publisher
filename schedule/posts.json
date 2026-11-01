@@ -45385,10 +45385,13 @@
     "scheduledAt": "2026-11-01T05:29:00.000Z",
     "createdAt": "2026-10-30T02:05:56.356Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17978153928138949",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17978153928138949"
+    ]
   },
   {
     "id": "197537d8-1875-4a1e-be43-62943bbe800f",
