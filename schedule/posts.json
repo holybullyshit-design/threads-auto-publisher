@@ -45348,10 +45348,13 @@
     "scheduledAt": "2026-11-01T02:59:00.000Z",
     "createdAt": "2026-10-30T02:04:48.371Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18146491132595632",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18146491132595632"
+    ]
   },
   {
     "id": "b943cd92-7f4b-4539-b9b3-3d47419cfa35",
