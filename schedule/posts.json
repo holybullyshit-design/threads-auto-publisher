@@ -43798,10 +43798,13 @@
     "scheduledAt": "2026-11-01T23:28:00.000Z",
     "createdAt": "2026-10-30T00:54:31.726Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17918346372265374",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17918346372265374"
+    ]
   },
   {
     "id": "0ad0a98b-7c05-4d77-a776-001549a59386",
