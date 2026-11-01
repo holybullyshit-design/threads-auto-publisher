@@ -45471,10 +45471,13 @@
     "scheduledAt": "2026-11-01T22:44:00.000Z",
     "createdAt": "2026-10-30T02:07:11.243Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18134969377708726",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18134969377708726"
+    ]
   },
   {
     "id": "1d712170-e48f-4a02-b05b-901043f8aa8f",
