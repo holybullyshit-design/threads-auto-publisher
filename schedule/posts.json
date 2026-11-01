@@ -44224,10 +44224,13 @@
     "scheduledAt": "2026-11-01T04:16:00.000Z",
     "createdAt": "2026-10-30T01:18:44.241Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18024398396720226",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18024398396720226"
+    ]
   },
   {
     "id": "b3e51d13-4694-48ff-a181-9eca832c63cd",
