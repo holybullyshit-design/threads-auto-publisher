@@ -43774,10 +43774,13 @@
     "scheduledAt": "2026-11-01T08:02:00.000Z",
     "createdAt": "2026-10-30T00:53:55.068Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17982676974126556",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17982676974126556"
+    ]
   },
   {
     "id": "76f93514-60e8-48d5-9118-145847817095",
