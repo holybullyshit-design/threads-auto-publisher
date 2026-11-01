@@ -44747,10 +44747,13 @@
     "scheduledAt": "2026-11-01T04:14:00.000Z",
     "createdAt": "2026-10-30T01:39:01.332Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18140181715627246",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18140181715627246"
+    ]
   },
   {
     "id": "90000d98-aef1-49ea-ae15-9f730704512a",
