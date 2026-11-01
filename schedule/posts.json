@@ -46407,10 +46407,13 @@
     "scheduledAt": "2026-11-01T05:15:00.000Z",
     "createdAt": "2026-10-30T02:50:20.439Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18003396185796795",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18003396185796795"
+    ]
   },
   {
     "id": "bc454171-f2ca-4611-986e-e979ca07f921",
