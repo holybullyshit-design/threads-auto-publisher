@@ -44810,11 +44810,14 @@
     "scheduledAt": "2026-11-01T09:03:00.000Z",
     "createdAt": "2026-10-30T01:40:15.753Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18080112413415553",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18080112413415553"
+    ]
   },
   {
     "id": "9fa825a5-96f7-4518-a350-9108bf360341",
