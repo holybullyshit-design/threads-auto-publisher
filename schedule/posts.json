@@ -44779,10 +44779,13 @@
     "scheduledAt": "2026-11-01T07:00:00.000Z",
     "createdAt": "2026-10-30T01:39:39.963Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18007458683794662",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18007458683794662"
+    ]
   },
   {
     "id": "5c787a6f-d55c-4751-897e-3fd0d627fbe5",
