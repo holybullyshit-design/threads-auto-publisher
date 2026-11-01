@@ -44199,10 +44199,13 @@
     "scheduledAt": "2026-11-01T01:23:00.000Z",
     "createdAt": "2026-10-30T01:17:28.860Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17980535448148538",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17980535448148538"
+    ]
   },
   {
     "id": "0128d615-8694-4a99-ae2a-710838a046d1",
