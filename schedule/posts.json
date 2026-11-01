@@ -44250,10 +44250,13 @@
     "scheduledAt": "2026-11-01T06:59:00.000Z",
     "createdAt": "2026-10-30T01:19:32.249Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18054783110815954",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18054783110815954"
+    ]
   },
   {
     "id": "ecfd7488-a208-4b99-897e-ab749ebba911",
