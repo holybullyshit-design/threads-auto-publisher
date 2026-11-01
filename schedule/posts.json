@@ -44836,10 +44836,13 @@
     "scheduledAt": "2026-11-01T22:29:00.000Z",
     "createdAt": "2026-10-30T01:41:28.672Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18118281731036758",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18118281731036758"
+    ]
   },
   {
     "id": "7f4ea496-a6a3-42c2-9f30-f2ccafe68e82",
