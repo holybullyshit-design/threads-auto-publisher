@@ -43877,10 +43877,13 @@
     "scheduledAt": "2026-11-02T06:23:00.000Z",
     "createdAt": "2026-10-30T00:57:34.871Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17935924053141563",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17935924053141563"
+    ]
   },
   {
     "id": "e2585949-2276-4db3-856e-e5351931eab6",
