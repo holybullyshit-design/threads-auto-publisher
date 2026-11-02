@@ -44419,10 +44419,13 @@
     "scheduledAt": "2026-11-02T23:13:00.000Z",
     "createdAt": "2026-10-30T01:23:20.166Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18002572221102290",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18002572221102290"
+    ]
   },
   {
     "id": "70ab8ba8-d529-4af0-b8d4-39abbdb6ea49",
