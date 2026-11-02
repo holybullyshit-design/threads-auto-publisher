@@ -44386,10 +44386,13 @@
     "scheduledAt": "2026-11-02T07:08:00.000Z",
     "createdAt": "2026-10-30T01:22:32.159Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18106052174007139",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18106052174007139"
+    ]
   },
   {
     "id": "7b9be9f2-ed8c-4850-a6e4-7534943e2849",
