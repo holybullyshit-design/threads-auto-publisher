@@ -45553,10 +45553,13 @@
     "scheduledAt": "2026-11-02T03:39:00.000Z",
     "createdAt": "2026-10-30T02:09:08.158Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17888130399689082",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17888130399689082"
+    ]
   },
   {
     "id": "9f6a034d-6b89-4726-827f-a0b224e629ac",
