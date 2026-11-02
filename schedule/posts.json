@@ -43850,10 +43850,13 @@
     "scheduledAt": "2026-11-02T03:55:00.000Z",
     "createdAt": "2026-10-30T00:56:44.733Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17937536076408117",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17937536076408117"
+    ]
   },
   {
     "id": "e4f2a03f-90fb-4bb1-87a4-c88702451657",
