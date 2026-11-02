@@ -45640,11 +45640,14 @@
     "scheduledAt": "2026-11-02T08:00:00.000Z",
     "createdAt": "2026-10-30T02:10:21.855Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17933228331407485",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "17933228331407485"
+    ]
   },
   {
     "id": "d3157601-dc4c-48dc-b475-3075829cce46",
