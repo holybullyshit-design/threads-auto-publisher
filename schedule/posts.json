@@ -44967,11 +44967,14 @@
     "scheduledAt": "2026-11-02T09:01:00.000Z",
     "createdAt": "2026-10-30T01:45:18.271Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17997056772106426",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "17997056772106426"
+    ]
   },
   {
     "id": "f3c28484-d5ea-484d-9008-50b1e3d7bb7f",
