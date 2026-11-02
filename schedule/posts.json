@@ -44353,10 +44353,13 @@
     "scheduledAt": "2026-11-02T04:59:00.000Z",
     "createdAt": "2026-10-30T01:21:44.622Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18155667280534232",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18155667280534232"
+    ]
   },
   {
     "id": "36bb4ca4-634d-4a1c-a60b-e1ed173f58ed",
