@@ -44871,10 +44871,13 @@
     "scheduledAt": "2026-11-02T01:00:00.000Z",
     "createdAt": "2026-10-30T01:42:10.207Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17911085262321134",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17911085262321134"
+    ]
   },
   {
     "id": "97152e2c-6f5c-43dd-8f64-9099590f7f91",
