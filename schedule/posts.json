@@ -43823,10 +43823,13 @@
     "scheduledAt": "2026-11-02T01:44:00.000Z",
     "createdAt": "2026-10-30T00:55:17.552Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18121666793472565",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18121666793472565"
+    ]
   },
   {
     "id": "a477aef2-e707-4434-af75-6449e8120e2f",
