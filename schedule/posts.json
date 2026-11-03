@@ -44451,10 +44451,13 @@
     "scheduledAt": "2026-11-03T01:50:00.000Z",
     "createdAt": "2026-10-30T01:24:08.732Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18119740213965732",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18119740213965732"
+    ]
   },
   {
     "id": "24c7730d-95e3-4190-80c9-6790d27ec606",
