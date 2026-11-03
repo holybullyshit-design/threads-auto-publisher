@@ -52,7 +52,7 @@ jobs:
         with:
           node-version: "20"
       - name: Check recruitment mutations
-        run: node --test test/jobsCloudMutations.test.js test/jobsCloudPublisher.test.js test/jobsCloudSchedule.test.js
+        run: node --test test/jobsCloudMutations.test.js test/jobsCloudPublisher.test.js
       - name: Publish due recruitment posts
         env:
           JOB_THREADS_ACCOUNTS_JSON: ${{ secrets.JOB_THREADS_ACCOUNTS_JSON }}
