@@ -132,5 +132,31 @@
     "blogChecked": true,
     "scheduledAt": "2026-11-04T04:10:00.000Z",
     "sourceSha256": "baff2e1cedfe0db884e2bd6ad0631c7ff91cecb7372d78977f7ec18cc2ea6ca5"
+  },
+  {
+    "id": "6244df03-b2c9-4af1-8025-94018426e17d",
+    "status": "scheduled",
+    "createdAt": "2026-11-03T12:50:05.563Z",
+    "updatedAt": "2026-11-03T12:50:05.563Z",
+    "handle": "hire_masters",
+    "title": "한국남부발전 체험형인턴 122명",
+    "noticeId": "306325",
+    "angle": "유형별 지원 자격과 근무기간",
+    "text": "한국남부발전 인턴 122명 뽑아.\n\n세전 월급 225만원, 주 40시간이야.\n일반 92명·AI 20명·장애 맞춤훈련 10명으로 나뉘어.\nAI는 지정 자격증이 필요하고, 장애 맞춤훈련은 사전교육 조건이 있어.\n일반·AI는 6개월, 맞춤훈련 인턴은 5개월 근무야.\n\n11월 11일 오전 11시 마감👇",
+    "replyText": "유형별 지원 자격·근무지·계약기간을 먼저 비교해봐. 공식 공고와 지원 링크도 정리했어👇\nhttps://hirecurator.blogspot.com/2026/11/122-11-225ai.html",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3082671",
+    "blogUrl": "https://hirecurator.blogspot.com/2026/11/122-11-225ai.html",
+    "startsAt": "2026-11-03T11:00:00+09:00",
+    "deadlineAt": "2026-11-11T11:00:00+09:00",
+    "checkedAt": "2026-11-03T12:50:05.554Z",
+    "verifiedPay": "225만원",
+    "employmentType": "체험형 청년인턴",
+    "eligibility": "일반·AI·장애 맞춤훈련 전형별 조건 상이; 공식 공고 1~5쪽",
+    "blogEvidence": "한국남부발전 인턴 122명",
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "scheduledAt": "2026-11-04T06:20:00.000Z",
+    "sourceSha256": "6a6c739fd6bb77ab0524d9ab2502872d6161d77780210b54ecc8664da8509aad"
   }
 ]
