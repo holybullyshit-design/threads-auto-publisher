@@ -45828,10 +45828,13 @@
     "scheduledAt": "2026-11-03T07:09:00.000Z",
     "createdAt": "2026-10-30T02:13:15.640Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18114491156335298",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18114491156335298"
+    ]
   },
   {
     "id": "b8829c85-e779-4c20-825f-44549ebde2a7",
