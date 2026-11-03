@@ -158,5 +158,31 @@
     "blogChecked": true,
     "scheduledAt": "2026-11-04T06:20:00.000Z",
     "sourceSha256": "6a6c739fd6bb77ab0524d9ab2502872d6161d77780210b54ecc8664da8509aad"
+  },
+  {
+    "id": "c59f75df-2039-4ded-bc13-fa281a1f13f0",
+    "status": "scheduled",
+    "createdAt": "2026-11-03T12:50:05.565Z",
+    "updatedAt": "2026-11-03T12:50:05.565Z",
+    "handle": "high_quality_hire",
+    "title": "IBK기업은행 동계인턴 390명",
+    "noticeId": "306355",
+    "angle": "금융일반과 디지털 및 AI역량검사 조건",
+    "text": "IBK기업은행 동계 인턴 390명.\n\n세전 월급 약 195만원, 주 35시간입니다.\n▸ 금융일반 340명 / 디지털 50명\n▸ 만 19~34세(제대군인 예외), 학력·전공 제한 없음\n▸ 기존 IBK 청년인턴 근무자는 지원 제외\n\nAI역량검사를 치르지 않으면 서류 불합격입니다. 11월 16일 오전 10시 마감👇",
+    "replyText": "지원 분야와 나이 예외, AI역량검사 일정을 비교하세요. 공식 공고·지원 링크는 여기에서 확인할 수 있습니다👇\nhttps://hirecurator.blogspot.com/2026/10/ibk-390-1956-ai.html",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3082875",
+    "blogUrl": "https://hirecurator.blogspot.com/2026/10/ibk-390-1956-ai.html",
+    "startsAt": "2026-10-27T00:00:00+09:00",
+    "deadlineAt": "2026-11-16T10:00:00+09:00",
+    "checkedAt": "2026-11-03T12:50:05.554Z",
+    "verifiedPay": "195만원",
+    "employmentType": "체험형 청년인턴",
+    "eligibility": "만 19~34세, 제대군인 예외, 기존 IBK 인턴 경력 제외; 공식 공고",
+    "blogEvidence": "IBK기업은행 동계인턴 390명",
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "scheduledAt": "2026-11-04T08:30:00.000Z",
+    "sourceSha256": "28e0e08168f89e3c29f5046eabe88672b0893d510d1a8c118db35c023674ade7"
   }
 ]
