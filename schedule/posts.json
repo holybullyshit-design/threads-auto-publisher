@@ -45113,10 +45113,13 @@
     "scheduledAt": "2026-11-03T05:30:00.000Z",
     "createdAt": "2026-10-30T01:49:44.252Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17926039494440395",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17926039494440395"
+    ]
   },
   {
     "id": "2edc5a11-0f7a-4064-9883-c898ef2ee542",
