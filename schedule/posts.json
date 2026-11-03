@@ -45176,10 +45176,13 @@
     "scheduledAt": "2026-11-03T22:09:00.000Z",
     "createdAt": "2026-10-30T01:51:01.270Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17879733561651315",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17879733561651315"
+    ]
   },
   {
     "id": "93052204-4196-4823-bc86-5672363bb5c7",
