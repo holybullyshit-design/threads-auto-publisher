@@ -106,5 +106,31 @@
     "mainUrl": "https://www.threads.com/@high_quality_hire/post/DfRh5JpAfjy",
     "status": "published",
     "attemptedAt": "2026-11-03T09:11:16+0000"
+  },
+  {
+    "id": "0e6c4b1d-5a09-458a-bb1b-e83fd267e3c4",
+    "status": "scheduled",
+    "createdAt": "2026-11-03T12:50:05.559Z",
+    "updatedAt": "2026-11-03T12:50:05.559Z",
+    "handle": "jobs_curator",
+    "title": "코레일유통 6명 채용",
+    "noticeId": "306340",
+    "angle": "무기계약과 휴직대체 조건 비교",
+    "text": "📌 코레일유통 6명 채용\n\n시설관리·보안은 무기계약, 다른 모집 분야는 휴직대체 기간제입니다.\n💰 세전 초임연봉 약 3,000만~3,800만원(직무별).\n시설관리직 약 3,800만원 / 환경·보안직 약 3,000만원 수준.\n\n모집 분야마다 자격·계약기간이 다릅니다.\n11월 9일 오후 5시 마감👇",
+    "replyText": "시설관리 자격, 보안 교대근무, 휴직대체 계약기간을 공고와 함께 정리했습니다👇\nhttps://hirecurator.blogspot.com/2026/11/6-2-4.html",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3082745",
+    "blogUrl": "https://hirecurator.blogspot.com/2026/11/6-2-4.html",
+    "startsAt": "2026-11-02T00:00:00+09:00",
+    "deadlineAt": "2026-11-09T17:00:00+09:00",
+    "checkedAt": "2026-11-03T12:50:05.554Z",
+    "verifiedPay": "약 3,000만~3,800만원",
+    "employmentType": "무기계약직·휴직대체 기간제",
+    "eligibility": "모집 분야별 자격·경력 상이; 공식 공고 1~4쪽",
+    "blogEvidence": "코레일유통 6명",
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "scheduledAt": "2026-11-04T04:10:00.000Z",
+    "sourceSha256": "baff2e1cedfe0db884e2bd6ad0631c7ff91cecb7372d78977f7ec18cc2ea6ca5"
   }
 ]
