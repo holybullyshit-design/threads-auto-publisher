@@ -44535,10 +44535,13 @@
     "scheduledAt": "2026-11-03T23:45:00.000Z",
     "createdAt": "2026-10-30T01:26:28.443Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17911417155591396",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17911417155591396"
+    ]
   },
   {
     "id": "f17a61f2-4435-4474-998e-d8dc7bba6184",
