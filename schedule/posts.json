@@ -45779,10 +45779,13 @@
     "scheduledAt": "2026-11-03T04:27:00.000Z",
     "createdAt": "2026-10-30T02:12:35.249Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18025247354923146",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18025247354923146"
+    ]
   },
   {
     "id": "f67bb8a4-fa87-4006-86e6-393664cef764",
