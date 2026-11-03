@@ -45737,10 +45737,13 @@
     "scheduledAt": "2026-11-03T01:54:00.000Z",
     "createdAt": "2026-10-30T02:11:47.856Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18130932452489845",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18130932452489845"
+    ]
   },
   {
     "id": "a3e0f0e4-7a7d-49b9-9cec-b8795cddb676",
