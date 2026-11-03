@@ -45150,11 +45150,14 @@
     "scheduledAt": "2026-11-03T07:55:00.000Z",
     "createdAt": "2026-10-30T01:50:22.909Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18121415647974715",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18121415647974715"
+    ]
   },
   {
     "id": "44931036-5aa9-47f5-b288-b3aa27304e2f",
