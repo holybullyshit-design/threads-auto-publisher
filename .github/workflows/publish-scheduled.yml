@@ -41,3 +41,21 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPO: ${{ github.repository }}
         run: node cloud/publish-scheduled.js
+
+  publish-jobs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Check recruitment mutations
+        run: node --test test/jobsCloudMutations.test.js test/jobsCloudPublisher.test.js test/jobsCloudSchedule.test.js
+      - name: Publish due recruitment posts
+        env:
+          JOB_THREADS_ACCOUNTS_JSON: ${{ secrets.JOB_THREADS_ACCOUNTS_JSON }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPO: ${{ github.repository }}
+        run: node cloud/publish-jobs.js
