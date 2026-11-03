@@ -46180,7 +46180,7 @@
     "text": "자격증이나 새로운 공부를 시작하려는데 나이부터 걸리나요?\n\n인성은 일간을 생하는 오행의 관계로 배움·수용의 의미를, 식상은 일간이 생하는 오행으로 표현·활동의 의미를 살펴봅니다.\n인성이 많다고 시험에 붙거나 식상이 있다고 사업에 성공한다고 단정할 수는 없습니다. 어떤 공부를 어떻게 활용할지, 원국의 균형과 시기까지 함께 살펴야 합니다.\n오늘 배운 내용 하나를 내 말로 짧게 설명해보세요.\n💬 새로 시작하고 싶은 것이 있다면 ‘배움’이라고 남겨주세요.\n\n개인 사주 상담의 방식과 비용은 프로필에서 확인하실 수 있습니다.\n#팔자명가 #사주풀이 #배움",
     "videoUrl": "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@c2ef4971ff63e47b8b55d03e52edb4b983c9aeaa/images/palja-static-2026-11-03.mp4",
     "videoSha256": "592f9beb9b39ad94774ef243c40900639ad1cb4f85c69f58ff5b4460060bfd47",
-    "status": "scheduled",
+    "status": "publishing",
     "scheduledAt": "2026-11-03T02:00:00.000Z",
     "expectedLocalDate": "2026-11-03",
     "exactTimeKst": "11:00",
@@ -46210,7 +46210,8 @@
     "publishedId": null,
     "error": null,
     "retryCount": 0,
-    "contentHash": "97db92bf45ebab7133621a49f7629ce6d446a09f45de375c6af56244608f000d"
+    "contentHash": "97db92bf45ebab7133621a49f7629ce6d446a09f45de375c6af56244608f000d",
+    "publishAttemptedAt": "2026-11-03T02:03:53.049Z"
   },
   {
     "id": "7e0202e1-d173-4e1f-a649-abad254a9f2f",
