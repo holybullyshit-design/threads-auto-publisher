@@ -44482,10 +44482,13 @@
     "scheduledAt": "2026-11-03T04:47:00.000Z",
     "createdAt": "2026-10-30T01:24:53.355Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17985072990086301",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "17985072990086301"
+    ]
   },
   {
     "id": "9994f667-d1f9-49c9-bd66-8223c153c07d",
