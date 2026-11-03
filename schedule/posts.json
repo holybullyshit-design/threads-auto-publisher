@@ -45073,10 +45073,13 @@
     "scheduledAt": "2026-11-03T02:49:00.000Z",
     "createdAt": "2026-10-30T01:47:32.242Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18078483347561882",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18078483347561882"
+    ]
   },
   {
     "id": "4d7440ab-0a33-4b29-82e0-51f4adcaaaa5",
