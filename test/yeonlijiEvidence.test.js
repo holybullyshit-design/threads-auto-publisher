@@ -53,11 +53,26 @@ test('all topics carry matched facts; unknown data and changed copy fail closed'
   assert.throws(()=>editorial.validatePlan(p),/근거 원고/);
 });
 test('old drafts cannot be newly scheduled and payment needs explicit consent',async()=>{
+  // 2026-11-03: 예전에는 output/에 남아 있던 8월 시안 하나(yeonliji-2026-08-30-divorce-guilt-7d3a644d)를
+  // 그대로 참조했다. output/은 .gitignore 대상인 렌더링 산출물이라 디스크 정리로 사라지면
+  // 이 테스트가 깨진다(실제로 깨졌다 - 1.1GB를 비우면서 드러났다).
+  // 그래서 구버전 매니페스트를 테스트가 직접 만들고 지운다.
+  const fs=require('fs'),path=require('path');
+  const root=path.join(__dirname,'..');
+  const staleId='yeonliji-2026-08-30-stale-revision-fixture';
+  const staleDir=path.join(root,'output',staleId);
+  const stale=plan('divorce-guilt');
+  stale.editorial.copyRevision='yeonliji-editorial-v3';
+  fs.mkdirSync(staleDir,{recursive:true});
+  fs.writeFileSync(path.join(staleDir,'manifest.json'),JSON.stringify(stale));
   const original=schedule.listSchedule;
   schedule.listSchedule=async()=>[];
   try{
-    await assert.rejects(automation.scheduleApprovedDraft('yeonliji-2026-08-30-divorce-guilt-7d3a644d',{date:'2099-09-01',time:'18:00'}),/구버전/);
+    await assert.rejects(automation.scheduleApprovedDraft(staleId,{date:'2099-09-01',time:'18:00'}),/구버전/);
     await assert.rejects(automation.generateDraft({topicId:'pace',date:'2099-09-01',time:'18:00'}),/비용 동의/);
     await assert.rejects(automation.generateDraft({mode:'recompose',topicId:'pace',date:'2099-09-01',time:'18:00'}),/기존 시안/);
-  }finally{schedule.listSchedule=original;}
+  }finally{
+    schedule.listSchedule=original;
+    fs.rmSync(staleDir,{recursive:true,force:true});
+  }
 });
