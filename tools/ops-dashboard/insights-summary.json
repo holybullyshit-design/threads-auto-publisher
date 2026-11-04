@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-11-04T14:26:48.172Z",
+  "generatedAt": "2026-11-04T15:26:54.341Z",
   "accounts": [
     {
       "id": "273c125f-56b7-4aa1-8abc-89df16bfbe2a",
       "label": "연리지 실타래",
-      "followersCount": 1023,
-      "viewsRecent7d": 48773,
-      "viewsChangePct": -18,
-      "likes": 526,
+      "followersCount": 1022,
+      "viewsRecent7d": 49561,
+      "viewsChangePct": -17,
+      "likes": 533,
       "replies": 51,
       "reposts": 24,
       "topPost": {
@@ -23,14 +23,14 @@
         "evening": 712
       },
       "trackedPosts": 221,
-      "fetchedAt": "2026-11-04T13:26:53.373Z",
+      "fetchedAt": "2026-11-04T15:26:47.251Z",
       "error": null
     },
     {
       "id": "e0331659-96f0-4f5f-9aef-d89e0ed2a6a3",
       "label": "아해사주",
       "followersCount": 680,
-      "viewsRecent7d": 3751,
+      "viewsRecent7d": 3773,
       "viewsChangePct": -42,
       "likes": 61,
       "replies": 2,
@@ -48,7 +48,7 @@
         "evening": 220
       },
       "trackedPosts": 220,
-      "fetchedAt": "2026-11-04T13:26:55.666Z",
+      "fetchedAt": "2026-11-04T15:26:48.746Z",
       "error": null
     },
     {
@@ -73,14 +73,14 @@
         "evening": 187
       },
       "trackedPosts": 168,
-      "fetchedAt": "2026-11-04T13:26:57.716Z",
+      "fetchedAt": "2026-11-04T15:26:49.212Z",
       "error": null
     },
     {
       "id": "6b8b637e-1629-4844-9a1f-9728c420154e",
       "label": "엄마가 직접 써본 꿀템",
       "followersCount": 2,
-      "viewsRecent7d": 707,
+      "viewsRecent7d": 869,
       "viewsChangePct": null,
       "likes": 6,
       "replies": 3,
@@ -98,15 +98,15 @@
         "evening": 18
       },
       "trackedPosts": 50,
-      "fetchedAt": "2026-11-04T13:27:01.358Z",
+      "fetchedAt": "2026-11-04T15:26:49.994Z",
       "error": null
     },
     {
       "id": "d2c9ae3f-67c9-42bf-b9f8-e8000b61abff",
       "label": "팔자장인",
       "followersCount": 82,
-      "viewsRecent7d": 45081,
-      "viewsChangePct": -8,
+      "viewsRecent7d": 45204,
+      "viewsChangePct": -7,
       "likes": 496,
       "replies": 10,
       "reposts": 12,
@@ -123,16 +123,16 @@
         "evening": 800
       },
       "trackedPosts": 215,
-      "fetchedAt": "2026-11-04T13:27:03.489Z",
+      "fetchedAt": "2026-11-04T15:26:51.024Z",
       "error": null
     },
     {
       "id": "cf6a4ba2-da74-4fc1-ae5a-72e1b1477287",
       "label": "팔자궤도",
       "followersCount": 327,
-      "viewsRecent7d": 29042,
+      "viewsRecent7d": 29178,
       "viewsChangePct": -51,
-      "likes": 438,
+      "likes": 440,
       "replies": 11,
       "reposts": 24,
       "topPost": {
@@ -148,7 +148,7 @@
         "evening": 612
       },
       "trackedPosts": 216,
-      "fetchedAt": "2026-11-04T13:27:05.863Z",
+      "fetchedAt": "2026-11-04T15:26:52.770Z",
       "error": null
     }
   ],
