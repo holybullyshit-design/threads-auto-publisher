@@ -44060,10 +44060,13 @@
     "scheduledAt": "2026-11-04T22:58:00.000Z",
     "createdAt": "2026-10-30T01:08:29.760Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18643439272043073",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18643439272043073"
+    ]
   },
   {
     "id": "aa66ccfd-f9cc-4d75-b8cd-5c549214dcbb",
