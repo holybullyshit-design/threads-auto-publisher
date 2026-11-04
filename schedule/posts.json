@@ -46068,10 +46068,13 @@
     "scheduledAt": "2026-11-04T22:22:00.000Z",
     "createdAt": "2026-10-30T02:19:16.520Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18122936017991670",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18122936017991670"
+    ]
   },
   {
     "id": "a494a662-5a37-4b03-ab15-6d27e70f8ab7",
