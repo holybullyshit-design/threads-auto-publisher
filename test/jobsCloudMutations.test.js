@@ -3,7 +3,7 @@ const assert = require('node:assert/strict');
 const { errors, verifyWeb } = require('../cloud/jobsRules');
 const crypto = require('node:crypto');
 const H = 3600000, t = new Date('2026-11-03T13:10:00+09:00');
-const base = () => ({ id:'one', status:'scheduled', handle:'jobs_curator', noticeId:'306325', title:'한국남부발전', angle:'인턴', text:'체험형인턴 세전 월급 225만원', replyText:'👆 공고 원문·지원 링크는 프로필 링크에서', verifiedPay:'225만원', sourceUrl:'https://www.alio.go.kr/download/a.pdf', sourceSha256:'a'.repeat(64), blogUrl:'https://hirecurator.blogspot.com/2026/11/test.html', blogEvidence:'한국남부발전', employmentType:'체험형인턴', eligibility:'유형별 자격 확인', startsAt:'2026-11-03T11:00:00+09:00', deadlineAt:'2026-11-11T11:00:00+09:00', checkedAt:new Date(t-H).toISOString(), scheduledAt:t.toISOString(), factsChecked:true, blogChecked:true });
+const base = () => ({ id:'one', status:'scheduled', handle:'jobs_curator', noticeId:'306325', title:'한국남부발전', angle:'인턴', text:'한국남부발전 체험형인턴 세전 월급 225만원 · 11/11(수) 오전 11시 마감', replyText:'👆 공고 원문·지원 링크는 프로필 링크에서', verifiedPay:'225만원', card:{badge:'🔔 새 공고',hook:['[[체험형인턴]]'],org:'한국남부발전',role:'체험형인턴',facts:[['💰','세전 월급 225만원'],['📍','전국'],['📝','서류 → 면접']],deadline:'11/11(수) 오전 11시 마감'}, imageUrl:'https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/a.png', imageSha256:'b'.repeat(64), sourceUrl:'https://www.alio.go.kr/download/a.pdf', sourceSha256:'a'.repeat(64), blogUrl:'https://hirecurator.blogspot.com/2026/11/test.html', blogEvidence:'한국남부발전', employmentType:'체험형인턴', eligibility:'유형별 자격 확인', startsAt:'2026-11-03T11:00:00+09:00', deadlineAt:'2026-11-11T11:00:00+09:00', checkedAt:new Date(t-H).toISOString(), scheduledAt:t.toISOString(), factsChecked:true, blogChecked:true });
 test('cloud gate blocks account, pay, link, hash, deadline, review, and time mutations', () => {
   assert.deepEqual(errors(base(), [base()], t), []);
   const changed = [
@@ -27,12 +27,31 @@ test('cloud gate blocks account, pay, link, hash, deadline, review, and time mut
   const later=new Date('2026-11-20T13:10:00+09:00');
   assert.deepEqual(errors({...base(),scheduledAt:later.toISOString(),checkedAt:new Date(later-H).toISOString(),startsAt:'2026-11-18T09:00:00+09:00',deadlineAt:'2026-11-30T18:00:00+09:00'},[base()],later),[]);
 });
+const png=Buffer.alloc(2000,3), pngHash=crypto.createHash('sha256').update(png).digest('hex');
+test('card image rules block a missing, foreign or unhashed image and invented card numbers', () => {
+  for (const patch of [{imageUrl:undefined},{imageUrl:'https://example.com/a.png'},{imageUrl:base().imageUrl.replace('.png','.jpg')},{imageSha256:'bad'}])
+    assert.ok(errors({...base(),...patch},[base()],t).includes('image'), JSON.stringify(patch));
+  const card=base().card;
+  for (const bad of [undefined,{...card,facts:[['💰','세전 월급 999만원'],card.facts[1],card.facts[2]]},{...card,deadline:'11/12(목) 오전 11시 마감'},
+    {...card,org:'한국동서발전'},{...card,facts:card.facts.slice(0,2)},{...card,hook:['인턴 [[300명]]']},{...card,hero:{label:'세전 월',value:'300만원',sub:'인턴'}}])
+    assert.ok(errors({...base(),card:bad},[base()],t).includes('cardFacts'), JSON.stringify(bad)?.slice(0,80));
+  assert.ok(!errors({...base(),card:{...card,hero:{label:'세전 월급',value:'225만원',sub:'인턴'}}},[base()],t).includes('cardFacts'));
+});
+test('a changed or missing card image is blocked at publish time',async()=>{
+  const original=Buffer.alloc(120,1);
+  const p={...base(),sourceSha256:crypto.createHash('sha256').update(original).digest('hex'),imageSha256:pngHash};
+  const url=p.blogUrl;
+  const fetcher=img=>async u=>u.includes('alio')?{ok:true,status:200,arrayBuffer:async()=>original}:u.includes('raw.githubusercontent')?img:{ok:true,url,text:async()=>'한국남부발전 225만원'};
+  assert.deepEqual(await verifyWeb(p,fetcher({ok:true,status:200,arrayBuffer:async()=>png})),{blogUrl:url});
+  await assert.rejects(()=>verifyWeb(p,fetcher({ok:true,status:200,arrayBuffer:async()=>Buffer.alloc(2000,4)})),/카드 이미지 변경/);
+  await assert.rejects(()=>verifyWeb(p,fetcher({ok:false,status:404})),/카드 이미지 HTTP 404/);
+});
 test('blog URL is found by title at publish time and pay may be source-only',async()=>{
   const original=Buffer.alloc(120,1);
-  const p={...base(),blogUrl:undefined,blogTitle:'남부발전 인턴',sourceSha256:crypto.createHash('sha256').update(original).digest('hex')};
+  const p={...base(),blogUrl:undefined,blogTitle:'남부발전 인턴',sourceSha256:crypto.createHash('sha256').update(original).digest('hex'),imageSha256:pngHash};
   const url='https://hirecurator.blogspot.com/2026/11/x.html';
   const feed={feed:{entry:[{title:{$t:'한국남부발전 인턴 122명'},link:[{rel:'alternate',href:url}]}]}};
-  const fetcher=async u=>u.includes('alio')?{ok:true,status:200,arrayBuffer:async()=>original}:u.includes('feeds')?{ok:true,json:async()=>feed}:{ok:true,url,text:async()=>'한국남부발전 본문'};
+  const fetcher=async u=>u.includes('alio')?{ok:true,status:200,arrayBuffer:async()=>original}:u.includes('raw.githubusercontent')?{ok:true,status:200,arrayBuffer:async()=>png}:u.includes('feeds')?{ok:true,json:async()=>feed}:{ok:true,url,text:async()=>'한국남부발전 본문'};
   await assert.rejects(()=>verifyWeb(p,fetcher),/근거 불일치/);
   assert.deepEqual(await verifyWeb({...p,blogPayUnchecked:true},fetcher),{blogUrl:url});
   const empty=async u=>u.includes('feeds')?{ok:true,json:async()=>({feed:{}})}:fetcher(u);
@@ -55,7 +74,7 @@ test('deadline-day reminder keeps exact-time, remaining-time and duplicate gates
   const now=new Date('2026-11-09T09:00:00+09:00');
   const reminder={...base(),id:'reminder',postType:'deadline_reminder',scheduledAt:now.toISOString(),
     deadlineAt:'2026-11-09T17:00:00+09:00',checkedAt:new Date(now.getTime()-H).toISOString(),
-    text:'오늘 마감 17:00 KST · 체험형인턴 세전 월급 225만원'};
+    text:'한국남부발전 오늘 마감 17:00 KST · 체험형인턴 세전 월급 225만원',card:{...base().card,deadline:'오늘 마감 17:00 KST'}};
   assert.deepEqual(errors(reminder,[reminder],now),[]);
   const old={...base(),id:'old',status:'published',postType:'initial',attemptedAt:new Date(now.getTime()-4*24*H).toISOString()};
   assert.deepEqual(errors(reminder,[old,reminder],now),[]);

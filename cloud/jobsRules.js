@@ -6,6 +6,22 @@ const DAILY_LIMIT = 2;
 // 게시 직전 verifyWeb가 원문 해시·블로그 공개를 다시 확인하므로 사전 검수는 7일까지 유효하다.
 const REVIEW_VALID_HOURS = 7 * 24;
 const BLOG = 'https://hirecurator.blogspot.com/';
+// 2026-11-04 사용자 결정: 모든 글에 자체 카드 이미지를 붙인다. 이미지는 이 저장소에 올린 PNG만 쓴다.
+const CARD_BASE = 'https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/';
+const numbers = value => (String(value).match(/\d[\d,]*/g) || []).map(n => n.replace(/,/g, ''));
+function cardStrings(c) {
+  const hero = c.hero ? [c.hero.label, c.hero.value, c.hero.sub] : [];
+  return [c.badge, ...(c.hook || []), c.org, c.role, ...hero, ...(c.tags || []), ...(c.facts || []).flat(), c.deadline]
+    .filter(Boolean).map(s => String(s).replace(/\[\[|\]\]/g, ''));
+}
+// 카드에는 검수된 본문에 있는 숫자만 쓴다. 기관명과 마감 문구는 본문 그대로 쓴다.
+function cardIssues(p) {
+  const c = p.card, text = p.text || '';
+  if (!c || !c.org || !c.deadline || !Array.isArray(c.facts) || c.facts.length !== 3) return true;
+  if (!text.includes(c.org) || !text.includes(c.deadline)) return true;
+  const allowed = new Set(numbers(text));
+  return cardStrings(c).some(s => numbers(s).some(n => !allowed.has(n)));
+}
 const kstDay = value => new Date(Date.parse(value) + 9 * H).toISOString().slice(0, 10);
 const kstHour = value => new Date(Date.parse(value) + 9 * H).getUTCHours();
 function errors(p, rows, now = new Date()) {
@@ -24,6 +40,8 @@ function errors(p, rows, now = new Date()) {
   // 2026-11-04 사용자 결정: 댓글에 URL을 넣지 않고 프로필 링크(블로그)로 보낸다. blogUrl은 게시 전 검증에만 쓴다.
   if (/https?:\/\/|blogspot\.com/.test(p.replyText || '') || !p.replyText?.includes('프로필 링크')) out.push('replyLink');
   if (!/^[a-f0-9]{64}$/.test(p.sourceSha256 || '')) out.push('sourceHash');
+  if (!p.imageUrl?.startsWith(CARD_BASE) || !p.imageUrl.endsWith('.png') || !/^[a-f0-9]{64}$/.test(p.imageSha256 || '')) out.push('image');
+  if (cardIssues(p)) out.push('cardFacts');
   if (!p.factsChecked || !p.blogChecked || !p.employmentType || !p.eligibility || !p.blogEvidence) out.push('review');
   const start = Date.parse(p.startsAt);
   if (!Number.isFinite(slot) || !Number.isFinite(start) || !Number.isFinite(end) || !Number.isFinite(checked) || start >= end) out.push('date');
@@ -62,6 +80,10 @@ async function verifyWeb(p, fetcher = fetch) {
   if (!source.ok) throw new Error(`공식 자료 HTTP ${source.status}`);
   const bytes = Buffer.from(await source.arrayBuffer());
   if (bytes.length < 100 || bytes.length > 30_000_000 || crypto.createHash('sha256').update(bytes).digest('hex') !== p.sourceSha256) throw new Error('공식 공고 내용 변경 또는 파일 오류');
+  const image = await fetcher(p.imageUrl, { redirect: 'follow', signal: AbortSignal.timeout(15000) });
+  if (!image.ok) throw new Error(`카드 이미지 HTTP ${image.status}`);
+  const card = Buffer.from(await image.arrayBuffer());
+  if (card.length < 1000 || card.length > 8_000_000 || crypto.createHash('sha256').update(card).digest('hex') !== p.imageSha256) throw new Error('카드 이미지 변경 또는 파일 오류');
   const blogUrl = p.blogUrl || await findBlogUrl(p.blogTitle, fetcher);
   const blog = await fetcher(blogUrl, { redirect: 'follow', signal: AbortSignal.timeout(15000) });
   if (!blog.ok || !blog.url.startsWith(BLOG)) throw new Error('블로그 공개 URL 오류');
@@ -70,4 +92,4 @@ async function verifyWeb(p, fetcher = fetch) {
   if (!html.includes(p.blogEvidence) || (!p.blogPayUnchecked && !html.includes(p.verifiedPay))) throw new Error('블로그 본문 근거 불일치');
   return { blogUrl };
 }
-module.exports = { HANDLES, DAILY_LIMIT, errors, verifyWeb, kstDay };
+module.exports = { HANDLES, DAILY_LIMIT, CARD_BASE, errors, verifyWeb, kstDay };

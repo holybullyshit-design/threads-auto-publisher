@@ -3,7 +3,7 @@ const assert = require('node:assert/strict');
 const { run } = require('../cloud/publish-jobs');
 const { errors } = require('../cloud/jobsRules');
 const H = 3600000, now = new Date('2026-11-03T13:10:00+09:00');
-const post = () => ({id:'one',status:'scheduled',handle:'jobs_curator',noticeId:'306325',title:'한국남부발전',angle:'인턴',text:'체험형인턴 세전 월급 225만원',replyText:'👆 공고 원문·지원 링크는 프로필 링크에서',topicTag:'취업',verifiedPay:'225만원',sourceUrl:'https://www.alio.go.kr/download/a.pdf',sourceSha256:'a'.repeat(64),blogUrl:'https://hirecurator.blogspot.com/2026/11/test.html',blogEvidence:'한국남부발전',employmentType:'체험형인턴',eligibility:'유형별 자격 확인',startsAt:'2026-11-03T11:00:00+09:00',deadlineAt:'2026-11-11T11:00:00+09:00',checkedAt:new Date(now-H).toISOString(),scheduledAt:now.toISOString(),factsChecked:true,blogChecked:true});
+const post = () => ({id:'one',status:'scheduled',handle:'jobs_curator',noticeId:'306325',title:'한국남부발전',angle:'인턴',text:'한국남부발전 체험형인턴 세전 월급 225만원 · 11/11(수) 오전 11시 마감',replyText:'👆 공고 원문·지원 링크는 프로필 링크에서',card:{badge:'🔔 새 공고',hook:['[[체험형인턴]]'],org:'한국남부발전',role:'체험형인턴',facts:[['💰','세전 월급 225만원'],['📍','전국'],['📝','서류 → 면접']],deadline:'11/11(수) 오전 11시 마감'},imageUrl:'https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/a.png',imageSha256:'b'.repeat(64),topicTag:'취업',verifiedPay:'225만원',sourceUrl:'https://www.alio.go.kr/download/a.pdf',sourceSha256:'a'.repeat(64),blogUrl:'https://hirecurator.blogspot.com/2026/11/test.html',blogEvidence:'한국남부발전',employmentType:'체험형인턴',eligibility:'유형별 자격 확인',startsAt:'2026-11-03T11:00:00+09:00',deadlineAt:'2026-11-11T11:00:00+09:00',checkedAt:new Date(now-H).toISOString(),scheduledAt:now.toISOString(),factsChecked:true,blogChecked:true});
 function queue(p=post()) { let rows=[p]; return {read:async()=>({rows:structuredClone(rows)}),change:async fn=>{const next=structuredClone(rows),result=fn(next);rows=next;return result},rows:()=>rows}; }
 const auth = () => ({jobs_curator:{userId:'1',accessToken:'secret',expiresAt:'2026-12-30T00:00:00Z'}});
 test('publishes body then reply once and records readback', async()=>{
@@ -11,6 +11,7 @@ test('publishes body then reply once and records readback', async()=>{
   await run({queue:q,now:()=>now,getAccounts:auth,web:async()=>{},checkDay:async()=>{},publish:async x=>{calls.push(x);return {publishedId:String(calls.length)}},inspect:async(id)=>({url:'https://www.threads.com/post/'+id,timestamp:now.toISOString()})});
   assert.equal(q.rows()[0].status,'published'); assert.equal(calls.length,2); assert.equal(calls[1].replyToId,'1');
   assert.equal(calls[0].topicTag,'취업'); assert.equal(calls[1].topicTag,undefined);
+  assert.deepEqual(calls[0].imageUrls,[post().imageUrl]); assert.equal(calls[0].waitForReady,true); assert.equal(calls[1].imageUrls,undefined);
   await run({queue:q,now:()=>now,getAccounts:auth,web:async()=>{},publish:async()=>{throw Error('duplicate')}});
 });
 test('blog URL found at publish time is recorded on the row',async()=>{

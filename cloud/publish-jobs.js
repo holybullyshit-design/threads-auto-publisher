@@ -1,7 +1,9 @@
 // Cloud recruitment publisher. Never reads the saju queue or THREADS_ACCOUNTS_JSON.
 const store = require('./jobsStore');
 const { errors, verifyWeb, HANDLES, DAILY_LIMIT, kstDay } = require('./jobsRules');
-const { publishTextPost } = require('../server/lib/threadsClient');
+const { publishTextPost, publishImagePost } = require('../server/lib/threadsClient');
+// 본문은 카드 이미지와 함께, 답글은 텍스트로 올린다.
+const postToThreads = x => (x.imageUrls ? publishImagePost(x) : publishTextPost(x));
 function accounts() {
   const raw = process.env.JOB_THREADS_ACCOUNTS_JSON;
   if (!raw) throw new Error('JOB_THREADS_ACCOUNTS_JSON 시크릿이 없습니다.');
@@ -31,7 +33,7 @@ async function checkAccountDay(auth, handle, date) {
   const today = data.data.filter(p => p.username === handle && !p.is_reply && p.timestamp && kstDay(p.timestamp) === date && p.text && !p.text.includes('hirecurator.blogspot.com'));
   if (today.length >= DAILY_LIMIT) throw new Error(`오늘 계정에 이미 본문 ${today.length}개가 게시됐습니다.`);
 }
-async function run({ queue = store, publish = publishTextPost, web = verifyWeb, now = () => new Date(), getAccounts = accounts, inspect = readBack, checkDay = checkAccountDay } = {}) {
+async function run({ queue = store, publish = postToThreads, web = verifyWeb, now = () => new Date(), getAccounts = accounts, inspect = readBack, checkDay = checkAccountDay } = {}) {
   const initial = await queue.read();
   const due = initial.rows.filter(p => p.status === 'scheduled' && Date.parse(p.scheduledAt) <= now().getTime());
   for (const pending of due) {
@@ -74,7 +76,7 @@ async function run({ queue = store, publish = publishTextPost, web = verifyWeb, 
     if (!claimed) continue;
     let mainId;
     try {
-      const main = await publish({ text: row.text, topicTag: row.topicTag, accessToken: auth.accessToken, threadsUserId: auth.userId });
+      const main = await publish({ text: row.text, imageUrls: [row.imageUrl], waitForReady: true, topicTag: row.topicTag, accessToken: auth.accessToken, threadsUserId: auth.userId });
       mainId = main.publishedId;
       if (!mainId) throw new Error('본문 게시 ID 없음');
       await queue.change(rows => { const p = rows.find(x => x.id === row.id); if (p.status !== 'publishing') throw new Error('본문 상태 충돌'); p.status = 'reply_pending'; p.publishedId = mainId; });
