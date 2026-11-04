@@ -46708,9 +46708,10 @@
     "createdAt": "2026-10-30T02:36:41.314Z",
     "publishedAt": null,
     "publishedId": null,
-    "error": null,
+    "error": "GitHub에 예약 목록을 저장하지 못했습니다: 500",
     "viralEngine": false,
-    "commentAnchor": true
+    "commentAnchor": true,
+    "retryCount": 1
   },
   {
     "id": "d1b059b3-44f7-4352-890c-469ce0ee98bf",
