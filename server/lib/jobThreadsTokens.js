@@ -30,6 +30,19 @@ function writeRecord(file, record) {
   fs.renameSync(temp, file);
 }
 
+// 클라우드 채용 게시기(cloud/publish-jobs.js)가 읽는 JOB_THREADS_ACCOUNTS_JSON 형식.
+function exportForCloudSecret() {
+  const accounts = {};
+  for (const { record } of readRecords()) {
+    accounts[record.handle] = {
+      userId: String(record.user_id),
+      accessToken: record.access_token,
+      expiresAt: new Date(record.expires_at * 1000).toISOString(),
+    };
+  }
+  return JSON.stringify(accounts);
+}
+
 function listStatus() {
   return readRecords().map(({ record }) => ({
     handle: record.handle,
@@ -65,4 +78,4 @@ async function refreshAll(refresh, refreshedByUserId = new Map()) {
   return results;
 }
 
-module.exports = { listStatus, refreshAll };
+module.exports = { listStatus, refreshAll, exportForCloudSecret };
