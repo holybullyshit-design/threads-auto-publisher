@@ -13,6 +13,11 @@ test('publishes body then reply once and records readback', async()=>{
   assert.equal(calls[0].topicTag,'취업'); assert.equal(calls[1].topicTag,undefined);
   await run({queue:q,now:()=>now,getAccounts:auth,web:async()=>{},publish:async()=>{throw Error('duplicate')}});
 });
+test('blog URL found at publish time is recorded on the row',async()=>{
+  const q=queue({...post(),blogUrl:undefined,blogTitle:'남부발전'});
+  await run({queue:q,now:()=>now,getAccounts:auth,web:async()=>({blogUrl:'https://hirecurator.blogspot.com/2026/11/x.html'}),checkDay:async()=>{},publish:async()=>({publishedId:'9'}),inspect:async id=>({url:'https://www.threads.com/post/'+id,timestamp:now.toISOString()})});
+  assert.equal(q.rows()[0].blogUrl,'https://hirecurator.blogspot.com/2026/11/x.html'); assert.equal(q.rows()[0].status,'published');
+});
 test('ambiguous body result is never retried',async()=>{
   const q=queue(); let count=0;
   const options={queue:q,now:()=>now,getAccounts:auth,web:async()=>{},checkDay:async()=>{},publish:async()=>{count++;throw Error('timeout')}};

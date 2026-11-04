@@ -1,6 +1,6 @@
 // Cloud recruitment publisher. Never reads the saju queue or THREADS_ACCOUNTS_JSON.
 const store = require('./jobsStore');
-const { errors, verifyWeb, HANDLES, kstDay } = require('./jobsRules');
+const { errors, verifyWeb, HANDLES, DAILY_LIMIT, kstDay } = require('./jobsRules');
 const { publishTextPost } = require('../server/lib/threadsClient');
 function accounts() {
   const raw = process.env.JOB_THREADS_ACCOUNTS_JSON;
@@ -28,7 +28,8 @@ async function checkAccountDay(auth, handle, date) {
   if (!r.ok) throw new Error(`계정 게시 이력 확인 실패 (HTTP ${r.status})`);
   const data = await r.json();
   if (!Array.isArray(data.data)) throw new Error('계정 게시 이력 형식 오류');
-  if (data.data.some(p => p.username === handle && !p.is_reply && p.timestamp && kstDay(p.timestamp) === date && p.text && !p.text.includes('hirecurator.blogspot.com'))) throw new Error('오늘 계정에 이미 본문이 게시됐습니다.');
+  const today = data.data.filter(p => p.username === handle && !p.is_reply && p.timestamp && kstDay(p.timestamp) === date && p.text && !p.text.includes('hirecurator.blogspot.com'));
+  if (today.length >= DAILY_LIMIT) throw new Error(`오늘 계정에 이미 본문 ${today.length}개가 게시됐습니다.`);
 }
 async function run({ queue = store, publish = publishTextPost, web = verifyWeb, now = () => new Date(), getAccounts = accounts, inspect = readBack, checkDay = checkAccountDay } = {}) {
   const initial = await queue.read();
@@ -44,7 +45,10 @@ async function run({ queue = store, publish = publishTextPost, web = verifyWeb, 
       console.error(`[채용 보류] ${row.id}: ${issues.join(',')}`);
       continue;
     }
-    try { await web(row); }
+    try {
+      const checked = await web(row);
+      if (checked?.blogUrl && checked.blogUrl !== row.blogUrl) await queue.change(rows => { const p = rows.find(x => x.id === row.id); if (p) p.blogUrl = checked.blogUrl; });
+    }
     catch (e) {
       await queue.change(rows => { const p = rows.find(x => x.id === row.id); if (p?.status === 'scheduled') { p.status = 'blocked'; p.error = e.message; } });
       console.error(`[채용 원문/블로그 보류] ${row.id}: ${e.message}`);
