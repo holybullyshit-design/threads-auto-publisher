@@ -45312,11 +45312,14 @@
     "scheduledAt": "2026-11-04T08:57:00.000Z",
     "createdAt": "2026-10-30T01:55:46.270Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18146991199579540",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18146991199579540"
+    ]
   },
   {
     "id": "ce510a4b-04dc-4f15-aab1-ee2003a76c77",
