@@ -44011,10 +44011,13 @@
     "scheduledAt": "2026-11-04T00:34:00.000Z",
     "createdAt": "2026-10-30T01:04:05.760Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17910066102333764",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17910066102333764"
+    ]
   },
   {
     "id": "322f8a1f-72ee-4207-9830-10a4bb5b06fc",
