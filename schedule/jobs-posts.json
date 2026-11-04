@@ -144,7 +144,7 @@
   },
   {
     "id": "6244df03-b2c9-4af1-8025-94018426e17d",
-    "status": "publishing",
+    "status": "reply_pending",
     "createdAt": "2026-11-03T12:50:05.563Z",
     "updatedAt": "2026-11-03T12:50:05.563Z",
     "handle": "hire_masters",
@@ -168,7 +168,8 @@
     "scheduledAt": "2026-11-04T06:20:00.000Z",
     "sourceSha256": "6a6c739fd6bb77ab0524d9ab2502872d6161d77780210b54ecc8664da8509aad",
     "attemptedAt": "2026-11-04T06:31:16.469Z",
-    "error": null
+    "error": null,
+    "publishedId": "17918492676467745"
   },
   {
     "id": "c59f75df-2039-4ded-bc13-fa281a1f13f0",
