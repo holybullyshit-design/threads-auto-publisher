@@ -44594,10 +44594,13 @@
     "scheduledAt": "2026-11-04T05:16:00.000Z",
     "createdAt": "2026-10-30T01:28:04.505Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18115171019137930",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18115171019137930"
+    ]
   },
   {
     "id": "f5e08071-9f74-4eff-b65b-53b22bdfc7ba",
