@@ -46772,10 +46772,13 @@
     "scheduledAt": "2026-11-04T03:19:00.000Z",
     "createdAt": "2026-10-30T02:51:40.287Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17914385232520509",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17914385232520509"
+    ]
   },
   {
     "id": "fcd5435c-57ed-49da-b931-56015116fcdf",
