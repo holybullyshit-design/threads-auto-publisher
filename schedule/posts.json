@@ -44566,10 +44566,13 @@
     "scheduledAt": "2026-11-04T02:31:00.000Z",
     "createdAt": "2026-10-30T01:27:12.495Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18128794168947270",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18128794168947270"
+    ]
   },
   {
     "id": "312b8f62-c3ca-4617-83fe-5b451a31dc6e",
