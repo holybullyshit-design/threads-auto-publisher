@@ -216,7 +216,7 @@
     "id": "4d5fa068-218b-4b5a-ae18-663be2984a31",
     "status": "scheduled",
     "createdAt": "2026-11-04T09:12:00.370Z",
-    "updatedAt": "2026-11-04T09:12:00.370Z",
+    "updatedAt": "2026-11-04T10:55:07.155Z",
     "handle": "jobs_curator",
     "scheduledAt": "2026-11-04T23:30:00.000Z",
     "noticeId": "306597",
@@ -233,18 +233,44 @@
     "employmentType": "무기계약직(업무지원직)",
     "eligibility": "학력무관, 공단 정년 미만, 병역 필 또는 면제, 결격사유 없음; 공식 공고",
     "blogUrl": "https://hirecurator.blogspot.com/2026/11/59-11-16.html",
-    "checkedAt": "2026-11-04T09:12:00.370Z",
+    "checkedAt": "2026-11-04T10:55:07.155Z",
     "preparationHours": 120,
     "factsChecked": true,
     "blogChecked": true,
     "postType": "initial",
-    "topicTag": "취업"
+    "topicTag": "취업",
+    "card": {
+      "badge": "🔔 새 공고",
+      "hook": [
+        "[[학력무관]]",
+        "무기계약직 [[59명]]"
+      ],
+      "org": "국민건강보험공단",
+      "role": "업무지원직 · 전국 모집",
+      "facts": [
+        [
+          "💰",
+          "기본월봉 199만9천~281만3천원"
+        ],
+        [
+          "👥",
+          "환경 35·보안 14·시설 9·사무 1"
+        ],
+        [
+          "📝",
+          "서류 → 인성검사 → 면접"
+        ]
+      ],
+      "deadline": "11/16(월) 오후 3시 마감"
+    },
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/ee478e11ea7b94367395.png",
+    "imageSha256": "ee478e11ea7b94367395c618ef7edf078641012260087e5793543b83b7f820c7"
   },
   {
     "id": "990fb790-4c92-4187-b44f-e6cf9acb42c0",
     "status": "scheduled",
     "createdAt": "2026-11-04T09:12:00.370Z",
-    "updatedAt": "2026-11-04T09:12:00.370Z",
+    "updatedAt": "2026-11-04T10:55:07.155Z",
     "handle": "hire_masters",
     "scheduledAt": "2026-11-05T00:30:00.000Z",
     "noticeId": "306599",
@@ -262,18 +288,44 @@
     "eligibility": "최종학력 고졸, 블라인드 채용, 즉시 근무 가능; 공식 공고",
     "blogTitle": "기술보증기금",
     "blogPayUnchecked": true,
-    "checkedAt": "2026-11-04T09:12:00.370Z",
+    "checkedAt": "2026-11-04T10:55:07.155Z",
     "preparationHours": 120,
     "factsChecked": true,
     "blogChecked": true,
     "postType": "initial",
-    "topicTag": "취업"
+    "topicTag": "취업",
+    "card": {
+      "badge": "👀 이거 봤어?",
+      "hook": [
+        "[[고졸만]] 지원되는",
+        "무기계약직 자리 있어"
+      ],
+      "org": "기술보증기금",
+      "role": "사무지원직 4명",
+      "facts": [
+        [
+          "💰",
+          "연봉 3,384만원 (성과·상여 포함)"
+        ],
+        [
+          "📍",
+          "서울 2·판교 1·부산 본점 1"
+        ],
+        [
+          "✍️",
+          "필기 없이 서류·면접"
+        ]
+      ],
+      "deadline": "11/17(화) 오후 4시 마감"
+    },
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/6d8048fa0c958139aed0.png",
+    "imageSha256": "6d8048fa0c958139aed073e17314aed34e10e7cc54fd36ff875de28764298b4f"
   },
   {
     "id": "ff531db6-e3fe-451d-b681-aa9767052cb2",
     "status": "scheduled",
     "createdAt": "2026-11-04T09:12:00.370Z",
-    "updatedAt": "2026-11-04T09:12:00.370Z",
+    "updatedAt": "2026-11-04T10:55:07.155Z",
     "handle": "high_quality_hire",
     "scheduledAt": "2026-11-05T01:30:00.000Z",
     "noticeId": "306562",
@@ -290,18 +342,49 @@
     "employmentType": "체험형 청년인턴(6개월)",
     "eligibility": "만 18~34세(제대군인 최대 37세), 성별·학력 제한 없음; 공식 공고",
     "blogUrl": "https://hirecurator.blogspot.com/2026/11/13-224-11-17.html",
-    "checkedAt": "2026-11-04T09:12:00.370Z",
+    "checkedAt": "2026-11-04T10:55:07.155Z",
     "preparationHours": 120,
     "factsChecked": true,
     "blogChecked": true,
     "postType": "initial",
-    "topicTag": "취업"
+    "topicTag": "취업",
+    "card": {
+      "badge": "💰 조건 비교",
+      "hero": {
+        "label": "세전 월",
+        "value": "224만원",
+        "sub": "주 40시간 · 6개월 인턴"
+      },
+      "tags": [
+        "면접 없음",
+        "학력·성별 제한 없음"
+      ],
+      "org": "한국방송통신전파진흥원",
+      "role": "청년인턴 13명",
+      "facts": [
+        [
+          "근무지",
+          "나주"
+        ],
+        [
+          "전형",
+          "적격심사 → 자기소개서 평가"
+        ],
+        [
+          "나이",
+          "만 18~34세"
+        ]
+      ],
+      "deadline": "11/17(화) 오후 4시 마감"
+    },
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/226d73a280aa99f64b85.png",
+    "imageSha256": "226d73a280aa99f64b85e98ebf026b349871ecad774b37865593b7872d4cdf77"
   },
   {
     "id": "553a61f9-ebec-42c6-a0e9-98ab3b6c2570",
     "status": "scheduled",
     "createdAt": "2026-11-04T09:12:00.370Z",
-    "updatedAt": "2026-11-04T09:12:00.370Z",
+    "updatedAt": "2026-11-04T10:55:07.155Z",
     "handle": "jobs_curator",
     "scheduledAt": "2026-11-05T08:30:00.000Z",
     "noticeId": "306405",
@@ -318,18 +401,44 @@
     "employmentType": "체험형 청년인턴(6개월)",
     "eligibility": "청년 연령(입사예정일 기준), 한국관광공사 청년인턴 경험자 제외; 공식 공고",
     "blogUrl": "https://hirecurator.blogspot.com/2026/10/3911-11.html",
-    "checkedAt": "2026-11-04T09:12:00.370Z",
+    "checkedAt": "2026-11-04T10:55:07.155Z",
     "preparationHours": 120,
     "factsChecked": true,
     "blogChecked": true,
     "postType": "initial",
-    "topicTag": "취업"
+    "topicTag": "취업",
+    "card": {
+      "badge": "🔔 새 공고",
+      "hook": [
+        "[[원주·서울]] 공기업",
+        "인턴 [[14명]]"
+      ],
+      "org": "한국관광공사",
+      "role": "체험형 청년인턴",
+      "facts": [
+        [
+          "💰",
+          "월 기본급 2,236,300원"
+        ],
+        [
+          "📍",
+          "원주 10명 · 서울 4명"
+        ],
+        [
+          "📝",
+          "서류 → 면접 2단계"
+        ]
+      ],
+      "deadline": "11/11(수) 낮 12시 마감"
+    },
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/cee73b2e1dc94e4da610.png",
+    "imageSha256": "cee73b2e1dc94e4da6106a3dfd4fac589c22ec742995e309adb8f8feb95fe31b"
   },
   {
     "id": "031b6bed-6277-4e52-a905-dc8d84934d69",
     "status": "scheduled",
     "createdAt": "2026-11-04T09:12:00.370Z",
-    "updatedAt": "2026-11-04T09:12:00.370Z",
+    "updatedAt": "2026-11-04T10:55:07.155Z",
     "handle": "hire_masters",
     "scheduledAt": "2026-11-05T09:30:00.000Z",
     "noticeId": "306560",
@@ -347,18 +456,44 @@
     "eligibility": "만 34세 이하, 학력 무관, 대전 1·서울 1; 공식 공고",
     "blogTitle": "한국특허정보원",
     "blogPayUnchecked": true,
-    "checkedAt": "2026-11-04T09:12:00.370Z",
+    "checkedAt": "2026-11-04T10:55:07.155Z",
     "preparationHours": 120,
     "factsChecked": true,
     "blogChecked": true,
     "postType": "initial",
-    "topicTag": "취업"
+    "topicTag": "취업",
+    "card": {
+      "badge": "👀 이거 봤어?",
+      "hook": [
+        "[[학력]] 안 보는",
+        "행정 인턴 [[2자리]] 있어"
+      ],
+      "org": "한국특허정보원",
+      "role": "체험형 청년인턴 2명",
+      "facts": [
+        [
+          "💰",
+          "월 220만원"
+        ],
+        [
+          "📍",
+          "대전 시설관리 1 · 서울 기록물 1"
+        ],
+        [
+          "✍️",
+          "만 34세 이하 · 서류 → 면접"
+        ]
+      ],
+      "deadline": "11/18(수) 오후 2시 마감"
+    },
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/3ea9b7766cdf665beefc.png",
+    "imageSha256": "3ea9b7766cdf665beefc1e385b3e29dae3875b844824722768ba5078effd7140"
   },
   {
     "id": "4d901157-125a-4136-a6f1-e9ce98098f97",
     "status": "scheduled",
     "createdAt": "2026-11-04T09:12:00.370Z",
-    "updatedAt": "2026-11-04T09:12:00.370Z",
+    "updatedAt": "2026-11-04T10:55:07.155Z",
     "handle": "jobs_curator",
     "scheduledAt": "2026-11-05T23:30:00.000Z",
     "noticeId": "306535",
@@ -376,18 +511,44 @@
     "eligibility": "분야별 직무 관련 자격·기능·경력, 관리원 1종보통 운전면허; 공식 공고",
     "blogTitle": "국립생태원",
     "blogPayUnchecked": true,
-    "checkedAt": "2026-11-04T09:12:00.370Z",
+    "checkedAt": "2026-11-04T10:55:07.155Z",
     "preparationHours": 120,
     "factsChecked": true,
     "blogChecked": true,
     "postType": "initial",
-    "topicTag": "취업"
+    "topicTag": "취업",
+    "card": {
+      "badge": "🔔 새 공고",
+      "hook": [
+        "[[서천]] 국립생태원",
+        "기간제 [[5명]]"
+      ],
+      "org": "국립생태원",
+      "role": "육아휴직 대체 기간제",
+      "facts": [
+        [
+          "💰",
+          "월 219만~227만원 (분야별)"
+        ],
+        [
+          "👥",
+          "전문위원 4 · 관리원 1"
+        ],
+        [
+          "📋",
+          "분야별 자격 요건 확인"
+        ]
+      ],
+      "deadline": "11/17(화) 오후 5시 마감"
+    },
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/6d12b7f56f39fa976e52.png",
+    "imageSha256": "6d12b7f56f39fa976e52f9d3f0172138d232b75a7397c5218f97ef1c2ca2e1dd"
   },
   {
     "id": "08f3fffa-0eeb-40f9-812c-60f62bc4c032",
     "status": "scheduled",
     "createdAt": "2026-11-04T09:12:00.370Z",
-    "updatedAt": "2026-11-04T09:12:00.370Z",
+    "updatedAt": "2026-11-04T10:55:07.155Z",
     "handle": "hire_masters",
     "scheduledAt": "2026-11-06T00:30:00.000Z",
     "noticeId": "306597",
@@ -404,18 +565,44 @@
     "employmentType": "무기계약직(업무지원직)",
     "eligibility": "학력무관, 공단 정년 미만, 병역 필 또는 면제, 결격사유 없음; 공식 공고",
     "blogUrl": "https://hirecurator.blogspot.com/2026/11/59-11-16.html",
-    "checkedAt": "2026-11-04T09:12:00.370Z",
+    "checkedAt": "2026-11-04T10:55:07.155Z",
     "preparationHours": 120,
     "factsChecked": true,
     "blogChecked": true,
     "postType": "initial",
-    "topicTag": "취업"
+    "topicTag": "취업",
+    "card": {
+      "badge": "👀 이거 봤어?",
+      "hook": [
+        "학력 상관없이",
+        "[[건보공단 무기계약직]]"
+      ],
+      "org": "국민건강보험공단",
+      "role": "업무지원직 59명",
+      "facts": [
+        [
+          "💰",
+          "기본월봉 199만9천~281만3천원"
+        ],
+        [
+          "👥",
+          "환경 35·보안 14·시설 9·사무 1"
+        ],
+        [
+          "🍚",
+          "식대·가족수당은 따로 나와"
+        ]
+      ],
+      "deadline": "11/16(월) 오후 3시 마감"
+    },
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/65a9b729aebea9db606a.png",
+    "imageSha256": "65a9b729aebea9db606ac9eb0263093220bc22f144e342ef6ad2a877f1a8c34e"
   },
   {
     "id": "f469520f-9b94-4522-9612-88bc703fb47e",
     "status": "scheduled",
     "createdAt": "2026-11-04T09:12:00.370Z",
-    "updatedAt": "2026-11-04T09:12:00.370Z",
+    "updatedAt": "2026-11-04T10:55:07.155Z",
     "handle": "high_quality_hire",
     "scheduledAt": "2026-11-06T01:30:00.000Z",
     "noticeId": "306599",
@@ -433,18 +620,49 @@
     "eligibility": "최종학력 고졸, 블라인드 채용, 즉시 근무 가능; 공식 공고",
     "blogTitle": "기술보증기금",
     "blogPayUnchecked": true,
-    "checkedAt": "2026-11-04T09:12:00.370Z",
+    "checkedAt": "2026-11-04T10:55:07.155Z",
     "preparationHours": 120,
     "factsChecked": true,
     "blogChecked": true,
     "postType": "initial",
-    "topicTag": "취업"
+    "topicTag": "취업",
+    "card": {
+      "badge": "💰 조건 비교",
+      "hero": {
+        "label": "연봉 (성과·상여 포함)",
+        "value": "3,384만원",
+        "sub": "고졸 무기계약직 4명"
+      },
+      "tags": [
+        "최종학력 고졸",
+        "서류·면접 2단계"
+      ],
+      "org": "기술보증기금",
+      "role": "사무지원직",
+      "facts": [
+        [
+          "근무지",
+          "서울 2 · 판교 1 · 부산 1"
+        ],
+        [
+          "업무",
+          "출납·계리·문서관리 등"
+        ],
+        [
+          "고용",
+          "무기계약 4명"
+        ]
+      ],
+      "deadline": "11/17(화) 오후 4시 마감"
+    },
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/e75a99117283d7977acb.png",
+    "imageSha256": "e75a99117283d7977acb3e0fa3437b0c98895a2f952d9257a40a91d7394474fd"
   },
   {
     "id": "47bc47cd-0e11-45a2-926f-736d0a4e2cce",
     "status": "scheduled",
     "createdAt": "2026-11-04T09:12:00.370Z",
-    "updatedAt": "2026-11-04T09:12:00.370Z",
+    "updatedAt": "2026-11-04T10:55:07.155Z",
     "handle": "jobs_curator",
     "scheduledAt": "2026-11-06T08:30:00.000Z",
     "noticeId": "306562",
@@ -461,18 +679,44 @@
     "employmentType": "체험형 청년인턴(6개월)",
     "eligibility": "만 18~34세(제대군인 최대 37세), 성별·학력 제한 없음; 공식 공고",
     "blogUrl": "https://hirecurator.blogspot.com/2026/11/13-224-11-17.html",
-    "checkedAt": "2026-11-04T09:12:00.370Z",
+    "checkedAt": "2026-11-04T10:55:07.155Z",
     "preparationHours": 120,
     "factsChecked": true,
     "blogChecked": true,
     "postType": "initial",
-    "topicTag": "취업"
+    "topicTag": "취업",
+    "card": {
+      "badge": "🔔 새 공고",
+      "hook": [
+        "[[면접 없는]]",
+        "공공기관 인턴 [[13명]]"
+      ],
+      "org": "한국방송통신전파진흥원",
+      "role": "청년인턴 · 나주 · 6개월",
+      "facts": [
+        [
+          "💰",
+          "세전 월 224만원 · 주 40시간"
+        ],
+        [
+          "👤",
+          "만 18~34세 · 학력 제한 없음"
+        ],
+        [
+          "📝",
+          "자소서 평가로만 선발"
+        ]
+      ],
+      "deadline": "11/17(화) 오후 4시 마감"
+    },
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/add0a20b29c80636ab79.png",
+    "imageSha256": "add0a20b29c80636ab793203a92d5f610fff972a9b1c3248ef3620f3a13352a6"
   },
   {
     "id": "f5931711-200c-4cde-92f4-3cd6584e007b",
     "status": "scheduled",
     "createdAt": "2026-11-04T09:12:00.370Z",
-    "updatedAt": "2026-11-04T09:12:00.370Z",
+    "updatedAt": "2026-11-04T10:55:07.155Z",
     "handle": "hire_masters",
     "scheduledAt": "2026-11-06T09:30:00.000Z",
     "noticeId": "306634",
@@ -490,18 +734,44 @@
     "eligibility": "연령·성별·학력·전공 제한 없음, 분야별 자격, 2026-12-28부터 근무 가능; 공식 공고",
     "blogTitle": "한국가스기술공사",
     "blogPayUnchecked": true,
-    "checkedAt": "2026-11-04T09:12:00.370Z",
+    "checkedAt": "2026-11-04T10:55:07.155Z",
     "preparationHours": 120,
     "factsChecked": true,
     "blogChecked": true,
     "postType": "initial",
-    "topicTag": "취업"
+    "topicTag": "취업",
+    "card": {
+      "badge": "👀 이거 봤어?",
+      "hook": [
+        "[[나이·학력]] 안 보는",
+        "수소 인프라 [[16명]] 있어"
+      ],
+      "org": "한국가스기술공사",
+      "role": "기간제 계약직",
+      "facts": [
+        [
+          "💰",
+          "월 2,561,590~3,338,880원"
+        ],
+        [
+          "🔧",
+          "운전원은 가스 자격 요건 있음"
+        ],
+        [
+          "📅",
+          "12월 28일부터 근무 가능해야 해"
+        ]
+      ],
+      "deadline": "11/18(수) 오후 3시 마감"
+    },
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/425ebd3ae02a62b54e4d.png",
+    "imageSha256": "425ebd3ae02a62b54e4dfa41a7e6e32b4e280878e964207eb76c4d6df60cbb45"
   },
   {
     "id": "ce6f7389-5a85-4430-b2cf-5470c8179fdf",
     "status": "scheduled",
     "createdAt": "2026-11-04T09:12:00.370Z",
-    "updatedAt": "2026-11-04T09:12:00.370Z",
+    "updatedAt": "2026-11-04T10:55:07.155Z",
     "handle": "high_quality_hire",
     "scheduledAt": "2026-11-06T10:30:00.000Z",
     "noticeId": "306560",
@@ -519,18 +789,49 @@
     "eligibility": "만 34세 이하, 학력 무관, 대전 1·서울 1; 공식 공고",
     "blogTitle": "한국특허정보원",
     "blogPayUnchecked": true,
-    "checkedAt": "2026-11-04T09:12:00.370Z",
+    "checkedAt": "2026-11-04T10:55:07.155Z",
     "preparationHours": 120,
     "factsChecked": true,
     "blogChecked": true,
     "postType": "initial",
-    "topicTag": "취업"
+    "topicTag": "취업",
+    "card": {
+      "badge": "💰 조건 비교",
+      "hero": {
+        "label": "월",
+        "value": "220만원",
+        "sub": "행정 인턴 2자리"
+      },
+      "tags": [
+        "학력 무관",
+        "만 34세 이하"
+      ],
+      "org": "한국특허정보원",
+      "role": "체험형 청년인턴",
+      "facts": [
+        [
+          "대전 1명",
+          "자산·시설 관리"
+        ],
+        [
+          "서울 1명",
+          "기록물 관리"
+        ],
+        [
+          "전형",
+          "서류 → 면접"
+        ]
+      ],
+      "deadline": "11/18(수) 오후 2시 마감"
+    },
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/2330cc2aae1cc6272d29.png",
+    "imageSha256": "2330cc2aae1cc6272d296a326de0720bf0caf54b83081fe2fe099e59c8f50902"
   },
   {
     "id": "64781bf6-501d-41e3-bec7-fde6ef41643d",
     "status": "scheduled",
     "createdAt": "2026-11-04T09:12:00.370Z",
-    "updatedAt": "2026-11-04T09:12:00.370Z",
+    "updatedAt": "2026-11-04T10:55:07.155Z",
     "handle": "jobs_curator",
     "scheduledAt": "2026-11-06T23:30:00.000Z",
     "noticeId": "306606",
@@ -548,18 +849,44 @@
     "eligibility": "만 19~34세; 공식 공고",
     "blogTitle": "국립중앙의료원",
     "blogPayUnchecked": true,
-    "checkedAt": "2026-11-04T09:12:00.370Z",
+    "checkedAt": "2026-11-04T10:55:07.155Z",
     "preparationHours": 120,
     "factsChecked": true,
     "blogChecked": true,
     "postType": "initial",
-    "topicTag": "취업"
+    "topicTag": "취업",
+    "card": {
+      "badge": "🔔 새 공고",
+      "hook": [
+        "[[연말정산 시즌]]",
+        "두 달 인턴 [[2명]]"
+      ],
+      "org": "국립중앙의료원",
+      "role": "인사팀 체험형 청년인턴",
+      "facts": [
+        [
+          "💰",
+          "월 266만2천원 (상여금 포함)"
+        ],
+        [
+          "📅",
+          "2027년 1~2월 · 서울"
+        ],
+        [
+          "📝",
+          "만 19~34세 · 서류→인성→면접"
+        ]
+      ],
+      "deadline": "11/16(월) 밤 11시 59분 마감"
+    },
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/51893a3c348b91625c89.png",
+    "imageSha256": "51893a3c348b91625c8949a40091eb81ddd793424dfacca2b3f2a7450d4e23e9"
   },
   {
     "id": "6493128b-7b71-4624-b621-a044f1e14d78",
     "status": "scheduled",
     "createdAt": "2026-11-04T09:12:00.370Z",
-    "updatedAt": "2026-11-04T09:12:00.370Z",
+    "updatedAt": "2026-11-04T10:55:07.155Z",
     "handle": "hire_masters",
     "scheduledAt": "2026-11-07T00:30:00.000Z",
     "noticeId": "306535",
@@ -577,18 +904,44 @@
     "eligibility": "분야별 직무 관련 자격·기능·경력, 관리원 1종보통 운전면허; 공식 공고",
     "blogTitle": "국립생태원",
     "blogPayUnchecked": true,
-    "checkedAt": "2026-11-04T09:12:00.370Z",
+    "checkedAt": "2026-11-04T10:55:07.155Z",
     "preparationHours": 120,
     "factsChecked": true,
     "blogChecked": true,
     "postType": "initial",
-    "topicTag": "취업"
+    "topicTag": "취업",
+    "card": {
+      "badge": "👀 이거 봤어?",
+      "hook": [
+        "[[서천]] 국립생태원에서",
+        "기간제 [[5명]] 뽑아"
+      ],
+      "org": "국립생태원",
+      "role": "육아휴직 대체",
+      "facts": [
+        [
+          "💰",
+          "월 219만~227만원 (분야별)"
+        ],
+        [
+          "🧩",
+          "사이버보안·생태·외래생물·동물 등"
+        ],
+        [
+          "✍️",
+          "서류 → 면접 2단계"
+        ]
+      ],
+      "deadline": "11/17(화) 오후 5시 마감"
+    },
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/4b7ae7307ece92b706f6.png",
+    "imageSha256": "4b7ae7307ece92b706f64cfc2893ac9efee58f754cb56b1eb5af9bc524768026"
   },
   {
     "id": "d6674b06-354f-4f8c-8bf3-82cc42a722a1",
     "status": "scheduled",
     "createdAt": "2026-11-04T09:12:00.370Z",
-    "updatedAt": "2026-11-04T09:12:00.370Z",
+    "updatedAt": "2026-11-04T10:55:07.155Z",
     "handle": "jobs_curator",
     "scheduledAt": "2026-11-07T08:30:00.000Z",
     "noticeId": "306568",
@@ -606,18 +959,44 @@
     "eligibility": "상담복지: 상담 석사 또는 학사+경력 2년 / 사업운영: 고졸 이상; 공식 공고",
     "blogTitle": "국립청소년인터넷드림마을",
     "blogPayUnchecked": true,
-    "checkedAt": "2026-11-04T09:12:00.370Z",
+    "checkedAt": "2026-11-04T10:55:07.155Z",
     "preparationHours": 120,
     "factsChecked": true,
     "blogChecked": true,
     "postType": "initial",
-    "topicTag": "취업"
+    "topicTag": "취업",
+    "card": {
+      "badge": "🔔 새 공고",
+      "hook": [
+        "[[무주]] 드림마을",
+        "공무직 [[2명]]"
+      ],
+      "org": "국립청소년인터넷드림마을",
+      "role": "한국청소년상담복지개발원 · 무기계약",
+      "facts": [
+        [
+          "💰",
+          "급여 공고 미공개 (내규 적용)"
+        ],
+        [
+          "👥",
+          "청소년 상담복지 1 · 사업운영 1"
+        ],
+        [
+          "📅",
+          "2027년 1월부터 근무"
+        ]
+      ],
+      "deadline": "11/17(화) 오후 3시 마감"
+    },
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/066078b1ce7b01a6335d.png",
+    "imageSha256": "066078b1ce7b01a6335d0c70fab67a3896dc714c26c786c3b16af0d7f2473e8b"
   },
   {
     "id": "2d2b01a5-4105-41b7-8192-ae53a367806c",
     "status": "scheduled",
     "createdAt": "2026-11-04T09:12:00.370Z",
-    "updatedAt": "2026-11-04T09:12:00.370Z",
+    "updatedAt": "2026-11-04T10:55:07.155Z",
     "handle": "high_quality_hire",
     "scheduledAt": "2026-11-07T10:30:00.000Z",
     "noticeId": "306634",
@@ -635,11 +1014,41 @@
     "eligibility": "연령·성별·학력·전공 제한 없음, 분야별 자격, 2026-12-28부터 근무 가능; 공식 공고",
     "blogTitle": "한국가스기술공사",
     "blogPayUnchecked": true,
-    "checkedAt": "2026-11-04T09:12:00.370Z",
+    "checkedAt": "2026-11-04T10:55:07.155Z",
     "preparationHours": 120,
     "factsChecked": true,
     "blogChecked": true,
     "postType": "initial",
-    "topicTag": "취업"
+    "topicTag": "취업",
+    "card": {
+      "badge": "💰 조건 비교",
+      "hero": {
+        "label": "직무별 월급 차이 약",
+        "value": "78만원",
+        "sub": "충전원 vs 대기환경기술인"
+      },
+      "tags": [
+        "나이·학력·전공 제한 없음"
+      ],
+      "org": "한국가스기술공사",
+      "role": "수소 인프라 기간제 16명",
+      "facts": [
+        [
+          "충전원",
+          "월 2,561,590원"
+        ],
+        [
+          "운전원",
+          "월 2,731,240원"
+        ],
+        [
+          "대기환경기술인",
+          "월 3,338,880원"
+        ]
+      ],
+      "deadline": "11/18(수) 오후 3시 마감"
+    },
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/69aa09f9fcb2c99c295e.png",
+    "imageSha256": "69aa09f9fcb2c99c295e0c861e6f92ec5884afa0e2ffcf4185e73b4d55194767"
   }
 ]
