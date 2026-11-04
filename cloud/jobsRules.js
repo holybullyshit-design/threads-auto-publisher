@@ -11,15 +11,17 @@ function errors(p, rows, now = new Date()) {
   if (!HANDLES.includes(p.handle)) out.push('account');
   if (!p.id || !p.noticeId || !p.title || !p.angle) out.push('identity');
   if (!p.text?.trim() || p.text.length > 500 || !p.replyText?.trim() || p.replyText.length > 500) out.push('copy');
-  if (!/(세전\s*(?:기본|초임)?연봉|세전\s*월(?:급|\s*기본급)|연\s*환산)/.test(p.text || '') || !p.verifiedPay || !p.text.includes(p.verifiedPay)) out.push('pay');
+  // 공고문이 세전이라고 밝히지 않은 기본월봉·월 기본급은 그 표기 그대로 허용한다.
+  if (!/(세전\s*(?:(?:기본|초임)\s*)?(?:연봉|월|초임)|연\s*환산|기본월봉|월\s*기본급)/.test(p.text || '') || !p.verifiedPay || !p.text.includes(p.verifiedPay)) out.push('pay');
+  if (/https?:\/\/|blogspot\.com/.test(p.text || '')) out.push('textLink');
   for (const key of ['sourceUrl', 'blogUrl']) { try { const u = new URL(p[key]); if (u.protocol !== 'https:' || u.username || u.password) out.push(key); } catch { out.push(key); } }
-  if (!p.replyText?.includes(p.blogUrl)) out.push('replyLink');
+  // 2026-11-04 사용자 결정: 댓글에 URL을 넣지 않고 프로필 링크(블로그)로 보낸다. blogUrl은 게시 전 검증에만 쓴다.
+  if (/https?:\/\/|blogspot\.com/.test(p.replyText || '') || !p.replyText?.includes('프로필 링크')) out.push('replyLink');
   if (!/^[a-f0-9]{64}$/.test(p.sourceSha256 || '')) out.push('sourceHash');
   if (!p.factsChecked || !p.blogChecked || !p.employmentType || !p.eligibility || !p.blogEvidence) out.push('review');
   const start = Date.parse(p.startsAt);
   if (!Number.isFinite(slot) || !Number.isFinite(start) || !Number.isFinite(end) || !Number.isFinite(checked) || start >= end) out.push('date');
   else {
-    if (kstDay(p.scheduledAt) < '2026-11-02' || kstDay(p.scheduledAt) > '2026-11-14') out.push('period');
     if (slot > time || time - slot > 8 * H || kstDay(p.scheduledAt) !== kstDay(now.toISOString()) || kstHour(now.toISOString()) >= 21) out.push('time');
     if (reminder) {
       const exactKstTime = new Date(end + 9 * H).toISOString().slice(11, 16);

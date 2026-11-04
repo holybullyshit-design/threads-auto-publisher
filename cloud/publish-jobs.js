@@ -21,14 +21,14 @@ async function readBack(id, auth, expected, handle) {
 }
 async function checkAccountDay(auth, handle, date) {
   const url = new URL(`https://graph.threads.net/v1.0/${auth.userId}/threads`);
-  url.searchParams.set('fields', 'id,username,text,timestamp');
+  url.searchParams.set('fields', 'id,username,text,timestamp,is_reply');
   url.searchParams.set('limit', '25');
   url.searchParams.set('access_token', auth.accessToken);
   const r = await fetch(url, { signal: AbortSignal.timeout(15000) });
   if (!r.ok) throw new Error(`계정 게시 이력 확인 실패 (HTTP ${r.status})`);
   const data = await r.json();
   if (!Array.isArray(data.data)) throw new Error('계정 게시 이력 형식 오류');
-  if (data.data.some(p => p.username === handle && p.timestamp && kstDay(p.timestamp) === date && p.text && !p.text.includes('hirecurator.blogspot.com'))) throw new Error('오늘 계정에 이미 본문이 게시됐습니다.');
+  if (data.data.some(p => p.username === handle && !p.is_reply && p.timestamp && kstDay(p.timestamp) === date && p.text && !p.text.includes('hirecurator.blogspot.com'))) throw new Error('오늘 계정에 이미 본문이 게시됐습니다.');
 }
 async function run({ queue = store, publish = publishTextPost, web = verifyWeb, now = () => new Date(), getAccounts = accounts, inspect = readBack, checkDay = checkAccountDay } = {}) {
   const initial = await queue.read();
@@ -70,7 +70,7 @@ async function run({ queue = store, publish = publishTextPost, web = verifyWeb, 
     if (!claimed) continue;
     let mainId;
     try {
-      const main = await publish({ text: row.text, accessToken: auth.accessToken, threadsUserId: auth.userId });
+      const main = await publish({ text: row.text, topicTag: row.topicTag, accessToken: auth.accessToken, threadsUserId: auth.userId });
       mainId = main.publishedId;
       if (!mainId) throw new Error('본문 게시 ID 없음');
       await queue.change(rows => { const p = rows.find(x => x.id === row.id); if (p.status !== 'publishing') throw new Error('본문 상태 충돌'); p.status = 'reply_pending'; p.publishedId = mainId; });

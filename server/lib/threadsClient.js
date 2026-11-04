@@ -86,7 +86,7 @@ async function publishContainer(threadsUserId, containerId, accessToken) {
   }
 }
 
-async function publishTextPost({ text, accessToken, threadsUserId, replyToId }) {
+async function publishTextPost({ text, accessToken, threadsUserId, replyToId, topicTag }) {
   const trimmed = assertValidText(text);
 
   if (!accessToken || !threadsUserId) {
@@ -95,11 +95,12 @@ async function publishTextPost({ text, accessToken, threadsUserId, replyToId }) 
     throw err;
   }
 
-  // 1) 미디어 컨테이너 생성 (replyToId가 있으면 그 글에 달리는 답글이 된다)
+  // 1) 미디어 컨테이너 생성 (replyToId가 있으면 그 글에 달리는 답글이 된다, topicTag는 '취업' 같은 토픽 태그)
   const container = await callGraphApi(`/${threadsUserId}/threads`, {
     media_type: "TEXT",
     text: trimmed,
     reply_to_id: replyToId,
+    topic_tag: topicTag,
     access_token: accessToken,
   });
 
