@@ -44034,10 +44034,13 @@
     "scheduledAt": "2026-11-04T06:06:00.000Z",
     "createdAt": "2026-10-30T01:07:54.921Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17914546248507424",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "17914546248507424"
+    ]
   },
   {
     "id": "cb381b3a-b742-418b-b499-eb71699bba75",
