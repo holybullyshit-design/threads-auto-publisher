@@ -179,7 +179,7 @@
   },
   {
     "id": "c59f75df-2039-4ded-bc13-fa281a1f13f0",
-    "status": "publishing",
+    "status": "reply_pending",
     "createdAt": "2026-11-03T12:50:05.565Z",
     "updatedAt": "2026-11-03T12:50:05.565Z",
     "handle": "high_quality_hire",
@@ -203,6 +203,7 @@
     "scheduledAt": "2026-11-04T08:30:00.000Z",
     "sourceSha256": "28e0e08168f89e3c29f5046eabe88672b0893d510d1a8c118db35c023674ade7",
     "attemptedAt": "2026-11-04T08:31:21.249Z",
-    "error": null
+    "error": null,
+    "publishedId": "17955252630320142"
   }
 ]
