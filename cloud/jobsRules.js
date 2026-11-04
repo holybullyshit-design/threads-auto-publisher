@@ -6,6 +6,8 @@ const kstHour = value => new Date(Date.parse(value) + 9 * H).getUTCHours();
 function errors(p, rows, now = new Date()) {
   const out = [];
   const time = now.getTime(), slot = Date.parse(p.scheduledAt), end = Date.parse(p.deadlineAt), checked = Date.parse(p.checkedAt);
+  const reminder = p.postType === 'deadline_reminder';
+  if (p.postType && !['initial', 'deadline_reminder'].includes(p.postType)) out.push('postType');
   if (!HANDLES.includes(p.handle)) out.push('account');
   if (!p.id || !p.noticeId || !p.title || !p.angle) out.push('identity');
   if (!p.text?.trim() || p.text.length > 500 || !p.replyText?.trim() || p.replyText.length > 500) out.push('copy');
@@ -19,16 +21,23 @@ function errors(p, rows, now = new Date()) {
   else {
     if (kstDay(p.scheduledAt) < '2026-11-02' || kstDay(p.scheduledAt) > '2026-11-14') out.push('period');
     if (slot > time || time - slot > 8 * H || kstDay(p.scheduledAt) !== kstDay(now.toISOString()) || kstHour(now.toISOString()) >= 21) out.push('time');
-    if (end - time < Math.max(120, Number(p.preparationHours) || 120) * H) out.push('deadline');
+    if (reminder) {
+      const exactKstTime = new Date(end + 9 * H).toISOString().slice(11, 16);
+      if (kstDay(p.scheduledAt) !== kstDay(p.deadlineAt) || kstDay(now.toISOString()) !== kstDay(p.deadlineAt) || end - time < 4 * H || end - time > 24 * H) out.push('deadline');
+      if (!p.text.includes('오늘 마감') || !p.text.includes(exactKstTime)) out.push('deadlineCopy');
+    } else if (end - time < Math.max(120, Number(p.preparationHours) || 120) * H) out.push('deadline');
     if (checked > time || time - checked > 24 * H) out.push('staleReview');
     if (start > time && !/접수\s*예정/.test(p.text || '')) out.push('notOpen');
   }
   const history = rows.filter(x => x.id !== p.id && ['publishing', 'reply_pending', 'published', 'reply_failed', 'uncertain'].includes(x.status));
   if (history.some(x => x.handle === p.handle && x.attemptedAt && kstDay(x.attemptedAt) === kstDay(now.toISOString()))) out.push('dailyLimit');
   const same = history.filter(x => x.noticeId === p.noticeId || x.sourceUrl === p.sourceUrl);
-  if (same.some(x => x.handle === p.handle)) out.push('duplicate');
-  if (new Set(same.map(x => x.handle)).size >= 2) out.push('crossAccountLimit');
-  if (same.some(x => time - Date.parse(x.attemptedAt || x.publishedAt) < 24 * H)) out.push('crossAccountGap');
+  const own = same.filter(x => x.handle === p.handle);
+  if (!reminder && own.length) out.push('duplicate');
+  if (reminder && (own.some(x => x.postType === 'deadline_reminder') || own.some(x => !Number.isFinite(Date.parse(x.attemptedAt || x.publishedAt)) || time - Date.parse(x.attemptedAt || x.publishedAt) < 72 * H))) out.push('duplicate');
+  if (new Set([...same.map(x => x.handle), p.handle]).size > 2) out.push('crossAccountLimit');
+  if (same.some(x => x.handle !== p.handle && time - Date.parse(x.attemptedAt || x.publishedAt) < 24 * H)) out.push('crossAccountGap');
+  if (history.some(x => x.text?.trim() === p.text?.trim())) out.push('copyDuplicate');
   return out;
 }
 async function verifyWeb(p, fetcher = fetch) {

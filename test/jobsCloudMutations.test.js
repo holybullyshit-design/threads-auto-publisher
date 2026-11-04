@@ -27,3 +27,19 @@ test('one post per KST day and cross-account interval are enforced',()=>{
   const other={...own,handle:'hire_masters',noticeId:'306325',sourceUrl:base().sourceUrl};
   assert.ok(errors(base(),[other,base()],t).includes('crossAccountGap'));
 });
+test('deadline-day reminder keeps exact-time, remaining-time and duplicate gates',()=>{
+  const now=new Date('2026-11-09T09:00:00+09:00');
+  const reminder={...base(),id:'reminder',postType:'deadline_reminder',scheduledAt:now.toISOString(),
+    deadlineAt:'2026-11-09T17:00:00+09:00',checkedAt:new Date(now.getTime()-H).toISOString(),
+    text:'오늘 마감 17:00 KST · 체험형인턴 세전 월급 225만원'};
+  assert.deepEqual(errors(reminder,[reminder],now),[]);
+  const old={...base(),id:'old',status:'published',postType:'initial',attemptedAt:new Date(now.getTime()-4*24*H).toISOString()};
+  assert.deepEqual(errors(reminder,[old,reminder],now),[]);
+  assert.ok(errors({...reminder,text:'내일 마감 17:00 KST · 세전 월급 225만원'},[reminder],now).includes('deadlineCopy'));
+  assert.ok(errors({...reminder,deadlineAt:'2026-11-09T11:00:00+09:00',text:'오늘 마감 11:00 KST · 세전 월급 225만원'},[reminder],now).includes('deadline'));
+  assert.ok(errors({...reminder,deadlineAt:'2026-11-10T17:00:00+09:00'},[reminder],now).includes('deadline'));
+  assert.ok(errors(reminder,[{...old,attemptedAt:new Date(now.getTime()-24*H).toISOString()},reminder],now).includes('duplicate'));
+  assert.ok(errors(reminder,[{...old,postType:'deadline_reminder'},reminder],now).includes('duplicate'));
+  const other={...old,handle:'hire_masters',attemptedAt:new Date(now.getTime()-H).toISOString()};
+  assert.ok(errors(reminder,[other,reminder],now).includes('crossAccountGap'));
+});
