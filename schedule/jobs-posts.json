@@ -109,7 +109,7 @@
   },
   {
     "id": "0e6c4b1d-5a09-458a-bb1b-e83fd267e3c4",
-    "status": "publishing",
+    "status": "reply_pending",
     "createdAt": "2026-11-03T12:50:05.559Z",
     "updatedAt": "2026-11-03T12:50:05.559Z",
     "handle": "jobs_curator",
@@ -133,7 +133,8 @@
     "scheduledAt": "2026-11-04T04:10:00.000Z",
     "sourceSha256": "baff2e1cedfe0db884e2bd6ad0631c7ff91cecb7372d78977f7ec18cc2ea6ca5",
     "attemptedAt": "2026-11-04T04:16:17.376Z",
-    "error": null
+    "error": null,
+    "publishedId": "17953424550336859"
   },
   {
     "id": "6244df03-b2c9-4af1-8025-94018426e17d",
