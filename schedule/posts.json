@@ -45392,10 +45392,13 @@
     "scheduledAt": "2026-11-05T02:31:00.000Z",
     "createdAt": "2026-10-30T01:57:02.887Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17895820068436129",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17895820068436129"
+    ]
   },
   {
     "id": "ebb004c9-dc67-4711-a14b-8aea11d2a47b",
