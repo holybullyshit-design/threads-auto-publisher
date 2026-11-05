@@ -277,7 +277,7 @@
   },
   {
     "id": "990fb790-4c92-4187-b44f-e6cf9acb42c0",
-    "status": "scheduled",
+    "status": "blocked",
     "createdAt": "2026-11-04T09:12:00.370Z",
     "updatedAt": "2026-11-04T10:55:07.155Z",
     "handle": "hire_masters",
@@ -328,7 +328,8 @@
       "deadline": "11/17(화) 오후 4시 마감"
     },
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/6d8048fa0c958139aed0.png",
-    "imageSha256": "6d8048fa0c958139aed073e17314aed34e10e7cc54fd36ff875de28764298b4f"
+    "imageSha256": "6d8048fa0c958139aed073e17314aed34e10e7cc54fd36ff875de28764298b4f",
+    "error": "블로그 공개 URL 오류"
   },
   {
     "id": "ff531db6-e3fe-451d-b681-aa9767052cb2",
