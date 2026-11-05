@@ -46196,10 +46196,13 @@
     "scheduledAt": "2026-11-05T06:01:00.000Z",
     "createdAt": "2026-10-30T02:21:28.547Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18030234926858629",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18030234926858629"
+    ]
   },
   {
     "id": "38d1897c-a448-45bd-90d7-2e69588d7b03",
