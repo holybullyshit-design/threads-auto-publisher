@@ -45488,11 +45488,14 @@
     "scheduledAt": "2026-11-05T10:28:00.000Z",
     "createdAt": "2026-10-30T01:58:53.336Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18033112367685264",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18033112367685264"
+    ]
   },
   {
     "id": "1a8aa417-ec23-4605-9fb3-e2bb9bca96b2",
