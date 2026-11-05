@@ -1690,7 +1690,7 @@
   },
   {
     "id": "a790a349-b295-45d8-a9d4-61be6cccc4fd",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-05T14:35:36.901Z",
     "handle": "high_quality_hire",
     "scheduledAt": "2026-11-10T01:30:00.000Z",
@@ -1745,7 +1745,8 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/0dd4469691c32c28efe0.png",
     "imageSha256": "0dd4469691c32c28efe015a6907406473dddd6a5585d79ac3170a16bcb41d21b",
     "checkedAt": "2026-11-05T14:35:36.901Z",
-    "updatedAt": "2026-11-05T14:35:36.901Z"
+    "updatedAt": "2026-11-05T14:43:42.869Z",
+    "error": "2026-11-05 사용자 지시(세 계정 허용)로 같은 공고를 @hire_masters가 소개하도록 재배치"
   },
   {
     "id": "9a162107-a852-4aec-8c21-b76269875915",
@@ -1803,7 +1804,7 @@
   },
   {
     "id": "c19f91ea-6170-4f1c-b871-72d12e0b6db9",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-05T14:35:36.901Z",
     "handle": "high_quality_hire",
     "scheduledAt": "2026-11-10T10:30:00.000Z",
@@ -1858,6 +1859,7 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/fe83843db280bb93bc36.png",
     "imageSha256": "fe83843db280bb93bc3615e84f6763da8d0845ab02ac4cf920f714168c0a9b75",
     "checkedAt": "2026-11-05T14:35:36.901Z",
-    "updatedAt": "2026-11-05T14:35:36.901Z"
+    "updatedAt": "2026-11-05T14:43:42.870Z",
+    "error": "2026-11-05 사용자 지시(세 계정 허용)로 같은 공고를 @hire_masters가 소개하도록 재배치"
   }
 ]
