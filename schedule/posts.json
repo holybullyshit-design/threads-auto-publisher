@@ -45462,10 +45462,13 @@
     "scheduledAt": "2026-11-05T07:44:00.000Z",
     "createdAt": "2026-10-30T01:58:11.587Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18142707040620889",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18142707040620889"
+    ]
   },
   {
     "id": "6e580a11-f05a-445e-9f2a-9ea7ac6804cd",
