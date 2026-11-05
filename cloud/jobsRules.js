@@ -32,8 +32,8 @@ function errors(p, rows, now = new Date()) {
   if (!HANDLES.includes(p.handle)) out.push('account');
   if (!p.id || !p.noticeId || !p.title || !p.angle) out.push('identity');
   if (!p.text?.trim() || p.text.length > 500 || !p.replyText?.trim() || p.replyText.length > 500) out.push('copy');
-  // 급여 줄은 항상 있어야 한다. 공고문이 세전이라고 밝히지 않은 금액·미공개는 공고 표기 그대로 쓴다.
-  if (!/(세전|연봉|월급|기본월봉|기본급|월\s*[\d,]+(?:~[\d,]+)?(?:만|원)|연\s*환산|미공개)/.test(p.text || '') || !p.verifiedPay || !p.text.includes(p.verifiedPay)) out.push('pay');
+  // 급여 줄은 항상 있어야 한다. 공고문이 세전이라고 밝히지 않은 금액·미공개는 공고 표기 그대로 쓴다. 일급·시급만 공고된 경우 그대로 쓴다.
+  if (!/(세전|연봉|월급|일급|시급|기본월봉|기본급|월\s*[\d,]+(?:~[\d,]+)?(?:만|원)|연\s*환산|미공개)/.test(p.text || '') || !p.verifiedPay || !p.text.includes(p.verifiedPay)) out.push('pay');
   if (/https?:\/\/|blogspot\.com/.test(p.text || '')) out.push('textLink');
   // 예약 시점에 아직 공개 전인 블로그 글은 blogUrl 대신 blogTitle로 게시 직전에 찾는다.
   for (const key of ['sourceUrl', 'blogUrl']) { if (key === 'blogUrl' && !p.blogUrl && p.blogTitle?.trim()) continue; try { const u = new URL(p[key]); if (u.protocol !== 'https:' || u.username || u.password) out.push(key); } catch { out.push(key); } }

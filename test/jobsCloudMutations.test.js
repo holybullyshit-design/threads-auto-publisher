@@ -103,3 +103,10 @@ test('temporary blog failures are retried and marked transient; content problems
   await assert.rejects(()=>verifyWeb(wrong,site(()=>({ok:true,url:wrong.blogUrl,text:async()=>''})),net),e=>/우리 블로그 주소 아님/.test(e.message)&&!e.transient);
   await assert.rejects(()=>verifyWeb(p,async u=>u.includes('alio')?{ok:true,status:200,arrayBuffer:async()=>Buffer.alloc(120,2)}:site(()=>({}))(u),net),e=>/공식 공고 내용 변경/.test(e.message)&&!e.transient);
 });
+test('daily or hourly pay lines count as a pay line, a missing pay line does not',()=>{
+  const p={...base(),text:base().text.replace('세전 월급 225만원','일급 117,440원'),verifiedPay:'117,440원'};
+  p.card={...p.card,facts:[['💰','일급 117,440원'],...p.card.facts.slice(1)]};
+  assert.ok(!errors(p,[p],t).includes('pay'));
+  assert.ok(!errors({...p,text:p.text.replace('일급','시급')},[p],t).includes('pay'));
+  assert.ok(errors({...p,text:p.text.replace('일급 117,440원','117,440원')},[p],t).includes('pay'));
+});
