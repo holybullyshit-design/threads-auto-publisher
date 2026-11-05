@@ -1080,5 +1080,784 @@
     },
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/69aa09f9fcb2c99c295e.png",
     "imageSha256": "69aa09f9fcb2c99c295e0c861e6f92ec5884afa0e2ffcf4185e73b4d55194767"
+  },
+  {
+    "id": "a3f42f84-ce08-4dcb-b2b7-f474b7ce9d10",
+    "status": "scheduled",
+    "createdAt": "2026-11-05T14:35:36.901Z",
+    "handle": "hire_masters",
+    "scheduledAt": "2026-11-07T09:30:00.000Z",
+    "noticeId": "306599",
+    "title": "기술보증기금 고졸 사무지원 4명",
+    "angle": "고졸 전용 무기계약, 필기 없음",
+    "text": "고졸만 지원되는 무기계약직 자리 있어\n기술보증기금이 4명 뽑아\n\n1. 기술보증기금 사무지원직\n2. 무기계약 4명 · 최종학력 고졸\n3. 💰 연봉 3,384만원 (성과·상여 포함)\n4. 서울 2·판교 1·부산 본점 1\n5. ⏰ 11/17(화) 오후 4시 마감\n\n필기 없이 서류랑 면접만 보면 돼",
+    "replyText": "👆 자세한 건 프로필 링크에 정리해놨어",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3084485",
+    "sourceSha256": "297996bd9d870318ddaa7c6006fc53efb877415c32db13902a58e1ff88d2603e",
+    "blogEvidence": "기술보증기금",
+    "startsAt": "2026-11-02T14:00:00+09:00",
+    "deadlineAt": "2026-11-17T16:00:00+09:00",
+    "verifiedPay": "3,384만원",
+    "employmentType": "무기계약직(사무지원직)",
+    "eligibility": "최종학력 고졸, 블라인드 채용, 즉시 근무 가능; 공식 공고",
+    "blogTitle": "기술보증기금",
+    "blogPayUnchecked": true,
+    "card": {
+      "badge": "👀 이거 봤어?",
+      "hook": [
+        "[[고졸만]] 지원되는",
+        "무기계약직 자리 있어"
+      ],
+      "org": "기술보증기금",
+      "role": "사무지원직 4명",
+      "facts": [
+        [
+          "💰",
+          "연봉 3,384만원 (성과·상여 포함)"
+        ],
+        [
+          "📍",
+          "서울 2·판교 1·부산 본점 1"
+        ],
+        [
+          "✍️",
+          "필기 없이 서류·면접"
+        ]
+      ],
+      "deadline": "11/17(화) 오후 4시 마감"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/6d8048fa0c958139aed0.png",
+    "imageSha256": "6d8048fa0c958139aed073e17314aed34e10e7cc54fd36ff875de28764298b4f",
+    "checkedAt": "2026-11-05T14:35:36.901Z",
+    "updatedAt": "2026-11-05T14:35:36.901Z"
+  },
+  {
+    "id": "3f6f5a27-a093-47ee-91cc-e85dbe59bae0",
+    "status": "scheduled",
+    "createdAt": "2026-11-05T14:35:36.901Z",
+    "handle": "jobs_curator",
+    "scheduledAt": "2026-11-07T23:30:00.000Z",
+    "noticeId": "306406",
+    "title": "한국사회보장정보원 기간제 21명",
+    "angle": "전산·행정·상담 기간제, 인적성검사 주의",
+    "text": "🔔 사회보장정보원 기간제 21명\n전산·행정·상담 직무예요\n\n1. 한국사회보장정보원 기간제\n2. 전산 12·행정 7·상담 1·대체 1\n3. 💰 연봉 금액 미기재\n4. 서울 광진구 · 주 5일 40시간\n5. ⏰ 11/16(월) 오후 4시 마감\n\n마감 직후 인적성검사 안 보면 탈락이에요",
+    "replyText": "👆 공고 원문·지원 링크는 프로필 링크에서",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3084207",
+    "sourceSha256": "e29836638be33228339c11ddc850db7ba13d03416e66207cdd1666462387278a",
+    "startsAt": "2026-11-02T09:00:00+09:00",
+    "deadlineAt": "2026-11-16T16:00:00+09:00",
+    "verifiedPay": "금액 미기재",
+    "employmentType": "기간제근로자(전산·행정·상담)",
+    "eligibility": "직급별 자격·경력 요건, 서울 광진구 본원 주 5일 40시간; 공식 공고",
+    "blogTitle": "한국사회보장정보원",
+    "blogEvidence": "한국사회보장정보원",
+    "card": {
+      "badge": "🔔 새 공고",
+      "hook": [
+        "[[전산·행정·상담]]",
+        "기간제 [[21명]]"
+      ],
+      "org": "한국사회보장정보원",
+      "role": "기간제근로자 · 서울 광진구",
+      "facts": [
+        [
+          "💰",
+          "연봉 금액 미기재"
+        ],
+        [
+          "👥",
+          "전산 12·행정 7·상담 1·대체 1"
+        ],
+        [
+          "🕘",
+          "주 5일 40시간"
+        ]
+      ],
+      "deadline": "11/16(월) 오후 4시 마감"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/84aaf3ab9320f01bd682.png",
+    "imageSha256": "84aaf3ab9320f01bd682216fb828981684d652adc444d84d09e0459589616dc4",
+    "checkedAt": "2026-11-05T14:35:36.901Z",
+    "updatedAt": "2026-11-05T14:35:36.901Z"
+  },
+  {
+    "id": "9be298fb-642b-4518-914a-e734d7a25627",
+    "status": "scheduled",
+    "createdAt": "2026-11-05T14:35:36.901Z",
+    "handle": "hire_masters",
+    "scheduledAt": "2026-11-08T00:30:00.000Z",
+    "angle": "연말정산 시즌 인사팀 인턴",
+    "text": "인사 업무 경험 쌓고 싶었어?\n국립중앙의료원이 인턴 2명 뽑아\n\n1. 국립중앙의료원 인사팀 인턴\n2. 체험형 · 2027년 1~2월 · 서울\n3. 💰 월 266만2천원 (상여금 포함)\n4. 만 19~34세 · 서류→인성→면접\n5. ⏰ 11/16(월) 밤 11시 59분 마감\n\n연말정산 서류 검토랑 문의 응대 업무야",
+    "replyText": "👆 자세한 건 프로필 링크에 정리해놨어",
+    "card": {
+      "badge": "👀 이거 봤어?",
+      "hook": [
+        "[[인사팀]] 인턴",
+        "두 달 해볼래?"
+      ],
+      "org": "국립중앙의료원",
+      "role": "체험형 청년인턴 2명",
+      "facts": [
+        [
+          "💰",
+          "월 266만2천원 (상여금 포함)"
+        ],
+        [
+          "📅",
+          "2027년 1~2월 · 서울"
+        ],
+        [
+          "📝",
+          "서류→인성→면접"
+        ]
+      ],
+      "deadline": "11/16(월) 밤 11시 59분 마감"
+    },
+    "noticeId": "306606",
+    "title": "국립중앙의료원 인사팀 청년인턴 2명",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3084509",
+    "sourceSha256": "3f24ce7357cb57b15e84f164fd6ed80f3836cee04c124994c4a977e6ebc7ea3a",
+    "blogEvidence": "국립중앙의료원",
+    "startsAt": "2026-11-02T17:00:00+09:00",
+    "deadlineAt": "2026-11-16T23:59:00+09:00",
+    "verifiedPay": "266만2천원",
+    "employmentType": "체험형 청년인턴(2027-01-01~02-28)",
+    "eligibility": "만 19~34세; 공식 공고",
+    "blogTitle": "국립중앙의료원",
+    "blogPayUnchecked": true,
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/8cc0dd36f2a6c4082d17.png",
+    "imageSha256": "8cc0dd36f2a6c4082d1729153f99d578aba0524520d1425781c6f9f472f3bb20",
+    "checkedAt": "2026-11-05T14:35:36.901Z",
+    "updatedAt": "2026-11-05T14:35:36.901Z"
+  },
+  {
+    "id": "cbd8c1e7-846d-401a-93d6-b352687d597e",
+    "status": "scheduled",
+    "createdAt": "2026-11-05T14:35:36.901Z",
+    "handle": "high_quality_hire",
+    "scheduledAt": "2026-11-08T01:30:00.000Z",
+    "noticeId": "306562",
+    "title": "한국방송통신전파진흥원 체험형 청년인턴 13명",
+    "angle": "면접 없는 인턴 조건 정리",
+    "text": "💰 세전 월 224만원, 면접 없는 인턴\nKCA 청년인턴 13명 조건 정리\n\n1. 한국방송통신전파진흥원 인턴\n2. 13명 · 나주 근무 · 6개월\n3. 세전 월 224만원 · 주 40시간\n4. 적격심사 → 자기소개서 평가\n5. ⏰ 11/17(화) 오후 4시 마감\n\n만 18~34세, 학력·성별 제한은 없습니다",
+    "replyText": "👆 직무별 급여·자격 비교는 프로필 링크에",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3084254",
+    "sourceSha256": "e6e6073f56565493360aa02ddd8f52ab4e3ce2ce5d6dcfbe0c91322fa1758616",
+    "blogEvidence": "한국방송통신전파진흥원 청년인턴 13명",
+    "startsAt": "2026-11-03T00:00:00+09:00",
+    "deadlineAt": "2026-11-17T16:00:00+09:00",
+    "verifiedPay": "224만원",
+    "employmentType": "체험형 청년인턴(6개월)",
+    "eligibility": "만 18~34세(제대군인 최대 37세), 성별·학력 제한 없음; 공식 공고",
+    "blogUrl": "https://hirecurator.blogspot.com/2026/11/13-224-11-17.html",
+    "card": {
+      "badge": "💰 조건 비교",
+      "hero": {
+        "label": "세전 월",
+        "value": "224만원",
+        "sub": "주 40시간 · 6개월 인턴"
+      },
+      "tags": [
+        "면접 없음",
+        "학력·성별 제한 없음"
+      ],
+      "org": "한국방송통신전파진흥원",
+      "role": "청년인턴 13명",
+      "facts": [
+        [
+          "근무지",
+          "나주"
+        ],
+        [
+          "전형",
+          "적격심사 → 자기소개서 평가"
+        ],
+        [
+          "나이",
+          "만 18~34세"
+        ]
+      ],
+      "deadline": "11/17(화) 오후 4시 마감"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/226d73a280aa99f64b85.png",
+    "imageSha256": "226d73a280aa99f64b85e98ebf026b349871ecad774b37865593b7872d4cdf77",
+    "checkedAt": "2026-11-05T14:35:36.901Z",
+    "updatedAt": "2026-11-05T14:35:36.901Z"
+  },
+  {
+    "id": "c9fdc132-5841-4d78-a378-91eeb2e76d35",
+    "status": "scheduled",
+    "createdAt": "2026-11-05T14:35:36.901Z",
+    "handle": "jobs_curator",
+    "scheduledAt": "2026-11-08T08:30:00.000Z",
+    "noticeId": "306604",
+    "title": "대구경북첨단의료산업진흥재단 계약직·청년인턴 44명",
+    "angle": "연구원·기간제·청년인턴 44명 연봉 공개",
+    "text": "🔔 케이메디허브 44명 채용\n연구원·기간제·청년인턴 모집해요\n\n1. 대구경북첨단의료산업진흥재단\n2. 위촉연구원 12·기간제 5·인턴 27\n3. 💰 연봉 32,000,000원+경력급\n4. 인턴은 26,835,600원+경력급\n5. ⏰ 11/17(화) 오후 5시 마감\n\n두 분야 동시에 지원하면 불합격이에요",
+    "replyText": "👆 공고 원문·지원 링크는 프로필 링크에서",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3084504",
+    "sourceSha256": "58d0074f71453875936a13318cfd2558bf187276c6dcecbc4feba7db3d62abe3",
+    "startsAt": "2026-11-03T00:00:00+09:00",
+    "deadlineAt": "2026-11-17T17:00:00+09:00",
+    "verifiedPay": "32,000,000원",
+    "employmentType": "정원외 계약직(위촉연구원·기간제)·체험형 청년인턴",
+    "eligibility": "분야별 자격, 청년인턴 만 15~34세 미취업(재학생 제외), 2개 분야 동시 지원 시 불합격; 공식 공고",
+    "blogTitle": "대구경북첨단의료산업진흥재단",
+    "blogEvidence": "대구경북첨단의료산업진흥재단",
+    "card": {
+      "badge": "🔔 새 공고",
+      "hook": [
+        "연구원·기간제·인턴",
+        "[[44명]] 대구 채용"
+      ],
+      "org": "대구경북첨단의료산업진흥재단",
+      "role": "정원외 계약직 · 청년인턴",
+      "facts": [
+        [
+          "💰",
+          "연봉 32,000,000원+경력급"
+        ],
+        [
+          "👥",
+          "위촉연구원 12·기간제 5·인턴 27"
+        ],
+        [
+          "🎓",
+          "인턴은 26,835,600원+경력급"
+        ]
+      ],
+      "deadline": "11/17(화) 오후 5시 마감"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/f4cc2ceda9f945126e73.png",
+    "imageSha256": "f4cc2ceda9f945126e73b0efd81809819932174bcbc70dbe8ecbd158d6085d03",
+    "checkedAt": "2026-11-05T14:35:36.901Z",
+    "updatedAt": "2026-11-05T14:35:36.901Z"
+  },
+  {
+    "id": "af5094a3-387b-4af3-b99d-ba6a8dc10b13",
+    "status": "scheduled",
+    "createdAt": "2026-11-05T14:35:36.901Z",
+    "handle": "hire_masters",
+    "scheduledAt": "2026-11-08T09:30:00.000Z",
+    "angle": "무주 청소년 상담 공무직",
+    "text": "청소년 상담 쪽 공무직 찾고 있었어?\n무주 드림마을이 2명 뽑아\n\n1. 국립청소년인터넷드림마을\n2. 청소년 상담복지 1 · 사업운영 1\n3. 💰 급여 공고 미공개 (내규 적용)\n4. 무기계약 · 2027년 1월부터 근무\n5. ⏰ 11/17(화) 오후 3시 마감\n\n상담은 석사나 학사+경력 2년이 필요해",
+    "replyText": "👆 자세한 건 프로필 링크에 정리해놨어",
+    "card": {
+      "badge": "👀 이거 봤어?",
+      "hook": [
+        "[[무주]]에서 일하는",
+        "공무직 2명 있어"
+      ],
+      "org": "국립청소년인터넷드림마을",
+      "role": "무기계약 공무직",
+      "facts": [
+        [
+          "💰",
+          "급여 공고 미공개 (내규 적용)"
+        ],
+        [
+          "👥",
+          "청소년 상담복지 1 · 사업운영 1"
+        ],
+        [
+          "📅",
+          "2027년 1월부터 근무"
+        ]
+      ],
+      "deadline": "11/17(화) 오후 3시 마감"
+    },
+    "noticeId": "306568",
+    "title": "국립청소년인터넷드림마을 공무직 2명",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3084308",
+    "sourceSha256": "34371abfdfaa05744ac591bf1f6049d45c939957417e1b3080595cbfab018983",
+    "blogEvidence": "국립청소년인터넷드림마을",
+    "startsAt": "2026-11-02T00:00:00+09:00",
+    "deadlineAt": "2026-11-17T15:00:00+09:00",
+    "verifiedPay": "급여 공고 미공개",
+    "employmentType": "무기계약직(공무직)",
+    "eligibility": "상담복지: 상담 석사 또는 학사+경력 2년 / 사업운영: 고졸 이상; 공식 공고",
+    "blogTitle": "국립청소년인터넷드림마을",
+    "blogPayUnchecked": true,
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/8f47f7aee5baf72e3f1f.png",
+    "imageSha256": "8f47f7aee5baf72e3f1fd4b3faaa67ab55e15818f7571c1eda96ae7bd82ee20d",
+    "checkedAt": "2026-11-05T14:35:36.901Z",
+    "updatedAt": "2026-11-05T14:35:36.901Z"
+  },
+  {
+    "id": "dc486a80-90f6-4fe2-865e-7bb53a96c5d2",
+    "status": "scheduled",
+    "createdAt": "2026-11-05T14:35:36.901Z",
+    "handle": "jobs_curator",
+    "scheduledAt": "2026-11-08T23:30:00.000Z",
+    "noticeId": "306662",
+    "title": "한국원자력의학원 정규직 신규간호사 50명",
+    "angle": "졸업예정자 가능 정규직 간호사",
+    "text": "🔔 정규직 신규간호사 50명\n졸업예정자도 지원 가능해요\n\n1. 한국원자력의학원 간호직 5급\n2. 정규직 50명 · 서울\n3. 💰 연봉 공고에 미기재\n4. TOEIC 600점 이상 필요\n5. ⏰ 11/18(수) 오후 5시 마감\n\n필기는 12/5(토) 간호학 50문항이에요",
+    "replyText": "👆 공고 원문·지원 링크는 프로필 링크에서",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3084898",
+    "sourceSha256": "260f605076891d4b500d70bc6f067e8f4ae455677f16e0cbdb7c98378f03034f",
+    "startsAt": "2026-11-03T00:00:00+09:00",
+    "deadlineAt": "2026-11-18T17:00:00+09:00",
+    "verifiedPay": "공고에 미기재",
+    "employmentType": "정규직(간호직 5급, 신입)",
+    "eligibility": "간호사 면허 소지자 또는 2027년 2월 졸업예정·국시 응시 예정자, TOEIC 600점 이상; 공식 공고",
+    "blogTitle": "한국원자력의학원",
+    "blogEvidence": "한국원자력의학원",
+    "card": {
+      "badge": "🔔 새 공고",
+      "hook": [
+        "[[정규직]] 간호사",
+        "[[50명]] 채용"
+      ],
+      "org": "한국원자력의학원",
+      "role": "간호직 5급 · 신입",
+      "facts": [
+        [
+          "💰",
+          "연봉 공고에 미기재"
+        ],
+        [
+          "📝",
+          "TOEIC 600점 이상"
+        ],
+        [
+          "✍️",
+          "필기 12/5(토) 간호학 50문항"
+        ]
+      ],
+      "deadline": "11/18(수) 오후 5시 마감"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/8aad01b68775eb938215.png",
+    "imageSha256": "8aad01b68775eb938215e2d0883dba14e6cda0e8e0ce20ef3df4ebc7bdfa4147",
+    "checkedAt": "2026-11-05T14:35:36.901Z",
+    "updatedAt": "2026-11-05T14:35:36.901Z"
+  },
+  {
+    "id": "5af9961e-16d2-43a1-95f8-e7d65668d4a9",
+    "status": "scheduled",
+    "createdAt": "2026-11-05T14:35:36.901Z",
+    "handle": "hire_masters",
+    "scheduledAt": "2026-11-09T00:30:00.000Z",
+    "noticeId": "306406",
+    "title": "한국사회보장정보원 기간제 21명",
+    "angle": "전산·행정 기간제, 인적성검사 놓치지 않기",
+    "text": "공공기관 전산·행정 기간제 찾고 있어?\n사회보장정보원이 21명 뽑아\n\n1. 한국사회보장정보원 기간제\n2. 전산 12·행정 7·상담 1·대체 1\n3. 💰 연봉 금액 미기재\n4. 서울 광진구 · 주 5일 40시간\n5. ⏰ 11/16(월) 오후 4시 마감\n\n마감 바로 뒤 인적성검사까지 꼭 봐야 해",
+    "replyText": "👆 자세한 건 프로필 링크에 정리해놨어",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3084207",
+    "sourceSha256": "e29836638be33228339c11ddc850db7ba13d03416e66207cdd1666462387278a",
+    "startsAt": "2026-11-02T09:00:00+09:00",
+    "deadlineAt": "2026-11-16T16:00:00+09:00",
+    "verifiedPay": "금액 미기재",
+    "employmentType": "기간제근로자(전산·행정·상담)",
+    "eligibility": "직급별 자격·경력 요건, 서울 광진구 본원 주 5일 40시간; 공식 공고",
+    "blogTitle": "한국사회보장정보원",
+    "blogEvidence": "한국사회보장정보원",
+    "card": {
+      "badge": "👀 이거 봤어?",
+      "hook": [
+        "전산·행정 [[기간제]]",
+        "21명 뽑는대"
+      ],
+      "org": "한국사회보장정보원",
+      "role": "기간제근로자 21명",
+      "facts": [
+        [
+          "💰",
+          "연봉 금액 미기재"
+        ],
+        [
+          "📍",
+          "서울 광진구 · 주 5일 40시간"
+        ],
+        [
+          "⚠️",
+          "마감 뒤 인적성검사 필수"
+        ]
+      ],
+      "deadline": "11/16(월) 오후 4시 마감"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/29baadf355c2467f574b.png",
+    "imageSha256": "29baadf355c2467f574bd37b1c897e1873ecf33cf6e7ce69642a28376a2ffc7f",
+    "checkedAt": "2026-11-05T14:35:36.901Z",
+    "updatedAt": "2026-11-05T14:35:36.901Z"
+  },
+  {
+    "id": "6b77d42f-9f68-41d4-84a8-25ee709665a6",
+    "status": "scheduled",
+    "createdAt": "2026-11-05T14:35:36.901Z",
+    "handle": "jobs_curator",
+    "scheduledAt": "2026-11-09T08:30:00.000Z",
+    "noticeId": "306665",
+    "title": "충북대학교병원 신규직원 13명",
+    "angle": "6개 직종 블라인드 채용",
+    "text": "🔔 충북대병원 신규직원 13명\n6개 직종 블라인드 채용이에요\n\n1. 충북대학교병원 신규직원\n2. 행정 2·회계 3·조리 2·방사선 1\n3. 운영지원직: 미화 3·시설관리 2\n4. 💰 운영지원직 초임연봉 약 3,200만원\n5. ⏰ 11/18(수) 낮 12시 마감\n\n2025년 기준이고, 그 외는 금액 미기재예요",
+    "replyText": "👆 공고 원문·지원 링크는 프로필 링크에서",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3084920",
+    "sourceSha256": "e8ee9763ec427516c6945c1ada32420211b483fb51316a16482d8b8734a05c79",
+    "startsAt": "2026-11-04T00:00:00+09:00",
+    "deadlineAt": "2026-11-18T12:00:00+09:00",
+    "verifiedPay": "3,200만원",
+    "employmentType": "정규직 및 운영지원직(미화·시설관리)",
+    "eligibility": "직종별 자격, 블라인드 채용; 공식 공고",
+    "blogTitle": "충북대학교병원",
+    "blogEvidence": "충북대학교병원",
+    "card": {
+      "badge": "🔔 새 공고",
+      "hook": [
+        "[[6개 직종]]",
+        "신규직원 [[13명]]"
+      ],
+      "org": "충북대학교병원",
+      "role": "블라인드 채용",
+      "facts": [
+        [
+          "💰",
+          "운영지원직 초임연봉 약 3,200만원"
+        ],
+        [
+          "👥",
+          "행정 2·회계 3·조리 2·방사선 1"
+        ],
+        [
+          "🧹",
+          "미화 3·시설관리 2"
+        ]
+      ],
+      "deadline": "11/18(수) 낮 12시 마감"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/9c23e13ca3d2083db882.png",
+    "imageSha256": "9c23e13ca3d2083db8829d47d52f9fb592a049bf984a9685820ddc88daae713b",
+    "checkedAt": "2026-11-05T14:35:36.901Z",
+    "updatedAt": "2026-11-05T14:35:36.901Z"
+  },
+  {
+    "id": "810a8a6d-70e0-4dd8-8a72-bccf4029cfda",
+    "status": "scheduled",
+    "createdAt": "2026-11-05T14:35:36.901Z",
+    "handle": "high_quality_hire",
+    "scheduledAt": "2026-11-09T10:30:00.000Z",
+    "noticeId": "306604",
+    "title": "대구경북첨단의료산업진흥재단 계약직·청년인턴 44명",
+    "angle": "유형별 연봉 하한 비교",
+    "text": "💰 연봉 32,000,000원부터\n케이메디허브 44명 조건 비교\n\n1. 대구경북첨단의료산업진흥재단\n2. 위촉연구원·기간제 · 1년 계약\n3. 청년인턴 27명 · 6개월\n4. 인턴 연봉 26,835,600원+경력급\n5. ⏰ 11/17(화) 오후 5시 마감\n\n인턴 27명 중 17명은 장애인 제한경쟁입니다",
+    "replyText": "👆 직무별 급여·자격 비교는 프로필 링크에",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3084504",
+    "sourceSha256": "58d0074f71453875936a13318cfd2558bf187276c6dcecbc4feba7db3d62abe3",
+    "startsAt": "2026-11-03T00:00:00+09:00",
+    "deadlineAt": "2026-11-17T17:00:00+09:00",
+    "verifiedPay": "32,000,000원",
+    "employmentType": "정원외 계약직(위촉연구원·기간제)·체험형 청년인턴",
+    "eligibility": "분야별 자격, 청년인턴 만 15~34세 미취업(재학생 제외), 2개 분야 동시 지원 시 불합격; 공식 공고",
+    "blogTitle": "대구경북첨단의료산업진흥재단",
+    "blogEvidence": "대구경북첨단의료산업진흥재단",
+    "card": {
+      "badge": "💰 조건 비교",
+      "hero": {
+        "label": "연봉 하한",
+        "value": "32,000,000원",
+        "sub": "위촉연구원·기간제 + 경력급"
+      },
+      "tags": [
+        "대구",
+        "1년 계약"
+      ],
+      "org": "대구경북첨단의료산업진흥재단",
+      "role": "계약직·청년인턴 44명",
+      "facts": [
+        [
+          "인턴 연봉",
+          "26,835,600원+경력급"
+        ],
+        [
+          "인턴",
+          "27명 · 6개월"
+        ],
+        [
+          "장애인 제한",
+          "인턴 27명 중 17명"
+        ]
+      ],
+      "deadline": "11/17(화) 오후 5시 마감"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/80e4ef346184e1f38387.png",
+    "imageSha256": "80e4ef346184e1f383870e6f616d3bcacafc9e970f61cdd6bc2efabe8423bd91",
+    "checkedAt": "2026-11-05T14:35:36.901Z",
+    "updatedAt": "2026-11-05T14:35:36.901Z"
+  },
+  {
+    "id": "49d5f99f-9b0d-422a-b7ca-19d55561775a",
+    "status": "scheduled",
+    "createdAt": "2026-11-05T14:35:36.901Z",
+    "handle": "jobs_curator",
+    "scheduledAt": "2026-11-09T23:30:00.000Z",
+    "noticeId": "306729",
+    "title": "한국해양수산연수원 계약직·인턴 26명",
+    "angle": "16개 분야 직무별 월급 공개",
+    "text": "🔔 해양수산연수원 계약직 26명\n16개 분야, 직무별 월급 공개\n\n1. 한국해양수산연수원 계약직·인턴\n2. 단기계약 15·대체인력 8·인턴 3\n3. 💰 세전 월 1,256,950원부터\n4. 부산·인천·전남 근무지\n5. ⏰ 11/19(목) 오후 1시 마감\n\n두 분야 이상 지원하면 불합격이에요",
+    "replyText": "👆 공고 원문·지원 링크는 프로필 링크에서",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3085297",
+    "sourceSha256": "b5d5b13550197b9cd9aebe3b2e11fb2e9973bfa6d444c3d7dca9ef7e378105ba",
+    "startsAt": "2026-11-05T00:00:00+09:00",
+    "deadlineAt": "2026-11-19T13:00:00+09:00",
+    "verifiedPay": "1,256,950원",
+    "employmentType": "단기계약직·대체인력·체험형 청년인턴",
+    "eligibility": "분야별 자격, 복수지원 시 불합격; 공식 공고",
+    "blogTitle": "한국해양수산연수원",
+    "blogEvidence": "한국해양수산연수원",
+    "card": {
+      "badge": "🔔 새 공고",
+      "hook": [
+        "[[16개 분야]]",
+        "계약직 [[26명]]"
+      ],
+      "org": "한국해양수산연수원",
+      "role": "단기계약·대체인력·청년인턴",
+      "facts": [
+        [
+          "💰",
+          "세전 월 1,256,950원부터"
+        ],
+        [
+          "👥",
+          "단기계약 15·대체인력 8·인턴 3"
+        ],
+        [
+          "📍",
+          "부산·인천·전남"
+        ]
+      ],
+      "deadline": "11/19(목) 오후 1시 마감"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/a6f393053d067d443988.png",
+    "imageSha256": "a6f393053d067d4439887239fb6d2ebe66dcdcec8429514d3720b22ad3fad9f3",
+    "checkedAt": "2026-11-05T14:35:36.901Z",
+    "updatedAt": "2026-11-05T14:35:36.901Z"
+  },
+  {
+    "id": "a790a349-b295-45d8-a9d4-61be6cccc4fd",
+    "status": "scheduled",
+    "createdAt": "2026-11-05T14:35:36.901Z",
+    "handle": "high_quality_hire",
+    "scheduledAt": "2026-11-10T01:30:00.000Z",
+    "noticeId": "306662",
+    "title": "한국원자력의학원 정규직 신규간호사 50명",
+    "angle": "정규직 간호사 전형 배수 비교",
+    "text": "💰 정규직 간호사 50명, 보수는 미기재\n원자력의학원 조건 정리\n\n1. 한국원자력의학원 간호직 5급\n2. 정규직 50명 · 신입\n3. 💰 연봉 공고에 미기재\n4. 서류 5배수 → 필기 3배수 → 면접\n5. ⏰ 11/18(수) 오후 5시 마감\n\n2027년 2월 졸업예정자도 지원 가능합니다",
+    "replyText": "👆 직무별 급여·자격 비교는 프로필 링크에",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3084898",
+    "sourceSha256": "260f605076891d4b500d70bc6f067e8f4ae455677f16e0cbdb7c98378f03034f",
+    "startsAt": "2026-11-03T00:00:00+09:00",
+    "deadlineAt": "2026-11-18T17:00:00+09:00",
+    "verifiedPay": "공고에 미기재",
+    "employmentType": "정규직(간호직 5급, 신입)",
+    "eligibility": "간호사 면허 소지자 또는 2027년 2월 졸업예정·국시 응시 예정자, TOEIC 600점 이상; 공식 공고",
+    "blogTitle": "한국원자력의학원",
+    "blogEvidence": "한국원자력의학원",
+    "card": {
+      "badge": "💰 조건 비교",
+      "hero": {
+        "label": "정규직 채용",
+        "value": "50명",
+        "sub": "간호직 5급 · 신입"
+      },
+      "tags": [
+        "졸업예정자 가능",
+        "서울"
+      ],
+      "org": "한국원자력의학원",
+      "role": "정규직 신규간호사",
+      "facts": [
+        [
+          "연봉",
+          "공고에 미기재"
+        ],
+        [
+          "전형",
+          "서류 5배수 → 필기 3배수 → 면접"
+        ],
+        [
+          "지원",
+          "2027년 2월 졸업예정자 가능"
+        ]
+      ],
+      "deadline": "11/18(수) 오후 5시 마감"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/0dd4469691c32c28efe0.png",
+    "imageSha256": "0dd4469691c32c28efe015a6907406473dddd6a5585d79ac3170a16bcb41d21b",
+    "checkedAt": "2026-11-05T14:35:36.901Z",
+    "updatedAt": "2026-11-05T14:35:36.901Z"
+  },
+  {
+    "id": "9a162107-a852-4aec-8c21-b76269875915",
+    "status": "scheduled",
+    "createdAt": "2026-11-05T14:35:36.901Z",
+    "handle": "jobs_curator",
+    "scheduledAt": "2026-11-10T08:30:00.000Z",
+    "noticeId": "306723",
+    "title": "한국전력공사 부산울산 기간제 12명",
+    "angle": "한전 대체인력 일급 공개",
+    "text": "🔔 한전 부산울산 기간제 12명\n사무·전기·배전 대체인력이에요\n\n1. 한국전력공사 부산울산본부\n2. 사무 6·전기 2·배전담당 4\n3. 💰 일급 105,840~117,440원\n4. 정규직 전환 대상 아님\n5. ⏰ 11/19(목) 오후 1시 마감\n\n계약기간은 근무지마다 달라요",
+    "replyText": "👆 공고 원문·지원 링크는 프로필 링크에서",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3085257",
+    "sourceSha256": "a5180995ea78eed9d86a13846993ec8e3fda7e12e5c37512c83b55d3dbbba210",
+    "startsAt": "2026-11-05T12:00:00+09:00",
+    "deadlineAt": "2026-11-19T13:00:00+09:00",
+    "verifiedPay": "117,440원",
+    "employmentType": "기간제근로자(대체인력), 정규직 전환 대상 아님",
+    "eligibility": "분야별 자격, 부산·울산·양산·김해 근무; 공식 공고",
+    "blogTitle": "한국전력공사 부산울산",
+    "blogEvidence": "한국전력공사",
+    "card": {
+      "badge": "🔔 새 공고",
+      "hook": [
+        "[[한전]] 대체인력",
+        "기간제 [[12명]]"
+      ],
+      "org": "한국전력공사",
+      "role": "부산울산본부 기간제",
+      "facts": [
+        [
+          "💰",
+          "일급 105,840~117,440원"
+        ],
+        [
+          "👥",
+          "사무 6·전기 2·배전담당 4"
+        ],
+        [
+          "⚠️",
+          "정규직 전환 대상 아님"
+        ]
+      ],
+      "deadline": "11/19(목) 오후 1시 마감"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/d485575ec88ed75be8c2.png",
+    "imageSha256": "d485575ec88ed75be8c2a26dc8f22f09cba9e8e2eef3666d864bd6641dadd92b",
+    "checkedAt": "2026-11-05T14:35:36.901Z",
+    "updatedAt": "2026-11-05T14:35:36.901Z"
+  },
+  {
+    "id": "c19f91ea-6170-4f1c-b871-72d12e0b6db9",
+    "status": "scheduled",
+    "createdAt": "2026-11-05T14:35:36.901Z",
+    "handle": "high_quality_hire",
+    "scheduledAt": "2026-11-10T10:30:00.000Z",
+    "noticeId": "306665",
+    "title": "충북대학교병원 신규직원 13명",
+    "angle": "운영지원직 초임연봉 vs 그 외 직종",
+    "text": "💰 초임연봉 약 3,200만원 (2025년 기준)\n충북대병원 운영지원직 조건\n\n1. 충북대학교병원 신규직원 13명\n2. 운영지원직: 미화 3·시설관리 2\n3. 그 외 직종 4개 · 8명\n4. 그 외 직종은 금액 미기재\n5. ⏰ 11/18(수) 낮 12시 마감\n\n약 3,200만원은 운영지원직 1호봉 기준입니다",
+    "replyText": "👆 직무별 급여·자격 비교는 프로필 링크에",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3084920",
+    "sourceSha256": "e8ee9763ec427516c6945c1ada32420211b483fb51316a16482d8b8734a05c79",
+    "startsAt": "2026-11-04T00:00:00+09:00",
+    "deadlineAt": "2026-11-18T12:00:00+09:00",
+    "verifiedPay": "3,200만원",
+    "employmentType": "정규직 및 운영지원직(미화·시설관리)",
+    "eligibility": "직종별 자격, 블라인드 채용; 공식 공고",
+    "blogTitle": "충북대학교병원",
+    "blogEvidence": "충북대학교병원",
+    "card": {
+      "badge": "💰 조건 비교",
+      "hero": {
+        "label": "운영지원직 초임연봉",
+        "value": "약 3,200만원",
+        "sub": "2025년 기준 · 1호봉"
+      },
+      "tags": [
+        "블라인드 채용",
+        "13명"
+      ],
+      "org": "충북대학교병원",
+      "role": "신규직원 13명",
+      "facts": [
+        [
+          "운영지원직",
+          "미화 3·시설관리 2"
+        ],
+        [
+          "그 외",
+          "4개 직종 8명"
+        ],
+        [
+          "그 외 연봉",
+          "금액 미기재"
+        ]
+      ],
+      "deadline": "11/18(수) 낮 12시 마감"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/fe83843db280bb93bc36.png",
+    "imageSha256": "fe83843db280bb93bc3615e84f6763da8d0845ab02ac4cf920f714168c0a9b75",
+    "checkedAt": "2026-11-05T14:35:36.901Z",
+    "updatedAt": "2026-11-05T14:35:36.901Z"
   }
 ]
