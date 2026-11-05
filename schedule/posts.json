@@ -46956,10 +46956,13 @@
     "scheduledAt": "2026-11-05T22:30:00.000Z",
     "createdAt": "2026-10-30T02:52:20.173Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18099526466419625",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18099526466419625"
+    ]
   },
   {
     "id": "66c027c4-3502-46bf-8b87-366b8f4946e4",
