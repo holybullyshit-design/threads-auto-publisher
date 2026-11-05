@@ -44686,10 +44686,13 @@
     "scheduledAt": "2026-11-05T00:57:00.000Z",
     "createdAt": "2026-10-30T01:31:14.984Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18128708713919773",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18128708713919773"
+    ]
   },
   {
     "id": "bfd69832-eea5-4e9c-b86b-b5836142f801",
