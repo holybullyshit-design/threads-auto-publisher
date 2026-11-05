@@ -48495,10 +48495,13 @@
     "scheduledAt": "2026-11-05T22:56:00.000Z",
     "createdAt": "2026-10-30T03:58:57.394Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18114514904609947",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18114514904609947"
+    ]
   },
   {
     "id": "624742b2-2f66-4332-8b18-1ab47733a255",
