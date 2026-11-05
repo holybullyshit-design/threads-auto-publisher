@@ -45428,10 +45428,13 @@
     "scheduledAt": "2026-11-05T05:03:00.000Z",
     "createdAt": "2026-10-30T01:57:35.538Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18346882801285921",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18346882801285921"
+    ]
   },
   {
     "id": "9793ce63-def5-4732-9501-c530f0b627bf",
