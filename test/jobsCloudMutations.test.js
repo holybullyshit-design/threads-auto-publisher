@@ -86,3 +86,20 @@ test('deadline-day reminder keeps exact-time, remaining-time and duplicate gates
   const other={...old,handle:'hire_masters',attemptedAt:new Date(now.getTime()-H).toISOString()};
   assert.ok(errors(reminder,[other,reminder],now).includes('crossAccountGap'));
 });
+test('temporary blog failures are retried and marked transient; content problems are not',async()=>{
+  const original=Buffer.alloc(120,1);
+  const p={...base(),sourceSha256:crypto.createHash('sha256').update(original).digest('hex'),imageSha256:pngHash};
+  const url=p.blogUrl, net={delayMs:0};
+  const site=blog=>async u=>u.includes('alio')?{ok:true,status:200,arrayBuffer:async()=>original}:u.includes('raw.githubusercontent')?{ok:true,status:200,arrayBuffer:async()=>png}:blog();
+  let n=0;
+  assert.deepEqual(await verifyWeb(p,site(()=>++n<3?{ok:false,status:503,url}:{ok:true,status:200,url,text:async()=>'한국남부발전 225만원'}),net),{blogUrl:url});
+  const flaky=async(fetcher,re)=>{ try { await verifyWeb(p,fetcher,net); assert.fail('should throw'); } catch(e) { assert.match(e.message,re); return e.transient===true; } };
+  assert.equal(await flaky(site(()=>({ok:false,status:503,url})),/블로그 공개 URL 오류 \(HTTP 503\)/),true);
+  assert.equal(await flaky(site(()=>({ok:false,status:404,url})),/HTTP 404/),true);
+  assert.equal(await flaky(site(()=>({ok:true,status:200,url:'https://www.google.com/sorry/index',text:async()=>''})),/www\.google\.com로 이동/),true);
+  assert.equal(await flaky(site(()=>{throw Object.assign(Error('t'),{name:'TimeoutError'})}),/응답 시간 초과/),true);
+  assert.equal(await flaky(site(()=>({ok:true,status:200,url,text:async()=>'다른 글'})),/근거 불일치/),false);
+  const wrong={...p,blogUrl:'https://wrong.example/x'};
+  await assert.rejects(()=>verifyWeb(wrong,site(()=>({ok:true,url:wrong.blogUrl,text:async()=>''})),net),e=>/우리 블로그 주소 아님/.test(e.message)&&!e.transient);
+  await assert.rejects(()=>verifyWeb(p,async u=>u.includes('alio')?{ok:true,status:200,arrayBuffer:async()=>Buffer.alloc(120,2)}:site(()=>({}))(u),net),e=>/공식 공고 내용 변경/.test(e.message)&&!e.transient);
+});

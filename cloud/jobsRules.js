@@ -66,27 +66,47 @@ function errors(p, rows, now = new Date()) {
   if (history.some(x => x.text?.trim() === p.text?.trim())) out.push('copyDuplicate');
   return out;
 }
-async function findBlogUrl(title, fetcher) {
-  const feed = await fetcher(`${BLOG}feeds/posts/default?alt=json&max-results=50`, { signal: AbortSignal.timeout(15000) });
-  if (!feed.ok) throw new Error(`블로그 목록 HTTP ${feed.status}`);
+// 2026-11-05: 같은 블로그 주소가 10:30엔 열리고 10:45엔 안 열려 글 2개가 영구 보류됐다.
+// 일시 오류(연결·429·5xx·블로그 미공개)는 transient로 표시해 큐가 다음 실행에 다시 시도하게 한다.
+// 원문 해시·카드 해시·블로그 근거 불일치는 내용 문제이므로 그대로 보류한다.
+const transient = message => Object.assign(new Error(message), { transient: true });
+const retryable = status => status === 429 || status >= 500;
+async function get(fetcher, url, net) {
+  for (let attempt = 1; ; attempt++) {
+    try {
+      const r = await fetcher(url, { redirect: 'follow', signal: AbortSignal.timeout(15000) });
+      if (!retryable(r.status) || attempt >= net.attempts) return r;
+    } catch (e) {
+      if (attempt >= net.attempts) throw transient(`${e.name === 'TimeoutError' || e.name === 'AbortError' ? '응답 시간 초과' : '연결 실패'} (${new URL(url).hostname})`);
+    }
+    await new Promise(done => setTimeout(done, net.delayMs * attempt));
+  }
+}
+async function findBlogUrl(title, fetcher, net) {
+  const feed = await get(fetcher, `${BLOG}feeds/posts/default?alt=json&max-results=50`, net);
+  if (!feed.ok) throw transient(`블로그 목록 HTTP ${feed.status}`);
   const entries = (await feed.json()).feed?.entry || [];
   const found = entries.filter(e => e.title?.$t?.includes(title));
-  if (found.length !== 1) throw new Error(found.length ? '블로그 제목이 여러 글과 일치' : '블로그 글이 아직 공개되지 않음');
+  if (found.length > 1) throw new Error('블로그 제목이 여러 글과 일치');
+  if (!found.length) throw transient('블로그 글이 아직 공개되지 않음');
   return found[0].link.find(l => l.rel === 'alternate').href;
 }
 // 공식 원문 해시와 블로그 공개·근거를 확인하고, 확인한 블로그 주소를 돌려준다.
-async function verifyWeb(p, fetcher = fetch) {
-  const source = await fetcher(p.sourceUrl, { redirect: 'follow', signal: AbortSignal.timeout(15000) });
-  if (!source.ok) throw new Error(`공식 자료 HTTP ${source.status}`);
+async function verifyWeb(p, fetcher = fetch, { attempts = 3, delayMs = 3000 } = {}) {
+  const net = { attempts, delayMs };
+  const source = await get(fetcher, p.sourceUrl, net);
+  if (!source.ok) throw (retryable(source.status) ? transient : m => new Error(m))(`공식 자료 HTTP ${source.status}`);
   const bytes = Buffer.from(await source.arrayBuffer());
   if (bytes.length < 100 || bytes.length > 30_000_000 || crypto.createHash('sha256').update(bytes).digest('hex') !== p.sourceSha256) throw new Error('공식 공고 내용 변경 또는 파일 오류');
-  const image = await fetcher(p.imageUrl, { redirect: 'follow', signal: AbortSignal.timeout(15000) });
-  if (!image.ok) throw new Error(`카드 이미지 HTTP ${image.status}`);
+  const image = await get(fetcher, p.imageUrl, net);
+  if (!image.ok) throw (retryable(image.status) ? transient : m => new Error(m))(`카드 이미지 HTTP ${image.status}`);
   const card = Buffer.from(await image.arrayBuffer());
   if (card.length < 1000 || card.length > 8_000_000 || crypto.createHash('sha256').update(card).digest('hex') !== p.imageSha256) throw new Error('카드 이미지 변경 또는 파일 오류');
-  const blogUrl = p.blogUrl || await findBlogUrl(p.blogTitle, fetcher);
-  const blog = await fetcher(blogUrl, { redirect: 'follow', signal: AbortSignal.timeout(15000) });
-  if (!blog.ok || !blog.url.startsWith(BLOG)) throw new Error('블로그 공개 URL 오류');
+  const blogUrl = p.blogUrl || await findBlogUrl(p.blogTitle, fetcher, net);
+  if (!String(blogUrl).startsWith(BLOG)) throw new Error('블로그 공개 URL 오류 (우리 블로그 주소 아님)');
+  const blog = await get(fetcher, blogUrl, net);
+  const moved = blog.url && !blog.url.startsWith(BLOG) ? `, ${new URL(blog.url).hostname}로 이동` : '';
+  if (!blog.ok || moved) throw transient(`블로그 공개 URL 오류 (HTTP ${blog.status}${moved})`);
   const html = await blog.text();
   // blogPayUnchecked: 예약 시점에 블로그 본문을 볼 수 없어 급여를 공식 원문(해시 고정)으로만 확인한 글.
   if (!html.includes(p.blogEvidence) || (!p.blogPayUnchecked && !html.includes(p.verifiedPay))) throw new Error('블로그 본문 근거 불일치');

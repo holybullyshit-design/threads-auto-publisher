@@ -21,17 +21,21 @@ async function readBack(id, auth, expected, handle) {
   if (String(p.id) !== String(id) || p.username !== handle || p.text !== expected || !p.permalink) throw new Error('Threads 게시 계정·본문 불일치');
   return { url: p.permalink, timestamp: p.timestamp };
 }
-async function checkAccountDay(auth, handle, date) {
+// 'account'면 실제 계정 글 목록까지 확인, 'queue-only'면 큐 기록(errors의 dailyLimit·duplicate)으로만 판단했다는 뜻.
+async function checkAccountDay(auth, handle, date, fetcher = fetch) {
   const url = new URL(`https://graph.threads.net/v1.0/${auth.userId}/threads`);
   url.searchParams.set('fields', 'id,username,text,timestamp,is_reply');
   url.searchParams.set('limit', '25');
   url.searchParams.set('access_token', auth.accessToken);
-  const r = await fetch(url, { signal: AbortSignal.timeout(15000) });
+  const r = await fetcher(url, { signal: AbortSignal.timeout(15000) });
+  // 2026-11-05: @high_quality_hire 토큰은 게시·게시물 조회·한도 조회는 되는데 글 목록만 403(code 10)으로 막혀 글이 못 나갔다.
+  if (r.status === 403) return 'queue-only';
   if (!r.ok) throw new Error(`계정 게시 이력 확인 실패 (HTTP ${r.status})`);
   const data = await r.json();
   if (!Array.isArray(data.data)) throw new Error('계정 게시 이력 형식 오류');
   const today = data.data.filter(p => p.username === handle && !p.is_reply && p.timestamp && kstDay(p.timestamp) === date && p.text && !p.text.includes('hirecurator.blogspot.com'));
   if (today.length >= DAILY_LIMIT) throw new Error(`오늘 계정에 이미 본문 ${today.length}개가 게시됐습니다.`);
+  return 'account';
 }
 async function run({ queue = store, publish = postToThreads, web = verifyWeb, now = () => new Date(), getAccounts = accounts, inspect = readBack, checkDay = checkAccountDay } = {}) {
   const initial = await queue.read();
@@ -43,8 +47,9 @@ async function run({ queue = store, publish = postToThreads, web = verifyWeb, no
     const list = (await queue.read()).rows;
     const issues = errors(row, list, current);
     if (issues.length) {
-      await queue.change(rows => { const p = rows.find(x => x.id === row.id); if (p?.status === 'scheduled') { p.status = 'blocked'; p.error = issues.join(','); } });
-      console.error(`[채용 보류] ${row.id}: ${issues.join(',')}`);
+      const reason = issues.join(',') + (row.retryError ? ` · 마지막 재시도 사유: ${row.retryError}` : '');
+      await queue.change(rows => { const p = rows.find(x => x.id === row.id); if (p?.status === 'scheduled') { p.status = 'blocked'; p.error = reason; } });
+      console.error(`[채용 보류] ${row.id}: ${reason}`);
       continue;
     }
     try {
@@ -52,6 +57,12 @@ async function run({ queue = store, publish = postToThreads, web = verifyWeb, no
       if (checked?.blogUrl && checked.blogUrl !== row.blogUrl) await queue.change(rows => { const p = rows.find(x => x.id === row.id); if (p) p.blogUrl = checked.blogUrl; });
     }
     catch (e) {
+      // 일시 오류는 예약을 유지하고 다음 실행(errors의 time 조건: 당일 21시 전·슬롯 8시간 안)에서 다시 확인한다.
+      if (e.transient) {
+        if (row.retryError !== e.message) await queue.change(rows => { const p = rows.find(x => x.id === row.id); if (p?.status === 'scheduled') p.retryError = e.message; });
+        console.error(`[채용 원문/블로그 재시도 대기] ${row.id}: ${e.message}`);
+        continue;
+      }
       await queue.change(rows => { const p = rows.find(x => x.id === row.id); if (p?.status === 'scheduled') { p.status = 'blocked'; p.error = e.message; } });
       console.error(`[채용 원문/블로그 보류] ${row.id}: ${e.message}`);
       continue;
@@ -64,13 +75,16 @@ async function run({ queue = store, publish = postToThreads, web = verifyWeb, no
       console.error(`[채용 인증 보류] ${row.id}: ${e.message}`);
       continue;
     }
-    try { await checkDay(auth, row.handle, kstDay(current.toISOString())); }
+    let historyCheck;
+    try { historyCheck = await checkDay(auth, row.handle, kstDay(current.toISOString())); }
     catch (e) { console.error(`[채용 게시 이력 보류] ${row.id}: ${e.message}`); continue; }
+    if (historyCheck === 'queue-only') console.error(`[채용 게시 이력 API 권한 없음] ${row.id} @${row.handle}: 큐 기록으로 하루 개수·중복을 확인함`);
     // Claim in the GitHub queue before the first Meta side effect. CAS retries rerun checks.
     const claimed = await queue.change(rows => {
       const p = rows.find(x => x.id === row.id);
       if (!p || p.status !== 'scheduled' || errors(p, rows, now()).length) return false;
-      p.status = 'publishing'; p.attemptedAt = now().toISOString(); p.error = null;
+      p.status = 'publishing'; p.attemptedAt = now().toISOString(); p.error = null; delete p.retryError;
+      if (historyCheck === 'queue-only') p.historyCheck = 'queue-only';
       return true;
     });
     if (!claimed) continue;
