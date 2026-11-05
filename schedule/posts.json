@@ -45355,10 +45355,13 @@
     "scheduledAt": "2026-11-04T23:49:00.000Z",
     "createdAt": "2026-10-30T01:56:25.207Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18118777601013098",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18118777601013098"
+    ]
   },
   {
     "id": "3618d905-a452-45a3-9c9b-f6ef0ed97d1e",
