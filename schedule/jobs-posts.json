@@ -446,7 +446,9 @@
     "imageSha256": "cee73b2e1dc94e4da6106a3dfd4fac589c22ec742995e309adb8f8feb95fe31b",
     "attemptedAt": "2026-11-05T08:31:20.182Z",
     "error": null,
-    "publishedId": "18002770163813661"
+    "publishedId": "18002770163813661",
+    "mainUrl": "https://www.threads.com/@jobs_curator/post/DfWm7ZgFaCP",
+    "mainTimestamp": "2026-11-05T08:31:32+0000"
   },
   {
     "id": "031b6bed-6277-4e52-a905-dc8d84934d69",
