@@ -44137,10 +44137,13 @@
     "scheduledAt": "2026-11-05T06:59:00.000Z",
     "createdAt": "2026-10-30T01:10:26.961Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18106504108999359",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18106504108999359"
+    ]
   },
   {
     "id": "5c8c9bb3-45dd-4eab-8861-70cb54ec8199",
