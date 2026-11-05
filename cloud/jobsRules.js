@@ -61,7 +61,7 @@ function errors(p, rows, now = new Date()) {
   const own = same.filter(x => x.handle === p.handle);
   if (!reminder && own.length) out.push('duplicate');
   if (reminder && (own.some(x => x.postType === 'deadline_reminder') || own.some(x => !Number.isFinite(Date.parse(x.attemptedAt || x.publishedAt)) || time - Date.parse(x.attemptedAt || x.publishedAt) < 72 * H))) out.push('duplicate');
-  if (new Set([...same.map(x => x.handle), p.handle]).size > 2) out.push('crossAccountLimit');
+  // 2026-11-05 사용자 결정: 같은 공고를 세 계정 모두 소개해도 된다(계정별 문체·카드가 다르면 됨). 같은 계정 반복·24시간 간격·같은 문구는 계속 막는다.
   if (same.some(x => x.handle !== p.handle && time - Date.parse(x.attemptedAt || x.publishedAt) < 24 * H)) out.push('crossAccountGap');
   if (history.some(x => x.text?.trim() === p.text?.trim())) out.push('copyDuplicate');
   return out;

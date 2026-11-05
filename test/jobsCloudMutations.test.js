@@ -110,3 +110,12 @@ test('daily or hourly pay lines count as a pay line, a missing pay line does not
   assert.ok(!errors({...p,text:p.text.replace('일급','시급')},[p],t).includes('pay'));
   assert.ok(errors({...p,text:p.text.replace('일급 117,440원','117,440원')},[p],t).includes('pay'));
 });
+test('the same notice may run on all three accounts with different copy, 24h apart',()=>{
+  const p={...base(),handle:'high_quality_hire'};
+  const a={...base(),id:'a',status:'published',handle:'jobs_curator',text:'첫 계정 글',attemptedAt:new Date(t.getTime()-50*H).toISOString()};
+  const b={...base(),id:'b',status:'published',handle:'hire_masters',text:'둘째 계정 글',attemptedAt:new Date(t.getTime()-26*H).toISOString()};
+  assert.deepEqual(errors(p,[a,b,p],t),[]);
+  assert.ok(errors(p,[a,{...b,attemptedAt:new Date(t.getTime()-2*H).toISOString()},p],t).includes('crossAccountGap'));
+  assert.ok(errors(p,[a,{...b,text:p.text},p],t).includes('copyDuplicate'));
+  assert.ok(errors(p,[{...a,handle:'high_quality_hire'},p],t).includes('duplicate'));
+});
