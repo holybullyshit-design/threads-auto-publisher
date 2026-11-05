@@ -46239,11 +46239,14 @@
     "scheduledAt": "2026-11-05T08:41:00.000Z",
     "createdAt": "2026-10-30T02:22:50.559Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17919460143522379",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "17919460143522379"
+    ]
   },
   {
     "id": "cf922a7f-caca-46c1-a924-578e4ca5e2d4",
