@@ -49705,11 +49705,14 @@
     "scheduledAt": "2026-11-06T09:30:00.000Z",
     "createdAt": "2026-10-30T04:43:24.868Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18116487713271245",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18116487713271245"
+    ]
   },
   {
     "id": "1a5854ab-7a59-4b27-82cb-9e9d0495b073",
