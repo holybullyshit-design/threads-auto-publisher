@@ -48653,11 +48653,14 @@
     "scheduledAt": "2026-11-06T08:52:00.000Z",
     "createdAt": "2026-10-30T04:01:47.143Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18181917550440164",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18181917550440164"
+    ]
   },
   {
     "id": "7aa4cbd6-e6da-4ef2-85fb-1603963d2c8a",
