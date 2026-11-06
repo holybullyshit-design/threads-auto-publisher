@@ -49576,10 +49576,13 @@
     "scheduledAt": "2026-11-06T02:09:00.000Z",
     "createdAt": "2026-10-30T04:41:39.920Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18123043291945251",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18123043291945251"
+    ]
   },
   {
     "id": "44e89672-d95b-417f-bc41-d7cdc2e19008",
