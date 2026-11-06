@@ -3803,7 +3803,7 @@
   },
   {
     "id": "3fc9f699-5b81-45bc-8ac5-0ce55c3a2ea3",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-06T14:26:17.276Z",
     "handle": "jobs_curator",
     "scheduledAt": "2026-11-10T23:30:00.000Z",
@@ -3853,11 +3853,13 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/4b954a7959473dc9bf68.png",
     "imageSha256": "4b954a7959473dc9bf68e84f8bb9ad9a6db5b899ec7838dd3b5a35271007b02c",
     "checkedAt": "2026-11-06T14:26:17.276Z",
-    "updatedAt": "2026-11-06T14:26:17.276Z"
+    "updatedAt": "2026-11-06T14:32:12.423Z",
+    "error": "2026-11-06 근거 문구의 ·를 Blogger가 &#183;로 바꿔 게시 직전 대조가 실패할 수 있어 기호 없는 문구로 교체",
+    "canceledAt": "2026-11-06T14:32:12.413Z"
   },
   {
     "id": "010a058e-10b1-4dc2-89b3-89c1eb4d7875",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-06T14:26:17.276Z",
     "handle": "hire_masters",
     "scheduledAt": "2026-11-11T00:30:00.000Z",
@@ -3907,7 +3909,9 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/ac71220acbda5caa4a3b.png",
     "imageSha256": "ac71220acbda5caa4a3b67c2030dcb3ebdba5c54c8b9d58079cafcd102f47be3",
     "checkedAt": "2026-11-06T14:26:17.276Z",
-    "updatedAt": "2026-11-06T14:26:17.276Z"
+    "updatedAt": "2026-11-06T14:32:12.423Z",
+    "error": "2026-11-06 근거 문구의 ·를 Blogger가 &#183;로 바꿔 게시 직전 대조가 실패할 수 있어 기호 없는 문구로 교체",
+    "canceledAt": "2026-11-06T14:32:12.423Z"
   },
   {
     "id": "735a4d12-062a-4cf3-b504-8303646eaafd",
@@ -4192,7 +4196,7 @@
   },
   {
     "id": "838dfe0e-8759-41c2-bac1-2ee60488b0e6",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-06T14:26:17.276Z",
     "handle": "hire_masters",
     "scheduledAt": "2026-11-12T00:30:00.000Z",
@@ -4242,7 +4246,9 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/042fa213633bb513b448.png",
     "imageSha256": "042fa213633bb513b448ac3b85c1cd0bbb52b5180ec521b5baeaf053011d97dd",
     "checkedAt": "2026-11-06T14:26:17.276Z",
-    "updatedAt": "2026-11-06T14:26:17.276Z"
+    "updatedAt": "2026-11-06T14:32:12.423Z",
+    "error": "2026-11-06 근거 문구의 ·를 Blogger가 &#183;로 바꿔 게시 직전 대조가 실패할 수 있어 기호 없는 문구로 교체",
+    "canceledAt": "2026-11-06T14:32:12.423Z"
   },
   {
     "id": "bbaa3c0d-402c-4287-9e1b-09971a82b454",
@@ -4580,7 +4586,7 @@
   },
   {
     "id": "37182732-d22e-44da-b2fd-b1568b3f0f93",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-06T14:26:17.276Z",
     "handle": "high_quality_hire",
     "scheduledAt": "2026-11-13T01:30:00.000Z",
@@ -4635,7 +4641,9 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/ceb6affa4c205420cb0c.png",
     "imageSha256": "ceb6affa4c205420cb0c2f7150fe3e98366395cbc4af55d60924a0ef1e4591af",
     "checkedAt": "2026-11-06T14:26:17.276Z",
-    "updatedAt": "2026-11-06T14:26:17.276Z"
+    "updatedAt": "2026-11-06T14:32:12.423Z",
+    "error": "2026-11-06 근거 문구의 ·를 Blogger가 &#183;로 바꿔 게시 직전 대조가 실패할 수 있어 기호 없는 문구로 교체",
+    "canceledAt": "2026-11-06T14:32:12.423Z"
   },
   {
     "id": "1f01472d-e1f4-41d2-a66c-695c935d94a9",
@@ -4747,7 +4755,7 @@
   },
   {
     "id": "c447b3e3-557b-4c91-ad37-4cef4b336cec",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-06T14:26:17.276Z",
     "handle": "high_quality_hire",
     "scheduledAt": "2026-11-13T10:30:00.000Z",
@@ -4802,6 +4810,8 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/2538d905a617a5e03c86.png",
     "imageSha256": "2538d905a617a5e03c86a5bfac7bc6e028d7312d80442c4d5d564c76a31553fa",
     "checkedAt": "2026-11-06T14:26:17.276Z",
-    "updatedAt": "2026-11-06T14:26:17.276Z"
+    "updatedAt": "2026-11-06T14:32:12.423Z",
+    "error": "2026-11-06 근거 문구의 ·를 Blogger가 &#183;로 바꿔 게시 직전 대조가 실패할 수 있어 기호 없는 문구로 교체",
+    "canceledAt": "2026-11-06T14:32:12.423Z"
   }
 ]
