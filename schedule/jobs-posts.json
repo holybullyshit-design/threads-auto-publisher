@@ -2320,7 +2320,7 @@
   },
   {
     "id": "2237036e-94c8-46fa-9b65-0b3f1958ea7e",
-    "status": "publishing",
+    "status": "reply_pending",
     "createdAt": "2026-11-06T01:06:26.049Z",
     "handle": "jobs_curator",
     "scheduledAt": "2026-11-06T08:30:00.000Z",
@@ -2372,7 +2372,8 @@
     "checkedAt": "2026-11-06T01:06:26.049Z",
     "updatedAt": "2026-11-06T01:06:26.049Z",
     "attemptedAt": "2026-11-06T08:30:30.192Z",
-    "error": null
+    "error": null,
+    "publishedId": "18111730121234371"
   },
   {
     "id": "7bb1de8a-8dcd-4880-b685-600dcbcf799e",
