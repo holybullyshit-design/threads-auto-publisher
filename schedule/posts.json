@@ -47829,10 +47829,13 @@
     "scheduledAt": "2026-11-06T22:54:00.000Z",
     "createdAt": "2026-10-30T03:29:44.603Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17873526372648694",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "17873526372648694"
+    ]
   },
   {
     "id": "4c55d486-1974-48b8-9f95-c5caa89c1013",
