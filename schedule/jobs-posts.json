@@ -709,9 +709,9 @@
   },
   {
     "id": "47bc47cd-0e11-45a2-926f-736d0a4e2cce",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-04T09:12:00.370Z",
-    "updatedAt": "2026-11-04T10:55:07.155Z",
+    "updatedAt": "2026-11-06T01:06:16.246Z",
     "handle": "jobs_curator",
     "scheduledAt": "2026-11-06T08:30:00.000Z",
     "noticeId": "306562",
@@ -759,13 +759,14 @@
       "deadline": "11/17(화) 오후 4시 마감"
     },
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/add0a20b29c80636ab79.png",
-    "imageSha256": "add0a20b29c80636ab793203a92d5f610fff972a9b1c3248ef3620f3a13352a6"
+    "imageSha256": "add0a20b29c80636ab793203a92d5f610fff972a9b1c3248ef3620f3a13352a6",
+    "error": "2026-11-06 첫 문장 공식(헌법 v2.8)으로 문구 교체"
   },
   {
     "id": "f5931711-200c-4cde-92f4-3cd6584e007b",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-04T09:12:00.370Z",
-    "updatedAt": "2026-11-04T10:55:07.155Z",
+    "updatedAt": "2026-11-06T01:06:16.247Z",
     "handle": "hire_masters",
     "scheduledAt": "2026-11-06T09:30:00.000Z",
     "noticeId": "306634",
@@ -814,13 +815,14 @@
       "deadline": "11/18(수) 오후 3시 마감"
     },
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/425ebd3ae02a62b54e4d.png",
-    "imageSha256": "425ebd3ae02a62b54e4dfa41a7e6e32b4e280878e964207eb76c4d6df60cbb45"
+    "imageSha256": "425ebd3ae02a62b54e4dfa41a7e6e32b4e280878e964207eb76c4d6df60cbb45",
+    "error": "2026-11-06 첫 문장 공식(헌법 v2.8)으로 문구 교체"
   },
   {
     "id": "ce6f7389-5a85-4430-b2cf-5470c8179fdf",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-04T09:12:00.370Z",
-    "updatedAt": "2026-11-04T10:55:07.155Z",
+    "updatedAt": "2026-11-06T01:06:16.247Z",
     "handle": "high_quality_hire",
     "scheduledAt": "2026-11-06T10:30:00.000Z",
     "noticeId": "306560",
@@ -874,13 +876,14 @@
       "deadline": "11/18(수) 오후 2시 마감"
     },
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/2330cc2aae1cc6272d29.png",
-    "imageSha256": "2330cc2aae1cc6272d296a326de0720bf0caf54b83081fe2fe099e59c8f50902"
+    "imageSha256": "2330cc2aae1cc6272d296a326de0720bf0caf54b83081fe2fe099e59c8f50902",
+    "error": "2026-11-06 첫 문장 공식(헌법 v2.8)으로 문구 교체"
   },
   {
     "id": "64781bf6-501d-41e3-bec7-fde6ef41643d",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-04T09:12:00.370Z",
-    "updatedAt": "2026-11-04T10:55:07.155Z",
+    "updatedAt": "2026-11-06T01:06:16.247Z",
     "handle": "jobs_curator",
     "scheduledAt": "2026-11-06T23:30:00.000Z",
     "noticeId": "306606",
@@ -929,13 +932,14 @@
       "deadline": "11/16(월) 밤 11시 59분 마감"
     },
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/51893a3c348b91625c89.png",
-    "imageSha256": "51893a3c348b91625c8949a40091eb81ddd793424dfacca2b3f2a7450d4e23e9"
+    "imageSha256": "51893a3c348b91625c8949a40091eb81ddd793424dfacca2b3f2a7450d4e23e9",
+    "error": "2026-11-06 첫 문장 공식(헌법 v2.8)으로 문구 교체"
   },
   {
     "id": "6493128b-7b71-4624-b621-a044f1e14d78",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-04T09:12:00.370Z",
-    "updatedAt": "2026-11-04T10:55:07.155Z",
+    "updatedAt": "2026-11-06T01:06:16.247Z",
     "handle": "hire_masters",
     "scheduledAt": "2026-11-07T00:30:00.000Z",
     "noticeId": "306535",
@@ -984,13 +988,14 @@
       "deadline": "11/17(화) 오후 5시 마감"
     },
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/4b7ae7307ece92b706f6.png",
-    "imageSha256": "4b7ae7307ece92b706f64cfc2893ac9efee58f754cb56b1eb5af9bc524768026"
+    "imageSha256": "4b7ae7307ece92b706f64cfc2893ac9efee58f754cb56b1eb5af9bc524768026",
+    "error": "2026-11-06 첫 문장 공식(헌법 v2.8)으로 문구 교체"
   },
   {
     "id": "d6674b06-354f-4f8c-8bf3-82cc42a722a1",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-04T09:12:00.370Z",
-    "updatedAt": "2026-11-04T10:55:07.155Z",
+    "updatedAt": "2026-11-06T01:06:16.247Z",
     "handle": "jobs_curator",
     "scheduledAt": "2026-11-07T08:30:00.000Z",
     "noticeId": "306568",
@@ -1039,13 +1044,14 @@
       "deadline": "11/17(화) 오후 3시 마감"
     },
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/066078b1ce7b01a6335d.png",
-    "imageSha256": "066078b1ce7b01a6335d0c70fab67a3896dc714c26c786c3b16af0d7f2473e8b"
+    "imageSha256": "066078b1ce7b01a6335d0c70fab67a3896dc714c26c786c3b16af0d7f2473e8b",
+    "error": "2026-11-06 첫 문장 공식(헌법 v2.8)으로 문구 교체"
   },
   {
     "id": "2d2b01a5-4105-41b7-8192-ae53a367806c",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-04T09:12:00.370Z",
-    "updatedAt": "2026-11-04T10:55:07.155Z",
+    "updatedAt": "2026-11-06T01:06:16.247Z",
     "handle": "high_quality_hire",
     "scheduledAt": "2026-11-07T10:30:00.000Z",
     "noticeId": "306634",
@@ -1098,11 +1104,12 @@
       "deadline": "11/18(수) 오후 3시 마감"
     },
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/69aa09f9fcb2c99c295e.png",
-    "imageSha256": "69aa09f9fcb2c99c295e0c861e6f92ec5884afa0e2ffcf4185e73b4d55194767"
+    "imageSha256": "69aa09f9fcb2c99c295e0c861e6f92ec5884afa0e2ffcf4185e73b4d55194767",
+    "error": "2026-11-06 첫 문장 공식(헌법 v2.8)으로 문구 교체"
   },
   {
     "id": "a3f42f84-ce08-4dcb-b2b7-f474b7ce9d10",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-05T14:35:36.901Z",
     "handle": "hire_masters",
     "scheduledAt": "2026-11-07T09:30:00.000Z",
@@ -1153,11 +1160,12 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/6d8048fa0c958139aed0.png",
     "imageSha256": "6d8048fa0c958139aed073e17314aed34e10e7cc54fd36ff875de28764298b4f",
     "checkedAt": "2026-11-05T14:48:15.826Z",
-    "updatedAt": "2026-11-05T14:48:15.826Z"
+    "updatedAt": "2026-11-06T01:06:16.247Z",
+    "error": "2026-11-06 첫 문장 공식(헌법 v2.8)으로 문구 교체"
   },
   {
     "id": "3f6f5a27-a093-47ee-91cc-e85dbe59bae0",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-05T14:35:36.901Z",
     "handle": "jobs_curator",
     "scheduledAt": "2026-11-07T23:30:00.000Z",
@@ -1207,11 +1215,12 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/84aaf3ab9320f01bd682.png",
     "imageSha256": "84aaf3ab9320f01bd682216fb828981684d652adc444d84d09e0459589616dc4",
     "checkedAt": "2026-11-05T14:48:15.826Z",
-    "updatedAt": "2026-11-05T14:48:15.826Z"
+    "updatedAt": "2026-11-06T01:06:16.247Z",
+    "error": "2026-11-06 첫 문장 공식(헌법 v2.8)으로 문구 교체"
   },
   {
     "id": "9be298fb-642b-4518-914a-e734d7a25627",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-05T14:35:36.901Z",
     "handle": "hire_masters",
     "scheduledAt": "2026-11-08T00:30:00.000Z",
@@ -1262,11 +1271,12 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/8cc0dd36f2a6c4082d17.png",
     "imageSha256": "8cc0dd36f2a6c4082d1729153f99d578aba0524520d1425781c6f9f472f3bb20",
     "checkedAt": "2026-11-05T14:48:15.826Z",
-    "updatedAt": "2026-11-05T14:48:15.826Z"
+    "updatedAt": "2026-11-06T01:06:16.247Z",
+    "error": "2026-11-06 첫 문장 공식(헌법 v2.8)으로 문구 교체"
   },
   {
     "id": "cbd8c1e7-846d-401a-93d6-b352687d597e",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-05T14:35:36.901Z",
     "handle": "high_quality_hire",
     "scheduledAt": "2026-11-08T01:30:00.000Z",
@@ -1321,11 +1331,12 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/226d73a280aa99f64b85.png",
     "imageSha256": "226d73a280aa99f64b85e98ebf026b349871ecad774b37865593b7872d4cdf77",
     "checkedAt": "2026-11-05T14:48:15.826Z",
-    "updatedAt": "2026-11-05T14:48:15.826Z"
+    "updatedAt": "2026-11-06T01:06:16.247Z",
+    "error": "2026-11-06 첫 문장 공식(헌법 v2.8)으로 문구 교체"
   },
   {
     "id": "c9fdc132-5841-4d78-a378-91eeb2e76d35",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-05T14:35:36.901Z",
     "handle": "jobs_curator",
     "scheduledAt": "2026-11-08T08:30:00.000Z",
@@ -1375,11 +1386,12 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/f4cc2ceda9f945126e73.png",
     "imageSha256": "f4cc2ceda9f945126e73b0efd81809819932174bcbc70dbe8ecbd158d6085d03",
     "checkedAt": "2026-11-05T14:48:15.826Z",
-    "updatedAt": "2026-11-05T14:48:15.826Z"
+    "updatedAt": "2026-11-06T01:06:16.247Z",
+    "error": "2026-11-06 첫 문장 공식(헌법 v2.8)으로 문구 교체"
   },
   {
     "id": "af5094a3-387b-4af3-b99d-ba6a8dc10b13",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-05T14:35:36.901Z",
     "handle": "hire_masters",
     "scheduledAt": "2026-11-08T09:30:00.000Z",
@@ -1430,11 +1442,12 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/8f47f7aee5baf72e3f1f.png",
     "imageSha256": "8f47f7aee5baf72e3f1fd4b3faaa67ab55e15818f7571c1eda96ae7bd82ee20d",
     "checkedAt": "2026-11-05T14:48:15.826Z",
-    "updatedAt": "2026-11-05T14:48:15.826Z"
+    "updatedAt": "2026-11-06T01:06:16.247Z",
+    "error": "2026-11-06 첫 문장 공식(헌법 v2.8)으로 문구 교체"
   },
   {
     "id": "dc486a80-90f6-4fe2-865e-7bb53a96c5d2",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-05T14:35:36.901Z",
     "handle": "jobs_curator",
     "scheduledAt": "2026-11-08T23:30:00.000Z",
@@ -1484,11 +1497,12 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/8aad01b68775eb938215.png",
     "imageSha256": "8aad01b68775eb938215e2d0883dba14e6cda0e8e0ce20ef3df4ebc7bdfa4147",
     "checkedAt": "2026-11-05T14:48:15.826Z",
-    "updatedAt": "2026-11-05T14:48:15.826Z"
+    "updatedAt": "2026-11-06T01:06:16.247Z",
+    "error": "2026-11-06 첫 문장 공식(헌법 v2.8)으로 문구 교체"
   },
   {
     "id": "5af9961e-16d2-43a1-95f8-e7d65668d4a9",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-05T14:35:36.901Z",
     "handle": "hire_masters",
     "scheduledAt": "2026-11-09T00:30:00.000Z",
@@ -1538,11 +1552,12 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/29baadf355c2467f574b.png",
     "imageSha256": "29baadf355c2467f574bd37b1c897e1873ecf33cf6e7ce69642a28376a2ffc7f",
     "checkedAt": "2026-11-05T14:48:15.826Z",
-    "updatedAt": "2026-11-05T14:48:15.826Z"
+    "updatedAt": "2026-11-06T01:06:16.247Z",
+    "error": "2026-11-06 첫 문장 공식(헌법 v2.8)으로 문구 교체"
   },
   {
     "id": "6b77d42f-9f68-41d4-84a8-25ee709665a6",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-05T14:35:36.901Z",
     "handle": "jobs_curator",
     "scheduledAt": "2026-11-09T08:30:00.000Z",
@@ -1592,11 +1607,12 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/9c23e13ca3d2083db882.png",
     "imageSha256": "9c23e13ca3d2083db8829d47d52f9fb592a049bf984a9685820ddc88daae713b",
     "checkedAt": "2026-11-05T14:48:15.826Z",
-    "updatedAt": "2026-11-05T14:48:15.826Z"
+    "updatedAt": "2026-11-06T01:06:16.247Z",
+    "error": "2026-11-06 첫 문장 공식(헌법 v2.8)으로 문구 교체"
   },
   {
     "id": "810a8a6d-70e0-4dd8-8a72-bccf4029cfda",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-05T14:35:36.901Z",
     "handle": "high_quality_hire",
     "scheduledAt": "2026-11-09T10:30:00.000Z",
@@ -1651,11 +1667,12 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/80e4ef346184e1f38387.png",
     "imageSha256": "80e4ef346184e1f383870e6f616d3bcacafc9e970f61cdd6bc2efabe8423bd91",
     "checkedAt": "2026-11-05T14:48:15.826Z",
-    "updatedAt": "2026-11-05T14:48:15.826Z"
+    "updatedAt": "2026-11-06T01:06:16.247Z",
+    "error": "2026-11-06 첫 문장 공식(헌법 v2.8)으로 문구 교체"
   },
   {
     "id": "49d5f99f-9b0d-422a-b7ca-19d55561775a",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-05T14:35:36.901Z",
     "handle": "jobs_curator",
     "scheduledAt": "2026-11-09T23:30:00.000Z",
@@ -1705,7 +1722,8 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/a6f393053d067d443988.png",
     "imageSha256": "a6f393053d067d4439887239fb6d2ebe66dcdcec8429514d3720b22ad3fad9f3",
     "checkedAt": "2026-11-05T14:48:15.826Z",
-    "updatedAt": "2026-11-05T14:48:15.826Z"
+    "updatedAt": "2026-11-06T01:06:16.247Z",
+    "error": "2026-11-06 첫 문장 공식(헌법 v2.8)으로 문구 교체"
   },
   {
     "id": "a790a349-b295-45d8-a9d4-61be6cccc4fd",
@@ -1769,7 +1787,7 @@
   },
   {
     "id": "9a162107-a852-4aec-8c21-b76269875915",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-05T14:35:36.901Z",
     "handle": "jobs_curator",
     "scheduledAt": "2026-11-10T08:30:00.000Z",
@@ -1819,7 +1837,8 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/d485575ec88ed75be8c2.png",
     "imageSha256": "d485575ec88ed75be8c2a26dc8f22f09cba9e8e2eef3666d864bd6641dadd92b",
     "checkedAt": "2026-11-05T14:48:15.826Z",
-    "updatedAt": "2026-11-05T14:48:15.826Z"
+    "updatedAt": "2026-11-06T01:06:16.247Z",
+    "error": "2026-11-06 첫 문장 공식(헌법 v2.8)으로 문구 교체"
   },
   {
     "id": "c19f91ea-6170-4f1c-b871-72d12e0b6db9",
@@ -1883,7 +1902,7 @@
   },
   {
     "id": "debccf5a-b02c-4044-a1ba-af97b89f2e77",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-05T14:48:15.826Z",
     "handle": "high_quality_hire",
     "scheduledAt": "2026-11-08T10:30:00.000Z",
@@ -1939,11 +1958,12 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/af5a1961621a1da50b61.png",
     "imageSha256": "af5a1961621a1da50b61d1283366353a706ea27e6dd3b1ca0a4eaa8d791da9b1",
     "checkedAt": "2026-11-05T14:48:15.826Z",
-    "updatedAt": "2026-11-05T14:48:15.826Z"
+    "updatedAt": "2026-11-06T01:06:16.247Z",
+    "error": "2026-11-06 첫 문장 공식(헌법 v2.8)으로 문구 교체"
   },
   {
     "id": "9ac07ba0-2eeb-419f-abfe-667a92ebdd81",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-05T14:48:15.826Z",
     "handle": "high_quality_hire",
     "scheduledAt": "2026-11-09T01:30:00.000Z",
@@ -1998,11 +2018,12 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/2354fb444168e4d537df.png",
     "imageSha256": "2354fb444168e4d537dfe5eb55b160d122dabcd11ef427c1fac9da036e6d44aa",
     "checkedAt": "2026-11-05T14:48:15.826Z",
-    "updatedAt": "2026-11-05T14:48:15.826Z"
+    "updatedAt": "2026-11-06T01:06:16.247Z",
+    "error": "2026-11-06 첫 문장 공식(헌법 v2.8)으로 문구 교체"
   },
   {
     "id": "273092db-3ec0-431e-9c21-bd07543aee80",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-05T14:48:15.826Z",
     "handle": "hire_masters",
     "scheduledAt": "2026-11-09T09:30:00.000Z",
@@ -2052,11 +2073,12 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/624bcdba62d610393529.png",
     "imageSha256": "624bcdba62d61039352924fd42d30f1c3c56f06e8d656517d65cba03f84f72fb",
     "checkedAt": "2026-11-05T14:48:15.826Z",
-    "updatedAt": "2026-11-05T14:48:15.826Z"
+    "updatedAt": "2026-11-06T01:06:16.247Z",
+    "error": "2026-11-06 첫 문장 공식(헌법 v2.8)으로 문구 교체"
   },
   {
     "id": "876b39e6-fa08-40ca-9d27-b350c4b37c66",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-05T14:48:15.826Z",
     "handle": "hire_masters",
     "scheduledAt": "2026-11-10T00:30:00.000Z",
@@ -2106,11 +2128,12 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/29e659674cee24603182.png",
     "imageSha256": "29e659674cee246031829d7752f300c14ce832015dc261219bed45470d6e64b0",
     "checkedAt": "2026-11-05T14:48:15.826Z",
-    "updatedAt": "2026-11-05T14:48:15.826Z"
+    "updatedAt": "2026-11-06T01:06:16.247Z",
+    "error": "2026-11-06 첫 문장 공식(헌법 v2.8)으로 문구 교체"
   },
   {
     "id": "11c113b8-a684-4f07-9050-9ba353471da7",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-05T14:48:15.826Z",
     "handle": "high_quality_hire",
     "scheduledAt": "2026-11-10T01:30:00.000Z",
@@ -2166,11 +2189,12 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/1f225689b033d02f831b.png",
     "imageSha256": "1f225689b033d02f831bb2eb718e8defb7230da105b95e39b8c608b86a72aa72",
     "checkedAt": "2026-11-05T14:48:15.826Z",
-    "updatedAt": "2026-11-05T14:48:15.826Z"
+    "updatedAt": "2026-11-06T01:06:16.247Z",
+    "error": "2026-11-06 첫 문장 공식(헌법 v2.8)으로 문구 교체"
   },
   {
     "id": "db94720d-4c26-48ef-a2db-1cc0d68ea8b7",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-05T14:48:15.826Z",
     "handle": "hire_masters",
     "scheduledAt": "2026-11-10T09:30:00.000Z",
@@ -2220,11 +2244,12 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/f8a23bb010a1aa9219f8.png",
     "imageSha256": "f8a23bb010a1aa9219f8623a29ca8fd90301188dc629eaebd088d32cccfbc798",
     "checkedAt": "2026-11-05T14:48:15.826Z",
-    "updatedAt": "2026-11-05T14:48:15.826Z"
+    "updatedAt": "2026-11-06T01:06:16.247Z",
+    "error": "2026-11-06 첫 문장 공식(헌법 v2.8)으로 문구 교체"
   },
   {
     "id": "d75c94cd-252a-47ff-8759-cc1ec34f430b",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-05T14:48:15.826Z",
     "handle": "high_quality_hire",
     "scheduledAt": "2026-11-10T10:30:00.000Z",
@@ -2279,6 +2304,7 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/3fa06d4c5294b3ec2fc1.png",
     "imageSha256": "3fa06d4c5294b3ec2fc19a619aef06776b3ef5c5d9128d4b98dccac7ee72f237",
     "checkedAt": "2026-11-05T14:48:15.826Z",
-    "updatedAt": "2026-11-05T14:48:15.826Z"
+    "updatedAt": "2026-11-06T01:06:16.247Z",
+    "error": "2026-11-06 첫 문장 공식(헌법 v2.8)으로 문구 교체"
   }
 ]
