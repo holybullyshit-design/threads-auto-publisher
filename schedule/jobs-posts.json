@@ -649,7 +649,7 @@
   },
   {
     "id": "f469520f-9b94-4522-9612-88bc703fb47e",
-    "status": "scheduled",
+    "status": "publishing",
     "createdAt": "2026-11-04T09:12:00.370Z",
     "updatedAt": "2026-11-04T10:55:07.155Z",
     "handle": "high_quality_hire",
@@ -706,7 +706,10 @@
     },
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/e75a99117283d7977acb.png",
     "imageSha256": "e75a99117283d7977acb3e0fa3437b0c98895a2f952d9257a40a91d7394474fd",
-    "blogUrl": "https://hirecurator.blogspot.com/2026/11/4-3384.html"
+    "blogUrl": "https://hirecurator.blogspot.com/2026/11/4-3384.html",
+    "attemptedAt": "2026-11-06T01:30:34.745Z",
+    "error": null,
+    "historyCheck": "queue-only"
   },
   {
     "id": "47bc47cd-0e11-45a2-926f-736d0a4e2cce",
