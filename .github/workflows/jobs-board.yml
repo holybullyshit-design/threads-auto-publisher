@@ -1,0 +1,36 @@
+name: Refresh recruitment jobs board
+
+# 채용 큐레이터 블로그 첫 화면 게시판(board/jobs.json)을 잡알리오 공식 API로 갱신한다.
+# 블로그 새 글이 08:00·17:00 KST에 공개되므로 그 직후와 아침에 돈다. 게시는 하지 않는다.
+on:
+  schedule:
+    - cron: "40 21 * * *" # 06:40 KST
+    - cron: "15 23 * * *" # 08:15 KST
+    - cron: "15 8 * * *"  # 17:15 KST
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: jobs-board
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Check board builder
+        run: node --test test/jobsBoard.test.js
+      - name: Refresh board/jobs.json
+        env:
+          ALIO_SERVICE_KEY: ${{ secrets.ALIO_SERVICE_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPO: ${{ github.repository }}
+        run: node cloud/build-jobs-board.js
