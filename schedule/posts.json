@@ -48617,10 +48617,13 @@
     "scheduledAt": "2026-11-06T06:41:00.000Z",
     "createdAt": "2026-10-30T04:01:06.025Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17919562254467256",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "17919562254467256"
+    ]
   },
   {
     "id": "ba95f464-df02-40d5-b66f-0dbf7d58c664",
