@@ -50899,10 +50899,13 @@
     "scheduledAt": "2026-11-06T22:14:00.000Z",
     "createdAt": "2026-10-30T06:13:07.041Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18138308518676547",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18138308518676547"
+    ]
   },
   {
     "id": "fb221b2c-0ba1-498c-be83-a71b7ad3ac0f",
