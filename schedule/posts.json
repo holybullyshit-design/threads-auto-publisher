@@ -49622,10 +49622,13 @@
     "scheduledAt": "2026-11-06T04:56:00.000Z",
     "createdAt": "2026-10-30T04:42:20.523Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18494394010109631",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18494394010109631"
+    ]
   },
   {
     "id": "6e6eda30-9bd6-4957-9e67-5b2429851bc1",
