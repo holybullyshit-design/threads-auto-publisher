@@ -48843,11 +48843,14 @@
     "scheduledAt": "2026-11-07T09:52:00.000Z",
     "createdAt": "2026-10-30T04:06:35.712Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17886497388626409",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "17886497388626409"
+    ]
   },
   {
     "id": "060182ba-1ec9-4467-8987-c9dce17bbb2a",
