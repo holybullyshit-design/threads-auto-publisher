@@ -47087,10 +47087,13 @@
     "scheduledAt": "2026-11-07T00:49:00.000Z",
     "createdAt": "2026-10-30T02:56:01.205Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17897557785682470",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "17897557785682470"
+    ]
   },
   {
     "id": "b62c12bd-e690-4d1d-88ae-63fdd67014c7",
