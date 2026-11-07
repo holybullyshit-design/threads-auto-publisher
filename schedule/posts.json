@@ -48736,10 +48736,13 @@
     "scheduledAt": "2026-11-07T02:41:00.000Z",
     "createdAt": "2026-10-30T04:03:18.163Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17868100548678737",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17868100548678737"
+    ]
   },
   {
     "id": "fef8069d-7c0b-4d51-99b7-4d7c79eb6ff8",
