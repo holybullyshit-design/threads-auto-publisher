@@ -46631,7 +46631,7 @@
     "text": "11월 1일이 되었다고 명리의 월주가 동시에 바뀌는 것은 아닙니다.\n\n전통 명리의 월주 경계는 절입을 기준으로 합니다. 입동은 해월이 시작되는 경계이며, 날짜뿐 아니라 해당 연도의 절입 시각도 확인해야 합니다.\n같은 월운이라도 일간과 원국의 구성에 따라 해석이 달라집니다. 출생 정보 없이 특정 띠 전체가 그날부터 대박 난다고 단정하기 어려운 이유입니다.\n이번 달 가장 중요한 일정 하나를 정해, 내 준비 상태부터 점검해보세요.\n💬 내 11월의 흐름이 궁금하다면 ‘월운’이라고 남겨주세요.\n\n개인 사주 상담의 방식과 비용은 프로필에서 확인하실 수 있습니다.\n#팔자명가 #사주풀이 #월운",
     "videoUrl": "https://cdn.jsdelivr.net/gh/holybullyshit-design/threads-media-host@c2ef4971ff63e47b8b55d03e52edb4b983c9aeaa/images/palja-static-2026-11-07.mp4",
     "videoSha256": "39eb0ce43d03fd04362864fbcabf335eadfb7bdb6cc37629b8af2a6c07f0e71b",
-    "status": "scheduled",
+    "status": "publishing",
     "scheduledAt": "2026-11-07T02:00:00.000Z",
     "expectedLocalDate": "2026-11-07",
     "exactTimeKst": "11:00",
@@ -46661,7 +46661,8 @@
     "publishedId": null,
     "error": null,
     "retryCount": 0,
-    "contentHash": "7bb13d9badd5f32c53cdb31309a866342fde96e7fabffea92bce7d89adfcccaf"
+    "contentHash": "7bb13d9badd5f32c53cdb31309a866342fde96e7fabffea92bce7d89adfcccaf",
+    "publishAttemptedAt": "2026-11-07T02:00:23.741Z"
   },
   {
     "id": "2053c0f9-1179-40b3-b8cd-c0be03c61006",
