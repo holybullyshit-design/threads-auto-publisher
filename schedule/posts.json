@@ -47141,10 +47141,13 @@
     "scheduledAt": "2026-11-07T05:18:00.000Z",
     "createdAt": "2026-10-30T02:58:32.981Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18044004209834491",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18044004209834491"
+    ]
   },
   {
     "id": "cf6d588b-c57c-4cf1-b088-1ce5d1b38e78",
