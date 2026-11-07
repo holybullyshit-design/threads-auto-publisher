@@ -49847,11 +49847,14 @@
     "scheduledAt": "2026-11-07T05:47:00.000Z",
     "createdAt": "2026-10-30T04:47:34.315Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18037821200668483",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18037821200668483"
+    ]
   },
   {
     "id": "d4c13f51-5820-4329-bdcf-3b2472414396",
