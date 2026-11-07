@@ -51020,10 +51020,13 @@
     "scheduledAt": "2026-11-07T07:51:00.000Z",
     "createdAt": "2026-10-30T06:13:51.125Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18133075399684532",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18133075399684532"
+    ]
   },
   {
     "id": "921450e7-8cad-41aa-b58b-671c60dcea76",
