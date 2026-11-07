@@ -47115,10 +47115,13 @@
     "scheduledAt": "2026-11-07T02:53:00.000Z",
     "createdAt": "2026-10-30T02:57:36.884Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17977384331939220",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17977384331939220"
+    ]
   },
   {
     "id": "4838968c-d12a-4b9a-b99c-8c8d5d93398e",
