@@ -48784,10 +48784,13 @@
     "scheduledAt": "2026-11-07T05:16:00.000Z",
     "createdAt": "2026-10-30T04:04:17.179Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18108520406631334",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18108520406631334"
+    ]
   },
   {
     "id": "6f96efd8-2ec3-4b98-b6b6-128a42c38e2f",
