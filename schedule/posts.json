@@ -49057,10 +49057,13 @@
     "scheduledAt": "2026-11-08T22:48:00.000Z",
     "createdAt": "2026-10-30T04:12:42.331Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18117698023831552",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18117698023831552"
+    ]
   },
   {
     "id": "49142895-dea3-46c2-9452-a52e5b5d4f08",
