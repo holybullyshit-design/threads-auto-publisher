@@ -49945,10 +49945,13 @@
     "scheduledAt": "2026-11-08T01:16:00.000Z",
     "createdAt": "2026-10-30T04:53:20.065Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18657638125043022",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18657638125043022"
+    ]
   },
   {
     "id": "9f3755c0-5089-4f62-8543-0d1068d27f0c",
