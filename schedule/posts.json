@@ -47165,10 +47165,13 @@
     "scheduledAt": "2026-11-07T23:51:00.000Z",
     "createdAt": "2026-10-30T02:59:20.861Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18078965015738463",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18078965015738463"
+    ]
   },
   {
     "id": "dafc1204-6f6a-4ac3-9c15-9288c31a00ab",
