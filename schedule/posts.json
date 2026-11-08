@@ -47245,10 +47245,13 @@
     "scheduledAt": "2026-11-08T07:31:00.000Z",
     "createdAt": "2026-10-30T03:02:02.227Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17914630392476691",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17914630392476691"
+    ]
   },
   {
     "id": "5db7d6d6-3917-491e-ba31-cba410d7cc78",
