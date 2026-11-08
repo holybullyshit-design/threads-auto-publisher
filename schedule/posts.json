@@ -50081,11 +50081,14 @@
     "scheduledAt": "2026-11-08T08:36:00.000Z",
     "createdAt": "2026-10-30T04:55:07.582Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17955929532291518",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "17955929532291518"
+    ]
   },
   {
     "id": "0ce4709c-887a-4052-9b8c-3768777abad8",
