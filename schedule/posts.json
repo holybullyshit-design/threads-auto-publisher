@@ -48026,10 +48026,13 @@
     "scheduledAt": "2026-11-08T05:03:00.000Z",
     "createdAt": "2026-10-30T03:33:59.466Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18108729704222639",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18108729704222639"
+    ]
   },
   {
     "id": "b158575f-19a5-4dd4-aac7-de3f293af841",
