@@ -3243,7 +3243,7 @@
   },
   {
     "id": "62d5081b-cfaf-4837-bc87-d8f8e62d5165",
-    "status": "scheduled",
+    "status": "publishing",
     "createdAt": "2026-11-06T01:06:26.049Z",
     "handle": "jobs_curator",
     "scheduledAt": "2026-11-08T23:30:00.000Z",
@@ -3294,7 +3294,9 @@
     "imageSha256": "d8c51e19cbd3fd056cdc5464523100048ff58c7f210729f074aceb652848c6f1",
     "checkedAt": "2026-11-06T01:06:26.049Z",
     "updatedAt": "2026-11-06T01:06:26.049Z",
-    "blogUrl": "https://hirecurator.blogspot.com/2026/11/50-toeic-600.html"
+    "blogUrl": "https://hirecurator.blogspot.com/2026/11/50-toeic-600.html",
+    "attemptedAt": "2026-11-08T23:30:49.149Z",
+    "error": null
   },
   {
     "id": "8fd0b47a-9cfd-43b4-aa8e-07046141908a",
