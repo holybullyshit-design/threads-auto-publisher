@@ -49024,11 +49024,14 @@
     "scheduledAt": "2026-11-08T07:51:00.000Z",
     "createdAt": "2026-10-30T04:11:57.674Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18128890753847092",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18128890753847092"
+    ]
   },
   {
     "id": "dd6d380f-52ce-4acf-905e-876b390b0b1d",
