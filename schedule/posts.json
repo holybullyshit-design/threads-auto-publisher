@@ -48086,10 +48086,13 @@
     "scheduledAt": "2026-11-08T23:03:00.000Z",
     "createdAt": "2026-10-30T03:35:18.819Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18020455022959238",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18020455022959238"
+    ]
   },
   {
     "id": "af412868-e416-454b-920a-df29374ba134",
