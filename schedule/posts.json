@@ -50117,10 +50117,13 @@
     "scheduledAt": "2026-11-08T22:42:00.000Z",
     "createdAt": "2026-10-30T04:55:54.671Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17945361552374395",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17945361552374395"
+    ]
   },
   {
     "id": "01e5f4da-f06b-4f77-a644-b7e6288638f5",
