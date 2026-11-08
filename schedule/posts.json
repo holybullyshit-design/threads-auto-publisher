@@ -47959,10 +47959,13 @@
     "scheduledAt": "2026-11-07T23:55:00.000Z",
     "createdAt": "2026-10-30T03:32:57.297Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18109749428220575",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18109749428220575"
+    ]
   },
   {
     "id": "64661450-6090-4f29-af32-b9e7cc335b5e",
