@@ -3635,7 +3635,7 @@
   },
   {
     "id": "12f6af54-edaa-44a3-8e8b-19688592a678",
-    "status": "reply_pending",
+    "status": "published",
     "createdAt": "2026-11-06T01:06:26.049Z",
     "handle": "jobs_curator",
     "scheduledAt": "2026-11-09T23:30:00.000Z",
@@ -3692,7 +3692,10 @@
     "publishedId": "17915662704285530",
     "mainUrl": "https://www.threads.com/@jobs_curator/post/DfihFRunE1b",
     "mainTimestamp": "2026-11-09T23:31:22+0000",
-    "replyId": "18098250512147049"
+    "replyId": "18098250512147049",
+    "replyUrl": "https://www.threads.com/@jobs_curator/post/DfihHcQHL_D",
+    "replyTimestamp": "2026-11-09T23:31:33+0000",
+    "publishedAt": "2026-11-09T23:31:38.502Z"
   },
   {
     "id": "721e615c-606d-4974-8b34-cacf8e063a94",
