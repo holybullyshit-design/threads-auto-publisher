@@ -3503,7 +3503,7 @@
   },
   {
     "id": "0e2a26ac-e8a0-4b76-854d-f1c148d58856",
-    "status": "scheduled",
+    "status": "publishing",
     "createdAt": "2026-11-06T01:06:26.049Z",
     "handle": "hire_masters",
     "scheduledAt": "2026-11-09T09:30:00.000Z",
@@ -3554,7 +3554,8 @@
     "imageSha256": "9e8748ac8d02233c731cad8b2d9e4c9e9a64b649a3f6eb652e08076ea37f3955",
     "checkedAt": "2026-11-06T01:06:26.049Z",
     "updatedAt": "2026-11-06T01:06:26.049Z",
-    "retryError": "블로그 공개 URL 오류 (HTTP 429, www.google.com로 이동)"
+    "attemptedAt": "2026-11-09T11:00:44.912Z",
+    "error": null
   },
   {
     "id": "55d03081-8b82-409a-891b-ffdf00aa2cd4",
