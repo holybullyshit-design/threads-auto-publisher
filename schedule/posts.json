@@ -49098,10 +49098,13 @@
     "scheduledAt": "2026-11-09T01:09:00.000Z",
     "createdAt": "2026-10-30T04:13:36.500Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18107907239203883",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18107907239203883"
+    ]
   },
   {
     "id": "38f776be-f850-42fc-bc14-c851f1a01dd3",
