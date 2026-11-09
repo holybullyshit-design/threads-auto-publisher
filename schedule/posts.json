@@ -50341,10 +50341,13 @@
     "scheduledAt": "2026-11-09T23:00:00.000Z",
     "createdAt": "2026-10-30T05:00:10.989Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18096473219269171",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18096473219269171"
+    ]
   },
   {
     "id": "876e0c15-e258-4580-a410-1fa819062ba1",
