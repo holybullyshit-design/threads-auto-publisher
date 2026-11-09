@@ -3503,7 +3503,7 @@
   },
   {
     "id": "0e2a26ac-e8a0-4b76-854d-f1c148d58856",
-    "status": "reply_pending",
+    "status": "published",
     "createdAt": "2026-11-06T01:06:26.049Z",
     "handle": "hire_masters",
     "scheduledAt": "2026-11-09T09:30:00.000Z",
@@ -3559,7 +3559,10 @@
     "publishedId": "18135238627799006",
     "mainUrl": "https://www.threads.com/@hire_masters/post/DfhLNPvlSPn",
     "mainTimestamp": "2026-11-09T11:00:56+0000",
-    "replyId": "18079642775563149"
+    "replyId": "18079642775563149",
+    "replyUrl": "https://www.threads.com/@hire_masters/post/DfhLPA7FUEF",
+    "replyTimestamp": "2026-11-09T11:01:06+0000",
+    "publishedAt": "2026-11-09T11:01:11.135Z"
   },
   {
     "id": "55d03081-8b82-409a-891b-ffdf00aa2cd4",
