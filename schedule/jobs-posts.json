@@ -3503,7 +3503,7 @@
   },
   {
     "id": "0e2a26ac-e8a0-4b76-854d-f1c148d58856",
-    "status": "publishing",
+    "status": "reply_pending",
     "createdAt": "2026-11-06T01:06:26.049Z",
     "handle": "hire_masters",
     "scheduledAt": "2026-11-09T09:30:00.000Z",
@@ -3555,7 +3555,8 @@
     "checkedAt": "2026-11-06T01:06:26.049Z",
     "updatedAt": "2026-11-06T01:06:26.049Z",
     "attemptedAt": "2026-11-09T11:00:44.912Z",
-    "error": null
+    "error": null,
+    "publishedId": "18135238627799006"
   },
   {
     "id": "55d03081-8b82-409a-891b-ffdf00aa2cd4",
