@@ -5260,5 +5260,339 @@
     "imageSha256": "2538d905a617a5e03c86a5bfac7bc6e028d7312d80442c4d5d564c76a31553fa",
     "checkedAt": "2026-11-06T14:32:20.925Z",
     "updatedAt": "2026-11-06T14:32:20.925Z"
+  },
+  {
+    "id": "7277f23e-e444-4420-ba26-8b1a7afcb3e1",
+    "status": "scheduled",
+    "createdAt": "2026-11-09T13:06:50.429Z",
+    "handle": "jobs_curator",
+    "scheduledAt": "2026-11-13T23:30:00.000Z",
+    "noticeId": "306801",
+    "title": "예금보험공사 동계 대학생인턴 35명 이내",
+    "angle": "동계 7주 인턴 조건 조합",
+    "text": "📍동계 7주 · 월 225만원 인턴\n예금보험공사 대학생인턴 35명 이내\n\n1. 예금보험공사 동계 대학생인턴\n2. 2027년 1월 4일~2월 19일 근무\n3. 💰 월 225만원(세전) 수준\n4. 대학 2~4학년·석사 1~2년차\n5. ⏰ 11/20(금) 오후 5시 마감\n\n예보 인턴을 해 본 적 있으면 지원 불가",
+    "replyText": "👆 공고 원문·지원 링크는 프로필 링크에서",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3085701",
+    "sourceSha256": "dbe59d4e57924e244455336a6d7f6554b8728bfbec6f0b7db69272fc03b11f4f",
+    "blogEvidence": "예금보험공사 동계 대학생인턴 35명",
+    "startsAt": "2026-11-06T00:00:00+09:00",
+    "deadlineAt": "2026-11-20T17:00:00+09:00",
+    "verifiedPay": "225만원",
+    "employmentType": "청년인턴(체험형)",
+    "eligibility": "대학교(전문대학 포함) 2~4학년생(수료 포함), 석사 1~2년차, 예금보험공사 인턴 경험 없는 자; 공식 공고",
+    "blogTitle": "예금보험공사 동계 대학생인턴 35명 이내",
+    "card": {
+      "badge": "🔔 새 공고",
+      "hook": [
+        "[[7주]] 근무 인턴",
+        "월 [[225만원]] 수준"
+      ],
+      "org": "예금보험공사",
+      "role": "동계 대학생인턴 35명 이내",
+      "facts": [
+        [
+          "💰",
+          "월 225만원(세전) 수준"
+        ],
+        [
+          "📅",
+          "2027년 1월 4일~2월 19일"
+        ],
+        [
+          "🎓",
+          "대학 2~4학년·석사 1~2년차"
+        ]
+      ],
+      "deadline": "11/20(금) 오후 5시 마감"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/271e96d5a7994ac07810.png",
+    "imageSha256": "271e96d5a7994ac07810da28ac2695417de308c7cd1a9a136df8346a71c55490",
+    "checkedAt": "2026-11-09T13:06:50.429Z",
+    "updatedAt": "2026-11-09T13:06:50.429Z"
+  },
+  {
+    "id": "3f20eec5-7d51-457b-9111-e9333c6cc1c8",
+    "status": "scheduled",
+    "createdAt": "2026-11-09T13:06:50.429Z",
+    "handle": "hire_masters",
+    "scheduledAt": "2026-11-14T00:30:00.000Z",
+    "noticeId": "306782",
+    "title": "한국가스기술공사 평택기지 기간제 2명",
+    "angle": "중장비 자격자 독자 지목",
+    "text": "지게차·기중기 자격 있으면 이거 봐\n평택에서 월 4,729,560원 자리야\n\n1. 한국가스기술공사 평택기지지사\n2. 기간제 2명 · 기술 1 · 중장비 1\n3. 💰 중장비 월 4,729,560원\n4. 기술은 월 3,417,470원\n5. ⏰ 11/20(금) 오후 3시 마감\n\n공제 전 금액이고 정규직 전환은 없어",
+    "replyText": "👆 자세한 건 프로필 링크에 정리해놨어",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3085583",
+    "sourceSha256": "58d85e6245356de32543fdc343cd768e38b8a682095811242f8795c4b2611721",
+    "blogEvidence": "평택기지지사 기간제 2명",
+    "startsAt": "2026-11-06T00:00:00+09:00",
+    "deadlineAt": "2026-11-20T15:00:00+09:00",
+    "verifiedPay": "월 3,417,470원",
+    "employmentType": "기간제계약직(군·육아휴직 대체인력)",
+    "eligibility": "운전면허 2종 보통 이상, 성별·연령·학력·전공 제한 없음(공고일 기준 미성년자 제외), 12월 14일부터 근무 가능; 중장비는 건설기계 조종사 2종(기중기, 지게차) 자격증·면허증과 운전면허 대형 필수; 공식 공고",
+    "blogTitle": "한국가스기술공사 평택기지 기간제 2명",
+    "card": {
+      "badge": "👀 이거 봤어?",
+      "hook": [
+        "[[지게차·기중기]]",
+        "자격 있으면 이거 봐"
+      ],
+      "org": "한국가스기술공사",
+      "role": "평택기지지사 기간제 2명",
+      "facts": [
+        [
+          "💰",
+          "중장비 월 4,729,560원 (공제 전)"
+        ],
+        [
+          "🔧",
+          "기술 월 3,417,470원"
+        ],
+        [
+          "⚠️",
+          "정규직 전환 대상 아님"
+        ]
+      ],
+      "deadline": "11/20(금) 오후 3시 마감"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/41af08b9508476bc37b1.png",
+    "imageSha256": "41af08b9508476bc37b1ae9c8258d242d43c597cb30ca9e198032eafadc496be",
+    "checkedAt": "2026-11-09T13:06:50.429Z",
+    "updatedAt": "2026-11-09T13:06:50.429Z"
+  },
+  {
+    "id": "3b79ff36-2dc2-4ee3-b10b-009b83e9e8c4",
+    "status": "scheduled",
+    "createdAt": "2026-11-09T13:06:50.429Z",
+    "handle": "high_quality_hire",
+    "scheduledAt": "2026-11-14T01:30:00.000Z",
+    "noticeId": "306723",
+    "title": "한국전력공사 부산울산 기간제 12명",
+    "angle": "분야별 일급 대비",
+    "text": "💰 일급 117,440원 vs 105,840원\n한국전력공사 부산울산 기간제 12명 비교\n\n1. 사무·전기 5개 분야 117,440원\n2. 배전담당 3개 분야 105,840원\n3. 계약기간은 근무지별 약 1~6개월\n4. 학력·연령 제한 없음\n5. ⏰ 11/19(목) 오후 1시 마감\n\n교통비·사택 지원은 없다고 명시돼 있습니다",
+    "replyText": "👆 직무별 급여·자격 비교는 프로필 링크에",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3085257",
+    "sourceSha256": "a5180995ea78eed9d86a13846993ec8e3fda7e12e5c37512c83b55d3dbbba210",
+    "blogEvidence": "한국전력공사",
+    "startsAt": "2026-11-05T12:00:00+09:00",
+    "deadlineAt": "2026-11-19T13:00:00+09:00",
+    "verifiedPay": "117,440원",
+    "employmentType": "기간제근로자(대체인력), 정규직 전환 대상 아님",
+    "eligibility": "분야별 자격, 부산·울산·양산·김해 근무; 공식 공고",
+    "blogTitle": "한국전력공사 부산울산 기간제 12명",
+    "card": {
+      "badge": "💰 조건 비교",
+      "hero": {
+        "label": "사무·전기 일급",
+        "value": "117,440원",
+        "sub": "배전담당은 105,840원"
+      },
+      "tags": [
+        "학력·연령 제한 없음",
+        "기간제"
+      ],
+      "org": "한국전력공사",
+      "role": "부산울산본부 기간제 12명",
+      "facts": [
+        [
+          "계약기간",
+          "근무지별 약 1~6개월"
+        ],
+        [
+          "분야",
+          "사무·전기 5 · 배전 3"
+        ],
+        [
+          "지원",
+          "교통비·사택 없음"
+        ]
+      ],
+      "deadline": "11/19(목) 오후 1시 마감"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/65e401a2724d591d65cf.png",
+    "imageSha256": "65e401a2724d591d65cf376b17fd281457419458e38dd00a5fa2b75f740ff2a8",
+    "checkedAt": "2026-11-09T13:06:50.429Z",
+    "updatedAt": "2026-11-09T13:06:50.429Z"
+  },
+  {
+    "id": "c86a9a40-7e5b-4c5a-8f01-d002db764a79",
+    "status": "scheduled",
+    "createdAt": "2026-11-09T13:06:50.429Z",
+    "handle": "jobs_curator",
+    "scheduledAt": "2026-11-14T08:30:00.000Z",
+    "noticeId": "306695",
+    "title": "국립암센터 임시직 14명",
+    "angle": "14개 분야 1명씩 희소성",
+    "text": "📍14개 분야, 자리마다 딱 1명\n국립암센터 임시직 14명\n\n1. 국립암센터 임시직(1년 단위)\n2. 💰 월 2,638,834원부터\n3. 약사(주간근무) 월 4,687,000원\n4. 간호사 등 월 3,162,100원\n5. ⏰ 11/20(금) 오후 5시 마감\n\n서류는 경력 50점 + 자기소개서 50점",
+    "replyText": "👆 공고 원문·지원 링크는 프로필 링크에서",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3085107",
+    "sourceSha256": "f30e63297cc1416b31350d107162c7f5b14a416fa458eb526217e0576f4ca4a6",
+    "blogEvidence": "국립암센터 임시직 14명",
+    "startsAt": "2026-11-04T00:00:00+09:00",
+    "deadlineAt": "2026-11-20T17:00:00+09:00",
+    "verifiedPay": "3,162,100원",
+    "employmentType": "임시직(비정규직·1년 단위 계약)",
+    "eligibility": "분야별 면허·전공·경력 요건(간호사·약사·방사선사·보건의료정보관리사 면허 등, 조교·약무지원·원무행정지원은 자격요건 칸 '-'), 학력무관, 병역을 마쳤거나 면제된 자, 임용예정일(2027년 1월초)부터 근무 가능; 공식 공고·잡알리오 공시",
+    "blogTitle": "국립암센터 임시직 14명",
+    "card": {
+      "badge": "🔔 새 공고",
+      "hook": [
+        "[[14개]] 분야",
+        "자리마다 딱 [[1명]]"
+      ],
+      "org": "국립암센터",
+      "role": "임시직 14명",
+      "facts": [
+        [
+          "💰",
+          "월 2,638,834원부터"
+        ],
+        [
+          "💊",
+          "약사(주간근무) 월 4,687,000원"
+        ],
+        [
+          "🩺",
+          "간호사 등 월 3,162,100원"
+        ]
+      ],
+      "deadline": "11/20(금) 오후 5시 마감"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/6c37fbbede04b3bf8c84.png",
+    "imageSha256": "6c37fbbede04b3bf8c843334aa456408e6bee2c98e3806e20d9681369ef1cc97",
+    "checkedAt": "2026-11-09T13:06:50.429Z",
+    "updatedAt": "2026-11-09T13:06:50.429Z"
+  },
+  {
+    "id": "9e09bc6d-a714-4e70-b895-5bf6f306980d",
+    "status": "scheduled",
+    "createdAt": "2026-11-09T13:06:50.429Z",
+    "handle": "hire_masters",
+    "scheduledAt": "2026-11-14T09:30:00.000Z",
+    "noticeId": "306770",
+    "title": "국토연구원 연구원·행정원 7명",
+    "angle": "국토연구원 독자 지목",
+    "text": "국토연구원에서 일해보고 싶으면 이거 봐\n세종에서 휴직 대체로 7명 뽑아\n\n1. 연구원 6명 · 감사 행정원 1명\n2. 7개 분야에서 1명씩\n3. 💰 연봉계약제(금액 미공개)\n4. 대부분 2027년 12월 31일까지\n5. ⏰ 11/20(금) 오후 6시 마감\n\n국제개발협력은 면접에 영어 작문도 있어",
+    "replyText": "👆 자세한 건 프로필 링크에 정리해놨어",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3085525",
+    "sourceSha256": "3c62c98e19b672fd0a7f5cdb3c2622292f4096ead1ac7155a87020d96133a9e1",
+    "blogEvidence": "국토연구원 연구원",
+    "startsAt": "2026-11-06T00:00:00+09:00",
+    "deadlineAt": "2026-11-20T18:00:00+09:00",
+    "verifiedPay": "연봉계약제(금액 미공개)",
+    "employmentType": "위촉직(기간제)·휴직 대체인력",
+    "eligibility": "연구원 6개 분야는 해당분야 연구수행 능력이 있는 자(관련분야 전공), 감사 행정원은 공공기관 3년 이상 근무 + 감사·예산·회계업무 2년 이상; 공식 공고",
+    "blogTitle": "국토연구원 연구원·행정원 7명",
+    "card": {
+      "badge": "👀 이거 봤어?",
+      "hook": [
+        "[[국토연구원]]에서",
+        "일해보고 싶으면"
+      ],
+      "org": "국토연구원",
+      "role": "위촉직(기간제) 7명",
+      "facts": [
+        [
+          "💰",
+          "연봉계약제(금액 미공개)"
+        ],
+        [
+          "👥",
+          "연구원 6명 · 감사 행정원 1명"
+        ],
+        [
+          "📅",
+          "대부분 2027년 12월 31일까지"
+        ]
+      ],
+      "deadline": "11/20(금) 오후 6시 마감"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/bfecab9a9cafd0f0f7dd.png",
+    "imageSha256": "bfecab9a9cafd0f0f7dd9c93083a34d7d8f46053b1c12f279af7dddb810f509c",
+    "checkedAt": "2026-11-09T13:06:50.429Z",
+    "updatedAt": "2026-11-09T13:06:50.429Z"
+  },
+  {
+    "id": "b5a35d35-0a47-4d87-87d9-ff6265a1b57f",
+    "status": "scheduled",
+    "createdAt": "2026-11-09T13:06:50.429Z",
+    "handle": "high_quality_hire",
+    "scheduledAt": "2026-11-14T10:30:00.000Z",
+    "noticeId": "306755",
+    "title": "한국원자력의학원 정기직원 9명",
+    "angle": "분야별 TOEIC 기준 손해 회피",
+    "text": "TOEIC 기준이 분야마다 다릅니다\n한국원자력의학원 정기직원 9명 비교\n\n1. 정규직 5명 · 무기계약직 4명\n2. 방사선사·임상병리사: 600점 이상\n3. 약사·장례지도사: 700점 이상\n4. 💰 연봉 공고에 미기재\n5. ⏰ 11/20(금) 오후 5시 마감\n\n총무복지·영양관리는 별도 자격요건 없음",
+    "replyText": "👆 직무별 급여·자격 비교는 프로필 링크에",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3085456",
+    "sourceSha256": "0081876e1d649eba52ab50df4e5863694578f5c486bc5338ecaf3e1e8f8da580",
+    "blogEvidence": "한국원자력의학원 정기직원 9명",
+    "startsAt": "2026-11-05T00:00:00+09:00",
+    "deadlineAt": "2026-11-20T17:00:00+09:00",
+    "verifiedPay": "공고에 미기재",
+    "employmentType": "정규직·무기계약직",
+    "eligibility": "분야별 필수자격(방사선사·임상병리사·약사 면허, 장례지도사·간호조무사 자격증)과 정규직 4개 분야 TOEIC 600~700점 이상, 총무복지팀·영양관리팀은 별도 자격요건 없음; 공식 공고",
+    "blogTitle": "한국원자력의학원 정기직원 9명",
+    "card": {
+      "badge": "💰 조건 비교",
+      "hero": {
+        "label": "정기직원",
+        "value": "9명",
+        "sub": "정규직 5 · 무기계약직 4"
+      },
+      "tags": [
+        "분야별 TOEIC",
+        "서울"
+      ],
+      "org": "한국원자력의학원",
+      "role": "정기직원 채용",
+      "facts": [
+        [
+          "방사선사·임상병리사",
+          "TOEIC 600점 이상"
+        ],
+        [
+          "약사·장례지도사",
+          "TOEIC 700점 이상"
+        ],
+        [
+          "총무복지·영양관리",
+          "별도 자격요건 없음"
+        ]
+      ],
+      "deadline": "11/20(금) 오후 5시 마감"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/cac347ef3931bbb063b1.png",
+    "imageSha256": "cac347ef3931bbb063b10db611cf6df23f9024d9d24d4e3bfb2989ad4b9c961d",
+    "checkedAt": "2026-11-09T13:06:50.429Z",
+    "updatedAt": "2026-11-09T13:06:50.429Z"
   }
 ]
