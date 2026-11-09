@@ -3371,7 +3371,7 @@
   },
   {
     "id": "fb37c8bf-38a1-4020-98fe-fc546e298525",
-    "status": "publishing",
+    "status": "reply_pending",
     "createdAt": "2026-11-06T01:06:26.049Z",
     "handle": "high_quality_hire",
     "scheduledAt": "2026-11-09T01:30:00.000Z",
@@ -3428,7 +3428,8 @@
     "checkedAt": "2026-11-06T01:06:26.049Z",
     "updatedAt": "2026-11-06T01:06:26.049Z",
     "attemptedAt": "2026-11-09T01:30:47.006Z",
-    "error": null
+    "error": null,
+    "publishedId": "18184992961425547"
   },
   {
     "id": "1e1584b2-e20e-46e1-9052-6dd276ef2a9c",
