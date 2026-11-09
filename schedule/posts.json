@@ -49181,10 +49181,13 @@
     "scheduledAt": "2026-11-09T06:47:00.000Z",
     "createdAt": "2026-10-30T04:14:59.258Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18137159803788029",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18137159803788029"
+    ]
   },
   {
     "id": "9974268e-755b-4bc7-b47e-f7391f851bde",
