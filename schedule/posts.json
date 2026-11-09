@@ -50296,11 +50296,14 @@
     "scheduledAt": "2026-11-09T08:01:00.000Z",
     "createdAt": "2026-10-30T04:58:53.310Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17967868107198395",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "17967868107198395"
+    ]
   },
   {
     "id": "d64dd92f-d8e8-4552-89b1-edb01397d579",
