@@ -49208,11 +49208,14 @@
     "scheduledAt": "2026-11-09T08:59:00.000Z",
     "createdAt": "2026-10-30T04:15:32.617Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18400799920203736",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18400799920203736"
+    ]
   },
   {
     "id": "edde0d8d-fb83-431a-96b5-da48345677f0",
