@@ -50213,10 +50213,13 @@
     "scheduledAt": "2026-11-09T03:28:00.000Z",
     "createdAt": "2026-10-30T04:57:22.753Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17890729653476613",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17890729653476613"
+    ]
   },
   {
     "id": "5e7901e5-8111-436e-82ba-ec27037fcd99",
