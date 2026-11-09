@@ -48178,10 +48178,13 @@
     "scheduledAt": "2026-11-09T06:20:00.000Z",
     "createdAt": "2026-10-30T03:39:10.927Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18137956303636545",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18137956303636545"
+    ]
   },
   {
     "id": "b6a46bd1-3f57-4b17-afcb-6857a0243701",
