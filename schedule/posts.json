@@ -47351,10 +47351,13 @@
     "scheduledAt": "2026-11-09T04:57:00.000Z",
     "createdAt": "2026-10-30T03:05:00.768Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17913533958583678",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "17913533958583678"
+    ]
   },
   {
     "id": "e5c207a1-93ff-4d0e-a249-a2f5f8c6b0f6",
