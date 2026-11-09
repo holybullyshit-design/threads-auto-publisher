@@ -49233,10 +49233,13 @@
     "scheduledAt": "2026-11-09T22:10:00.000Z",
     "createdAt": "2026-10-30T04:16:29.966Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17922239133244361",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17922239133244361"
+    ]
   },
   {
     "id": "c94d68a5-2682-4120-9284-7e9097137155",
