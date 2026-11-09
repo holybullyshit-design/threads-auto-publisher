@@ -49137,10 +49137,13 @@
     "scheduledAt": "2026-11-09T03:50:00.000Z",
     "createdAt": "2026-10-30T04:14:17.108Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18109982447210911",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18109982447210911"
+    ]
   },
   {
     "id": "801bcb37-57b0-4c0f-a79d-c96c6d450d1a",
