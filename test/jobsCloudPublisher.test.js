@@ -64,3 +64,22 @@ test('account history check: 403 falls back, other failures and full days stop',
   await assert.rejects(()=>checkAccountDay(a,'high_quality_hire','2026-11-05',res(200,{data:posts})),/이미 본문 2개/);
   assert.equal(await checkAccountDay(a,'high_quality_hire','2026-11-05',res(200,{data:posts.slice(0,1)})),'account');
 });
+test('2026-11-09 reply link test: the reply carries the verified blog URL and the read-back checks it', async () => {
+  const at = new Date('2026-11-12T10:30:00+09:00');
+  const url = 'https://hirecurator.blogspot.com/2026/11/hq.html';
+  const p = { ...post(), handle: 'high_quality_hire', scheduledAt: at.toISOString(), checkedAt: new Date(at - H).toISOString(), deadlineAt: '2026-11-20T17:00:00+09:00', blogUrl: undefined, blogTitle: '남부발전', replyText: '👆 직무별 급여·자격 비교 전체는 여기\n{블로그주소}' };
+  const q = queue(p), calls = [], reads = [];
+  const hqAuth = () => ({ high_quality_hire: { userId: '3', accessToken: 'secret', expiresAt: '2026-12-30T00:00:00Z' } });
+  await run({ queue: q, now: () => at, getAccounts: hqAuth, web: async () => ({ blogUrl: url }), checkDay: async () => 'account',
+    publish: async x => { calls.push(x); return { publishedId: String(calls.length) }; },
+    inspect: async (id, auth, expected) => { reads.push(expected); return { url: 'https://www.threads.com/post/' + id, timestamp: at.toISOString() }; } });
+  assert.equal(q.rows()[0].status, 'published');
+  assert.equal(calls[1].text, `👆 직무별 급여·자격 비교 전체는 여기\n${url}`);
+  assert.equal(reads[1], calls[1].text);
+  assert.equal(q.rows()[0].replySentText, calls[1].text);
+  assert.equal(q.rows()[0].replyText, p.replyText, '원본 댓글 문구(자리표시)는 그대로 둔다');
+  // 블로그 주소를 확인하지 못하면 본문도 올리지 않는다
+  const q2 = queue({ ...p, id: 'two' }); let count = 0;
+  await run({ queue: q2, now: () => at, getAccounts: hqAuth, web: async () => ({ blogUrl: 'https://wrong.example/x' }), checkDay: async () => 'account', publish: async () => { count++; return { publishedId: '1' }; }, inspect: readOk });
+  assert.equal(count, 0); assert.equal(q2.rows()[0].status, 'blocked'); assert.match(q2.rows()[0].error, /쓸 수 없음/);
+});

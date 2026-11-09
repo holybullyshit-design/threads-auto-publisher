@@ -119,3 +119,25 @@ test('the same notice may run on all three accounts with different copy, 24h apa
   assert.ok(errors(p,[a,{...b,text:p.text},p],t).includes('copyDuplicate'));
   assert.ok(errors(p,[{...a,handle:'high_quality_hire'},p],t).includes('duplicate'));
 });
+test('2026-11-09 reply link test: only @high_quality_hire on 11/10~16 may use the blog placeholder', () => {
+  const { replyFor, BLOG_PLACEHOLDER } = require('../cloud/jobsRules');
+  const at = new Date('2026-11-12T10:30:00+09:00');
+  const hq = { ...base(), handle: 'high_quality_hire', scheduledAt: at.toISOString(), checkedAt: new Date(at - H).toISOString(), deadlineAt: '2026-11-20T17:00:00+09:00', replyText: `👆 직무별 급여·자격 비교 전체는 여기\n${BLOG_PLACEHOLDER}` };
+  assert.deepEqual(errors(hq, [hq], at), []);
+  const blocked = [
+    { handle: 'jobs_curator' },                                                        // 다른 계정
+    { replyText: `${hq.replyText}\nhttps://hirecurator.blogspot.com/2026/11/x.html` },  // 직접 쓴 주소
+    { replyText: `${hq.replyText} ${BLOG_PLACEHOLDER}` },                               // 자리표시 두 번
+  ];
+  for (const patch of blocked) assert.ok(errors({ ...hq, ...patch }, [hq], at).includes('replyLink'), JSON.stringify(patch));
+  const after = new Date('2026-11-17T10:30:00+09:00');                                  // 시험 기간 밖
+  assert.ok(errors({ ...hq, scheduledAt: after.toISOString(), checkedAt: new Date(after - H).toISOString() }, [hq], after).includes('replyLink'));
+  const before = new Date('2026-11-09T19:30:00+09:00');
+  assert.ok(errors({ ...hq, scheduledAt: before.toISOString(), checkedAt: new Date(before - H).toISOString() }, [hq], before).includes('replyLink'));
+  // 실제 댓글은 검증된 우리 블로그 주소로만 바뀐다
+  const url = 'https://hirecurator.blogspot.com/2026/11/abc.html';
+  assert.equal(replyFor(hq, url), `👆 직무별 급여·자격 비교 전체는 여기\n${url}`);
+  for (const bad of [undefined, 'https://example.com/x', 'https://hirecurator.blogspot.com/a b']) assert.throws(() => replyFor(hq, bad), /쓸 수 없음/);
+  assert.throws(() => replyFor({ ...hq, handle: 'hire_masters' }, url), /쓸 수 없음/);
+  assert.equal(replyFor(base(), url), base().replyText);                                // 자리표시 없는 댓글은 그대로
+});

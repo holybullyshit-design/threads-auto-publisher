@@ -1,6 +1,6 @@
 // Cloud recruitment publisher. Never reads the saju queue or THREADS_ACCOUNTS_JSON.
 const store = require('./jobsStore');
-const { errors, verifyWeb, HANDLES, DAILY_LIMIT, kstDay } = require('./jobsRules');
+const { errors, verifyWeb, HANDLES, DAILY_LIMIT, kstDay, replyFor } = require('./jobsRules');
 const { publishTextPost, publishImagePost } = require('../server/lib/threadsClient');
 // 본문은 카드 이미지와 함께, 답글은 텍스트로 올린다.
 const postToThreads = x => (x.imageUrls ? publishImagePost(x) : publishTextPost(x));
@@ -52,9 +52,12 @@ async function run({ queue = store, publish = postToThreads, web = verifyWeb, no
       console.error(`[채용 보류] ${row.id}: ${reason}`);
       continue;
     }
+    let replyText;
     try {
       const checked = await web(row);
       if (checked?.blogUrl && checked.blogUrl !== row.blogUrl) await queue.change(rows => { const p = rows.find(x => x.id === row.id); if (p) p.blogUrl = checked.blogUrl; });
+      // 2026-11-09 댓글 주소 시험: 자리표시는 방금 검증한 블로그 주소로만 바꾼다. 못 바꾸면 아래 catch에서 보류한다.
+      replyText = replyFor(row, checked?.blogUrl || row.blogUrl);
     }
     catch (e) {
       // 일시 오류는 예약을 유지하고 다음 실행(errors의 time 조건: 당일 21시 전·슬롯 8시간 안)에서 다시 확인한다.
@@ -102,10 +105,10 @@ async function run({ queue = store, publish = postToThreads, web = verifyWeb, no
       continue;
     }
     try {
-      const reply = await publish({ text: row.replyText, replyToId: mainId, accessToken: auth.accessToken, threadsUserId: auth.userId });
+      const reply = await publish({ text: replyText, replyToId: mainId, accessToken: auth.accessToken, threadsUserId: auth.userId });
       if (!reply.publishedId) throw new Error('답글 게시 ID 없음');
-      await queue.change(rows => { const p = rows.find(x => x.id === row.id); p.replyId = reply.publishedId; p.status = 'reply_pending'; });
-      const replyRead = await inspect(reply.publishedId, auth, row.replyText, row.handle);
+      await queue.change(rows => { const p = rows.find(x => x.id === row.id); p.replyId = reply.publishedId; p.status = 'reply_pending'; if (replyText !== row.replyText) p.replySentText = replyText; });
+      const replyRead = await inspect(reply.publishedId, auth, replyText, row.handle);
       await queue.change(rows => { const p = rows.find(x => x.id === row.id); p.status = 'published'; p.replyUrl = replyRead.url; p.replyTimestamp = replyRead.timestamp; p.publishedAt = now().toISOString(); p.error = null; });
       console.log(`[채용 게시 완료] ${row.id} @${row.handle}`);
     } catch (e) {
