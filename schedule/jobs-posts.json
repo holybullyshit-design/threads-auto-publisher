@@ -3825,7 +3825,7 @@
   },
   {
     "id": "21356da2-f7cd-4129-a542-da303631b7c0",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-06T01:06:26.049Z",
     "handle": "jobs_curator",
     "scheduledAt": "2026-11-10T08:30:00.000Z",
@@ -3875,11 +3875,12 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/274200339001662cb0dc.png",
     "imageSha256": "274200339001662cb0dca17fe2edaf432d10e6542564ff61f15449e042d63d9a",
     "checkedAt": "2026-11-06T01:06:26.049Z",
-    "updatedAt": "2026-11-06T01:06:26.049Z"
+    "updatedAt": "2026-11-10T07:01:39.432Z",
+    "error": "2026-11-10 평균연봉 문구·카드로 교체(사용자 지시)"
   },
   {
     "id": "73903870-f788-4f85-94d7-7a7dae35da27",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-06T01:06:26.049Z",
     "handle": "hire_masters",
     "scheduledAt": "2026-11-10T09:30:00.000Z",
@@ -3929,7 +3930,8 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/e0439274782a9722c3e0.png",
     "imageSha256": "e0439274782a9722c3e0d3bc4576cb63b2bec437a7663231b67e43c25592ebb8",
     "checkedAt": "2026-11-06T01:06:26.049Z",
-    "updatedAt": "2026-11-06T01:06:26.049Z"
+    "updatedAt": "2026-11-10T07:01:39.432Z",
+    "error": "2026-11-10 평균연봉 문구·카드로 교체(사용자 지시)"
   },
   {
     "id": "0d5d1c95-684b-48d0-89ac-11fa9e8a147c",
@@ -4168,7 +4170,7 @@
   },
   {
     "id": "6e494be7-3e1c-45e8-9d26-775831d0047f",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-06T14:26:17.276Z",
     "handle": "jobs_curator",
     "scheduledAt": "2026-11-11T08:30:00.000Z",
@@ -4218,11 +4220,12 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/04c5c1fedacd7d0da164.png",
     "imageSha256": "04c5c1fedacd7d0da164ff32d917f2f72988a31632bf2971d0cd205ca7d821f5",
     "checkedAt": "2026-11-06T14:32:20.925Z",
-    "updatedAt": "2026-11-06T14:32:20.925Z"
+    "updatedAt": "2026-11-10T07:01:39.432Z",
+    "error": "2026-11-10 평균연봉 문구·카드로 교체(사용자 지시)"
   },
   {
     "id": "a5140b57-be3e-4a21-8c15-4f2fd485d019",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-06T14:26:17.276Z",
     "handle": "hire_masters",
     "scheduledAt": "2026-11-11T09:30:00.000Z",
@@ -4272,7 +4275,8 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/e5a4e62d734107c4e3ce.png",
     "imageSha256": "e5a4e62d734107c4e3ce0fabbb3a2ce2426da77b79a8a36cfc46e547a1b95cee",
     "checkedAt": "2026-11-06T14:32:20.925Z",
-    "updatedAt": "2026-11-06T14:32:20.925Z"
+    "updatedAt": "2026-11-10T07:01:39.432Z",
+    "error": "2026-11-10 평균연봉 문구·카드로 교체(사용자 지시)"
   },
   {
     "id": "323bd693-594f-4273-9261-6773a8b9c997",
@@ -4337,7 +4341,7 @@
   },
   {
     "id": "947c337c-14a4-46a1-99ca-b6b9008cd806",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-06T14:26:17.276Z",
     "handle": "jobs_curator",
     "scheduledAt": "2026-11-11T23:30:00.000Z",
@@ -4387,7 +4391,8 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/74490df1a7d7ef555159.png",
     "imageSha256": "74490df1a7d7ef5551592bff4b3ecf9d0ae4f2638cacfcad73fa3b65510585fc",
     "checkedAt": "2026-11-06T14:32:20.925Z",
-    "updatedAt": "2026-11-06T14:32:20.925Z"
+    "updatedAt": "2026-11-10T07:01:39.432Z",
+    "error": "2026-11-10 평균연봉 문구·카드로 교체(사용자 지시)"
   },
   {
     "id": "838dfe0e-8759-41c2-bac1-2ee60488b0e6",
@@ -4508,7 +4513,7 @@
   },
   {
     "id": "af3a20d0-fea3-453e-8565-2958b119d1f5",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-06T14:26:17.276Z",
     "handle": "jobs_curator",
     "scheduledAt": "2026-11-12T08:30:00.000Z",
@@ -4558,11 +4563,12 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/6ace24531759f6004e8b.png",
     "imageSha256": "6ace24531759f6004e8bbe731a73d085613017b2326f6e5f96f0c1ae128e50bc",
     "checkedAt": "2026-11-06T14:32:20.925Z",
-    "updatedAt": "2026-11-06T14:32:20.925Z"
+    "updatedAt": "2026-11-10T07:01:39.432Z",
+    "error": "2026-11-10 평균연봉 문구·카드로 교체(사용자 지시)"
   },
   {
     "id": "cc4064d8-f82b-4788-a5fe-6c6f21efcd1e",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-06T14:26:17.276Z",
     "handle": "hire_masters",
     "scheduledAt": "2026-11-12T09:30:00.000Z",
@@ -4612,7 +4618,8 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/926bba00377f1aed17df.png",
     "imageSha256": "926bba00377f1aed17dff85014a89f2cbc8d8103a74d47abe307259476c37f25",
     "checkedAt": "2026-11-06T14:32:20.925Z",
-    "updatedAt": "2026-11-06T14:32:20.925Z"
+    "updatedAt": "2026-11-10T07:01:39.432Z",
+    "error": "2026-11-10 평균연봉 문구·카드로 교체(사용자 지시)"
   },
   {
     "id": "cf59345c-56c7-4631-ab3b-6a819aa2b291",
@@ -4677,7 +4684,7 @@
   },
   {
     "id": "5156d6cb-92f3-4b6e-8b2d-4fd921046dd5",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-06T14:26:17.276Z",
     "handle": "jobs_curator",
     "scheduledAt": "2026-11-12T23:30:00.000Z",
@@ -4727,11 +4734,12 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/34fc7a49703e2bf730a9.png",
     "imageSha256": "34fc7a49703e2bf730a9109c45a5bc587fe07073a291a64457410836707638f1",
     "checkedAt": "2026-11-06T14:32:20.925Z",
-    "updatedAt": "2026-11-06T14:32:20.925Z"
+    "updatedAt": "2026-11-10T07:01:39.432Z",
+    "error": "2026-11-10 평균연봉 문구·카드로 교체(사용자 지시)"
   },
   {
     "id": "57acd43c-f19d-4dda-a0f2-3435bd93e0e9",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-06T14:26:17.276Z",
     "handle": "hire_masters",
     "scheduledAt": "2026-11-13T00:30:00.000Z",
@@ -4781,7 +4789,8 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/6428569f6ffacb3fda27.png",
     "imageSha256": "6428569f6ffacb3fda2712735f4a444c5ff5beaa8ed10bd3e6a1180ded115cd8",
     "checkedAt": "2026-11-06T14:32:20.925Z",
-    "updatedAt": "2026-11-06T14:32:20.925Z"
+    "updatedAt": "2026-11-10T07:01:39.432Z",
+    "error": "2026-11-10 평균연봉 문구·카드로 교체(사용자 지시)"
   },
   {
     "id": "37182732-d22e-44da-b2fd-b1568b3f0f93",
@@ -4846,7 +4855,7 @@
   },
   {
     "id": "1f01472d-e1f4-41d2-a66c-695c935d94a9",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-06T14:26:17.276Z",
     "handle": "jobs_curator",
     "scheduledAt": "2026-11-13T08:30:00.000Z",
@@ -4896,11 +4905,12 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/e259f5c950cfb2f9808c.png",
     "imageSha256": "e259f5c950cfb2f9808c6b63e418fd9f63e01c874192f85bb9298717991a9c38",
     "checkedAt": "2026-11-06T14:32:20.925Z",
-    "updatedAt": "2026-11-06T14:32:20.925Z"
+    "updatedAt": "2026-11-10T07:01:39.432Z",
+    "error": "2026-11-10 평균연봉 문구·카드로 교체(사용자 지시)"
   },
   {
     "id": "5faa5101-bb5a-4c6b-ae55-89307024790e",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-06T14:26:17.276Z",
     "handle": "hire_masters",
     "scheduledAt": "2026-11-13T09:30:00.000Z",
@@ -4950,7 +4960,8 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/4b3ed6843a7126d8e40d.png",
     "imageSha256": "4b3ed6843a7126d8e40d9e3751c36e57365c1bcf15f22fd96c5745f2ebd389a2",
     "checkedAt": "2026-11-06T14:32:20.925Z",
-    "updatedAt": "2026-11-06T14:32:20.925Z"
+    "updatedAt": "2026-11-10T07:01:39.432Z",
+    "error": "2026-11-10 평균연봉 문구·카드로 교체(사용자 지시)"
   },
   {
     "id": "c447b3e3-557b-4c91-ad37-4cef4b336cec",
@@ -5015,7 +5026,7 @@
   },
   {
     "id": "0dc555ea-e036-4776-b367-745cfa3737b4",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-06T14:32:20.925Z",
     "handle": "jobs_curator",
     "scheduledAt": "2026-11-10T23:30:00.000Z",
@@ -5065,11 +5076,12 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/4b954a7959473dc9bf68.png",
     "imageSha256": "4b954a7959473dc9bf68e84f8bb9ad9a6db5b899ec7838dd3b5a35271007b02c",
     "checkedAt": "2026-11-06T14:32:20.925Z",
-    "updatedAt": "2026-11-06T14:32:20.925Z"
+    "updatedAt": "2026-11-10T07:01:39.432Z",
+    "error": "2026-11-10 평균연봉 문구·카드로 교체(사용자 지시)"
   },
   {
     "id": "a6afb3ed-b279-4398-85e6-32181a2ef83b",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-06T14:32:20.925Z",
     "handle": "hire_masters",
     "scheduledAt": "2026-11-11T00:30:00.000Z",
@@ -5119,11 +5131,12 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/ac71220acbda5caa4a3b.png",
     "imageSha256": "ac71220acbda5caa4a3b67c2030dcb3ebdba5c54c8b9d58079cafcd102f47be3",
     "checkedAt": "2026-11-06T14:32:20.925Z",
-    "updatedAt": "2026-11-06T14:32:20.925Z"
+    "updatedAt": "2026-11-10T07:01:39.432Z",
+    "error": "2026-11-10 평균연봉 문구·카드로 교체(사용자 지시)"
   },
   {
     "id": "a4081d91-e53b-4f9d-8430-d8f76a353106",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-06T14:32:20.925Z",
     "handle": "hire_masters",
     "scheduledAt": "2026-11-12T00:30:00.000Z",
@@ -5173,7 +5186,8 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/042fa213633bb513b448.png",
     "imageSha256": "042fa213633bb513b448ac3b85c1cd0bbb52b5180ec521b5baeaf053011d97dd",
     "checkedAt": "2026-11-06T14:32:20.925Z",
-    "updatedAt": "2026-11-06T14:32:20.925Z"
+    "updatedAt": "2026-11-10T07:01:39.432Z",
+    "error": "2026-11-10 평균연봉 문구·카드로 교체(사용자 지시)"
   },
   {
     "id": "dcd26040-f858-42fb-9cba-37b6509f5db6",
@@ -5299,7 +5313,7 @@
   },
   {
     "id": "7277f23e-e444-4420-ba26-8b1a7afcb3e1",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-09T13:06:50.429Z",
     "handle": "jobs_curator",
     "scheduledAt": "2026-11-13T23:30:00.000Z",
@@ -5349,11 +5363,12 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/271e96d5a7994ac07810.png",
     "imageSha256": "271e96d5a7994ac07810da28ac2695417de308c7cd1a9a136df8346a71c55490",
     "checkedAt": "2026-11-09T13:06:50.429Z",
-    "updatedAt": "2026-11-09T13:06:50.429Z"
+    "updatedAt": "2026-11-10T07:01:39.432Z",
+    "error": "2026-11-10 평균연봉 문구·카드로 교체(사용자 지시)"
   },
   {
     "id": "3f20eec5-7d51-457b-9111-e9333c6cc1c8",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-09T13:06:50.429Z",
     "handle": "hire_masters",
     "scheduledAt": "2026-11-14T00:30:00.000Z",
@@ -5403,7 +5418,8 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/41af08b9508476bc37b1.png",
     "imageSha256": "41af08b9508476bc37b1ae9c8258d242d43c597cb30ca9e198032eafadc496be",
     "checkedAt": "2026-11-09T13:06:50.429Z",
-    "updatedAt": "2026-11-09T13:06:50.429Z"
+    "updatedAt": "2026-11-10T07:01:39.432Z",
+    "error": "2026-11-10 평균연봉 문구·카드로 교체(사용자 지시)"
   },
   {
     "id": "3b79ff36-2dc2-4ee3-b10b-009b83e9e8c4",
@@ -5468,7 +5484,7 @@
   },
   {
     "id": "c86a9a40-7e5b-4c5a-8f01-d002db764a79",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-09T13:06:50.429Z",
     "handle": "jobs_curator",
     "scheduledAt": "2026-11-14T08:30:00.000Z",
@@ -5518,11 +5534,12 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/6c37fbbede04b3bf8c84.png",
     "imageSha256": "6c37fbbede04b3bf8c843334aa456408e6bee2c98e3806e20d9681369ef1cc97",
     "checkedAt": "2026-11-09T13:06:50.429Z",
-    "updatedAt": "2026-11-09T13:06:50.429Z"
+    "updatedAt": "2026-11-10T07:01:39.432Z",
+    "error": "2026-11-10 평균연봉 문구·카드로 교체(사용자 지시)"
   },
   {
     "id": "9e09bc6d-a714-4e70-b895-5bf6f306980d",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-09T13:06:50.429Z",
     "handle": "hire_masters",
     "scheduledAt": "2026-11-14T09:30:00.000Z",
@@ -5572,7 +5589,8 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/bfecab9a9cafd0f0f7dd.png",
     "imageSha256": "bfecab9a9cafd0f0f7dd9c93083a34d7d8f46053b1c12f279af7dddb810f509c",
     "checkedAt": "2026-11-09T13:06:50.429Z",
-    "updatedAt": "2026-11-09T13:06:50.429Z"
+    "updatedAt": "2026-11-10T07:01:39.432Z",
+    "error": "2026-11-10 평균연봉 문구·카드로 교체(사용자 지시)"
   },
   {
     "id": "b5a35d35-0a47-4d87-87d9-ff6265a1b57f",
@@ -5708,7 +5726,7 @@
   },
   {
     "id": "146904f0-04ae-419e-bba5-c6b933313846",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-09T13:31:13.567Z",
     "handle": "high_quality_hire",
     "scheduledAt": "2026-11-10T10:30:00.000Z",
@@ -5763,11 +5781,12 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/3fa06d4c5294b3ec2fc1.png",
     "imageSha256": "3fa06d4c5294b3ec2fc19a619aef06776b3ef5c5d9128d4b98dccac7ee72f237",
     "checkedAt": "2026-11-09T13:31:13.567Z",
-    "updatedAt": "2026-11-09T13:31:13.567Z"
+    "updatedAt": "2026-11-10T07:01:39.432Z",
+    "error": "2026-11-10 평균연봉 문구·카드로 교체(사용자 지시)"
   },
   {
     "id": "7c722301-5840-4afa-b08b-af1fd8cf49df",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-09T13:31:13.567Z",
     "handle": "high_quality_hire",
     "scheduledAt": "2026-11-11T01:30:00.000Z",
@@ -5823,11 +5842,12 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/6290b42d6a352eb4774e.png",
     "imageSha256": "6290b42d6a352eb4774e60c65a792fa2b8c5ac9ae78ba82716286a338edf02fa",
     "checkedAt": "2026-11-09T13:31:13.567Z",
-    "updatedAt": "2026-11-09T13:31:13.567Z"
+    "updatedAt": "2026-11-10T07:01:39.432Z",
+    "error": "2026-11-10 평균연봉 문구·카드로 교체(사용자 지시)"
   },
   {
     "id": "a719554f-ec8f-46f1-9be6-118a0844461f",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-09T13:31:13.567Z",
     "handle": "high_quality_hire",
     "scheduledAt": "2026-11-11T10:30:00.000Z",
@@ -5882,11 +5902,12 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/094e4846ed33717df7b2.png",
     "imageSha256": "094e4846ed33717df7b2733addfa603601961e4e397165d9e232d934f972bbc5",
     "checkedAt": "2026-11-09T13:31:13.567Z",
-    "updatedAt": "2026-11-09T13:31:13.567Z"
+    "updatedAt": "2026-11-10T07:01:39.432Z",
+    "error": "2026-11-10 평균연봉 문구·카드로 교체(사용자 지시)"
   },
   {
     "id": "d08aa724-d53d-427e-9df2-3c6e2ee7fad0",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-09T13:31:13.567Z",
     "handle": "high_quality_hire",
     "scheduledAt": "2026-11-12T01:30:00.000Z",
@@ -5941,11 +5962,12 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/c8cb256d12fe988f6b8e.png",
     "imageSha256": "c8cb256d12fe988f6b8e47fbd0c73e00c169b0a6bac32ebf72f57ff83f0b3b37",
     "checkedAt": "2026-11-09T13:31:13.567Z",
-    "updatedAt": "2026-11-09T13:31:13.567Z"
+    "updatedAt": "2026-11-10T07:01:39.432Z",
+    "error": "2026-11-10 평균연봉 문구·카드로 교체(사용자 지시)"
   },
   {
     "id": "69ad148f-bc69-4ce6-aa08-c0f003b2af14",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-09T13:31:13.567Z",
     "handle": "high_quality_hire",
     "scheduledAt": "2026-11-12T10:30:00.000Z",
@@ -6000,11 +6022,12 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/8403ca3e53558d14acc4.png",
     "imageSha256": "8403ca3e53558d14acc44fb081c62384c28e2e41322acce373e78eea43e18d90",
     "checkedAt": "2026-11-09T13:31:13.567Z",
-    "updatedAt": "2026-11-09T13:31:13.567Z"
+    "updatedAt": "2026-11-10T07:01:39.432Z",
+    "error": "2026-11-10 평균연봉 문구·카드로 교체(사용자 지시)"
   },
   {
     "id": "c9dde05c-f951-4862-bae0-41260ab23d33",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-09T13:31:13.567Z",
     "handle": "high_quality_hire",
     "scheduledAt": "2026-11-13T01:30:00.000Z",
@@ -6059,11 +6082,12 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/ceb6affa4c205420cb0c.png",
     "imageSha256": "ceb6affa4c205420cb0c2f7150fe3e98366395cbc4af55d60924a0ef1e4591af",
     "checkedAt": "2026-11-09T13:31:13.567Z",
-    "updatedAt": "2026-11-09T13:31:13.567Z"
+    "updatedAt": "2026-11-10T07:01:39.432Z",
+    "error": "2026-11-10 평균연봉 문구·카드로 교체(사용자 지시)"
   },
   {
     "id": "9b7c091c-6c13-4b90-8f39-0146643f845c",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-09T13:31:13.567Z",
     "handle": "high_quality_hire",
     "scheduledAt": "2026-11-13T10:30:00.000Z",
@@ -6118,11 +6142,12 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/2538d905a617a5e03c86.png",
     "imageSha256": "2538d905a617a5e03c86a5bfac7bc6e028d7312d80442c4d5d564c76a31553fa",
     "checkedAt": "2026-11-09T13:31:13.567Z",
-    "updatedAt": "2026-11-09T13:31:13.567Z"
+    "updatedAt": "2026-11-10T07:01:39.432Z",
+    "error": "2026-11-10 평균연봉 문구·카드로 교체(사용자 지시)"
   },
   {
     "id": "20a33afb-06a5-4936-88fa-f19e90ff3b6c",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-09T13:31:13.567Z",
     "handle": "high_quality_hire",
     "scheduledAt": "2026-11-14T01:30:00.000Z",
@@ -6177,11 +6202,12 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/65e401a2724d591d65cf.png",
     "imageSha256": "65e401a2724d591d65cf376b17fd281457419458e38dd00a5fa2b75f740ff2a8",
     "checkedAt": "2026-11-09T13:31:13.567Z",
-    "updatedAt": "2026-11-09T13:31:13.567Z"
+    "updatedAt": "2026-11-10T07:01:39.432Z",
+    "error": "2026-11-10 평균연봉 문구·카드로 교체(사용자 지시)"
   },
   {
     "id": "25d29285-6f79-4929-a9d8-ec30057cc356",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-09T13:31:13.567Z",
     "handle": "high_quality_hire",
     "scheduledAt": "2026-11-14T10:30:00.000Z",
@@ -6236,6 +6262,7 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/cac347ef3931bbb063b1.png",
     "imageSha256": "cac347ef3931bbb063b10db611cf6df23f9024d9d24d4e3bfb2989ad4b9c961d",
     "checkedAt": "2026-11-09T13:31:13.567Z",
-    "updatedAt": "2026-11-09T13:31:13.567Z"
+    "updatedAt": "2026-11-10T07:01:39.432Z",
+    "error": "2026-11-10 평균연봉 문구·카드로 교체(사용자 지시)"
   }
 ]
