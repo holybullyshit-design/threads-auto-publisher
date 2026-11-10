@@ -51305,10 +51305,13 @@
     "scheduledAt": "2026-11-10T09:03:00.000Z",
     "createdAt": "2026-10-30T06:08:14.490Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17915925480284648",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17915925480284648"
+    ]
   },
   {
     "id": "c66cf3e2-37f8-4cc6-803b-46a75879743d",
