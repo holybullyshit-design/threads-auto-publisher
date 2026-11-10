@@ -47,8 +47,9 @@ jobs:
         run: node cloud/build-jobs-board.js
       # 구글 색인 알림(2026-11-10 추가): 최근 14일 안에 공개된 블로그 글 중 JobPosting 구조화 데이터가 있고
       # 마감 전이며 구글에 알린 기록이 없는 글만 Indexing API(URL_UPDATED)로 알린다(cloud/notify-indexing.js).
-      # 이미 알린 글은 구글 알림 기록으로 건너뛰므로 모든 실행(슬롯·예비 schedule·손 실행)에서 돌려도 중복되지 않는다.
-      # 게시판 갱신이 실패해도 돈다. 비밀값 GOOGLE_INDEXING_SA가 없으면 아무것도 하지 않는다.
+      # 알린 주소는 board/indexing-log.json에 남기고 다음 실행에서 건너뛰므로, 모든 실행(슬롯·예비 schedule·손 실행)에서
+      # 돌려도 중복되지 않는다(구글 알림 기록은 늦게 반영돼 보조로만 쓴다). 게시판 갱신이 실패해도 돈다.
+      # 비밀값 GOOGLE_INDEXING_SA가 없으면 아무것도 하지 않는다.
       - name: Check Google indexing notifier
         if: ${{ !cancelled() }}
         run: node --test test/notifyIndexing.test.js
@@ -56,4 +57,6 @@ jobs:
         if: ${{ !cancelled() }}
         env:
           GOOGLE_INDEXING_SA: ${{ secrets.GOOGLE_INDEXING_SA }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPO: ${{ github.repository }}
         run: node cloud/notify-indexing.js
