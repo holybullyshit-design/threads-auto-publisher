@@ -48268,10 +48268,13 @@
     "scheduledAt": "2026-11-10T04:27:00.000Z",
     "createdAt": "2026-10-30T03:41:03.754Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18110249678196676",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18110249678196676"
+    ]
   },
   {
     "id": "cf82e1c5-2d48-4409-9c71-1fc9528376de",
