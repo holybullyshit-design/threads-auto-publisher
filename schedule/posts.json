@@ -49378,11 +49378,14 @@
     "scheduledAt": "2026-11-10T08:35:00.000Z",
     "createdAt": "2026-10-30T04:19:22.572Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17912863800590796",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "17912863800590796"
+    ]
   },
   {
     "id": "08faca0b-f18b-465e-b708-932b3ec20f49",
