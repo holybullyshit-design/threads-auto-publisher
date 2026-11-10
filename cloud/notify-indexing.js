@@ -89,6 +89,7 @@ async function run({ sa, fetcher = fetch, now = Date.now(), dryRun = false, log 
   const entries = ((await feed.json()).feed?.entry || []).map(e => ({
     url: (e.link || []).find(l => l.rel === 'alternate')?.href || '',
     published: Date.parse(e.published?.$t),
+    content: e.content?.$t || '',
   }));
   const due = entries
     .filter(e => e.url.startsWith(BLOG) && e.published <= now && now - e.published < LOOKBACK_DAYS * 864e5)
@@ -99,9 +100,15 @@ async function run({ sa, fetcher = fetch, now = Date.now(), dryRun = false, log 
   const record = (url, jp, notifiedAt) => { log[url] = { notifiedAt, validThrough: jp.validThrough, noticeId: String(jp.identifier?.value || '') }; changed = true; };
   for (const e of due) {
     if (log[e.url]) { results.push({ url: e.url, skipped: '이미 알림(기록)' }); continue; }
-    const page = await fetcher(e.url);
-    if (!page.ok) { results.push({ url: e.url, skipped: `글 HTTP ${page.status}` }); continue; }
-    const jp = findJobPosting(await page.text());
+    // 피드에 글 본문이 통째로 들어 있으므로 거기서 JobPosting을 읽는다(글 페이지를 하나씩 열면 Blogger가 429로 막는다,
+    // 2026-11-10 실측). 피드에 본문이 없을 때만 글 페이지를 연다.
+    let html = e.content;
+    if (!html) {
+      const page = await fetcher(e.url);
+      if (!page.ok) { results.push({ url: e.url, skipped: `글 HTTP ${page.status}` }); continue; }
+      html = await page.text();
+    }
+    const jp = findJobPosting(html);
     if (!jp) { results.push({ url: e.url, skipped: 'JobPosting 구조화 데이터 없음' }); continue; }
     if (!(Date.parse(jp.validThrough) > now)) { results.push({ url: e.url, skipped: '접수 마감 지남' }); continue; }
     if (dryRun) { results.push({ url: e.url, wouldNotify: true }); continue; }

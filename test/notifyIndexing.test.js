@@ -11,11 +11,12 @@ const ld = o => `<script type="application/ld+json">${JSON.stringify(o)}</script
 const job = (until, id = '306801') => ({ '@context': 'https://schema.org', '@type': 'JobPosting', title: 't', validThrough: until, identifier: { '@type': 'PropertyValue', name: '잡알리오', value: id } });
 
 // googleNotified: 구글 알림 기록(metadata)에 이미 있는 주소. publishStatus·metaStatus로 오류를 흉내 낸다.
-function fakeWeb(pages, posts, { googleNotified = [], publishStatus = 200, metaStatus = null } = {}) {
+// feedContent=true면 Blogger 실제 피드처럼 글 본문을 피드에 넣는다(기본). false면 본문 없는 피드를 흉내 낸다.
+function fakeWeb(pages, posts, { googleNotified = [], publishStatus = 200, metaStatus = null, feedContent = true } = {}) {
   const calls = [];
   const fetcher = async (url, opts = {}) => {
     calls.push({ url, opts });
-    if (url.startsWith(`${BLOG}feeds/`)) return { ok: true, json: async () => ({ feed: { entry: posts.map(([u, p]) => ({ link: [{ rel: 'alternate', href: u }], published: { $t: p } })) } }) };
+    if (url.startsWith(`${BLOG}feeds/`)) return { ok: true, json: async () => ({ feed: { entry: posts.map(([u, p]) => ({ link: [{ rel: 'alternate', href: u }], published: { $t: p }, ...(feedContent && u in pages ? { content: { $t: pages[u] } } : {}) })) } }) };
     if (url === TOKEN_URI) return { ok: true, json: async () => ({ access_token: 'tok' }) };
     if (url.startsWith(`${METADATA}?url=`)) {
       const u = decodeURIComponent(url.split('?url=')[1]);
@@ -45,7 +46,7 @@ test('JobPosting가 있고 마감 전이며 알린 기록이 없는 글만 알�
     [A, true], [B, 'JobPosting 구조화 데이터 없음'], [C, '접수 마감 지남'], [E, '이미 알림(구글 기록)'], [F, '이미 알림(기록)'],
   ]);
   assert.deepStrictEqual(sent(calls), [{ url: A, type: 'URL_UPDATED' }]);
-  assert.ok(!calls.some(c => c.url === D || c.url === F), '기록에 있는 글과 14일보다 오래된 글은 열지 않는다');
+  assert.ok(!calls.some(c => !c.url.startsWith(`${BLOG}feeds/`) && c.url.startsWith(BLOG)), '피드에 본문이 있으면 글 페이지를 열지 않는다(Blogger 429 회피)');
   assert.ok(changed);
   assert.deepStrictEqual(Object.keys(log).sort(), [A, E, F].sort());
   assert.strictEqual(log[A].noticeId, '306801');
@@ -119,6 +120,17 @@ test('저장소 기록 파일: 없으면 빈 기록, 읽기 실패는 멈추고,
   assert.strictEqual(puts[0].body.sha, 'abc');
   assert.match(puts[0].body.message, /\[skip ci\]/);
   assert.deepStrictEqual(JSON.parse(Buffer.from(puts[0].body.content, 'base64').toString()), { u: { notifiedAt: 'x' } });
+});
+
+test('피드에 본문이 없으면 글 페이지를 열어 확인하고, 막히면(429) 기록하지 않고 다음 실행으로 넘긴다', async () => {
+  const A = `${BLOG}2026/11/a.html`, B = `${BLOG}2026/11/b.html`;
+  const page = ld(job('2026-11-20T17:00:00+09:00'));
+  const { fetcher, calls } = fakeWeb({ [A]: page }, [[A, '2026-11-12T08:00:00+09:00'], [B, '2026-11-11T17:00:00+09:00']], { feedContent: false });
+  const log = {};
+  const { results } = await run({ sa: SA, fetcher, now: NOW, log });
+  assert.deepStrictEqual(results.map(r => [r.url, r.notified || r.skipped]), [[A, true], [B, '글 HTTP 404']]);
+  assert.ok(calls.some(c => c.url === A));
+  assert.deepStrictEqual(Object.keys(log), [A]);
 });
 
 test('Blogger가 기호를 HTML 표기로 바꿔도 JobPosting을 찾는다', () => {
