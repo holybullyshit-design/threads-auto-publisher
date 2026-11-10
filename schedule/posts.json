@@ -50387,10 +50387,13 @@
     "scheduledAt": "2026-11-10T01:03:00.000Z",
     "createdAt": "2026-10-30T05:00:54.244Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18123206402067347",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18123206402067347"
+    ]
   },
   {
     "id": "92fdb000-1136-47f6-811f-3cf204f94e14",
