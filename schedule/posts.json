@@ -48209,10 +48209,13 @@
     "scheduledAt": "2026-11-09T23:58:00.000Z",
     "createdAt": "2026-10-30T03:39:51.628Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18129905038871354",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18129905038871354"
+    ]
   },
   {
     "id": "78ea89b6-7966-410b-8f95-ad42931dcf09",
