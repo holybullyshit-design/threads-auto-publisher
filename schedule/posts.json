@@ -49278,10 +49278,13 @@
     "scheduledAt": "2026-11-10T00:51:00.000Z",
     "createdAt": "2026-10-30T04:17:10.899Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18066071867548426",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18066071867548426"
+    ]
   },
   {
     "id": "d26c3ade-44db-448e-8194-0a13b322a14f",
