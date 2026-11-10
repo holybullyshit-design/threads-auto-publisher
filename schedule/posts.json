@@ -48293,10 +48293,13 @@
     "scheduledAt": "2026-11-10T07:09:00.000Z",
     "createdAt": "2026-10-30T03:41:53.248Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18134793439768695",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18134793439768695"
+    ]
   },
   {
     "id": "8200cb7d-52dc-477a-bdd5-84bcf489d155",
