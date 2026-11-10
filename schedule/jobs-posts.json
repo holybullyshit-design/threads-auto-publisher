@@ -3699,7 +3699,7 @@
   },
   {
     "id": "721e615c-606d-4974-8b34-cacf8e063a94",
-    "status": "publishing",
+    "status": "reply_pending",
     "createdAt": "2026-11-06T01:06:26.049Z",
     "handle": "hire_masters",
     "scheduledAt": "2026-11-10T00:30:00.000Z",
@@ -3752,7 +3752,8 @@
     "updatedAt": "2026-11-06T01:06:26.049Z",
     "blogUrl": "https://hirecurator.blogspot.com/2026/11/50-toeic-600.html",
     "attemptedAt": "2026-11-10T00:31:12.138Z",
-    "error": null
+    "error": null,
+    "publishedId": "17911524741598360"
   },
   {
     "id": "cc489c61-3349-48a2-bd88-b931ee4e9214",
