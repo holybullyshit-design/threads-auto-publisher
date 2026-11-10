@@ -48326,10 +48326,13 @@
     "scheduledAt": "2026-11-10T23:18:00.000Z",
     "createdAt": "2026-10-30T03:42:39.323Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18095239946196175",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18095239946196175"
+    ]
   },
   {
     "id": "a5fd6258-38d4-454b-aa17-84cd2e9684e9",
