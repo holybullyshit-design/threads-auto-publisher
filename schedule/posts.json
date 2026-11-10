@@ -47428,10 +47428,13 @@
     "scheduledAt": "2026-11-10T03:45:00.000Z",
     "createdAt": "2026-10-30T03:06:49.913Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18127009282923374",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18127009282923374"
+    ]
   },
   {
     "id": "ca54bd6c-0b1e-44a5-a77e-2316348dbc4e",
