@@ -2,12 +2,23 @@ name: Refresh recruitment jobs board
 
 # 채용 큐레이터 블로그 첫 화면 게시판(board/jobs.json)을 잡알리오 공식 API로 갱신한다.
 # 블로그 새 글이 08:00·17:00 KST에 공개되므로 그 직후와 아침에 돈다. 게시는 하지 않는다.
+# 주 경로(2026-11-10~): Cloudflare 워커가 15분마다 깨우는 publish-scheduled.yml의 jobs-board-trigger 작업이
+# KST 06:40·08:00·17:00 슬롯마다 한 번 이 워크플로를 workflow_dispatch로 실행한다(cloud/jobs-board-trigger.js).
+# 아래 schedule은 GitHub 무료 예약이라 3~10시간씩 밀리거나 빠진다. 워커가 멈췄을 때를 위한 예비로만 남긴다.
+# 슬롯 실행에는 inputs.slot("06:40"·"08:00"·"17:00")이 붙는다. 예비 schedule·손 실행은 빈 값이다.
+run-name: ${{ inputs.slot && format('Refresh recruitment jobs board ({0} KST slot)', inputs.slot) || 'Refresh recruitment jobs board' }}
 on:
   schedule:
     - cron: "40 21 * * *" # 06:40 KST
     - cron: "15 23 * * *" # 08:15 KST
     - cron: "15 8 * * *"  # 17:15 KST
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      slot:
+        description: "KST 슬롯(06:40·08:00·17:00). 깨우기 작업이 넣는다. 손으로 돌릴 때는 비워 둔다."
+        required: false
+        default: ""
+        type: string
 
 permissions:
   contents: write
@@ -34,3 +45,15 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPO: ${{ github.repository }}
         run: node cloud/build-jobs-board.js
+      # 구글 색인 알림(2026-11-10 추가): 최근 14일 안에 공개된 블로그 글 중 JobPosting 구조화 데이터가 있고
+      # 마감 전이며 구글에 알린 기록이 없는 글만 Indexing API(URL_UPDATED)로 알린다(cloud/notify-indexing.js).
+      # 이미 알린 글은 구글 알림 기록으로 건너뛰므로 모든 실행(슬롯·예비 schedule·손 실행)에서 돌려도 중복되지 않는다.
+      # 게시판 갱신이 실패해도 돈다. 비밀값 GOOGLE_INDEXING_SA가 없으면 아무것도 하지 않는다.
+      - name: Check Google indexing notifier
+        if: ${{ !cancelled() }}
+        run: node --test test/notifyIndexing.test.js
+      - name: Notify Google of newly published blog posts
+        if: ${{ !cancelled() }}
+        env:
+          GOOGLE_INDEXING_SA: ${{ secrets.GOOGLE_INDEXING_SA }}
+        run: node cloud/notify-indexing.js

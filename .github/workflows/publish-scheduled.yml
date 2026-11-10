@@ -59,3 +59,29 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPO: ${{ github.repository }}
         run: node cloud/publish-jobs.js
+
+  # 채용 블로그 첫 화면 게시판(board/jobs.json) 갱신을 정시에 깨운다(2026-11-10 추가).
+  # jobs-board.yml의 GitHub 자체 schedule은 3~10시간씩 밀려서, 워커가 15분마다 깨우는 이 워크플로에서
+  # KST 06:40·08:00·17:00 슬롯마다 한 번 jobs-board.yml을 workflow_dispatch로 실행한다(cloud/jobs-board-trigger.js).
+  # 위 두 게시 작업과 서로 기다리지 않는 독립 작업이고, 실패해도 이 워크플로 결과를 실패로 만들지 않는다.
+  jobs-board-trigger:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    timeout-minutes: 5
+    permissions:
+      actions: write
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Check trigger rules
+        run: node --test test/jobsBoardTrigger.test.js
+      - name: Wake jobs board in KST slots
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPO: ${{ github.repository }}
+        run: node cloud/jobs-board-trigger.js
