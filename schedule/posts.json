@@ -50419,10 +50419,13 @@
     "scheduledAt": "2026-11-10T03:14:00.000Z",
     "createdAt": "2026-10-30T05:01:31.995Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18108640628374024",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18108640628374024"
+    ]
   },
   {
     "id": "08c8ddf8-5e3f-4690-ad15-455960c0b137",
