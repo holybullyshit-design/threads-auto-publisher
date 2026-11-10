@@ -50501,11 +50501,14 @@
     "scheduledAt": "2026-11-10T07:49:00.000Z",
     "createdAt": "2026-10-30T05:02:35.499Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18074532560762278",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18074532560762278"
+    ]
   },
   {
     "id": "f93f055e-c03f-4fae-8959-b9dc150af924",
