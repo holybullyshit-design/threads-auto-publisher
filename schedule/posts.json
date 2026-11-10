@@ -50465,10 +50465,13 @@
     "scheduledAt": "2026-11-10T05:38:00.000Z",
     "createdAt": "2026-10-30T05:02:08.296Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18081912626384204",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18081912626384204"
+    ]
   },
   {
     "id": "42304b4f-e99e-47a2-8198-2a0131f7ed16",
