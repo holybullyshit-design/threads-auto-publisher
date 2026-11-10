@@ -49349,10 +49349,13 @@
     "scheduledAt": "2026-11-10T06:21:00.000Z",
     "createdAt": "2026-10-30T04:18:38.854Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18076813049739434",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18076813049739434"
+    ]
   },
   {
     "id": "d21dc59e-1288-4750-9f0e-7ed121f6bab7",
