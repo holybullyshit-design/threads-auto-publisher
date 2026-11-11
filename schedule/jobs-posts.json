@@ -9124,5 +9124,71 @@
     "imageSha256": "fe73308c0771d7ff593c3b37131fe768067e303968d030c7a5007eff6fd374d7",
     "checkedAt": "2026-11-11T09:26:21.192Z",
     "updatedAt": "2026-11-11T09:26:21.192Z"
+  },
+  {
+    "id": "9e52572b-602a-411e-b013-3e9d5337680c",
+    "status": "scheduled",
+    "createdAt": "2026-11-11T14:19:01.177Z",
+    "handle": "high_quality_hire",
+    "scheduledAt": "2026-11-12T01:30:00.000Z",
+    "noticeId": "skhynix-R262381",
+    "title": "SK하이닉스 생산직 메인트 오퍼레이터 정규직 신입",
+    "sourceUrl": "https://www.skcareers.com/Recruit/Detail/R262381",
+    "sourceSha256": "66b7e585d73cd74f0321c3d803c21521346e630a403e7b7076e9fdd696514181",
+    "sourceNormalize": "strip-asset-version",
+    "startsAt": "2026-11-10T00:00:00+09:00",
+    "deadlineAt": "2026-11-17T15:00:00+09:00",
+    "employmentType": "정규직 신입(제조 Maintenance·Operator)",
+    "eligibility": "2027년 2월부터 근무 가능, 병역필 또는 면제(군복무 중이면 2027년 2월 1일 이전 전역 예정), 해외여행 결격 사유 없음, 4조 3교대 근무 가능, 방진복 착용 가능; SK Careers 공식 공고 R262381",
+    "angle": "학력 조건 없음 반전",
+    "text": "💰 SK하이닉스 직원 1인 평균급여 1억 8,500만원\n이번 생산직 공고, 지원자격에 학력 조건이 없어요\n정규직 신입 메인트·오퍼레이터를 뽑습니다\n\n1. SK하이닉스 [11월] Talent hy-way\n2. 이천·용인·청주 / 4조 3교대\n3. 💰 이번 공고 급여는 미공개\n4. 2027년 2월부터 근무 가능해야 해요\n5. ⏰ 11/17(화) 오후 3시 마감\n\n고교 생활기록부 정보까지 입력해야 하니 미리 챙기세요\n※ 직원 1인 평균급여: DART 2025 사업보고서 전 직원 평균(상여 포함)",
+    "replyText": "👆 직무별 하는 일·자격·전형 일정 전체는 여기\n{블로그주소}",
+    "verifiedPay": "이번 공고 급여는 미공개",
+    "blogEvidence": "SK하이닉스 메인트 오퍼레이터 정규직 신입",
+    "card": {
+      "badge": "💰 연봉 비교",
+      "hero": {
+        "label": "직원 1인 평균급여 (2025 사업보고서)",
+        "value": "1억 8,500만원",
+        "sub": "이번 공고 생산직 정규직 신입"
+      },
+      "tags": [
+        "학력 조건 없음",
+        "4조 3교대"
+      ],
+      "org": "SK하이닉스",
+      "role": "메인트·오퍼레이터",
+      "facts": [
+        [
+          "급여",
+          "이번 공고 미공개"
+        ],
+        [
+          "입사",
+          "2027년 2월부터"
+        ],
+        [
+          "근무",
+          "이천·용인·청주"
+        ]
+      ],
+      "deadline": "11/17(화) 오후 3시 마감"
+    },
+    "blogTitle": "SK하이닉스 채용｜생산직 메인트·오퍼레이터 정규직 신입·11/17 15시 마감",
+    "avgPay": {
+      "label": "직원 1인 평균급여",
+      "value": "1억 8,500만원",
+      "source": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260317000635",
+      "basis": "DART SK하이닉스 사업보고서(2025.12) 직원 현황 1인평균급여액 185백만원, 근로소득지급명세서 기준(상여 포함), 전 직원 34,549명"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/719bbacef62480186182.png",
+    "imageSha256": "719bbacef6248018618219c44c59845d44cf7c8f328d3a5676265d362198643f",
+    "checkedAt": "2026-11-11T14:19:01.177Z",
+    "updatedAt": "2026-11-11T14:19:01.177Z"
   }
 ]
