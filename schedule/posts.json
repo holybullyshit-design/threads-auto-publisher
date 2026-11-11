@@ -49416,10 +49416,13 @@
     "scheduledAt": "2026-11-10T23:57:00.000Z",
     "createdAt": "2026-10-30T04:20:04.408Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17893466652454216",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17893466652454216"
+    ]
   },
   {
     "id": "be8753f7-6519-48c0-b52b-cd32c4932ded",
