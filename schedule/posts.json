@@ -48453,10 +48453,13 @@
     "scheduledAt": "2026-11-11T23:25:00.000Z",
     "createdAt": "2026-10-30T03:45:15.510Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18090450836285430",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18090450836285430"
+    ]
   },
   {
     "id": "adc6bfec-01e7-410e-bcb5-22c0943a1a53",
