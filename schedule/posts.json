@@ -49583,10 +49583,13 @@
     "scheduledAt": "2026-11-11T22:35:00.000Z",
     "createdAt": "2026-10-30T04:23:27.159Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18137993512581582",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18137993512581582"
+    ]
   },
   {
     "id": "e7eb37ad-9dc5-4141-9751-e4d711fbf12c",
