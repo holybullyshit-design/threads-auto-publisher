@@ -1,6 +1,6 @@
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
-const { errors, verifyWeb } = require('../cloud/jobsRules');
+const { errors, verifyWeb, sourceHash } = require('../cloud/jobsRules');
 const crypto = require('node:crypto');
 const H = 3600000, t = new Date('2026-11-03T13:10:00+09:00');
 const base = () => ({ id:'one', status:'scheduled', handle:'jobs_curator', noticeId:'306325', title:'한국남부발전', angle:'인턴', text:'한국남부발전 체험형인턴 세전 월급 225만원 · 11/11(수) 오전 11시 마감', replyText:'👆 공고 원문·지원 링크는 프로필 링크에서', verifiedPay:'225만원', card:{badge:'🔔 새 공고',hook:['[[체험형인턴]]'],org:'한국남부발전',role:'체험형인턴',facts:[['💰','세전 월급 225만원'],['📍','전국'],['📝','서류 → 면접']],deadline:'11/11(수) 오전 11시 마감'}, imageUrl:'https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/a.png', imageSha256:'b'.repeat(64), sourceUrl:'https://www.alio.go.kr/download/a.pdf', sourceSha256:'a'.repeat(64), blogUrl:'https://hirecurator.blogspot.com/2026/11/test.html', blogEvidence:'한국남부발전', employmentType:'체험형인턴', eligibility:'유형별 자격 확인', startsAt:'2026-11-03T11:00:00+09:00', deadlineAt:'2026-11-11T11:00:00+09:00', checkedAt:new Date(t-H).toISOString(), scheduledAt:t.toISOString(), factsChecked:true, blogChecked:true });
@@ -61,6 +61,21 @@ test('a changed official document is blocked by its approved hash',async()=>{
   const p=base(), original=Buffer.alloc(120,1), changed=Buffer.alloc(120,2);
   p.sourceSha256=crypto.createHash('sha256').update(original).digest('hex');
   await assert.rejects(()=>verifyWeb(p,async()=>({ok:true,status:200,arrayBuffer:async()=>changed})),/공식 공고 내용 변경/);
+});
+test('2026-11-11: a company page whose only change is the ?v= asset stamp passes; any other change is blocked',async()=>{
+  const page=v=>Buffer.from(`<html><link href="/a.css?v=2026-11-11 &#50724;&#54980; ${v}" /><script src="/b.js?v=${v}"></script><p>[11월] Talent hy-way 마감 시간 15:00 지원 기간 2026년 11월 10일(화)~2026년 11월 17일(화)</p>${'x'.repeat(80)}</html>`,'utf8');
+  const p={...base(),sourceNormalize:'strip-asset-version',sourceSha256:sourceHash(page('10:43:24'),'strip-asset-version'),imageSha256:pngHash};
+  const url=p.blogUrl;
+  const fetcher=src=>async u=>u.includes('alio')?{ok:true,status:200,arrayBuffer:async()=>src}:u.includes('raw.githubusercontent')?{ok:true,status:200,arrayBuffer:async()=>png}:{ok:true,url,text:async()=>'한국남부발전 225만원'};
+  assert.deepEqual(await verifyWeb(p,fetcher(page('10:43:27'))),{blogUrl:url});
+  await assert.rejects(()=>verifyWeb(p,fetcher(Buffer.from(page('10:43:27').toString('utf8').replace('15:00','18:00'),'utf8'))),/공식 공고 내용 변경/);
+  // 방식 이름이 없으면 예전처럼 바이트 전체를 대조한다(?v=만 바뀌어도 보류).
+  const strict={...p,sourceNormalize:undefined,sourceSha256:sourceHash(page('10:43:24'))};
+  await assert.rejects(()=>verifyWeb(strict,fetcher(page('10:43:27'))),/공식 공고 내용 변경/);
+  // 허용하지 않은 방식 이름은 예약 검사와 게시 직전 검사 둘 다 막는다.
+  assert.ok(errors({...p,sourceNormalize:'strip-everything'},[base()],t).includes('sourceHash'));
+  assert.ok(!errors(p,[base()],t).includes('sourceHash'));
+  await assert.rejects(()=>verifyWeb({...p,sourceNormalize:'strip-everything'},fetcher(page('10:43:24'))),/공식 공고 내용 변경/);
 });
 test('two posts per KST day and cross-account interval are enforced',()=>{
   const own = {...base(),id:'old',status:'published',noticeId:'other',sourceUrl:'https://example.com/other',attemptedAt:new Date(t.getTime()-H).toISOString()};

@@ -22,6 +22,10 @@ function cardIssues(p) {
   const allowed = new Set(numbers(text));
   return cardStrings(c).some(s => numbers(s).some(n => !allowed.has(n)));
 }
+// 2026-11-11: 기업 채용 사이트(SK Careers)는 같은 공고 화면도 열 때마다 자원 주소의 ?v=<현재 시각>만 바뀐다(나머지는 글자 하나까지 같음).
+// 이런 원문은 그 표시만 지우고 나머지 전체를 해시로 대조한다. 공고 글자가 하나라도 바뀌면 지금처럼 보류된다. 허용한 방식 이름만 쓴다.
+const SOURCE_NORMALIZERS = { 'strip-asset-version': bytes => Buffer.from(bytes.toString('utf8').replace(/\?v=[^"']*/g, '?v='), 'utf8') };
+const sourceHash = (bytes, normalize) => crypto.createHash('sha256').update(normalize === undefined ? bytes : SOURCE_NORMALIZERS[normalize](bytes)).digest('hex');
 const kstDay = value => new Date(Date.parse(value) + 9 * H).toISOString().slice(0, 10);
 // 2026-11-09 사용자 결정("시험해보자"): 프로필 링크 클릭이 주 3번뿐이라 @high_quality_hire만 11/10~16(KST) 1주일 동안
 // 첫 댓글에 그 공고의 블로그 글 주소를 넣어 노출·클릭을 비교한다. 댓글에는 주소 대신 자리표시를 쓰고,
@@ -54,7 +58,7 @@ function errors(p, rows, now = new Date()) {
   // 2026-11-04 사용자 결정: 댓글에 URL을 넣지 않고 프로필 링크(블로그)로 보낸다. blogUrl은 게시 전 검증에만 쓴다.
   const reply = p.replyText || '', holders = reply.split(BLOG_PLACEHOLDER).length - 1;
   if (/https?:\/\/|blogspot\.com/.test(reply) || holders > 1 || (holders === 1 && !replyLinkTest(p)) || (holders === 0 && !reply.includes('프로필 링크'))) out.push('replyLink');
-  if (!/^[a-f0-9]{64}$/.test(p.sourceSha256 || '')) out.push('sourceHash');
+  if (!/^[a-f0-9]{64}$/.test(p.sourceSha256 || '') || (p.sourceNormalize !== undefined && !Object.hasOwn(SOURCE_NORMALIZERS, p.sourceNormalize))) out.push('sourceHash');
   if (!p.imageUrl?.startsWith(CARD_BASE) || !p.imageUrl.endsWith('.png') || !/^[a-f0-9]{64}$/.test(p.imageSha256 || '')) out.push('image');
   if (cardIssues(p)) out.push('cardFacts');
   if (!p.factsChecked || !p.blogChecked || !p.employmentType || !p.eligibility || !p.blogEvidence) out.push('review');
@@ -123,7 +127,7 @@ async function verifyWeb(p, fetcher = fetch, { attempts = 3, delayMs = 3000 } = 
   const source = await get(fetcher, p.sourceUrl, net);
   if (!source.ok) throw (retryable(source.status) ? transient : m => new Error(m))(`공식 자료 HTTP ${source.status}`);
   const bytes = Buffer.from(await source.arrayBuffer());
-  if (bytes.length < 100 || bytes.length > 30_000_000 || crypto.createHash('sha256').update(bytes).digest('hex') !== p.sourceSha256) throw new Error('공식 공고 내용 변경 또는 파일 오류');
+  if (bytes.length < 100 || bytes.length > 30_000_000 || (p.sourceNormalize !== undefined && !Object.hasOwn(SOURCE_NORMALIZERS, p.sourceNormalize)) || sourceHash(bytes, p.sourceNormalize) !== p.sourceSha256) throw new Error('공식 공고 내용 변경 또는 파일 오류');
   const image = await get(fetcher, p.imageUrl, net);
   if (!image.ok) throw (retryable(image.status) ? transient : m => new Error(m))(`카드 이미지 HTTP ${image.status}`);
   const card = Buffer.from(await image.arrayBuffer());
@@ -141,4 +145,4 @@ async function verifyWeb(p, fetcher = fetch, { attempts = 3, delayMs = 3000 } = 
   if (!html.includes(p.blogEvidence) || (!p.blogPayUnchecked && !html.includes(p.verifiedPay))) throw new Error('블로그 본문 근거 불일치');
   return { blogUrl };
 }
-module.exports = { HANDLES, DAILY_LIMIT, CARD_BASE, REPLY_LINK_TEST, BLOG_PLACEHOLDER, errors, verifyWeb, kstDay, replyFor };
+module.exports = { HANDLES, DAILY_LIMIT, CARD_BASE, REPLY_LINK_TEST, BLOG_PLACEHOLDER, SOURCE_NORMALIZERS, errors, verifyWeb, kstDay, replyFor, sourceHash };
