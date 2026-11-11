@@ -49524,10 +49524,13 @@
     "scheduledAt": "2026-11-11T07:30:00.000Z",
     "createdAt": "2026-10-30T04:21:52.975Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18117033785172909",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18117033785172909"
+    ]
   },
   {
     "id": "84367cd5-c859-43bc-bcb8-716ec2e86885",
