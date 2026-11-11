@@ -50764,10 +50764,13 @@
     "scheduledAt": "2026-11-11T23:29:00.000Z",
     "createdAt": "2026-10-30T05:06:41.411Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18011509364783408",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18011509364783408"
+    ]
   },
   {
     "id": "02c09be4-97d3-4aa6-9973-2105bc5088ef",
