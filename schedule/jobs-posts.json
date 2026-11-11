@@ -6700,7 +6700,7 @@
   },
   {
     "id": "30848833-85fe-4fd9-ad4d-92639c99844f",
-    "status": "publishing",
+    "status": "reply_pending",
     "createdAt": "2026-11-10T07:06:01.100Z",
     "handle": "jobs_curator",
     "scheduledAt": "2026-11-11T08:30:00.000Z",
@@ -6758,7 +6758,8 @@
     "checkedAt": "2026-11-10T07:06:01.100Z",
     "updatedAt": "2026-11-10T07:06:01.100Z",
     "attemptedAt": "2026-11-11T09:46:17.357Z",
-    "error": null
+    "error": null,
+    "publishedId": "18083577602377523"
   },
   {
     "id": "05f3a46a-7e18-4ffc-adec-ee7dd6041e5b",
