@@ -6623,7 +6623,7 @@
   },
   {
     "id": "306ca4a5-17df-441f-866a-4be150421d33",
-    "status": "scheduled",
+    "status": "publishing",
     "createdAt": "2026-11-10T07:06:01.100Z",
     "handle": "high_quality_hire",
     "scheduledAt": "2026-11-11T01:30:00.000Z",
@@ -6686,8 +6686,9 @@
     "imageSha256": "febddd88f9966acda8bfdb87611db8775450410c1fb945237f18bc6aa4308536",
     "checkedAt": "2026-11-10T07:06:01.100Z",
     "updatedAt": "2026-11-10T07:06:01.100Z",
-    "retryError": "블로그 공개 URL 오류 (HTTP 429, www.google.com로 이동)",
-    "blogUrl": "https://hirecurator.blogspot.com/2026/11/2.html"
+    "blogUrl": "https://hirecurator.blogspot.com/2026/11/2.html",
+    "attemptedAt": "2026-11-11T01:46:18.008Z",
+    "error": null
   },
   {
     "id": "30848833-85fe-4fd9-ad4d-92639c99844f",
