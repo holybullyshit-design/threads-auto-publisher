@@ -7472,7 +7472,7 @@
   },
   {
     "id": "35c77b65-6674-4ba9-a63d-4a3c5c0e30ac",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-10T07:06:01.100Z",
     "handle": "jobs_curator",
     "scheduledAt": "2026-11-13T08:30:00.000Z",
@@ -7528,7 +7528,9 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/f926cfaa1349b669e771.png",
     "imageSha256": "f926cfaa1349b669e7716275b16975301851b33e3e01f79057d27296f9e3f813",
     "checkedAt": "2026-11-10T07:06:01.100Z",
-    "updatedAt": "2026-11-10T07:06:01.100Z"
+    "updatedAt": "2026-11-11T14:37:42.369Z",
+    "error": "2026-11-11 사용자 지시(\"그래도 넣어보자\"): SK하이닉스 R262381을 두 계정에 넣으려고 자리를 비움",
+    "canceledAt": "2026-11-11T14:37:42.368Z"
   },
   {
     "id": "feddbcb6-6035-47fd-b54e-8902cbd333f9",
@@ -7902,7 +7904,7 @@
   },
   {
     "id": "b15d0358-65bf-4867-a47b-6e980e1b5d61",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-10T07:06:01.100Z",
     "handle": "hire_masters",
     "scheduledAt": "2026-11-14T09:30:00.000Z",
@@ -7958,7 +7960,9 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/a05fde458d0101f08c13.png",
     "imageSha256": "a05fde458d0101f08c135087f2da8297512660e1cd9edcdb56795568a90c2feb",
     "checkedAt": "2026-11-10T07:06:01.100Z",
-    "updatedAt": "2026-11-10T07:06:01.100Z"
+    "updatedAt": "2026-11-11T14:37:42.369Z",
+    "error": "2026-11-11 사용자 지시(\"그래도 넣어보자\"): SK하이닉스 R262381을 두 계정에 넣으려고 자리를 비움",
+    "canceledAt": "2026-11-11T14:37:42.369Z"
   },
   {
     "id": "e11768c6-3975-45aa-8407-115d85465ec7",
@@ -8087,7 +8091,7 @@
   },
   {
     "id": "032ed218-fd95-4502-95bb-15bdc9b090ed",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-11T09:26:21.192Z",
     "handle": "hire_masters",
     "scheduledAt": "2026-11-15T00:30:00.000Z",
@@ -8143,7 +8147,9 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/815796e09c7ca5e24436.png",
     "imageSha256": "815796e09c7ca5e24436fbba57479351624b6b8066478581d324111a150682da",
     "checkedAt": "2026-11-11T09:26:21.192Z",
-    "updatedAt": "2026-11-11T09:26:21.192Z"
+    "updatedAt": "2026-11-11T14:37:42.369Z",
+    "error": "2026-11-11 사용자 지시(\"그래도 넣어보자\"): SK하이닉스 R262381을 두 계정에 넣으려고 자리를 비움",
+    "canceledAt": "2026-11-11T14:37:42.369Z"
   },
   {
     "id": "e3ecfe95-5c01-4ccb-9ad5-326ed9f258a7",
