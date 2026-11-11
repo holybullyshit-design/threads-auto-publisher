@@ -7035,7 +7035,7 @@
   },
   {
     "id": "69da5d9d-e55c-4a75-822c-6c6258394588",
-    "status": "scheduled",
+    "status": "canceled",
     "createdAt": "2026-11-10T07:06:01.100Z",
     "handle": "high_quality_hire",
     "scheduledAt": "2026-11-12T01:30:00.000Z",
@@ -7096,7 +7096,9 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/1214a30db21e323cb021.png",
     "imageSha256": "1214a30db21e323cb021eba78d077c66d5f704260913502032936dbefbf9261d",
     "checkedAt": "2026-11-10T07:06:01.100Z",
-    "updatedAt": "2026-11-10T07:06:01.100Z"
+    "updatedAt": "2026-11-11T14:18:36.072Z",
+    "error": "2026-11-11 사용자 지시: 이 칸에 첫 민간기업 글(SK하이닉스 R262381)을 넣음. 306662는 다른 두 계정이 이미 소개",
+    "canceledAt": "2026-11-11T14:18:36.071Z"
   },
   {
     "id": "75d7e829-8366-42e5-8646-1b97cd938adf",
