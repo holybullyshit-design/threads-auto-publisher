@@ -6610,7 +6610,8 @@
     "imageSha256": "6a15792a73bc62aa29c173faf6bfeb81f68a091b949915953479de3d28f6aba0",
     "checkedAt": "2026-11-10T07:06:01.100Z",
     "updatedAt": "2026-11-10T07:06:01.100Z",
-    "retryError": "블로그 공개 URL 오류 (HTTP 429, www.google.com로 이동)"
+    "retryError": "블로그 공개 URL 오류 (HTTP 429, www.google.com로 이동)",
+    "blogUrl": "https://hirecurator.blogspot.com/2026/11/26-11-19-13.html"
   },
   {
     "id": "306ca4a5-17df-441f-866a-4be150421d33",
