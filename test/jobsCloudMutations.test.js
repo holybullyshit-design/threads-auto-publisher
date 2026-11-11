@@ -103,6 +103,20 @@ test('temporary blog failures are retried and marked transient; content problems
   await assert.rejects(()=>verifyWeb(wrong,site(()=>({ok:true,url:wrong.blogUrl,text:async()=>''})),net),e=>/우리 블로그 주소 아님/.test(e.message)&&!e.transient);
   await assert.rejects(()=>verifyWeb(p,async u=>u.includes('alio')?{ok:true,status:200,arrayBuffer:async()=>Buffer.alloc(120,2)}:site(()=>({}))(u),net),e=>/공식 공고 내용 변경/.test(e.message)&&!e.transient);
 });
+test('2026-11-11: a blocked post page falls back to the same post body in the public feed',async()=>{
+  const original=Buffer.alloc(120,1);
+  const p={...base(),sourceSha256:crypto.createHash('sha256').update(original).digest('hex'),imageSha256:pngHash};
+  const url=p.blogUrl, net={delayMs:0};
+  const sorry={ok:true,status:429,url:'https://www.google.com/sorry/index',text:async()=>''};
+  const feedOf=entries=>({ok:true,status:200,url:'https://hirecurator.blogspot.com/feeds/posts/default?alt=json&max-results=50',json:async()=>({feed:{entry:entries}})});
+  const entry=(href,body)=>({link:[{rel:'alternate',href}],content:{$t:body}});
+  const site=feed=>async u=>u.includes('alio')?{ok:true,status:200,arrayBuffer:async()=>original}:u.includes('raw.githubusercontent')?{ok:true,status:200,arrayBuffer:async()=>png}:u.includes('/feeds/posts/')?feed():sorry;
+  assert.deepEqual(await verifyWeb(p,site(()=>feedOf([entry('https://hirecurator.blogspot.com/other.html','다른 글'),entry(url,'<p>한국남부발전 225만원</p>')])),net),{blogUrl:url});
+  await assert.rejects(()=>verifyWeb(p,site(()=>feedOf([entry(url,'<p>다른 내용</p>')])),net),e=>/근거 불일치/.test(e.message)&&!e.transient);
+  await assert.rejects(()=>verifyWeb(p,site(()=>feedOf([entry('https://hirecurator.blogspot.com/other.html','한국남부발전 225만원')])),net),e=>/HTTP 429, www\.google\.com로 이동/.test(e.message)&&e.transient);
+  await assert.rejects(()=>verifyWeb(p,site(()=>({ok:false,status:503})),net),e=>/HTTP 429/.test(e.message)&&e.transient);
+  await assert.rejects(()=>verifyWeb(p,site(()=>sorry),net),e=>/HTTP 429/.test(e.message)&&e.transient);
+});
 test('daily or hourly pay lines count as a pay line, a missing pay line does not',()=>{
   const p={...base(),text:base().text.replace('세전 월급 225만원','일급 117,440원'),verifiedPay:'117,440원'};
   p.card={...p.card,facts:[['💰','일급 117,440원'],...p.card.facts.slice(1)]};

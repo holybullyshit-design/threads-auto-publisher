@@ -106,6 +106,17 @@ async function findBlogUrl(title, fetcher, net) {
   if (!found.length) throw transient('블로그 글이 아직 공개되지 않음');
   return found[0].link.find(l => l.rel === 'alternate').href;
 }
+// 2026-11-11: GitHub 실행기에서 공개된 글 페이지가 매번 HTTP 429(www.google.com 차단 화면으로 이동)로 막혔고, 같은 실행기에서 피드는 열렸다.
+// 글 페이지를 못 열면 공개 글만 담는 피드에서 같은 주소의 글 본문을 찾아 근거를 확인한다. 피드도 못 열거나 글이 없으면 null(원래 오류로 재시도).
+async function feedBody(blogUrl, fetcher, net) {
+  try {
+    const feed = await get(fetcher, `${BLOG}feeds/posts/default?alt=json&max-results=50`, net);
+    if (!feed.ok || (feed.url && !feed.url.startsWith(BLOG))) return null;
+    const norm = u => String(u || '').split(/[?#]/)[0].replace(/^http:/, 'https:');
+    const entry = ((await feed.json()).feed?.entry || []).find(e => (e.link || []).some(l => l.rel === 'alternate' && norm(l.href) === norm(blogUrl)));
+    return typeof entry?.content?.$t === 'string' ? entry.content.$t : null;
+  } catch { return null; }
+}
 // 공식 원문 해시와 블로그 공개·근거를 확인하고, 확인한 블로그 주소를 돌려준다.
 async function verifyWeb(p, fetcher = fetch, { attempts = 3, delayMs = 3000 } = {}) {
   const net = { attempts, delayMs };
@@ -121,8 +132,11 @@ async function verifyWeb(p, fetcher = fetch, { attempts = 3, delayMs = 3000 } = 
   if (!String(blogUrl).startsWith(BLOG)) throw new Error('블로그 공개 URL 오류 (우리 블로그 주소 아님)');
   const blog = await get(fetcher, blogUrl, net);
   const moved = blog.url && !blog.url.startsWith(BLOG) ? `, ${new URL(blog.url).hostname}로 이동` : '';
-  if (!blog.ok || moved) throw transient(`블로그 공개 URL 오류 (HTTP ${blog.status}${moved})`);
-  const html = await blog.text();
+  let html;
+  if (!blog.ok || moved) {
+    html = await feedBody(blogUrl, fetcher, net);
+    if (html === null) throw transient(`블로그 공개 URL 오류 (HTTP ${blog.status}${moved})`);
+  } else html = await blog.text();
   // blogPayUnchecked: 예약 시점에 블로그 본문을 볼 수 없어 급여를 공식 원문(해시 고정)으로만 확인한 글.
   if (!html.includes(p.blogEvidence) || (!p.blogPayUnchecked && !html.includes(p.verifiedPay))) throw new Error('블로그 본문 근거 불일치');
   return { blogUrl };
