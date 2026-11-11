@@ -77,6 +77,14 @@ test('2026-11-11: a company page whose only change is the ?v= asset stamp passes
   assert.ok(!errors(p,[base()],t).includes('sourceHash'));
   await assert.rejects(()=>verifyWeb({...p,sourceNormalize:'strip-everything'},fetcher(page('10:43:24'))),/공식 공고 내용 변경/);
 });
+test('2026-11-11: only the user-approved SK hynix notice may be introduced 48h before its deadline',()=>{
+  const at=(h)=>new Date(t.getTime()+h*H).toISOString();
+  const sk={...base(),noticeId:'skhynix-R262381'};
+  assert.ok(!errors({...sk,deadlineAt:at(69)},[base()],t).includes('deadline'));
+  assert.ok(errors({...sk,deadlineAt:at(47)},[base()],t).includes('deadline'));
+  assert.ok(errors({...base(),deadlineAt:at(69)},[base()],t).includes('deadline'));
+  assert.ok(errors({...base(),preparationHours:1,deadlineAt:at(119)},[base()],t).includes('deadline'));
+});
 test('two posts per KST day and cross-account interval are enforced',()=>{
   const own = {...base(),id:'old',status:'published',noticeId:'other',sourceUrl:'https://example.com/other',attemptedAt:new Date(t.getTime()-H).toISOString()};
   assert.ok(!errors(base(),[own,base()],t).includes('dailyLimit'));

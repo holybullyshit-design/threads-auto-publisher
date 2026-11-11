@@ -26,6 +26,10 @@ function cardIssues(p) {
 // 이런 원문은 그 표시만 지우고 나머지 전체를 해시로 대조한다. 공고 글자가 하나라도 바뀌면 지금처럼 보류된다. 허용한 방식 이름만 쓴다.
 const SOURCE_NORMALIZERS = { 'strip-asset-version': bytes => Buffer.from(bytes.toString('utf8').replace(/\?v=[^"']*/g, '?v='), 'utf8') };
 const sourceHash = (bytes, normalize) => crypto.createHash('sha256').update(normalize === undefined ? bytes : SOURCE_NORMALIZERS[normalize](bytes)).digest('hex');
+// 첫 소개는 마감 120시간 전까지 한다(헌법). 예외는 사용자가 공고별로 허락한 것만 여기 적는다. 행 값(preparationHours)으로는 늘릴 수만 있다.
+// 2026-11-11 사용자 지시("120시간 규칙 때문에..? 그래도 넣어보자. 사람들의 초유의 관심사거든"): SK하이닉스 [11월] Talent hy-way만 48시간.
+const LEAD_EXCEPTIONS = { 'skhynix-R262381': 48 };
+const leadHours = p => Object.hasOwn(LEAD_EXCEPTIONS, p.noticeId) ? LEAD_EXCEPTIONS[p.noticeId] : Math.max(120, Number(p.preparationHours) || 120);
 const kstDay = value => new Date(Date.parse(value) + 9 * H).toISOString().slice(0, 10);
 // 2026-11-09 사용자 결정("시험해보자"): 프로필 링크 클릭이 주 3번뿐이라 @high_quality_hire만 11/10~16(KST) 1주일 동안
 // 첫 댓글에 그 공고의 블로그 글 주소를 넣어 노출·클릭을 비교한다. 댓글에는 주소 대신 자리표시를 쓰고,
@@ -70,7 +74,7 @@ function errors(p, rows, now = new Date()) {
       const exactKstTime = new Date(end + 9 * H).toISOString().slice(11, 16);
       if (kstDay(p.scheduledAt) !== kstDay(p.deadlineAt) || kstDay(now.toISOString()) !== kstDay(p.deadlineAt) || end - time < 4 * H || end - time > 24 * H) out.push('deadline');
       if (!p.text.includes('오늘 마감') || !p.text.includes(exactKstTime)) out.push('deadlineCopy');
-    } else if (end - time < Math.max(120, Number(p.preparationHours) || 120) * H) out.push('deadline');
+    } else if (end - time < leadHours(p) * H) out.push('deadline');
     if (checked > time || time - checked > REVIEW_VALID_HOURS * H) out.push('staleReview');
     if (start > time && !/접수\s*예정/.test(p.text || '')) out.push('notOpen');
   }
@@ -145,4 +149,4 @@ async function verifyWeb(p, fetcher = fetch, { attempts = 3, delayMs = 3000 } = 
   if (!html.includes(p.blogEvidence) || (!p.blogPayUnchecked && !html.includes(p.verifiedPay))) throw new Error('블로그 본문 근거 불일치');
   return { blogUrl };
 }
-module.exports = { HANDLES, DAILY_LIMIT, CARD_BASE, REPLY_LINK_TEST, BLOG_PLACEHOLDER, SOURCE_NORMALIZERS, errors, verifyWeb, kstDay, replyFor, sourceHash };
+module.exports = { HANDLES, DAILY_LIMIT, CARD_BASE, REPLY_LINK_TEST, BLOG_PLACEHOLDER, SOURCE_NORMALIZERS, LEAD_EXCEPTIONS, errors, verifyWeb, kstDay, replyFor, sourceHash, leadHours };
