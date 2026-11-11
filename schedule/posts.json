@@ -49454,10 +49454,13 @@
     "scheduledAt": "2026-11-11T02:26:00.000Z",
     "createdAt": "2026-10-30T04:20:36.590Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18097443440147596",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18097443440147596"
+    ]
   },
   {
     "id": "1b301c3e-3d3d-4b24-90c3-e6de624fe981",
