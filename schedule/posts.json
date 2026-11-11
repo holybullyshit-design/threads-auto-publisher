@@ -48360,10 +48360,13 @@
     "scheduledAt": "2026-11-11T01:34:00.000Z",
     "createdAt": "2026-10-30T03:43:25.471Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18142403077617253",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18142403077617253"
+    ]
   },
   {
     "id": "577ef4ab-83b8-43fa-b98d-4fbb5ade0ea8",
