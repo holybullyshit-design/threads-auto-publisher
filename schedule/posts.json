@@ -49491,10 +49491,13 @@
     "scheduledAt": "2026-11-11T05:21:00.000Z",
     "createdAt": "2026-10-30T04:21:20.423Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18117991406023190",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18117991406023190"
+    ]
   },
   {
     "id": "446b1159-4bf0-4846-975e-bdb28d197f9f",
