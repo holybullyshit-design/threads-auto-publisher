@@ -48393,10 +48393,13 @@
     "scheduledAt": "2026-11-11T04:11:00.000Z",
     "createdAt": "2026-10-30T03:43:55.224Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18073409078611726",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18073409078611726"
+    ]
   },
   {
     "id": "561e1ee1-25b9-4f7a-a743-0069b5cab913",
