@@ -50671,10 +50671,13 @@
     "scheduledAt": "2026-11-11T06:19:00.000Z",
     "createdAt": "2026-10-30T05:05:18.029Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18116294614848258",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18116294614848258"
+    ]
   },
   {
     "id": "ed854133-6589-407e-966e-555d2ebc0f60",
