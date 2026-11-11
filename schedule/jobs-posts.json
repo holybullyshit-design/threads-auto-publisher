@@ -6817,7 +6817,8 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/9f08a192a45d82ff4695.png",
     "imageSha256": "9f08a192a45d82ff4695790f67a0a9320b5e4d4137a04a2bb302192dc9ce4e53",
     "checkedAt": "2026-11-10T07:06:01.100Z",
-    "updatedAt": "2026-11-10T07:06:01.100Z"
+    "updatedAt": "2026-11-10T07:06:01.100Z",
+    "retryError": "블로그 공개 URL 오류 (HTTP 429, www.google.com로 이동)"
   },
   {
     "id": "73f61fc5-03d9-41ba-8c90-9de94683652b",
