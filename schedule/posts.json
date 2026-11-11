@@ -50708,11 +50708,14 @@
     "scheduledAt": "2026-11-11T09:07:00.000Z",
     "createdAt": "2026-10-30T05:05:55.514Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17923856898449059",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "17923856898449059"
+    ]
   },
   {
     "id": "d4ab5f25-6e1d-4b5a-9631-3181d8fc1d4c",
