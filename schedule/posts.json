@@ -48421,10 +48421,13 @@
     "scheduledAt": "2026-11-11T06:32:00.000Z",
     "createdAt": "2026-10-30T03:44:26.825Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18219254497357733",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18219254497357733"
+    ]
   },
   {
     "id": "e9f7c77d-cbf9-4a02-8a30-c6fddb303430",
