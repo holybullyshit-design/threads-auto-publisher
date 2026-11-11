@@ -6700,7 +6700,7 @@
   },
   {
     "id": "30848833-85fe-4fd9-ad4d-92639c99844f",
-    "status": "scheduled",
+    "status": "publishing",
     "createdAt": "2026-11-10T07:06:01.100Z",
     "handle": "jobs_curator",
     "scheduledAt": "2026-11-11T08:30:00.000Z",
@@ -6757,7 +6757,8 @@
     "imageSha256": "ad21dd47d73964704fd3226482263b381f118fdcb7fd509b6375c2c396fc03e4",
     "checkedAt": "2026-11-10T07:06:01.100Z",
     "updatedAt": "2026-11-10T07:06:01.100Z",
-    "retryError": "블로그 공개 URL 오류 (HTTP 429, www.google.com로 이동)"
+    "attemptedAt": "2026-11-11T09:46:17.357Z",
+    "error": null
   },
   {
     "id": "05f3a46a-7e18-4ffc-adec-ee7dd6041e5b",
