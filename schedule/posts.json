@@ -49548,11 +49548,14 @@
     "scheduledAt": "2026-11-11T10:16:00.000Z",
     "createdAt": "2026-10-30T04:22:30.768Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17998447586840172",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "17998447586840172"
+    ]
   },
   {
     "id": "f2d6a714-5627-47f4-a9cf-9fdec7384491",
