@@ -9196,5 +9196,187 @@
     "imageSha256": "719bbacef6248018618219c44c59845d44cf7c8f328d3a5676265d362198643f",
     "checkedAt": "2026-11-11T14:19:01.177Z",
     "updatedAt": "2026-11-11T14:19:01.177Z"
+  },
+  {
+    "id": "2ada49f2-985c-4737-a7bd-d76c99849b07",
+    "status": "scheduled",
+    "createdAt": "2026-11-11T14:37:48.147Z",
+    "noticeId": "skhynix-R262381",
+    "title": "SK하이닉스 생산직 메인트 오퍼레이터 정규직 신입",
+    "sourceUrl": "https://www.skcareers.com/Recruit/Detail/R262381",
+    "sourceSha256": "66b7e585d73cd74f0321c3d803c21521346e630a403e7b7076e9fdd696514181",
+    "sourceNormalize": "strip-asset-version",
+    "startsAt": "2026-11-10T00:00:00+09:00",
+    "deadlineAt": "2026-11-17T15:00:00+09:00",
+    "employmentType": "정규직 신입(제조 Maintenance·Operator)",
+    "eligibility": "2027년 2월부터 근무 가능, 병역필 또는 면제(군복무 중이면 2027년 2월 1일 이전 전역 예정), 해외여행 결격 사유 없음, 4조 3교대 근무 가능, 방진복 착용 가능; SK Careers 공식 공고 R262381",
+    "verifiedPay": "이번 공고 급여는 미공개",
+    "blogEvidence": "SK하이닉스 메인트 오퍼레이터 정규직 신입",
+    "blogTitle": "SK하이닉스 채용｜생산직 메인트·오퍼레이터 정규직 신입·11/17 15시 마감",
+    "avgPay": {
+      "label": "직원 1인 평균급여",
+      "value": "1억 8,500만원",
+      "source": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260317000635",
+      "basis": "DART SK하이닉스 사업보고서(2025.12) 직원 현황 1인평균급여액 185백만원, 근로소득지급명세서 기준(상여 포함), 전 직원 34,549명"
+    },
+    "handle": "jobs_curator",
+    "scheduledAt": "2026-11-13T08:30:00.000Z",
+    "angle": "평균급여 숫자 충격 + 학력 조건 없음",
+    "text": "📍직원 1인 평균급여 1억 8,500만원, SK하이닉스 채용\n생산직 신입을 정규직으로 뽑아요\n지원자격 5개에 학력 조건이 없습니다\n\n1. SK하이닉스 메인트·오퍼레이터\n2. 정규직 신입 · 이천·용인·청주\n3. 💰 이번 공고 급여는 미공개\n4. 4조 3교대 · 2027년 2월 입사\n5. ⏰ 11/17(화) 오후 3시 마감\n\nSKCT는 11/28~29 중 하루, 면접은 12월이에요\n※ 직원 1인 평균급여: DART 2025 사업보고서 전 직원 평균(상여 포함)",
+    "replyText": "👆 공고 원문·지원 링크는 프로필 링크에서",
+    "card": {
+      "badge": "💰 평균급여 공개",
+      "hook": [
+        "직원 1인 평균급여",
+        "[[1억 8,500만원]]"
+      ],
+      "org": "SK하이닉스",
+      "role": "생산직 정규직 신입",
+      "facts": [
+        [
+          "💰",
+          "이번 공고 급여 미공개"
+        ],
+        [
+          "📍",
+          "이천·용인·청주"
+        ],
+        [
+          "🔄",
+          "4조 3교대 · 2027년 2월 입사"
+        ]
+      ],
+      "deadline": "11/17(화) 오후 3시 마감"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/ac02a07cb11186ee49d9.png",
+    "imageSha256": "ac02a07cb11186ee49d93ebc6855917d0efa9e81d9c8ddad39586533b9807e19",
+    "checkedAt": "2026-11-11T14:37:48.147Z",
+    "updatedAt": "2026-11-11T14:37:48.147Z"
+  },
+  {
+    "id": "8a516f91-98a0-4fb6-b5d8-98ac589d5a3b",
+    "status": "scheduled",
+    "createdAt": "2026-11-11T14:37:48.147Z",
+    "noticeId": "skhynix-R262381",
+    "title": "SK하이닉스 생산직 메인트 오퍼레이터 정규직 신입",
+    "sourceUrl": "https://www.skcareers.com/Recruit/Detail/R262381",
+    "sourceSha256": "66b7e585d73cd74f0321c3d803c21521346e630a403e7b7076e9fdd696514181",
+    "sourceNormalize": "strip-asset-version",
+    "startsAt": "2026-11-10T00:00:00+09:00",
+    "deadlineAt": "2026-11-17T15:00:00+09:00",
+    "employmentType": "정규직 신입(제조 Maintenance·Operator)",
+    "eligibility": "2027년 2월부터 근무 가능, 병역필 또는 면제(군복무 중이면 2027년 2월 1일 이전 전역 예정), 해외여행 결격 사유 없음, 4조 3교대 근무 가능, 방진복 착용 가능; SK Careers 공식 공고 R262381",
+    "verifiedPay": "이번 공고 급여는 미공개",
+    "blogEvidence": "SK하이닉스 메인트 오퍼레이터 정규직 신입",
+    "blogTitle": "SK하이닉스 채용｜생산직 메인트·오퍼레이터 정규직 신입·11/17 15시 마감",
+    "avgPay": {
+      "label": "직원 1인 평균급여",
+      "value": "1억 8,500만원",
+      "source": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260317000635",
+      "basis": "DART SK하이닉스 사업보고서(2025.12) 직원 현황 1인평균급여액 185백만원, 근로소득지급명세서 기준(상여 포함), 전 직원 34,549명"
+    },
+    "handle": "hire_masters",
+    "scheduledAt": "2026-11-14T09:30:00.000Z",
+    "angle": "독자 지목 + 중복 지원 주의",
+    "text": "직원 1인 평균급여 1억 8,500만원, SK하이닉스에서 사람 뽑아\n생산직 신입인데 정규직이야\n지원자격에 학력 얘기가 아예 없어\n\n1. 메인트 3분야 · 오퍼레이터 1분야\n2. 이천·용인·청주 중 희망 근무지\n3. 💰 이번 공고 급여는 미공개\n4. 2027년 2월부터 근무 · 4조 3교대\n5. ⏰ 11/17(화) 오후 3시 마감\n\nSK 계열사 중복 지원은 안 되니까 조심해\n※ 직원 1인 평균급여: DART 2025 사업보고서 전 직원 평균(상여 포함)",
+    "replyText": "👆 자세한 건 프로필 링크에 정리해놨어",
+    "card": {
+      "badge": "👀 연봉 봤어?",
+      "hook": [
+        "직원 1인 평균급여",
+        "[[1억 8,500만원]] 회사야"
+      ],
+      "org": "SK하이닉스",
+      "role": "생산직 정규직 신입",
+      "facts": [
+        [
+          "💰",
+          "이번 공고 급여 미공개"
+        ],
+        [
+          "🏭",
+          "메인트 3분야 · 오퍼레이터 1분야"
+        ],
+        [
+          "📅",
+          "2027년 2월부터 · 4조 3교대"
+        ]
+      ],
+      "deadline": "11/17(화) 오후 3시 마감"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/6c7288a60277a661c7b2.png",
+    "imageSha256": "6c7288a60277a661c7b26e1ec57cf456e564b09f4a9e011bc463c7cf1e1a7cf1",
+    "checkedAt": "2026-11-11T14:37:48.147Z",
+    "updatedAt": "2026-11-11T14:37:48.147Z"
+  },
+  {
+    "id": "d8ab4d51-9abb-4693-88de-8387d512d283",
+    "status": "scheduled",
+    "createdAt": "2026-11-11T14:37:48.147Z",
+    "handle": "hire_masters",
+    "scheduledAt": "2026-11-15T00:30:00.000Z",
+    "noticeId": "306770",
+    "title": "국토연구원 연구원·행정원 7명",
+    "angle": "국토연구원 독자 지목",
+    "text": "직원 평균연봉 9,049만원 찍는 국토연구원 공고 떴어\n국토연구원에서 일해보고 싶으면 이거 봐\n세종에서 휴직 대체로 7명 뽑아\n\n1. 연구원 6명 · 감사 행정원 1명\n2. 7개 분야에서 1명씩\n3. 💰 연봉계약제(금액 미공개)\n4. 대부분 2027년 12월 31일까지\n5. ⏰ 11/20(금) 오후 6시 마감\n\n국제개발협력은 면접에 영어 작문도 있어\n※ 직원 평균연봉: ALIO 2025 결산 정규직 1인당 평균",
+    "replyText": "👆 자세한 건 프로필 링크에 정리해놨어",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3085525",
+    "sourceSha256": "3c62c98e19b672fd0a7f5cdb3c2622292f4096ead1ac7155a87020d96133a9e1",
+    "blogEvidence": "국토연구원 연구원",
+    "startsAt": "2026-11-06T00:00:00+09:00",
+    "deadlineAt": "2026-11-20T18:00:00+09:00",
+    "verifiedPay": "연봉계약제(금액 미공개)",
+    "employmentType": "위촉직(기간제)·휴직 대체인력",
+    "eligibility": "연구원 6개 분야는 해당분야 연구수행 능력이 있는 자(관련분야 전공), 감사 행정원은 공공기관 3년 이상 근무 + 감사·예산·회계업무 2년 이상; 공식 공고",
+    "blogTitle": "국토연구원 연구원·행정원 7명",
+    "card": {
+      "badge": "👀 연봉 봤어?",
+      "hook": [
+        "직원 평균연봉",
+        "[[9,049만원]] 회사야"
+      ],
+      "org": "국토연구원",
+      "role": "위촉직(기간제) 7명",
+      "facts": [
+        [
+          "💰",
+          "연봉계약제(금액 미공개)"
+        ],
+        [
+          "👥",
+          "연구원 6명 · 감사 행정원 1명"
+        ],
+        [
+          "📅",
+          "대부분 2027년 12월 31일까지"
+        ]
+      ],
+      "deadline": "11/20(금) 오후 6시 마감"
+    },
+    "avgPay": {
+      "label": "직원 평균연봉",
+      "value": "9,049만원",
+      "source": "https://alio.go.kr/item/itemReportTerm.do?apbaId=C0032&reportFormRootNo=2060",
+      "basis": "ALIO 2025 결산 정규직 1인당 평균보수"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/a05fde458d0101f08c13.png",
+    "imageSha256": "a05fde458d0101f08c135087f2da8297512660e1cd9edcdb56795568a90c2feb",
+    "checkedAt": "2026-11-11T14:37:48.147Z",
+    "updatedAt": "2026-11-11T14:37:48.147Z"
   }
 ]
