@@ -48517,10 +48517,13 @@
     "scheduledAt": "2026-11-12T04:13:00.000Z",
     "createdAt": "2026-10-30T03:46:49.618Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18119696417095666",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18119696417095666"
+    ]
   },
   {
     "id": "0dbbddbc-8ff4-464a-bf6e-47cc606bdac8",
