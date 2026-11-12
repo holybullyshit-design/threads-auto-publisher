@@ -49621,10 +49621,13 @@
     "scheduledAt": "2026-11-12T01:16:00.000Z",
     "createdAt": "2026-10-30T04:24:00.151Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18097016195405413",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18097016195405413"
+    ]
   },
   {
     "id": "a31cf1e6-f2a5-4682-9b51-64fc87e5183f",
