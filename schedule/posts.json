@@ -49755,10 +49755,13 @@
     "scheduledAt": "2026-11-12T22:28:00.000Z",
     "createdAt": "2026-10-30T04:27:41.859Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17885909400523346",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17885909400523346"
+    ]
   },
   {
     "id": "1913d74e-531e-4935-ac77-2b670d30ddcc",
