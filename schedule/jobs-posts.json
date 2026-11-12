@@ -9152,7 +9152,7 @@
   },
   {
     "id": "9e52572b-602a-411e-b013-3e9d5337680c",
-    "status": "reply_pending",
+    "status": "published",
     "createdAt": "2026-11-11T14:19:01.177Z",
     "handle": "high_quality_hire",
     "scheduledAt": "2026-11-12T01:30:00.000Z",
@@ -9222,7 +9222,10 @@
     "mainUrl": "https://www.threads.com/@high_quality_hire/post/Dfn4achFYe8",
     "mainTimestamp": "2026-11-12T01:31:24+0000",
     "replyId": "18112042816908634",
-    "replySentText": "👆 직무별 하는 일·자격·전형 일정 전체는 여기\nhttps://hirecurator.blogspot.com/2026/11/sk-1117-15.html"
+    "replySentText": "👆 직무별 하는 일·자격·전형 일정 전체는 여기\nhttps://hirecurator.blogspot.com/2026/11/sk-1117-15.html",
+    "replyUrl": "https://www.threads.com/@high_quality_hire/post/Dfn4c-slZYp",
+    "replyTimestamp": "2026-11-12T01:31:43+0000",
+    "publishedAt": "2026-11-12T01:31:52.221Z"
   },
   {
     "id": "2ada49f2-985c-4737-a7bd-d76c99849b07",
