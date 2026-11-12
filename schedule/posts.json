@@ -47576,10 +47576,13 @@
     "scheduledAt": "2026-11-12T01:15:00.000Z",
     "createdAt": "2026-10-30T03:13:24.326Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18480252229142080",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18480252229142080"
+    ]
   },
   {
     "id": "364bbb5a-f49a-48bd-8eeb-d8779db522de",
