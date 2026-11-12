@@ -7337,7 +7337,7 @@
   },
   {
     "id": "682589dd-7b26-475f-9d36-ae327a26e02d",
-    "status": "scheduled",
+    "status": "publishing",
     "createdAt": "2026-11-10T07:06:01.100Z",
     "handle": "jobs_curator",
     "scheduledAt": "2026-11-12T23:30:00.000Z",
@@ -7393,7 +7393,9 @@
     "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/f2a54bc8ae08f838fc2c.png",
     "imageSha256": "f2a54bc8ae08f838fc2c4ed9735de28a84e398bed51b87a6594f0d9582378f03",
     "checkedAt": "2026-11-10T07:06:01.100Z",
-    "updatedAt": "2026-11-10T07:06:01.100Z"
+    "updatedAt": "2026-11-10T07:06:01.100Z",
+    "attemptedAt": "2026-11-12T23:31:12.500Z",
+    "error": null
   },
   {
     "id": "9b6e4003-037f-418a-aa63-af7e2bc30f76",
