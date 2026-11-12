@@ -47599,10 +47599,13 @@
     "scheduledAt": "2026-11-12T03:48:00.000Z",
     "createdAt": "2026-10-30T03:14:35.867Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18123534721962398",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18123534721962398"
+    ]
   },
   {
     "id": "75ef3eb2-7061-41db-a1a6-740655865a74",
