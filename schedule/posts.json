@@ -50967,10 +50967,13 @@
     "scheduledAt": "2026-11-12T22:45:00.000Z",
     "createdAt": "2026-10-30T05:11:52.083Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18075610742786346",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18075610742786346"
+    ]
   },
   {
     "id": "6894814c-7755-4fbf-882d-7ced806262ea",
