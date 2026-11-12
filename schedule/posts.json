@@ -50932,11 +50932,14 @@
     "scheduledAt": "2026-11-12T10:02:00.000Z",
     "createdAt": "2026-10-30T05:11:22.573Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18120582665050298",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18120582665050298"
+    ]
   },
   {
     "id": "c223b969-abcb-4b7d-8653-700f3d8835a8",
