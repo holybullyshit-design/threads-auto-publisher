@@ -48575,10 +48575,13 @@
     "scheduledAt": "2026-11-12T23:01:00.000Z",
     "createdAt": "2026-10-30T03:48:28.617Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18018856634978678",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18018856634978678"
+    ]
   },
   {
     "id": "d6125f22-ab02-468e-b773-18128b02b8c1",
