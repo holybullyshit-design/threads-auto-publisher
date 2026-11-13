@@ -9489,5 +9489,680 @@
     "imageSha256": "a05fde458d0101f08c135087f2da8297512660e1cd9edcdb56795568a90c2feb",
     "checkedAt": "2026-11-11T14:37:48.147Z",
     "updatedAt": "2026-11-11T14:37:48.147Z"
+  },
+  {
+    "id": "186272cb-c3a5-43df-b01e-3a006acffff3",
+    "status": "scheduled",
+    "createdAt": "2026-11-13T10:23:15.675Z",
+    "handle": "hire_masters",
+    "scheduledAt": "2026-11-18T09:30:00.000Z",
+    "noticeId": "306877",
+    "title": "오송첨단의료산업진흥재단 채용｜정규직 산업안전관리 1명·11/24 14시 마감",
+    "angle": "산업안전기사 독자 지목",
+    "text": "직원 평균연봉 6,283만원, 오송첨단의료산업진흥재단에서 사람 뽑아\n산업안전기사 있으면 이거 봐\n학력 안 보는 정규직 1명 자리야\n\n1. 오송첨단의료산업진흥재단 주임급 행정원\n2. 산업안전지도사 또는 산업안전기사 이상\n3. 💰 세전 연봉 미공개(재단 보수규정)\n4. 3개월 수습 후 평가로 정규 임용\n5. ⏰ 11/24(화) 오후 2시 마감\n\n필기는 12월 5일(토) 직업기초능력 시험이야\n※ 직원 평균연봉: ALIO 2025 결산 정규직 1인당 평균",
+    "replyText": "👆 자세한 건 프로필 링크에 정리해놨어",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3086126",
+    "sourceSha256": "1f36cc3728d4fabdcb79892d4fe9330f5603c7c89b9a7d9dc1afeaf69e3f712b",
+    "blogEvidence": "오송첨단의료산업진흥재단 산업안전관리 정규직 1명",
+    "startsAt": "2026-11-10T00:00:00+09:00",
+    "deadlineAt": "2026-11-24T14:00:00+09:00",
+    "verifiedPay": "세전 연봉 미공개",
+    "employmentType": "정규직",
+    "eligibility": "안전관리자 선임 가능자(산업안전지도사 또는 산업안전기사 이상, 원서접수 마감일 기준 유효), 학력무관, 공고일 기준 만 60세 미만, 공공기관운영법 제34조 결격사유 없음; 공식 공고",
+    "blogTitle": "오송첨단의료산업진흥재단 채용｜정규직 산업안전관리 1명·11/24 14시 마감",
+    "card": {
+      "badge": "👀 연봉 봤어?",
+      "hook": [
+        "직원 평균연봉",
+        "[[6,283만원]] 회사야"
+      ],
+      "org": "오송첨단의료산업진흥재단",
+      "role": "산업안전관리 정규직 1명",
+      "facts": [
+        [
+          "🦺",
+          "산업안전기사 이상"
+        ],
+        [
+          "⏳",
+          "3개월 수습 후 정규 임용"
+        ],
+        [
+          "📝",
+          "필기 12월 5일(토)"
+        ]
+      ],
+      "deadline": "11/24(화) 오후 2시 마감"
+    },
+    "avgPay": {
+      "label": "직원 평균연봉",
+      "value": "6,283만원",
+      "source": "https://alio.go.kr/item/itemReportTerm.do?apbaId=C0896&reportFormRootNo=2060",
+      "basis": "ALIO 2025 결산 정규직 1인당 평균보수"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/cce5b83cae0e5ae77e75.png",
+    "imageSha256": "cce5b83cae0e5ae77e7551b8743d287c1cc0418057a268059c2ea94c357bb183",
+    "checkedAt": "2026-11-13T10:23:15.675Z",
+    "updatedAt": "2026-11-13T10:23:15.675Z"
+  },
+  {
+    "id": "ca71bbc3-17ad-4d97-9aeb-0b3a3ea73598",
+    "status": "scheduled",
+    "createdAt": "2026-11-13T10:23:15.675Z",
+    "handle": "high_quality_hire",
+    "scheduledAt": "2026-11-18T10:30:00.000Z",
+    "noticeId": "306789",
+    "title": "한국고용정보원 채용｜계약직 대체인력 14명·월 319만원·11/24 16시 마감",
+    "angle": "14개 분야 같은 월급 비교",
+    "text": "💰 한국고용정보원 직원 평균연봉 7,000만원\n14개 분야 모두 월 319만원, 필기 없음\n한국고용정보원 계약직 대체인력 14명 비교\n\n1. 💰 월 319만원(기본급·상여금·중식·교통보조비 포함)\n2. 서류 4배수 → 면접 1배수 → 서류검증\n3. 충북 음성 본원 · 09:00~18:00\n4. 임용 2027년 1월 18일 11명 · 3월 15일 3명\n5. ⏰ 11/24(화) 오후 4시 마감\n\n경영사무-1·2 분야는 학력·전공 제한이 없습니다\n※ 직원 평균연봉: ALIO 2025 결산 정규직 1인당 평균",
+    "replyText": "👆 직무별 급여·자격 비교는 프로필 링크에",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3085614",
+    "sourceSha256": "1db2b1df6a2c7df51f00b3fadb16b29cdcba22c20534109d552cd99a43cf7753",
+    "blogEvidence": "한국고용정보원 계약직 대체인력 14명",
+    "startsAt": "2026-11-13T14:00:00+09:00",
+    "deadlineAt": "2026-11-24T16:00:00+09:00",
+    "verifiedPay": "월 319만원",
+    "employmentType": "전문계약직(대체인력)",
+    "eligibility": "분야별 상이: 경영사무 학력·전공 제한 없음, 보건관리 산업안전보건법 제21조 보건관리자 자격, 진로직업상담 관련 자격증 1개 이상과 상담 경력 1년 이상, 사업지원 관련 분야 학사 이상, 정보화 관련 전공 또는 정보처리기사·정보보안기사·빅데이터분석기사 이상; 공식 공고",
+    "blogTitle": "한국고용정보원 채용｜계약직 대체인력 14명·월 319만원·11/24 16시 마감",
+    "card": {
+      "badge": "💰 연봉 비교",
+      "hero": {
+        "label": "직원 평균연봉 (2025 결산)",
+        "value": "7,000만원",
+        "sub": "이번 공고 월 319만원"
+      },
+      "tags": [
+        "14개 분야",
+        "필기 없음"
+      ],
+      "org": "한국고용정보원",
+      "role": "계약직 대체인력 14명",
+      "facts": [
+        [
+          "전형",
+          "서류 → 면접"
+        ],
+        [
+          "근무지",
+          "충북 음성 본원"
+        ],
+        [
+          "임용",
+          "2027년 1월 18일 · 3월 15일"
+        ]
+      ],
+      "deadline": "11/24(화) 오후 4시 마감"
+    },
+    "avgPay": {
+      "label": "직원 평균연봉",
+      "value": "7,000만원",
+      "source": "https://alio.go.kr/item/itemReportTerm.do?apbaId=C0321&reportFormRootNo=2060",
+      "basis": "ALIO 2025 결산 정규직 1인당 평균보수"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/2cb5ac049e68a4611642.png",
+    "imageSha256": "2cb5ac049e68a4611642fbbd4eb967ca81190cb72048809f818b7024f91463fb",
+    "checkedAt": "2026-11-13T10:23:15.675Z",
+    "updatedAt": "2026-11-13T10:23:15.675Z"
+  },
+  {
+    "id": "08193327-9d38-483e-8289-16d347e99c84",
+    "status": "scheduled",
+    "createdAt": "2026-11-13T10:23:15.675Z",
+    "handle": "jobs_curator",
+    "scheduledAt": "2026-11-18T23:30:00.000Z",
+    "noticeId": "306913",
+    "title": "한국해양과학기술원 채용｜2027년 1차 직원 23명·11/26 오전 10시 마감",
+    "angle": "학력 무관 공무직 월급",
+    "text": "📍직원 평균연봉 9,468만원, 한국해양과학기술원 채용\n학력 제한 없는 공무직, 월 233만원부터\n한국해양과학기술원 2027년 1차 직원 23명\n\n1. 정규직 9명 · 무기계약직 14명\n2. 💰 공무직 월초임 조리 243만원, 미화 233만원, 경비 253만원\n3. 부산 본원 · 거제 · 울진 · 제주 근무\n4. 공무직 미화·조리는 학력 제한 없음\n5. ⏰ 11/26(목) 오전 10시 마감\n\n공무직 외 직무 급여는 경력 비례라 공고에 금액 없음\n※ 직원 평균연봉: ALIO 2025 결산 정규직 1인당 평균",
+    "replyText": "👆 공고 원문·지원 링크는 프로필 링크에서",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3086556",
+    "sourceSha256": "d119d78877aab1510e272db6ff0c759e42804ef4d9a6edaf9fcabd60847c19d0",
+    "blogEvidence": "한국해양과학기술원 2027년 1차 직원 23명",
+    "startsAt": "2026-11-13T00:00:00+09:00",
+    "deadlineAt": "2026-11-26T10:00:00+09:00",
+    "verifiedPay": "조리 243만원, 미화 233만원, 경비 253만원",
+    "employmentType": "정규직·무기계약직",
+    "eligibility": "임용예정일 기준 18세 이상 59세 이하(무기계약직 공무직 65세 이하), 재학·휴학 중 지원 불가(2027년 2월 졸업예정자 가능); 분야별 자격(선임급 관련분야 박사+직근 4년 주저자 논문, 선박 항해사·기관사 3급 이상 면허·선원수첩·교육 수료, 공무직 미화·조리 학력 제한 없음 등); 공식 공고",
+    "blogTitle": "한국해양과학기술원 채용｜2027년 1차 직원 23명·11/26 오전 10시 마감",
+    "card": {
+      "badge": "💰 평균연봉 공개",
+      "hook": [
+        "직원 평균연봉",
+        "[[9,468]]만원"
+      ],
+      "org": "한국해양과학기술원",
+      "role": "2027년 1차 직원 23명",
+      "facts": [
+        [
+          "💰",
+          "공무직 월 233만~253만원"
+        ],
+        [
+          "📍",
+          "부산 · 거제 · 울진 · 제주"
+        ],
+        [
+          "🎓",
+          "미화·조리 학력 제한 없음"
+        ]
+      ],
+      "deadline": "11/26(목) 오전 10시 마감"
+    },
+    "avgPay": {
+      "label": "직원 평균연봉",
+      "value": "9,468만원",
+      "source": "https://alio.go.kr/item/itemReportTerm.do?apbaId=C0297&reportFormRootNo=2060",
+      "basis": "ALIO 2025 결산 정규직 1인당 평균보수"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/cb2a61fd23bd557d838d.png",
+    "imageSha256": "cb2a61fd23bd557d838d38d5243911d24b3a9116a8c88e462105145174843ec0",
+    "checkedAt": "2026-11-13T10:23:15.675Z",
+    "updatedAt": "2026-11-13T10:23:15.675Z"
+  },
+  {
+    "id": "f1048530-72f3-4309-8e5d-68ff22c99b60",
+    "status": "scheduled",
+    "createdAt": "2026-11-13T10:23:15.675Z",
+    "handle": "hire_masters",
+    "scheduledAt": "2026-11-19T00:30:00.000Z",
+    "noticeId": "306816",
+    "title": "한국도로교통공단 채용｜4분기 실무직·기간제 42명·11/25 18시 마감",
+    "angle": "운전면허 소지자 독자 지목",
+    "text": "한국도로교통공단 무기계약직 평균연봉 4,191만원이래, 지금 채용 중이야\n운전면허 있으면 학력·나이 제한 없는 자리 있어\n한국도로교통공단이 42명 뽑아\n\n1. 실무직(무기계약) 14명 · 기간제 28명\n2. 행정지원(일반) 21명은 2종 보통 이상 필수\n3. 💰 교통계약직 마급 월 지급액 약 2,373,830원\n4. 직무·등급별 월 약 1,856,110원~약 3,767,280원\n5. ⏰ 11/25(수) 오후 6시 마감\n\n세전인지는 공고에 안 나와 있고, 사택은 없어\n※ 무기계약직 평균연봉: ALIO 2025 결산 무기계약직 1인당 평균",
+    "replyText": "👆 자세한 건 프로필 링크에 정리해놨어",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3086097",
+    "sourceSha256": "9b11acf76c22fc9ea7cf3d7cf369f393d1be63b591ce3289799a3c45ccd241ab",
+    "blogEvidence": "한국도로교통공단 4분기 실무직 및 기간제근로자 42명",
+    "startsAt": "2026-11-18T10:00:00+09:00",
+    "deadlineAt": "2026-11-25T18:00:00+09:00",
+    "verifiedPay": "월 지급액 약 2,373,830원",
+    "employmentType": "무기계약직(실무직)·기간제근로자",
+    "eligibility": "연령·성별 제한 없음(실무직은 입사예정일 기준 공단 정년 만 65세 이내), 남성은 병역필 또는 면제, 2027.01.01.부터 근무 가능; 분야별 필수자격(보훈 제한경쟁 취업보호(지원) 대상자, 시설관리 전기 기능사 이상, 행정지원 자동차운전면허 2종 보통 이상, 교통신호운영 토목·도시계획·교통기사 이상, 디지털운영 관련분야 실무경력 6년 이상); 공식 공고",
+    "blogTitle": "한국도로교통공단 채용｜4분기 실무직·기간제 42명·11/25 18시 마감",
+    "card": {
+      "badge": "👀 연봉 봤어?",
+      "hook": [
+        "무기계약직 평균연봉",
+        "[[4,191만원]] 회사야"
+      ],
+      "org": "한국도로교통공단",
+      "role": "실무직·기간제 42명",
+      "facts": [
+        [
+          "💰",
+          "교통계약직 월 약 2,373,830원"
+        ],
+        [
+          "🚗",
+          "행정지원 21명 · 2종 보통 이상"
+        ],
+        [
+          "🏠",
+          "사택 미제공"
+        ]
+      ],
+      "deadline": "11/25(수) 오후 6시 마감"
+    },
+    "avgPay": {
+      "label": "무기계약직 평균연봉",
+      "value": "4,191만원",
+      "source": "https://alio.go.kr/item/itemReportTerm.do?apbaId=C0064&reportFormRootNo=2060",
+      "basis": "ALIO 2025 결산 무기계약직 1인당 평균보수"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/6e4c79618de2a9209386.png",
+    "imageSha256": "6e4c79618de2a9209386a689a2095dba91ff61ff8f044a57dd35d4639471e681",
+    "checkedAt": "2026-11-13T10:23:15.675Z",
+    "updatedAt": "2026-11-13T10:23:15.675Z"
+  },
+  {
+    "id": "94adc2b5-8a9e-4b69-a01e-d9d2a2093157",
+    "status": "scheduled",
+    "createdAt": "2026-11-13T10:23:15.675Z",
+    "handle": "high_quality_hire",
+    "scheduledAt": "2026-11-19T01:30:00.000Z",
+    "noticeId": "306900",
+    "title": "공무원연금공단 채용｜사회형평적 청년인턴 9명·서울·제주·11/24 18시 마감",
+    "angle": "전일제·반일제 월급 대비",
+    "text": "💰 공무원연금공단 직원 평균연봉 7,490만원\n전일제 월 215만7천원 vs 반일제 월 108만4천원\n공무원연금공단 사회형평적 청년인턴 9명 비교\n\n1. 장애 5명 · 자립준비청년 2명 · 기초생활수급자 2명\n2. 💰 자립준비청년·수급자 전일제 월 215만7천원(세전)\n3. 장애 전형 반일제(하루 4시간) 월 108만4천원\n4. 수도권 6명 · 제주권 3명\n5. ⏰ 11/24(화) 오후 6시 마감\n\n근무는 2026년 12월 11일부터 2027년 6월 30일까지, 필기시험은 없습니다\n※ 직원 평균연봉: ALIO 2025 결산 정규직 1인당 평균",
+    "replyText": "👆 직무별 급여·자격 비교는 프로필 링크에",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3086286",
+    "sourceSha256": "7fbc2e4888a9585aca2340d1445b41d4b74c4f9b77debdef8fb021d8565bbce1",
+    "blogEvidence": "공무원연금공단 사회형평적 체험형 청년인턴 9명",
+    "startsAt": "2026-11-10T00:00:00+09:00",
+    "deadlineAt": "2026-11-24T18:00:00+09:00",
+    "verifiedPay": "월 215만7천원",
+    "employmentType": "청년인턴(체험형)",
+    "eligibility": "원서접수 마감일 기준 만 18세 이상 34세 이하(1991.11.25.~2008.11.24. 출생, 제대군인 등 연장), 장애인·자립준비청년·기초생활수급자 중 전형별 대상, 성별·학력·전공 제한 없음, 공무원연금공단 청년인턴 근무 경험자 제외; 공식 공고",
+    "blogTitle": "공무원연금공단 채용｜사회형평적 청년인턴 9명·서울·제주·11/24 18시 마감",
+    "card": {
+      "badge": "💰 연봉 비교",
+      "hero": {
+        "label": "직원 평균연봉 (2025 결산)",
+        "value": "7,490만원",
+        "sub": "이번 공고 전일제 월 215만7천원"
+      },
+      "tags": [
+        "9명",
+        "필기 없음"
+      ],
+      "org": "공무원연금공단",
+      "role": "사회형평적 청년인턴",
+      "facts": [
+        [
+          "장애 전형",
+          "반일제 월 108만4천원"
+        ],
+        [
+          "근무지",
+          "수도권 6 · 제주권 3"
+        ],
+        [
+          "기간",
+          "2026년 12월 11일~2027년 6월 30일"
+        ]
+      ],
+      "deadline": "11/24(화) 오후 6시 마감"
+    },
+    "avgPay": {
+      "label": "직원 평균연봉",
+      "value": "7,490만원",
+      "source": "https://alio.go.kr/item/itemReportTerm.do?apbaId=C0013&reportFormRootNo=2060",
+      "basis": "ALIO 2025 결산 정규직 1인당 평균보수"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/0562142a3393d74b23ab.png",
+    "imageSha256": "0562142a3393d74b23ab5da664cd8c6e5056d4fbaf59491c93af549923c01a84",
+    "checkedAt": "2026-11-13T10:23:15.675Z",
+    "updatedAt": "2026-11-13T10:23:15.675Z"
+  },
+  {
+    "id": "4a2841a5-111b-4a8c-a8d5-1eae53da7643",
+    "status": "scheduled",
+    "createdAt": "2026-11-13T10:23:15.675Z",
+    "handle": "jobs_curator",
+    "scheduledAt": "2026-11-19T08:30:00.000Z",
+    "noticeId": "306815",
+    "title": "해양수산과학기술진흥원 채용｜청년인턴 3명 월 230만원·11/25 14시 마감",
+    "angle": "학력 무관 6개월 인턴",
+    "text": "📍직원 평균연봉 8,507만원, 해양수산과학기술진흥원 채용\n학력 안 보는 6개월 인턴, 월 230만원\n해양수산과학기술진흥원 체험형 청년인턴 3명\n\n1. 💰 체험형 청년인턴 월 230만원(세전)\n2. 성별·학력 무관, 만 15~34세\n3. 2026년 12월 28일~2027년 6월 27일 근무\n4. 서울 서초구 · 필기 없이 서류 → 면접\n5. ⏰ 11/25(수) 오후 2시 마감\n\n같은 공고로 개방형직위 부원장 1명도 뽑음\n※ 직원 평균연봉: ALIO 2025 결산 정규직 1인당 평균",
+    "replyText": "👆 공고 원문·지원 링크는 프로필 링크에서",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3085749",
+    "sourceSha256": "24c0c44aebb71d8da6ea4e6b6c12462b4108799cd0217b7058fdb895129534ea",
+    "blogEvidence": "해양수산과학기술진흥원 체험형 청년인턴 3명",
+    "startsAt": "2026-11-09T10:00:00+09:00",
+    "deadlineAt": "2026-11-25T14:00:00+09:00",
+    "verifiedPay": "월 230만원",
+    "employmentType": "청년인턴(체험형)·정규직(개방형직위)",
+    "eligibility": "체험형 청년인턴: 성별·학력 제한 없음, 채용예정일 기준 만15세~34세(군 복무기간에 따라 1~3세 연장); 개방형직위: 경영기획·경영관리·행정 분야 경력 21년 이상; 공식 공고",
+    "blogTitle": "해양수산과학기술진흥원 채용｜청년인턴 3명 월 230만원·11/25 14시 마감",
+    "card": {
+      "badge": "💰 평균연봉 공개",
+      "hook": [
+        "직원 평균연봉",
+        "[[8,507]]만원"
+      ],
+      "org": "해양수산과학기술진흥원",
+      "role": "체험형 청년인턴 3명",
+      "facts": [
+        [
+          "💰",
+          "월 230만원(세전)"
+        ],
+        [
+          "📅",
+          "6개월 근무"
+        ],
+        [
+          "📝",
+          "필기 없이 서류 → 면접"
+        ]
+      ],
+      "deadline": "11/25(수) 오후 2시 마감"
+    },
+    "avgPay": {
+      "label": "직원 평균연봉",
+      "value": "8,507만원",
+      "source": "https://alio.go.kr/item/itemReportTerm.do?apbaId=C0374&reportFormRootNo=2060",
+      "basis": "ALIO 2025 결산 정규직 1인당 평균보수"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/0e77042791024349413b.png",
+    "imageSha256": "0e77042791024349413b95cafa1ef70e0082612970822ee88a465b7fab14e05c",
+    "checkedAt": "2026-11-13T10:23:15.675Z",
+    "updatedAt": "2026-11-13T10:23:15.675Z"
+  },
+  {
+    "id": "0d54c70c-54f2-4305-9cd9-c1820dcd9526",
+    "status": "scheduled",
+    "createdAt": "2026-11-13T10:23:15.675Z",
+    "handle": "hire_masters",
+    "scheduledAt": "2026-11-19T09:30:00.000Z",
+    "noticeId": "306807",
+    "title": "한국고용정보원 채용｜기록물관리 정규직 1명·초임 연 4,200만원 수준",
+    "angle": "기록물 전문요원 독자 지목",
+    "text": "직원 평균연봉 7,000만원 찍는 한국고용정보원 공고 떴어\n기록물관리 전문요원 자격 있으면 이거 봐\n한국고용정보원이 기록물관리 정규직 1명 뽑아\n\n1. 일반직5급 대리 · 정규직 1명\n2. 💰 초임 연 4,200만원 수준\n3. 자격 취득 후 기록물 업무 2년 이상 경력\n4. 충북 음성 본원 · 3개월 시보 후 정규 임용\n5. ⏰ 11/25(수) 오후 4시 마감\n\n시간외수당·경영평가성과급은 별도래\n※ 직원 평균연봉: ALIO 2025 결산 정규직 1인당 평균",
+    "replyText": "👆 자세한 건 프로필 링크에 정리해놨어",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3085726",
+    "sourceSha256": "68650d54995ab2192012c4f5c2d7f4d1aa24ccc619c8bc3c6caecec7fb735424",
+    "blogEvidence": "한국고용정보원 기록물관리 정규직 1명",
+    "startsAt": "2026-11-12T11:00:00+09:00",
+    "deadlineAt": "2026-11-25T16:00:00+09:00",
+    "verifiedPay": "연 4,200만원 수준",
+    "employmentType": "정규직(일반직5급 대리, 3개월 시보)",
+    "eligibility": "기록물관리 전문요원 자격(기록관리학 석사 이상, 또는 기록관리학·역사학·문헌정보학 학사+기록관리학 교육과정 이수+전문요원 시험 합격) 취득 이후 기록물 관련 업무 2년 이상 경력(사서 업무 제외), 정년(만 60세) 이상 임용 제외; 공식 공고",
+    "blogTitle": "한국고용정보원 채용｜기록물관리 정규직 1명·초임 연 4,200만원 수준",
+    "card": {
+      "badge": "👀 연봉 봤어?",
+      "hook": [
+        "직원 평균연봉",
+        "[[7,000만원]] 회사야"
+      ],
+      "org": "한국고용정보원",
+      "role": "기록물관리 정규직 1명",
+      "facts": [
+        [
+          "💰",
+          "초임 연 4,200만원 수준"
+        ],
+        [
+          "📚",
+          "자격 후 경력 2년 이상"
+        ],
+        [
+          "📍",
+          "충북 음성 본원"
+        ]
+      ],
+      "deadline": "11/25(수) 오후 4시 마감"
+    },
+    "avgPay": {
+      "label": "직원 평균연봉",
+      "value": "7,000만원",
+      "source": "https://alio.go.kr/item/itemReportTerm.do?apbaId=C0321&reportFormRootNo=2060",
+      "basis": "ALIO 2025 결산 정규직 1인당 평균보수"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/af39db8f373caad976a6.png",
+    "imageSha256": "af39db8f373caad976a6a6bdf2fb437e280e5d30b80d1b764996ddfee9eadd3d",
+    "checkedAt": "2026-11-13T10:23:15.675Z",
+    "updatedAt": "2026-11-13T10:23:15.675Z"
+  },
+  {
+    "id": "b13d70ff-c203-45b2-885f-9d94baf279e7",
+    "status": "scheduled",
+    "createdAt": "2026-11-13T10:23:15.675Z",
+    "handle": "jobs_curator",
+    "scheduledAt": "2026-11-19T23:30:00.000Z",
+    "noticeId": "306916",
+    "title": "한국교육개발원 채용｜위촉직 4명 월 278만~401만원·11/26 18시 마감",
+    "angle": "학위별 월급 숫자 충격",
+    "text": "📍직원 평균연봉 9,584만원, 한국교육개발원 채용\n박사 월 401만원, 석사 월 308만원 위촉직\n한국교육개발원 위촉직 4명\n\n1. 교육정책네트워크센터 박사 1명 · 석사 2명\n2. 연구기획실 휴직대체 1명(필수요건 없음)\n3. 💰 학력별 월 278만~401만원\n4. 교통비 월 12만원 별도\n5. ⏰ 11/26(목) 오후 6시 마감\n\n석사 분야는 국가교육위원회(정부서울청사) 근무 가능해야 함\n※ 직원 평균연봉: ALIO 2025 결산 정규직 1인당 평균",
+    "replyText": "👆 공고 원문·지원 링크는 프로필 링크에서",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3086612",
+    "sourceSha256": "a76168fb432eb9de6fc76f43273dc32ecb198c63788abaaab3961d0cbe066d0e",
+    "blogEvidence": "한국교육개발원 위촉직 4명",
+    "startsAt": "2026-11-11T15:00:00+09:00",
+    "deadlineAt": "2026-11-26T18:00:00+09:00",
+    "verifiedPay": "월 278만~401만원",
+    "employmentType": "위촉직(기간제)",
+    "eligibility": "A-1 박사학위 소지자, A-2 석사학위 소지자이며 국가교육위원회(정부서울청사) 근무 가능자, B-1(휴직대체) 필수요건 없음; 성별·연령 제한 없음, 인사규정 제14조 결격사유 없는 자; 공식 공고",
+    "blogTitle": "한국교육개발원 채용｜위촉직 4명 월 278만~401만원·11/26 18시 마감",
+    "card": {
+      "badge": "💰 평균연봉 공개",
+      "hook": [
+        "직원 평균연봉",
+        "[[9,584]]만원"
+      ],
+      "org": "한국교육개발원",
+      "role": "위촉직 4명",
+      "facts": [
+        [
+          "💰",
+          "월 278만~401만원(학력별)"
+        ],
+        [
+          "🎓",
+          "박사 401만원 · 석사 308만원"
+        ],
+        [
+          "🚌",
+          "교통비 월 12만원 별도"
+        ]
+      ],
+      "deadline": "11/26(목) 오후 6시 마감"
+    },
+    "avgPay": {
+      "label": "직원 평균연봉",
+      "value": "9,584만원",
+      "source": "https://alio.go.kr/item/itemReportTerm.do?apbaId=C0167&reportFormRootNo=2060",
+      "basis": "ALIO 2025 결산 정규직 1인당 평균보수"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/c41a8c6f2e1811e68d69.png",
+    "imageSha256": "c41a8c6f2e1811e68d698a127e66c5ebf249e77ac40a81010189774165810816",
+    "checkedAt": "2026-11-13T10:23:15.675Z",
+    "updatedAt": "2026-11-13T10:23:15.675Z"
+  },
+  {
+    "id": "343bd45a-f33d-408d-b1dd-45ad52a971ca",
+    "status": "scheduled",
+    "createdAt": "2026-11-13T10:23:15.675Z",
+    "handle": "hire_masters",
+    "scheduledAt": "2026-11-20T00:30:00.000Z",
+    "noticeId": "306913",
+    "title": "한국해양과학기술원 채용｜2027년 1차 직원 23명·11/26 오전 10시 마감",
+    "angle": "학력 무관 공무직 독자 지목",
+    "text": "직원 평균연봉 9,468만원, 한국해양과학기술원에서 사람 뽑아\n학력 안 보고 뽑는 공무직 자리 있어\n한국해양과학기술원 직원 23명 채용이야\n\n1. 정규직 9명 · 무기계약직 14명\n2. 💰 공무직 월초임 조리 243만원, 미화 233만원, 경비 253만원\n3. 미화·조리·제주 경비는 학력 제한 없음\n4. 부산 · 거제 · 울진 · 제주 근무\n5. ⏰ 11/26(목) 오전 10시 마감\n\n재학·휴학 중이면 지원 못 해, 2027년 2월 졸업예정자는 가능\n※ 직원 평균연봉: ALIO 2025 결산 정규직 1인당 평균",
+    "replyText": "👆 자세한 건 프로필 링크에 정리해놨어",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3086556",
+    "sourceSha256": "d119d78877aab1510e272db6ff0c759e42804ef4d9a6edaf9fcabd60847c19d0",
+    "blogEvidence": "한국해양과학기술원 2027년 1차 직원 23명",
+    "startsAt": "2026-11-13T00:00:00+09:00",
+    "deadlineAt": "2026-11-26T10:00:00+09:00",
+    "verifiedPay": "조리 243만원, 미화 233만원, 경비 253만원",
+    "employmentType": "정규직·무기계약직",
+    "eligibility": "임용예정일 기준 18세 이상 59세 이하(무기계약직 공무직 65세 이하), 재학·휴학 중 지원 불가(2027년 2월 졸업예정자 가능); 분야별 자격(선임급 관련분야 박사+직근 4년 주저자 논문, 선박 항해사·기관사 3급 이상 면허·선원수첩·교육 수료, 공무직 미화·조리 학력 제한 없음 등); 공식 공고",
+    "blogTitle": "한국해양과학기술원 채용｜2027년 1차 직원 23명·11/26 오전 10시 마감",
+    "card": {
+      "badge": "👀 연봉 봤어?",
+      "hook": [
+        "직원 평균연봉",
+        "[[9,468만원]] 회사야"
+      ],
+      "org": "한국해양과학기술원",
+      "role": "2027년 1차 직원 23명",
+      "facts": [
+        [
+          "🎓",
+          "미화·조리 학력 제한 없음"
+        ],
+        [
+          "💰",
+          "공무직 월 233만~253만원"
+        ],
+        [
+          "📍",
+          "부산 · 거제 · 울진 · 제주"
+        ]
+      ],
+      "deadline": "11/26(목) 오전 10시 마감"
+    },
+    "avgPay": {
+      "label": "직원 평균연봉",
+      "value": "9,468만원",
+      "source": "https://alio.go.kr/item/itemReportTerm.do?apbaId=C0297&reportFormRootNo=2060",
+      "basis": "ALIO 2025 결산 정규직 1인당 평균보수"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/b325457262799add91e0.png",
+    "imageSha256": "b325457262799add91e010103cbc6e7c41b2d24b289fc3076bca3a5c564c92f6",
+    "checkedAt": "2026-11-13T10:23:15.675Z",
+    "updatedAt": "2026-11-13T10:23:15.675Z"
+  },
+  {
+    "id": "5f820353-acbf-4415-9ed9-c7cec46c7c7a",
+    "status": "scheduled",
+    "createdAt": "2026-11-13T10:23:15.675Z",
+    "handle": "high_quality_hire",
+    "scheduledAt": "2026-11-20T01:30:00.000Z",
+    "noticeId": "306816",
+    "title": "한국도로교통공단 채용｜4분기 실무직·기간제 42명·11/25 18시 마감",
+    "angle": "직무·등급별 월급 범위 비교",
+    "text": "💰 한국도로교통공단 무기계약직 평균연봉 4,191만원\n월 약 1,856,110원~약 3,767,280원, 직무별 비교\n한국도로교통공단 4분기 실무직·기간제 42명\n\n1. 실무직(무기계약직) 14명 · 기간제근로자 28명\n2. 💰 교통계약직 마급 25명 월 지급액 약 2,373,830원\n3. 실무직은 3개월 조건부 근무 후 정규 임용 평가\n4. 실무직 준고령자(만 50세 이상) 5% 가점\n5. ⏰ 11/25(수) 오후 6시 마감\n\n금액이 세전인지는 공고에 적혀 있지 않고 사택은 제공되지 않습니다\n※ 무기계약직 평균연봉: ALIO 2025 결산 무기계약직 1인당 평균",
+    "replyText": "👆 직무별 급여·자격 비교는 프로필 링크에",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3086097",
+    "sourceSha256": "9b11acf76c22fc9ea7cf3d7cf369f393d1be63b591ce3289799a3c45ccd241ab",
+    "blogEvidence": "한국도로교통공단 4분기 실무직 및 기간제근로자 42명",
+    "startsAt": "2026-11-18T10:00:00+09:00",
+    "deadlineAt": "2026-11-25T18:00:00+09:00",
+    "verifiedPay": "월 지급액 약 2,373,830원",
+    "employmentType": "무기계약직(실무직)·기간제근로자",
+    "eligibility": "연령·성별 제한 없음(실무직은 입사예정일 기준 공단 정년 만 65세 이내), 남성은 병역필 또는 면제, 2027.01.01.부터 근무 가능; 분야별 필수자격(보훈 제한경쟁 취업보호(지원) 대상자, 시설관리 전기 기능사 이상, 행정지원 자동차운전면허 2종 보통 이상, 교통신호운영 토목·도시계획·교통기사 이상, 디지털운영 관련분야 실무경력 6년 이상); 공식 공고",
+    "blogTitle": "한국도로교통공단 채용｜4분기 실무직·기간제 42명·11/25 18시 마감",
+    "card": {
+      "badge": "💰 연봉 비교",
+      "hero": {
+        "label": "무기계약직 평균연봉 (2025 결산)",
+        "value": "4,191만원",
+        "sub": "이번 공고 교통계약직 월 약 2,373,830원"
+      },
+      "tags": [
+        "42명",
+        "사택 미제공"
+      ],
+      "org": "한국도로교통공단",
+      "role": "4분기 실무직·기간제",
+      "facts": [
+        [
+          "실무직",
+          "14명 · 3개월 조건부"
+        ],
+        [
+          "기간제",
+          "28명"
+        ],
+        [
+          "가점",
+          "만 50세 이상 5% (실무직)"
+        ]
+      ],
+      "deadline": "11/25(수) 오후 6시 마감"
+    },
+    "avgPay": {
+      "label": "무기계약직 평균연봉",
+      "value": "4,191만원",
+      "source": "https://alio.go.kr/item/itemReportTerm.do?apbaId=C0064&reportFormRootNo=2060",
+      "basis": "ALIO 2025 결산 무기계약직 1인당 평균보수"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/096bc5ca6f3488318f36.png",
+    "imageSha256": "096bc5ca6f3488318f369aa9fd185b4ae9fd88c292327fbfa1421ea1ca05449d",
+    "checkedAt": "2026-11-13T10:23:15.675Z",
+    "updatedAt": "2026-11-13T10:23:15.675Z"
+  },
+  {
+    "id": "d57f8e27-87fd-42a9-9134-b69e635bfbe4",
+    "status": "scheduled",
+    "createdAt": "2026-11-13T10:23:15.675Z",
+    "handle": "jobs_curator",
+    "scheduledAt": "2026-11-20T08:30:00.000Z",
+    "noticeId": "306912",
+    "title": "농림수산식품교육문화정보원 채용｜데이터 관리 계약직 3명·11/27 14시 마감",
+    "angle": "AI 데이터 경력 연봉 범위",
+    "text": "📍직원 평균연봉 6,045만원, 농림수산식품교육문화정보원 채용\nAI 데이터 경력자, 연 최대 5,600만원 계약직\n농림수산식품교육문화정보원 데이터 관리 3명\n\n1. 4급 상당 2명 · 5급 상당 1명\n2. 💰 연 4,100만~5,600만원(제세 공제 전)\n3. 4급 연 4,900만~5,600만원 · 5급 연 4,100만~4,800만원\n4. 세종 본원 · 2027년 1월 8일~2028년 12월 31일\n5. ⏰ 11/27(금) 오후 2시 마감\n\n필기 없이 서류 → 인성검사 → PT 면접, 연장·갱신은 불가\n※ 직원 평균연봉: ALIO 2025 결산 정규직 1인당 평균",
+    "replyText": "👆 공고 원문·지원 링크는 프로필 링크에서",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3086541",
+    "sourceSha256": "84f46a01a488727135d0d95adda238d30caa774dbf3ba8bf653531ee4f5cc6cd",
+    "blogEvidence": "농림수산식품교육문화정보원 데이터 관리 계약직 3명",
+    "startsAt": "2026-11-18T14:00:00+09:00",
+    "deadlineAt": "2026-11-27T14:00:00+09:00",
+    "verifiedPay": "연 4,100만~5,600만원",
+    "employmentType": "계약직(경력)",
+    "eligibility": "4급 상당: 박사, 석사 후 3년·학사 후 5년·고졸 후 9년 이상 관련 분야 실무경력 또는 동등 자격; 5급 상당: 석사, 학사 후 2년·고졸 후 6년 이상 관련 분야 실무경력 또는 동등 자격; 임용예정일 기준 만 60세 미만; 공식 공고",
+    "blogTitle": "농림수산식품교육문화정보원 채용｜데이터 관리 계약직 3명·11/27 14시 마감",
+    "card": {
+      "badge": "💰 평균연봉 공개",
+      "hook": [
+        "직원 평균연봉",
+        "[[6,045]]만원"
+      ],
+      "org": "농림수산식품교육문화정보원",
+      "role": "데이터 관리 계약직 3명",
+      "facts": [
+        [
+          "💰",
+          "연 4,100만~5,600만원"
+        ],
+        [
+          "📍",
+          "세종 본원 근무"
+        ],
+        [
+          "📅",
+          "2027년 1월~2028년 12월"
+        ]
+      ],
+      "deadline": "11/27(금) 오후 2시 마감"
+    },
+    "avgPay": {
+      "label": "직원 평균연봉",
+      "value": "6,045만원",
+      "source": "https://alio.go.kr/item/itemReportTerm.do?apbaId=C0860&reportFormRootNo=2060",
+      "basis": "ALIO 2025 결산 정규직 1인당 평균보수"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/1a1d6840ebbda1f717a8.png",
+    "imageSha256": "1a1d6840ebbda1f717a8110ec84eb6380b19ae5cf787d4e91bf90a2420978c6a",
+    "checkedAt": "2026-11-13T10:23:15.675Z",
+    "updatedAt": "2026-11-13T10:23:15.675Z"
   }
 ]
