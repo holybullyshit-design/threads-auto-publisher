@@ -51102,10 +51102,13 @@
     "scheduledAt": "2026-11-13T06:26:00.000Z",
     "createdAt": "2026-10-30T05:13:48.176Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17991767490080895",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "17991767490080895"
+    ]
   },
   {
     "id": "1c31b74a-130d-477b-bc43-d2a8f3fbacd7",
