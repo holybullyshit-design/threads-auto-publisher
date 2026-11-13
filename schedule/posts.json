@@ -51148,11 +51148,14 @@
     "scheduledAt": "2026-11-13T09:15:00.000Z",
     "createdAt": "2026-10-30T05:16:00.428Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18120145889093137",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18120145889093137"
+    ]
   },
   {
     "id": "bd8d65df-42ac-4573-ab49-9d319776e683",
