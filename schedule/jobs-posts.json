@@ -9290,7 +9290,7 @@
   },
   {
     "id": "2ada49f2-985c-4737-a7bd-d76c99849b07",
-    "status": "scheduled",
+    "status": "publishing",
     "createdAt": "2026-11-11T14:37:48.147Z",
     "noticeId": "skhynix-R262381",
     "title": "SK하이닉스 생산직 메인트 오퍼레이터 정규직 신입",
@@ -9348,7 +9348,9 @@
     "imageSha256": "ac02a07cb11186ee49d93ebc6855917d0efa9e81d9c8ddad39586533b9807e19",
     "checkedAt": "2026-11-11T14:37:48.147Z",
     "updatedAt": "2026-11-11T14:37:48.147Z",
-    "blogUrl": "https://hirecurator.blogspot.com/2026/11/sk-1117-15.html"
+    "blogUrl": "https://hirecurator.blogspot.com/2026/11/sk-1117-15.html",
+    "attemptedAt": "2026-11-13T08:30:48.224Z",
+    "error": null
   },
   {
     "id": "8a516f91-98a0-4fb6-b5d8-98ac589d5a3b",
