@@ -49916,11 +49916,14 @@
     "scheduledAt": "2026-11-13T08:31:00.000Z",
     "createdAt": "2026-10-30T04:32:29.708Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18091980233686637",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18091980233686637"
+    ]
   },
   {
     "id": "ee88948f-bf74-42cb-b064-7eb84e27d767",
