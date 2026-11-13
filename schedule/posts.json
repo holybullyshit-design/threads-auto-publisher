@@ -51017,10 +51017,13 @@
     "scheduledAt": "2026-11-13T01:38:00.000Z",
     "createdAt": "2026-10-30T05:12:31.814Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17913356022583782",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17913356022583782"
+    ]
   },
   {
     "id": "bcb6134c-73bb-4d5e-9393-1e32a9fd7c7f",
