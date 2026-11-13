@@ -47681,10 +47681,13 @@
     "scheduledAt": "2026-11-13T02:35:00.000Z",
     "createdAt": "2026-10-30T03:17:05.913Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18078170567468930",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18078170567468930"
+    ]
   },
   {
     "id": "cc65d1a4-f4df-438a-9d77-20ce01b3392b",
