@@ -48639,10 +48639,13 @@
     "scheduledAt": "2026-11-13T04:01:00.000Z",
     "createdAt": "2026-10-30T03:50:03.629Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17979719988134095",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17979719988134095"
+    ]
   },
   {
     "id": "89491753-d2bb-4c19-982b-51a4cfd864d8",
