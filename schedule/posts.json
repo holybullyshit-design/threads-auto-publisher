@@ -48671,10 +48671,13 @@
     "scheduledAt": "2026-11-13T06:46:00.000Z",
     "createdAt": "2026-10-30T03:50:52.033Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18108846041343769",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18108846041343769"
+    ]
   },
   {
     "id": "90fb06ce-c115-4f12-9f55-7c122839527f",
