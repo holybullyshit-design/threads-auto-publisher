@@ -71,9 +71,12 @@ test('recommendations exclude local draft and cloud-used topics, refresh changes
   // 않고 **다른 테스트 파일이 임시로 만들어둔 것**에 의존하고 있었다. 테스트 파일이 하나
   // 늘자 동시 실행 순서가 바뀌어 겹치지 않게 되면서 깨졌다(제품 버그 아님).
   // output/은 언제든 비워질 수 있는 폴더다 - 픽스처는 이 테스트가 직접 만들고 직접 지운다.
+  // 폴더 이름은 반드시 ^yeonliji-YYYY-MM-DD 형태여야 한다. getStudio()가 그 정규식으로
+  // 초안을 거르기 때문에, 이름이 어긋나면 픽스처가 아예 안 읽히고 테스트는 셔플 운에
+  // 기대어 통과한다(실제로 그렇게 간헐 실패했다).
   const original=schedule.listSchedule;
   const draftRoot=path.join(__dirname,'..','output');
-  const localDraftId='yeonliji-test-local-distance-'+process.pid;
+  const localDraftId='yeonliji-2099-09-01-test-distance-'+process.pid;
   const localDraftDir=path.join(draftRoot,localDraftId);
   fs.mkdirSync(localDraftDir,{recursive:true});
   fs.writeFileSync(path.join(localDraftDir,'manifest.json'),JSON.stringify(
