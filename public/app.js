@@ -1990,6 +1990,7 @@ async function refreshAllTokens() {
     let msg = `✅ ${okCount}개 갱신 완료`;
     if (failCount > 0) msg += `, ❌ ${failCount}개 실패 (${failDetail})`;
     msg += data.syncedToCloud ? " · ☁️ 클라우드 동기화 완료" : ` · ⚠️ 클라우드 동기화 실패: ${data.syncError}`;
+    if (data.jobSyncError) msg += ` · ⚠️ 채용 클라우드 동기화 실패: ${data.jobSyncError}`;
     el.refreshTokensStatus.textContent = msg;
 
     await loadAccounts();
