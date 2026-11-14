@@ -48815,11 +48815,14 @@
     "scheduledAt": "2026-11-14T07:54:00.000Z",
     "createdAt": "2026-10-30T03:53:51.550Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17933899317421930",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "toneFixed": true
+    "toneFixed": true,
+    "chainPublishedIds": [
+      "17933899317421930"
+    ]
   },
   {
     "id": "10c48f0f-a296-4823-ac1d-13056987a529",
