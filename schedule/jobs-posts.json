@@ -10226,5 +10226,185 @@
     "imageSha256": "1a1d6840ebbda1f717a8110ec84eb6380b19ae5cf787d4e91bf90a2420978c6a",
     "checkedAt": "2026-11-13T10:23:15.675Z",
     "updatedAt": "2026-11-13T10:23:15.675Z"
+  },
+  {
+    "id": "9b39f447-3238-4545-bc7c-14933d2a49c4",
+    "status": "scheduled",
+    "createdAt": "2026-11-14T10:20:43.778Z",
+    "handle": "jobs_curator",
+    "scheduledAt": "2026-11-20T23:30:00.000Z",
+    "noticeId": "307013",
+    "title": "한국전력공사 채용｜간호사 일급 118,080원 등 2명·11/27 15시 마감",
+    "angle": "유명 공기업 평균연봉 + 필기 없음",
+    "text": "🚨직원 평균연봉 9,637만원 한전, 필기 없이 뽑는다\n학력·나이 안 보는 기간제 2명\n한국전력공사 경남본부 채용\n\n1. 간호사 1명(창원) · NDIS데이터관리원 1명(진주)\n2. 💰 일급 105,840~118,080원\n3. 필기 없음: 서류 → 종합면접\n4. 12월 7일 근무 시작 · 정규직 전환 없음\n5. ⏰ 11/27(금) 오후 3시 마감\n\n간호사는 면허 필수, 간호조무사는 지원 불가\n※ 직원 평균연봉: ALIO 2025 결산 정규직 1인당 평균",
+    "replyText": "👆 공고 원문·지원 링크는 프로필 링크에서",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3087227",
+    "sourceSha256": "da9f316401e7b9bbac3f34ab4b154a661f26ad83f9048c3bb89df85b62da8ec5",
+    "blogEvidence": "한국전력공사 경남본부 기간제 2명",
+    "startsAt": "2026-11-13T15:00:00+09:00",
+    "deadlineAt": "2026-11-27T15:00:00+09:00",
+    "verifiedPay": "일급 105,840~118,080원",
+    "employmentType": "기간제근로자(대체인력)",
+    "eligibility": "학력·연령 제한없음; 간호사는 의료법 제7조에 따른 간호사 면허(간호조무사 불가), NDIS데이터관리원은 지정 자격증(산업기사 이상: 측량 및 지형공간정보·지적·정보처리·전기·전기공사 / 기능사: 측량·지적·지도제작·임베디드(정보처리)·전자캐드·전기) 1개 이상; 병역법 제76조 병역의무 불이행 사실 없는 자; 2026년 12월 7일부터 근무 가능한 자; 한전 인사관리규정 제11조 결격사유 없는 자; 공식 공고",
+    "blogTitle": "한국전력공사 채용｜간호사 일급 118,080원 등 2명·11/27 15시 마감",
+    "card": {
+      "badge": "🚨 필기 없음",
+      "hook": [
+        "직원 평균연봉",
+        "[[9,637]]만원 한전"
+      ],
+      "org": "한국전력공사",
+      "role": "경남본부 기간제 2명",
+      "facts": [
+        [
+          "💰",
+          "일급 105,840~118,080원"
+        ],
+        [
+          "📝",
+          "필기 없이 서류 → 면접"
+        ],
+        [
+          "🎓",
+          "학력·나이 제한 없음"
+        ]
+      ],
+      "deadline": "11/27(금) 오후 3시 마감"
+    },
+    "avgPay": {
+      "label": "직원 평균연봉",
+      "value": "9,637만원",
+      "source": "https://alio.go.kr/item/itemReportTerm.do?apbaId=C0247&reportFormRootNo=2060",
+      "basis": "ALIO 2025 결산 정규직 1인당 평균보수"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/2f8e720768c612a2e53d.png",
+    "imageSha256": "2f8e720768c612a2e53db49eb0a77f4503fec675f64b117ad57adef8e65b1480",
+    "checkedAt": "2026-11-14T10:20:43.778Z",
+    "updatedAt": "2026-11-14T10:20:43.778Z"
+  },
+  {
+    "id": "104b63ee-1974-4338-8f5e-7044f16d77ee",
+    "status": "scheduled",
+    "createdAt": "2026-11-14T10:20:43.778Z",
+    "handle": "high_quality_hire",
+    "scheduledAt": "2026-11-21T01:30:00.000Z",
+    "noticeId": "306916",
+    "title": "한국교육개발원 채용｜위촉직 4명 월 278만~401만원·11/26 18시 마감",
+    "angle": "국책기관 평균연봉 vs 학위별 월급",
+    "text": "💰 직원 평균연봉 9,584만원, 위촉직은 학위가 월급을 정합니다\n박사 401만원 vs 석사 308만원\n한국교육개발원 위촉직 4명 비교\n\n1. 박사 1명 · 석사 2명 · 휴직대체 1명\n2. 💰 월 278만~401만원(학력별)\n3. 학사 288만원 · 전문학사 이하 278만원\n4. 교통비 월 12만원 별도\n5. ⏰ 11/26(목) 오후 6시 마감\n\n휴직대체 1명은 필수요건이 없습니다\n※ 직원 평균연봉: ALIO 2025 결산 정규직 1인당 평균",
+    "replyText": "👆 직무별 급여·자격 비교는 프로필 링크에",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3086612",
+    "sourceSha256": "a76168fb432eb9de6fc76f43273dc32ecb198c63788abaaab3961d0cbe066d0e",
+    "blogEvidence": "한국교육개발원 위촉직 4명",
+    "startsAt": "2026-11-11T15:00:00+09:00",
+    "deadlineAt": "2026-11-26T18:00:00+09:00",
+    "verifiedPay": "월 278만~401만원",
+    "employmentType": "위촉직(기간제)",
+    "eligibility": "A-1 박사학위 소지자, A-2 석사학위 소지자이며 국가교육위원회(정부서울청사) 근무 가능자, B-1(휴직대체) 필수요건 없음; 성별·연령 제한 없음, 인사규정 제14조 결격사유 없는 자; 공식 공고",
+    "blogTitle": "한국교육개발원 채용｜위촉직 4명 월 278만~401만원·11/26 18시 마감",
+    "card": {
+      "badge": "💰 연봉 비교",
+      "tags": [
+        "위촉직 4명",
+        "학력별 월급"
+      ],
+      "org": "한국교육개발원",
+      "role": "위촉직 4명",
+      "sub": "이번 공고 월 278만~401만원",
+      "facts": [
+        [
+          "박사",
+          "월 401만원"
+        ],
+        [
+          "석사",
+          "월 308만원"
+        ],
+        [
+          "학사",
+          "월 288만원"
+        ]
+      ],
+      "deadline": "11/26(목) 오후 6시 마감",
+      "hero": {
+        "label": "직원 평균연봉 (2025 결산)",
+        "value": "9,584만원",
+        "sub": "이번 공고 월 278만~401만원"
+      }
+    },
+    "avgPay": {
+      "label": "직원 평균연봉",
+      "value": "9,584만원",
+      "source": "https://alio.go.kr/item/itemReportTerm.do?apbaId=C0167&reportFormRootNo=2060",
+      "basis": "ALIO 2025 결산 정규직 1인당 평균보수"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/0deb1a39318a08af86bb.png",
+    "imageSha256": "0deb1a39318a08af86bb3d840a4d96199ef8888df782cef36cdd155060643af5",
+    "checkedAt": "2026-11-14T10:20:43.778Z",
+    "updatedAt": "2026-11-14T10:20:43.778Z"
+  },
+  {
+    "id": "0d921be4-45c8-42be-9210-4e8760493dca",
+    "status": "scheduled",
+    "createdAt": "2026-11-14T10:20:43.778Z",
+    "handle": "hire_masters",
+    "scheduledAt": "2026-11-21T09:30:00.000Z",
+    "noticeId": "306912",
+    "title": "농림수산식품교육문화정보원 채용｜데이터 관리 계약직 3명·11/27 14시 마감",
+    "angle": "계약직 연봉 숫자 충격",
+    "text": "계약직인데 연봉 최대 5,600만원 실화냐\nAI 데이터 경력 있으면 이거 봐\n농림수산식품교육문화정보원 계약직 3명이야\n\n1. 4급 상당 2명 · 5급 상당 1명\n2. 💰 연 4,100만~5,600만원(제세 공제 전)\n3. 필기 없이 서류 → 인성검사 → PT 면접\n4. 세종 본원 · 2027년 1월~2028년 12월\n5. ⏰ 11/27(금) 오후 2시 마감\n\n끝나면 연장·갱신은 안 돼, 그건 알고 지원해",
+    "replyText": "👆 자세한 건 프로필 링크에 정리해놨어",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3086541",
+    "sourceSha256": "84f46a01a488727135d0d95adda238d30caa774dbf3ba8bf653531ee4f5cc6cd",
+    "blogEvidence": "농림수산식품교육문화정보원 데이터 관리 계약직 3명",
+    "startsAt": "2026-11-18T14:00:00+09:00",
+    "deadlineAt": "2026-11-27T14:00:00+09:00",
+    "verifiedPay": "연 4,100만~5,600만원",
+    "employmentType": "계약직(경력)",
+    "eligibility": "4급 상당: 박사, 석사 후 3년·학사 후 5년·고졸 후 9년 이상 관련 분야 실무경력 또는 동등 자격; 5급 상당: 석사, 학사 후 2년·고졸 후 6년 이상 관련 분야 실무경력 또는 동등 자격; 임용예정일 기준 만 60세 미만; 공식 공고",
+    "blogTitle": "농림수산식품교육문화정보원 채용｜데이터 관리 계약직 3명·11/27 14시 마감",
+    "card": {
+      "badge": "👀 이거 봤어?",
+      "hook": [
+        "계약직인데",
+        "연봉 [[5,600만원]]까지"
+      ],
+      "org": "농림수산식품교육문화정보원",
+      "role": "데이터 관리 계약직 3명",
+      "facts": [
+        [
+          "💰",
+          "연 4,100만~5,600만원"
+        ],
+        [
+          "📝",
+          "필기 없이 PT 면접까지"
+        ],
+        [
+          "📍",
+          "세종 본원 근무"
+        ]
+      ],
+      "deadline": "11/27(금) 오후 2시 마감"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/e8df1c33cb03994dc64c.png",
+    "imageSha256": "e8df1c33cb03994dc64c152f5ef817353fa0c3a596bce226743a5e46ff7fbc53",
+    "checkedAt": "2026-11-14T10:20:43.778Z",
+    "updatedAt": "2026-11-14T10:20:43.778Z"
   }
 ]
