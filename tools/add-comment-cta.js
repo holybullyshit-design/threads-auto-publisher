@@ -101,7 +101,15 @@ async function main() {
     console.log(`[${i + 1}/${targets.length}] 다시 쓰는 중... (${dateKey} ${kstTime(post.scheduledAt)} KST)`);
     let draft;
     try {
-      draft = await writeWithRetry({ dateKey, accountLabel: ACCOUNT_LABEL, hitFormula: true, ctaMode: "comment" });
+      // 2026-11-14: speechLevel을 넘기지 않으면 엔진이 존댓말 CTA 풀로 떨어져,
+      // 반말 계정(팔자장인·팔자궤도)의 글이 마지막 한 줄만 존댓말로 끝난다.
+      draft = await writeWithRetry({
+        dateKey,
+        accountLabel: ACCOUNT_LABEL,
+        hitFormula: true,
+        ctaMode: "comment",
+        speechLevel: (account.persona && account.persona.speechLevel) || undefined,
+      });
     } catch (err) {
       console.log(`  -> ${RETRY_ATTEMPTS}번 다 실패, 기존 내용 그대로 둠: ${err.message}`);
       continue;

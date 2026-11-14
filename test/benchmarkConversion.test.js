@@ -77,3 +77,44 @@ test("거짓 양성 0 - 원국 얘기와 다음 달 얘기는 건드리지 않�
   assert.strictEqual(
     checkSajuClaims("지금은 경자월입니다.", {}).some((r) => r.kind === "이번 달 간지"), false);
 });
+
+// 2026-11-14: 반말 계정 글이 마지막 CTA 한 줄만 존댓말로 끝나던 톤 혼합.
+// 원인은 두 곳이었다 - (1) comprehensive 모드는 VIRAL_PROFILES에 없어 speechLevel이
+// 아예 안 넘어갔고 (2) 댓글유도 CTA 풀에는 반말판이 없었다.
+test("반말 계정은 일반 CTA도 댓글유도 CTA도 반말판을 쓴다", () => {
+  const {
+    COMMENT_CTA_POOL_BANMAL,
+    COMMENT_CTA_POOL,
+  } = require("../server/skills/taebaekSajuDraftWriter");
+  assert.equal(
+    COMMENT_CTA_POOL_BANMAL.length,
+    COMMENT_CTA_POOL.length,
+    "반말판과 존댓말판의 댓글유도 CTA 개수가 같아야 한다"
+  );
+  for (const line of COMMENT_CTA_POOL_BANMAL) {
+    assert.ok(
+      !/(습니다|세요|해요|입니다|드릴게요|주세요)/.test(line),
+      `댓글유도 반말 CTA에 존댓말이 섞였다: ${line}`
+    );
+    assert.ok(
+      /생년월일시/.test(line),
+      `댓글유도 CTA는 생년월일시를 받아야 한다: ${line}`
+    );
+  }
+});
+
+test("생성 도구가 계정 어체를 엔진에 넘긴다", () => {
+  const fs = require("fs");
+  const path = require("path");
+  for (const rel of ["tools/fill-schedule.js", "tools/add-comment-cta.js"]) {
+    const src = fs.readFileSync(path.join(__dirname, "..", rel), "utf8");
+    assert.ok(
+      /persona && [a-zA-Z]*\.?persona\.speechLevel|persona\.speechLevel/.test(src),
+      `${rel}가 계정 페르소나의 speechLevel을 쓰지 않는다 - 반말 계정 CTA가 존댓말로 떨어진다`
+    );
+    assert.ok(
+      !/speechLevel: profile \? profile\.speechLevel : undefined/.test(src),
+      `${rel}가 profile에만 의존한다 - comprehensive 모드에서 speechLevel이 사라진다`
+    );
+  }
+});

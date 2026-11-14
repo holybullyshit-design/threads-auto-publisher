@@ -67,7 +67,18 @@ test('double generation is blocked and provider failure releases the lock',async
   } finally { fs.rmSync(dir,{recursive:true,force:true}); }
 });
 test('recommendations exclude local draft and cloud-used topics, refresh changes the set',async()=>{
+  // 2026-11-14: 이 테스트는 output/에 'distance' 초안이 있어야 통과하는데, 그 초안을 만들지
+  // 않고 **다른 테스트 파일이 임시로 만들어둔 것**에 의존하고 있었다. 테스트 파일이 하나
+  // 늘자 동시 실행 순서가 바뀌어 겹치지 않게 되면서 깨졌다(제품 버그 아님).
+  // output/은 언제든 비워질 수 있는 폴더다 - 픽스처는 이 테스트가 직접 만들고 직접 지운다.
   const original=schedule.listSchedule;
+  const draftRoot=path.join(__dirname,'..','output');
+  const localDraftId='yeonliji-test-local-distance-'+process.pid;
+  const localDraftDir=path.join(draftRoot,localDraftId);
+  fs.mkdirSync(localDraftDir,{recursive:true});
+  fs.writeFileSync(path.join(localDraftDir,'manifest.json'),JSON.stringify(
+    planner.createDraftPlan('distance',{date:'2099-09-01',time:'18:00'})
+  ));
   schedule.listSchedule=async()=>[{platform:'instagram',accountKey:'yeonliji',title:'같이 사는데 더 외롭다는 마음',status:'published'}];
   try {
     const first=await automation.getTopics(); assert.equal(first.topics.length,10);
@@ -75,7 +86,10 @@ test('recommendations exclude local draft and cloud-used topics, refresh changes
     assert(!first.topics.some(t=>['distance','divorce-lonely'].includes(t.id)));
     const next=await automation.getTopics(first.topics.map(t=>t.id));
     assert.equal(next.topics.length,10); assert(next.topics.some(t=>!first.topics.some(x=>x.id===t.id)));
-  } finally { schedule.listSchedule=original; }
+  } finally {
+    schedule.listSchedule=original;
+    fs.rmSync(localDraftDir,{recursive:true,force:true});
+  }
 });
 test('approval uses chosen date/time, preserves all old posts, and repeat click performs no upload',async()=>{
   const originals={list:schedule.listSchedule,add:schedule.addInstagramPost,auth:auth.getCredentials,media:media.publishImages};

@@ -87,6 +87,16 @@ const COMMENT_CTA_POOL = [
   "댓글에 생년월일시·성별·지금 제일 걸리는 고민 하나를 적어주시면, 그 부분부터 짚어서 답글 드릴게요.",
 ];
 
+// 댓글유도 CTA의 반말판. 반말 계정은 댓글유도 글도 마지막 한 줄만 존댓말로 끝나던
+// 같은 문제가 있었다(2026-11-14). 받는 항목(생년월일시·성별)은 존댓말판과 동일하게 유지한다.
+const COMMENT_CTA_POOL_BANMAL = [
+  "내 경우는 어느 쪽인지 궁금하면, 댓글에 생년월일시(양력/음력)랑 성별만 남겨. 올라온 순서대로 짚어줄게.",
+  "본인 사주가 여기 해당하는지 보고 싶으면, 댓글에 생년월일시랑 성별, 고민 한 줄만 적어. 하나씩 답글 달아줄게.",
+  "댓글에 생년월일시(양력/음력 구분)랑 성별을 남겨. 어느 자리에 걸려 있는지 확인해서 답글로 알려줄게.",
+  "내 원국은 어떤지 궁금하면 댓글로 생년월일시랑 성별만 줘. 읽는 대로 순서대로 봐줄게.",
+  "댓글에 생년월일시·성별·지금 제일 걸리는 고민 하나를 적어주면, 그 부분부터 짚어서 답글 줄게.",
+];
+
 // 반말 계정(연리지·팔자장인·팔자궤도·팔자명가)은 글 전체가 반말인데 CTA만 존댓말로 끝나
 // 마지막 한 줄에서 톤이 튀었다. 같은 내용의 반말판을 따로 둔다(가격은 여기에도 쓰지 않는다).
 const CTA_POOL_BANMAL = [
@@ -908,7 +918,9 @@ async function writeThreadDraft({
 
   const commentMode = ctaMode === "comment";
   const cta = pickRandom(
-    commentMode ? COMMENT_CTA_POOL : (speechLevel === "반말" ? CTA_POOL_BANMAL : CTA_POOL)
+    commentMode
+      ? (speechLevel === "반말" ? COMMENT_CTA_POOL_BANMAL : COMMENT_CTA_POOL)
+      : (speechLevel === "반말" ? CTA_POOL_BANMAL : CTA_POOL)
   );
   const bridgeStyle = pickRandom(BRIDGE_STYLES);
   const closingStyle = pickRandom(CLOSING_STYLES);
@@ -1055,5 +1067,5 @@ function pickHookFormatIds(count, hookIds = HOOK_FORMATS.map((h) => h.id)) {
 
 // TOPICS는 테스트가 사실 블록을 직접 검증할 수 있게 함께 내보낸다
 module.exports = {
-  TOPICS, writeThreadDraft, TOPICS, HOOK_FORMATS, CTA_POOL, CTA_POOL_BANMAL, COMMENT_CTA_POOL, BANNED_BENCHMARK_PHRASES,
+  TOPICS, writeThreadDraft, TOPICS, HOOK_FORMATS, CTA_POOL, CTA_POOL_BANMAL, COMMENT_CTA_POOL, COMMENT_CTA_POOL_BANMAL, BANNED_BENCHMARK_PHRASES,
   HIT_FORMULA_TOPIC_IDS, HIT_FORMULA_HOOK_IDS, pickTopicIds, pickHookFormatIds, findOverusedTitleShape };

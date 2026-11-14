@@ -370,6 +370,12 @@ async function main() {
   console.log(`  터진 글 공식 적용: ${hitFlags.filter(Boolean).length}/${jobs.length}건 (비율 ${HIT_RATIO})`);
 
   const profile = MODE === "viral-morning" ? VIRAL_PROFILES[ACCOUNT_LABEL] : null;
+  // 2026-11-14: comprehensive 모드(팔자궤도·팔자장인)는 VIRAL_PROFILES에 없어 profile이 null이라
+  // speechLevel이 아예 안 넘어갔다. 그러면 엔진이 CTA를 고를 때 존댓말 풀로 떨어져서,
+  // 본문은 반말인데 마지막 CTA 한 줄만 존댓말로 끝나는 톤 혼합이 난다(실측 320건 중 7건).
+  // 계정 페르소나에 어체가 이미 있으므로 그걸 기본값으로 쓴다.
+  const accountSpeechLevel =
+    (profile && profile.speechLevel) || (account.persona && account.persona.speechLevel) || undefined;
   const topicPool = profile ? TOPICS.filter((t) => profile.topicIds.includes(t.id)) : TOPICS;
   const poolIds = profile ? profile.topicIds : undefined;
   const topicIds = pickTopicIds(jobs.length, poolIds);
@@ -398,7 +404,7 @@ async function main() {
         accountLabel: ACCOUNT_LABEL,
         topicPool: profile ? topicPool : undefined,
         domainFraming: profile ? profile.domainFraming : undefined,
-        speechLevel: profile ? profile.speechLevel : undefined,
+        speechLevel: accountSpeechLevel,
         extraBans: profile ? profile.extraBans : undefined,
       });
     } catch (err) {
