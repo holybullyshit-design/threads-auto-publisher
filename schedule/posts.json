@@ -51369,11 +51369,14 @@
     "scheduledAt": "2026-11-14T08:10:00.000Z",
     "createdAt": "2026-10-30T05:20:43.867Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18112776599576590",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18112776599576590"
+    ]
   },
   {
     "id": "00709e89-fdb6-4ef2-8069-ede1c4b130ff",
