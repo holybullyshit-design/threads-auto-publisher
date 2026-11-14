@@ -48780,11 +48780,14 @@
     "scheduledAt": "2026-11-14T04:56:00.000Z",
     "createdAt": "2026-10-30T03:53:08.638Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18169737607485990",
     "error": null,
     "viralEngine": true,
     "hitFormula": false,
-    "toneFixed": true
+    "toneFixed": true,
+    "chainPublishedIds": [
+      "18169737607485990"
+    ]
   },
   {
     "id": "47fea356-bff1-4970-8b98-d442e772346c",
