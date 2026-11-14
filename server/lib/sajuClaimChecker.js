@@ -24,6 +24,7 @@ const {
   getSamhapRoles,
   getSamjaeInfo,
   getWonjinPartner,
+  getVerifiedCalendarFacts,
 } = require("./sajuFacts");
 
 const ELEMENTS = ["목", "화", "토", "금", "수"];
@@ -266,6 +267,38 @@ function stemSinsalInBlock(text, stem) {
 }
 
 const CHECKS2 = [
+  // 12) 이번 달 간지(월주) — 2026-11-12 추가.
+  // 벤치마크 상위 채널(@saju.myungdang "지금 기해월", @ihwa_saju "10월 26일은 계유일",
+  // @halla_saju "대설 12/7부터 경자월")은 예외 없이 **시점을 간지로 못박는다**. 우리 엔진도
+  // 그 값을 정확히 계산하지만 재성/관성 소재에서만 쓰고 있었다. 전 소재에 풀어주면서 같이
+  // 넣은 검사다 — 삼재 사고(연도를 안 주니 AI가 지어냄)와 **정확히 같은 구멍**이라,
+  // CLAUDE.md 규칙대로 소재를 붙이기 전에 검사부터 만든다.
+  //
+  // 거짓 양성 0 원칙: "지금/이번 달/현재/이달" 바로 뒤(15자 이내)에 붙은 간지월만 본다.
+  // - "이번 달은 기해월이고 다음 달은 경자월" → 기해월만 검사(경자월은 '다음 달' 소속)
+  // - "기해월주", "기해월생" 같은 원국 얘기는 보지 않는다(월 뒤에 주/생이 붙으면 제외)
+  function currentMonthGanji(text, { dateKey } = {}) {
+    if (!dateKey) return null;
+    let cal;
+    try {
+      cal = getVerifiedCalendarFacts(dateKey);
+    } catch (err) {
+      return null; // 달력을 못 읽으면 판정하지 않는다
+    }
+    const parts = String(cal.korean || "").split(" · ");
+    const actualMonth = (parts[1] || "").replace(/월$/, ""); // "기해"
+    if (!actualMonth) return null;
+    const issues = [];
+    const re = /(지금|이번\s*달|현재|이달)[^\n]{0,15}?([갑을병정무기경신임계][자축인묘진사오미신유술해])월(?![주생])/g;
+    for (const m of text.matchAll(re)) {
+      if (m[2] !== actualMonth) {
+        issues.push(`${dateKey}은 ${actualMonth}월인데 "${m[1]}...${m[2]}월"이라고 썼습니다`);
+      }
+    }
+    if (!issues.length) return null;
+    return { kind: "이번 달 간지", issues };
+  },
+
   // 8) 일주 기반 신살(백호·괴강): 성립 일주 목록 밖의 일주를 지목했는지
   function iljuSinsal(text) {
     const issues = [];
