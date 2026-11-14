@@ -10417,5 +10417,610 @@
     "imageSha256": "e8df1c33cb03994dc64c152f5ef817353fa0c3a596bce226743a5e46ff7fbc53",
     "checkedAt": "2026-11-14T10:20:43.778Z",
     "updatedAt": "2026-11-14T10:20:43.778Z"
+  },
+  {
+    "id": "857cca15-3d22-4456-afdf-17daf6e5545a",
+    "status": "scheduled",
+    "createdAt": "2026-11-14T11:13:03.176Z",
+    "handle": "high_quality_hire",
+    "scheduledAt": "2026-11-21T10:30:00.000Z",
+    "noticeId": "307001",
+    "title": "한국조세재정연구원 채용｜위촉직 14명 석사 월 365만원·11/27 10시 마감",
+    "angle": "국책연구원 평균연봉 vs 위촉직 월급",
+    "text": "💰 직원 평균연봉 8,583만원 vs 위촉직 월 342만원\n석사 졸업예정자도 대부분 분야 지원 가능\n한국조세재정연구원 위촉직 14명 비교\n\n1. 💰 월 342만~431만원(복지포인트 별도)\n2. 석사 365만원 · 학사 342만원\n3. 필기 없음: 서류 → 면접\n4. 세종 본원 · PEMNA 1명은 서울\n5. ⏰ 11/27(금) 오전 10시 마감\n\n마감이 오후가 아니라 오전 10시입니다\n※ 직원 평균연봉: ALIO 2025 결산 정규직 1인당 평균",
+    "replyText": "👆 직무별 급여·자격 비교는 프로필 링크에",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3087160",
+    "sourceSha256": "f474886668dfb1f78c08e74face05afc5caabd6c1b8433366de8d6a1d2934859",
+    "blogEvidence": "한국조세재정연구원 위촉직 14명",
+    "startsAt": "2026-11-13T10:00:00+09:00",
+    "deadlineAt": "2026-11-27T10:00:00+09:00",
+    "verifiedPay": "월 342만~431만원",
+    "employmentType": "위촉직(계약직)",
+    "eligibility": "국가공무원법 제33조·병역법 제76조 제1항·부패방지권익위법 제82조 미해당, 채용비리 기소·타 공공기관 부정채용 취소 사실 없는 자, 전일근무(09:00~18:00) 가능자; 분야별 필수요건(성과관리·정부투자분석·세정·인구정책평가 2개 팀·재정전망은 관련 전공 석사 이상, 세법연구팀은 석사 이상 또는 학사 이상+변호사·공인회계사·세무사, PEMNA 운영팀은 학사 이상+원어민 수준 영어·국외출장 가능, 연구윤리출판팀 겸직은 학사 이상(졸업예정자 미포함)); 재정전망센터 외 석사 요건 분야는 2027년 2월 석사 졸업예정자 지원 가능; 공식 공고",
+    "blogTitle": "한국조세재정연구원 채용｜위촉직 14명 석사 월 365만원·11/27 10시 마감",
+    "card": {
+      "badge": "💰 연봉 비교",
+      "tags": [
+        "위촉직 14명",
+        "필기 없음"
+      ],
+      "org": "한국조세재정연구원",
+      "role": "위촉직 14명",
+      "sub": "이번 공고 월 342만~431만원",
+      "facts": [
+        [
+          "석사",
+          "월 365만원"
+        ],
+        [
+          "학사",
+          "월 342만원"
+        ],
+        [
+          "특수전문직",
+          "월 431만원"
+        ]
+      ],
+      "deadline": "11/27(금) 오전 10시 마감",
+      "hero": {
+        "label": "직원 평균연봉 (2025 결산)",
+        "value": "8,583만원",
+        "sub": "이번 공고 월 342만~431만원"
+      }
+    },
+    "avgPay": {
+      "label": "직원 평균연봉",
+      "value": "8,583만원",
+      "source": "https://alio.go.kr/item/itemReportTerm.do?apbaId=C0256&reportFormRootNo=2060",
+      "basis": "ALIO 2025 결산 정규직 1인당 평균보수"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/67c1d012952c84906908.png",
+    "imageSha256": "67c1d012952c849069082a6fee585372d1ad385521cbcaa31c75c05857209145",
+    "checkedAt": "2026-11-14T11:13:03.176Z",
+    "updatedAt": "2026-11-14T11:13:03.176Z"
+  },
+  {
+    "id": "2c3f6d57-6efd-456f-b973-a1fd6d7e46d7",
+    "status": "scheduled",
+    "createdAt": "2026-11-14T11:13:03.176Z",
+    "handle": "jobs_curator",
+    "scheduledAt": "2026-11-21T23:30:00.000Z",
+    "noticeId": "307027",
+    "title": "식품안전정보원 채용｜서울 중구 기간제 34명 필기 없음·11/27 17시 마감",
+    "angle": "서울 중구 34명 필기 없음",
+    "text": "📍서울 중구 공공기관, 필기 없이 34명 뽑는다\n식품 원급만 15명\n식품안전정보원 기간제 직원 채용\n\n1. 식품 15명 · 전산 11명 · 행정 3명 등 34명\n2. 💰 세전 연봉 미공개(내부규정)\n3. 필기 없음: 서류 → 면접\n4. 주 40시간 · 2027년 12월 31일까지\n5. ⏰ 11/27(금) 오후 5시 마감\n\n원급은 학사 이상 등 학력·경력 요건이 있으니 꼭 확인",
+    "replyText": "👆 공고 원문·지원 링크는 프로필 링크에서",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3087328",
+    "sourceSha256": "31340f0188e78fd2d39d0a401dc492673647557682b56cb78882fc44b5de2bc4",
+    "blogEvidence": "식품안전정보원 기간제 직원 34명",
+    "startsAt": "2026-11-20T00:00:00+09:00",
+    "deadlineAt": "2026-11-27T17:00:00+09:00",
+    "verifiedPay": "세전 연봉 미공개",
+    "employmentType": "기간제 근로자",
+    "eligibility": "임용일 기준 정년연령(만 60세) 미만, 입사예정일 출근 가능, 4대 보험 가입 가능·겸직제한 미해당, 인사규정 제15조 결격사유 없는 자(외국인은 F-2·F-4·F-5·E-7 등 취업비자 발급 가능자); 직군별 요건(외국어 영어 계열 학사 이상, 전산 선임 컴퓨터공학·소프트웨어학 석사 이상, 식품 원급 식품학 학사 이상 또는 전문대+2년·고졸+4년 재직, 연구 식품학 석사 이상, 전산 원급 컴퓨터공학·소프트웨어학 학사 이상 또는 전문대+2년·고졸+4년 재직, 행정·상담 없음); 직급별 요건(선임급 학사 이상+관련분야 5년 이상 재직+능력기준, 원급 학사 이상(3개월 이내 졸업예정 포함)·전문대+2년·고졸+4년 재직 등+능력기준); 공식 공고",
+    "blogTitle": "식품안전정보원 채용｜서울 중구 기간제 34명 필기 없음·11/27 17시 마감",
+    "card": {
+      "badge": "🔔 필기 없음",
+      "hook": [
+        "서울 중구",
+        "[[34명]] 필기 없이"
+      ],
+      "org": "식품안전정보원",
+      "role": "기간제 직원 34명",
+      "facts": [
+        [
+          "🍽️",
+          "식품 원급 15명 최다"
+        ],
+        [
+          "📝",
+          "서류 → 면접"
+        ],
+        [
+          "💰",
+          "세전 연봉 미공개"
+        ]
+      ],
+      "deadline": "11/27(금) 오후 5시 마감"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/d8c2db78359f34a86fbe.png",
+    "imageSha256": "d8c2db78359f34a86fbe67fbbd07b4cdd74d564d5e85f3597f0a07b81f4439b0",
+    "checkedAt": "2026-11-14T11:13:03.176Z",
+    "updatedAt": "2026-11-14T11:13:03.176Z"
+  },
+  {
+    "id": "cacfd085-e2db-4ead-a818-cccc9f923b4c",
+    "status": "scheduled",
+    "createdAt": "2026-11-14T11:13:03.176Z",
+    "handle": "hire_masters",
+    "scheduledAt": "2026-11-22T00:30:00.000Z",
+    "noticeId": "307013",
+    "title": "한국전력공사 채용｜간호사 일급 118,080원 등 2명·11/27 15시 마감",
+    "angle": "한전 평균연봉 반전(면접만)",
+    "text": "한전 직원 평균연봉 9,637만원… 근데 필기가 없어\n학력·나이 안 보는 기간제 2명 뽑아\n한국전력공사 경남본부야\n\n1. 간호사(창원) 1명 · NDIS데이터관리원(진주) 1명\n2. 💰 일급 105,840~118,080원\n3. 서류 → 종합면접, 이게 끝\n4. 평일 09:00~18:00 · 12월 7일 시작\n5. ⏰ 11/27(금) 오후 3시 마감\n\n정규직 전환은 없고 교통비·식비·사택도 없어\n※ 직원 평균연봉: ALIO 2025 결산 정규직 1인당 평균",
+    "replyText": "👆 자세한 건 프로필 링크에 정리해놨어",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3087227",
+    "sourceSha256": "da9f316401e7b9bbac3f34ab4b154a661f26ad83f9048c3bb89df85b62da8ec5",
+    "blogEvidence": "한국전력공사 경남본부 기간제 2명",
+    "startsAt": "2026-11-13T15:00:00+09:00",
+    "deadlineAt": "2026-11-27T15:00:00+09:00",
+    "verifiedPay": "일급 105,840~118,080원",
+    "employmentType": "기간제근로자(대체인력)",
+    "eligibility": "학력·연령 제한없음; 간호사는 의료법 제7조에 따른 간호사 면허(간호조무사 불가), NDIS데이터관리원은 지정 자격증(산업기사 이상: 측량 및 지형공간정보·지적·정보처리·전기·전기공사 / 기능사: 측량·지적·지도제작·임베디드(정보처리)·전자캐드·전기) 1개 이상; 병역법 제76조 병역의무 불이행 사실 없는 자; 2026년 12월 7일부터 근무 가능한 자; 한전 인사관리규정 제11조 결격사유 없는 자; 공식 공고",
+    "blogTitle": "한국전력공사 채용｜간호사 일급 118,080원 등 2명·11/27 15시 마감",
+    "card": {
+      "badge": "👀 한전 봤어?",
+      "hook": [
+        "한전 직원 평균연봉",
+        "[[9,637만원]]이래"
+      ],
+      "org": "한국전력공사",
+      "role": "경남본부 기간제 2명",
+      "facts": [
+        [
+          "💰",
+          "일급 105,840~118,080원"
+        ],
+        [
+          "📝",
+          "필기 없이 면접만"
+        ],
+        [
+          "📍",
+          "창원 · 진주 근무"
+        ]
+      ],
+      "deadline": "11/27(금) 오후 3시 마감"
+    },
+    "avgPay": {
+      "label": "직원 평균연봉",
+      "value": "9,637만원",
+      "source": "https://alio.go.kr/item/itemReportTerm.do?apbaId=C0247&reportFormRootNo=2060",
+      "basis": "ALIO 2025 결산 정규직 1인당 평균보수"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/c6283ef1c5e719644915.png",
+    "imageSha256": "c6283ef1c5e719644915da5505b388140fa91adfcaa32a687e81bb961847f7e5",
+    "checkedAt": "2026-11-14T11:13:03.176Z",
+    "updatedAt": "2026-11-14T11:13:03.176Z"
+  },
+  {
+    "id": "86b12cfe-2b44-4e64-aebb-b85e9c3216ce",
+    "status": "scheduled",
+    "createdAt": "2026-11-14T11:13:03.176Z",
+    "handle": "jobs_curator",
+    "scheduledAt": "2026-11-22T08:30:00.000Z",
+    "noticeId": "306866",
+    "title": "한국수력원자력 채용｜러시아어 통번역 1명 약 월 752만원·11/27 18시 마감",
+    "angle": "기간제 월급 숫자 충격",
+    "text": "🚨기간제인데 약 월 752만원 수준, 한수원 공고\n직원 평균연봉 1억 846만원 공기업\n한국수력원자력 러시아어 통번역사 1명\n\n1. 이집트 엘다바 원전사업 통·번역\n2. 💰 약 월 752만원 수준(사택 없음)\n3. 통번역대학원 한-러 전공 학위 필요\n4. 연령·성별 제한 없음 · 경주 본사\n5. ⏰ 11/27(금) 오후 6시 마감\n\n면접에 번역 필기·통역 구술이 들어가니 준비 필수\n※ 직원 평균연봉: ALIO 2025 결산 정규직 1인당 평균",
+    "replyText": "👆 공고 원문·지원 링크는 프로필 링크에서",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3086082",
+    "sourceSha256": "c76438b5b0f735fca2dd854f404078ff6b4a867ed81eb753aca9c9e318c60598",
+    "blogEvidence": "한국수력원자력 러시아어 통번역사 1명",
+    "startsAt": "2026-11-12T00:00:00+09:00",
+    "deadlineAt": "2026-11-27T18:00:00+09:00",
+    "verifiedPay": "약 월 752만원 수준",
+    "employmentType": "기간제근로자",
+    "eligibility": "연령·성별 제한 없음; 통번역대학원(한국어-러시아어 통번역 전공) 학위 소지자 또는 2027년 2월까지 학위 제출 가능한 자; 병역필(면접시작일 전까지 전역 가능한 자 포함) 또는 면제자; 채용 예정일 즉시 근무 가능하고 해외 근무·출장에 결격사유 없는 자; 인사관리규정 제11조 결격사유 없는 자; 공식 공고",
+    "blogTitle": "한국수력원자력 채용｜러시아어 통번역 1명 약 월 752만원·11/27 18시 마감",
+    "card": {
+      "badge": "🚨 월 752만원",
+      "hook": [
+        "기간제인데",
+        "약 월 [[752만원]] 수준"
+      ],
+      "org": "한국수력원자력",
+      "role": "러시아어 통번역사 1명",
+      "facts": [
+        [
+          "💰",
+          "약 월 752만원 수준"
+        ],
+        [
+          "🎓",
+          "한-러 통번역대학원 학위"
+        ],
+        [
+          "📍",
+          "경주 본사 · 해외 출장"
+        ]
+      ],
+      "deadline": "11/27(금) 오후 6시 마감"
+    },
+    "avgPay": {
+      "label": "직원 평균연봉",
+      "value": "1억 846만원",
+      "source": "https://alio.go.kr/item/itemReportTerm.do?apbaId=C0220&reportFormRootNo=2060",
+      "basis": "ALIO 2025 결산 정규직 1인당 평균보수"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/7a721b58c85e9f221fa1.png",
+    "imageSha256": "7a721b58c85e9f221fa1b16feae229628bcaf76ac8e87c6e5a6a2855e7b81339",
+    "checkedAt": "2026-11-14T11:13:03.176Z",
+    "updatedAt": "2026-11-14T11:13:03.176Z"
+  },
+  {
+    "id": "887ceffd-634a-47cf-98cd-46ca93911778",
+    "status": "scheduled",
+    "createdAt": "2026-11-14T11:13:03.176Z",
+    "handle": "jobs_curator",
+    "scheduledAt": "2026-11-22T23:30:00.000Z",
+    "noticeId": "306470",
+    "title": "한국노동연구원 채용｜박사급 연구위원 정규직 6명·12/10 16시 마감",
+    "angle": "박사 예정자 정규직 희소성",
+    "text": "📍국책연구원 정규직 6명, 박사 예정자도 된다\n직원 평균연봉 7,426만원 한국노동연구원\n연구위원 직군 채용\n\n1. 노동시장 3명 · 인사조직·노사관계 3명\n2. 💰 세전 연봉 미공개\n3. 2027년 8월 말까지 박사 취득 예정이면 OK\n4. 서류 → 인터뷰 → 논문발표(현장)\n5. ⏰ 12/10(목) 오후 4시 마감\n\n모든 전형이 한국어, 논문발표는 현장만 인정\n※ 직원 평균연봉: ALIO 2025 결산 정규직 1인당 평균",
+    "replyText": "👆 공고 원문·지원 링크는 프로필 링크에서",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3083482",
+    "sourceSha256": "a4c02ad51f90d629c8bcf3de8000ab2aff42868b382894fe3e034e0930967d48",
+    "blogEvidence": "한국노동연구원 연구위원 직군 6명",
+    "startsAt": "2026-10-29T09:30:00+09:00",
+    "deadlineAt": "2026-12-10T16:00:00+09:00",
+    "verifiedPay": "세전 연봉 미공개",
+    "employmentType": "정규직(연구위원 직군)",
+    "eligibility": "채용 모집분야 박사학위 소지자 또는 2027년 8월말까지 모집분야 박사학위 취득을 완료하여 학위를 소지한 자; 남자는 채용공고일 기준 군필 또는 면제자; 채용예정일 기준 만 60세(정년) 이내(인사규정 제50조); 국가공무원법 제33조, 공민권 정지·박탈, 병역의무 기피, 연구원 징계 면직 후 2년 미경과, 최근 5년 부정채용 취소에 해당하지 않는 자; 유관기관 근무 경력자 우대 가능; 모든 전형 한국어 진행; 공식 공고",
+    "blogTitle": "한국노동연구원 채용｜박사급 연구위원 정규직 6명·12/10 16시 마감",
+    "card": {
+      "badge": "🔔 정규직 6명",
+      "hook": [
+        "박사 예정자도",
+        "국책연구원 [[정규직 6명]]"
+      ],
+      "org": "한국노동연구원",
+      "role": "연구위원 직군 6명",
+      "facts": [
+        [
+          "🎓",
+          "2027년 8월 말 박사 예정 OK"
+        ],
+        [
+          "📝",
+          "서류 → 인터뷰 → 논문발표"
+        ],
+        [
+          "💰",
+          "세전 연봉 미공개"
+        ]
+      ],
+      "deadline": "12/10(목) 오후 4시 마감"
+    },
+    "avgPay": {
+      "label": "직원 평균연봉",
+      "value": "7,426만원",
+      "source": "https://alio.go.kr/item/itemReportTerm.do?apbaId=C0179&reportFormRootNo=2060",
+      "basis": "ALIO 2025 결산 정규직 1인당 평균보수"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/ea51b06de13a07effaa8.png",
+    "imageSha256": "ea51b06de13a07effaa8eca224c45dd6efa723132ea3e2b5ad5fb2e840968e1c",
+    "checkedAt": "2026-11-14T11:13:03.176Z",
+    "updatedAt": "2026-11-14T11:13:03.176Z"
+  },
+  {
+    "id": "d90e5214-9fd6-496f-8ced-d322e6ba862a",
+    "status": "scheduled",
+    "createdAt": "2026-11-14T11:13:03.176Z",
+    "handle": "hire_masters",
+    "scheduledAt": "2026-11-23T09:30:00.000Z",
+    "noticeId": "307021",
+    "title": "한국나노기술원 채용｜위촉연구원 16명 반도체·사업관리·11/30 오전 10시 마감",
+    "angle": "1억 넘는 평균연봉 연구원 16명",
+    "text": "직원 평균연봉 1억 1,329만원 연구원이 16명 뽑는대\n성별·나이 제한 없고 필기도 없어\n한국나노기술원 위촉연구원 채용이야\n\n1. 반도체·소자 공정 13명 + 사업·정책관리 3명\n2. 💰 급여 금액 미공개(기술원 내규에 따름)\n3. 서류 → 온라인 인적성 → 발표면접\n4. 경기 수원 광교 · 2027년 1월 시작\n5. ⏰ 11/30(월) 오전 10시 마감\n\n학사 이상이면 돼, 근데 이번 자리는 계약직이야\n※ 직원 평균연봉: ALIO 2025 결산 정규직 1인당 평균",
+    "replyText": "👆 자세한 건 프로필 링크에 정리해놨어",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3087262",
+    "sourceSha256": "450bb9d5a853bd1b6537d33be49d6b2458baa525642a711f067b53b0af1251f2",
+    "blogEvidence": "한국나노기술원 위촉연구원 16명",
+    "startsAt": "2026-11-13T00:00:00+09:00",
+    "deadlineAt": "2026-11-30T10:00:00+09:00",
+    "verifiedPay": "급여 금액 미공개(기술원 내규에 따름)",
+    "employmentType": "계약직(기간제근로자)",
+    "eligibility": "12개 분야 모두 학사 이상 또는 이와 동등한 자격(경력)이 인정되는 자(7개 분야는 공학 또는 이학 등); 성별·연령 제한 없음, 남자는 병역필(면제 포함)·해외여행 결격 없음, 지정 임용일 근무 가능(입사유예 불가), 인사관리규정 제21조 결격사유 없는 자; 모집분야 1개만 지원; 한국나노기술원 채용홈페이지 공고 본문",
+    "blogTitle": "한국나노기술원 채용｜위촉연구원 16명 반도체·사업관리·11/30 오전 10시 마감",
+    "card": {
+      "badge": "👀 연봉 봤어?",
+      "hook": [
+        "직원 평균연봉",
+        "[[1억 1,329만원]] 연구원"
+      ],
+      "org": "한국나노기술원",
+      "role": "위촉연구원 16명",
+      "facts": [
+        [
+          "🔬",
+          "반도체·소자 공정 13명"
+        ],
+        [
+          "📝",
+          "필기 없음 · 발표면접"
+        ],
+        [
+          "📍",
+          "수원 광교 근무"
+        ]
+      ],
+      "deadline": "11/30(월) 오전 10시 마감"
+    },
+    "avgPay": {
+      "label": "직원 평균연봉",
+      "value": "1억 1,329만원",
+      "source": "https://alio.go.kr/item/itemReportTerm.do?apbaId=C0631&reportFormRootNo=2060",
+      "basis": "ALIO 2025 결산 정규직 1인당 평균보수"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/990684e5d83eb1a3b5ca.png",
+    "imageSha256": "990684e5d83eb1a3b5ca29928e22449fb3db808b955f61cfe769858da18bd108",
+    "checkedAt": "2026-11-14T11:13:03.176Z",
+    "updatedAt": "2026-11-14T11:13:03.176Z"
+  },
+  {
+    "id": "0e4e5aec-5af9-45e8-8792-4983fabbfe03",
+    "status": "scheduled",
+    "createdAt": "2026-11-14T11:13:03.176Z",
+    "handle": "hire_masters",
+    "scheduledAt": "2026-11-24T00:30:00.000Z",
+    "noticeId": "306470",
+    "title": "한국노동연구원 채용｜박사급 연구위원 정규직 6명·12/10 16시 마감",
+    "angle": "박사 예정자 반전",
+    "text": "박사 따야 지원되는 줄 알았는데 예정자도 된대\n2027년 8월 말까지 박사 받으면 OK\n한국노동연구원 연구위원 정규직 6명\n\n1. 노동시장·불평등·정책 3명\n2. 인사조직·노사관계·산업안전 3명\n3. 💰 세전 연봉 미공개\n4. 서류 → 인터뷰 → 논문발표(현장)\n5. ⏰ 12/10(목) 오후 4시 마감\n\n직원 평균연봉 7,426만원인 곳, 추천서 2건도 마감 전에 도착해야 해\n※ 직원 평균연봉: ALIO 2025 결산 정규직 1인당 평균",
+    "replyText": "👆 자세한 건 프로필 링크에 정리해놨어",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3083482",
+    "sourceSha256": "a4c02ad51f90d629c8bcf3de8000ab2aff42868b382894fe3e034e0930967d48",
+    "blogEvidence": "한국노동연구원 연구위원 직군 6명",
+    "startsAt": "2026-10-29T09:30:00+09:00",
+    "deadlineAt": "2026-12-10T16:00:00+09:00",
+    "verifiedPay": "세전 연봉 미공개",
+    "employmentType": "정규직(연구위원 직군)",
+    "eligibility": "채용 모집분야 박사학위 소지자 또는 2027년 8월말까지 모집분야 박사학위 취득을 완료하여 학위를 소지한 자; 남자는 채용공고일 기준 군필 또는 면제자; 채용예정일 기준 만 60세(정년) 이내(인사규정 제50조); 국가공무원법 제33조, 공민권 정지·박탈, 병역의무 기피, 연구원 징계 면직 후 2년 미경과, 최근 5년 부정채용 취소에 해당하지 않는 자; 유관기관 근무 경력자 우대 가능; 모든 전형 한국어 진행; 공식 공고",
+    "blogTitle": "한국노동연구원 채용｜박사급 연구위원 정규직 6명·12/10 16시 마감",
+    "card": {
+      "badge": "👀 이거 봤어?",
+      "hook": [
+        "박사 예정자도",
+        "[[정규직]] 지원 돼"
+      ],
+      "org": "한국노동연구원",
+      "role": "연구위원 직군 6명",
+      "facts": [
+        [
+          "🎓",
+          "2027년 8월 말 박사 예정 OK"
+        ],
+        [
+          "📝",
+          "논문발표는 현장만"
+        ],
+        [
+          "💰",
+          "세전 연봉 미공개"
+        ]
+      ],
+      "deadline": "12/10(목) 오후 4시 마감"
+    },
+    "avgPay": {
+      "label": "직원 평균연봉",
+      "value": "7,426만원",
+      "source": "https://alio.go.kr/item/itemReportTerm.do?apbaId=C0179&reportFormRootNo=2060",
+      "basis": "ALIO 2025 결산 정규직 1인당 평균보수"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/a05df19dd6904ae4ea8a.png",
+    "imageSha256": "a05df19dd6904ae4ea8a67eca594df210dcfd6947e76c27f293641821f34df97",
+    "checkedAt": "2026-11-14T11:13:03.176Z",
+    "updatedAt": "2026-11-14T11:13:03.176Z"
+  },
+  {
+    "id": "e407da92-3469-49b7-9283-51e6b2eab9f2",
+    "status": "scheduled",
+    "createdAt": "2026-11-14T11:13:03.176Z",
+    "handle": "high_quality_hire",
+    "scheduledAt": "2026-11-24T01:30:00.000Z",
+    "noticeId": "306932",
+    "title": "한국산업기술진흥원 채용｜육아휴직 대체인력 12명 학력무관·11/30 14시 마감",
+    "angle": "대체인력 처우 손해 회피",
+    "text": "💰 대체인력인데 급여·복리후생은 정규직과 동등\n학력·나이·경력 제한 없는 12명\n한국산업기술진흥원 조건 비교\n\n1. 육아휴직 대체인력(계약직) 사업관리 12명\n2. 💰 급여 정규직과 동등(금액 미공개)\n3. 필기 없음: 서류 → 인성검사 → 경험면접\n4. 서울 강남 본원 · 약 6~14개월 근무\n5. ⏰ 11/30(월) 오후 2시 마감\n\n정규직 전환 대상은 아니라는 점은 알고 지원하세요",
+    "replyText": "👆 직무별 급여·자격 비교는 프로필 링크에",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3086696",
+    "sourceSha256": "70c1cdc36b7ae40d1b405e4df10c9acc411d9fe0a3ea34fb52628998d03af07f",
+    "blogEvidence": "한국산업기술진흥원 육아휴직 대체인력 12명",
+    "startsAt": "2026-11-11T00:00:00+09:00",
+    "deadlineAt": "2026-11-30T14:00:00+09:00",
+    "verifiedPay": "급여 정규직과 동등(금액 미공개)",
+    "employmentType": "대체인력(계약직)",
+    "eligibility": "학력, 전공, 연령, 성별, 경력 제한 없음; 남자는 접수마감일 기준 병역필 또는 면제자(군 복무 중인 자는 2027년 1월 이전 전역 예정자만); 인사규정 제7조 결격사유 없는 자; 최종 합격 후 바로 근무 가능한 자; 공식 공고",
+    "blogTitle": "한국산업기술진흥원 채용｜육아휴직 대체인력 12명 학력무관·11/30 14시 마감",
+    "card": {
+      "badge": "💰 조건 비교",
+      "hero": {
+        "label": "학력·나이·경력 제한 없음",
+        "value": "12명",
+        "sub": "급여·복리후생 정규직과 동등"
+      },
+      "tags": [
+        "대체인력",
+        "필기 없음"
+      ],
+      "org": "한국산업기술진흥원",
+      "role": "육아휴직 대체인력 12명",
+      "facts": [
+        [
+          "급여",
+          "정규직과 동등(금액 미공개)"
+        ],
+        [
+          "기간",
+          "약 6~14개월"
+        ],
+        [
+          "근무지",
+          "서울 강남 본원"
+        ]
+      ],
+      "deadline": "11/30(월) 오후 2시 마감"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/b33fcbfa1cdb4591392c.png",
+    "imageSha256": "b33fcbfa1cdb4591392cea70a4d18d141e3b5de7fea6b3a523304451b37ea8eb",
+    "checkedAt": "2026-11-14T11:13:03.176Z",
+    "updatedAt": "2026-11-14T11:13:03.176Z"
+  },
+  {
+    "id": "f835911d-7249-413f-8770-c25081f7cc01",
+    "status": "scheduled",
+    "createdAt": "2026-11-14T11:13:03.176Z",
+    "handle": "jobs_curator",
+    "scheduledAt": "2026-11-24T08:30:00.000Z",
+    "noticeId": "306819",
+    "title": "KDI국제정책대학원 채용｜정년트랙 전임교원 6명 이내·12/5 13시59분 마감",
+    "angle": "1억 평균연봉 교수 채용",
+    "text": "📍직원 평균연봉 1억 792만원, KDI국제정책대학원 교수 뽑는다\n정년트랙 전임교원 6명 이내 채용\n박사 예정자도 지원 가능\n\n1. 8개 분야 · 강의는 영어\n2. 💰 세전 연봉 미공개\n3. 2027년 8월 31일까지 박사 취득 예정 OK\n4. 서류 → 화상면접 → 대면 Job Seminar\n5. ⏰ 12/5(토) 오후 1시 59분 마감\n\n마감은 미국 동부시간 기준, 한국 시간으로는 토요일 낮\n※ 직원 평균연봉: ALIO 2025 결산 정규직 1인당 평균",
+    "replyText": "👆 공고 원문·지원 링크는 프로필 링크에서",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3085768",
+    "sourceSha256": "1a0e6d8698d6a6fa1b1f6c7266a5694e6deaea3d5a6ec4df8092ee11709951ec",
+    "blogEvidence": "KDI국제정책대학원 전임교원 6명 이내",
+    "startsAt": "2026-11-09T00:00:00+09:00",
+    "deadlineAt": "2026-12-05T13:59:00+09:00",
+    "verifiedPay": "세전 연봉 미공개",
+    "employmentType": "정규직(정년트랙 전임교원)",
+    "eligibility": "채용분야 관련 박사학위 소지자 또는 2027. 8. 31. 기준 채용분야 관련 박사학위 취득 예정자(② 경영전략은 영문 공고상 임용 시작일까지 박사학위); 사립학교법·교원인사규칙 결격사유, 국가공무원법 제33조, 공민권 정지·박탈, 부패방지법 제82조, 병역법 제76조, 최근 5년 부정채용 취소, 해외여행 결격사유에 해당하지 않는 자; 우대 실증 방법론·국제 학생 교육·강의 또는 정책 연구 경험; 모든 서류 영문; 공식 공고",
+    "blogTitle": "KDI국제정책대학원 채용｜정년트랙 전임교원 6명 이내·12/5 13시59분 마감",
+    "card": {
+      "badge": "💰 평균연봉 공개",
+      "hook": [
+        "직원 평균연봉",
+        "[[1억 792만원]]"
+      ],
+      "org": "KDI국제정책대학원",
+      "role": "정년트랙 전임교원 6명 이내",
+      "facts": [
+        [
+          "🎓",
+          "2027년 8월 31일 박사 예정 OK"
+        ],
+        [
+          "🌐",
+          "8개 분야 · 영어 강의"
+        ],
+        [
+          "💰",
+          "세전 연봉 미공개"
+        ]
+      ],
+      "deadline": "12/5(토) 오후 1시 59분 마감"
+    },
+    "avgPay": {
+      "label": "직원 평균연봉",
+      "value": "1억 792만원",
+      "source": "https://alio.go.kr/item/itemReportTerm.do?apbaId=C0437&reportFormRootNo=2060",
+      "basis": "ALIO 2025 결산 정규직 1인당 평균보수"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/d1feec7ab15a47660761.png",
+    "imageSha256": "d1feec7ab15a4766076117e4416108e36870d6ba380d7645d71f3e43a0b72c41",
+    "checkedAt": "2026-11-14T11:13:03.176Z",
+    "updatedAt": "2026-11-14T11:13:03.176Z"
+  },
+  {
+    "id": "96582ca3-066b-44b4-b94c-5851af97ce17",
+    "status": "scheduled",
+    "createdAt": "2026-11-14T11:13:03.176Z",
+    "handle": "high_quality_hire",
+    "scheduledAt": "2026-11-24T10:30:00.000Z",
+    "noticeId": "307021",
+    "title": "한국나노기술원 채용｜위촉연구원 16명 반도체·사업관리·11/30 오전 10시 마감",
+    "angle": "평균연봉 vs 급여 미공개 대비",
+    "text": "💰 직원 평균연봉 1억 1,329만원, 근데 이번 급여는 미공개\n반도체 공정 위촉연구원 16명\n한국나노기술원 조건 비교\n\n1. 12개 분야 · 반도체 공정개발 3명 최다\n2. 💰 급여 금액 미공개(기술원 내규에 따름)\n3. 성별·연령 제한 없음 · 학사 이상\n4. 온라인 인적성 60점 이상 → 발표면접\n5. ⏰ 11/30(월) 오전 10시 마감\n\n평균은 정규직 기준이고 이번 자리는 계약직입니다\n※ 직원 평균연봉: ALIO 2025 결산 정규직 1인당 평균",
+    "replyText": "👆 직무별 급여·자격 비교는 프로필 링크에",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3087262",
+    "sourceSha256": "450bb9d5a853bd1b6537d33be49d6b2458baa525642a711f067b53b0af1251f2",
+    "blogEvidence": "한국나노기술원 위촉연구원 16명",
+    "startsAt": "2026-11-13T00:00:00+09:00",
+    "deadlineAt": "2026-11-30T10:00:00+09:00",
+    "verifiedPay": "급여 금액 미공개(기술원 내규에 따름)",
+    "employmentType": "계약직(기간제근로자)",
+    "eligibility": "12개 분야 모두 학사 이상 또는 이와 동등한 자격(경력)이 인정되는 자(7개 분야는 공학 또는 이학 등); 성별·연령 제한 없음, 남자는 병역필(면제 포함)·해외여행 결격 없음, 지정 임용일 근무 가능(입사유예 불가), 인사관리규정 제21조 결격사유 없는 자; 모집분야 1개만 지원; 한국나노기술원 채용홈페이지 공고 본문",
+    "blogTitle": "한국나노기술원 채용｜위촉연구원 16명 반도체·사업관리·11/30 오전 10시 마감",
+    "card": {
+      "badge": "💰 연봉 비교",
+      "tags": [
+        "위촉연구원 16명",
+        "필기 없음"
+      ],
+      "org": "한국나노기술원",
+      "role": "위촉연구원 16명",
+      "sub": "이번 공고 급여 금액 미공개",
+      "facts": [
+        [
+          "분야",
+          "12개 분야"
+        ],
+        [
+          "최다",
+          "반도체 공정개발 3명"
+        ],
+        [
+          "인적성",
+          "60점 이상"
+        ]
+      ],
+      "deadline": "11/30(월) 오전 10시 마감",
+      "hero": {
+        "label": "직원 평균연봉 (2025 결산)",
+        "value": "1억 1,329만원",
+        "sub": "이번 공고 급여 금액 미공개"
+      }
+    },
+    "avgPay": {
+      "label": "직원 평균연봉",
+      "value": "1억 1,329만원",
+      "source": "https://alio.go.kr/item/itemReportTerm.do?apbaId=C0631&reportFormRootNo=2060",
+      "basis": "ALIO 2025 결산 정규직 1인당 평균보수"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/15968130e27a927ba474.png",
+    "imageSha256": "15968130e27a927ba474be5561d727734125b3cf43379a45011bc2b10afc6a3f",
+    "checkedAt": "2026-11-14T11:13:03.176Z",
+    "updatedAt": "2026-11-14T11:13:03.176Z"
   }
 ]
