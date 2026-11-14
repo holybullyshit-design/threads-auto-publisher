@@ -183,7 +183,7 @@ function buildAccountCards(posts) {
 }
 
 // ---------- 7일 미리보기 (데스크탑 콘텐츠 캘린더와 동일 집계 방식) ----------
-// 취소된 글은 뺀다. 같은 라벨이라도 platform이 다르면(팔자명가 Threads vs Instagram) 따로 센다.
+// 취소된 글은 뺀다.
 function buildWeekStrip(posts) {
   const days = [];
   const todayKst = toKst(new Date());
@@ -201,11 +201,9 @@ function buildWeekStrip(posts) {
     const k = toKst(p.scheduledAt);
     const day = dayByKey.get(k.dateKey);
     if (!day) continue;
-    const platform = p.platform === "instagram" ? "instagram" : "threads";
-    const key = `${p.accountId || p.accountLabel}|${platform}`;
+    const key = `${p.accountId || p.accountLabel}`;
     if (!day.byAccount.has(key)) {
-      const label = (p.accountLabel || "계정") + (platform === "instagram" ? " (IG)" : "");
-      day.byAccount.set(key, { label, color: accountMeta(p.accountLabel).color, count: 0 });
+      day.byAccount.set(key, { label: p.accountLabel || "계정", color: accountMeta(p.accountLabel).color, count: 0 });
     }
     day.byAccount.get(key).count += 1;
   }

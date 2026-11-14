@@ -25,272 +25,30 @@ const { suggestKeywords } = require("./skills/keywordSuggester");
 const { squareToJpeg } = require("./lib/imageSquarer");
 const mediaHost = require("./lib/mediaHost");
 const externalImageSearch = require("./lib/externalImageSearch");
-const instagramAutomation = require("./lib/instagramAutomation");
-const { preflightInstagram } = require("./lib/instagramClient");
-const instagramOAuth = require("./lib/instagramOAuth");
-const instagramAuthStore = require("./lib/instagramAuthStore");
-const yeonlijiAutomation = require("./lib/yeonlijiAutomation");
-
-instagramAuthStore.loadOAuthConfig();
-instagramAuthStore.load();
-
 const app = express();
 const PORT = Number(process.env.PORT) || 4321;
 const STUDIO_PREVIEW_ONLY = process.env.STUDIO_PREVIEW_ONLY === '1';
-const INSTAGRAM_PUBLIC_REDIRECT_URI = "https://threads-publish-pinger.threadsautopub.workers.dev/oauth/instagram/callback";
-const INSTAGRAM_ACCOUNT_CATALOG = Object.freeze({
-  palja: { key: "palja", label: "팔자명가", expectedUsername: "saju_orbit", contentReady: true },
-  yeonliji: { key: "yeonliji", label: "연리지 실타래", expectedUsername: "knot_saju", contentReady: false },
-});
 
 app.use(express.json({ limit: "15mb" })); // 캡처 이미지(base64) 업로드를 받을 수 있도록 넉넉하게
 app.use((req,res,next)=>{
   if(!STUDIO_PREVIEW_ONLY) return next();
-  const readOnly=req.method==='GET' && (['/','/api/meta','/api/instagram/yeonliji/plan','/api/instagram/yeonliji/topics','/api/instagram/yeonliji/studio','/api/instagram/accounts'].includes(req.path) || req.path.startsWith('/api/instagram/yeonliji/card/') || !req.path.startsWith('/api/'));
-  const freeRecompose=req.method==='POST' && req.path==='/api/instagram/yeonliji/generate' && req.body?.mode==='recompose';
-  if(readOnly || freeRecompose) return next();
+  const readOnly=req.method==='GET' && (['/','/api/meta'].includes(req.path) || !req.path.startsWith('/api/'));
+  if(readOnly) return next();
   res.status(403).json({error:'검증 전용 화면에서는 유료 생성·게시·예약·계정 변경을 실행하지 않습니다.'});
 });
 app.use(express.static(path.join(__dirname, "..", "public")));
-app.use("/api/ops/instagram",(req,res,next)=>{
-  const modulePath=path.join(__dirname,"lib/instagramAnalyticsRouter.js");
-  if(!fs.existsSync(modulePath)) return res.status(503).json({error:"Instagram 분석 기능을 업데이트 중입니다. 계정 권한 연결은 이용할 수 있습니다."});
-  return require(modulePath)(req,res,next);
-});
+app.use("/api/jobs", require("./lib/jobsWorkspace").router());
 
 // ---------- 메타 정보 ----------
 app.get("/api/meta", (req, res) => {
   res.json({
-    appVersion: 'yeonliji-studio-20260830-v6-insights',
+    appVersion: 'threads-workspace-20261031',
     previewOnly: STUDIO_PREVIEW_ONLY,
     maxTextLength: MAX_TEXT_LENGTH,
     threadsOAuthConfigured: threadsOAuth.isConfigured(),
     externalImageSearchConfigured: externalImageSearch.isConfigured(),
-    instagramConfigured: Boolean(process.env.INSTAGRAM_USER_ID && process.env.INSTAGRAM_ACCESS_TOKEN),
-    instagramOAuthConfigured: instagramOAuth.isConfigured(),
   });
 });
-
-// ---------- Instagram 팔자명가 오늘의 운세 ----------
-app.get("/api/instagram/content", (req, res) => {
-  try {
-    res.json({ content: instagramAutomation.generateFortunePackage(String(req.query.date || "")) });
-  } catch (err) { handleError(res, err); }
-});
-
-// ---------- Instagram 연리지 실타래 검수·승인 작업실 ----------
-app.get('/api/instagram/yeonliji/topics', async (req,res) => {
-  try { res.json(await yeonlijiAutomation.getTopics(String(req.query.avoid || '').split(',').slice(0,30))); }
-  catch(err) { handleError(res,err); }
-});
-
-app.post('/api/instagram/yeonliji/generate', async (req,res) => {
-  try { res.status(201).json(await yeonlijiAutomation.generateDraft(req.body || {})); }
-  catch(err) { handleError(res,err); }
-});
-
-app.get('/api/instagram/yeonliji/plan', (req,res) => {
-  try { res.json(yeonlijiAutomation.previewPlan(String(req.query.topicId || ''),{date:String(req.query.date || ''),time:String(req.query.time || '')})); }
-  catch(err) { handleError(res,err); }
-});
-
-app.get("/api/instagram/yeonliji/studio", async (req, res) => {
-  try { res.json(await yeonlijiAutomation.getStudio()); }
-  catch (err) { handleError(res, err); }
-});
-
-app.get("/api/instagram/yeonliji/card/:draftId/:page.jpg", (req, res) => {
-  try { res.sendFile(yeonlijiAutomation.readCard(req.params.draftId, req.params.page)); }
-  catch (err) { handleError(res, err); }
-});
-app.post('/api/instagram/yeonliji/publish-now',async(req,res)=>{
-  try{
-    if(req.body?.confirm!==true) return res.status(400).json({error:'최종 시안 승인이 필요합니다.'});
-    res.json(await yeonlijiAutomation.publishApprovedDraftNow(String(req.body.draftId||'')));
-  }catch(err){handleError(res,err);}
-});
-app.post('/api/instagram/yeonliji/reschedule',async(req,res)=>{
-  try{
-    if(req.body?.confirm!==true) return res.status(400).json({error:'시간 변경 승인이 필요합니다.'});
-    res.json(await yeonlijiAutomation.rescheduleApprovedDraft(String(req.body.draftId||''),{date:req.body.date,time:req.body.time}));
-  }catch(err){handleError(res,err);}
-});
-
-app.post("/api/instagram/yeonliji/schedule", async (req, res) => {
-  try {
-    if (req.body?.confirm !== true) return res.status(400).json({ error: "최종 시안 승인(confirm=true)이 필요합니다." });
-    res.status(201).json(await yeonlijiAutomation.scheduleApprovedDraft(String(req.body?.draftId || ""), {date:req.body?.date,time:req.body?.time}));
-  } catch (err) { handleError(res, err); }
-});
-
-app.get("/api/instagram/card/:date/:page.jpg", async (req, res) => {
-  try {
-    const { buffer, pkg } = await instagramAutomation.renderCard(req.params.date, Number(req.params.page));
-    res.setHeader("Content-Type", "image/jpeg");
-    res.setHeader("Cache-Control", "private, max-age=3600");
-    res.setHeader("X-Content-Hash", pkg.contentHash);
-    res.send(buffer);
-  } catch (err) { handleError(res, err); }
-});
-
-app.get("/api/instagram/range", (req, res) => {
-  try {
-    const start = String(req.query.start || "2026-08-26");
-    const end = String(req.query.end || start);
-    const days = instagramAutomation.rangeSummary(start, end);
-    res.json({ start, end, count: days.length, days });
-  } catch (err) { handleError(res, err); }
-});
-
-app.get("/api/instagram/preflight", async (req, res) => {
-  try {
-    const accountKey = String(req.query.accountKey || "palja");
-    const credentials = instagramAuthStore.getCredentials(accountKey);
-    if (!credentials) return res.status(404).json({ error: `${INSTAGRAM_ACCOUNT_CATALOG[accountKey]?.label || accountKey} Instagram 계정이 아직 연결되지 않았습니다.` });
-    res.json(await preflightInstagram({ userId: credentials.userId, accessToken: credentials.accessToken }));
-  } catch (err) { handleError(res, err); }
-});
-
-app.get("/api/instagram/accounts", (req, res) => {
-  const stored = instagramAuthStore.listAccounts();
-  const byKey = new Map(stored.accounts.map((account) => [account.key, account]));
-  res.json({
-    activeAccountKey: stored.activeAccountKey,
-    accounts: Object.values(INSTAGRAM_ACCOUNT_CATALOG).map((entry) => ({
-      ...entry,
-      ...(byKey.get(entry.key) || {}),
-      connected: Boolean(byKey.get(entry.key)?.configured),
-    })),
-  });
-});
-
-app.post("/api/instagram/schedule-range", async (req, res) => {
-  try {
-    const { start, end, confirm } = req.body || {};
-    if (confirm !== true) return res.status(400).json({ error: "검수 후 예약 확정(confirm=true)이 필요합니다." });
-    const result = await instagramAutomation.prepareAndScheduleRange(start, end);
-    res.status(201).json(result);
-  } catch (err) { handleError(res, err); }
-});
-
-app.post("/api/instagram/oauth-config", (req, res) => {
-  try {
-    const appId = String(req.body?.appId || "").trim();
-    const appSecret = String(req.body?.appSecret || "").trim();
-    if (!/^\d+$/.test(appId)) return res.status(400).json({ error: "Instagram 앱 ID는 숫자만 입력해주세요." });
-    if (appSecret.length < 8) return res.status(400).json({ error: "Instagram 앱 시크릿을 정확히 입력해주세요." });
-    const redirectUri = INSTAGRAM_PUBLIC_REDIRECT_URI;
-    instagramAuthStore.saveOAuthConfig({ appId, appSecret, redirectUri });
-    process.env.INSTAGRAM_APP_ID = appId;
-    process.env.INSTAGRAM_APP_SECRET = appSecret;
-    process.env.INSTAGRAM_REDIRECT_URI = redirectUri;
-    res.json({ saved: true, redirectUri });
-  } catch (err) { handleError(res, err); }
-});
-
-// ---------- Instagram 계정 자동 연결 (공식 Instagram Login OAuth) ----------
-const instagramOAuthResults = new Map();
-const instagramOAuthStates = new Map();
-
-app.get("/oauth/instagram/start", (req, res) => {
-  try {
-    if (!req.query.state) return res.status(400).send("state 파라미터가 필요합니다.");
-    const state = String(req.query.state);
-    const accountKey = String(req.query.accountKey || "palja");
-    const target = INSTAGRAM_ACCOUNT_CATALOG[accountKey];
-    if (!target) return res.status(400).send("지원하지 않는 Instagram 계정입니다.");
-    const insights=req.query.insights==="1";
-    instagramOAuthStates.set(state, { createdAt: Date.now(), accountKey, label: target.label, insights });
-    res.redirect(instagramOAuth.buildAuthorizeUrl(state,{insights}));
-  } catch (err) { res.status(500).send(`설정 오류: ${err.message}`); }
-});
-
-app.get("/oauth/instagram/callback", async (req, res) => {
-  const { code, state, error, error_description } = req.query;
-  if (!state) return res.status(400).send(instagramCallbackHelpPage());
-  const oauthState = instagramOAuthStates.get(String(state));
-  instagramOAuthStates.delete(String(state));
-  if (!oauthState || Date.now() - oauthState.createdAt > 10 * 60 * 1000) return res.status(400).send("만료되었거나 올바르지 않은 연결 요청입니다.");
-  if (error) {
-    instagramOAuthResults.set(String(state), { error: error_description || error, createdAt: Date.now() });
-    return res.send(oauthResultPage("Instagram 연결이 취소되었거나 거부되었습니다.", "Instagram 연결"));
-  }
-  try {
-    const short = await instagramOAuth.exchangeCode(String(code || ""));
-    const long = await instagramOAuth.exchangeLongToken(short.accessToken);
-    const profile = await instagramOAuth.fetchProfile(long.accessToken);
-    const expectedUsername=INSTAGRAM_ACCOUNT_CATALOG[oauthState.accountKey].expectedUsername;
-    if(profile.username!==expectedUsername) throw new Error("@"+expectedUsername+" 계정을 선택해야 합니다. 기존 계정 연결은 변경하지 않았습니다.");
-    if(oauthState.insights) {
-      const client=require("./lib/instagramClient");
-      try { await client.graphRequest(client.getConfig({userId:profile.user_id,accessToken:long.accessToken}),profile.user_id+"/insights",{params:{metric:"views",period:"day",metric_type:"total_value"}}); }
-      catch { throw new Error("통계 조회 권한이 아직 허용되지 않았습니다. Meta 앱의 Instagram 이용 사례에서 instagram_business_manage_insights 권한을 추가한 뒤 다시 승인해주세요. 기존 게시 연결은 유지했습니다."); }
-    }
-    const expiresAt = Date.now() + long.expiresIn * 1000;
-    instagramAuthStore.saveAccount({
-      key: oauthState.accountKey,
-      label: oauthState.label,
-      username: profile.username || "",
-      userId: profile.user_id,
-      accessToken: long.accessToken,
-      expiresAt,
-    }, { makeActive: false });
-    let cloudSynced = false;
-    let cloudSyncError = null;
-    // 팔자명가의 기존 개별 시크릿은 그대로 유지하고, 다계정 시크릿은 별도 이름으로 병행한다.
-    if (oauthState.accountKey === "palja") {
-      instagramAuthStore.save({ userId: profile.user_id, accessToken: long.accessToken, expiresAt });
-      try { await syncInstagramSecretsToGitHub(String(profile.user_id), long.accessToken); cloudSynced = true; }
-      catch (syncError) { cloudSyncError = syncError.message; }
-    }
-    try { await syncInstagramAccountsToGitHub(); cloudSynced = true; }
-    catch (syncError) { cloudSyncError = syncError.message; }
-    instagramOAuthResults.set(String(state), { accountKey: oauthState.accountKey, label: oauthState.label, username: profile.username || "", userId: String(profile.user_id), expiresIn: long.expiresIn, cloudSynced, cloudSyncError, createdAt: Date.now() });
-    res.send(oauthResultPage(`${oauthState.label} Instagram 연결이 완료되었습니다.`, "Instagram 연결"));
-  } catch (err) {
-    instagramOAuthResults.set(String(state), { error: err.message, createdAt: Date.now() });
-    res.send(oauthResultPage("Instagram 연결 중 오류가 발생했습니다: " + err.message, "Instagram 연결"));
-  }
-});
-
-app.get("/api/oauth/instagram/result", (req, res) => {
-  const state = String(req.query.state || "");
-  const entry = instagramOAuthResults.get(state);
-  if (!entry) return res.json({ status: "pending" });
-  instagramOAuthResults.delete(state);
-  if (entry.error) return res.json({ status: "error", error: entry.error });
-  res.json({ status: "done", accountKey: entry.accountKey, label: entry.label, username: entry.username, userId: entry.userId, expiresIn: entry.expiresIn, cloudSynced: entry.cloudSynced, cloudSyncError: entry.cloudSyncError });
-});
-
-function syncInstagramSecretsToGitHub(userId, accessToken) {
-  const repo = process.env.GITHUB_REPO;
-  if (!repo) return Promise.reject(new Error("GITHUB_REPO가 설정되지 않아 클라우드 동기화를 건너뜁니다."));
-  const setSecret = (name, value) => new Promise((resolve, reject) => {
-    const child = execFile("gh", ["secret", "set", name, "--repo", repo], { timeout: 30000 }, (err, stdout, stderr) => {
-      if (err) return reject(new Error(`${name} 동기화 실패: ${stderr || err.message}`));
-      resolve();
-    });
-    child.stdin.end(value);
-  });
-  return Promise.all([setSecret("INSTAGRAM_USER_ID", userId), setSecret("INSTAGRAM_ACCESS_TOKEN", accessToken)]);
-}
-
-function syncInstagramAccountsToGitHub() {
-  const repo = process.env.GITHUB_REPO;
-  if (!repo) return Promise.reject(new Error("GITHUB_REPO가 설정되지 않아 다계정 클라우드 동기화를 건너뜁니다."));
-  const accounts = {};
-  for (const account of instagramAuthStore.listAccounts().accounts) {
-    const credentials = instagramAuthStore.getCredentials(account.key);
-    if (credentials) accounts[account.key] = { userId: credentials.userId, accessToken: credentials.accessToken };
-  }
-  return new Promise((resolve, reject) => {
-    const child = execFile("gh", ["secret", "set", "INSTAGRAM_ACCOUNTS_JSON", "--repo", repo], { timeout: 30000 }, (err, stdout, stderr) => {
-      if (err) return reject(new Error(`INSTAGRAM_ACCOUNTS_JSON 동기화 실패: ${stderr || err.message}`));
-      resolve();
-    });
-    child.stdin.end(JSON.stringify(accounts));
-  });
-}
 
 // ---------- Threads 계정 자동 연결 (OAuth) ----------
 // state -> { threadsUserId, accessToken, error, createdAt }
@@ -368,12 +126,6 @@ function oauthResultPage(message, title = "Threads 연결") {
   </head><body><div><p style="font-size:18px;">${message}</p><p style="color:#a79cc2;font-size:13px;">이 창은 이제 닫으셔도 됩니다.</p></div></body></html>`;
 }
 
-function instagramCallbackHelpPage() {
-  return `<!doctype html><html><head><meta charset="utf-8"><title>Instagram 연결 안내</title>
-  <style>body{background:#0a0812;color:#ece7f5;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;text-align:center;padding:24px;box-sizing:border-box}.box{max-width:560px;padding:34px;border:1px solid #665536;border-radius:18px;background:#121018}h1{font-size:24px;color:#e6c982}p{line-height:1.7;color:#c9c0d2}.btn{display:inline-block;margin-top:12px;padding:13px 22px;border-radius:10px;background:#c69b4b;color:#0b0910;text-decoration:none;font-weight:800}</style>
-  </head><body><div class="box"><h1>문제가 생긴 것이 아닙니다</h1><p>이 주소는 Meta 설정에 등록하는 콜백 주소입니다. 직접 여는 페이지가 아니며, 팔자명가 프로그램의 <b>Instagram 계정 자동 연결</b> 버튼을 눌렀을 때만 자동으로 사용됩니다.</p><a class="btn" href="/">팔자명가 프로그램으로 돌아가기</a></div></body></html>`;
-}
-
 app.get("/api/persona-presets", (req, res) => {
   res.json({ presets: PERSONA_PRESETS });
 });
@@ -441,6 +193,25 @@ app.get("/api/accounts/export-secret", (req, res) => {
 
 // gh CLI로 GitHub Actions 시크릿(THREADS_ACCOUNTS_JSON)을 최신 계정 목록으로 갱신한다.
 // (파일을 거치지 않고 JSON을 표준입력으로 바로 넘긴다)
+// 채용 계정 토큰은 사주 계정과 다른 시크릿(JOB_THREADS_ACCOUNTS_JSON)으로 클라우드 채용 게시기에 넘긴다.
+function syncJobAccountsSecretToGitHub() {
+  return new Promise((resolve, reject) => {
+    const repo = process.env.GITHUB_REPO;
+    if (!repo) return reject(new Error("GITHUB_REPO가 설정되지 않아 채용 클라우드 동기화를 건너뜁니다."));
+    const child = execFile(
+      "gh",
+      ["secret", "set", "JOB_THREADS_ACCOUNTS_JSON", "--repo", repo],
+      { timeout: 30000 },
+      (err, stdout, stderr) => {
+        if (err) return reject(new Error("gh secret set 실패: " + (stderr || err.message)));
+        resolve();
+      }
+    );
+    child.stdin.write(jobThreadsTokens.exportForCloudSecret());
+    child.stdin.end();
+  });
+}
+
 function syncAccountsSecretToGitHub() {
   return new Promise((resolve, reject) => {
     const repo = process.env.GITHUB_REPO;
@@ -489,8 +260,16 @@ app.post("/api/accounts/refresh-tokens", async (req, res) => {
 
   // 채용 계정은 클라우드 시크릿 대상이 아니다. 실패해도 위 결과에 영향을 주지 않는다.
   const jobResults = await jobThreadsTokens.refreshAll(threadsOAuth.refreshLongLivedToken, refreshedByUserId);
+  let jobSyncError = null;
+  if (jobResults.some((r) => r.ok)) {
+    try {
+      await syncJobAccountsSecretToGitHub();
+    } catch (err) {
+      jobSyncError = err.message;
+    }
+  }
 
-  res.json({ results, jobResults, syncedToCloud, syncError });
+  res.json({ results, jobResults, syncedToCloud, syncError, jobSyncError });
 });
 
 app.get("/api/accounts/job-tokens", (req, res) => {
@@ -858,7 +637,7 @@ function buildOpsSummary(posts) {
     // 보이지?"로 헷갈려했다(2026-08-30). 캘린더의 activeDayPosts와 동일한 원칙.
     const items = posts.filter((p) => p.scheduledAt && p.status !== "canceled" && kstDateKeyForOps(p.scheduledAt) === key)
       .sort((a, b) => new Date(a.scheduledAt) - new Date(b.scheduledAt))
-      .map((p) => { const k = toKst(p.scheduledAt); return { id: p.id, time: `${String(k.hour).padStart(2,"0")}:${String(k.minute).padStart(2,"0")}`, account: p.accountLabel || "", platform: p.platform === "instagram" ? "IG" : "TH", status: p.status, title: p.title || String(p.text || "").replace(/\s+/g," ").slice(0,30) }; });
+      .map((p) => { const k = toKst(p.scheduledAt); return { id: p.id, time: `${String(k.hour).padStart(2,"0")}:${String(k.minute).padStart(2,"0")}`, account: p.accountLabel || "", status: p.status, title: p.title || String(p.text || "").replace(/\s+/g," ").slice(0,30) }; });
     return { key, label: `${day.getUTCMonth()+1}/${day.getUTCDate()}`, weekday: WEEKDAY_KO[day.getUTCDay()], items };
   });
 
@@ -1032,12 +811,12 @@ function handleError(res, err) {
 
 app.listen(PORT, () => {
   const url = `http://localhost:${PORT}`;
-  console.log(`\n팔자명가 스레드 + Instagram 자동화 앱이 실행되었습니다: ${url}\n`);
+  console.log(`\n스레드 자동화 앱이 실행되었습니다: ${url}\n`);
   if(STUDIO_PREVIEW_ONLY) { console.log('검증 전용: 자동 외부 작업·유료 생성·게시·예약 비활성'); return; }
   if(process.env.APP_MANUAL_ONLY==='1') { console.log('수동 작업 화면: 배경 Insights 갱신·자동 브라우저 열기 비활성. 버튼 기능은 정상 동작합니다.'); return; }
 
-  if (process.platform === "darwin") {
-    exec(`open "${url}"`);
+  if (process.platform === "darwin" && process.env.APP_LAUNCHER !== "1") {
+    execFile("/usr/bin/open", ["-a", "Google Chrome", url]);
   } else {
     console.log("브라우저에서 위 주소를 직접 열어주세요.");
   }

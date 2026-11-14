@@ -1,5 +1,5 @@
 // GitHub Actions에서 5분마다 실행되는 스크립트.
-// schedule/posts.json을 읽어 시간이 된 예약 글을 Threads/Instagram에 게시하고,
+// schedule/posts.json을 읽어 시간이 된 예약 글을 Threads에 게시하고,
 // 결과를 같은 파일에 다시 기록한다.
 //
 // 2026-08-29: 실제로 같은 글이 두 번 게시되는 사고가 있었다 (엄마가 직접 써본 꿀템 계정).
@@ -22,8 +22,6 @@
 //                                (GitHub Actions에서는 자동 토큰 + github.repository로 채움)
 
 const { publishTextPost, publishImagePost } = require("../server/lib/threadsClient");
-const { publishCarousel, findPublishedByCaption } = require("../server/lib/instagramClient");
-const { publicCaption } = require("../server/lib/instagramCaption");
 const { readSchedule, writeSchedule } = require("../server/lib/githubStore");
 
 const MAX_AUTO_RETRIES = 3;
@@ -38,19 +36,6 @@ function loadAccounts() {
   } catch (e) {
     throw new Error("THREADS_ACCOUNTS_JSON 파싱에 실패했습니다: " + e.message);
   }
-}
-
-function loadInstagramAccounts() {
-  let mapped = {};
-  if (process.env.INSTAGRAM_ACCOUNTS_JSON) {
-    try { mapped = JSON.parse(process.env.INSTAGRAM_ACCOUNTS_JSON); }
-    catch (e) { throw new Error("INSTAGRAM_ACCOUNTS_JSON 파싱에 실패했습니다: " + e.message); }
-  }
-  // 기존 팔자명가 시크릿은 완전 하위호환으로 유지한다.
-  if (!mapped.palja && process.env.INSTAGRAM_USER_ID && process.env.INSTAGRAM_ACCESS_TOKEN) {
-    mapped.palja = { userId: process.env.INSTAGRAM_USER_ID, accessToken: process.env.INSTAGRAM_ACCESS_TOKEN };
-  }
-  return mapped;
 }
 
 // 방금 처리한 post 하나의 결과 필드만, 최신 원격 상태 위에 다시 얹어서 즉시 저장한다.
@@ -79,42 +64,6 @@ async function main() {
   }
 
   for (const post of due) {
-    if (post.platform === "instagram") {
-      let publishStarted = false;
-      let instagramResult;
-      try {
-        if (post.validation?.status !== "passed" || !post.contentHash) throw Object.assign(new Error("검수 통과 증거가 없어 게시를 차단했습니다."), { code: "VALIDATION_REQUIRED" });
-        if (post.mediaType === 'REELS') require('../server/lib/instagramReels').assertReelPost(post);
-        const accountKey = post.accountKey || "palja";
-        const credentials = loadInstagramAccounts()[accountKey];
-        if (!credentials?.userId || !credentials?.accessToken) throw Object.assign(new Error(`${accountKey} Instagram 클라우드 시크릿이 없습니다.`), { code: "MISSING_INSTAGRAM_CONFIG" });
-        const marker = post.publishMarker || `#자동게시_${accountKey}_${String(post.id).slice(0, 8)}`;
-        const caption = publicCaption(post.text);
-        const existing = await findPublishedByCaption(caption, marker, credentials);
-        if (!existing) {
-          // Persist BEFORE the external side effect. A crash or uncertain API response must
-          // never cause an automatic second publication. Manual reconciliation is required.
-          if (post.mediaType === 'REELS') await require('../server/lib/instagramReels').claimScheduledReel(post);
-          else await persistPostResult(post.id, {status:"publishing", publishAttemptedAt:new Date().toISOString(), error:null});
-          publishStarted = true;
-        }
-        const result = existing ? { publishedId: existing.id, recoveredDuplicate: true } : post.mediaType === 'REELS'
-          ? await require('../server/lib/instagramReels').publishScheduledReel(post, credentials)
-          : await publishCarousel({ imageUrls: post.images, caption, ...credentials });
-        instagramResult = result;
-        console.log(`[인스타그램 성공] ${post.id} → ${result.publishedId}${result.recoveredDuplicate ? " (기존 게시물 회수)" : ""}`);
-        await persistPostResult(post.id, { status: "published", publishedAt: new Date().toISOString(), publishedId: result.publishedId, error: null });
-      } catch (err) {
-        if (err.code === 'REEL_ALREADY_CLAIMED') { console.log(`[릴스 건너뜀] ${post.id}: ${err.message}`); continue; }
-        const retryCount = (post.retryCount || 0) + 1;
-        const fatal = ["INVALID_REEL", "REEL_INTEGRITY", "REEL_ACCOUNT_MISMATCH", "VALIDATION_REQUIRED", "INVALID_CAROUSEL", "INVALID_CAPTION", "INTERNAL_CAPTION", "INVALID_IMAGE_URL", "MISSING_INSTAGRAM_CONFIG"].includes(err.code);
-        const status = publishStarted || instagramResult || fatal || retryCount >= MAX_AUTO_RETRIES ? "failed" : "scheduled";
-        console.error(`[인스타그램 ${status === "failed" ? "최종 실패" : "재시도 예정"}] ${post.id}: ${err.message}`);
-        await persistPostResult(post.id, { status, retryCount, ...(instagramResult?.publishedId ? {publishedId:instagramResult.publishedId} : {}), error: publishStarted ? `게시 결과 수동 확인 필요 — 자동 재게시 금지: ${err.message}` : err.message });
-      }
-      continue;
-    }
-
     // "팔자장인" 스타일: 본문 + 답글 여러 개가 이어지는 클리프행어 스레드.
     // chainPublishedIds에 "지금까지 실제로 올라간 파트들의 id"를 순서대로 기록해두고,
     // 재시도할 땐 거기부터 이어서 게시한다 — 안 그러면 재시도할 때마다 이미 올라간
