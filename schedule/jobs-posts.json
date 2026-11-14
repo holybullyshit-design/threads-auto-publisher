@@ -9423,7 +9423,7 @@
   },
   {
     "id": "8a516f91-98a0-4fb6-b5d8-98ac589d5a3b",
-    "status": "reply_pending",
+    "status": "published",
     "createdAt": "2026-11-11T14:37:48.147Z",
     "noticeId": "skhynix-R262381",
     "title": "SK하이닉스 생산직 메인트 오퍼레이터 정규직 신입",
@@ -9487,7 +9487,10 @@
     "publishedId": "18042018068893890",
     "mainUrl": "https://www.threads.com/@hire_masters/post/Dft444PFof7",
     "mainTimestamp": "2026-11-14T09:31:00+0000",
-    "replyId": "18119243228022444"
+    "replyId": "18119243228022444",
+    "replyUrl": "https://www.threads.com/@hire_masters/post/Dft461Jlq4N",
+    "replyTimestamp": "2026-11-14T09:31:11+0000",
+    "publishedAt": "2026-11-14T09:31:16.219Z"
   },
   {
     "id": "d8ab4d51-9abb-4693-88de-8387d512d283",
