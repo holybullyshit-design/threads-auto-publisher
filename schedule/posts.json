@@ -49981,10 +49981,13 @@
     "scheduledAt": "2026-11-14T00:41:00.000Z",
     "createdAt": "2026-10-30T04:34:47.958Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17919729267259750",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17919729267259750"
+    ]
   },
   {
     "id": "0ca5d029-ea0a-4d20-a352-314c34d282dc",
