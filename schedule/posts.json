@@ -47811,11 +47811,14 @@
     "scheduledAt": "2026-11-14T06:57:00.000Z",
     "createdAt": "2026-10-30T03:21:49.846Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18048686708828031",
     "error": null,
     "viralEngine": true,
     "hitFormula": false,
-    "toneFixed": true
+    "toneFixed": true,
+    "chainPublishedIds": [
+      "18048686708828031"
+    ]
   },
   {
     "id": "09b1d642-45f5-4360-96f0-362873328c83",
