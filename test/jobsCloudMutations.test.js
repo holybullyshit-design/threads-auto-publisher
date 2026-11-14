@@ -11,7 +11,7 @@ test('cloud gate blocks account, pay, link, hash, deadline, review, and time mut
     ['replyLink',{replyText:'자격 정리'}], ['replyLink',{replyText:'프로필 링크 https://hirecurator.blogspot.com/2026/11/test.html'}],
     ['textLink',{text:'체험형인턴 세전 월급 225만원 hirecurator.blogspot.com/x'}], ['sourceHash',{sourceSha256:'bad'}],
     ['deadline',{deadlineAt:new Date(t.getTime()+119*H).toISOString()}],
-    ['staleReview',{checkedAt:new Date(t.getTime()-(7*24+1)*H).toISOString()}],
+    ['staleReview',{checkedAt:new Date(t.getTime()-(14*24+1)*H).toISOString()}],
     ['review',{factsChecked:false}], ['time',{scheduledAt:new Date(t.getTime()+H).toISOString()}],
   ];
   for (const [label, patch] of changed) assert.ok(errors({...base(),...patch},[base()],t).includes(label), label);
@@ -24,6 +24,9 @@ test('cloud gate blocks account, pay, link, hash, deadline, review, and time mut
   assert.deepEqual(errors({...base(),blogUrl:undefined,blogTitle:'한국남부발전 인턴'},[base()],t),[]);
   assert.ok(errors({...base(),blogUrl:undefined},[base()],t).includes('blogUrl'));
   assert.ok(!errors({...base(),checkedAt:new Date(t.getTime()-6*24*H).toISOString()},[base()],t).includes('staleReview'));
+  // 2026-11-14(헌법 v2.15): 사전 검수 14일까지 유효. 8일·13일은 통과, 14일+1시간은 차단(위 changed 목록).
+  for (const days of [8, 13]) assert.ok(!errors({...base(),checkedAt:new Date(t.getTime()-days*24*H).toISOString()},[base()],t).includes('staleReview'), `${days}일`);
+  assert.ok(errors({...base(),checkedAt:new Date(t.getTime()-14*24*H-60000).toISOString()},[base()],t).includes('staleReview'));
   const later=new Date('2026-11-20T13:10:00+09:00');
   assert.deepEqual(errors({...base(),scheduledAt:later.toISOString(),checkedAt:new Date(later-H).toISOString(),startsAt:'2026-11-18T09:00:00+09:00',deadlineAt:'2026-11-30T18:00:00+09:00'},[base()],later),[]);
 });

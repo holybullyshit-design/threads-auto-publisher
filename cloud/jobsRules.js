@@ -3,8 +3,9 @@ const HANDLES = ['jobs_curator', 'hire_masters', 'high_quality_hire'];
 const H = 3600000;
 // 2026-11-04 사용자 결정: 계정당 하루 2개(오전 1개, 17시 이후 1개).
 const DAILY_LIMIT = 2;
-// 게시 직전 verifyWeb가 원문 해시·블로그 공개를 다시 확인하므로 사전 검수는 7일까지 유효하다.
-const REVIEW_VALID_HOURS = 7 * 24;
+// 게시 직전 verifyWeb가 원문 해시·블로그 공개를 다시 확인하므로 사전 검수는 일정 기간 유효하다.
+// 2026-11-04 7일(헌법 v2.3) → 2026-11-14 사용자 지시("14일로 늘려 지금 올려", 헌법 v2.15) 14일.
+const REVIEW_VALID_HOURS = 14 * 24;
 const BLOG = 'https://hirecurator.blogspot.com/';
 // 2026-11-04 사용자 결정: 모든 글에 자체 카드 이미지를 붙인다. 이미지는 이 저장소에 올린 PNG만 쓴다.
 const CARD_BASE = 'https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/';
@@ -149,4 +150,4 @@ async function verifyWeb(p, fetcher = fetch, { attempts = 3, delayMs = 3000 } = 
   if (!html.includes(p.blogEvidence) || (!p.blogPayUnchecked && !html.includes(p.verifiedPay))) throw new Error('블로그 본문 근거 불일치');
   return { blogUrl };
 }
-module.exports = { HANDLES, DAILY_LIMIT, CARD_BASE, REPLY_LINK_TEST, BLOG_PLACEHOLDER, SOURCE_NORMALIZERS, LEAD_EXCEPTIONS, errors, verifyWeb, kstDay, replyFor, sourceHash, leadHours };
+module.exports = { HANDLES, DAILY_LIMIT, REVIEW_VALID_HOURS, CARD_BASE, REPLY_LINK_TEST, BLOG_PLACEHOLDER, SOURCE_NORMALIZERS, LEAD_EXCEPTIONS, errors, verifyWeb, kstDay, replyFor, sourceHash, leadHours };
