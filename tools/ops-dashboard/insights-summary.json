@@ -1,14 +1,14 @@
 {
-  "generatedAt": "2026-11-14T04:30:20.136Z",
+  "generatedAt": "2026-11-14T05:30:28.293Z",
   "accounts": [
     {
       "id": "273c125f-56b7-4aa1-8abc-89df16bfbe2a",
       "label": "연리지 실타래",
       "followersCount": 1012,
-      "viewsRecent7d": 34010,
-      "viewsChangePct": -23,
-      "likes": 366,
-      "replies": 46,
+      "viewsRecent7d": 34726,
+      "viewsChangePct": -21,
+      "likes": 368,
+      "replies": 47,
       "reposts": 27,
       "topPost": {
         "text": "<천을귀인, 있는 자리에 따라 순위가 갈린다> 일간이 정 화인 사람들. 사주 어딘가에 해(돼지띠) 자나 유(",
@@ -19,19 +19,19 @@
       },
       "timeBuckets": {
         "morning": 1022,
-        "afternoon": 754,
+        "afternoon": 749,
         "evening": 682
       },
-      "trackedPosts": 235,
-      "fetchedAt": "2026-11-14T03:30:14.772Z",
+      "trackedPosts": 236,
+      "fetchedAt": "2026-11-14T05:30:15.485Z",
       "error": null
     },
     {
       "id": "e0331659-96f0-4f5f-9aef-d89e0ed2a6a3",
       "label": "아해사주",
       "followersCount": 676,
-      "viewsRecent7d": 4175,
-      "viewsChangePct": 0,
+      "viewsRecent7d": 4300,
+      "viewsChangePct": 3,
       "likes": 32,
       "replies": 3,
       "reposts": 2,
@@ -44,18 +44,18 @@
       },
       "timeBuckets": {
         "morning": 221,
-        "afternoon": 224,
+        "afternoon": 222,
         "evening": 212
       },
-      "trackedPosts": 234,
-      "fetchedAt": "2026-11-14T04:30:14.289Z",
+      "trackedPosts": 235,
+      "fetchedAt": "2026-11-14T05:30:17.743Z",
       "error": null
     },
     {
       "id": "44d8bd24-6bf7-4b3a-9241-ddfb2b12c3b0",
       "label": "팔자명가",
       "followersCount": 990,
-      "viewsRecent7d": 198,
+      "viewsRecent7d": 199,
       "viewsChangePct": 45,
       "likes": 0,
       "replies": 0,
@@ -73,15 +73,15 @@
         "evening": 187
       },
       "trackedPosts": 168,
-      "fetchedAt": "2026-11-14T04:30:15.582Z",
+      "fetchedAt": "2026-11-14T05:30:19.954Z",
       "error": null
     },
     {
       "id": "6b8b637e-1629-4844-9a1f-9728c420154e",
       "label": "엄마가 직접 써본 꿀템",
       "followersCount": 27,
-      "viewsRecent7d": 13983,
-      "viewsChangePct": 349,
+      "viewsRecent7d": 14016,
+      "viewsChangePct": 351,
       "likes": 48,
       "replies": 5,
       "reposts": 1,
@@ -98,15 +98,15 @@
         "evening": 18
       },
       "trackedPosts": 50,
-      "fetchedAt": "2026-11-14T04:30:16.183Z",
+      "fetchedAt": "2026-11-14T05:30:21.641Z",
       "error": null
     },
     {
       "id": "d2c9ae3f-67c9-42bf-b9f8-e8000b61abff",
       "label": "팔자장인",
       "followersCount": 82,
-      "viewsRecent7d": 12324,
-      "viewsChangePct": -39,
+      "viewsRecent7d": 12506,
+      "viewsChangePct": -38,
       "likes": 199,
       "replies": 5,
       "reposts": 10,
@@ -118,21 +118,21 @@
         "publishedAt": "2026-09-09T05:02:33.691Z"
       },
       "timeBuckets": {
-        "morning": 990,
-        "afternoon": 980,
+        "morning": 1005,
+        "afternoon": 981,
         "evening": 741
       },
       "trackedPosts": 230,
-      "fetchedAt": "2026-11-14T04:30:17.006Z",
+      "fetchedAt": "2026-11-14T05:30:23.950Z",
       "error": null
     },
     {
       "id": "cf6a4ba2-da74-4fc1-ae5a-72e1b1477287",
       "label": "팔자궤도",
       "followersCount": 331,
-      "viewsRecent7d": 56403,
+      "viewsRecent7d": 56658,
       "viewsChangePct": 52,
-      "likes": 494,
+      "likes": 496,
       "replies": 12,
       "reposts": 12,
       "topPost": {
@@ -143,27 +143,27 @@
         "publishedAt": "2026-10-04T03:47:06.371Z"
       },
       "timeBuckets": {
-        "morning": 1046,
-        "afternoon": 991,
+        "morning": 1047,
+        "afternoon": 992,
         "evening": 658
       },
       "trackedPosts": 230,
-      "fetchedAt": "2026-11-14T04:30:18.353Z",
+      "fetchedAt": "2026-11-14T05:30:25.324Z",
       "error": null
     }
   ],
   "recommendations": [
     "'연리지 실타래' — 오전(0-12시) 발행 글이 저녁(18-24시) 발행 글보다 평균 조회수가 1.5배 높습니다. 오전(0-12시) 비중을 늘려보세요.",
-    "'연리지 실타래' — 최근 7일 조회수가 지난 주 대비 23% 감소했습니다. 최근 훅/주제 변화를 점검해볼 시점입니다.",
+    "'연리지 실타래' — 최근 7일 조회수가 지난 주 대비 21% 감소했습니다. 최근 훅/주제 변화를 점검해볼 시점입니다.",
     "'연리지 실타래' 최고 성과 글: \"<천을귀인, 있는 자리에 따라 순위가 갈린다> 일간이 정 화인 사람들. 사주 어딘가에 해(돼지띠) 자나 유(\" — 조회수 18,539 · 답글 11건. 비슷한 훅/주제를 반복 활용해볼 만합니다.",
     "'아해사주' 최고 성과 글: \"〈또래보다 늦되어 보이는데 어느 순간 훌쩍 앞서가는 아이 사주〉 말도 늦게 트이고 걸음마도 남들보다 더뎠는데\" — 조회수 3,649 · 답글 87건. 비슷한 훅/주제를 반복 활용해볼 만합니다.",
     "'팔자명가' — 저녁(18-24시) 발행 글이 오후(12-18시) 발행 글보다 평균 조회수가 1.7배 높습니다. 저녁(18-24시) 비중을 늘려보세요.",
     "'팔자명가' — 최근 7일 조회수가 지난 주 대비 45% 상승 중입니다. 지금 통하는 주제/훅 패턴을 유지하세요.",
     "'팔자명가' 최고 성과 글: \"<도화살 타고난 띠 TOP 3> 이 세 띠는 본인 의지랑 상관없이 사람이 자꾸 붙어요. TOP 3 1위. 돼\" — 조회수 4,344 · 답글 5건. 비슷한 훅/주제를 반복 활용해볼 만합니다.",
     "'엄마가 직접 써본 꿀템' — 오전(0-12시) 발행 글이 오후(12-18시) 발행 글보다 평균 조회수가 3.2배 높습니다. 오전(0-12시) 비중을 늘려보세요.",
-    "'엄마가 직접 써본 꿀템' — 최근 7일 조회수가 지난 주 대비 349% 상승 중입니다. 지금 통하는 주제/훅 패턴을 유지하세요.",
+    "'엄마가 직접 써본 꿀템' — 최근 7일 조회수가 지난 주 대비 351% 상승 중입니다. 지금 통하는 주제/훅 패턴을 유지하세요.",
     "'엄마가 직접 써본 꿀템' 최고 성과 글: \"아침 7시 40분. \"옷 입어\" 세 번째 말했는데 아직도 팬티 바람으로 공룡 장난감 들고 있음ㅋㅋ \"5분 안\" — 조회수 900 · 답글 4건. 비슷한 훅/주제를 반복 활용해볼 만합니다.",
-    "'팔자장인' — 최근 7일 조회수가 지난 주 대비 39% 감소했습니다. 최근 훅/주제 변화를 점검해볼 시점입니다.",
+    "'팔자장인' — 최근 7일 조회수가 지난 주 대비 38% 감소했습니다. 최근 훅/주제 변화를 점검해볼 시점입니다.",
     "'팔자장인' 최고 성과 글: \"<이 세 띠, 도화살 TOP 3다> 이 셋 아니면 아예 해당도 안 됩니다. TOP 3 1위. 호랑이띠 (19\" — 조회수 18,374 · 답글 4건. 비슷한 훅/주제를 반복 활용해볼 만합니다.",
     "'팔자궤도' — 오전(0-12시) 발행 글이 저녁(18-24시) 발행 글보다 평균 조회수가 1.6배 높습니다. 오전(0-12시) 비중을 늘려보세요.",
     "'팔자궤도' — 최근 7일 조회수가 지난 주 대비 52% 상승 중입니다. 지금 통하는 주제/훅 패턴을 유지하세요.",
