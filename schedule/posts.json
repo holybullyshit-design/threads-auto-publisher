@@ -41644,11 +41644,14 @@
     "scheduledAt": "2026-11-14T22:26:00.000Z",
     "createdAt": "2026-10-30T04:37:18.638Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18122319064976733",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "toneFixed": true
+    "toneFixed": true,
+    "chainPublishedIds": [
+      "18122319064976733"
+    ]
   },
   {
     "id": "7d05bced-2798-4325-89f5-c083217e7805",
