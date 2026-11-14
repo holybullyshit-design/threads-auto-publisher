@@ -1,0 +1,33 @@
+name: Probe recruitment sources
+
+# 게시하지 않는다. 클라우드 실행기에서 예약 행의 공식 원문·카드·블로그 확인을 게시기와 같은 코드로 미리 돌려 본다.
+# 2026-11-11 추가: 첫 민간기업 원문(SK Careers)이 GitHub 실행기에서 열리는지 게시 전에 확인하려고 만들었다.
+# 손으로만 실행한다: gh workflow run source-probe.yml -R holybullyshit-design/threads-auto-publisher --ref main -f notice=<공고 ID>
+on:
+  workflow_dispatch:
+    inputs:
+      notice:
+        description: "공고 ID(비우면 예약 전체)"
+        required: false
+        default: ""
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Probe sources
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPO: ${{ github.repository }}
+          PROBE_NOTICE: ${{ inputs.notice }}
+        run: node cloud/source-probe.js

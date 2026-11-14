@@ -86,7 +86,7 @@ async function publishContainer(threadsUserId, containerId, accessToken) {
   }
 }
 
-async function publishTextPost({ text, accessToken, threadsUserId, replyToId }) {
+async function publishTextPost({ text, accessToken, threadsUserId, replyToId, topicTag }) {
   const trimmed = assertValidText(text);
 
   if (!accessToken || !threadsUserId) {
@@ -95,11 +95,12 @@ async function publishTextPost({ text, accessToken, threadsUserId, replyToId }) 
     throw err;
   }
 
-  // 1) 미디어 컨테이너 생성 (replyToId가 있으면 그 글에 달리는 답글이 된다)
+  // 1) 미디어 컨테이너 생성 (replyToId가 있으면 그 글에 달리는 답글이 된다, topicTag는 '취업' 같은 토픽 태그)
   const container = await callGraphApi(`/${threadsUserId}/threads`, {
     media_type: "TEXT",
     text: trimmed,
     reply_to_id: replyToId,
+    topic_tag: topicTag,
     access_token: accessToken,
   });
 
@@ -113,11 +114,30 @@ async function publishTextPost({ text, accessToken, threadsUserId, replyToId }) 
   return { containerId: container.id, publishedId: published.id, raw: published };
 }
 
+// 이미지 컨테이너는 메타가 이미지를 내려받아 처리를 끝낸 뒤(status FINISHED)에야 게시된다.
+// 채용 게시기는 고정 대기 대신 처리 완료를 확인하고 게시한다(waitForReady).
+async function waitForContainer(containerId, accessToken, timeoutMs = 60000) {
+  const started = Date.now();
+  while (Date.now() - started < timeoutMs) {
+    const url = new URL(`${THREADS_API_BASE}/${containerId}`);
+    url.searchParams.set("fields", "status,error_message");
+    url.searchParams.set("access_token", accessToken);
+    const response = await fetch(url);
+    const data = await response.json().catch(() => ({}));
+    if (data.status === "FINISHED") return;
+    if (data.status === "ERROR" || data.status === "EXPIRED") {
+      throw new Error(`이미지 컨테이너 처리 실패: ${data.error_message || data.status}`);
+    }
+    await sleep(3000);
+  }
+  throw new Error("이미지 컨테이너 처리 시간 초과");
+}
+
 // 이미지 1~여러 장 + 본문 텍스트를 게시한다.
 // - 이미지 1장: media_type=IMAGE 컨테이너 하나로 바로 게시
 // - 이미지 2장 이상: 각 이미지를 캐러셀 아이템 컨테이너로 만든 뒤, CAROUSEL 컨테이너로 묶어서 게시
 // imageUrls: 인터넷에 공개적으로 접근 가능한 이미지 URL 배열 (로컬 파일 경로 불가)
-async function publishImagePost({ text, imageUrls, accessToken, threadsUserId }) {
+async function publishImagePost({ text, imageUrls, accessToken, threadsUserId, topicTag, waitForReady = false }) {
   const trimmed = assertValidText(text || "");
 
   if (!accessToken || !threadsUserId) {
@@ -138,6 +158,7 @@ async function publishImagePost({ text, imageUrls, accessToken, threadsUserId })
       media_type: "IMAGE",
       image_url: imageUrls[0],
       text: trimmed,
+      topic_tag: topicTag,
       access_token: accessToken,
     });
     if (!container.id) throw new Error("이미지 컨테이너 생성 실패: " + JSON.stringify(container));
@@ -160,12 +181,14 @@ async function publishImagePost({ text, imageUrls, accessToken, threadsUserId })
       media_type: "CAROUSEL",
       children: childIds.join(","),
       text: trimmed,
+      topic_tag: topicTag,
       access_token: accessToken,
     });
     if (!parent.id) throw new Error("캐러셀 컨테이너 생성 실패: " + JSON.stringify(parent));
     creationId = parent.id;
   }
 
+  if (waitForReady) await waitForContainer(creationId, accessToken);
   const published = await publishContainer(threadsUserId, creationId, accessToken);
 
   return { containerId: creationId, publishedId: published.id, raw: published };

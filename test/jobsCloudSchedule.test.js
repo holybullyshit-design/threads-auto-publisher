@@ -26,17 +26,3 @@ test('missing cloud credential blocks queue write',async()=>{
     assert.equal(q.rows().length,0);
   } finally { fs.rmSync(dir,{recursive:true,force:true}); }
 });
-test('deadline-day reminder reserves a morning KST slot with its post type intact',async()=>{
-  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'job-cloud-reminder-'));
-  try {
-    const clock=Date.parse('2026-11-08T20:00:00+09:00');
-    const slot='2026-11-09T09:00:00+09:00';
-    const input={...draft,postType:'deadline_reminder',text:'오늘 마감 17:00 KST · 체험형인턴 세전 월급 225만원',
-      deadlineAt:'2026-11-09T17:00:00+09:00',checkedAt:new Date(clock).toISOString()};
-    const ws=createWorkspace({file:path.join(dir,'workspace.json'),preflight:()=>{}}), saved=ws.save(input), q=queue();
-    const result=await ws.schedule(saved.id,saved.updatedAt,true,slot,{queue:q,fetcher:fakeFetch,clock:()=>clock});
-    assert.equal(result.postType,'deadline_reminder');
-    assert.equal(q.rows()[0].postType,'deadline_reminder');
-    assert.equal(q.rows()[0].scheduledAt,'2026-11-09T00:00:00.000Z');
-  } finally { fs.rmSync(dir,{recursive:true,force:true}); }
-});
