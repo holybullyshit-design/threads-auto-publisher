@@ -51326,11 +51326,14 @@
     "scheduledAt": "2026-11-14T06:06:00.000Z",
     "createdAt": "2026-10-30T05:19:56.077Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18364263304220406",
     "error": null,
     "viralEngine": true,
     "hitFormula": false,
-    "toneFixed": true
+    "toneFixed": true,
+    "chainPublishedIds": [
+      "18364263304220406"
+    ]
   },
   {
     "id": "612843e5-acf0-48f3-9db7-ab87b667eda8",
