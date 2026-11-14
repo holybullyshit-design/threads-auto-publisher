@@ -51757,10 +51757,13 @@
     "scheduledAt": "2026-11-14T04:31:00.000Z",
     "createdAt": "2026-10-30T06:12:18.169Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17906901198670694",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17906901198670694"
+    ]
   },
   {
     "id": "6a82abb3-f1ae-4116-a5a7-b242fb21c80e",
