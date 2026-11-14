@@ -1,18 +1,16 @@
 // Recruitment stays outside the existing saju schedule and cloud credentials.
+// 2026-11-14 사용자 지시("현재 규칙에 맞게 고쳐"): 이 화면은 초안 작성·검사만 한다.
+// 게시는 GitHub 클라우드 큐로만 하고(헌법 v2.2), 예약 등록은 automation/ops/queue_threads.sh로만 한다
+// (카드 이미지·원문 해시·블로그 근거 사전 검사와 변이 검사, 헌법 v2.4·v2.5). 검사 기준은 cloud/jobsRules의 값을 쓴다.
 const fs = require('node:fs');
 const path = require('node:path');
 const crypto = require('node:crypto');
-const { execFileSync } = require('node:child_process');
+const { DAILY_LIMIT, REVIEW_VALID_HOURS, leadHours } = require('../../cloud/jobsRules');
 const HANDLES = ['jobs_curator', 'hire_masters', 'high_quality_hire'];
 const ROOT = '/Users/choitaehwan/Documents/ChatGPT/스레드 채용공고 자동화/automation';
 const HOUR = 3600000;
 const fail = (message, status = 422) => Object.assign(new Error(message), { status });
 const httpUrl = s => { try { const u = new URL(s); return ['https:', 'http:'].includes(u.protocol) && !u.username && !u.password; } catch { return false; } };
-function runMutationPreflight() {
-  const appRoot = path.resolve(__dirname, '../..');
-  execFileSync(process.execPath, ['--test', 'test/jobsWorkspaceMutations.test.js', 'test/jobsWorkspace.test.js', 'test/jobsCloudMutations.test.js', 'test/jobsCloudPublisher.test.js'], { cwd: appRoot, timeout: 30000, stdio: 'pipe' });
-  execFileSync('python3', [path.join(ROOT, 'threads_schedule_check.py')], { cwd: ROOT, timeout: 10000, stdio: 'pipe' });
-}
 function validate(p, all = [], now = Date.now()) {
   const errors = [];
   const reminder = p.postType === 'deadline_reminder';
@@ -20,10 +18,11 @@ function validate(p, all = [], now = Date.now()) {
   if (!HANDLES.includes(p.handle)) errors.push('채용 계정을 선택하세요.');
   if (!p.noticeId || !p.title || !p.angle) errors.push('공고 ID·제목·소개할 핵심 정보를 입력하세요.');
   if (!p.text?.trim() || p.text.length > 500) errors.push('본문은 1~500자로 작성하세요.');
-  if (!/(세전\s*(?:기본|초임)?연봉|세전\s*월(?:급|\s*기본급)|연\s*환산)/.test(p.text || '')) errors.push('이번 모집 직무의 세전 보수를 본문에 표시하세요.');
+  if (/https?:\/\/|blogspot\.com/.test(p.text || '')) errors.push('본문에는 주소를 넣지 않습니다. 블로그는 프로필 링크로 보냅니다.');
   if (!p.verifiedPay || !p.text?.includes(p.verifiedPay)) errors.push('공식 공고에서 확인한 급여와 본문 금액이 일치해야 합니다.');
   if (!httpUrl(p.sourceUrl) || !httpUrl(p.blogUrl)) errors.push('공식 공고와 공개 블로그 주소를 확인하세요.');
-  if (!p.replyText?.includes(p.blogUrl) || p.replyText.length > 500) errors.push('답글에 블로그 주소를 넣고 500자 이내로 작성하세요.');
+  else if (!String(p.blogUrl).startsWith('https://hirecurator.blogspot.com/')) errors.push('블로그 주소는 채용 큐레이터 블로그(hirecurator.blogspot.com) 글이어야 합니다.');
+  if (!p.replyText?.includes('프로필 링크') || /https?:\/\/|blogspot\.com/.test(p.replyText || '') || p.replyText.length > 500) errors.push("첫 댓글은 주소 없이 '프로필 링크' 안내로 500자 이내로 씁니다.");
   const start = Date.parse(p.startsAt), end = Date.parse(p.deadlineAt), checked = Date.parse(p.checkedAt);
   if (!Number.isFinite(start) || !Number.isFinite(end) || start >= end) errors.push('정확한 접수 시작·마감 시각을 입력하세요.');
   if (start > now && !/접수\s*예정/.test(p.text || '')) errors.push('접수 시작 전 공고는 본문에 접수 예정임을 명시하세요.');
@@ -32,25 +31,25 @@ function validate(p, all = [], now = Date.now()) {
     const exactKstTime = new Date(end + 9 * HOUR).toISOString().slice(11, 16);
     if (kstDay(now) !== kstDay(end) || end - now < 4 * HOUR || end - now > 24 * HOUR) errors.push('마감 당일 알림은 정확한 마감일의 4시간 이상 전에만 게시하세요.');
     if (!p.text?.includes('오늘 마감') || !p.text.includes(exactKstTime)) errors.push(`본문에 '오늘 마감'과 정확한 마감 시각 ${exactKstTime} KST를 적으세요.`);
-  } else if (!Number.isFinite(end) || end - now < Math.max(120, Number(p.preparationHours) || 120) * HOUR) errors.push('최초 소개는 마감까지 최소 120시간과 필요한 준비 기간을 확보해야 합니다.');
-  if (!Number.isFinite(checked) || checked > now || now - checked > 24 * HOUR) errors.push('게시 전 24시간 안에 공식 자료를 다시 확인하세요.');
+  } else if (!Number.isFinite(end) || end - now < leadHours(p) * HOUR) errors.push('최초 소개는 마감까지 최소 120시간과 필요한 준비 기간을 확보해야 합니다.');
+  if (!Number.isFinite(checked) || checked > now || now - checked > REVIEW_VALID_HOURS * HOUR) errors.push(`사전 검수는 ${REVIEW_VALID_HOURS / 24}일까지 유효합니다. 공식 자료를 다시 확인하세요.`);
   if (!p.factsChecked || !p.blogChecked) errors.push('원문·첨부파일의 조건과 공개 블로그·모바일 화면을 확인하세요.');
   const history = all.filter(x => x.id !== p.id && ['publishing', 'published', 'reply_failed', 'uncertain'].includes(x.status));
   const same = history.filter(x => x.noticeId === p.noticeId || x.sourceUrl === p.sourceUrl);
   const kstDate = value => new Date(Date.parse(value) + 9 * HOUR).toISOString().slice(0, 10);
   const targetDay = kstDate(new Date(now).toISOString());
-  if (history.some(x => x.handle === p.handle && (x.publishedAt || x.attemptedAt) && kstDate(x.publishedAt || x.attemptedAt) === targetDay)) errors.push('이 계정은 오늘 이미 게시했거나 게시 결과를 확인 중입니다.');
+  if (history.filter(x => x.handle === p.handle && (x.publishedAt || x.attemptedAt) && kstDate(x.publishedAt || x.attemptedAt) === targetDay).length >= DAILY_LIMIT) errors.push(`이 계정은 오늘 이미 ${DAILY_LIMIT}개를 게시했거나 게시 결과를 확인 중입니다.`);
   const own = same.filter(x => x.handle === p.handle);
   if (!reminder && own.length) errors.push('이 계정에서 이미 소개한 공고입니다.');
   if (reminder && (own.some(x => x.postType === 'deadline_reminder') || own.some(x => !Number.isFinite(Date.parse(x.publishedAt || x.attemptedAt)) || now - Date.parse(x.publishedAt || x.attemptedAt) < 72 * HOUR))) errors.push('같은 계정의 마감 알림은 1회만, 앞선 소개와 72시간 이상 간격을 둡니다.');
-  const todayKst = new Date(now + 9 * HOUR).toISOString().slice(0, 10);
-  const approvedLaunchException = p.launchException === '2026-11-01:306304' && p.noticeId === '306304' && todayKst === '2026-11-01';
-  if (!approvedLaunchException && new Set([...same.map(x => x.handle), p.handle]).size > 2) errors.push('동일 공고는 2개 계정까지만 운영합니다.');
-  if (!approvedLaunchException && same.some(x => x.handle !== p.handle && now - Date.parse(x.publishedAt || x.attemptedAt) < 24 * HOUR)) errors.push('다른 계정의 같은 공고 소개와 24시간 간격이 필요합니다.');
+  // 같은 공고는 세 계정 모두 소개할 수 있다(헌법 v2.7). 계정 사이 24시간 간격은 지킨다.
+  if (same.some(x => x.handle !== p.handle && now - Date.parse(x.publishedAt || x.attemptedAt) < 24 * HOUR)) errors.push('다른 계정의 같은 공고 소개와 24시간 간격이 필요합니다.');
   if (history.some(x => x.text?.trim() === p.text?.trim())) errors.push('동일한 본문을 이미 게시했거나 결과 확인 중입니다.');
   return errors;
 }
-function createWorkspace({ file = process.env.JOB_THREADS_DRAFT_FILE || path.join(ROOT, 'state/threads-workspace.json'), tokenDir = process.env.JOB_THREADS_TOKEN_DIR || path.join(ROOT, 'secrets/threads'), publish, preflight = runMutationPreflight } = {}) {
+const LOCAL_PUBLISH_REFUSED = '채용 글은 이 화면에서 바로 게시하지 않습니다. 게시는 GitHub 클라우드 큐로만 하고, 예약 등록은 automation/ops/queue_threads.sh로 합니다(헌법 v2.2).';
+const LOCAL_SCHEDULE_REFUSED = '채용 예약은 automation/ops/queue_threads.sh로만 등록합니다. 카드 이미지·원문 해시·블로그 근거 사전 검사와 변이 검사가 거기서 이뤄집니다(헌법 v2.4·v2.5).';
+function createWorkspace({ file = process.env.JOB_THREADS_DRAFT_FILE || path.join(ROOT, 'state/threads-workspace.json'), tokenDir = process.env.JOB_THREADS_TOKEN_DIR || path.join(ROOT, 'secrets/threads') } = {}) {
   const read = () => fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf8')) : [];
   function write(rows) {
     fs.mkdirSync(path.dirname(file), { recursive: true });
@@ -82,76 +81,15 @@ function createWorkspace({ file = process.env.JOB_THREADS_DRAFT_FILE || path.joi
     write(all); return read().find(x => x.id === row.id);
   }
   function update(id, changes) { const all = read(), row = all.find(x => x.id === id); if (!row) throw fail('초안이 없습니다.', 404); Object.assign(row, changes); write(all); return row; }
-  async function post(id, revision, approved) {
-    let row = read().find(x => x.id === id);
-    if (!row) throw fail('초안을 찾을 수 없습니다.', 404);
-    if (row.status !== 'draft') throw fail('이미 게시를 시도한 글입니다. Threads에서 결과를 확인하세요.', 409);
-    if (approved !== true || revision !== row.updatedAt) throw fail('저장된 최신 글과 계정을 확인하고 게시를 승인하세요.', 409);
-    const errors = validate(row, read()); if (errors.length) throw fail(errors.join('\n'));
-    try { preflight(); } catch { throw fail('돌연변이 테스트 또는 예약 저장값 검수에 실패했습니다. 게시를 보류합니다.', 409); }
-    const a = account(row.handle);
-    if (!a.access_token || !a.user_id || a.expires_at * 1000 <= Date.now()) throw fail('계정 토큰 연결을 확인하세요.');
-    row = update(id, { status: 'publishing', attemptedAt: new Date().toISOString() });
-    // Persist intent before API call. An ambiguous failure must never trigger an automatic duplicate.
-    const auth = { accessToken: a.access_token, threadsUserId: a.user_id };
-    try {
-      const main = await publish({ ...auth, text: row.text });
-      if (!main?.publishedId) throw new Error('Missing published ID');
-      row = update(id, { publishedId: main.publishedId, publishedAt: new Date().toISOString(), status: 'reply_failed' });
-    } catch { update(id, { status: 'uncertain' }); throw fail('게시 결과를 확인하지 못했습니다. 중복 게시를 막기 위해 재시도를 중단했습니다. 해당 Threads 계정을 확인하세요.', 502); }
-    try {
-      const reply = await publish({ ...auth, text: row.replyText, replyToId: row.publishedId });
-      if (!reply?.publishedId) throw new Error('Missing reply ID');
-      return update(id, { status: 'published', replyId: reply.publishedId });
-    } catch { return update(id, { status: 'reply_failed' }); }
-  }
-  async function schedule(id, revision, approved, scheduledAt, { queue = require('../../cloud/jobsStore'), fetcher = fetch, clock = () => Date.now() } = {}) {
-    const row = read().find(x => x.id === id);
-    if (!row || row.status !== 'draft') throw fail('예약 가능한 초안을 찾을 수 없습니다.', 409);
-    if (approved !== true || revision !== row.updatedAt) throw fail('최신 초안의 계정과 본문을 확인하세요.', 409);
-    const slot = Date.parse(scheduledAt), current = clock();
-    if (!Number.isFinite(slot) || slot < current + 10 * 60000) throw fail('현재보다 10분 뒤의 한국 시각을 선택하세요.');
-    const kstDay = new Date(slot + 9 * HOUR).toISOString().slice(0, 10);
-    if (kstDay < '2026-11-02' || kstDay > '2026-11-14') throw fail('실험 기간인 11월 2~14일 안에서 예약하세요.');
-    if (new Date(slot + 9 * HOUR).getUTCHours() >= 21) throw fail('21시 이후 발행은 예약하지 않습니다.');
-    const issues = validate(row, read(), slot);
-    if (issues.length) throw fail(issues.join('\n'));
-    if (!row.employmentType || !row.eligibility || !row.blogEvidence) throw fail('고용형태·지원자격·블로그 확인 문구를 입력하세요.');
-    try { preflight(); } catch { throw fail('돌연변이 검사에 실패하여 예약하지 않았습니다.', 409); }
-    if (!await queue.secretPresent()) throw fail('GitHub Actions에 채용 계정 시크릿이 없어 예약을 차단했습니다.', 409);
-    const source = await fetcher(row.sourceUrl, { signal: AbortSignal.timeout(15000) });
-    if (!source.ok) throw fail('공식 공고 파일을 읽지 못했습니다.');
-    const bytes = Buffer.from(await source.arrayBuffer());
-    if (bytes.length < 100 || bytes.length > 30_000_000) throw fail('공식 공고 파일 크기 오류');
-    const sourceSha256 = crypto.createHash('sha256').update(bytes).digest('hex');
-    const blog = await fetcher(row.blogUrl, { signal: AbortSignal.timeout(15000) });
-    if (!blog.ok || !blog.url?.startsWith('https://hirecurator.blogspot.com/')) throw fail('블로그 공개 URL을 확인하지 못했습니다.');
-    const html = await blog.text();
-    if (!html.includes(row.blogEvidence) || !html.includes(row.verifiedPay)) throw fail('블로그 본문·보수 확인에 실패했습니다.');
-    const cloud = { ...row, status: 'scheduled', scheduledAt: new Date(slot).toISOString(), sourceSha256 };
-    const { errors: cloudErrors } = require('../../cloud/jobsRules');
-    await queue.change(rows => {
-      if (rows.some(x => x.id === id)) throw fail('이미 GitHub 채용 예약 목록에 있습니다.', 409);
-      const more = cloudErrors(cloud, rows, new Date(slot));
-      if (more.length) throw fail('클라우드 예약 검수 실패: ' + more.join(','));
-      if (rows.some(x => x.handle === row.handle && x.scheduledAt && new Date(Date.parse(x.scheduledAt) + 9 * HOUR).toISOString().slice(0,10) === kstDay && !['canceled','blocked'].includes(x.status))) throw fail('이 계정은 해당 날짜에 예약이 있습니다.');
-      rows.push(cloud);
-    }, `chore: schedule recruitment ${id} [skip ci]`);
-    const saved = (await queue.read()).rows.find(x => x.id === id);
-    if (!saved || saved.status !== 'scheduled' || saved.scheduledAt !== cloud.scheduledAt || saved.handle !== cloud.handle) throw fail('GitHub 예약 저장 결과가 일치하지 않습니다.', 502);
-    try { preflight(); }
-    catch {
-      await queue.change(rows => { const p = rows.find(x => x.id === id); if (p?.status === 'scheduled') { p.status = 'blocked'; p.error = '예약 후 돌연변이 검사 실패'; } });
-      throw fail('예약 후 돌연변이 검사 실패. 클라우드 예약을 차단했습니다.', 409);
-    }
-    return update(id, { status: 'scheduled', scheduledAt: cloud.scheduledAt, sourceSha256 });
-  }
+  // 2026-11-14: 로컬 즉시 게시·카드 없는 예약은 현재 규칙 위반이라 받지 않는다. Threads API와 클라우드 큐를 건드리지 않는다.
+  async function post() { throw fail(LOCAL_PUBLISH_REFUSED, 409); }
+  async function schedule() { throw fail(LOCAL_SCHEDULE_REFUSED, 409); }
   function archive(id) { const row = read().find(x => x.id === id); if (!row || row.status !== 'draft') throw fail('초안만 보관할 수 있습니다.'); return update(id, { status: 'archived' }); }
   return { accounts, read, save, post, schedule, archive };
 }
 function router() {
   const r = require('express').Router();
-  const ws = createWorkspace({ publish: require('./threadsClient').publishTextPost });
+  const ws = createWorkspace();
   // Only same-origin local UI may mutate this workspace. Never serialize token or API errors.
   r.use((req, res, next) => {
     if (req.method !== 'GET' && (req.get('sec-fetch-site') === 'cross-site' || (req.get('origin') && req.get('origin') !== `${req.protocol}://${req.get('host')}`))) return res.status(403).json({ error: '앱 화면에서 요청하세요.' });
