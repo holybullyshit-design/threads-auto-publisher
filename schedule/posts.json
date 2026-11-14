@@ -51228,10 +51228,13 @@
     "scheduledAt": "2026-11-14T01:23:00.000Z",
     "createdAt": "2026-10-30T05:17:48.360Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18113382800229918",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18113382800229918"
+    ]
   },
   {
     "id": "ddd2a640-909a-47df-a1c8-ec9cd90090f1",
