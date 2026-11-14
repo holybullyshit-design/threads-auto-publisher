@@ -51271,10 +51271,13 @@
     "scheduledAt": "2026-11-14T04:00:00.000Z",
     "createdAt": "2026-10-30T05:18:27.010Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18212981233370518",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18212981233370518"
+    ]
   },
   {
     "id": "f4f13328-1a3f-4dd6-bf57-7200752fee7e",
