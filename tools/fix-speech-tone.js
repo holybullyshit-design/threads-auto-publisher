@@ -16,9 +16,24 @@
 require("dotenv").config();
 const accountsStore = require("../server/lib/accountsStore");
 const { readSchedule, atomicUpdateSchedule } = require("../server/lib/githubStore");
-const { writeThreadDraft } = require("../server/skills/taebaekSajuDraftWriter");
+const engine = require("../server/skills/taebaekSajuDraftWriter");
+const { writeThreadDraft } = engine;
+
+// 지금 엔진이 쓰는 CTA 문구 모음. 이 중 아무것도 안 들어 있으면 예전 CTA로 쓰인 글이다.
+const CURRENT_CTAS = [
+  ...engine.CTA_POOL,
+  ...engine.CTA_POOL_BANMAL,
+  ...engine.COMMENT_CTA_POOL,
+  ...engine.COMMENT_CTA_POOL_BANMAL,
+];
+function hasCurrentCta(text) {
+  return CURRENT_CTAS.some((c) => text.includes(c.slice(0, 25)));
+}
 
 const DRY_RUN = process.argv.includes("--dry-run");
+// --stale-cta: 어체와 무관하게 "예전 CTA로 쓰인 글"을 대상으로 삼는다.
+// CTA 풀을 바꾸면 이미 만들어둔 예약글은 옛 문구를 그대로 들고 있기 때문이다.
+const STALE_CTA = process.argv.includes("--stale-cta");
 const args = process.argv.slice(2).filter((a) => !a.startsWith("--"));
 const ACCOUNT_LABEL = args[0];
 const START_DATE = args[1];
@@ -84,14 +99,19 @@ async function main() {
     .filter((p) => kstDate(p.scheduledAt) >= START_DATE && kstDate(p.scheduledAt) <= END_DATE)
     // 이미 지난 시각/곧 발행될 글은 건드리지 않는다(재배치 사고와 같은 이유).
     .filter((p) => new Date(p.scheduledAt).getTime() > now + 15 * 60e3)
+    // 댓글앵커 글은 다른 엔진(sajuDraftWriter)이 계정 고유 클로징으로 쓴다 - 건드리지 않는다.
+    .filter((p) => !p.commentAnchor)
     .filter((p) => {
       const all = [p.text || "", ...(p.replyChain || []).map((r) => (typeof r === "string" ? r : (r && r.text) || ""))].join("\n");
+      if (STALE_CTA) return !hasCurrentCta(all);
       const r = banmalRatio(all);
       return want === "존댓말" ? r > 0.18 : r < 0.08;
     })
     .sort((a, b) => new Date(a.scheduledAt) - new Date(b.scheduledAt));
 
-  console.log(`계정: ${ACCOUNT_LABEL} / 설정 어체: ${want} / 어긋난 예약글: ${targets.length}건`);
+  console.log(
+    `계정: ${ACCOUNT_LABEL} / 설정 어체: ${want} / ${STALE_CTA ? "옛 CTA" : "어긋난"} 예약글: ${targets.length}건`
+  );
   if (DRY_RUN) {
     targets.forEach((p) => console.log(`   ${kstDate(p.scheduledAt)} ${kstTime(p.scheduledAt)}${p.ctaMode === "comment" || p.commentCta ? " ← 댓글유도" : ""}`));
     return;

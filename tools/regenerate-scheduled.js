@@ -127,7 +127,9 @@ async function main() {
         accountLabel: ACCOUNT_LABEL,
         topicPool: topicPool || undefined,
         domainFraming: profile ? profile.domainFraming : undefined,
-        speechLevel: profile ? profile.speechLevel : undefined,
+        // 2026-11-14: profile은 viral-morning 계정에만 있다. comprehensive 계정은
+        // null이라 speechLevel이 아예 안 넘어가서 글마다 어체가 들쭉날쭉해졌다.
+        speechLevel: (profile && profile.speechLevel) || (account.persona && account.persona.speechLevel) || undefined,
         extraBans: profile ? profile.extraBans : undefined,
         ctaMode: commentCtaIds.has(post.id) ? "comment" : undefined,
       });

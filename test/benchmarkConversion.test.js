@@ -106,7 +106,11 @@ test("반말 계정은 일반 CTA도 댓글유도 CTA도 반말판을 쓴다", (
 test("생성 도구가 계정 어체를 엔진에 넘긴다", () => {
   const fs = require("fs");
   const path = require("path");
-  for (const rel of ["tools/fill-schedule.js", "tools/add-comment-cta.js"]) {
+  for (const rel of [
+    "tools/fill-schedule.js",
+    "tools/add-comment-cta.js",
+    "tools/regenerate-scheduled.js",
+  ]) {
     const src = fs.readFileSync(path.join(__dirname, "..", rel), "utf8");
     assert.ok(
       /persona && [a-zA-Z]*\.?persona\.speechLevel|persona\.speechLevel/.test(src),
