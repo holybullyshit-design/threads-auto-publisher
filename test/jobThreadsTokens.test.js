@@ -71,6 +71,13 @@ test("토큰 폴더를 읽지 못해도 예외 없이 실패 결과로 돌려준
   assert.equal(results[0].ok, false);
 });
 
+test("클라우드 시크릿 형식은 게시기가 읽는 계정별 userId·토큰·만료로 만든다", () => {
+  writeToken("jobs_curator", "1");
+  const secret = JSON.parse(jobTokens.exportForCloudSecret());
+
+  assert.deepEqual(secret, { jobs_curator: { userId: "1", accessToken: "old-jobs_curator", expiresAt: "1970-01-01T00:00:01.000Z" } });
+});
+
 test("상태 조회에는 토큰 값이 포함되지 않는다", () => {
   writeToken("jobs_curator", "1");
   const status = jobTokens.listStatus();

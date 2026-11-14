@@ -441,6 +441,25 @@ app.get("/api/accounts/export-secret", (req, res) => {
 
 // gh CLI로 GitHub Actions 시크릿(THREADS_ACCOUNTS_JSON)을 최신 계정 목록으로 갱신한다.
 // (파일을 거치지 않고 JSON을 표준입력으로 바로 넘긴다)
+// 채용 계정 토큰은 사주 계정과 다른 시크릿(JOB_THREADS_ACCOUNTS_JSON)으로 클라우드 채용 게시기에 넘긴다.
+function syncJobAccountsSecretToGitHub() {
+  return new Promise((resolve, reject) => {
+    const repo = process.env.GITHUB_REPO;
+    if (!repo) return reject(new Error("GITHUB_REPO가 설정되지 않아 채용 클라우드 동기화를 건너뜁니다."));
+    const child = execFile(
+      "gh",
+      ["secret", "set", "JOB_THREADS_ACCOUNTS_JSON", "--repo", repo],
+      { timeout: 30000 },
+      (err, stdout, stderr) => {
+        if (err) return reject(new Error("gh secret set 실패: " + (stderr || err.message)));
+        resolve();
+      }
+    );
+    child.stdin.write(jobThreadsTokens.exportForCloudSecret());
+    child.stdin.end();
+  });
+}
+
 function syncAccountsSecretToGitHub() {
   return new Promise((resolve, reject) => {
     const repo = process.env.GITHUB_REPO;
@@ -489,8 +508,16 @@ app.post("/api/accounts/refresh-tokens", async (req, res) => {
 
   // 채용 계정은 클라우드 시크릿 대상이 아니다. 실패해도 위 결과에 영향을 주지 않는다.
   const jobResults = await jobThreadsTokens.refreshAll(threadsOAuth.refreshLongLivedToken, refreshedByUserId);
+  let jobSyncError = null;
+  if (jobResults.some((r) => r.ok)) {
+    try {
+      await syncJobAccountsSecretToGitHub();
+    } catch (err) {
+      jobSyncError = err.message;
+    }
+  }
 
-  res.json({ results, jobResults, syncedToCloud, syncError });
+  res.json({ results, jobResults, syncedToCloud, syncError, jobSyncError });
 });
 
 app.get("/api/accounts/job-tokens", (req, res) => {
