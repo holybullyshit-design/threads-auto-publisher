@@ -50104,11 +50104,14 @@
     "scheduledAt": "2026-11-14T08:25:00.000Z",
     "createdAt": "2026-10-30T04:36:36.203Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18144152068615739",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18144152068615739"
+    ]
   },
   {
     "id": "8a3b6519-5edd-4df4-94b7-f7a8f385e60c",
