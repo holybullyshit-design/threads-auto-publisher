@@ -39376,11 +39376,14 @@
     "scheduledAt": "2026-11-15T02:43:00.000Z",
     "createdAt": "2026-10-30T03:22:57.932Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18639262477006270",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "toneFixed": true
+    "toneFixed": true,
+    "chainPublishedIds": [
+      "18639262477006270"
+    ]
   },
   {
     "id": "7c42254a-4c02-4d55-ab41-01d9288a316d",
