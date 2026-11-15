@@ -43533,10 +43533,13 @@
     "scheduledAt": "2026-11-15T22:30:00.000Z",
     "createdAt": "2026-11-13T22:40:47.189Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18653082265019642",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18653082265019642"
+    ]
   },
   {
     "id": "44086a28-52af-4d9e-b15d-144f9dea8308",
