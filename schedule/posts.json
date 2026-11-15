@@ -41761,11 +41761,14 @@
     "scheduledAt": "2026-11-15T06:37:00.000Z",
     "createdAt": "2026-10-30T04:39:05.205Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18107964551302479",
     "error": null,
     "viralEngine": true,
     "hitFormula": false,
-    "toneFixed": true
+    "toneFixed": true,
+    "chainPublishedIds": [
+      "18107964551302479"
+    ]
   },
   {
     "id": "9aaf86ee-124e-4893-99da-b99404bdd2f3",
