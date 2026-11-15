@@ -41718,11 +41718,14 @@
     "scheduledAt": "2026-11-15T03:55:00.000Z",
     "createdAt": "2026-10-30T04:38:29.106Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17933654739422817",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "toneFixed": true
+    "toneFixed": true,
+    "chainPublishedIds": [
+      "17933654739422817"
+    ]
   },
   {
     "id": "4826a0e2-2a9e-43eb-82dd-ac9a7756b426",
