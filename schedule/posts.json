@@ -46280,10 +46280,13 @@
     "scheduledAt": "2026-11-15T22:25:00.000Z",
     "createdAt": "2026-11-14T00:35:44.163Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17986196189897765",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17986196189897765"
+    ]
   },
   {
     "id": "2528e2e7-9b41-4e28-b4ac-85c51b431870",
