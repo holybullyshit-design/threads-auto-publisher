@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-11-15T01:02:35.004Z",
+  "generatedAt": "2026-11-15T02:02:28.791Z",
   "accounts": [
     {
       "id": "273c125f-56b7-4aa1-8abc-89df16bfbe2a",
       "label": "연리지 실타래",
-      "followersCount": 1010,
-      "viewsRecent7d": 29560,
+      "followersCount": 1009,
+      "viewsRecent7d": 29651,
       "viewsChangePct": -34,
       "likes": 361,
       "replies": 44,
@@ -23,7 +23,7 @@
         "evening": 683
       },
       "trackedPosts": 239,
-      "fetchedAt": "2026-11-15T01:02:22.988Z",
+      "fetchedAt": "2026-11-15T02:02:24.963Z",
       "error": null
     },
     {
@@ -118,11 +118,11 @@
         "publishedAt": "2026-09-09T05:02:33.691Z"
       },
       "timeBuckets": {
-        "morning": 1007,
+        "morning": 997,
         "afternoon": 968,
         "evening": 741
       },
-      "trackedPosts": 233,
+      "trackedPosts": 234,
       "fetchedAt": "2026-11-15T01:02:30.915Z",
       "error": null
     },
@@ -143,11 +143,11 @@
         "publishedAt": "2026-10-04T03:47:06.371Z"
       },
       "timeBuckets": {
-        "morning": 1073,
-        "afternoon": 1005,
+        "morning": 1063,
+        "afternoon": 1008,
         "evening": 658
       },
-      "trackedPosts": 233,
+      "trackedPosts": 234,
       "fetchedAt": "2026-11-15T01:02:32.438Z",
       "error": null
     }
