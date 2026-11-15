@@ -1,5 +1,5 @@
 'use strict';
-// 블로그에 새로 공개된 글을 구글 Indexing API(URL_UPDATED)로 알린다. 클라우드(GitHub Actions)에서 돈다.
+// 블로그 3개에 새로 공개된 글을 구글 Indexing API(URL_UPDATED)로 알린다. 클라우드(GitHub Actions)에서 돈다.
 // 구글 정책상 Indexing API는 채용공고(JobPosting) 페이지에만 쓴다. 그래서 글 HTML에 JobPosting
 // 구조화 데이터가 있고 접수 마감(validThrough)이 지나지 않은 글만 알린다. 첫 화면 같은 다른 페이지는 알리지 않는다.
 //
@@ -16,13 +16,17 @@ const crypto = require('crypto');
 const fs = require('fs');
 
 const BLOG = 'https://hirecurator.blogspot.com/';
-const FEED = `${BLOG}feeds/posts/default?alt=json&max-results=50`;
+// 블로그 3개(2026-11-15~). 서비스 계정은 블로그마다 서치 콘솔 속성의 소유자여야 한다.
+// 취업 큐레이터는 여러 공고를 묶은 글이라 JobPosting이 없어 실제로 알리는 글은 없다(정책상 대상 아님).
+const BLOGS = [BLOG, 'https://hire-masters.blogspot.com/', 'https://jobscurator.blogspot.com/'];
+const feedUrl = blog => `${blog}feeds/posts/default?alt=json&max-results=50`;
+const FEED = feedUrl(BLOG);
 const SCOPE = 'https://www.googleapis.com/auth/indexing';
 const ENDPOINT = 'https://indexing.googleapis.com/v3/urlNotifications:publish';
 const METADATA = 'https://indexing.googleapis.com/v3/urlNotifications/metadata';
 const TOKEN_URI = 'https://oauth2.googleapis.com/token';
 const LOG_PATH = 'board/indexing-log.json';
-const MAX_PER_RUN = 30;      // 한 번에 보는 최대 글 수(하루 2편 × 14일 = 28편). 구글 기본 한도는 하루 알림 200건
+const MAX_PER_RUN = 30;      // 블로그마다 한 번에 보는 최대 글 수(하루 2편 × 14일 = 28편). 구글 기본 한도는 하루 알림 200건
 const LOOKBACK_DAYS = 14;    // 공개된 지 이 기간 안의 글만 본다
 
 const b64url = b => Buffer.from(b).toString('base64').replace(/=+$/, '').replace(/\+/g, '-').replace(/\//g, '_');
@@ -83,22 +87,33 @@ async function writeLog(log, { token, repo, fetcher = fetch }) {
   throw new Error('알림 기록 동시 변경으로 중단했습니다.');
 }
 
-async function run({ sa, fetcher = fetch, now = Date.now(), dryRun = false, log = {} }) {
-  const feed = await fetcher(FEED);
-  if (!feed.ok) throw new Error(`블로그 글 목록 HTTP ${feed.status}`);
+// 블로그 하나의 피드에서 최근 공개 글을 읽는다. 피드를 못 읽으면 그 블로그만 오류로 남기고 나머지는 계속한다.
+async function recentPosts(blog, fetcher, now, results) {
+  const feed = await fetcher(feedUrl(blog));
+  if (!feed.ok) { results.push({ url: blog, error: `블로그 글 목록 HTTP ${feed.status}` }); return []; }
   const entries = ((await feed.json()).feed?.entry || []).map(e => ({
+    blog,
     url: (e.link || []).find(l => l.rel === 'alternate')?.href || '',
     published: Date.parse(e.published?.$t),
     content: e.content?.$t || '',
   }));
-  const due = entries
-    .filter(e => e.url.startsWith(BLOG) && e.published <= now && now - e.published < LOOKBACK_DAYS * 864e5)
+  return entries
+    .filter(e => e.url.startsWith(blog) && e.published <= now && now - e.published < LOOKBACK_DAYS * 864e5)
     .sort((a, b) => b.published - a.published)
     .slice(0, MAX_PER_RUN);
+}
+
+async function run({ sa, fetcher = fetch, now = Date.now(), dryRun = false, log = {}, blogs = BLOGS }) {
   const results = [];
+  const due = [];
+  for (const blog of blogs) due.push(...await recentPosts(blog, fetcher, now, results));
+  due.sort((a, b) => b.published - a.published);
   let token = null, changed = false;
+  // 403은 그 블로그의 서치 콘솔 소유권 문제라 그 블로그만 이번 실행에서 멈춘다. 401·429는 전체를 멈춘다.
+  const denied = new Set();
   const record = (url, jp, notifiedAt) => { log[url] = { notifiedAt, validThrough: jp.validThrough, noticeId: String(jp.identifier?.value || '') }; changed = true; };
   for (const e of due) {
+    if (denied.has(e.blog)) continue;
     if (log[e.url]) { results.push({ url: e.url, skipped: '이미 알림(기록)' }); continue; }
     // 피드에 글 본문이 통째로 들어 있으므로 거기서 JobPosting을 읽는다(글 페이지를 하나씩 열면 Blogger가 429로 막는다,
     // 2026-11-10 실측). 피드에 본문이 없을 때만 글 페이지를 연다.
@@ -120,7 +135,8 @@ async function run({ sa, fetcher = fetch, now = Date.now(), dryRun = false, log 
       if (latest) { record(e.url, jp, latest.notifyTime || new Date(now).toISOString()); results.push({ url: e.url, skipped: '이미 알림(구글 기록)' }); continue; }
     } else if (meta.status !== 404) {
       results.push({ url: e.url, error: `알림 기록 조회 HTTP ${meta.status}` });
-      if ([401, 403, 429].includes(meta.status)) break;
+      if (meta.status === 403) { denied.add(e.blog); continue; }
+      if ([401, 429].includes(meta.status)) break;
       continue;
     }
     const res = await fetcher(ENDPOINT, {
@@ -130,7 +146,8 @@ async function run({ sa, fetcher = fetch, now = Date.now(), dryRun = false, log 
     });
     if (!res.ok) {
       results.push({ url: e.url, error: `알림 HTTP ${res.status}` });
-      if ([401, 403, 429].includes(res.status)) break; // 권한·한도 문제는 같은 실행에서 더 시도하지 않는다
+      if (res.status === 403) { denied.add(e.blog); continue; } // 그 블로그 소유권 문제: 그 블로그만 더 시도하지 않는다
+      if ([401, 429].includes(res.status)) break; // 인증·한도 문제는 같은 실행에서 더 시도하지 않는다
       continue;
     }
     record(e.url, jp, new Date(now).toISOString());
@@ -149,7 +166,7 @@ async function main() {
   const log = gh ? await readLog(gh) : (file && fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf8')) : {});
   const { results, changed } = await run({ sa, dryRun, log });
   for (const r of results) console.log(`구글 색인 알림: ${r.url} → ${r.notified ? '알림 완료' : r.wouldNotify ? '알릴 대상(시험 실행)' : r.skipped || r.error}`);
-  if (!results.length) console.log('구글 색인 알림: 최근 14일 안에 공개된 글 없음');
+  if (!results.length) console.log('구글 색인 알림: 블로그 3개 모두 최근 14일 안에 공개된 글 없음');
   if (changed && !dryRun) {
     if (gh) await writeLog(log, gh);
     else if (file) fs.writeFileSync(file, JSON.stringify(log, null, 1) + '\n');
@@ -159,4 +176,4 @@ async function main() {
 }
 
 if (require.main === module) main().catch(e => { console.error(`구글 색인 알림 실패: ${e.message}`); process.exit(1); });
-module.exports = { run, findJobPosting, jwt, readLog, writeLog, BLOG, ENDPOINT, METADATA, TOKEN_URI, LOG_PATH };
+module.exports = { run, findJobPosting, jwt, readLog, writeLog, BLOG, BLOGS, ENDPOINT, METADATA, TOKEN_URI, LOG_PATH };
