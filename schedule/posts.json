@@ -41805,11 +41805,14 @@
     "scheduledAt": "2026-11-15T08:55:00.000Z",
     "createdAt": "2026-10-30T04:39:41.412Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18133325425761153",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18133325425761153"
+    ]
   },
   {
     "id": "33d73e3c-9a7f-4701-abe3-61d27f89b058",
