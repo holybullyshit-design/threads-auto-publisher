@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-14T23:01:34.120Z",
+  "generatedAt": "2026-11-15T00:01:29.755Z",
   "accounts": [
     {
       "id": "273c125f-56b7-4aa1-8abc-89df16bfbe2a",
@@ -18,11 +18,11 @@
         "publishedAt": "2026-09-12T04:23:47.251Z"
       },
       "timeBuckets": {
-        "morning": 1042,
+        "morning": 1030,
         "afternoon": 747,
         "evening": 683
       },
-      "trackedPosts": 238,
+      "trackedPosts": 239,
       "fetchedAt": "2026-11-14T23:01:27.695Z",
       "error": null
     },
@@ -43,11 +43,11 @@
         "publishedAt": "2026-08-28T08:00:52.797Z"
       },
       "timeBuckets": {
-        "morning": 243,
+        "morning": 240,
         "afternoon": 221,
         "evening": 204
       },
-      "trackedPosts": 237,
+      "trackedPosts": 238,
       "fetchedAt": "2026-11-14T23:01:28.506Z",
       "error": null
     },
