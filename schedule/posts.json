@@ -40454,11 +40454,14 @@
     "scheduledAt": "2026-11-15T06:54:00.000Z",
     "createdAt": "2026-10-30T03:57:38.866Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18645643720027435",
     "error": null,
     "viralEngine": true,
     "hitFormula": false,
-    "toneFixed": true
+    "toneFixed": true,
+    "chainPublishedIds": [
+      "18645643720027435"
+    ]
   },
   {
     "id": "d0416175-67d0-42c2-a993-111bfbc30943",
