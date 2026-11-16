@@ -43635,10 +43635,13 @@
     "scheduledAt": "2026-11-16T22:53:00.000Z",
     "createdAt": "2026-11-13T22:44:55.789Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18085266926537033",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18085266926537033"
+    ]
   },
   {
     "id": "5cfe152b-028e-4bca-abd7-083feedc59f9",
