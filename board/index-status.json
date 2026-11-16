@@ -1,0 +1,393 @@
+{
+ "blogs": {
+  "https://hirecurator.blogspot.com/": {
+   "urls": {
+    "https://hirecurator.blogspot.com/": {
+     "verdict": "NEUTRAL",
+     "coverage": "Redirect error",
+     "fetch": "REDIRECT_ERROR",
+     "lastCrawl": "2026-11-16T06:44:19Z",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://hirecurator.blogspot.com/p/board.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "URL is unknown to Google",
+     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
+     "lastCrawl": "",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://hirecurator.blogspot.com/p/privacy-policy.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "URL is unknown to Google",
+     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
+     "lastCrawl": "",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://hirecurator.blogspot.com/p/contact.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "URL is unknown to Google",
+     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
+     "lastCrawl": "",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://hirecurator.blogspot.com/p/about.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "URL is unknown to Google",
+     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
+     "lastCrawl": "",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://hirecurator.blogspot.com/2026/11/14-3191124-16.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "Redirect error",
+     "fetch": "REDIRECT_ERROR",
+     "lastCrawl": "2026-11-16T08:42:56Z",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://hirecurator.blogspot.com/2026/11/5-270-15.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "Redirect error",
+     "fetch": "REDIRECT_ERROR",
+     "lastCrawl": "2026-11-16T06:44:19Z",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://hirecurator.blogspot.com/2026/11/22-1123-14.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "Redirect error",
+     "fetch": "REDIRECT_ERROR",
+     "lastCrawl": "2026-11-16T06:46:16Z",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://hirecurator.blogspot.com/2026/11/66-3200.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "Redirect error",
+     "fetch": "REDIRECT_ERROR",
+     "lastCrawl": "2026-11-16T06:48:16Z",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://hirecurator.blogspot.com/2026/11/7-11-20-18.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "Redirect error",
+     "fetch": "REDIRECT_ERROR",
+     "lastCrawl": "2026-11-16T06:48:16Z",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://hirecurator.blogspot.com/2026/11/911-20-17.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "Redirect error",
+     "fetch": "REDIRECT_ERROR",
+     "lastCrawl": "2026-11-16T06:50:18Z",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://hirecurator.blogspot.com/2026/11/2027-97-1123-10.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "Redirect error",
+     "fetch": "REDIRECT_ERROR",
+     "lastCrawl": "2026-11-16T06:46:16Z",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://hirecurator.blogspot.com/2026/11/2-1120-15.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "Redirect error",
+     "fetch": "REDIRECT_ERROR",
+     "lastCrawl": "2026-11-16T06:53:07Z",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://hirecurator.blogspot.com/2026/11/14-11-20-17.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "Redirect error",
+     "fetch": "REDIRECT_ERROR",
+     "lastCrawl": "2026-11-16T06:50:18Z",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://hirecurator.blogspot.com/2026/11/sk-1117-15.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "Discovered - currently not indexed",
+     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
+     "lastCrawl": "",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://hirecurator.blogspot.com/2026/11/35-225-1120.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "Redirect error",
+     "fetch": "REDIRECT_ERROR",
+     "lastCrawl": "2026-11-16T06:53:07Z",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://hirecurator.blogspot.com/2026/11/21-11-19-17.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "URL is unknown to Google",
+     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
+     "lastCrawl": "",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://hirecurator.blogspot.com/2026/11/723-11-1319-10.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "URL is unknown to Google",
+     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
+     "lastCrawl": "",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://hirecurator.blogspot.com/2026/11/12-105840117440.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "Discovered - currently not indexed",
+     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
+     "lastCrawl": "",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://hirecurator.blogspot.com/2026/11/26-11-19-13.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "Redirect error",
+     "fetch": "REDIRECT_ERROR",
+     "lastCrawl": "2026-11-10T01:43:29Z",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://hirecurator.blogspot.com/2026/11/136-11-18.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "Redirect error",
+     "fetch": "REDIRECT_ERROR",
+     "lastCrawl": "2026-11-09T14:12:57Z",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://hirecurator.blogspot.com/2026/11/50-toeic-600.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "Redirect error",
+     "fetch": "REDIRECT_ERROR",
+     "lastCrawl": "2026-11-09T14:12:57Z",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://hirecurator.blogspot.com/2026/11/44.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "Redirect error",
+     "fetch": "REDIRECT_ERROR",
+     "lastCrawl": "2026-11-09T14:17:02Z",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://hirecurator.blogspot.com/2026/11/21.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "Discovered - currently not indexed",
+     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
+     "lastCrawl": "",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://hirecurator.blogspot.com/2026/11/2.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "Discovered - currently not indexed",
+     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
+     "lastCrawl": "",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://hirecurator.blogspot.com/2026/11/2-2662.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "Discovered - currently not indexed",
+     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
+     "lastCrawl": "",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://hirecurator.blogspot.com/2026/11/16.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "Redirect error",
+     "fetch": "REDIRECT_ERROR",
+     "lastCrawl": "2026-11-09T14:15:06Z",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://hirecurator.blogspot.com/2026/11/5-219227.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "Redirect error",
+     "fetch": "REDIRECT_ERROR",
+     "lastCrawl": "2026-11-09T14:17:02Z",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://hirecurator.blogspot.com/2026/11/2-220.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "Redirect error",
+     "fetch": "REDIRECT_ERROR",
+     "lastCrawl": "2026-11-09T14:15:00Z",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://hirecurator.blogspot.com/2026/11/4-3384.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "Redirect error",
+     "fetch": "REDIRECT_ERROR",
+     "lastCrawl": "2026-11-09T14:17:02Z",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://hirecurator.blogspot.com/2026/11/59-11-16.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "Discovered - currently not indexed",
+     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
+     "lastCrawl": "",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://hirecurator.blogspot.com/2026/11/13-224-11-17.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "Redirect error",
+     "fetch": "REDIRECT_ERROR",
+     "lastCrawl": "2026-11-09T14:19:04Z",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://hirecurator.blogspot.com/2026/11/122-11-225ai.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "Discovered - currently not indexed",
+     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
+     "lastCrawl": "",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://hirecurator.blogspot.com/2026/11/6-2-4.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "Discovered - currently not indexed",
+     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
+     "lastCrawl": "",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://hirecurator.blogspot.com/2026/10/6.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "Discovered - currently not indexed",
+     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
+     "lastCrawl": "",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://hirecurator.blogspot.com/2026/10/12.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "URL is unknown to Google",
+     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
+     "lastCrawl": "",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://hirecurator.blogspot.com/2026/10/8-286647.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "Discovered - currently not indexed",
+     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
+     "lastCrawl": "",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://hirecurator.blogspot.com/2026/10/15-215-11.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "Discovered - currently not indexed",
+     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
+     "lastCrawl": "",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://hirecurator.blogspot.com/2026/10/ibk-390-1956-ai.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "URL is unknown to Google",
+     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
+     "lastCrawl": "",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://hirecurator.blogspot.com/2026/10/3911-11.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "URL is unknown to Google",
+     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
+     "lastCrawl": "",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    }
+   },
+   "sitemapSubmittedAt": "2026-11-16T12:25:21.394Z",
+   "summary": {
+    "total": 40,
+    "indexed": 0,
+    "redirectError": 20,
+    "unknown": 9,
+    "discovered": 11,
+    "crawledNotIndexed": 0,
+    "other": 0,
+    "error": 0
+   }
+  },
+  "https://hire-masters.blogspot.com/": {
+   "urls": {
+    "https://hire-masters.blogspot.com/": {
+     "verdict": "NEUTRAL",
+     "coverage": "Redirect error",
+     "fetch": "REDIRECT_ERROR",
+     "lastCrawl": "2026-11-16T06:58:22Z",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://hire-masters.blogspot.com/p/privacy-policy.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "URL is unknown to Google",
+     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
+     "lastCrawl": "",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://hire-masters.blogspot.com/p/contact.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "URL is unknown to Google",
+     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
+     "lastCrawl": "",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://hire-masters.blogspot.com/p/about.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "URL is unknown to Google",
+     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
+     "lastCrawl": "",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://hire-masters.blogspot.com/2026/11/1130-17.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "Redirect error",
+     "fetch": "REDIRECT_ERROR",
+     "lastCrawl": "2026-11-16T06:58:22Z",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    }
+   },
+   "sitemapSubmittedAt": "2026-11-16T12:25:21.394Z",
+   "summary": {
+    "total": 5,
+    "indexed": 0,
+    "redirectError": 2,
+    "unknown": 3,
+    "discovered": 0,
+    "crawledNotIndexed": 0,
+    "other": 0,
+    "error": 0
+   }
+  },
+  "https://jobscurator.blogspot.com/": {
+   "urls": {
+    "https://jobscurator.blogspot.com/": {
+     "verdict": "NEUTRAL",
+     "coverage": "Redirect error",
+     "fetch": "REDIRECT_ERROR",
+     "lastCrawl": "2026-11-16T06:56:31Z",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://jobscurator.blogspot.com/p/privacy-policy.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "URL is unknown to Google",
+     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
+     "lastCrawl": "",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://jobscurator.blogspot.com/p/contact.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "URL is unknown to Google",
+     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
+     "lastCrawl": "",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://jobscurator.blogspot.com/2026/11/6-97-112328.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "Redirect error",
+     "fetch": "REDIRECT_ERROR",
+     "lastCrawl": "2026-11-16T06:54:22Z",
+     "checkedAt": "2026-11-16T12:25:21.394Z"
+    }
+   },
+   "sitemapSubmittedAt": "2026-11-16T12:25:21.394Z",
+   "summary": {
+    "total": 4,
+    "indexed": 0,
+    "redirectError": 2,
+    "unknown": 2,
+    "discovered": 0,
+    "crawledNotIndexed": 0,
+    "other": 0,
+    "error": 0
+   }
+  }
+ },
+ "updatedAt": "2026-11-16T12:25:21.394Z"
+}
