@@ -49332,10 +49332,13 @@
     "scheduledAt": "2026-11-16T03:13:00.000Z",
     "createdAt": "2026-11-14T03:07:17.765Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17956132968297692",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17956132968297692"
+    ]
   },
   {
     "id": "c887b17c-e12d-481e-b736-fb9b2c3e7bd0",
