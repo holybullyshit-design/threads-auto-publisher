@@ -43587,10 +43587,13 @@
     "scheduledAt": "2026-11-16T04:13:00.000Z",
     "createdAt": "2026-11-13T22:43:01.536Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18155384920543147",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18155384920543147"
+    ]
   },
   {
     "id": "0e20621e-4789-4388-8a1a-2d564136a66c",
