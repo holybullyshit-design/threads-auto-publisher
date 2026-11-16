@@ -46421,11 +46421,14 @@
     "scheduledAt": "2026-11-16T08:33:00.000Z",
     "createdAt": "2026-11-14T00:39:13.421Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18124352527734204",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18124352527734204"
+    ]
   },
   {
     "id": "f49ddc11-2877-4744-999f-d58cf56e3b27",
