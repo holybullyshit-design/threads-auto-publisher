@@ -46314,11 +46314,14 @@
     "scheduledAt": "2026-11-16T00:44:00.000Z",
     "createdAt": "2026-11-14T00:36:24.054Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17918521263544164",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "toneFixed": true
+    "toneFixed": true,
+    "chainPublishedIds": [
+      "17918521263544164"
+    ]
   },
   {
     "id": "385c7994-3d90-453f-ac71-05ace68453a3",
