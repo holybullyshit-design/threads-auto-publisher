@@ -43561,10 +43561,13 @@
     "scheduledAt": "2026-11-16T01:13:00.000Z",
     "createdAt": "2026-11-13T22:41:32.264Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17900918268397569",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17900918268397569"
+    ]
   },
   {
     "id": "65879b18-43b3-4e58-862b-5e8be6da206c",
