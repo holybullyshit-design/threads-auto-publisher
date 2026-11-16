@@ -44933,10 +44933,13 @@
     "scheduledAt": "2026-11-16T00:44:00.000Z",
     "createdAt": "2026-11-13T23:37:32.401Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18111712355230497",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18111712355230497"
+    ]
   },
   {
     "id": "2b1369e1-46fa-4b7e-ad77-8e5ee14816e4",
