@@ -43690,10 +43690,13 @@
     "scheduledAt": "2026-11-17T03:31:00.000Z",
     "createdAt": "2026-11-13T22:46:36.564Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18649354408009016",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18649354408009016"
+    ]
   },
   {
     "id": "e1c3721e-f0f6-4325-9fc2-3f5911257e86",
