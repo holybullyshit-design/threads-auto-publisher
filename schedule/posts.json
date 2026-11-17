@@ -46488,10 +46488,13 @@
     "scheduledAt": "2026-11-17T00:48:00.000Z",
     "createdAt": "2026-11-14T00:41:45.621Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18177902653480913",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18177902653480913"
+    ]
   },
   {
     "id": "ca8850f3-45a6-4519-96f5-3bca3ad876b9",
