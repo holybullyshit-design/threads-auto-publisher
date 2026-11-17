@@ -45139,10 +45139,13 @@
     "scheduledAt": "2026-11-17T22:39:00.000Z",
     "createdAt": "2026-11-13T23:45:05.896Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18641284576045549",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18641284576045549"
+    ]
   },
   {
     "id": "77965cdb-63c8-4bfc-a9a5-1a69866b0fb7",
