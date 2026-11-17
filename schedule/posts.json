@@ -45079,10 +45079,13 @@
     "scheduledAt": "2026-11-17T04:17:00.000Z",
     "createdAt": "2026-11-13T23:43:16.149Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18171932968469045",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18171932968469045"
+    ]
   },
   {
     "id": "138a8743-555a-459e-a73d-23f6eb2b02b9",
