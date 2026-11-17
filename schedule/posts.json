@@ -46527,10 +46527,13 @@
     "scheduledAt": "2026-11-17T02:50:00.000Z",
     "createdAt": "2026-11-14T00:42:47.396Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18132817021619813",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18132817021619813"
+    ]
   },
   {
     "id": "11905a64-ec50-4210-abbc-28388cd1bfc7",
