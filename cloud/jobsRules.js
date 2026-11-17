@@ -32,18 +32,20 @@ const sourceHash = (bytes, normalize) => crypto.createHash('sha256').update(norm
 const LEAD_EXCEPTIONS = { 'skhynix-R262381': 48 };
 const leadHours = p => Object.hasOwn(LEAD_EXCEPTIONS, p.noticeId) ? LEAD_EXCEPTIONS[p.noticeId] : Math.max(120, Number(p.preparationHours) || 120);
 const kstDay = value => new Date(Date.parse(value) + 9 * H).toISOString().slice(0, 10);
-// 2026-11-09 사용자 결정("시험해보자"): 프로필 링크 클릭이 주 3번뿐이라 @high_quality_hire만 11/10~16(KST) 1주일 동안
-// 첫 댓글에 그 공고의 블로그 글 주소를 넣어 노출·클릭을 비교한다. 댓글에는 주소 대신 자리표시를 쓰고,
-// 게시기가 게시 직전에 검증한 우리 블로그 주소로만 바꿔 넣는다. 다른 계정·기간 밖·직접 쓴 주소는 계속 막는다.
-const REPLY_LINK_TEST = { handle: 'high_quality_hire', from: '2026-11-10', to: '2026-11-16' };
+// 첫 댓글 블로그 주소(헌법 v2.10 → v2.18). 2026-11-09 사용자 결정("시험해보자")으로 @high_quality_hire만 11/10~16에 시험했고,
+// 조회 1천당 링크 클릭이 7.5(댓글 주소)로 프로필 링크 계정(4.6·2.0)보다 높았으며 글당 조회도 눌리지 않았다.
+// 2026-11-17 사용자 결정("너가 하라는거 다 해볼게")으로 세 계정 모두 쓴다. 끝나는 날은 없다.
+// 댓글에는 주소 대신 자리표시를 쓰고, 게시기가 게시 직전에 검증한 우리 블로그 주소로만 바꿔 넣는다.
+// 직접 쓴 주소·자리표시 두 번·시작일 전 슬롯은 계속 막는다.
+const REPLY_LINK_FROM = { high_quality_hire: '2026-11-10', jobs_curator: '2026-11-17', hire_masters: '2026-11-17' };
 const BLOG_PLACEHOLDER = '{블로그주소}';
-const replyLinkTest = p => Number.isFinite(Date.parse(p.scheduledAt)) && p.handle === REPLY_LINK_TEST.handle
-  && kstDay(p.scheduledAt) >= REPLY_LINK_TEST.from && kstDay(p.scheduledAt) <= REPLY_LINK_TEST.to;
+const replyLinkAllowed = p => Number.isFinite(Date.parse(p.scheduledAt)) && Object.hasOwn(REPLY_LINK_FROM, p.handle)
+  && kstDay(p.scheduledAt) >= REPLY_LINK_FROM[p.handle];
 // 실제로 올릴 댓글. 자리표시가 있으면 검증된 블로그 주소로 바꾸고, 쓸 수 없는 경우는 throw한다(보류).
 function replyFor(p, blogUrl) {
   const reply = p.replyText || '';
   if (!reply.includes(BLOG_PLACEHOLDER)) return reply;
-  if (!replyLinkTest(p) || reply.split(BLOG_PLACEHOLDER).length !== 2 || !String(blogUrl || '').startsWith(BLOG) || /\s/.test(blogUrl)) throw new Error('댓글 블로그 주소를 쓸 수 없음');
+  if (!replyLinkAllowed(p) || reply.split(BLOG_PLACEHOLDER).length !== 2 || !String(blogUrl || '').startsWith(BLOG) || /\s/.test(blogUrl)) throw new Error('댓글 블로그 주소를 쓸 수 없음');
   return reply.split(BLOG_PLACEHOLDER).join(blogUrl);
 }
 const kstHour = value => new Date(Date.parse(value) + 9 * H).getUTCHours();
@@ -60,9 +62,9 @@ function errors(p, rows, now = new Date()) {
   if (/https?:\/\/|blogspot\.com/.test(p.text || '')) out.push('textLink');
   // 예약 시점에 아직 공개 전인 블로그 글은 blogUrl 대신 blogTitle로 게시 직전에 찾는다.
   for (const key of ['sourceUrl', 'blogUrl']) { if (key === 'blogUrl' && !p.blogUrl && p.blogTitle?.trim()) continue; try { const u = new URL(p[key]); if (u.protocol !== 'https:' || u.username || u.password) out.push(key); } catch { out.push(key); } }
-  // 2026-11-04 사용자 결정: 댓글에 URL을 넣지 않고 프로필 링크(블로그)로 보낸다. blogUrl은 게시 전 검증에만 쓴다.
+  // 댓글에 주소를 직접 쓰지 않는다. 자리표시({블로그주소})를 쓰거나, 자리표시가 없으면 프로필 링크로 보낸다(2026-11-04 결정).
   const reply = p.replyText || '', holders = reply.split(BLOG_PLACEHOLDER).length - 1;
-  if (/https?:\/\/|blogspot\.com/.test(reply) || holders > 1 || (holders === 1 && !replyLinkTest(p)) || (holders === 0 && !reply.includes('프로필 링크'))) out.push('replyLink');
+  if (/https?:\/\/|blogspot\.com/.test(reply) || holders > 1 || (holders === 1 && !replyLinkAllowed(p)) || (holders === 0 && !reply.includes('프로필 링크'))) out.push('replyLink');
   if (!/^[a-f0-9]{64}$/.test(p.sourceSha256 || '') || (p.sourceNormalize !== undefined && !Object.hasOwn(SOURCE_NORMALIZERS, p.sourceNormalize))) out.push('sourceHash');
   if (!p.imageUrl?.startsWith(CARD_BASE) || !p.imageUrl.endsWith('.png') || !/^[a-f0-9]{64}$/.test(p.imageSha256 || '')) out.push('image');
   if (cardIssues(p)) out.push('cardFacts');
@@ -150,4 +152,4 @@ async function verifyWeb(p, fetcher = fetch, { attempts = 3, delayMs = 3000 } = 
   if (!html.includes(p.blogEvidence) || (!p.blogPayUnchecked && !html.includes(p.verifiedPay))) throw new Error('블로그 본문 근거 불일치');
   return { blogUrl };
 }
-module.exports = { HANDLES, DAILY_LIMIT, REVIEW_VALID_HOURS, CARD_BASE, REPLY_LINK_TEST, BLOG_PLACEHOLDER, SOURCE_NORMALIZERS, LEAD_EXCEPTIONS, errors, verifyWeb, kstDay, replyFor, sourceHash, leadHours };
+module.exports = { HANDLES, DAILY_LIMIT, REVIEW_VALID_HOURS, CARD_BASE, REPLY_LINK_FROM, BLOG_PLACEHOLDER, SOURCE_NORMALIZERS, LEAD_EXCEPTIONS, errors, verifyWeb, kstDay, replyFor, sourceHash, leadHours };
