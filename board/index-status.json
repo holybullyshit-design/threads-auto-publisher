@@ -338,15 +338,22 @@
      "fetch": "REDIRECT_ERROR",
      "lastCrawl": "2026-11-16T06:58:22Z",
      "checkedAt": "2026-11-16T12:25:21.394Z"
+    },
+    "https://hire-masters.blogspot.com/2026/11/wm-1122.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "Discovered - currently not indexed",
+     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
+     "lastCrawl": "",
+     "checkedAt": "2026-11-17T04:11:00.153Z"
     }
    },
    "sitemapSubmittedAt": "2026-11-16T12:25:21.394Z",
    "summary": {
-    "total": 5,
+    "total": 6,
     "indexed": 0,
     "redirectError": 2,
     "unknown": 3,
-    "discovered": 0,
+    "discovered": 1,
     "crawledNotIndexed": 0,
     "other": 0,
     "error": 0
@@ -388,14 +395,21 @@
      "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
      "lastCrawl": "",
      "checkedAt": "2026-11-16T18:35:47.782Z"
+    },
+    "https://jobscurator.blogspot.com/2026/11/6-sns-112324.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "URL is unknown to Google",
+     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
+     "lastCrawl": "",
+     "checkedAt": "2026-11-17T04:11:00.153Z"
     }
    },
    "sitemapSubmittedAt": "2026-11-16T12:25:21.394Z",
    "summary": {
-    "total": 5,
+    "total": 6,
     "indexed": 0,
     "redirectError": 2,
-    "unknown": 3,
+    "unknown": 4,
     "discovered": 0,
     "crawledNotIndexed": 0,
     "other": 0,
@@ -403,5 +417,5 @@
    }
   }
  },
- "updatedAt": "2026-11-16T23:02:18.609Z"
+ "updatedAt": "2026-11-17T04:11:00.153Z"
 }
