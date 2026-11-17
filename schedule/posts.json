@@ -46610,11 +46610,14 @@
     "scheduledAt": "2026-11-17T08:01:00.000Z",
     "createdAt": "2026-11-14T00:44:08.421Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18038517818894708",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18038517818894708"
+    ]
   },
   {
     "id": "39dce7b9-9dfe-47cb-a644-df0becb6558c",
