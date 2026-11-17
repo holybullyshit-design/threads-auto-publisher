@@ -46571,10 +46571,13 @@
     "scheduledAt": "2026-11-17T05:43:00.000Z",
     "createdAt": "2026-11-14T00:43:36.932Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18146965093717630",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18146965093717630"
+    ]
   },
   {
     "id": "cd9cf8ee-48be-47b7-9107-c20feb98f9d2",
