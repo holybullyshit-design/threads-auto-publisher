@@ -48037,11 +48037,14 @@
     "scheduledAt": "2026-11-17T00:46:00.000Z",
     "createdAt": "2026-11-14T01:46:20.062Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17914550955591184",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "toneFixed": true
+    "toneFixed": true,
+    "chainPublishedIds": [
+      "17914550955591184"
+    ]
   },
   {
     "id": "96cc78ca-dee7-4cbe-a31c-e694271baed2",
