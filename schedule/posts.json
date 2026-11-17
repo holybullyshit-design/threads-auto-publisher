@@ -48177,11 +48177,14 @@
     "scheduledAt": "2026-11-17T08:40:00.000Z",
     "createdAt": "2026-11-14T01:48:47.088Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18371460568208214",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18371460568208214"
+    ]
   },
   {
     "id": "4bc20128-805c-4d3e-9608-6b8f323aee38",
