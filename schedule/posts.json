@@ -43716,10 +43716,13 @@
     "scheduledAt": "2026-11-17T05:51:00.000Z",
     "createdAt": "2026-11-13T22:47:31.341Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17899298949611398",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17899298949611398"
+    ]
   },
   {
     "id": "699ea506-33e3-4abd-897a-82bba7f2240f",
