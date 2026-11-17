@@ -43742,10 +43742,13 @@
     "scheduledAt": "2026-11-17T23:21:00.000Z",
     "createdAt": "2026-11-13T22:48:58.864Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18111077330192105",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18111077330192105"
+    ]
   },
   {
     "id": "068ad07d-e179-4bd9-927d-06b6ba3f1491",
