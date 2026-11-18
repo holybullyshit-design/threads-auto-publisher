@@ -45209,10 +45209,13 @@
     "scheduledAt": "2026-11-18T03:28:00.000Z",
     "createdAt": "2026-11-13T23:47:26.915Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18144846787611497",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18144846787611497"
+    ]
   },
   {
     "id": "f460a576-74ee-4173-9fe8-e3761abc588c",
