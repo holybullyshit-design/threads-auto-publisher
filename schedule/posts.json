@@ -43795,10 +43795,13 @@
     "scheduledAt": "2026-11-18T04:33:00.000Z",
     "createdAt": "2026-11-13T22:50:32.559Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18079327334732422",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18079327334732422"
+    ]
   },
   {
     "id": "f49627c7-bee7-43b6-b2fb-a1cf9a4ae082",
