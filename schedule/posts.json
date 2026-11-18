@@ -43822,10 +43822,13 @@
     "scheduledAt": "2026-11-18T06:38:00.000Z",
     "createdAt": "2026-11-13T22:51:07.605Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18054176216603813",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18054176216603813"
+    ]
   },
   {
     "id": "e4a227db-08c2-4cbd-98ee-93923c557985",
