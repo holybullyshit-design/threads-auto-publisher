@@ -291,10 +291,10 @@
     },
     "https://hirecurator.blogspot.com/2026/11/11124-14.html": {
      "verdict": "NEUTRAL",
-     "coverage": "URL is unknown to Google",
-     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
-     "lastCrawl": "",
-     "checkedAt": "2026-11-17T08:02:30.727Z"
+     "coverage": "Redirect error",
+     "fetch": "REDIRECT_ERROR",
+     "lastCrawl": "2026-11-17T11:27:11Z",
+     "checkedAt": "2026-11-18T04:21:37.963Z"
     },
     "https://hirecurator.blogspot.com/2026/11/4-421125-18.html": {
      "verdict": "NEUTRAL",
@@ -315,8 +315,8 @@
    "summary": {
     "total": 44,
     "indexed": 1,
-    "redirectError": 24,
-    "unknown": 5,
+    "redirectError": 25,
+    "unknown": 4,
     "discovered": 14,
     "crawledNotIndexed": 0,
     "other": 0,
@@ -452,5 +452,5 @@
    }
   }
  },
- "updatedAt": "2026-11-18T03:08:04.725Z"
+ "updatedAt": "2026-11-18T04:21:37.963Z"
 }
