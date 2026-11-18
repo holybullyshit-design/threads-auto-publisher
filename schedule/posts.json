@@ -46805,11 +46805,14 @@
     "scheduledAt": "2026-11-18T08:45:00.000Z",
     "createdAt": "2026-11-14T00:48:32.224Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18135281194688742",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18135281194688742"
+    ]
   },
   {
     "id": "55abdb24-d86f-4909-b71d-7b9edde7ac55",
