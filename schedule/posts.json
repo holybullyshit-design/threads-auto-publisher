@@ -46733,10 +46733,13 @@
     "scheduledAt": "2026-11-18T04:07:00.000Z",
     "createdAt": "2026-11-14T00:47:16.243Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18120180956326030",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18120180956326030"
+    ]
   },
   {
     "id": "6122db71-0180-412b-960f-c477614fb456",
