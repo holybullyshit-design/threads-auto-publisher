@@ -43768,10 +43768,13 @@
     "scheduledAt": "2026-11-18T02:02:00.000Z",
     "createdAt": "2026-11-13T22:49:40.886Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17908847298598514",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "17908847298598514"
+    ]
   },
   {
     "id": "62cedfd8-78c4-436c-ae8b-340f704fac1a",
