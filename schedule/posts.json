@@ -45245,10 +45245,13 @@
     "scheduledAt": "2026-11-18T05:30:00.000Z",
     "createdAt": "2026-11-13T23:48:15.017Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18023484956954744",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18023484956954744"
+    ]
   },
   {
     "id": "eecb0d42-3b73-441e-90cc-fcc7a6121bf5",
