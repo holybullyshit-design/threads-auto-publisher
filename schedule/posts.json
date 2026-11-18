@@ -48366,10 +48366,13 @@
     "scheduledAt": "2026-11-18T06:27:00.000Z",
     "createdAt": "2026-11-14T01:52:32.632Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18128387050889439",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18128387050889439"
+    ]
   },
   {
     "id": "27ac4c2b-ebd7-4d9c-80d0-d427d2faebea",
