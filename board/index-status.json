@@ -302,15 +302,22 @@
      "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
      "lastCrawl": "",
      "checkedAt": "2026-11-17T23:02:22.641Z"
+    },
+    "https://hirecurator.blogspot.com/2026/11/9637-4721-2025.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "Discovered - currently not indexed",
+     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
+     "lastCrawl": "",
+     "checkedAt": "2026-11-18T03:08:04.725Z"
     }
    },
    "sitemapSubmittedAt": "2026-11-17T17:39:43.988Z",
    "summary": {
-    "total": 43,
+    "total": 44,
     "indexed": 1,
     "redirectError": 24,
     "unknown": 5,
-    "discovered": 13,
+    "discovered": 14,
     "crawledNotIndexed": 0,
     "other": 0,
     "error": 0
@@ -355,17 +362,24 @@
     },
     "https://hire-masters.blogspot.com/2026/11/wm-1122.html": {
      "verdict": "NEUTRAL",
+     "coverage": "Redirect error",
+     "fetch": "REDIRECT_ERROR",
+     "lastCrawl": "2026-11-17T11:37:45Z",
+     "checkedAt": "2026-11-18T03:08:04.725Z"
+    },
+    "https://hire-masters.blogspot.com/2026/11/fc-1123-18.html": {
+     "verdict": "NEUTRAL",
      "coverage": "Discovered - currently not indexed",
      "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
      "lastCrawl": "",
-     "checkedAt": "2026-11-17T04:11:00.153Z"
+     "checkedAt": "2026-11-18T03:08:04.725Z"
     }
    },
    "sitemapSubmittedAt": "2026-11-17T17:39:43.988Z",
    "summary": {
-    "total": 6,
+    "total": 7,
     "indexed": 0,
-    "redirectError": 3,
+    "redirectError": 4,
     "unknown": 2,
     "discovered": 1,
     "crawledNotIndexed": 0,
@@ -412,24 +426,31 @@
     },
     "https://jobscurator.blogspot.com/2026/11/6-sns-112324.html": {
      "verdict": "NEUTRAL",
-     "coverage": "URL is unknown to Google",
+     "coverage": "Redirect error",
+     "fetch": "REDIRECT_ERROR",
+     "lastCrawl": "2026-11-17T11:39:48Z",
+     "checkedAt": "2026-11-18T03:08:04.725Z"
+    },
+    "https://jobscurator.blogspot.com/2026/11/6-112328.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "Discovered - currently not indexed",
      "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
      "lastCrawl": "",
-     "checkedAt": "2026-11-17T04:11:00.153Z"
+     "checkedAt": "2026-11-18T03:08:04.725Z"
     }
    },
    "sitemapSubmittedAt": "2026-11-17T17:39:43.988Z",
    "summary": {
-    "total": 6,
+    "total": 7,
     "indexed": 0,
-    "redirectError": 3,
-    "unknown": 3,
-    "discovered": 0,
+    "redirectError": 4,
+    "unknown": 2,
+    "discovered": 1,
     "crawledNotIndexed": 0,
     "other": 0,
     "error": 0
    }
   }
  },
- "updatedAt": "2026-11-17T23:02:22.641Z"
+ "updatedAt": "2026-11-18T03:08:04.725Z"
 }
