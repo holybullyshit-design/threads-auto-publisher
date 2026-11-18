@@ -45283,10 +45283,13 @@
     "scheduledAt": "2026-11-18T23:12:00.000Z",
     "createdAt": "2026-11-13T23:49:03.797Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17968923312247348",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17968923312247348"
+    ]
   },
   {
     "id": "bdc42182-ccc5-41d8-b098-74ca61f313d4",
