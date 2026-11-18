@@ -46780,10 +46780,13 @@
     "scheduledAt": "2026-11-18T06:34:00.000Z",
     "createdAt": "2026-11-14T00:47:58.106Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18103091993531522",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18103091993531522"
+    ]
   },
   {
     "id": "ec23a38e-f069-4d85-be5a-9b02cf934eb1",
