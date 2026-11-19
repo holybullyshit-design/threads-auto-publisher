@@ -46885,11 +46885,14 @@
     "scheduledAt": "2026-11-19T01:58:00.000Z",
     "createdAt": "2026-11-14T00:50:53.389Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18184722301437919",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "toneFixed": true
+    "toneFixed": true,
+    "chainPublishedIds": [
+      "18184722301437919"
+    ]
   },
   {
     "id": "1f7bcd9f-39b4-4b3c-9762-e23c2d194fce",
