@@ -10116,7 +10116,7 @@
   },
   {
     "id": "4a2841a5-111b-4a8c-a8d5-1eae53da7643",
-    "status": "reply_pending",
+    "status": "published",
     "createdAt": "2026-11-13T10:23:15.675Z",
     "handle": "jobs_curator",
     "scheduledAt": "2026-11-19T08:30:00.000Z",
@@ -10180,7 +10180,10 @@
     "mainUrl": "https://www.threads.com/@jobs_curator/post/Df6qBpZG1IJ",
     "mainTimestamp": "2026-11-19T08:31:15+0000",
     "replyId": "17881503117564220",
-    "replySentText": "📌 급여·자격·마감 시각 원문 정리 전체 보기\nhttps://hirecurator.blogspot.com/2026/11/3-2301125-14.html"
+    "replySentText": "📌 급여·자격·마감 시각 원문 정리 전체 보기\nhttps://hirecurator.blogspot.com/2026/11/3-2301125-14.html",
+    "replyUrl": "https://www.threads.com/@jobs_curator/post/Df6qDwpm0Ml",
+    "replyTimestamp": "2026-11-19T08:31:28+0000",
+    "publishedAt": "2026-11-19T08:31:40.642Z"
   },
   {
     "id": "0d54c70c-54f2-4305-9cd9-c1820dcd9526",
