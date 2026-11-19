@@ -48632,11 +48632,14 @@
     "scheduledAt": "2026-11-19T08:44:00.000Z",
     "createdAt": "2026-11-14T01:58:06.304Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18003837689812372",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18003837689812372"
+    ]
   },
   {
     "id": "ad781b73-be89-4aeb-95ec-3f4e247b0829",
