@@ -10116,7 +10116,7 @@
   },
   {
     "id": "4a2841a5-111b-4a8c-a8d5-1eae53da7643",
-    "status": "scheduled",
+    "status": "publishing",
     "createdAt": "2026-11-13T10:23:15.675Z",
     "handle": "jobs_curator",
     "scheduledAt": "2026-11-19T08:30:00.000Z",
@@ -10173,7 +10173,9 @@
     "imageSha256": "0e77042791024349413b95cafa1ef70e0082612970822ee88a465b7fab14e05c",
     "checkedAt": "2026-11-13T10:23:15.675Z",
     "updatedAt": "2026-11-17T11:40:49.999Z",
-    "blogUrl": "https://hirecurator.blogspot.com/2026/11/3-2301125-14.html"
+    "blogUrl": "https://hirecurator.blogspot.com/2026/11/3-2301125-14.html",
+    "attemptedAt": "2026-11-19T08:31:03.261Z",
+    "error": null
   },
   {
     "id": "0d54c70c-54f2-4305-9cd9-c1820dcd9526",
