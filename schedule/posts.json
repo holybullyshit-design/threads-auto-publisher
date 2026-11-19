@@ -46920,10 +46920,13 @@
     "scheduledAt": "2026-11-19T04:19:00.000Z",
     "createdAt": "2026-11-14T00:51:37.402Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17927519646444782",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17927519646444782"
+    ]
   },
   {
     "id": "8e9aed4b-1db4-421b-8959-75f84d8c83ab",
