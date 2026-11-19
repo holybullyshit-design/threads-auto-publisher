@@ -43930,10 +43930,13 @@
     "scheduledAt": "2026-11-19T06:12:00.000Z",
     "createdAt": "2026-11-13T22:55:08.537Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18026620613717722",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18026620613717722"
+    ]
   },
   {
     "id": "7496ab13-5be6-4378-a339-f7348f88577d",
