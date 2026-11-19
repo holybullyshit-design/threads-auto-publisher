@@ -46994,11 +46994,14 @@
     "scheduledAt": "2026-11-19T08:34:00.000Z",
     "createdAt": "2026-11-14T00:53:28.018Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18094917383286308",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18094917383286308"
+    ]
   },
   {
     "id": "b6d97aca-d923-4ef9-a4ad-9cc57ef32658",
