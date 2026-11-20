@@ -45443,10 +45443,13 @@
     "scheduledAt": "2026-11-20T01:47:00.000Z",
     "createdAt": "2026-11-13T23:53:14.108Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17881433514633752",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17881433514633752"
+    ]
   },
   {
     "id": "1039fc3e-8e88-4f70-a486-acbe6d4f84d3",
