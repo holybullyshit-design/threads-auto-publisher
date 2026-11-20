@@ -344,15 +344,22 @@
      "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
      "lastCrawl": "",
      "checkedAt": "2026-11-19T23:02:57.205Z"
+    },
+    "https://hirecurator.blogspot.com/2026/11/7040-4320-2025.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "Discovered - currently not indexed",
+     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
+     "lastCrawl": "",
+     "checkedAt": "2026-11-20T04:00:05.108Z"
     }
    },
    "sitemapSubmittedAt": "2026-11-19T17:24:57.260Z",
    "summary": {
-    "total": 49,
+    "total": 50,
     "indexed": 9,
     "redirectError": 24,
     "unknown": 6,
-    "discovered": 10,
+    "discovered": 11,
     "crawledNotIndexed": 0,
     "other": 0,
     "error": 0
@@ -515,5 +522,5 @@
    }
   }
  },
- "updatedAt": "2026-11-20T02:34:13.277Z"
+ "updatedAt": "2026-11-20T04:00:05.108Z"
 }
