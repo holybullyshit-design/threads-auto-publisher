@@ -45508,10 +45508,13 @@
     "scheduledAt": "2026-11-20T06:49:00.000Z",
     "createdAt": "2026-11-13T23:54:34.787Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18083641025714501",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "18083641025714501"
+    ]
   },
   {
     "id": "a437742d-d1f2-4703-823b-3325b00f0722",
