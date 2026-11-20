@@ -47170,11 +47170,14 @@
     "scheduledAt": "2026-11-20T08:12:00.000Z",
     "createdAt": "2026-11-14T00:57:55.812Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18130828342842088",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18130828342842088"
+    ]
   },
   {
     "id": "93045490-49b1-41e1-9d30-1c95f5d56466",
