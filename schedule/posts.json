@@ -43979,10 +43979,13 @@
     "scheduledAt": "2026-11-20T01:32:00.000Z",
     "createdAt": "2026-11-13T22:56:19.473Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18005284013808005",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18005284013808005"
+    ]
   },
   {
     "id": "88c981ed-4206-437f-a5d8-a94c6ad7a17e",
