@@ -11329,5 +11329,1335 @@
     "imageSha256": "15968130e27a927ba474be5561d727734125b3cf43379a45011bc2b10afc6a3f",
     "checkedAt": "2026-11-14T11:13:03.176Z",
     "updatedAt": "2026-11-17T11:40:49.999Z"
+  },
+  {
+    "id": "66fa0b4b-d73f-43cb-9b8e-b0e23caf94de",
+    "status": "scheduled",
+    "createdAt": "2026-11-20T13:58:42.522Z",
+    "handle": "jobs_curator",
+    "scheduledAt": "2026-11-24T23:30:00.000Z",
+    "noticeId": "307149",
+    "title": "한국동서발전 채용｜정규직 101명 학력무관 토익700·12/1 17시 마감",
+    "angle": "학력 무관 정규직 + 평균연봉",
+    "text": "🚨학력 안 보는 정규직 101명, 직원 평균연봉 9,899만원 공기업\n토익 700점은 필수\n한국동서발전 2027년 상반기 신입 채용\n\n1. 대졸수준 91명 · 고졸 10명\n2. 💰 세전 연봉 미공개\n3. 대졸수준은 학력·나이·성별 제한 없음\n4. 필기 12/19(토) 서울·울산: NCS+전공+한국사\n5. ⏰ 12/1(화) 오후 5시 마감\n\n‘대졸수준’은 입사 뒤 처우 기준일 뿐, 실제 학력은 안 봅니다\n※ 직원 평균연봉: ALIO 2025 결산 정규직 1인당 평균",
+    "replyText": "📌 급여·자격·마감 시각 원문 정리 전체 보기\n{블로그주소}",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3088114",
+    "sourceSha256": "2fc648121cde8921123b8b0fdfce1693c6caf4b5fccfb3f72d9089b38d4343e8",
+    "blogEvidence": "한국동서발전 2027년 상반기 신입직원 101명",
+    "startsAt": "2026-11-24T00:00:00+09:00",
+    "deadlineAt": "2026-12-01T17:00:00+09:00",
+    "verifiedPay": "세전 연봉 미공개",
+    "employmentType": "정규직(신입)",
+    "eligibility": "대졸수준(일반/보훈): 학력, 연령, 성별 제한 없음(정년 만 60세 이상 지원 불가), '대졸수준'은 입사 후 처우 수준이며 실제 학력 무관; 일반전형은 토익 700점 이상(TOEIC-S, New TEPS, TEPS-S, OPIc 환산 인정, 보훈·장애인·전문자격증 소지자 면제); 보훈전형은 취업지원(보훈)대상자, 어학 제한 없음; 고졸: 최종 학력 고등학교 졸업(예정)자(검정고시, 대학 중퇴·재학·휴학 포함), 전문대·대학 졸업(예정)자 지원 불가; 공통: 병역의무 불이행 사실 없는 자(현역은 최종합격자 발표일 이전 전역 가능자), 2027년 입사일부터 근무 가능, 인사관리규정 제16조 결격사유 없는 자, 자격 요건은 접수 마감일 기준; 모집단위 1개만 지원(중복지원 불가); 공식 공고",
+    "blogTitle": "한국동서발전 채용｜정규직 101명 학력무관 토익700·12/1 17시 마감",
+    "card": {
+      "badge": "🚨 정규직 101명",
+      "hook": [
+        "학력 안 보는",
+        "정규직 [[101명]]"
+      ],
+      "org": "한국동서발전",
+      "role": "2027 상반기 신입 101명",
+      "facts": [
+        [
+          "🎓",
+          "학력·나이 제한 없음"
+        ],
+        [
+          "📝",
+          "토익 700점 이상 필수"
+        ],
+        [
+          "🗓️",
+          "필기 12/19(토)"
+        ]
+      ],
+      "deadline": "12/1(화) 오후 5시 마감"
+    },
+    "avgPay": {
+      "label": "직원 평균연봉",
+      "value": "9,899만원",
+      "source": "https://alio.go.kr/item/itemReportTerm.do?apbaId=C0066&reportFormRootNo=2060",
+      "basis": "ALIO 2025 결산 정규직 1인당 평균보수"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/6cbdcf842843c5df22cb.png",
+    "imageSha256": "6cbdcf842843c5df22cb99a047ac569de9fc3bea2ca5c609451c8aa4b93b5dcb",
+    "checkedAt": "2026-11-20T13:58:42.522Z",
+    "updatedAt": "2026-11-20T13:58:42.522Z"
+  },
+  {
+    "id": "9d4b81d6-a510-451f-86e0-344504d7876c",
+    "status": "scheduled",
+    "createdAt": "2026-11-20T13:58:42.522Z",
+    "handle": "high_quality_hire",
+    "scheduledAt": "2026-11-25T01:30:00.000Z",
+    "noticeId": "306470",
+    "title": "한국노동연구원 채용｜박사급 연구위원 정규직 6명·12/10 16시 마감",
+    "angle": "국책연구원 평균연봉 vs 박사 예정자",
+    "text": "💰 직원 평균연봉 7,426만원 국책연구원, 박사 예정자도 정규직 지원\n2027년 8월 말까지 박사 받으면 OK\n한국노동연구원 연구위원 6명 조건 비교\n\n1. 노동시장 3명 · 인사조직·노사관계 3명\n2. 💰 세전 연봉 미공개\n3. 서류 → 인터뷰 → 논문발표(현장)\n4. 모든 전형 한국어 진행\n5. ⏰ 12/10(목) 오후 4시 마감\n\n추천서 2건도 마감 전에 도착해야 합니다\n※ 직원 평균연봉: ALIO 2025 결산 정규직 1인당 평균",
+    "replyText": "👆 직무별 급여·자격 비교 전체는 여기\n{블로그주소}",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3083482",
+    "sourceSha256": "a4c02ad51f90d629c8bcf3de8000ab2aff42868b382894fe3e034e0930967d48",
+    "blogEvidence": "한국노동연구원 연구위원 직군 6명",
+    "startsAt": "2026-10-29T09:30:00+09:00",
+    "deadlineAt": "2026-12-10T16:00:00+09:00",
+    "verifiedPay": "세전 연봉 미공개",
+    "employmentType": "정규직(연구위원 직군)",
+    "eligibility": "채용 모집분야 박사학위 소지자 또는 2027년 8월말까지 모집분야 박사학위 취득을 완료하여 학위를 소지한 자; 남자는 채용공고일 기준 군필 또는 면제자; 채용예정일 기준 만 60세(정년) 이내(인사규정 제50조); 국가공무원법 제33조, 공민권 정지·박탈, 병역의무 기피, 연구원 징계 면직 후 2년 미경과, 최근 5년 부정채용 취소에 해당하지 않는 자; 유관기관 근무 경력자 우대 가능; 모든 전형 한국어 진행; 공식 공고",
+    "blogTitle": "한국노동연구원 채용｜박사급 연구위원 정규직 6명·12/10 16시 마감",
+    "card": {
+      "badge": "💰 연봉 비교",
+      "tags": [
+        "정규직 6명",
+        "박사 예정 OK"
+      ],
+      "org": "한국노동연구원",
+      "role": "연구위원 직군 6명",
+      "sub": "이번 공고 연봉 미공개",
+      "facts": [
+        [
+          "분야",
+          "노동시장 3명"
+        ],
+        [
+          "분야",
+          "인사조직·노사관계 3명"
+        ],
+        [
+          "전형",
+          "서류 → 인터뷰 → 논문발표"
+        ]
+      ],
+      "deadline": "12/10(목) 오후 4시 마감",
+      "hero": {
+        "label": "직원 평균연봉 (2025 결산)",
+        "value": "7,426만원",
+        "sub": "이번 공고 연봉 미공개"
+      }
+    },
+    "avgPay": {
+      "label": "직원 평균연봉",
+      "value": "7,426만원",
+      "source": "https://alio.go.kr/item/itemReportTerm.do?apbaId=C0179&reportFormRootNo=2060",
+      "basis": "ALIO 2025 결산 정규직 1인당 평균보수"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/0d70b19f17f4ce596374.png",
+    "imageSha256": "0d70b19f17f4ce59637420d634adf16be77b48b04bd1b119bcc688ee83208f60",
+    "checkedAt": "2026-11-20T13:58:42.522Z",
+    "updatedAt": "2026-11-20T13:58:42.522Z"
+  },
+  {
+    "id": "e9956958-d31d-44b7-8c79-88f1169d8e08",
+    "status": "scheduled",
+    "createdAt": "2026-11-20T13:58:42.522Z",
+    "handle": "jobs_curator",
+    "scheduledAt": "2026-11-25T08:30:00.000Z",
+    "noticeId": "307044",
+    "title": "한국청소년상담복지개발원 채용｜재택 온라인상담원 19명·12/1 16시 마감",
+    "angle": "재택 근무 희소성",
+    "text": "🏠근무 장소가 ‘자택’인 공공기관 상담원 19명\n하루 4시간, 노트북으로 청소년 채팅 상담\n한국청소년상담복지개발원 온라인상담원 채용\n\n1. 24시간 7교대 · 월 24일 근무\n2. 💰 월 평균 급여 130만원 이상(연봉제)\n3. 관련분야 석사, 또는 학사+실무경력 2년\n4. 필기 없음: 서류 → 구술·사례 면접(부산 본원 대면)\n5. ⏰ 12/1(화) 오후 4시 마감\n\n유선 인터넷이 되는 자택 근무 환경이 필수입니다",
+    "replyText": "📌 급여·자격·마감 시각 원문 정리 전체 보기\n{블로그주소}",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3087442",
+    "sourceSha256": "f64c3afe8dbe0469575150d87a3566c1b915f3f60688948d29fd9938a7c24ee0",
+    "blogEvidence": "한국청소년상담복지개발원 온라인상담원 19명",
+    "startsAt": "2026-11-17T00:00:00+09:00",
+    "deadlineAt": "2026-12-01T16:00:00+09:00",
+    "verifiedPay": "월 평균 급여 130만원 이상(연봉제)",
+    "employmentType": "기간제(온라인상담)",
+    "eligibility": "다음 중 하나 이상: 관련분야 석사학위 취득자, 관련분야 학사학위 취득자로서 관련분야 실무경력 2년 이상인 자, 기타 이와 동등한 자격이 있다고 인정되는 자(관련분야: 교육, 상담·심리, 사회사업(복지), 정신의학, 청소년, 아동 등); 학위는 졸업만 인정(재학·수료 불인정); 자격요건·경력은 접수 마감일 기준; 정년연령(만 60세) 초과자·임용 결격사유·아동청소년 관련 취업제한 사유 해당자는 합격 취소; 유선 인터넷접속 자택 근무 환경 필수; 1개 지원분야만 지원(중복지원 시 탈락); 공식 공고",
+    "blogTitle": "한국청소년상담복지개발원 채용｜재택 온라인상담원 19명·12/1 16시 마감",
+    "card": {
+      "badge": "🏠 재택 근무",
+      "hook": [
+        "근무 장소가",
+        "[[자택]]인 상담원"
+      ],
+      "org": "한국청소년상담복지개발원",
+      "role": "온라인상담원 19명",
+      "facts": [
+        [
+          "⏰",
+          "하루 4시간 7교대"
+        ],
+        [
+          "💰",
+          "월 평균 130만원 이상"
+        ],
+        [
+          "🎓",
+          "석사 또는 학사+경력 2년"
+        ]
+      ],
+      "deadline": "12/1(화) 오후 4시 마감"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/39241c998fae0746156d.png",
+    "imageSha256": "39241c998fae0746156d8eeb48a7b5757a12e2e49bac381389b915787d7d0530",
+    "checkedAt": "2026-11-20T13:58:42.522Z",
+    "updatedAt": "2026-11-20T13:58:42.522Z"
+  },
+  {
+    "id": "c6732d07-7242-493a-a9f1-65b93ec91ccf",
+    "status": "scheduled",
+    "createdAt": "2026-11-20T13:58:42.522Z",
+    "handle": "hire_masters",
+    "scheduledAt": "2026-11-25T09:30:00.000Z",
+    "noticeId": "306819",
+    "title": "KDI국제정책대학원 채용｜정년트랙 전임교원 6명 이내·12/5 13시59분 마감",
+    "angle": "박사 예정자 교수 지원 반전",
+    "text": "박사 따기 전인데 교수 지원이 된대\n직원 평균연봉 1억 792만원 KDI국제정책대학원이야\n정년트랙 전임교원 6명 이내 뽑아\n\n1. 8개 분야 · 강의는 영어로\n2. 💰 세전 연봉 미공개\n3. 2027년 8월 31일까지 박사 받을 예정이면 OK\n4. 서류 → 화상면접 → 대면 Job Seminar\n5. ⏰ 12/5(토) 오후 1시 59분 마감\n\n마감은 미국 동부시간 기준이라 한국은 토요일 낮이야\n※ 직원 평균연봉: ALIO 2025 결산 정규직 1인당 평균",
+    "replyText": "👉 공고문 기준 정리 글은 여기서 확인\n{블로그주소}",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3085768",
+    "sourceSha256": "1a0e6d8698d6a6fa1b1f6c7266a5694e6deaea3d5a6ec4df8092ee11709951ec",
+    "blogEvidence": "KDI국제정책대학원 전임교원 6명 이내",
+    "startsAt": "2026-11-09T00:00:00+09:00",
+    "deadlineAt": "2026-12-05T13:59:00+09:00",
+    "verifiedPay": "세전 연봉 미공개",
+    "employmentType": "정규직(정년트랙 전임교원)",
+    "eligibility": "채용분야 관련 박사학위 소지자 또는 2027. 8. 31. 기준 채용분야 관련 박사학위 취득 예정자(② 경영전략은 영문 공고상 임용 시작일까지 박사학위); 사립학교법·교원인사규칙 결격사유, 국가공무원법 제33조, 공민권 정지·박탈, 부패방지법 제82조, 병역법 제76조, 최근 5년 부정채용 취소, 해외여행 결격사유에 해당하지 않는 자; 우대 실증 방법론·국제 학생 교육·강의 또는 정책 연구 경험; 모든 서류 영문; 공식 공고",
+    "blogTitle": "KDI국제정책대학원 채용｜정년트랙 전임교원 6명 이내·12/5 13시59분 마감",
+    "card": {
+      "badge": "👀 이거 봤어?",
+      "hook": [
+        "박사 예정자도",
+        "[[교수]] 지원 돼"
+      ],
+      "org": "KDI국제정책대학원",
+      "role": "정년트랙 전임교원 6명 이내",
+      "facts": [
+        [
+          "🎓",
+          "2027년 8월 31일 박사 예정 OK"
+        ],
+        [
+          "🌐",
+          "8개 분야 · 영어 강의"
+        ],
+        [
+          "💰",
+          "세전 연봉 미공개"
+        ]
+      ],
+      "deadline": "12/5(토) 오후 1시 59분 마감"
+    },
+    "avgPay": {
+      "label": "직원 평균연봉",
+      "value": "1억 792만원",
+      "source": "https://alio.go.kr/item/itemReportTerm.do?apbaId=C0437&reportFormRootNo=2060",
+      "basis": "ALIO 2025 결산 정규직 1인당 평균보수"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/39665d931ad2354621e4.png",
+    "imageSha256": "39665d931ad2354621e43dc5b1786f5650ce8ad2284362d01304adc897fc5dc9",
+    "checkedAt": "2026-11-20T13:58:42.522Z",
+    "updatedAt": "2026-11-20T13:58:42.522Z"
+  },
+  {
+    "id": "65600d57-8ef5-4956-9190-fad0b6ea3a4c",
+    "status": "scheduled",
+    "createdAt": "2026-11-20T13:58:42.522Z",
+    "handle": "jobs_curator",
+    "scheduledAt": "2026-11-25T23:30:00.000Z",
+    "noticeId": "307276",
+    "title": "코레일테크 채용｜현장 기간제 565명 학력무관 필기없음·12/4 12시 마감",
+    "angle": "학력·필기 없는 대량 채용",
+    "text": "🚨학력 안 보고 필기도 없는 현장직 565명\n환경분야는 응시자격 ‘자격무관’\n코레일테크 2027년 제1차 현장 기간제 채용\n\n1. 역환경 215명 · 차량환경 269명 등\n2. 💰 급여 금액 미공개\n3. 필기 없음: 서류 → 국민체력100 체력검증 → 대전 면접\n4. 565명 중 480명은 2027년 1~4월 계약(공고 표 합계)\n5. ⏰ 12/4(금) 낮 12시 마감\n\n체력검증은 근력 포함 2개 항목 3등급 이상이 기준입니다",
+    "replyText": "📌 급여·자격·마감 시각 원문 정리 전체 보기\n{블로그주소}",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3089001",
+    "sourceSha256": "9864979aa669a6798a1b0ecce9a43e67ba80ecf195afc8b1a9b3010d42e248f2",
+    "blogEvidence": "코레일테크 현장 기간제사원 565명",
+    "startsAt": "2026-11-20T12:00:00+09:00",
+    "deadlineAt": "2026-12-04T12:00:00+09:00",
+    "verifiedPay": "급여 금액 미공개",
+    "employmentType": "현장 기간제",
+    "eligibility": "공통: 학력, 전공, 성별 제한 없음(만 18세 미만 지원 불가), 직원채용세칙 제17조 임용결격사유 없는 자, 남자는 군필 또는 면제자, 회사가 지정한 임용일부터 즉시 근무 가능한 자(자격은 공고일 2026.11.20 기준, 연령·병역은 입사일 기준); 환경분야(역환경·차량환경·건물환경) 사원과 차량 사원(일반)은 자격무관; 차량 사원(기술)은 4등급 이상 철도차량정비기술자 또는 해당 국가기술자격; 소장·팀장·반장·전기·시설·경비 등은 분야별 자격증·경력 필수; 분야별 중복지원 불가; 서류 합격자는 국민체력100 체력인증(근력 포함 2개 항목 이상 3등급 이상) 필요(장애인 면제); 공식 공고",
+    "blogTitle": "코레일테크 채용｜현장 기간제 565명 학력무관 필기없음·12/4 12시 마감",
+    "card": {
+      "badge": "🔔 필기 없음",
+      "hook": [
+        "학력 안 보는",
+        "현장직 [[565명]]"
+      ],
+      "org": "코레일테크",
+      "role": "현장 기간제 565명",
+      "facts": [
+        [
+          "🧹",
+          "역환경 215 · 차량환경 269"
+        ],
+        [
+          "💪",
+          "국민체력100 체력검증"
+        ],
+        [
+          "📝",
+          "필기 없이 면접"
+        ]
+      ],
+      "deadline": "12/4(금) 낮 12시 마감"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/6e06a93b4f32e0b2b3e1.png",
+    "imageSha256": "6e06a93b4f32e0b2b3e186aaf586003e19b52ebd0560855e085dd2e8493556d8",
+    "checkedAt": "2026-11-20T13:58:42.522Z",
+    "updatedAt": "2026-11-20T13:58:42.522Z"
+  },
+  {
+    "id": "7c010f2a-d1cc-4b9a-8c00-c83fae905955",
+    "status": "scheduled",
+    "createdAt": "2026-11-20T13:58:42.522Z",
+    "handle": "high_quality_hire",
+    "scheduledAt": "2026-11-26T01:30:00.000Z",
+    "noticeId": "307149",
+    "title": "한국동서발전 채용｜정규직 101명 학력무관 토익700·12/1 17시 마감",
+    "angle": "공기업 평균연봉 vs 신입 초임",
+    "text": "💰 직원 평균연봉 9,899만원, 신입 초임은 4,754만원\n학력 안 보는 정규직 101명\n한국동서발전 신입 조건 비교\n\n1. 대졸수준 91명(일반 77 · 보훈 14) · 고졸 10명\n2. 💰 이번 공고 세전 연봉 미공개\n3. 일반전형 토익 700점 이상 필수\n4. 서류 30배수 → 필기 12/19(토) 서울·울산\n5. ⏰ 12/1(화) 오후 5시 마감\n\n초임은 ALIO 2025 결산 대졸 사무직 무경력 기준, 토익 사무 900점·기술 850점이면 어학 만점입니다\n※ 직원 평균연봉: ALIO 2025 결산 정규직 1인당 평균",
+    "replyText": "👆 직무별 급여·자격 비교 전체는 여기\n{블로그주소}",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3088114",
+    "sourceSha256": "2fc648121cde8921123b8b0fdfce1693c6caf4b5fccfb3f72d9089b38d4343e8",
+    "blogEvidence": "한국동서발전 2027년 상반기 신입직원 101명",
+    "startsAt": "2026-11-24T00:00:00+09:00",
+    "deadlineAt": "2026-12-01T17:00:00+09:00",
+    "verifiedPay": "세전 연봉 미공개",
+    "employmentType": "정규직(신입)",
+    "eligibility": "대졸수준(일반/보훈): 학력, 연령, 성별 제한 없음(정년 만 60세 이상 지원 불가), '대졸수준'은 입사 후 처우 수준이며 실제 학력 무관; 일반전형은 토익 700점 이상(TOEIC-S, New TEPS, TEPS-S, OPIc 환산 인정, 보훈·장애인·전문자격증 소지자 면제); 보훈전형은 취업지원(보훈)대상자, 어학 제한 없음; 고졸: 최종 학력 고등학교 졸업(예정)자(검정고시, 대학 중퇴·재학·휴학 포함), 전문대·대학 졸업(예정)자 지원 불가; 공통: 병역의무 불이행 사실 없는 자(현역은 최종합격자 발표일 이전 전역 가능자), 2027년 입사일부터 근무 가능, 인사관리규정 제16조 결격사유 없는 자, 자격 요건은 접수 마감일 기준; 모집단위 1개만 지원(중복지원 불가); 공식 공고",
+    "blogTitle": "한국동서발전 채용｜정규직 101명 학력무관 토익700·12/1 17시 마감",
+    "card": {
+      "badge": "💰 연봉 비교",
+      "tags": [
+        "정규직 101명",
+        "학력 무관"
+      ],
+      "org": "한국동서발전",
+      "role": "상반기 신입 101명",
+      "sub": "신입 초임 4,754만원(2025 결산)",
+      "facts": [
+        [
+          "어학",
+          "토익 700점 이상"
+        ],
+        [
+          "서류",
+          "30배수 선발"
+        ],
+        [
+          "필기",
+          "12/19(토)"
+        ]
+      ],
+      "deadline": "12/1(화) 오후 5시 마감",
+      "hero": {
+        "label": "직원 평균연봉 (2025 결산)",
+        "value": "9,899만원",
+        "sub": "신입 초임 4,754만원(2025 결산)"
+      }
+    },
+    "avgPay": {
+      "label": "직원 평균연봉",
+      "value": "9,899만원",
+      "source": "https://alio.go.kr/item/itemReportTerm.do?apbaId=C0066&reportFormRootNo=2060",
+      "basis": "ALIO 2025 결산 정규직 1인당 평균보수"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/be2edbab27404918a942.png",
+    "imageSha256": "be2edbab27404918a942c5f7ae707d58b53bc2cd127aa86bc73b916f60a53578",
+    "checkedAt": "2026-11-20T13:58:42.522Z",
+    "updatedAt": "2026-11-20T13:58:42.522Z"
+  },
+  {
+    "id": "f6985ecf-5416-48a8-8556-ddafc385772a",
+    "status": "scheduled",
+    "createdAt": "2026-11-20T13:58:42.522Z",
+    "handle": "jobs_curator",
+    "scheduledAt": "2026-11-26T08:30:00.000Z",
+    "noticeId": "307225",
+    "title": "부산대학교병원 채용｜정규직 33명 필기없음 간호 경력3년·12/3 17시 마감",
+    "angle": "필기 없는 국립대병원 정규직",
+    "text": "🚨필기 없이 뽑는 국립대병원 정규직 33명\n직원 평균연봉 7,712만원 부산대학교병원\n진료지원간호사 30명은 임상경력 3년 필수\n\n1. 진료지원간호사 30 · 의료사회복지사 2 · 방사선사 1\n2. 💰 세전 연봉 미공개\n3. 필기 없음: 실무(실기) 60점 + 면접 40점\n4. 학력·연령 제한 없음(만 60세 이상 제외)\n5. ⏰ 12/3(목) 오후 5시 마감\n\n요양병원 경력은 임상경력으로 인정되지 않습니다\n※ 직원 평균연봉: ALIO 2025 결산 정규직 1인당 평균",
+    "replyText": "📌 급여·자격·마감 시각 원문 정리 전체 보기\n{블로그주소}",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3088502",
+    "sourceSha256": "a45a7bebec1929e6f18315ee8ace0aa20b59ddf6af5cb40503d206f46faa3cd2",
+    "blogEvidence": "부산대학교병원 일반직 신규직원 33명",
+    "startsAt": "2026-11-19T00:00:00+09:00",
+    "deadlineAt": "2026-12-03T17:00:00+09:00",
+    "verifiedPay": "세전 연봉 미공개",
+    "employmentType": "정규직",
+    "eligibility": "진료지원간호사(30명): 간호사 면허증 소지자, 병원·종합병원 또는 군병원 임상 경력 3년 이상(요양병원 경력 불인정, 휴직기간 제외), 야간 및 교대근무 가능자 모두 충족; 의료사회복지사(2명): 의료사회복지사 자격증 + 영어능력검정시험 성적(TOEIC 700점, TOEIC Speaking IM2(120점), TOEFL-IBT 79점, NEW TEPS 300점 중 1개 이상); 방사선사(1명): 방사선사 면허증 + 영어 성적(TOEIC 600점, TOEIC Speaking IM1(110점), TOEFL-IBT 68점, NEW TEPS 258점 중 1개 이상); 영어 성적은 2024.12.09 이후 발표된 국내 정기시험; 공통: 학력·연령 제한 없음(만 60세 이상 지원 불가), 남자는 군필 또는 면제자(전역예정일 전 6개월 이내 지원 가능), 인사규정 제22조 결격사유 없는 자, 응시자격은 공고마감일(2026.12.3.) 기준; 직종별 복수 지원 시 불합격; 공식 공고",
+    "blogTitle": "부산대학교병원 채용｜정규직 33명 필기없음 간호 경력3년·12/3 17시 마감",
+    "card": {
+      "badge": "🔔 필기 없음",
+      "hook": [
+        "국립대병원",
+        "정규직 [[33명]]"
+      ],
+      "org": "부산대학교병원",
+      "role": "일반직 신규직원 33명",
+      "facts": [
+        [
+          "🩺",
+          "간호사 임상경력 3년+"
+        ],
+        [
+          "📝",
+          "실기 60 + 면접 40"
+        ],
+        [
+          "🎓",
+          "학력·연령 제한 없음"
+        ]
+      ],
+      "deadline": "12/3(목) 오후 5시 마감"
+    },
+    "avgPay": {
+      "label": "직원 평균연봉",
+      "value": "7,712만원",
+      "source": "https://alio.go.kr/item/itemReportTerm.do?apbaId=C0071&reportFormRootNo=2060",
+      "basis": "ALIO 2025 결산 정규직 1인당 평균보수"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/72788cd756bfb4d6a338.png",
+    "imageSha256": "72788cd756bfb4d6a33840ffc846bc51395fcbf1cace1076fb381edfeb92ad0c",
+    "checkedAt": "2026-11-20T13:58:42.522Z",
+    "updatedAt": "2026-11-20T13:58:42.522Z"
+  },
+  {
+    "id": "3eb3fee0-22ae-4eee-83df-04cfcb2b3aea",
+    "status": "scheduled",
+    "createdAt": "2026-11-20T13:58:42.522Z",
+    "handle": "high_quality_hire",
+    "scheduledAt": "2026-11-26T10:30:00.000Z",
+    "noticeId": "306819",
+    "title": "KDI국제정책대학원 채용｜정년트랙 전임교원 6명 이내·12/5 13시59분 마감",
+    "angle": "1억 평균연봉 vs 교원 연봉 미공개",
+    "text": "💰 직원 평균연봉 1억 792만원 vs 이번 교원 연봉은 미공개\n박사 예정자도 지원 가능한 정년트랙\nKDI국제정책대학원 전임교원 조건 비교\n\n1. 정년트랙 전임교원 6명 이내 · 8개 분야\n2. 💰 세전 연봉 미공개\n3. 2027년 8월 31일까지 박사 취득 예정 OK\n4. 서류 → 화상면접 → 대면 Job Seminar\n5. ⏰ 12/5(토) 오후 1시 59분 마감\n\n강의는 영어로 해야 한다는 점을 먼저 확인하세요\n※ 직원 평균연봉: ALIO 2025 결산 정규직 1인당 평균",
+    "replyText": "👆 직무별 급여·자격 비교 전체는 여기\n{블로그주소}",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3085768",
+    "sourceSha256": "1a0e6d8698d6a6fa1b1f6c7266a5694e6deaea3d5a6ec4df8092ee11709951ec",
+    "blogEvidence": "KDI국제정책대학원 전임교원 6명 이내",
+    "startsAt": "2026-11-09T00:00:00+09:00",
+    "deadlineAt": "2026-12-05T13:59:00+09:00",
+    "verifiedPay": "세전 연봉 미공개",
+    "employmentType": "정규직(정년트랙 전임교원)",
+    "eligibility": "채용분야 관련 박사학위 소지자 또는 2027. 8. 31. 기준 채용분야 관련 박사학위 취득 예정자(② 경영전략은 영문 공고상 임용 시작일까지 박사학위); 사립학교법·교원인사규칙 결격사유, 국가공무원법 제33조, 공민권 정지·박탈, 부패방지법 제82조, 병역법 제76조, 최근 5년 부정채용 취소, 해외여행 결격사유에 해당하지 않는 자; 우대 실증 방법론·국제 학생 교육·강의 또는 정책 연구 경험; 모든 서류 영문; 공식 공고",
+    "blogTitle": "KDI국제정책대학원 채용｜정년트랙 전임교원 6명 이내·12/5 13시59분 마감",
+    "card": {
+      "badge": "💰 연봉 비교",
+      "tags": [
+        "정년트랙",
+        "박사 예정 OK"
+      ],
+      "org": "KDI국제정책대학원",
+      "role": "전임교원 6명 이내",
+      "sub": "이번 공고 연봉 미공개",
+      "facts": [
+        [
+          "분야",
+          "8개 분야"
+        ],
+        [
+          "강의",
+          "영어"
+        ],
+        [
+          "학위",
+          "2027년 8월 31일까지"
+        ]
+      ],
+      "deadline": "12/5(토) 오후 1시 59분 마감",
+      "hero": {
+        "label": "직원 평균연봉 (2025 결산)",
+        "value": "1억 792만원",
+        "sub": "이번 공고 연봉 미공개"
+      }
+    },
+    "avgPay": {
+      "label": "직원 평균연봉",
+      "value": "1억 792만원",
+      "source": "https://alio.go.kr/item/itemReportTerm.do?apbaId=C0437&reportFormRootNo=2060",
+      "basis": "ALIO 2025 결산 정규직 1인당 평균보수"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/34690c218c592ec1abe2.png",
+    "imageSha256": "34690c218c592ec1abe26090794905706e516fdac67e957b7664f1da31bb5ffd",
+    "checkedAt": "2026-11-20T13:58:42.522Z",
+    "updatedAt": "2026-11-20T13:58:42.522Z"
+  },
+  {
+    "id": "9613518b-c3a4-43f3-91f0-4ad8b301f33d",
+    "status": "scheduled",
+    "createdAt": "2026-11-20T13:58:42.522Z",
+    "handle": "jobs_curator",
+    "scheduledAt": "2026-11-26T23:30:00.000Z",
+    "noticeId": "307285",
+    "title": "한국수자원공사 채용｜AI 체험형 인턴 150명 월223만원·12/4 14시 마감",
+    "angle": "나이만 맞으면 되는 인턴",
+    "text": "🔔만 18~34세면 학력 안 보는 공기업 인턴 150명\n시급 10,700원, 월 223만원 수준\n한국수자원공사 AI 체험형 인턴 채용\n\n1. 행정 39 · AI 32 · 환경 32 · 토목 19 등(공고 표 합계)\n2. 💰 시급 10,700원(월 223만원 수준 세전)\n3. 필기 없음: 서류 → 온라인 AI면접 · 영상평가\n4. AI 분야는 빅데이터분석기사·ADsP 등 자격증 필수\n5. ⏰ 12/4(금) 오후 2시 마감\n\n근무는 12월 28일부터 3개월, 합숙소는 제공되지 않습니다",
+    "replyText": "📌 급여·자격·마감 시각 원문 정리 전체 보기\n{블로그주소}",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3089070",
+    "sourceSha256": "26dd16726b87590d8cb15bf78ed4f3fb652b633a56fda777cf8f77875ff5991f",
+    "blogEvidence": "한국수자원공사 AI 체험형 인턴 150명",
+    "startsAt": "2026-11-27T00:00:00+09:00",
+    "deadlineAt": "2026-12-04T14:00:00+09:00",
+    "verifiedPay": "시급 10,700원(월 223만원 수준 세전)",
+    "employmentType": "체험형 인턴(기간제근로자)",
+    "eligibility": "청년고용촉진 특별법상 청년으로 입사일('26.12.28.) 기준 만 18세 이상 만 34세 이하('91.12.29.~'08.12.28. 출생, 군필자 복무기간에 따라 상한 1~3세 연장); K-water 기간제근로자 관리규정 채용 결격사유 없는 자; 입사일부터 현업 전일근무 가능자; 공고일 기준 K-water 체험형 인턴 2회 이상 수료자 지원 불가; AI 분야는 빅데이터분석기사, AICE Professional, AICE Associate, ADP, ADsP 중 하나 이상 소지자; 학력 조건 없음(잡알리오 학력무관); 근무지별 분야 1개만 지원(중복지원 불가); 공식 공고",
+    "blogTitle": "한국수자원공사 채용｜AI 체험형 인턴 150명 월223만원·12/4 14시 마감",
+    "card": {
+      "badge": "🔔 인턴 150명",
+      "hook": [
+        "학력 안 보는",
+        "공기업 인턴 [[150명]]"
+      ],
+      "org": "한국수자원공사",
+      "role": "AI 체험형 인턴 150명",
+      "facts": [
+        [
+          "💰",
+          "월 223만원 수준"
+        ],
+        [
+          "🎂",
+          "만 18~34세"
+        ],
+        [
+          "📝",
+          "필기 없이 AI면접"
+        ]
+      ],
+      "deadline": "12/4(금) 오후 2시 마감"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/b973ccda7789e168e5b1.png",
+    "imageSha256": "b973ccda7789e168e5b1552e8bae3271279fbc6d477b8d01d2805f462589092e",
+    "checkedAt": "2026-11-20T13:58:42.522Z",
+    "updatedAt": "2026-11-20T13:58:42.522Z"
+  },
+  {
+    "id": "c433ec08-53e8-4ffa-9caa-7b038880bfc3",
+    "status": "scheduled",
+    "createdAt": "2026-11-20T13:58:42.522Z",
+    "handle": "hire_masters",
+    "scheduledAt": "2026-11-27T00:30:00.000Z",
+    "noticeId": "307276",
+    "title": "코레일테크 채용｜현장 기간제 565명 학력무관 필기없음·12/4 12시 마감",
+    "angle": "필기 없는 대신 체력시험 반전",
+    "text": "필기 없는 현장직 565명 떴어, 근데 체력시험이 있어\n학력·전공 안 보고 환경분야는 자격무관이야\n코레일테크 현장 기간제사원 채용이야\n\n1. 역환경 215명 · 차량환경 269명 · 기술 76명\n2. 💰 급여 금액 미공개\n3. 국민체력100 체력검증: 근력 포함 2개 항목 3등급 이상\n4. 면접은 대전에서 12월 15~16일\n5. ⏰ 12/4(금) 낮 12시 마감\n\n480명은 1~4월 넉 달 계약이니까 기간 꼭 확인해(공고 표 합계)",
+    "replyText": "👉 공고문 기준 정리 글은 여기서 확인\n{블로그주소}",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3089001",
+    "sourceSha256": "9864979aa669a6798a1b0ecce9a43e67ba80ecf195afc8b1a9b3010d42e248f2",
+    "blogEvidence": "코레일테크 현장 기간제사원 565명",
+    "startsAt": "2026-11-20T12:00:00+09:00",
+    "deadlineAt": "2026-12-04T12:00:00+09:00",
+    "verifiedPay": "급여 금액 미공개",
+    "employmentType": "현장 기간제",
+    "eligibility": "공통: 학력, 전공, 성별 제한 없음(만 18세 미만 지원 불가), 직원채용세칙 제17조 임용결격사유 없는 자, 남자는 군필 또는 면제자, 회사가 지정한 임용일부터 즉시 근무 가능한 자(자격은 공고일 2026.11.20 기준, 연령·병역은 입사일 기준); 환경분야(역환경·차량환경·건물환경) 사원과 차량 사원(일반)은 자격무관; 차량 사원(기술)은 4등급 이상 철도차량정비기술자 또는 해당 국가기술자격; 소장·팀장·반장·전기·시설·경비 등은 분야별 자격증·경력 필수; 분야별 중복지원 불가; 서류 합격자는 국민체력100 체력인증(근력 포함 2개 항목 이상 3등급 이상) 필요(장애인 면제); 공식 공고",
+    "blogTitle": "코레일테크 채용｜현장 기간제 565명 학력무관 필기없음·12/4 12시 마감",
+    "card": {
+      "badge": "👀 이거 봤어?",
+      "hook": [
+        "필기 없는",
+        "현장직 [[565명]]"
+      ],
+      "org": "코레일테크",
+      "role": "현장 기간제사원 565명",
+      "facts": [
+        [
+          "💪",
+          "국민체력100 체력검증"
+        ],
+        [
+          "🎓",
+          "학력·전공 제한 없음"
+        ],
+        [
+          "📍",
+          "면접 대전"
+        ]
+      ],
+      "deadline": "12/4(금) 낮 12시 마감"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/861356c239848f4e2e4e.png",
+    "imageSha256": "861356c239848f4e2e4e17b2e232c79e8fee06b55d7c219a755606d570da7c80",
+    "checkedAt": "2026-11-20T13:58:42.522Z",
+    "updatedAt": "2026-11-20T13:58:42.522Z"
+  },
+  {
+    "id": "30866397-cbbd-4e19-87cc-13c2ca64505a",
+    "status": "scheduled",
+    "createdAt": "2026-11-20T13:58:42.522Z",
+    "handle": "jobs_curator",
+    "scheduledAt": "2026-11-27T08:30:00.000Z",
+    "noticeId": "307254",
+    "title": "한국통계정보원 채용｜IT 기간제 12명 연봉 3500만원~·12/3 13시 마감",
+    "angle": "경력 3년 연봉 숫자",
+    "text": "📍경력 3년이면 연봉 3,500만원부터, 공공기관 IT 12명\n연령·성별·학력 제한 없음\n한국통계정보원 기간제 근로자 채용\n\n1. 전산 6명 · 데이터 6명\n2. 💰 연봉 3,500만~5,500만원(선임 경력 3년 이상)\n3. 책임(10년+) 4,200만~7,500만원 · 수석(20년+) 5,500만~8,500만원\n4. 필기 없음: 서류 → 7분 구조화 면접\n5. ⏰ 12/3(목) 오후 1시 마감\n\n대전 근무 1년 계약이고, 사업 간 중복지원은 안 됩니다",
+    "replyText": "📌 급여·자격·마감 시각 원문 정리 전체 보기\n{블로그주소}",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3088876",
+    "sourceSha256": "008e5b3d8248c92ec85216615a451699eaedb9dba0caae58d5ea2736e901ce95",
+    "blogEvidence": "한국통계정보원 기간제 근로자 12명",
+    "startsAt": "2026-11-19T00:00:00+09:00",
+    "deadlineAt": "2026-12-03T13:00:00+09:00",
+    "verifiedPay": "연봉 3,500만~5,500만원(선임 경력 3년 이상)",
+    "employmentType": "기간제 근로자(전일제)",
+    "eligibility": "지원 분야(사업) 관련 수행 경력 3년 이상(필수, 미충족 시 서류전형 불합격); 연령·성별·학력 제한 없음; 인사규정 제16조(결격사유)에 해당하지 않는 자; 사업별 선발이며 사업 간 중복지원 불가; 자격·경력·우대·가점은 접수 마감일(2026.12.3.) 기준; 공식 공고",
+    "blogTitle": "한국통계정보원 채용｜IT 기간제 12명 연봉 3500만원~·12/3 13시 마감",
+    "card": {
+      "badge": "📍 IT 경력직",
+      "hook": [
+        "경력 3년이면",
+        "연봉 [[3,500만원]]부터"
+      ],
+      "org": "한국통계정보원",
+      "role": "전산·데이터 기간제 12명",
+      "facts": [
+        [
+          "💰",
+          "선임 3,500만~5,500만원"
+        ],
+        [
+          "📝",
+          "필기 없이 면접 7분"
+        ],
+        [
+          "📍",
+          "대전 근무 1년 계약"
+        ]
+      ],
+      "deadline": "12/3(목) 오후 1시 마감"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/eb13dcc5bb3c8b0eab6b.png",
+    "imageSha256": "eb13dcc5bb3c8b0eab6bb7cb5a9a8c0dc9ee3451c104f00b93e2ee4c196df981",
+    "checkedAt": "2026-11-20T13:58:42.522Z",
+    "updatedAt": "2026-11-20T13:58:42.522Z"
+  },
+  {
+    "id": "967d774a-a772-426b-85f9-b19b9e8bb9e1",
+    "status": "scheduled",
+    "createdAt": "2026-11-20T13:58:42.522Z",
+    "handle": "hire_masters",
+    "scheduledAt": "2026-11-27T09:30:00.000Z",
+    "noticeId": "307225",
+    "title": "부산대학교병원 채용｜정규직 33명 필기없음 간호 경력3년·12/3 17시 마감",
+    "angle": "신규 간호사 불가 손해 회피",
+    "text": "신규 간호사는 지원 못 하는 정규직 공고야\n진료지원간호사 30명, 임상경력 3년 이상 필수\n직원 평균연봉 7,712만원 부산대학교병원이야\n\n1. 정규직 33명 · 의료사회복지사 2명 · 방사선사 1명\n2. 💰 세전 연봉 미공개\n3. 필기 없이 실기 60점 + 면접 40점\n4. 실기·면접은 12월 17일(목)\n5. ⏰ 12/3(목) 오후 5시 마감\n\n요양병원 경력은 안 쳐주니까 경력 계산 다시 해 봐\n※ 직원 평균연봉: ALIO 2025 결산 정규직 1인당 평균",
+    "replyText": "👉 공고문 기준 정리 글은 여기서 확인\n{블로그주소}",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3088502",
+    "sourceSha256": "a45a7bebec1929e6f18315ee8ace0aa20b59ddf6af5cb40503d206f46faa3cd2",
+    "blogEvidence": "부산대학교병원 일반직 신규직원 33명",
+    "startsAt": "2026-11-19T00:00:00+09:00",
+    "deadlineAt": "2026-12-03T17:00:00+09:00",
+    "verifiedPay": "세전 연봉 미공개",
+    "employmentType": "정규직",
+    "eligibility": "진료지원간호사(30명): 간호사 면허증 소지자, 병원·종합병원 또는 군병원 임상 경력 3년 이상(요양병원 경력 불인정, 휴직기간 제외), 야간 및 교대근무 가능자 모두 충족; 의료사회복지사(2명): 의료사회복지사 자격증 + 영어능력검정시험 성적(TOEIC 700점, TOEIC Speaking IM2(120점), TOEFL-IBT 79점, NEW TEPS 300점 중 1개 이상); 방사선사(1명): 방사선사 면허증 + 영어 성적(TOEIC 600점, TOEIC Speaking IM1(110점), TOEFL-IBT 68점, NEW TEPS 258점 중 1개 이상); 영어 성적은 2024.12.09 이후 발표된 국내 정기시험; 공통: 학력·연령 제한 없음(만 60세 이상 지원 불가), 남자는 군필 또는 면제자(전역예정일 전 6개월 이내 지원 가능), 인사규정 제22조 결격사유 없는 자, 응시자격은 공고마감일(2026.12.3.) 기준; 직종별 복수 지원 시 불합격; 공식 공고",
+    "blogTitle": "부산대학교병원 채용｜정규직 33명 필기없음 간호 경력3년·12/3 17시 마감",
+    "card": {
+      "badge": "👀 간호사 봐봐",
+      "hook": [
+        "임상경력",
+        "[[3년]] 이상만"
+      ],
+      "org": "부산대학교병원",
+      "role": "정규직 33명",
+      "facts": [
+        [
+          "🩺",
+          "진료지원간호사 30명"
+        ],
+        [
+          "📝",
+          "필기 없이 실기·면접"
+        ],
+        [
+          "🗓️",
+          "실기·면접 12/17(목)"
+        ]
+      ],
+      "deadline": "12/3(목) 오후 5시 마감"
+    },
+    "avgPay": {
+      "label": "직원 평균연봉",
+      "value": "7,712만원",
+      "source": "https://alio.go.kr/item/itemReportTerm.do?apbaId=C0071&reportFormRootNo=2060",
+      "basis": "ALIO 2025 결산 정규직 1인당 평균보수"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/b965533d36dfc6901a83.png",
+    "imageSha256": "b965533d36dfc6901a8388f80a18684636cfa0b9c324aee5637bc7b80f6ee275",
+    "checkedAt": "2026-11-20T13:58:42.522Z",
+    "updatedAt": "2026-11-20T13:58:42.522Z"
+  },
+  {
+    "id": "73bd40f1-69c5-4610-8071-b546b39e390d",
+    "status": "scheduled",
+    "createdAt": "2026-11-20T13:58:42.522Z",
+    "handle": "jobs_curator",
+    "scheduledAt": "2026-11-27T23:30:00.000Z",
+    "noticeId": "307252",
+    "title": "한국통계정보원 채용｜자격증 필수 26명 전일제 월264만원·12/3 13시 마감",
+    "angle": "자격증 1개면 학력 무관",
+    "text": "📍자격증 1개면 학력 안 보는 공공기관 26명\n자격증 없으면 서류에서 바로 불합격\n한국통계정보원 통계데이터센터 기간제 채용\n\n1. 사회조사분석사 · 빅데이터분석기사 · 정보처리기사 등 6종 중 1개\n2. 💰 전일제 세전 월 264만원(식대 20만원 포함)\n3. 근무지 17곳 중 1곳만 지원\n4. 필기 없음: 서류 → 면접\n5. ⏰ 12/3(목) 오후 1시 마감\n\n단시간은 세전 월 132만원, 평가에 따라 1년 연장 가능",
+    "replyText": "📌 급여·자격·마감 시각 원문 정리 전체 보기\n{블로그주소}",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3088870",
+    "sourceSha256": "d9e6cb38eabc7da718401086ef3de67325322890ad2ea6cc7cfa8eb8fe8f8b08",
+    "blogEvidence": "한국통계정보원 통계데이터센터 기간제 근로자 26명",
+    "startsAt": "2026-11-19T15:00:00+09:00",
+    "deadlineAt": "2026-12-03T13:00:00+09:00",
+    "verifiedPay": "전일제 세전 월 264만원(식대 20만원 포함)",
+    "employmentType": "기간제 근로자(전일제·단시간)",
+    "eligibility": "연령·성별·학력 제한 없음; 필수 자격: 사회조사분석사, 빅데이터분석기사, 정보처리기사, 데이터아키텍처·데이터분석 (준)전문가, SQL, SAS 중 1개 이상 보유(미충족 시 서류전형 불합격, 접수 마감일 2026.12.3. 기준); 인사규정 제16조 결격사유 없는 자; 2027.1.3.(일) OJT 참석, 1.4.(월)부터 근무 가능한 자; 센터별 지정 근무장소·근무시간에 출퇴근 가능한 자; 근무지 1곳만 지원(중복지원 불가); 공식 공고",
+    "blogTitle": "한국통계정보원 채용｜자격증 필수 26명 전일제 월264만원·12/3 13시 마감",
+    "card": {
+      "badge": "🔔 자격증 1개면",
+      "hook": [
+        "자격증 1개면",
+        "학력 무관 [[26명]]"
+      ],
+      "org": "한국통계정보원",
+      "role": "통계데이터센터 기간제 26명",
+      "facts": [
+        [
+          "💰",
+          "전일제 월 264만원"
+        ],
+        [
+          "📍",
+          "근무지 17곳 중 1곳"
+        ],
+        [
+          "📝",
+          "필기 없이 면접"
+        ]
+      ],
+      "deadline": "12/3(목) 오후 1시 마감"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/7a44f1fb10d8db41a0e7.png",
+    "imageSha256": "7a44f1fb10d8db41a0e787400f7e403d841be8aa71f74f40f68c31311bd74360",
+    "checkedAt": "2026-11-20T13:58:42.522Z",
+    "updatedAt": "2026-11-20T13:58:42.522Z"
+  },
+  {
+    "id": "c68f91f4-9497-4b2d-b933-4189cfdee4ba",
+    "status": "scheduled",
+    "createdAt": "2026-11-20T13:58:42.522Z",
+    "handle": "hire_masters",
+    "scheduledAt": "2026-11-28T00:30:00.000Z",
+    "noticeId": "307285",
+    "title": "한국수자원공사 채용｜AI 체험형 인턴 150명 월223만원·12/4 14시 마감",
+    "angle": "인턴 월급 숫자",
+    "text": "인턴인데 월 223만원 수준이래\n만 18~34세면 학력 안 봐\n한국수자원공사 AI 체험형 인턴 150명이야\n\n1. 행정 39명으로 제일 많고 AI 32명(공고 표 합계)\n2. 💰 시급 10,700원(월 223만원 수준 세전)\n3. 서류 → AI면접 + 영상평가, 다 온라인\n4. 주 5일 40시간 · 4대 보험\n5. ⏰ 12/4(금) 오후 2시 마감\n\n근무는 3개월이고, 이 공사 인턴 2번 이상 수료했으면 지원 못 해",
+    "replyText": "👉 공고문 기준 정리 글은 여기서 확인\n{블로그주소}",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3089070",
+    "sourceSha256": "26dd16726b87590d8cb15bf78ed4f3fb652b633a56fda777cf8f77875ff5991f",
+    "blogEvidence": "한국수자원공사 AI 체험형 인턴 150명",
+    "startsAt": "2026-11-27T00:00:00+09:00",
+    "deadlineAt": "2026-12-04T14:00:00+09:00",
+    "verifiedPay": "시급 10,700원(월 223만원 수준 세전)",
+    "employmentType": "체험형 인턴(기간제근로자)",
+    "eligibility": "청년고용촉진 특별법상 청년으로 입사일('26.12.28.) 기준 만 18세 이상 만 34세 이하('91.12.29.~'08.12.28. 출생, 군필자 복무기간에 따라 상한 1~3세 연장); K-water 기간제근로자 관리규정 채용 결격사유 없는 자; 입사일부터 현업 전일근무 가능자; 공고일 기준 K-water 체험형 인턴 2회 이상 수료자 지원 불가; AI 분야는 빅데이터분석기사, AICE Professional, AICE Associate, ADP, ADsP 중 하나 이상 소지자; 학력 조건 없음(잡알리오 학력무관); 근무지별 분야 1개만 지원(중복지원 불가); 공식 공고",
+    "blogTitle": "한국수자원공사 채용｜AI 체험형 인턴 150명 월223만원·12/4 14시 마감",
+    "card": {
+      "badge": "👀 인턴 봤어?",
+      "hook": [
+        "인턴인데",
+        "월 [[223만원]] 수준"
+      ],
+      "org": "한국수자원공사",
+      "role": "AI 체험형 인턴 150명",
+      "facts": [
+        [
+          "🎂",
+          "만 18~34세"
+        ],
+        [
+          "💻",
+          "전형 전부 온라인"
+        ],
+        [
+          "🗓️",
+          "3개월 근무"
+        ]
+      ],
+      "deadline": "12/4(금) 오후 2시 마감"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/41b625fe0342f89b0a2d.png",
+    "imageSha256": "41b625fe0342f89b0a2d47b8b3f2524a00134bb38df561195de55a25b7226aa1",
+    "checkedAt": "2026-11-20T13:58:42.522Z",
+    "updatedAt": "2026-11-20T13:58:42.522Z"
+  },
+  {
+    "id": "7906b2ca-abcb-4923-9a6d-78a099db87fa",
+    "status": "scheduled",
+    "createdAt": "2026-11-20T13:58:42.522Z",
+    "handle": "high_quality_hire",
+    "scheduledAt": "2026-11-28T01:30:00.000Z",
+    "noticeId": "307276",
+    "title": "코레일테크 채용｜현장 기간제 565명 학력무관 필기없음·12/4 12시 마감",
+    "angle": "급여 미공개 대신 조건 비교",
+    "text": "💰 필기 없이 565명, 급여 대신 확인할 조건 비교\n코레일테크 현장 기간제사원\n역환경·차량환경·기술 분야 조건 비교\n\n1. 환경분야 489명 · 기술분야 76명\n2. 💰 급여 금액 미공개\n3. 근로기간 480명 1~4월 · 62명 12월 말까지(공고 표 합계)\n4. 체력검증 근력 포함 2개 항목 3등급 이상\n5. ⏰ 12/4(금) 낮 12시 마감\n\n남자는 군필 또는 면제여야 지원할 수 있습니다",
+    "replyText": "👆 직무별 급여·자격 비교 전체는 여기\n{블로그주소}",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3089001",
+    "sourceSha256": "9864979aa669a6798a1b0ecce9a43e67ba80ecf195afc8b1a9b3010d42e248f2",
+    "blogEvidence": "코레일테크 현장 기간제사원 565명",
+    "startsAt": "2026-11-20T12:00:00+09:00",
+    "deadlineAt": "2026-12-04T12:00:00+09:00",
+    "verifiedPay": "급여 금액 미공개",
+    "employmentType": "현장 기간제",
+    "eligibility": "공통: 학력, 전공, 성별 제한 없음(만 18세 미만 지원 불가), 직원채용세칙 제17조 임용결격사유 없는 자, 남자는 군필 또는 면제자, 회사가 지정한 임용일부터 즉시 근무 가능한 자(자격은 공고일 2026.11.20 기준, 연령·병역은 입사일 기준); 환경분야(역환경·차량환경·건물환경) 사원과 차량 사원(일반)은 자격무관; 차량 사원(기술)은 4등급 이상 철도차량정비기술자 또는 해당 국가기술자격; 소장·팀장·반장·전기·시설·경비 등은 분야별 자격증·경력 필수; 분야별 중복지원 불가; 서류 합격자는 국민체력100 체력인증(근력 포함 2개 항목 이상 3등급 이상) 필요(장애인 면제); 공식 공고",
+    "blogTitle": "코레일테크 채용｜현장 기간제 565명 학력무관 필기없음·12/4 12시 마감",
+    "card": {
+      "badge": "💰 조건 비교",
+      "hero": {
+        "label": "학력·전공 제한 없음",
+        "value": "565명",
+        "sub": "필기 없이 체력검증 · 면접"
+      },
+      "tags": [
+        "현장 기간제",
+        "필기 없음"
+      ],
+      "org": "코레일테크",
+      "role": "현장 기간제사원 565명",
+      "facts": [
+        [
+          "환경",
+          "489명"
+        ],
+        [
+          "기술",
+          "76명"
+        ],
+        [
+          "계약",
+          "480명 1~4월"
+        ]
+      ],
+      "deadline": "12/4(금) 낮 12시 마감"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/9ff09459218a1d97de9a.png",
+    "imageSha256": "9ff09459218a1d97de9a1c6c5a645e01f2c5582ec6cb44d8ecaf9ac7a7583ca6",
+    "checkedAt": "2026-11-20T13:58:42.522Z",
+    "updatedAt": "2026-11-20T13:58:42.522Z"
+  },
+  {
+    "id": "38c5cf37-6a9e-469f-bba9-e4d40047b70d",
+    "status": "scheduled",
+    "createdAt": "2026-11-20T13:58:42.522Z",
+    "handle": "jobs_curator",
+    "scheduledAt": "2026-11-28T08:30:00.000Z",
+    "noticeId": "307094",
+    "title": "신용보증기금 채용｜중증장애인 단시간 60명 월 약120만원·12/4 16시 마감",
+    "angle": "장애인 단시간 희소성",
+    "text": "🔔중증장애인이 지원하는 하루 4시간 일자리 60명\n창작 10명은 재택근무 가능\n신용보증기금 장애인 단시간 근로자 채용\n\n1. 업무보조 40명(대구 본점) · 창작 10명 · 드론축구 선수 10명\n2. 💰 월급여 약 120만원 내외(세전 기준)\n3. 필기 없음: 서류(자기소개서) → 면접\n4. 정규직 전환은 없음\n5. ⏰ 12/4(금) 오후 4시 마감\n\n3급 이상 상이등급도 지원 가능, 2025년 신용보증기금 근무 이력이 있으면 불가",
+    "replyText": "📌 급여·자격·마감 시각 원문 정리 전체 보기\n{블로그주소}",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3087787",
+    "sourceSha256": "6218821c7c4c5790e4702d9565cf305512eb5ba7e836900bf6c0f156d76225f2",
+    "blogEvidence": "신용보증기금 장애인 단시간 근로자 60명",
+    "startsAt": "2026-11-20T00:00:00+09:00",
+    "deadlineAt": "2026-12-04T16:00:00+09:00",
+    "verifiedPay": "월급여 약 120만원 내외(세전 기준)",
+    "employmentType": "기타계약직원(단시간 근로자)",
+    "eligibility": "중증장애인(장애인고용촉진 및 직업재활법 제2조제2호, 같은 법 시행령 제4조제1항) 또는 3급 이상 상이등급(국가유공자법 시행령 제14조제3항) 해당자; 병역의무 불이행 사실 없는 자; 채용제한 사유(인사요령 제12조) 없는 자; 채용예정일부터 즉시 근무 가능(입사 유예 불가); 2025.1.1.~2025.12.31. 신용보증기금 근무 이력 없는 자; 접수 마감일 기준 정년(만 60세) 초과자 지원 불가; 창작은 한국장애인고용공단 맞춤훈련 참여·수료 가능자, 체육은 드론축구 교육·훈련 이수 또는 선수단 활동·대회 참가 경험자; 채용단위 간 중복 지원 불가; 신용보증기금 채용홈페이지 공고 본문",
+    "blogTitle": "신용보증기금 채용｜중증장애인 단시간 60명 월 약120만원·12/4 16시 마감",
+    "card": {
+      "badge": "🔔 장애인 채용",
+      "hook": [
+        "하루 4시간",
+        "장애인 [[60명]]"
+      ],
+      "org": "신용보증기금",
+      "role": "장애인 단시간 근로자 60명",
+      "facts": [
+        [
+          "💰",
+          "월 약 120만원 내외"
+        ],
+        [
+          "🏠",
+          "창작 10명 재택 가능"
+        ],
+        [
+          "📝",
+          "필기 없이 면접"
+        ]
+      ],
+      "deadline": "12/4(금) 오후 4시 마감"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/4548c2a9f1e32176c144.png",
+    "imageSha256": "4548c2a9f1e32176c144df07d282837e65f442d7be441f0c2f155eefb48298d6",
+    "checkedAt": "2026-11-20T13:58:42.522Z",
+    "updatedAt": "2026-11-20T13:58:42.522Z"
+  },
+  {
+    "id": "945d6b88-20e9-491e-9c1c-27605a6bb4f2",
+    "status": "scheduled",
+    "createdAt": "2026-11-20T13:58:42.522Z",
+    "handle": "jobs_curator",
+    "scheduledAt": "2026-11-28T23:30:00.000Z",
+    "noticeId": "307297",
+    "title": "세종학당재단 채용｜34세 이하 청년인턴 6명 월224만원·12/7 14시 마감",
+    "angle": "학력 무관 청년인턴 월급",
+    "text": "🔔학력 조건 없는 34세 이하 청년인턴, 월 224만원\n서울 서초 근무 · 필기 없음\n세종학당재단 체험형 청년인턴 6명\n\n1. 일반 5명 · 장애인 제한경쟁 1명\n2. 💰 월 급여액 2,240천원(224만원)\n3. 2027년 1월 4일 임용 예정 · 6월 30일까지\n4. 서류(자기소개서 60%) → 면접\n5. ⏰ 12/7(월) 오후 2시 마감\n\n나중에 재단 신입 공채에 지원하면 서류심사 1회 면제",
+    "replyText": "📌 급여·자격·마감 시각 원문 정리 전체 보기\n{블로그주소}",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3089171",
+    "sourceSha256": "d42e6f778fa3f174eec5f7af7a60801b1d0e4188ac580795e7d7a44df0437f5b",
+    "blogEvidence": "세종학당재단 체험형 청년인턴 6명",
+    "startsAt": "2026-11-20T00:00:00+09:00",
+    "deadlineAt": "2026-12-07T14:00:00+09:00",
+    "verifiedPay": "월 급여액 2,240천원(224만원)",
+    "employmentType": "체험형 청년인턴",
+    "eligibility": "임용일 기준 15세 이상 34세 이하(청년고용촉진특별법시행령 제2조, 제대군인 최대 3세 연장)이고 세종학당재단 청년인턴 무경험자; 임용일부터 근무 가능; 재단 인사규정상 결격사유 없는 사람; 장애인 제한경쟁은 장애인 고용촉진 및 직업재활법 시행령 제3조 해당자; 학력 조건 없음(잡알리오 학력무관); 같은 시기 재단 채용 중복지원 불가; 공식 공고",
+    "blogTitle": "세종학당재단 채용｜34세 이하 청년인턴 6명 월224만원·12/7 14시 마감",
+    "card": {
+      "badge": "🔔 청년인턴",
+      "hook": [
+        "34세 이하",
+        "월 [[224만원]]"
+      ],
+      "org": "세종학당재단",
+      "role": "체험형 청년인턴 6명",
+      "facts": [
+        [
+          "🎓",
+          "학력 조건 없음"
+        ],
+        [
+          "📍",
+          "서울 서초 근무"
+        ],
+        [
+          "🎁",
+          "공채 서류심사 1회 면제"
+        ]
+      ],
+      "deadline": "12/7(월) 오후 2시 마감"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/6e2b14b01ade65ecc8c2.png",
+    "imageSha256": "6e2b14b01ade65ecc8c22b92e088c037682c87b692faa15144725e4d634f3f71",
+    "checkedAt": "2026-11-20T13:58:42.522Z",
+    "updatedAt": "2026-11-20T13:58:42.522Z"
+  },
+  {
+    "id": "f0f2d35d-707d-4b02-85a3-ee8945f9220c",
+    "status": "scheduled",
+    "createdAt": "2026-11-20T13:58:42.522Z",
+    "handle": "high_quality_hire",
+    "scheduledAt": "2026-11-29T01:30:00.000Z",
+    "noticeId": "307285",
+    "title": "한국수자원공사 채용｜AI 체험형 인턴 150명 월223만원·12/4 14시 마감",
+    "angle": "인턴 월급 vs 기간 비교",
+    "text": "💰 인턴 월 223만원 수준 vs 3개월 근무, 조건 비교\n만 18~34세 · 학력 무관 150명\n한국수자원공사 AI 체험형 인턴 조건 비교\n\n1. 분야 10개 · 행정 39명 최다(공고 표 합계)\n2. 💰 시급 10,700원(월 223만원 수준 세전)\n3. 근무 12월 28일 ~ 2027년 3월 31일\n4. 우수인턴은 일반직 공채 우대(2년)\n5. ⏰ 12/4(금) 오후 2시 마감\n\n기간제 근로자라 계약이 끝나면 고용관계도 끝납니다",
+    "replyText": "👆 직무별 급여·자격 비교 전체는 여기\n{블로그주소}",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3089070",
+    "sourceSha256": "26dd16726b87590d8cb15bf78ed4f3fb652b633a56fda777cf8f77875ff5991f",
+    "blogEvidence": "한국수자원공사 AI 체험형 인턴 150명",
+    "startsAt": "2026-11-27T00:00:00+09:00",
+    "deadlineAt": "2026-12-04T14:00:00+09:00",
+    "verifiedPay": "시급 10,700원(월 223만원 수준 세전)",
+    "employmentType": "체험형 인턴(기간제근로자)",
+    "eligibility": "청년고용촉진 특별법상 청년으로 입사일('26.12.28.) 기준 만 18세 이상 만 34세 이하('91.12.29.~'08.12.28. 출생, 군필자 복무기간에 따라 상한 1~3세 연장); K-water 기간제근로자 관리규정 채용 결격사유 없는 자; 입사일부터 현업 전일근무 가능자; 공고일 기준 K-water 체험형 인턴 2회 이상 수료자 지원 불가; AI 분야는 빅데이터분석기사, AICE Professional, AICE Associate, ADP, ADsP 중 하나 이상 소지자; 학력 조건 없음(잡알리오 학력무관); 근무지별 분야 1개만 지원(중복지원 불가); 공식 공고",
+    "blogTitle": "한국수자원공사 채용｜AI 체험형 인턴 150명 월223만원·12/4 14시 마감",
+    "card": {
+      "badge": "💰 조건 비교",
+      "hero": {
+        "label": "시급 10,700원",
+        "value": "월 223만원 수준",
+        "sub": "세전 · 3개월 근무"
+      },
+      "tags": [
+        "인턴 150명",
+        "필기 없음"
+      ],
+      "org": "한국수자원공사",
+      "role": "AI 체험형 인턴 150명",
+      "facts": [
+        [
+          "나이",
+          "만 18~34세"
+        ],
+        [
+          "기간",
+          "12/28~3/31"
+        ],
+        [
+          "우대",
+          "공채 우대 2년"
+        ]
+      ],
+      "deadline": "12/4(금) 오후 2시 마감"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/eca7acf9fcdb79a2a765.png",
+    "imageSha256": "eca7acf9fcdb79a2a765451e4426367bb9b7b475c8d5c3e135c2320da9d69ea0",
+    "checkedAt": "2026-11-20T13:58:42.522Z",
+    "updatedAt": "2026-11-20T13:58:42.522Z"
+  },
+  {
+    "id": "cf5c5da1-9420-46f7-99fd-61daec950d5a",
+    "status": "scheduled",
+    "createdAt": "2026-11-20T13:58:42.522Z",
+    "handle": "jobs_curator",
+    "scheduledAt": "2026-11-29T08:30:00.000Z",
+    "noticeId": "307170",
+    "title": "산업연구원 채용｜경제학 박사(예정)자 부연구위원 6명·12/9 24시 마감",
+    "angle": "박사 예정자 국책연구원 정규직",
+    "text": "📍경제학 박사 예정자도 되는 국책연구원 정규직 6명\n직원 평균연봉 8,149만원 산업연구원\n부연구위원 채용\n\n1. 경제학 전분야 · 세종 근무\n2. 💰 이번 공고 급여는 미공개\n3. AEA-JOE로만 접수: CV·잡마켓 페이퍼·추천서 3부\n4. 서류 → 면접 → 논문발표\n5. ⏰ 12/9(수) 24시 마감\n\n학위는 임용일 전까지 받아야 합니다\n※ 직원 평균연봉: ALIO 2025 결산 정규직 1인당 평균",
+    "replyText": "📌 급여·자격·마감 시각 원문 정리 전체 보기\n{블로그주소}",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3088222",
+    "sourceSha256": "ba665898df08fa3ee048d446dcf5fde8345bd342af200606a2f20d30206eb90a",
+    "blogEvidence": "산업연구원 부연구위원 6명",
+    "startsAt": "2026-11-18T00:00:00+09:00",
+    "deadlineAt": "2026-12-10T00:00:00+09:00",
+    "verifiedPay": "이번 공고 급여는 미공개",
+    "employmentType": "정규직(연구직 부연구위원)",
+    "eligibility": "경제학 또는 관련분야 박사학위 취득(예정)자(예정자는 임용일 전까지 학위취득 완료); 남자는 채용 공고일 현재 병역필 또는 면제자; 임용일부터 현업 전일 근무 가능; 임용 예정일 기준 만 60세 미만; 국가공무원법 제33조 등 결격사유 없는 자; AEA-JOE 온라인 접수(자기소개서, CV, 잡마켓 페이퍼, 추천서 3부); 공식 공고",
+    "blogTitle": "산업연구원 채용｜경제학 박사(예정)자 부연구위원 6명·12/9 24시 마감",
+    "card": {
+      "badge": "🔔 정규직 6명",
+      "hook": [
+        "박사 예정자도",
+        "국책연구원 [[정규직]]"
+      ],
+      "org": "산업연구원",
+      "role": "부연구위원 6명",
+      "facts": [
+        [
+          "🎓",
+          "박사(예정)자 지원 가능"
+        ],
+        [
+          "📮",
+          "AEA-JOE 접수"
+        ],
+        [
+          "📝",
+          "서류 → 면접 → 논문발표"
+        ]
+      ],
+      "deadline": "12/9(수) 24시 마감"
+    },
+    "avgPay": {
+      "label": "직원 평균연봉",
+      "value": "8,149만원",
+      "source": "https://alio.go.kr/item/itemReportTerm.do?apbaId=C0078&reportFormRootNo=2060",
+      "basis": "ALIO 2025 결산 정규직 1인당 평균보수"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/1b3b6a20ec34129bedac.png",
+    "imageSha256": "1b3b6a20ec34129bedac6c4afa5d36d480689339fdf4f3f480d5b5a3132bd0fe",
+    "checkedAt": "2026-11-20T13:58:42.522Z",
+    "updatedAt": "2026-11-20T13:58:42.522Z"
+  },
+  {
+    "id": "05f532ec-6fca-4a98-a132-25c23bb8064a",
+    "status": "scheduled",
+    "createdAt": "2026-11-20T13:58:42.522Z",
+    "handle": "jobs_curator",
+    "scheduledAt": "2026-11-29T23:30:00.000Z",
+    "noticeId": "307153",
+    "title": "한국생명존중희망재단 채용｜무기계약 상담사 33명 자격증 필수 아님·12/14 18시",
+    "angle": "자격증 없어도 되는 무기계약",
+    "text": "🔔상담 자격증 없어도 되는 무기계약직 33명\n무기계약직 평균연봉 3,655만원 한국생명존중희망재단\n109 자살예방 상담사 등 채용\n\n1. 자살예방 상담사 23 · 수석 2 · SNS 상담사 8\n2. 💰 자살예방 상담사 기본급 238만원(SNS 상담사 210만원)\n3. 만 60세 미만이면 지원, 자격증은 우대사항\n4. 365일 3교대(야간 22시~07시 포함)\n5. ⏰ 12/14(월) 오후 6시 마감\n\n면접 뒤 한글타자 분당 200타 테스트가 있습니다\n※ 무기계약직 평균연봉: ALIO 2025 결산 무기계약직 1인당 평균",
+    "replyText": "📌 급여·자격·마감 시각 원문 정리 전체 보기\n{블로그주소}",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3088153",
+    "sourceSha256": "42bc94f4d77d84a774684dbfc5cb84fc33505b0adef3dd58f36c95097ccdf03b",
+    "blogEvidence": "한국생명존중희망재단 무기계약직 33명",
+    "startsAt": "2026-11-23T09:00:00+09:00",
+    "deadlineAt": "2026-12-14T18:00:00+09:00",
+    "verifiedPay": "자살예방 상담사 기본급 238만원(SNS 상담사 210만원)",
+    "employmentType": "무기계약직",
+    "eligibility": "자살예방 상담사·SNS 상담사: 임용일 기준 만 60세 미만(관련 자격증·상담 및 심리계열 전공·공공기관 상담업무 1년 이상 경력은 우대사항); 수석상담사: 만 60세 미만이고 자살예방 사업 혹은 상담 업무 3년 이상 근무; 인사규정 제18조 결격사유 없는 자; 분야별 중복응시 불가; 학력무관(잡알리오); 공식 공고",
+    "blogTitle": "한국생명존중희망재단 채용｜무기계약 상담사 33명 자격증 필수 아님·12/14 18시",
+    "card": {
+      "badge": "🔔 무기계약 33명",
+      "hook": [
+        "자격증 없어도",
+        "상담사 [[33명]]"
+      ],
+      "org": "한국생명존중희망재단",
+      "role": "무기계약직 33명",
+      "facts": [
+        [
+          "💰",
+          "기본급 238만원"
+        ],
+        [
+          "🌙",
+          "365일 3교대"
+        ],
+        [
+          "⌨️",
+          "한글타자 200타"
+        ]
+      ],
+      "deadline": "12/14(월) 오후 6시 마감"
+    },
+    "avgPay": {
+      "label": "무기계약직 평균연봉",
+      "value": "3,655만원",
+      "source": "https://alio.go.kr/item/itemReportTerm.do?apbaId=C1367&reportFormRootNo=2060",
+      "basis": "ALIO 2025 결산 무기계약직 1인당 평균보수"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/cf7fb1c9c90cec15e2c5.png",
+    "imageSha256": "cf7fb1c9c90cec15e2c5c43e5fdb768844a1713b8d87ddac16c574b1e6ffe875",
+    "checkedAt": "2026-11-20T13:58:42.522Z",
+    "updatedAt": "2026-11-20T13:58:42.522Z"
+  },
+  {
+    "id": "f403c6be-5ad8-4f6f-bf6c-eb5cb0d95736",
+    "status": "scheduled",
+    "createdAt": "2026-11-20T13:58:42.522Z",
+    "handle": "hire_masters",
+    "scheduledAt": "2026-11-30T00:30:00.000Z",
+    "noticeId": "307297",
+    "title": "세종학당재단 채용｜34세 이하 청년인턴 6명 월224만원·12/7 14시 마감",
+    "angle": "학력 무관 인턴 반말",
+    "text": "34세 이하면 학력 상관없이 지원되는 인턴이야\n월 224만원에 서울 서초 근무\n세종학당재단 체험형 청년인턴 6명 뽑아\n\n1. 일반 5명 · 장애인 1명\n2. 💰 월 급여액 2,240천원(224만원)\n3. 필기 없이 서류 → 면접\n4. 한국사 2급 이상이면 가점 1점\n5. ⏰ 12/7(월) 오후 2시 마감\n\n이 재단 청년인턴 해본 적 있으면 지원 못 해",
+    "replyText": "👉 공고문 기준 정리 글은 여기서 확인\n{블로그주소}",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3089171",
+    "sourceSha256": "d42e6f778fa3f174eec5f7af7a60801b1d0e4188ac580795e7d7a44df0437f5b",
+    "blogEvidence": "세종학당재단 체험형 청년인턴 6명",
+    "startsAt": "2026-11-20T00:00:00+09:00",
+    "deadlineAt": "2026-12-07T14:00:00+09:00",
+    "verifiedPay": "월 급여액 2,240천원(224만원)",
+    "employmentType": "체험형 청년인턴",
+    "eligibility": "임용일 기준 15세 이상 34세 이하(청년고용촉진특별법시행령 제2조, 제대군인 최대 3세 연장)이고 세종학당재단 청년인턴 무경험자; 임용일부터 근무 가능; 재단 인사규정상 결격사유 없는 사람; 장애인 제한경쟁은 장애인 고용촉진 및 직업재활법 시행령 제3조 해당자; 학력 조건 없음(잡알리오 학력무관); 같은 시기 재단 채용 중복지원 불가; 공식 공고",
+    "blogTitle": "세종학당재단 채용｜34세 이하 청년인턴 6명 월224만원·12/7 14시 마감",
+    "card": {
+      "badge": "👀 인턴 봤어?",
+      "hook": [
+        "34세 이하",
+        "학력 [[무관]]"
+      ],
+      "org": "세종학당재단",
+      "role": "체험형 청년인턴 6명",
+      "facts": [
+        [
+          "💰",
+          "월 224만원"
+        ],
+        [
+          "📍",
+          "서울 서초"
+        ],
+        [
+          "📝",
+          "필기 없이 면접"
+        ]
+      ],
+      "deadline": "12/7(월) 오후 2시 마감"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/061ec6cde4643cbe1358.png",
+    "imageSha256": "061ec6cde4643cbe13586affaf0e4b1abf4b65d559cab6c5a29491f2fc85658d",
+    "checkedAt": "2026-11-20T13:58:42.522Z",
+    "updatedAt": "2026-11-20T13:58:42.522Z"
+  },
+  {
+    "id": "5d54f28f-a984-47a1-b480-e8564d17105f",
+    "status": "scheduled",
+    "createdAt": "2026-11-20T13:58:42.522Z",
+    "handle": "jobs_curator",
+    "scheduledAt": "2026-11-30T08:30:00.000Z",
+    "noticeId": "307306",
+    "title": "대한적십자사 채용｜충북혈액원 사무보조 1명 월268만원·12/6 18시 마감",
+    "angle": "자격증 하나로 지원 가능",
+    "text": "📍컴활 2급 하나면 지원되는 월 268만원 일자리\n학력 조건 없고 필기도 없음\n대한적십자사 충북혈액원 사무보조원 1명\n\n1. 헌혈개발팀 단체 헌혈 섭외·인솔과 사무보조\n2. 💰 월 2,682,880원 정도(기능직 1호봉 기준)\n3. 배점 100점 중 업무 자격증이 70점\n4. 청주 근무 · 2027년 1년 계약\n5. ⏰ 12/6(일) 오후 6시 마감\n\n면접은 12월 15일 충북혈액원에서 다대다로 봅니다",
+    "replyText": "📌 급여·자격·마감 시각 원문 정리 전체 보기\n{블로그주소}",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3089213",
+    "sourceSha256": "825fec45c46b7df18bdd6efd76732604fc36bd628e3589e32b9f567136c96d49",
+    "blogEvidence": "대한적십자사 충북혈액원 사무보조원 1명",
+    "startsAt": "2026-11-20T00:00:00+09:00",
+    "deadlineAt": "2026-12-06T18:00:00+09:00",
+    "verifiedPay": "월 2,682,880원 정도(기능직 1호봉 기준)",
+    "employmentType": "한시적 근로자(1년)",
+    "eligibility": "사무분야 자격증 1개 이상 소지자(워드프로세서('12년 이전은 워드프로세서 1급), 컴퓨터활용능력 2급 이상, 한글속기 3급 이상 또는 비서 3급 이상); 대한적십자사 직원운영규정 제56조(정년) 비해당(공고일 기준 만 60세 미만); 임용예정일(2027.1.1.)부터 근무 가능한 자; 병역법 제76조 병역의무 불이행자 아님; 직원운영규정 제20조 결격사유 없는 자; 학력 조건 없음(잡알리오 학력무관); 같은 일정 충북혈액원 기능직(사무보조원) 채용 중복지원 불가; 공식 공고",
+    "blogTitle": "대한적십자사 채용｜충북혈액원 사무보조 1명 월268만원·12/6 18시 마감",
+    "card": {
+      "badge": "📍 사무보조 1명",
+      "hook": [
+        "컴활 2급 하나면",
+        "월 [[268만원]] 정도"
+      ],
+      "org": "대한적십자사",
+      "role": "충북혈액원 사무보조원 1명",
+      "facts": [
+        [
+          "📝",
+          "필기 없이 서류·면접"
+        ],
+        [
+          "🎓",
+          "학력 조건 없음"
+        ],
+        [
+          "📍",
+          "청주 근무 1년"
+        ]
+      ],
+      "deadline": "12/6(일) 오후 6시 마감"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/1a3c2e9864c7c48d9462.png",
+    "imageSha256": "1a3c2e9864c7c48d9462f81d7beee6167bf954e56a750bc297bef16845c4a51a",
+    "checkedAt": "2026-11-20T13:58:42.522Z",
+    "updatedAt": "2026-11-20T13:58:42.522Z"
+  },
+  {
+    "id": "ed56e44e-c3bf-4952-9297-a41bacd354e7",
+    "status": "scheduled",
+    "createdAt": "2026-11-20T13:58:42.522Z",
+    "handle": "hire_masters",
+    "scheduledAt": "2026-11-30T09:30:00.000Z",
+    "noticeId": "307170",
+    "title": "산업연구원 채용｜경제학 박사(예정)자 부연구위원 6명·12/9 24시 마감",
+    "angle": "박사 예정자 반말",
+    "text": "경제학 박사 받기 전에도 국책연구원 정규직 지원 돼\n산업연구원 부연구위원 6명이야\n직원 평균연봉 8,149만원인 곳\n\n1. 경제학 전분야 · 세종 근무\n2. 💰 이번 공고 급여는 미공개\n3. 접수는 AEA-JOE로만, 추천서 3부 필요\n4. 면접은 화상, 논문발표는 방문(영문 공고 기준)\n5. ⏰ 12/9(수) 24시 마감\n\n이전지역인재 가점도 있으니 학사 대학 소재지 확인해 봐\n※ 직원 평균연봉: ALIO 2025 결산 정규직 1인당 평균",
+    "replyText": "👉 공고문 기준 정리 글은 여기서 확인\n{블로그주소}",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3088222",
+    "sourceSha256": "ba665898df08fa3ee048d446dcf5fde8345bd342af200606a2f20d30206eb90a",
+    "blogEvidence": "산업연구원 부연구위원 6명",
+    "startsAt": "2026-11-18T00:00:00+09:00",
+    "deadlineAt": "2026-12-10T00:00:00+09:00",
+    "verifiedPay": "이번 공고 급여는 미공개",
+    "employmentType": "정규직(연구직 부연구위원)",
+    "eligibility": "경제학 또는 관련분야 박사학위 취득(예정)자(예정자는 임용일 전까지 학위취득 완료); 남자는 채용 공고일 현재 병역필 또는 면제자; 임용일부터 현업 전일 근무 가능; 임용 예정일 기준 만 60세 미만; 국가공무원법 제33조 등 결격사유 없는 자; AEA-JOE 온라인 접수(자기소개서, CV, 잡마켓 페이퍼, 추천서 3부); 공식 공고",
+    "blogTitle": "산업연구원 채용｜경제학 박사(예정)자 부연구위원 6명·12/9 24시 마감",
+    "card": {
+      "badge": "👀 박사 봤어?",
+      "hook": [
+        "박사 예정자도",
+        "[[정규직]] 지원 돼"
+      ],
+      "org": "산업연구원",
+      "role": "부연구위원 6명",
+      "facts": [
+        [
+          "🎓",
+          "임용일 전 학위 취득"
+        ],
+        [
+          "📮",
+          "AEA-JOE 추천서 3부"
+        ],
+        [
+          "📍",
+          "세종 근무"
+        ]
+      ],
+      "deadline": "12/9(수) 24시 마감"
+    },
+    "avgPay": {
+      "label": "직원 평균연봉",
+      "value": "8,149만원",
+      "source": "https://alio.go.kr/item/itemReportTerm.do?apbaId=C0078&reportFormRootNo=2060",
+      "basis": "ALIO 2025 결산 정규직 1인당 평균보수"
+    },
+    "preparationHours": 120,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/3925879902f6c6f0d523.png",
+    "imageSha256": "3925879902f6c6f0d523958252d6b55428c0a926c3ea3739479855ddc97e9fec",
+    "checkedAt": "2026-11-20T13:58:42.522Z",
+    "updatedAt": "2026-11-20T13:58:42.522Z"
   }
 ]
