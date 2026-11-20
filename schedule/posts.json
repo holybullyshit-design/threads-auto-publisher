@@ -48840,12 +48840,15 @@
     "scheduledAt": "2026-11-20T09:19:00.000Z",
     "createdAt": "2026-11-14T02:01:56.265Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18505431826100712",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
     "commentCta": true,
-    "toneFixed": true
+    "toneFixed": true,
+    "chainPublishedIds": [
+      "18505431826100712"
+    ]
   },
   {
     "id": "54cfcdfb-31dd-4611-a1e1-610467e22542",
