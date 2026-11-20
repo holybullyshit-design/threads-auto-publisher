@@ -287,28 +287,28 @@
      "coverage": "Submitted and indexed",
      "fetch": "SUCCESSFUL",
      "lastCrawl": "2026-11-17T00:17:55Z",
-     "checkedAt": "2026-11-19T21:47:29.384Z"
+     "checkedAt": "2026-11-20T21:47:48.148Z"
     },
     "https://hirecurator.blogspot.com/2026/11/11124-14.html": {
      "verdict": "NEUTRAL",
      "coverage": "Redirect error",
      "fetch": "REDIRECT_ERROR",
      "lastCrawl": "2026-11-17T11:27:11Z",
-     "checkedAt": "2026-11-19T23:02:57.205Z"
+     "checkedAt": "2026-11-20T21:47:48.148Z"
     },
     "https://hirecurator.blogspot.com/2026/11/4-421125-18.html": {
      "verdict": "PASS",
      "coverage": "Submitted and indexed",
      "fetch": "SUCCESSFUL",
      "lastCrawl": "2026-11-17T23:43:15Z",
-     "checkedAt": "2026-11-19T21:47:29.384Z"
+     "checkedAt": "2026-11-20T21:47:48.148Z"
     },
     "https://hirecurator.blogspot.com/2026/11/9637-4721-2025.html": {
      "verdict": "PASS",
      "coverage": "Submitted and indexed",
      "fetch": "SUCCESSFUL",
      "lastCrawl": "2026-11-18T04:24:08Z",
-     "checkedAt": "2026-11-19T23:02:57.205Z"
+     "checkedAt": "2026-11-20T21:47:48.148Z"
     },
     "https://hirecurator.blogspot.com/2026/11/1-4200.html": {
      "verdict": "NEUTRAL",
@@ -319,10 +319,10 @@
     },
     "https://hirecurator.blogspot.com/2026/11/2027-1-231126-10.html": {
      "verdict": "NEUTRAL",
-     "coverage": "Discovered - currently not indexed",
-     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
-     "lastCrawl": "",
-     "checkedAt": "2026-11-19T23:02:57.205Z"
+     "coverage": "Redirect error",
+     "fetch": "REDIRECT_ERROR",
+     "lastCrawl": "2026-11-20T00:53:02Z",
+     "checkedAt": "2026-11-20T21:47:48.148Z"
     },
     "https://hirecurator.blogspot.com/2026/11/1-846-4441-2025.html": {
      "verdict": "NEUTRAL",
@@ -340,10 +340,10 @@
     },
     "https://hirecurator.blogspot.com/2026/11/4-2784011126-18.html": {
      "verdict": "NEUTRAL",
-     "coverage": "Discovered - currently not indexed",
-     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
-     "lastCrawl": "",
-     "checkedAt": "2026-11-19T23:02:57.205Z"
+     "coverage": "Redirect error",
+     "fetch": "REDIRECT_ERROR",
+     "lastCrawl": "2026-11-20T00:50:57Z",
+     "checkedAt": "2026-11-20T21:47:48.148Z"
     },
     "https://hirecurator.blogspot.com/2026/11/7040-4320-2025.html": {
      "verdict": "NEUTRAL",
@@ -364,9 +364,9 @@
    "summary": {
     "total": 51,
     "indexed": 9,
-    "redirectError": 26,
+    "redirectError": 28,
     "unknown": 7,
-    "discovered": 9,
+    "discovered": 7,
     "crawledNotIndexed": 0,
     "other": 0,
     "error": 0
@@ -414,21 +414,21 @@
      "coverage": "Redirect error",
      "fetch": "REDIRECT_ERROR",
      "lastCrawl": "2026-11-17T11:37:45Z",
-     "checkedAt": "2026-11-19T23:02:57.205Z"
+     "checkedAt": "2026-11-20T21:47:48.148Z"
     },
     "https://hire-masters.blogspot.com/2026/11/fc-1123-18.html": {
      "verdict": "NEUTRAL",
-     "coverage": "Discovered - currently not indexed",
-     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
-     "lastCrawl": "",
-     "checkedAt": "2026-11-19T23:02:57.205Z"
+     "coverage": "Redirect error",
+     "fetch": "REDIRECT_ERROR",
+     "lastCrawl": "2026-11-20T01:01:11Z",
+     "checkedAt": "2026-11-20T21:47:48.148Z"
     },
     "https://hire-masters.blogspot.com/2026/11/1124.html": {
      "verdict": "NEUTRAL",
-     "coverage": "Discovered - currently not indexed",
-     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
-     "lastCrawl": "",
-     "checkedAt": "2026-11-19T23:02:57.205Z"
+     "coverage": "Redirect error",
+     "fetch": "REDIRECT_ERROR",
+     "lastCrawl": "2026-11-20T00:59:12Z",
+     "checkedAt": "2026-11-20T21:47:48.148Z"
     },
     "https://hire-masters.blogspot.com/2026/11/cj-enm-ip-1129-2359.html": {
      "verdict": "NEUTRAL",
@@ -442,9 +442,9 @@
    "summary": {
     "total": 9,
     "indexed": 0,
-    "redirectError": 7,
+    "redirectError": 9,
     "unknown": 0,
-    "discovered": 2,
+    "discovered": 0,
     "crawledNotIndexed": 0,
     "other": 0,
     "error": 0
@@ -492,21 +492,21 @@
      "coverage": "Redirect error",
      "fetch": "REDIRECT_ERROR",
      "lastCrawl": "2026-11-17T11:39:48Z",
-     "checkedAt": "2026-11-19T23:02:57.205Z"
+     "checkedAt": "2026-11-20T21:47:48.148Z"
     },
     "https://jobscurator.blogspot.com/2026/11/6-112328.html": {
      "verdict": "NEUTRAL",
      "coverage": "Discovered - currently not indexed",
      "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
      "lastCrawl": "",
-     "checkedAt": "2026-11-19T23:02:57.205Z"
+     "checkedAt": "2026-11-20T21:47:48.148Z"
     },
     "https://jobscurator.blogspot.com/2026/11/6-1124129.html": {
      "verdict": "NEUTRAL",
-     "coverage": "Discovered - currently not indexed",
+     "coverage": "URL is unknown to Google",
      "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
      "lastCrawl": "",
-     "checkedAt": "2026-11-19T23:02:57.205Z"
+     "checkedAt": "2026-11-20T21:47:48.148Z"
     },
     "https://jobscurator.blogspot.com/2026/11/5-112530.html": {
      "verdict": "NEUTRAL",
@@ -521,13 +521,13 @@
     "total": 9,
     "indexed": 0,
     "redirectError": 4,
-    "unknown": 0,
-    "discovered": 5,
+    "unknown": 1,
+    "discovered": 4,
     "crawledNotIndexed": 0,
     "other": 0,
     "error": 0
    }
   }
  },
- "updatedAt": "2026-11-20T17:00:08.367Z"
+ "updatedAt": "2026-11-20T21:47:48.148Z"
 }
