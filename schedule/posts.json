@@ -45541,10 +45541,13 @@
     "scheduledAt": "2026-11-20T23:40:00.000Z",
     "createdAt": "2026-11-13T23:55:23.712Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18121956917288001",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18121956917288001"
+    ]
   },
   {
     "id": "bb46126c-214e-49f1-a2af-2ee3c357c0d7",
