@@ -47130,11 +47130,14 @@
     "scheduledAt": "2026-11-20T05:28:00.000Z",
     "createdAt": "2026-11-14T00:56:48.413Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18114294995627212",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "toneFixed": true
+    "toneFixed": true,
+    "chainPublishedIds": [
+      "18114294995627212"
+    ]
   },
   {
     "id": "a17552c6-1db7-4a7c-b088-d9bf9c998c08",
