@@ -48762,10 +48762,13 @@
     "scheduledAt": "2026-11-20T04:07:00.000Z",
     "createdAt": "2026-11-14T02:00:34.594Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18127513481314460",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18127513481314460"
+    ]
   },
   {
     "id": "3b93037e-7ed1-428a-a8b5-fb540adf4d4f",
