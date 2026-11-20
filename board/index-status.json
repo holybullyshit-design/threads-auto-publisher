@@ -333,10 +333,10 @@
     },
     "https://hirecurator.blogspot.com/2026/11/3-2301125-14.html": {
      "verdict": "NEUTRAL",
-     "coverage": "URL is unknown to Google",
-     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
-     "lastCrawl": "",
-     "checkedAt": "2026-11-19T08:04:15.520Z"
+     "coverage": "Redirect error",
+     "fetch": "REDIRECT_ERROR",
+     "lastCrawl": "2026-11-20T00:55:06Z",
+     "checkedAt": "2026-11-20T08:04:07.028Z"
     },
     "https://hirecurator.blogspot.com/2026/11/4-2784011126-18.html": {
      "verdict": "NEUTRAL",
@@ -351,15 +351,22 @@
      "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
      "lastCrawl": "",
      "checkedAt": "2026-11-20T04:00:05.108Z"
+    },
+    "https://hirecurator.blogspot.com/2026/11/31127-14.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "Discovered - currently not indexed",
+     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
+     "lastCrawl": "",
+     "checkedAt": "2026-11-20T08:04:07.028Z"
     }
    },
    "sitemapSubmittedAt": "2026-11-19T17:24:57.260Z",
    "summary": {
-    "total": 50,
+    "total": 51,
     "indexed": 9,
-    "redirectError": 24,
-    "unknown": 6,
-    "discovered": 11,
+    "redirectError": 25,
+    "unknown": 5,
+    "discovered": 12,
     "crawledNotIndexed": 0,
     "other": 0,
     "error": 0
@@ -522,5 +529,5 @@
    }
   }
  },
- "updatedAt": "2026-11-20T04:00:05.108Z"
+ "updatedAt": "2026-11-20T08:04:07.028Z"
 }
