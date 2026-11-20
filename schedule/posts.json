@@ -44005,10 +44005,13 @@
     "scheduledAt": "2026-11-20T03:44:00.000Z",
     "createdAt": "2026-11-13T22:57:27.504Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17989714935108967",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17989714935108967"
+    ]
   },
   {
     "id": "d100004c-9ece-41cc-89dc-5cdd2509e33e",
