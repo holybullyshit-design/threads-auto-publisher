@@ -315,7 +315,7 @@
      "coverage": "Redirect error",
      "fetch": "REDIRECT_ERROR",
      "lastCrawl": "2026-11-20T00:53:01Z",
-     "checkedAt": "2026-11-20T02:34:13.277Z"
+     "checkedAt": "2026-11-20T23:03:07.627Z"
     },
     "https://hirecurator.blogspot.com/2026/11/2027-1-231126-10.html": {
      "verdict": "NEUTRAL",
@@ -329,7 +329,7 @@
      "coverage": "Redirect error",
      "fetch": "REDIRECT_ERROR",
      "lastCrawl": "2026-11-20T00:55:01Z",
-     "checkedAt": "2026-11-20T02:34:13.277Z"
+     "checkedAt": "2026-11-20T23:03:07.627Z"
     },
     "https://hirecurator.blogspot.com/2026/11/3-2301125-14.html": {
      "verdict": "NEUTRAL",
@@ -358,14 +358,21 @@
      "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
      "lastCrawl": "",
      "checkedAt": "2026-11-20T08:04:07.028Z"
+    },
+    "https://hirecurator.blogspot.com/2026/11/118080-21127-15.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "URL is unknown to Google",
+     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
+     "lastCrawl": "",
+     "checkedAt": "2026-11-20T23:03:07.627Z"
     }
    },
    "sitemapSubmittedAt": "2026-11-20T17:00:08.367Z",
    "summary": {
-    "total": 51,
+    "total": 52,
     "indexed": 9,
     "redirectError": 28,
-    "unknown": 7,
+    "unknown": 8,
     "discovered": 7,
     "crawledNotIndexed": 0,
     "other": 0,
@@ -435,7 +442,7 @@
      "coverage": "Redirect error",
      "fetch": "REDIRECT_ERROR",
      "lastCrawl": "2026-11-20T01:03:03Z",
-     "checkedAt": "2026-11-20T02:34:13.277Z"
+     "checkedAt": "2026-11-20T23:03:07.627Z"
     }
    },
    "sitemapSubmittedAt": "2026-11-20T17:00:08.367Z",
@@ -513,7 +520,7 @@
      "coverage": "Discovered - currently not indexed",
      "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
      "lastCrawl": "",
-     "checkedAt": "2026-11-20T02:34:13.277Z"
+     "checkedAt": "2026-11-20T23:03:07.627Z"
     }
    },
    "sitemapSubmittedAt": "2026-11-20T17:00:08.367Z",
@@ -529,5 +536,5 @@
    }
   }
  },
- "updatedAt": "2026-11-20T21:47:48.148Z"
+ "updatedAt": "2026-11-20T23:03:07.627Z"
 }
