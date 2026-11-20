@@ -312,10 +312,10 @@
     },
     "https://hirecurator.blogspot.com/2026/11/1-4200.html": {
      "verdict": "NEUTRAL",
-     "coverage": "URL is unknown to Google",
-     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
-     "lastCrawl": "",
-     "checkedAt": "2026-11-19T04:13:54.323Z"
+     "coverage": "Redirect error",
+     "fetch": "REDIRECT_ERROR",
+     "lastCrawl": "2026-11-20T00:53:01Z",
+     "checkedAt": "2026-11-20T02:34:13.277Z"
     },
     "https://hirecurator.blogspot.com/2026/11/2027-1-231126-10.html": {
      "verdict": "NEUTRAL",
@@ -326,10 +326,10 @@
     },
     "https://hirecurator.blogspot.com/2026/11/1-846-4441-2025.html": {
      "verdict": "NEUTRAL",
-     "coverage": "Discovered - currently not indexed",
-     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
-     "lastCrawl": "",
-     "checkedAt": "2026-11-19T04:13:54.323Z"
+     "coverage": "Redirect error",
+     "fetch": "REDIRECT_ERROR",
+     "lastCrawl": "2026-11-20T00:55:01Z",
+     "checkedAt": "2026-11-20T02:34:13.277Z"
     },
     "https://hirecurator.blogspot.com/2026/11/3-2301125-14.html": {
      "verdict": "NEUTRAL",
@@ -350,9 +350,9 @@
    "summary": {
     "total": 49,
     "indexed": 9,
-    "redirectError": 22,
-    "unknown": 7,
-    "discovered": 11,
+    "redirectError": 24,
+    "unknown": 6,
+    "discovered": 10,
     "crawledNotIndexed": 0,
     "other": 0,
     "error": 0
@@ -415,13 +415,20 @@
      "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
      "lastCrawl": "",
      "checkedAt": "2026-11-19T23:02:57.205Z"
+    },
+    "https://hire-masters.blogspot.com/2026/11/cj-enm-ip-1129-2359.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "Redirect error",
+     "fetch": "REDIRECT_ERROR",
+     "lastCrawl": "2026-11-20T01:03:03Z",
+     "checkedAt": "2026-11-20T02:34:13.277Z"
     }
    },
    "sitemapSubmittedAt": "2026-11-19T17:24:57.260Z",
    "summary": {
-    "total": 8,
+    "total": 9,
     "indexed": 0,
-    "redirectError": 4,
+    "redirectError": 5,
     "unknown": 1,
     "discovered": 3,
     "crawledNotIndexed": 0,
@@ -486,20 +493,27 @@
      "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
      "lastCrawl": "",
      "checkedAt": "2026-11-19T23:02:57.205Z"
+    },
+    "https://jobscurator.blogspot.com/2026/11/5-112530.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "Discovered - currently not indexed",
+     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
+     "lastCrawl": "",
+     "checkedAt": "2026-11-20T02:34:13.277Z"
     }
    },
    "sitemapSubmittedAt": "2026-11-19T17:24:57.260Z",
    "summary": {
-    "total": 8,
+    "total": 9,
     "indexed": 0,
     "redirectError": 4,
     "unknown": 0,
-    "discovered": 4,
+    "discovered": 5,
     "crawledNotIndexed": 0,
     "other": 0,
     "error": 0
    }
   }
  },
- "updatedAt": "2026-11-19T23:02:57.205Z"
+ "updatedAt": "2026-11-20T02:34:13.277Z"
 }
