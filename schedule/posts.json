@@ -45574,10 +45574,13 @@
     "scheduledAt": "2026-11-21T02:29:00.000Z",
     "createdAt": "2026-11-13T23:56:14.289Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18119626190612087",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18119626190612087"
+    ]
   },
   {
     "id": "6f3a8c3e-2b5a-4fc2-bb1c-c55fabecd62f",
