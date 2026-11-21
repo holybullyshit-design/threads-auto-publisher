@@ -49014,10 +49014,13 @@
     "scheduledAt": "2026-11-21T06:35:00.000Z",
     "createdAt": "2026-11-14T02:04:37.149Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18150101443575450",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18150101443575450"
+    ]
   },
   {
     "id": "27556c14-ae61-448e-8dd6-879a3ab55c92",
