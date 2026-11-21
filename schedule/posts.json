@@ -45607,10 +45607,13 @@
     "scheduledAt": "2026-11-21T05:01:00.000Z",
     "createdAt": "2026-11-13T23:57:02.531Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18008409242794141",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18008409242794141"
+    ]
   },
   {
     "id": "41b574fa-f949-44e1-814e-94353d4dbe63",
