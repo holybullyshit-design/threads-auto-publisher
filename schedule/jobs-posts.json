@@ -12670,5 +12670,577 @@
     "imageSha256": "3925879902f6c6f0d523958252d6b55428c0a926c3ea3739479855ddc97e9fec",
     "checkedAt": "2026-11-20T13:58:42.522Z",
     "updatedAt": "2026-11-20T13:58:42.522Z"
+  },
+  {
+    "id": "3cae9538-adaf-46a0-a580-e9a5683564ad",
+    "status": "scheduled",
+    "createdAt": "2026-11-21T01:09:44.023Z",
+    "handle": "hire_masters",
+    "scheduledAt": "2026-11-26T00:30:00.000Z",
+    "noticeId": "306932",
+    "title": "한국산업기술진흥원 채용｜육아휴직 대체인력 12명 학력무관·11/30 14시 마감",
+    "angle": "대체인력 처우 반전(반말)",
+    "text": "대체인력인데 급여·복리후생은 정규직이랑 똑같대\n학력·나이·경력 제한 없이 12명 뽑아\n한국산업기술진흥원 육아휴직 대체인력이야\n\n1. 사업관리 직무 12명 · 서울 강남 본원\n2. 💰 급여 정규직과 동등(금액 미공개)\n3. 필기 없이 서류 → 인성검사 → 경험면접\n4. 근무는 약 6~14개월\n5. ⏰ 11/30(월) 오후 2시 마감\n\n정규직 전환 대상은 아니니까 그건 알고 지원해",
+    "replyText": "👉 공고문 기준 정리 글은 여기서 확인\n{블로그주소}",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3086696",
+    "sourceSha256": "70c1cdc36b7ae40d1b405e4df10c9acc411d9fe0a3ea34fb52628998d03af07f",
+    "blogEvidence": "한국산업기술진흥원 육아휴직 대체인력 12명",
+    "startsAt": "2026-11-11T00:00:00+09:00",
+    "deadlineAt": "2026-11-30T14:00:00+09:00",
+    "verifiedPay": "급여 정규직과 동등(금액 미공개)",
+    "employmentType": "대체인력(계약직)",
+    "eligibility": "학력, 전공, 연령, 성별, 경력 제한 없음; 남자는 접수마감일 기준 병역필 또는 면제자(군 복무 중인 자는 2027년 1월 이전 전역 예정자만); 인사규정 제7조 결격사유 없는 자; 최종 합격 후 바로 근무 가능한 자; 공식 공고",
+    "blogTitle": "한국산업기술진흥원 채용｜육아휴직 대체인력 12명 학력무관·11/30 14시 마감",
+    "card": {
+      "badge": "👀 이거 봤어?",
+      "hook": [
+        "대체인력인데",
+        "급여 [[정규직 동등]]"
+      ],
+      "org": "한국산업기술진흥원",
+      "role": "육아휴직 대체인력 12명",
+      "facts": [
+        [
+          "🎓",
+          "학력·나이·경력 무관"
+        ],
+        [
+          "📝",
+          "필기 없이 면접"
+        ],
+        [
+          "📍",
+          "서울 강남 본원"
+        ]
+      ],
+      "deadline": "11/30(월) 오후 2시 마감"
+    },
+    "preparationHours": 72,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/865d214e24da168c3bd1.png",
+    "imageSha256": "865d214e24da168c3bd1a4def1ac064c7b63353970b475089e49e70639f403a5",
+    "checkedAt": "2026-11-21T01:09:44.023Z",
+    "updatedAt": "2026-11-21T01:09:44.023Z"
+  },
+  {
+    "id": "8c17a2ef-7396-4f66-962d-d01d0e5bb5f7",
+    "status": "scheduled",
+    "createdAt": "2026-11-21T01:09:44.023Z",
+    "handle": "hire_masters",
+    "scheduledAt": "2026-11-26T09:30:00.000Z",
+    "noticeId": "307044",
+    "title": "한국청소년상담복지개발원 채용｜재택 온라인상담원 19명·12/1 16시 마감",
+    "angle": "재택 상담 희소성(반말)",
+    "text": "집에서 하루 4시간 일하는 상담원 자리 있어\n근무 장소가 자택이고 노트북으로 청소년 채팅 상담해\n한국청소년상담복지개발원 온라인상담원 19명이야\n\n1. 관련분야 석사, 또는 학사+실무경력 2년이면 돼\n2. 💰 월 평균 급여 130만원 이상(연봉제)\n3. 24시간 7교대 · 주말 공휴일 상관없이 배치\n4. 필기 없이 서류 → 면접(12월 29일 부산 본원 대면)\n5. ⏰ 12/1(화) 오후 4시 마감\n\n유선 인터넷 되는 집이어야 하니까 환경부터 확인해",
+    "replyText": "👉 공고문 기준 정리 글은 여기서 확인\n{블로그주소}",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3087442",
+    "sourceSha256": "f64c3afe8dbe0469575150d87a3566c1b915f3f60688948d29fd9938a7c24ee0",
+    "blogEvidence": "한국청소년상담복지개발원 온라인상담원 19명",
+    "startsAt": "2026-11-17T00:00:00+09:00",
+    "deadlineAt": "2026-12-01T16:00:00+09:00",
+    "verifiedPay": "월 평균 급여 130만원 이상(연봉제)",
+    "employmentType": "기간제(온라인상담)",
+    "eligibility": "다음 중 하나 이상: 관련분야 석사학위 취득자, 관련분야 학사학위 취득자로서 관련분야 실무경력 2년 이상인 자, 기타 이와 동등한 자격이 있다고 인정되는 자(관련분야: 교육, 상담·심리, 사회사업(복지), 정신의학, 청소년, 아동 등); 학위는 졸업만 인정(재학·수료 불인정); 자격요건·경력은 접수 마감일 기준; 정년연령(만 60세) 초과자·임용 결격사유·아동청소년 관련 취업제한 사유 해당자는 합격 취소; 유선 인터넷접속 자택 근무 환경 필수; 1개 지원분야만 지원(중복지원 시 탈락); 공식 공고",
+    "blogTitle": "한국청소년상담복지개발원 채용｜재택 온라인상담원 19명·12/1 16시 마감",
+    "card": {
+      "badge": "👀 재택 봤어?",
+      "hook": [
+        "하루 4시간",
+        "[[재택]] 상담원"
+      ],
+      "org": "한국청소년상담복지개발원",
+      "role": "온라인상담원 19명",
+      "facts": [
+        [
+          "🏠",
+          "근무 장소 자택"
+        ],
+        [
+          "💰",
+          "월 평균 130만원 이상"
+        ],
+        [
+          "📝",
+          "필기 없이 면접"
+        ]
+      ],
+      "deadline": "12/1(화) 오후 4시 마감"
+    },
+    "preparationHours": 72,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/1add6c5e04c46d7e477f.png",
+    "imageSha256": "1add6c5e04c46d7e477fb58b118249a04c3b1bcff436fa2933e30eabb9e8b096",
+    "checkedAt": "2026-11-21T01:09:44.023Z",
+    "updatedAt": "2026-11-21T01:09:44.023Z"
+  },
+  {
+    "id": "d679f8db-4e40-4c7c-95a4-42cb6793c512",
+    "status": "scheduled",
+    "createdAt": "2026-11-21T01:09:44.023Z",
+    "handle": "high_quality_hire",
+    "scheduledAt": "2026-11-27T10:30:00.000Z",
+    "noticeId": "307044",
+    "title": "한국청소년상담복지개발원 채용｜재택 온라인상담원 19명·12/1 16시 마감",
+    "angle": "재택 상담 조건 비교",
+    "text": "💰 하루 4시간 재택 상담, 월 평균 130만원 이상 조건 비교\n한국청소년상담복지개발원 온라인상담원 19명\n석사 또는 학사+경력 2년 조건 비교\n\n1. A 15명(2027.2.1~2028.1.31) · 육아휴직 대체 4명\n2. 💰 월 평균 급여 130만원 이상(연봉제)\n3. 4대보험 본인부담금 포함 금액, 경력은 미산정\n4. 필기 없음: 서류 → 구술면접 + 사례면접\n5. ⏰ 12/1(화) 오후 4시 마감\n\n월 24일 근무(상담 23일 + 정기교육 1일)입니다",
+    "replyText": "👆 직무별 급여·자격 비교 전체는 여기\n{블로그주소}",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3087442",
+    "sourceSha256": "f64c3afe8dbe0469575150d87a3566c1b915f3f60688948d29fd9938a7c24ee0",
+    "blogEvidence": "한국청소년상담복지개발원 온라인상담원 19명",
+    "startsAt": "2026-11-17T00:00:00+09:00",
+    "deadlineAt": "2026-12-01T16:00:00+09:00",
+    "verifiedPay": "월 평균 급여 130만원 이상(연봉제)",
+    "employmentType": "기간제(온라인상담)",
+    "eligibility": "다음 중 하나 이상: 관련분야 석사학위 취득자, 관련분야 학사학위 취득자로서 관련분야 실무경력 2년 이상인 자, 기타 이와 동등한 자격이 있다고 인정되는 자(관련분야: 교육, 상담·심리, 사회사업(복지), 정신의학, 청소년, 아동 등); 학위는 졸업만 인정(재학·수료 불인정); 자격요건·경력은 접수 마감일 기준; 정년연령(만 60세) 초과자·임용 결격사유·아동청소년 관련 취업제한 사유 해당자는 합격 취소; 유선 인터넷접속 자택 근무 환경 필수; 1개 지원분야만 지원(중복지원 시 탈락); 공식 공고",
+    "blogTitle": "한국청소년상담복지개발원 채용｜재택 온라인상담원 19명·12/1 16시 마감",
+    "card": {
+      "badge": "💰 조건 비교",
+      "hero": {
+        "label": "근무 장소 자택",
+        "value": "하루 4시간",
+        "sub": "월 평균 130만원 이상"
+      },
+      "tags": [
+        "재택",
+        "필기 없음"
+      ],
+      "org": "한국청소년상담복지개발원",
+      "role": "온라인상담원 19명",
+      "facts": [
+        [
+          "인원",
+          "A 15명 · 대체 4명"
+        ],
+        [
+          "근무",
+          "월 24일"
+        ],
+        [
+          "면접",
+          "구술 + 사례"
+        ]
+      ],
+      "deadline": "12/1(화) 오후 4시 마감"
+    },
+    "preparationHours": 72,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/3a37e5747810c429f4b0.png",
+    "imageSha256": "3a37e5747810c429f4b03ce1ddd946a1a831b9492194ed666a32155d012de869",
+    "checkedAt": "2026-11-21T01:09:44.023Z",
+    "updatedAt": "2026-11-21T01:09:44.023Z"
+  },
+  {
+    "id": "2b2d0380-24c5-4dfa-8a6f-da69e2cee7cd",
+    "status": "scheduled",
+    "createdAt": "2026-11-21T01:09:44.023Z",
+    "handle": "hire_masters",
+    "scheduledAt": "2026-11-28T09:30:00.000Z",
+    "noticeId": "307254",
+    "title": "한국통계정보원 채용｜IT 기간제 12명 연봉 3500만원~·12/3 13시 마감",
+    "angle": "경력 3년 연봉(반말)",
+    "text": "경력 3년 있으면 연봉 3,500만원부터 시작이래\n나이·성별·학력은 안 보고 경력만 봐\n한국통계정보원 전산·데이터 12명 뽑아\n\n1. 전산 6명 · 데이터 6명, 대전 근무\n2. 💰 연봉 3,500만~5,500만원(선임 경력 3년 이상)\n3. 경력 10년이면 책임, 20년이면 수석으로 연봉 범위가 올라가\n4. 필기 없이 서류 → 7분 면접\n5. ⏰ 12/3(목) 오후 1시 마감\n\n1년 계약이고 사업끼리 중복지원은 안 되니까 하나만 골라",
+    "replyText": "👉 공고문 기준 정리 글은 여기서 확인\n{블로그주소}",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3088876",
+    "sourceSha256": "008e5b3d8248c92ec85216615a451699eaedb9dba0caae58d5ea2736e901ce95",
+    "blogEvidence": "한국통계정보원 기간제 근로자 12명",
+    "startsAt": "2026-11-19T00:00:00+09:00",
+    "deadlineAt": "2026-12-03T13:00:00+09:00",
+    "verifiedPay": "연봉 3,500만~5,500만원(선임 경력 3년 이상)",
+    "employmentType": "기간제 근로자(전일제)",
+    "eligibility": "지원 분야(사업) 관련 수행 경력 3년 이상(필수, 미충족 시 서류전형 불합격); 연령·성별·학력 제한 없음; 인사규정 제16조(결격사유)에 해당하지 않는 자; 사업별 선발이며 사업 간 중복지원 불가; 자격·경력·우대·가점은 접수 마감일(2026.12.3.) 기준; 공식 공고",
+    "blogTitle": "한국통계정보원 채용｜IT 기간제 12명 연봉 3500만원~·12/3 13시 마감",
+    "card": {
+      "badge": "👀 경력직 봐봐",
+      "hook": [
+        "경력 3년이면",
+        "연봉 [[3,500만원]]~"
+      ],
+      "org": "한국통계정보원",
+      "role": "전산·데이터 기간제 12명",
+      "facts": [
+        [
+          "💼",
+          "경력 3년 이상 필수"
+        ],
+        [
+          "📍",
+          "대전 근무"
+        ],
+        [
+          "📝",
+          "면접 7분"
+        ]
+      ],
+      "deadline": "12/3(목) 오후 1시 마감"
+    },
+    "preparationHours": 72,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/5ab95039335966d97a0c.png",
+    "imageSha256": "5ab95039335966d97a0cdfddb1b51b69d056276343488e2bea2aae58004ec834",
+    "checkedAt": "2026-11-21T01:09:44.023Z",
+    "updatedAt": "2026-11-21T01:09:44.023Z"
+  },
+  {
+    "id": "a569bfad-33df-47ca-b72a-3c23d0630b0e",
+    "status": "scheduled",
+    "createdAt": "2026-11-21T01:09:44.023Z",
+    "handle": "high_quality_hire",
+    "scheduledAt": "2026-11-28T10:30:00.000Z",
+    "noticeId": "307225",
+    "title": "부산대학교병원 채용｜정규직 33명 필기없음 간호 경력3년·12/3 17시 마감",
+    "angle": "국립대병원 평균연봉 vs 초임",
+    "text": "💰 직원 평균연봉 7,712만원, 신입 초임은 4,500만원\n필기 없는 국립대병원 정규직 33명\n부산대학교병원 조건 비교\n\n1. 진료지원간호사 30명은 임상경력 3년 이상\n2. 💰 세전 연봉 미공개\n3. 실무(실기) 60점 + 면접 40점\n4. 의료사회복지사 토익 700 · 방사선사 토익 600 이상\n5. ⏰ 12/3(목) 오후 5시 마감\n\n초임은 ALIO 2025 결산 기준이고, 이번 공고 급여는 공개되지 않았습니다\n※ 직원 평균연봉: ALIO 2025 결산 정규직 1인당 평균",
+    "replyText": "👆 직무별 급여·자격 비교 전체는 여기\n{블로그주소}",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3088502",
+    "sourceSha256": "a45a7bebec1929e6f18315ee8ace0aa20b59ddf6af5cb40503d206f46faa3cd2",
+    "blogEvidence": "부산대학교병원 일반직 신규직원 33명",
+    "startsAt": "2026-11-19T00:00:00+09:00",
+    "deadlineAt": "2026-12-03T17:00:00+09:00",
+    "verifiedPay": "세전 연봉 미공개",
+    "employmentType": "정규직",
+    "eligibility": "진료지원간호사(30명): 간호사 면허증 소지자, 병원·종합병원 또는 군병원 임상 경력 3년 이상(요양병원 경력 불인정, 휴직기간 제외), 야간 및 교대근무 가능자 모두 충족; 의료사회복지사(2명): 의료사회복지사 자격증 + 영어능력검정시험 성적(TOEIC 700점, TOEIC Speaking IM2(120점), TOEFL-IBT 79점, NEW TEPS 300점 중 1개 이상); 방사선사(1명): 방사선사 면허증 + 영어 성적(TOEIC 600점, TOEIC Speaking IM1(110점), TOEFL-IBT 68점, NEW TEPS 258점 중 1개 이상); 영어 성적은 2024.12.09 이후 발표된 국내 정기시험; 공통: 학력·연령 제한 없음(만 60세 이상 지원 불가), 남자는 군필 또는 면제자(전역예정일 전 6개월 이내 지원 가능), 인사규정 제22조 결격사유 없는 자, 응시자격은 공고마감일(2026.12.3.) 기준; 직종별 복수 지원 시 불합격; 공식 공고",
+    "blogTitle": "부산대학교병원 채용｜정규직 33명 필기없음 간호 경력3년·12/3 17시 마감",
+    "card": {
+      "badge": "💰 연봉 비교",
+      "tags": [
+        "정규직 33명",
+        "필기 없음"
+      ],
+      "org": "부산대학교병원",
+      "role": "일반직 신규직원 33명",
+      "sub": "신입 초임 4,500만원(2025 결산)",
+      "facts": [
+        [
+          "간호",
+          "임상경력 3년+"
+        ],
+        [
+          "전형",
+          "실기 60 + 면접 40"
+        ],
+        [
+          "영어",
+          "간호직은 제한 없음"
+        ]
+      ],
+      "deadline": "12/3(목) 오후 5시 마감",
+      "hero": {
+        "label": "직원 평균연봉 (2025 결산)",
+        "value": "7,712만원",
+        "sub": "신입 초임 4,500만원(2025 결산)"
+      }
+    },
+    "avgPay": {
+      "label": "직원 평균연봉",
+      "value": "7,712만원",
+      "source": "https://alio.go.kr/item/itemReportTerm.do?apbaId=C0071&reportFormRootNo=2060",
+      "basis": "ALIO 2025 결산 정규직 1인당 평균보수"
+    },
+    "preparationHours": 72,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/9204f5a826f558f95e38.png",
+    "imageSha256": "9204f5a826f558f95e380967eb3267d6dc0971631878ffd63d04d2a62189151e",
+    "checkedAt": "2026-11-21T01:09:44.023Z",
+    "updatedAt": "2026-11-21T01:09:44.023Z"
+  },
+  {
+    "id": "85bccc79-b20d-4d5a-8de0-ba02d2636942",
+    "status": "scheduled",
+    "createdAt": "2026-11-21T01:09:44.023Z",
+    "handle": "hire_masters",
+    "scheduledAt": "2026-11-29T00:30:00.000Z",
+    "noticeId": "307252",
+    "title": "한국통계정보원 채용｜자격증 필수 26명 전일제 월264만원·12/3 13시 마감",
+    "angle": "자격증 하나 월급(반말)",
+    "text": "자격증 하나면 학력 상관없이 월 264만원이야\n사회조사분석사·빅데이터분석기사 같은 거 하나\n한국통계정보원 통계데이터센터 26명 뽑아\n\n1. 지역센터 분석요원 22명 · 운영본부 4명\n2. 💰 전일제 세전 월 264만원(식대 20만원 포함)\n3. 근무지 17곳 중 한 곳만 골라서 지원\n4. 필기 없이 서류 → 면접\n5. ⏰ 12/3(목) 오후 1시 마감\n\n자격증 없으면 서류에서 바로 떨어지니까 꼭 확인해",
+    "replyText": "👉 공고문 기준 정리 글은 여기서 확인\n{블로그주소}",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3088870",
+    "sourceSha256": "d9e6cb38eabc7da718401086ef3de67325322890ad2ea6cc7cfa8eb8fe8f8b08",
+    "blogEvidence": "한국통계정보원 통계데이터센터 기간제 근로자 26명",
+    "startsAt": "2026-11-19T15:00:00+09:00",
+    "deadlineAt": "2026-12-03T13:00:00+09:00",
+    "verifiedPay": "전일제 세전 월 264만원(식대 20만원 포함)",
+    "employmentType": "기간제 근로자(전일제·단시간)",
+    "eligibility": "연령·성별·학력 제한 없음; 필수 자격: 사회조사분석사, 빅데이터분석기사, 정보처리기사, 데이터아키텍처·데이터분석 (준)전문가, SQL, SAS 중 1개 이상 보유(미충족 시 서류전형 불합격, 접수 마감일 2026.12.3. 기준); 인사규정 제16조 결격사유 없는 자; 2027.1.3.(일) OJT 참석, 1.4.(월)부터 근무 가능한 자; 센터별 지정 근무장소·근무시간에 출퇴근 가능한 자; 근무지 1곳만 지원(중복지원 불가); 공식 공고",
+    "blogTitle": "한국통계정보원 채용｜자격증 필수 26명 전일제 월264만원·12/3 13시 마감",
+    "card": {
+      "badge": "👀 자격증 있어?",
+      "hook": [
+        "자격증 하나면",
+        "월 [[264만원]]"
+      ],
+      "org": "한국통계정보원",
+      "role": "통계데이터센터 기간제 26명",
+      "facts": [
+        [
+          "🎓",
+          "학력·나이 무관"
+        ],
+        [
+          "📍",
+          "근무지 17곳 중 1곳"
+        ],
+        [
+          "📝",
+          "필기 없이 면접"
+        ]
+      ],
+      "deadline": "12/3(목) 오후 1시 마감"
+    },
+    "preparationHours": 72,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/1bddb260870746e3e50c.png",
+    "imageSha256": "1bddb260870746e3e50ccc29ade90bdcdbf3544b9eeb5b6e60fe5b5c2e7963c2",
+    "checkedAt": "2026-11-21T01:09:44.023Z",
+    "updatedAt": "2026-11-21T01:09:44.023Z"
+  },
+  {
+    "id": "37599d77-0254-4288-ac90-257f3e9beadc",
+    "status": "scheduled",
+    "createdAt": "2026-11-21T01:09:44.023Z",
+    "handle": "hire_masters",
+    "scheduledAt": "2026-11-29T09:30:00.000Z",
+    "noticeId": "307094",
+    "title": "신용보증기금 채용｜중증장애인 단시간 60명 월 약120만원·12/4 16시 마감",
+    "angle": "장애인 단시간 재택(반말)",
+    "text": "하루 4시간, 창작은 재택도 되는 장애인 일자리야\n중증장애인이나 3급 이상 상이등급이면 지원 가능\n신용보증기금 단시간 근로자 60명 뽑아\n\n1. 업무보조 40명 · 창작 10명 · 드론축구 선수 10명\n2. 💰 월급여 약 120만원 내외(세전 기준)\n3. 필기 없이 자기소개서 → 면접\n4. 업무보조 1월 6일, 창작·체육 3월 10일부터 근무\n5. ⏰ 12/4(금) 오후 4시 마감\n\n2025년에 신용보증기금에서 일했으면 지원 못 해",
+    "replyText": "👉 공고문 기준 정리 글은 여기서 확인\n{블로그주소}",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3087787",
+    "sourceSha256": "6218821c7c4c5790e4702d9565cf305512eb5ba7e836900bf6c0f156d76225f2",
+    "blogEvidence": "신용보증기금 장애인 단시간 근로자 60명",
+    "startsAt": "2026-11-20T00:00:00+09:00",
+    "deadlineAt": "2026-12-04T16:00:00+09:00",
+    "verifiedPay": "월급여 약 120만원 내외(세전 기준)",
+    "employmentType": "기타계약직원(단시간 근로자)",
+    "eligibility": "중증장애인(장애인고용촉진 및 직업재활법 제2조제2호, 같은 법 시행령 제4조제1항) 또는 3급 이상 상이등급(국가유공자법 시행령 제14조제3항) 해당자; 병역의무 불이행 사실 없는 자; 채용제한 사유(인사요령 제12조) 없는 자; 채용예정일부터 즉시 근무 가능(입사 유예 불가); 2025.1.1.~2025.12.31. 신용보증기금 근무 이력 없는 자; 접수 마감일 기준 정년(만 60세) 초과자 지원 불가; 창작은 한국장애인고용공단 맞춤훈련 참여·수료 가능자, 체육은 드론축구 교육·훈련 이수 또는 선수단 활동·대회 참가 경험자; 채용단위 간 중복 지원 불가; 신용보증기금 채용홈페이지 공고 본문",
+    "blogTitle": "신용보증기금 채용｜중증장애인 단시간 60명 월 약120만원·12/4 16시 마감",
+    "card": {
+      "badge": "👀 이거 봤어?",
+      "hook": [
+        "하루 4시간",
+        "장애인 [[60명]]"
+      ],
+      "org": "신용보증기금",
+      "role": "장애인 단시간 근로자 60명",
+      "facts": [
+        [
+          "🏠",
+          "창작 10명 재택 가능"
+        ],
+        [
+          "⚽",
+          "드론축구 선수 10명"
+        ],
+        [
+          "💰",
+          "월 약 120만원 내외"
+        ]
+      ],
+      "deadline": "12/4(금) 오후 4시 마감"
+    },
+    "preparationHours": 72,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/26202513e52e7ae31a7c.png",
+    "imageSha256": "26202513e52e7ae31a7c2409f5cad3f089c5b8f4293193cc418e637a83b8cc27",
+    "checkedAt": "2026-11-21T01:09:44.023Z",
+    "updatedAt": "2026-11-21T01:09:44.023Z"
+  },
+  {
+    "id": "4401eb15-6924-4661-b36c-3209dd04e17b",
+    "status": "scheduled",
+    "createdAt": "2026-11-21T01:09:44.023Z",
+    "handle": "high_quality_hire",
+    "scheduledAt": "2026-11-29T10:30:00.000Z",
+    "noticeId": "307254",
+    "title": "한국통계정보원 채용｜IT 기간제 12명 연봉 3500만원~·12/3 13시 마감",
+    "angle": "경력별 연봉 범위 비교",
+    "text": "💰 경력별 연봉 범위 비교: 선임 3,500만원부터 수석 8,500만원까지\n한국통계정보원 기간제 근로자 12명\n전산 6명 · 데이터 6명 조건 비교\n\n1. 책임(10년+) 4,200만~7,500만원\n2. 💰 연봉 3,500만~5,500만원(선임 경력 3년 이상)\n3. 수석(20년+) 5,500만~8,500만원\n4. 서류(자격증 5 + 정성 95) → 면접 7분\n5. ⏰ 12/3(목) 오후 1시 마감\n\n계약은 2027년 1월 1일부터 12월 31일까지 1년입니다",
+    "replyText": "👆 직무별 급여·자격 비교 전체는 여기\n{블로그주소}",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3088876",
+    "sourceSha256": "008e5b3d8248c92ec85216615a451699eaedb9dba0caae58d5ea2736e901ce95",
+    "blogEvidence": "한국통계정보원 기간제 근로자 12명",
+    "startsAt": "2026-11-19T00:00:00+09:00",
+    "deadlineAt": "2026-12-03T13:00:00+09:00",
+    "verifiedPay": "연봉 3,500만~5,500만원(선임 경력 3년 이상)",
+    "employmentType": "기간제 근로자(전일제)",
+    "eligibility": "지원 분야(사업) 관련 수행 경력 3년 이상(필수, 미충족 시 서류전형 불합격); 연령·성별·학력 제한 없음; 인사규정 제16조(결격사유)에 해당하지 않는 자; 사업별 선발이며 사업 간 중복지원 불가; 자격·경력·우대·가점은 접수 마감일(2026.12.3.) 기준; 공식 공고",
+    "blogTitle": "한국통계정보원 채용｜IT 기간제 12명 연봉 3500만원~·12/3 13시 마감",
+    "card": {
+      "badge": "💰 조건 비교",
+      "hero": {
+        "label": "선임 경력 3년 이상",
+        "value": "3,500만원~",
+        "sub": "최대 5,500만원"
+      },
+      "tags": [
+        "IT 12명",
+        "경력직"
+      ],
+      "org": "한국통계정보원",
+      "role": "전산·데이터 기간제 12명",
+      "facts": [
+        [
+          "책임",
+          "4,200만~7,500만원"
+        ],
+        [
+          "수석",
+          "5,500만~8,500만원"
+        ],
+        [
+          "계약",
+          "1년"
+        ]
+      ],
+      "deadline": "12/3(목) 오후 1시 마감"
+    },
+    "preparationHours": 72,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/a644d25f396b4b5f3363.png",
+    "imageSha256": "a644d25f396b4b5f336351e6c2da772664994f931dafc0ddb09000d06568c963",
+    "checkedAt": "2026-11-21T01:09:44.023Z",
+    "updatedAt": "2026-11-21T01:09:44.023Z"
+  },
+  {
+    "id": "17be8ca3-21f2-47dd-b49d-1f522ba5fea5",
+    "status": "scheduled",
+    "createdAt": "2026-11-21T01:09:44.023Z",
+    "handle": "high_quality_hire",
+    "scheduledAt": "2026-11-30T01:30:00.000Z",
+    "noticeId": "307252",
+    "title": "한국통계정보원 채용｜자격증 필수 26명 전일제 월264만원·12/3 13시 마감",
+    "angle": "전일제 vs 단시간 월급 비교",
+    "text": "💰 전일제 월 264만원 vs 단시간 월 132만원 조건 비교\n한국통계정보원 통계데이터센터 26명\n자격증 6종 중 1개 필수 조건 비교\n\n1. 전일제 14명 · 단시간 8명 · 운영본부 4명\n2. 💰 전일제 세전 월 264만원(식대 20만원 포함)\n3. 단시간 세전 월 132만원(주 평균 20시간)\n4. 평가 결과에 따라 최대 1년 연장 가능\n5. ⏰ 12/3(목) 오후 1시 마감\n\n근무지 17곳 중 1곳만 지원할 수 있습니다",
+    "replyText": "👆 직무별 급여·자격 비교 전체는 여기\n{블로그주소}",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3088870",
+    "sourceSha256": "d9e6cb38eabc7da718401086ef3de67325322890ad2ea6cc7cfa8eb8fe8f8b08",
+    "blogEvidence": "한국통계정보원 통계데이터센터 기간제 근로자 26명",
+    "startsAt": "2026-11-19T15:00:00+09:00",
+    "deadlineAt": "2026-12-03T13:00:00+09:00",
+    "verifiedPay": "전일제 세전 월 264만원(식대 20만원 포함)",
+    "employmentType": "기간제 근로자(전일제·단시간)",
+    "eligibility": "연령·성별·학력 제한 없음; 필수 자격: 사회조사분석사, 빅데이터분석기사, 정보처리기사, 데이터아키텍처·데이터분석 (준)전문가, SQL, SAS 중 1개 이상 보유(미충족 시 서류전형 불합격, 접수 마감일 2026.12.3. 기준); 인사규정 제16조 결격사유 없는 자; 2027.1.3.(일) OJT 참석, 1.4.(월)부터 근무 가능한 자; 센터별 지정 근무장소·근무시간에 출퇴근 가능한 자; 근무지 1곳만 지원(중복지원 불가); 공식 공고",
+    "blogTitle": "한국통계정보원 채용｜자격증 필수 26명 전일제 월264만원·12/3 13시 마감",
+    "card": {
+      "badge": "💰 조건 비교",
+      "hero": {
+        "label": "전일제 세전",
+        "value": "월 264만원",
+        "sub": "단시간 월 132만원"
+      },
+      "tags": [
+        "26명",
+        "학력 무관"
+      ],
+      "org": "한국통계정보원",
+      "role": "통계데이터센터 기간제 26명",
+      "facts": [
+        [
+          "자격",
+          "6종 중 1개 필수"
+        ],
+        [
+          "근무지",
+          "17곳 중 1곳"
+        ],
+        [
+          "연장",
+          "최대 1년"
+        ]
+      ],
+      "deadline": "12/3(목) 오후 1시 마감"
+    },
+    "preparationHours": 72,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/fda725add9f71e6afd4a.png",
+    "imageSha256": "fda725add9f71e6afd4a076295ecda6a853acb648dcd2de7f46440181f30a340",
+    "checkedAt": "2026-11-21T01:09:44.023Z",
+    "updatedAt": "2026-11-21T01:09:44.023Z"
+  },
+  {
+    "id": "234b856e-82a6-4212-8bc2-db9b2242ace7",
+    "status": "scheduled",
+    "createdAt": "2026-11-21T01:09:44.023Z",
+    "handle": "high_quality_hire",
+    "scheduledAt": "2026-11-30T10:30:00.000Z",
+    "noticeId": "307094",
+    "title": "신용보증기금 채용｜중증장애인 단시간 60명 월 약120만원·12/4 16시 마감",
+    "angle": "장애인 단시간 분야별 비교",
+    "text": "💰 하루 4시간 월 약 120만원, 장애인 60명 조건 비교\n신용보증기금 장애인 단시간 근로자\n분야별 근무기간 비교\n\n1. 업무보조 40명(대구 본점) 2027.1.6~6.23\n2. 💰 월급여 약 120만원 내외(세전 기준)\n3. 창작 10명 3.10~8.25(재택 가능)\n4. 체육(드론축구) 10명 3.10~12.23\n5. ⏰ 12/4(금) 오후 4시 마감\n\n필기 없이 서류 → 면접이고, 정규직 전환은 없습니다",
+    "replyText": "👆 직무별 급여·자격 비교 전체는 여기\n{블로그주소}",
+    "sourceUrl": "https://www.alio.go.kr/download/download.json?fileNo=3087787",
+    "sourceSha256": "6218821c7c4c5790e4702d9565cf305512eb5ba7e836900bf6c0f156d76225f2",
+    "blogEvidence": "신용보증기금 장애인 단시간 근로자 60명",
+    "startsAt": "2026-11-20T00:00:00+09:00",
+    "deadlineAt": "2026-12-04T16:00:00+09:00",
+    "verifiedPay": "월급여 약 120만원 내외(세전 기준)",
+    "employmentType": "기타계약직원(단시간 근로자)",
+    "eligibility": "중증장애인(장애인고용촉진 및 직업재활법 제2조제2호, 같은 법 시행령 제4조제1항) 또는 3급 이상 상이등급(국가유공자법 시행령 제14조제3항) 해당자; 병역의무 불이행 사실 없는 자; 채용제한 사유(인사요령 제12조) 없는 자; 채용예정일부터 즉시 근무 가능(입사 유예 불가); 2025.1.1.~2025.12.31. 신용보증기금 근무 이력 없는 자; 접수 마감일 기준 정년(만 60세) 초과자 지원 불가; 창작은 한국장애인고용공단 맞춤훈련 참여·수료 가능자, 체육은 드론축구 교육·훈련 이수 또는 선수단 활동·대회 참가 경험자; 채용단위 간 중복 지원 불가; 신용보증기금 채용홈페이지 공고 본문",
+    "blogTitle": "신용보증기금 채용｜중증장애인 단시간 60명 월 약120만원·12/4 16시 마감",
+    "card": {
+      "badge": "💰 조건 비교",
+      "hero": {
+        "label": "하루 4시간",
+        "value": "월 약 120만원",
+        "sub": "세전 기준"
+      },
+      "tags": [
+        "장애인 60명",
+        "필기 없음"
+      ],
+      "org": "신용보증기금",
+      "role": "장애인 단시간 근로자 60명",
+      "facts": [
+        [
+          "업무보조",
+          "40명 대구 본점"
+        ],
+        [
+          "창작",
+          "10명 재택 가능"
+        ],
+        [
+          "체육",
+          "10명 드론축구"
+        ]
+      ],
+      "deadline": "12/4(금) 오후 4시 마감"
+    },
+    "preparationHours": 72,
+    "factsChecked": true,
+    "blogChecked": true,
+    "postType": "initial",
+    "topicTag": "취업",
+    "imageUrl": "https://raw.githubusercontent.com/holybullyshit-design/threads-auto-publisher/main/schedule/cards/b3bde3bf7cf1dad661d9.png",
+    "imageSha256": "b3bde3bf7cf1dad661d9e5ed1b1d68ad764e046394c8f8c7fca7429a1dce0cb6",
+    "checkedAt": "2026-11-21T01:09:44.023Z",
+    "updatedAt": "2026-11-21T01:09:44.023Z"
   }
 ]
