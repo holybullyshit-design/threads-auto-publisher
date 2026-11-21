@@ -44168,10 +44168,13 @@
     "scheduledAt": "2026-11-21T22:49:00.000Z",
     "createdAt": "2026-11-13T23:02:17.626Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17913192261657527",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "17913192261657527"
+    ]
   },
   {
     "id": "f5e21a22-ae96-40f8-94e8-6ca38987de57",
