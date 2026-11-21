@@ -44143,10 +44143,13 @@
     "scheduledAt": "2026-11-21T06:15:00.000Z",
     "createdAt": "2026-11-13T23:01:40.346Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17940931932395893",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17940931932395893"
+    ]
   },
   {
     "id": "3b790443-af23-4f14-83ff-d3b56570b699",
