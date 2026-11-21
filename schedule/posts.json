@@ -45637,10 +45637,13 @@
     "scheduledAt": "2026-11-21T07:50:00.000Z",
     "createdAt": "2026-11-13T23:57:50.552Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18134742943828226",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18134742943828226"
+    ]
   },
   {
     "id": "78b15304-0886-4ed1-b6c2-5938fe61c76e",
