@@ -47246,11 +47246,14 @@
     "scheduledAt": "2026-11-21T01:45:00.000Z",
     "createdAt": "2026-11-14T00:59:19.425Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18077739872773780",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "toneFixed": true
+    "toneFixed": true,
+    "chainPublishedIds": [
+      "18077739872773780"
+    ]
   },
   {
     "id": "adc7f600-e2f2-4c76-b95a-8387dd28e5a9",
