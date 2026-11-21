@@ -47356,12 +47356,15 @@
     "scheduledAt": "2026-11-21T09:11:00.000Z",
     "createdAt": "2026-11-14T01:01:31.770Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18122885126083526",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
     "commentCta": true,
-    "toneFixed": true
+    "toneFixed": true,
+    "chainPublishedIds": [
+      "18122885126083526"
+    ]
   },
   {
     "id": "b63fba0a-e226-4a8a-a8a9-a77651ee8b81",
