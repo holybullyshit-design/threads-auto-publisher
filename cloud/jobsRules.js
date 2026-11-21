@@ -27,10 +27,11 @@ function cardIssues(p) {
 // 이런 원문은 그 표시만 지우고 나머지 전체를 해시로 대조한다. 공고 글자가 하나라도 바뀌면 지금처럼 보류된다. 허용한 방식 이름만 쓴다.
 const SOURCE_NORMALIZERS = { 'strip-asset-version': bytes => Buffer.from(bytes.toString('utf8').replace(/\?v=[^"']*/g, '?v='), 'utf8') };
 const sourceHash = (bytes, normalize) => crypto.createHash('sha256').update(normalize === undefined ? bytes : SOURCE_NORMALIZERS[normalize](bytes)).digest('hex');
-// 첫 소개는 마감 120시간 전까지 한다(헌법). 예외는 사용자가 공고별로 허락한 것만 여기 적는다. 행 값(preparationHours)으로는 늘릴 수만 있다.
+// 첫 소개는 마감 72시간 전까지 한다(헌법 v2.21, 2026-11-21 사용자 지시 "72시간으로 줄여". 그 전에는 120시간). 예외는 사용자가 공고별로 허락한 것만 여기 적는다. 행 값(preparationHours)으로는 늘릴 수만 있다.
 // 2026-11-11 사용자 지시("120시간 규칙 때문에..? 그래도 넣어보자. 사람들의 초유의 관심사거든"): SK하이닉스 [11월] Talent hy-way만 48시간.
+const MIN_LEAD_HOURS = 72;
 const LEAD_EXCEPTIONS = { 'skhynix-R262381': 48 };
-const leadHours = p => Object.hasOwn(LEAD_EXCEPTIONS, p.noticeId) ? LEAD_EXCEPTIONS[p.noticeId] : Math.max(120, Number(p.preparationHours) || 120);
+const leadHours = p => Object.hasOwn(LEAD_EXCEPTIONS, p.noticeId) ? LEAD_EXCEPTIONS[p.noticeId] : Math.max(MIN_LEAD_HOURS, Number(p.preparationHours) || MIN_LEAD_HOURS);
 const kstDay = value => new Date(Date.parse(value) + 9 * H).toISOString().slice(0, 10);
 // 첫 댓글 블로그 주소(헌법 v2.10 → v2.18). 2026-11-09 사용자 결정("시험해보자")으로 @high_quality_hire만 11/10~16에 시험했고,
 // 조회 1천당 링크 클릭이 7.5(댓글 주소)로 프로필 링크 계정(4.6·2.0)보다 높았으며 글당 조회도 눌리지 않았다.
@@ -152,4 +153,4 @@ async function verifyWeb(p, fetcher = fetch, { attempts = 3, delayMs = 3000 } = 
   if (!html.includes(p.blogEvidence) || (!p.blogPayUnchecked && !html.includes(p.verifiedPay))) throw new Error('블로그 본문 근거 불일치');
   return { blogUrl };
 }
-module.exports = { HANDLES, DAILY_LIMIT, REVIEW_VALID_HOURS, CARD_BASE, REPLY_LINK_FROM, BLOG_PLACEHOLDER, SOURCE_NORMALIZERS, LEAD_EXCEPTIONS, errors, verifyWeb, kstDay, replyFor, sourceHash, leadHours };
+module.exports = { HANDLES, DAILY_LIMIT, REVIEW_VALID_HOURS, CARD_BASE, REPLY_LINK_FROM, BLOG_PLACEHOLDER, SOURCE_NORMALIZERS, LEAD_EXCEPTIONS, MIN_LEAD_HOURS, errors, verifyWeb, kstDay, replyFor, sourceHash, leadHours };

@@ -5,7 +5,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const crypto = require('node:crypto');
-const { DAILY_LIMIT, REVIEW_VALID_HOURS, leadHours } = require('../../cloud/jobsRules');
+const { DAILY_LIMIT, REVIEW_VALID_HOURS, leadHours, MIN_LEAD_HOURS } = require('../../cloud/jobsRules');
 const HANDLES = ['jobs_curator', 'hire_masters', 'high_quality_hire'];
 const ROOT = '/Users/choitaehwan/Documents/ChatGPT/스레드 채용공고 자동화/automation';
 const HOUR = 3600000;
@@ -31,7 +31,7 @@ function validate(p, all = [], now = Date.now()) {
     const exactKstTime = new Date(end + 9 * HOUR).toISOString().slice(11, 16);
     if (kstDay(now) !== kstDay(end) || end - now < 4 * HOUR || end - now > 24 * HOUR) errors.push('마감 당일 알림은 정확한 마감일의 4시간 이상 전에만 게시하세요.');
     if (!p.text?.includes('오늘 마감') || !p.text.includes(exactKstTime)) errors.push(`본문에 '오늘 마감'과 정확한 마감 시각 ${exactKstTime} KST를 적으세요.`);
-  } else if (!Number.isFinite(end) || end - now < leadHours(p) * HOUR) errors.push('최초 소개는 마감까지 최소 120시간과 필요한 준비 기간을 확보해야 합니다.');
+  } else if (!Number.isFinite(end) || end - now < leadHours(p) * HOUR) errors.push(`최초 소개는 마감까지 최소 ${MIN_LEAD_HOURS}시간과 필요한 준비 기간을 확보해야 합니다.`);
   if (!Number.isFinite(checked) || checked > now || now - checked > REVIEW_VALID_HOURS * HOUR) errors.push(`사전 검수는 ${REVIEW_VALID_HOURS / 24}일까지 유효합니다. 공식 자료를 다시 확인하세요.`);
   if (!p.factsChecked || !p.blogChecked) errors.push('원문·첨부파일의 조건과 공개 블로그·모바일 화면을 확인하세요.');
   const history = all.filter(x => x.id !== p.id && ['publishing', 'published', 'reply_failed', 'uncertain'].includes(x.status));
@@ -74,7 +74,7 @@ function createWorkspace({ file = process.env.JOB_THREADS_DRAFT_FILE || path.joi
     for (const k of ['handle', 'title', 'noticeId', 'angle', 'text', 'replyText', 'sourceUrl', 'blogUrl', 'startsAt', 'deadlineAt', 'checkedAt', 'verifiedPay', 'employmentType', 'eligibility', 'blogEvidence']) row[k] = String(input[k] || '').trim().slice(0, 6000);
     if (!HANDLES.includes(row.handle)) throw fail('채용 계정을 선택하세요.');
     row.postType = input.postType === 'deadline_reminder' ? 'deadline_reminder' : 'initial';
-    row.preparationHours = Math.max(120, Math.min(8760, Number(input.preparationHours) || 120));
+    row.preparationHours = Math.max(MIN_LEAD_HOURS, Math.min(8760, Number(input.preparationHours) || MIN_LEAD_HOURS));
     row.factsChecked = input.factsChecked === true; row.blogChecked = input.blogChecked === true;
     if (input.launchException === '2026-11-01:306304' && row.noticeId === '306304') row.launchException = input.launchException;
     if (old) all[all.indexOf(old)] = row; else all.push(row);

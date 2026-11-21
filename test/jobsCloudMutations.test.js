@@ -10,7 +10,7 @@ test('cloud gate blocks account, pay, link, hash, deadline, review, and time mut
     ['account',{handle:'wrong'}], ['pay',{text:'체험형인턴 세전 월급 999만원'}],
     ['replyLink',{replyText:'자격 정리'}], ['replyLink',{replyText:'프로필 링크 https://hirecurator.blogspot.com/2026/11/test.html'}],
     ['textLink',{text:'체험형인턴 세전 월급 225만원 hirecurator.blogspot.com/x'}], ['sourceHash',{sourceSha256:'bad'}],
-    ['deadline',{deadlineAt:new Date(t.getTime()+119*H).toISOString()}],
+    ['deadline',{deadlineAt:new Date(t.getTime()+71*H).toISOString()}],
     ['staleReview',{checkedAt:new Date(t.getTime()-(14*24+1)*H).toISOString()}],
     ['review',{factsChecked:false}], ['time',{scheduledAt:new Date(t.getTime()+H).toISOString()}],
   ];
@@ -86,7 +86,13 @@ test('2026-11-11: only the user-approved SK hynix notice may be introduced 48h b
   assert.ok(!errors({...sk,deadlineAt:at(69)},[base()],t).includes('deadline'));
   assert.ok(errors({...sk,deadlineAt:at(47)},[base()],t).includes('deadline'));
   assert.ok(errors({...base(),deadlineAt:at(69)},[base()],t).includes('deadline'));
-  assert.ok(errors({...base(),preparationHours:1,deadlineAt:at(119)},[base()],t).includes('deadline'));
+  assert.ok(errors({...base(),preparationHours:1,deadlineAt:at(71)},[base()],t).includes('deadline'));
+});
+test('2026-11-21: first introductions need 72h before the deadline (was 120h)',()=>{
+  const at=(h)=>new Date(t.getTime()+h*H).toISOString();
+  assert.ok(!errors({...base(),deadlineAt:at(73)},[base()],t).includes('deadline'));
+  assert.ok(errors({...base(),deadlineAt:at(71)},[base()],t).includes('deadline'));
+  assert.ok(errors({...base(),preparationHours:120,deadlineAt:at(100)},[base()],t).includes('deadline'));
 });
 test('two posts per KST day and cross-account interval are enforced',()=>{
   const own = {...base(),id:'old',status:'published',noticeId:'other',sourceUrl:'https://example.com/other',attemptedAt:new Date(t.getTime()-H).toISOString()};

@@ -26,7 +26,7 @@ test('ambiguous body result is never retried',async()=>{
   assert.equal(count,1);assert.equal(q.rows()[0].status,'uncertain');
 });
 test('preflight mutation blocks before Meta call',async()=>{
-  const p=post();p.deadlineAt=new Date(now.getTime()+119*H).toISOString();const q=queue(p);let count=0;
+  const p=post();p.deadlineAt=new Date(now.getTime()+71*H).toISOString();const q=queue(p);let count=0;
   await run({queue:q,now:()=>now,getAccounts:auth,web:async()=>{},checkDay:async()=>{},publish:async()=>{count++}});
   assert.equal(count,0);assert.equal(q.rows()[0].status,'blocked');
 });

@@ -5,9 +5,9 @@ const sample=()=>({handle:'jobs_curator',title:'test',noticeId:'n1',angle:'초�
 function setup(t){const dir=fs.mkdtempSync(path.join(os.tmpdir(),'jobs-workspace-'));t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));fs.writeFileSync(path.join(dir,'jobs_curator.json'),JSON.stringify({access_token:'test-only',user_id:'test',expires_at:Math.floor(now/1000)+99999}));return createWorkspace({file:path.join(dir,'drafts.json'),tokenDir:dir});}
 test('deadline boundary, 14-day review window, unknown dates and source blocked',()=>{
   assert.deepEqual(validate(sample(),[],now),[]);
-  for(const patch of [{deadlineAt:new Date(now+119*hour).toISOString()},{checkedAt:new Date(now-(14*24+1)*hour).toISOString()},{checkedAt:new Date(now+hour).toISOString()},{deadlineAt:''},{sourceUrl:'javascript:alert(1)'},{blogChecked:false},{startsAt:new Date(now+hour).toISOString()}])
+  for(const patch of [{deadlineAt:new Date(now+71*hour).toISOString()},{checkedAt:new Date(now-(14*24+1)*hour).toISOString()},{checkedAt:new Date(now+hour).toISOString()},{deadlineAt:''},{sourceUrl:'javascript:alert(1)'},{blogChecked:false},{startsAt:new Date(now+hour).toISOString()}])
     assert.ok(validate({...sample(),...patch},[],now).length,JSON.stringify(patch));
-  assert.deepEqual(validate({...sample(),deadlineAt:new Date(now+120*hour).toISOString()},[],now),[]);
+  assert.deepEqual(validate({...sample(),deadlineAt:new Date(now+73*hour).toISOString()},[],now),[]); // 2026-11-21: 120시간 → 72시간(헌법 v2.21)
   assert.deepEqual(validate({...sample(),checkedAt:new Date(now-13*24*hour).toISOString()},[],now),[]);
 });
 test('reply and body follow the profile-link rule (v2.2)',()=>{

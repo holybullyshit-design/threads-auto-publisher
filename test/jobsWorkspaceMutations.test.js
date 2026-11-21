@@ -13,7 +13,7 @@ test('normal candidate passes, injected bad values are rejected',()=>{
  ['comment profile-link guide removed',{replyText:'블로그에서 확인'}],
  ['comment carries a URL',{replyText:'프로필 링크 https://hirecurator.blogspot.com/2026/10/6.html'}],
  ['body carries a URL',{text:'세전 기본연봉 2,608만~2,736만원, https://hirecurator.blogspot.com/2026/10/6.html'}],
- ['deadline too close',{deadlineAt:new Date(now+119*H).toISOString()}],
+ ['deadline too close',{deadlineAt:new Date(now+71*H).toISOString()}],
  ['deadline time unknown',{deadlineAt:''}],
  ['stale official check',{checkedAt:new Date(now-(14*24+1)*H).toISOString()}],
  ['facts unchecked',{factsChecked:false}],
