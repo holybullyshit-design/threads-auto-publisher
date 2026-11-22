@@ -45780,10 +45780,13 @@
     "scheduledAt": "2026-11-22T22:48:00.000Z",
     "createdAt": "2026-11-14T00:03:00.559Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18658715401058939",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18658715401058939"
+    ]
   },
   {
     "id": "ddfaecc7-a6a1-4a5c-a1cf-5fa1803a7708",
