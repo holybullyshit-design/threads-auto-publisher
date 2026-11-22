@@ -336,7 +336,7 @@
      "coverage": "Redirect error",
      "fetch": "REDIRECT_ERROR",
      "lastCrawl": "2026-11-20T00:55:06Z",
-     "checkedAt": "2026-11-21T08:02:14.521Z"
+     "checkedAt": "2026-11-22T08:02:10.450Z"
     },
     "https://hirecurator.blogspot.com/2026/11/4-2784011126-18.html": {
      "verdict": "NEUTRAL",
@@ -354,10 +354,10 @@
     },
     "https://hirecurator.blogspot.com/2026/11/31127-14.html": {
      "verdict": "NEUTRAL",
-     "coverage": "URL is unknown to Google",
+     "coverage": "Discovered - currently not indexed",
      "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
      "lastCrawl": "",
-     "checkedAt": "2026-11-21T08:02:14.521Z"
+     "checkedAt": "2026-11-22T08:02:10.450Z"
     },
     "https://hirecurator.blogspot.com/2026/11/118080-21127-15.html": {
      "verdict": "NEUTRAL",
@@ -375,10 +375,10 @@
     },
     "https://hirecurator.blogspot.com/2026/11/14-3651127-10.html": {
      "verdict": "NEUTRAL",
-     "coverage": "URL is unknown to Google",
+     "coverage": "Discovered - currently not indexed",
      "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
      "lastCrawl": "",
-     "checkedAt": "2026-11-21T08:02:14.521Z"
+     "checkedAt": "2026-11-22T08:02:10.450Z"
     },
     "https://hirecurator.blogspot.com/2026/11/34-1127-17.html": {
      "verdict": "NEUTRAL",
@@ -393,15 +393,22 @@
      "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
      "lastCrawl": "",
      "checkedAt": "2026-11-22T03:11:45.391Z"
+    },
+    "https://hirecurator.blogspot.com/2026/11/1-7521127-18.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "URL is unknown to Google",
+     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
+     "lastCrawl": "",
+     "checkedAt": "2026-11-22T08:02:10.450Z"
     }
    },
    "sitemapSubmittedAt": "2026-11-21T16:12:09.434Z",
    "summary": {
-    "total": 56,
+    "total": 57,
     "indexed": 9,
     "redirectError": 28,
-    "unknown": 10,
-    "discovered": 9,
+    "unknown": 9,
+    "discovered": 11,
     "crawledNotIndexed": 0,
     "other": 0,
     "error": 0
@@ -592,5 +599,5 @@
    }
   }
  },
- "updatedAt": "2026-11-22T03:11:45.391Z"
+ "updatedAt": "2026-11-22T08:02:10.450Z"
 }
