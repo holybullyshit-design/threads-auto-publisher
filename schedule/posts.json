@@ -47568,10 +47568,13 @@
     "scheduledAt": "2026-11-22T23:08:00.000Z",
     "createdAt": "2026-11-14T01:06:00.650Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18150352195609859",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18150352195609859"
+    ]
   },
   {
     "id": "05155d30-3cf2-4473-acd4-bf7a653cb239",
