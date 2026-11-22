@@ -47537,11 +47537,14 @@
     "scheduledAt": "2026-11-22T09:10:00.000Z",
     "createdAt": "2026-11-14T01:05:21.282Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18130063471905016",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18130063471905016"
+    ]
   },
   {
     "id": "8dea9408-8547-4220-b327-645419c49bd9",
