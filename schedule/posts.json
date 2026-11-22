@@ -44191,10 +44191,13 @@
     "scheduledAt": "2026-11-22T01:28:00.000Z",
     "createdAt": "2026-11-13T23:03:00.550Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18214019338370901",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18214019338370901"
+    ]
   },
   {
     "id": "5561dda3-f213-4a1d-8a5e-dcf90f67f515",
