@@ -49171,10 +49171,13 @@
     "scheduledAt": "2026-11-22T03:08:00.000Z",
     "createdAt": "2026-11-14T02:07:02.359Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18381004429242836",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18381004429242836"
+    ]
   },
   {
     "id": "7154710c-e79e-4699-bc48-0318f48a645b",
