@@ -49258,12 +49258,15 @@
     "scheduledAt": "2026-11-22T08:28:00.000Z",
     "createdAt": "2026-11-14T02:08:39.050Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18120065155821499",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
     "commentCta": true,
-    "toneFixed": true
+    "toneFixed": true,
+    "chainPublishedIds": [
+      "18120065155821499"
+    ]
   },
   {
     "id": "27738a84-ec95-40de-be96-5cdbbca08596",
