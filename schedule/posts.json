@@ -44215,10 +44215,13 @@
     "scheduledAt": "2026-11-22T03:50:00.000Z",
     "createdAt": "2026-11-13T23:03:32.163Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17997584703051415",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17997584703051415"
+    ]
   },
   {
     "id": "09bf7bb1-378f-4ec0-8cd6-1496da380fe6",
