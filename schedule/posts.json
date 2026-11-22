@@ -45695,10 +45695,13 @@
     "scheduledAt": "2026-11-22T01:45:00.000Z",
     "createdAt": "2026-11-13T23:59:26.090Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18103875323542646",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18103875323542646"
+    ]
   },
   {
     "id": "700c618e-2ed2-48d1-b670-e52b32d37aa5",
