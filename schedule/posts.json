@@ -45750,10 +45750,13 @@
     "scheduledAt": "2026-11-22T06:31:00.000Z",
     "createdAt": "2026-11-14T00:01:24.390Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18110278754197294",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18110278754197294"
+    ]
   },
   {
     "id": "adb2463b-252f-4a1f-93eb-aca66022630e",
