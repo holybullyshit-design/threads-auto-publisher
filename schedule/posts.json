@@ -49126,10 +49126,13 @@
     "scheduledAt": "2026-11-22T00:35:00.000Z",
     "createdAt": "2026-11-14T02:06:24.493Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18080731694771976",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18080731694771976"
+    ]
   },
   {
     "id": "ae9df204-4ab4-407f-96d0-0270bf6b0f10",
