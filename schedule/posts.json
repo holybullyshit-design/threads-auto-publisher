@@ -49473,11 +49473,14 @@
     "scheduledAt": "2026-11-23T09:27:00.000Z",
     "createdAt": "2026-11-14T02:13:01.368Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18054171716816934",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18054171716816934"
+    ]
   },
   {
     "id": "0fdb6328-8c54-4e1d-88d4-9b0ed649c6f8",
