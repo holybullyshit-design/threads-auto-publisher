@@ -47744,11 +47744,14 @@
     "scheduledAt": "2026-11-23T23:06:00.000Z",
     "createdAt": "2026-11-14T01:09:57.781Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18119927096079265",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "toneFixed": true
+    "toneFixed": true,
+    "chainPublishedIds": [
+      "18119927096079265"
+    ]
   },
   {
     "id": "caeeb561-70fc-44ad-86d1-c8cb60a37a18",
