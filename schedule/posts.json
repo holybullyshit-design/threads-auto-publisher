@@ -44266,10 +44266,13 @@
     "scheduledAt": "2026-11-22T23:55:00.000Z",
     "createdAt": "2026-11-13T23:04:57.627Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18145681510719915",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18145681510719915"
+    ]
   },
   {
     "id": "88afd326-cb67-4718-a99f-53432b31ee7d",
