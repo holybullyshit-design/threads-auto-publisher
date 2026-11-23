@@ -47712,11 +47712,14 @@
     "scheduledAt": "2026-11-23T08:49:00.000Z",
     "createdAt": "2026-11-14T01:09:26.374Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18482509963119466",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18482509963119466"
+    ]
   },
   {
     "id": "6e1806fc-770f-43b3-8780-f6996c51075a",
