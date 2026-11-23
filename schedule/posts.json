@@ -49390,10 +49390,13 @@
     "scheduledAt": "2026-11-23T04:31:00.000Z",
     "createdAt": "2026-11-14T02:10:29.706Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17889685857501512",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17889685857501512"
+    ]
   },
   {
     "id": "b1b23fad-89ae-4766-9835-d33ec6bec6a4",
