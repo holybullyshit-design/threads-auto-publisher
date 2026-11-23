@@ -336,7 +336,7 @@
      "coverage": "Redirect error",
      "fetch": "REDIRECT_ERROR",
      "lastCrawl": "2026-11-20T00:55:06Z",
-     "checkedAt": "2026-11-22T08:02:10.450Z"
+     "checkedAt": "2026-11-23T08:03:28.930Z"
     },
     "https://hirecurator.blogspot.com/2026/11/4-2784011126-18.html": {
      "verdict": "NEUTRAL",
@@ -354,10 +354,10 @@
     },
     "https://hirecurator.blogspot.com/2026/11/31127-14.html": {
      "verdict": "NEUTRAL",
-     "coverage": "Discovered - currently not indexed",
+     "coverage": "URL is unknown to Google",
      "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
      "lastCrawl": "",
-     "checkedAt": "2026-11-22T08:02:10.450Z"
+     "checkedAt": "2026-11-23T08:03:28.930Z"
     },
     "https://hirecurator.blogspot.com/2026/11/118080-21127-15.html": {
      "verdict": "NEUTRAL",
@@ -378,7 +378,7 @@
      "coverage": "Discovered - currently not indexed",
      "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
      "lastCrawl": "",
-     "checkedAt": "2026-11-22T08:02:10.450Z"
+     "checkedAt": "2026-11-23T08:03:28.930Z"
     },
     "https://hirecurator.blogspot.com/2026/11/34-1127-17.html": {
      "verdict": "NEUTRAL",
@@ -399,7 +399,7 @@
      "coverage": "URL is unknown to Google",
      "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
      "lastCrawl": "",
-     "checkedAt": "2026-11-22T08:02:10.450Z"
+     "checkedAt": "2026-11-23T08:03:28.930Z"
     },
     "https://hirecurator.blogspot.com/2026/11/61210-16.html": {
      "verdict": "NEUTRAL",
@@ -414,15 +414,22 @@
      "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
      "lastCrawl": "",
      "checkedAt": "2026-11-23T03:44:52.164Z"
+    },
+    "https://hirecurator.blogspot.com/2026/11/16-1130-10.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "URL is unknown to Google",
+     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
+     "lastCrawl": "",
+     "checkedAt": "2026-11-23T08:03:28.930Z"
     }
    },
    "sitemapSubmittedAt": "2026-11-22T16:19:24.669Z",
    "summary": {
-    "total": 59,
+    "total": 60,
     "indexed": 9,
     "redirectError": 28,
-    "unknown": 12,
-    "discovered": 10,
+    "unknown": 14,
+    "discovered": 9,
     "crawledNotIndexed": 0,
     "other": 0,
     "error": 0
@@ -627,5 +634,5 @@
    }
   }
  },
- "updatedAt": "2026-11-23T03:44:52.164Z"
+ "updatedAt": "2026-11-23T08:03:28.930Z"
 }
