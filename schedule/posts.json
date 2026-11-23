@@ -44343,10 +44343,13 @@
     "scheduledAt": "2026-11-23T08:02:00.000Z",
     "createdAt": "2026-11-13T23:06:44.401Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18119521024997170",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18119521024997170"
+    ]
   },
   {
     "id": "e0cf1999-c352-4261-9029-880a1856763e",
