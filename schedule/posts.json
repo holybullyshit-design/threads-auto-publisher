@@ -47606,10 +47606,13 @@
     "scheduledAt": "2026-11-23T01:48:00.000Z",
     "createdAt": "2026-11-14T01:06:34.757Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18056579813603055",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18056579813603055"
+    ]
   },
   {
     "id": "2407c038-7bc8-46c2-b1e0-e74b518cb23c",
