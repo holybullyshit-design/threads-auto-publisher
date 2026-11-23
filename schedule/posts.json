@@ -44317,10 +44317,13 @@
     "scheduledAt": "2026-11-23T05:03:00.000Z",
     "createdAt": "2026-11-13T23:06:07.491Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18133683961884895",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18133683961884895"
+    ]
   },
   {
     "id": "9dabb665-a7c3-4600-8c08-0a9a88e9cdaf",
