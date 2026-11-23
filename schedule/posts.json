@@ -47639,11 +47639,14 @@
     "scheduledAt": "2026-11-23T04:21:00.000Z",
     "createdAt": "2026-11-14T01:07:12.904Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18111445796305791",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "toneFixed": true
+    "toneFixed": true,
+    "chainPublishedIds": [
+      "18111445796305791"
+    ]
   },
   {
     "id": "f4f32212-c097-4ac4-894f-2a20839c8099",
