@@ -49607,10 +49607,13 @@
     "scheduledAt": "2026-11-24T04:32:00.000Z",
     "createdAt": "2026-11-14T02:15:08.874Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18121407851095991",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18121407851095991"
+    ]
   },
   {
     "id": "9398bd64-291c-4c18-b27c-defdd8709d27",
