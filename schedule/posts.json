@@ -46027,10 +46027,13 @@
     "scheduledAt": "2026-11-24T22:17:00.000Z",
     "createdAt": "2026-11-14T00:10:20.652Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18120898178103314",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18120898178103314"
+    ]
   },
   {
     "id": "ddf54874-2c80-4e8e-acbe-acca4dbd4454",
