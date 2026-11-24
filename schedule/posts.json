@@ -44368,10 +44368,13 @@
     "scheduledAt": "2026-11-23T23:49:00.000Z",
     "createdAt": "2026-11-13T23:08:03.113Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17980161417176363",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17980161417176363"
+    ]
   },
   {
     "id": "4d8cbc44-015b-4c39-b7f0-f43802361548",
