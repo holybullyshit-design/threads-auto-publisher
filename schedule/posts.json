@@ -49559,10 +49559,13 @@
     "scheduledAt": "2026-11-24T01:59:00.000Z",
     "createdAt": "2026-11-14T02:14:41.536Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18161331670567589",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18161331670567589"
+    ]
   },
   {
     "id": "2e2ecc6a-48ce-4281-a636-7274f53beb83",
