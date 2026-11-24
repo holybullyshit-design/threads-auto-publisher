@@ -49684,11 +49684,14 @@
     "scheduledAt": "2026-11-24T09:13:00.000Z",
     "createdAt": "2026-11-14T02:17:12.933Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18148188142609926",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18148188142609926"
+    ]
   },
   {
     "id": "fb636e2f-d3ff-4faa-93a8-87016596ae85",
