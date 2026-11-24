@@ -47890,12 +47890,15 @@
     "scheduledAt": "2026-11-24T08:58:00.000Z",
     "createdAt": "2026-11-14T01:12:44.279Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18338367814276780",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
     "commentCta": true,
-    "toneFixed": true
+    "toneFixed": true,
+    "chainPublishedIds": [
+      "18338367814276780"
+    ]
   },
   {
     "id": "524ce1bb-3eb7-41da-adf8-069e63aa4c9f",
