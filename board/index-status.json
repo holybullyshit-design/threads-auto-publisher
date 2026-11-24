@@ -336,7 +336,7 @@
      "coverage": "Redirect error",
      "fetch": "REDIRECT_ERROR",
      "lastCrawl": "2026-11-20T00:55:06Z",
-     "checkedAt": "2026-11-23T08:03:28.930Z"
+     "checkedAt": "2026-11-24T05:30:20.546Z"
     },
     "https://hirecurator.blogspot.com/2026/11/4-2784011126-18.html": {
      "verdict": "NEUTRAL",
@@ -357,7 +357,7 @@
      "coverage": "URL is unknown to Google",
      "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
      "lastCrawl": "",
-     "checkedAt": "2026-11-23T08:03:28.930Z"
+     "checkedAt": "2026-11-24T05:30:20.546Z"
     },
     "https://hirecurator.blogspot.com/2026/11/118080-21127-15.html": {
      "verdict": "NEUTRAL",
@@ -378,7 +378,7 @@
      "coverage": "Discovered - currently not indexed",
      "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
      "lastCrawl": "",
-     "checkedAt": "2026-11-23T08:03:28.930Z"
+     "checkedAt": "2026-11-24T05:30:20.546Z"
     },
     "https://hirecurator.blogspot.com/2026/11/34-1127-17.html": {
      "verdict": "NEUTRAL",
@@ -396,10 +396,10 @@
     },
     "https://hirecurator.blogspot.com/2026/11/1-7521127-18.html": {
      "verdict": "NEUTRAL",
-     "coverage": "URL is unknown to Google",
+     "coverage": "Discovered - currently not indexed",
      "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
      "lastCrawl": "",
-     "checkedAt": "2026-11-23T08:03:28.930Z"
+     "checkedAt": "2026-11-24T05:30:20.546Z"
     },
     "https://hirecurator.blogspot.com/2026/11/61210-16.html": {
      "verdict": "NEUTRAL",
@@ -413,14 +413,14 @@
      "coverage": "Discovered - currently not indexed",
      "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
      "lastCrawl": "",
-     "checkedAt": "2026-11-23T03:44:52.164Z"
+     "checkedAt": "2026-11-24T05:30:20.546Z"
     },
     "https://hirecurator.blogspot.com/2026/11/16-1130-10.html": {
      "verdict": "NEUTRAL",
-     "coverage": "URL is unknown to Google",
+     "coverage": "Discovered - currently not indexed",
      "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
      "lastCrawl": "",
-     "checkedAt": "2026-11-23T08:03:28.930Z"
+     "checkedAt": "2026-11-24T05:30:20.546Z"
     },
     "https://hirecurator.blogspot.com/2026/11/12-1130-14.html": {
      "verdict": "NEUTRAL",
@@ -428,15 +428,22 @@
      "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
      "lastCrawl": "",
      "checkedAt": "2026-11-23T23:02:56.650Z"
+    },
+    "https://hirecurator.blogspot.com/2026/11/7490-4112-2025.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "Discovered - currently not indexed",
+     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
+     "lastCrawl": "",
+     "checkedAt": "2026-11-24T05:30:20.546Z"
     }
    },
    "sitemapSubmittedAt": "2026-11-23T20:17:16.291Z",
    "summary": {
-    "total": 61,
+    "total": 62,
     "indexed": 9,
     "redirectError": 28,
-    "unknown": 6,
-    "discovered": 18,
+    "unknown": 4,
+    "discovered": 21,
     "crawledNotIndexed": 0,
     "other": 0,
     "error": 0
@@ -527,15 +534,22 @@
      "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
      "lastCrawl": "",
      "checkedAt": "2026-11-23T23:02:56.650Z"
+    },
+    "https://hire-masters.blogspot.com/2026/11/14-1129.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "Discovered - currently not indexed",
+     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
+     "lastCrawl": "",
+     "checkedAt": "2026-11-24T05:30:20.546Z"
     }
    },
    "sitemapSubmittedAt": "2026-11-23T20:17:16.291Z",
    "summary": {
-    "total": 12,
+    "total": 13,
     "indexed": 0,
     "redirectError": 9,
     "unknown": 0,
-    "discovered": 3,
+    "discovered": 4,
     "crawledNotIndexed": 0,
     "other": 0,
     "error": 0
@@ -626,14 +640,21 @@
      "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
      "lastCrawl": "",
      "checkedAt": "2026-11-23T23:02:56.650Z"
+    },
+    "https://jobscurator.blogspot.com/2026/11/4-65-1231122.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "URL is unknown to Google",
+     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
+     "lastCrawl": "",
+     "checkedAt": "2026-11-24T05:30:20.546Z"
     }
    },
    "sitemapSubmittedAt": "2026-11-23T20:17:16.291Z",
    "summary": {
-    "total": 12,
+    "total": 13,
     "indexed": 0,
     "redirectError": 4,
-    "unknown": 2,
+    "unknown": 3,
     "discovered": 6,
     "crawledNotIndexed": 0,
     "other": 0,
@@ -641,5 +662,5 @@
    }
   }
  },
- "updatedAt": "2026-11-23T23:02:56.650Z"
+ "updatedAt": "2026-11-24T05:30:20.546Z"
 }
