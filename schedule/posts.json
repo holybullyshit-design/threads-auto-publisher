@@ -49718,10 +49718,13 @@
     "scheduledAt": "2026-11-24T22:19:00.000Z",
     "createdAt": "2026-11-14T02:17:51.453Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18485638441113483",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18485638441113483"
+    ]
   },
   {
     "id": "aa6038c6-afd9-4ec8-bfc8-7b4af110af98",
