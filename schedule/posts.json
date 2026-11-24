@@ -45992,10 +45992,13 @@
     "scheduledAt": "2026-11-24T05:36:00.000Z",
     "createdAt": "2026-11-14T00:09:40.274Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17902025742654998",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17902025742654998"
+    ]
   },
   {
     "id": "b6d4db8e-90a4-4f6b-a6bd-b274b72a80f6",
