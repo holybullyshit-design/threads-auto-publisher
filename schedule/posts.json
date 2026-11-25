@@ -46170,10 +46170,13 @@
     "scheduledAt": "2026-11-25T22:52:00.000Z",
     "createdAt": "2026-11-14T00:15:30.315Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18123000968065614",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18123000968065614"
+    ]
   },
   {
     "id": "f0a85bbf-7bd1-4298-85e8-27f7d79e0c22",
