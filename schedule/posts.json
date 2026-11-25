@@ -48072,11 +48072,14 @@
     "scheduledAt": "2026-11-25T10:12:00.000Z",
     "createdAt": "2026-11-14T01:16:59.484Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18156667540551746",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18156667540551746"
+    ]
   },
   {
     "id": "41fa0105-3ac1-46fb-a726-a6a2b1fd500e",
