@@ -46059,10 +46059,13 @@
     "scheduledAt": "2026-11-25T00:41:00.000Z",
     "createdAt": "2026-11-14T00:11:05.632Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18663649267021093",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18663649267021093"
+    ]
   },
   {
     "id": "eede496c-ea85-46f7-bbd6-9f7fd0c0509e",
