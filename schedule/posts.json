@@ -44496,10 +44496,13 @@
     "scheduledAt": "2026-11-25T01:37:00.000Z",
     "createdAt": "2026-11-13T23:13:40.227Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17916944037288568",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17916944037288568"
+    ]
   },
   {
     "id": "67f3903c-08be-48aa-b88d-bc06c344b429",
