@@ -49947,11 +49947,14 @@
     "scheduledAt": "2026-11-25T23:05:00.000Z",
     "createdAt": "2026-11-14T02:21:26.895Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17971581968973697",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "toneFixed": true
+    "toneFixed": true,
+    "chainPublishedIds": [
+      "17971581968973697"
+    ]
   },
   {
     "id": "784adbdd-fba0-4204-90b8-de68465fefe1",
