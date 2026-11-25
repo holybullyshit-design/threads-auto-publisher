@@ -448,7 +448,7 @@
      "coverage": "Discovered - currently not indexed",
      "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
      "lastCrawl": "",
-     "checkedAt": "2026-11-24T23:03:06.195Z"
+     "checkedAt": "2026-11-25T21:47:47.557Z"
     },
     "https://hirecurator.blogspot.com/2026/11/1-28-5131-2025.html": {
      "verdict": "NEUTRAL",
@@ -704,5 +704,5 @@
    }
   }
  },
- "updatedAt": "2026-11-25T18:40:47.869Z"
+ "updatedAt": "2026-11-25T21:47:47.557Z"
 }
