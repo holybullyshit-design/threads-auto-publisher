@@ -44551,10 +44551,13 @@
     "scheduledAt": "2026-11-25T06:30:00.000Z",
     "createdAt": "2026-11-13T23:15:59.440Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17926163187450938",
     "error": null,
     "viralEngine": true,
-    "hitFormula": false
+    "hitFormula": false,
+    "chainPublishedIds": [
+      "17926163187450938"
+    ]
   },
   {
     "id": "f36799fa-d408-4894-9e82-5362a9bfbbb8",
