@@ -48008,10 +48008,13 @@
     "scheduledAt": "2026-11-25T05:13:00.000Z",
     "createdAt": "2026-11-14T01:14:37.267Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18108560387333745",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18108560387333745"
+    ]
   },
   {
     "id": "2ae90fd6-5923-4e95-858d-f8bae62daf3a",
