@@ -49806,10 +49806,13 @@
     "scheduledAt": "2026-11-25T03:47:00.000Z",
     "createdAt": "2026-11-14T02:19:19.260Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18098431394157473",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18098431394157473"
+    ]
   },
   {
     "id": "10652cae-5dff-4edc-95b6-1c7d7b04c7da",
