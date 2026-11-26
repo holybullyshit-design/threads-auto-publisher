@@ -50043,10 +50043,13 @@
     "scheduledAt": "2026-11-26T04:08:00.000Z",
     "createdAt": "2026-11-14T02:23:31.329Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18053485766627993",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18053485766627993"
+    ]
   },
   {
     "id": "f5f806b8-902e-4ede-9db6-c461056a68aa",
