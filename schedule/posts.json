@@ -50088,11 +50088,14 @@
     "scheduledAt": "2026-11-26T06:42:00.000Z",
     "createdAt": "2026-11-14T02:24:16.596Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18131433524488671",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "toneFixed": true
+    "toneFixed": true,
+    "chainPublishedIds": [
+      "18131433524488671"
+    ]
   },
   {
     "id": "e2780fc2-0096-4f69-93b7-109f748c7a5f",
