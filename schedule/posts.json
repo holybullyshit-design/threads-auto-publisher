@@ -48266,12 +48266,15 @@
     "scheduledAt": "2026-11-26T09:22:00.000Z",
     "createdAt": "2026-11-14T01:21:17.682Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18650800642041045",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
     "commentCta": true,
-    "toneFixed": true
+    "toneFixed": true,
+    "chainPublishedIds": [
+      "18650800642041045"
+    ]
   },
   {
     "id": "4b5304d3-7fbc-4a4d-b068-110747087363",
