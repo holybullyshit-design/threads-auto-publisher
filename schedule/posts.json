@@ -46206,10 +46206,13 @@
     "scheduledAt": "2026-11-26T01:51:00.000Z",
     "createdAt": "2026-11-14T00:16:26.051Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18137852366502748",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18137852366502748"
+    ]
   },
   {
     "id": "31f418cd-bc3f-41c1-96d9-d62a18b21b51",
