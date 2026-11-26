@@ -46273,10 +46273,13 @@
     "scheduledAt": "2026-11-26T06:34:00.000Z",
     "createdAt": "2026-11-14T00:17:46.075Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18117945758232402",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18117945758232402"
+    ]
   },
   {
     "id": "c590ae74-ddb3-473d-89b4-97f5e8efef46",
