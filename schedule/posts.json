@@ -46241,10 +46241,13 @@
     "scheduledAt": "2026-11-26T04:06:00.000Z",
     "createdAt": "2026-11-14T00:17:11.453Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18131435312479580",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18131435312479580"
+    ]
   },
   {
     "id": "2fe6f7fa-3015-4041-81dc-2829f55fa44b",
