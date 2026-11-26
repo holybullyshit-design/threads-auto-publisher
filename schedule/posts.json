@@ -50113,11 +50113,14 @@
     "scheduledAt": "2026-11-26T08:50:00.000Z",
     "createdAt": "2026-11-14T02:25:07.196Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18135733636704950",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18135733636704950"
+    ]
   },
   {
     "id": "31051bfc-0e34-489c-aa3f-1322b4c6ca1e",
