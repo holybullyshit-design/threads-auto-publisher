@@ -48295,11 +48295,14 @@
     "scheduledAt": "2026-11-26T22:03:00.000Z",
     "createdAt": "2026-11-14T01:21:59.976Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18133710488497250",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "toneFixed": true
+    "toneFixed": true,
+    "chainPublishedIds": [
+      "18133710488497250"
+    ]
   },
   {
     "id": "2ffa17b9-e20f-499b-a0b5-1983927f3a42",
