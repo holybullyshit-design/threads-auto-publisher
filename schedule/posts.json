@@ -44601,10 +44601,13 @@
     "scheduledAt": "2026-11-26T01:35:00.000Z",
     "createdAt": "2026-11-13T23:17:29.060Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18114968954617316",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18114968954617316"
+    ]
   },
   {
     "id": "b5cd0caf-60ab-4c43-bac1-bde0b298db09",
