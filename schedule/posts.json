@@ -49979,11 +49979,14 @@
     "scheduledAt": "2026-11-26T01:20:00.000Z",
     "createdAt": "2026-11-14T02:22:49.784Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18022086011953629",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "toneFixed": true
+    "toneFixed": true,
+    "chainPublishedIds": [
+      "18022086011953629"
+    ]
   },
   {
     "id": "dce478b6-7883-45c4-9af6-a67702dac9de",
