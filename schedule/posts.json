@@ -44750,10 +44750,13 @@
     "scheduledAt": "2026-11-27T06:17:00.000Z",
     "createdAt": "2026-11-13T23:21:54.394Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17915743515482157",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17915743515482157"
+    ]
   },
   {
     "id": "12858202-cfd2-4321-9b4b-f94ae2359a6f",
