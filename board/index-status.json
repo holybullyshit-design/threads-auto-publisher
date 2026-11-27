@@ -505,15 +505,22 @@
      "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
      "lastCrawl": "",
      "checkedAt": "2026-11-27T08:03:01.466Z"
+    },
+    "https://hirecurator.blogspot.com/2026/11/26-264123-13.html": {
+     "verdict": "NEUTRAL",
+     "coverage": "Discovered - currently not indexed",
+     "fetch": "PAGE_FETCH_STATE_UNSPECIFIED",
+     "lastCrawl": "",
+     "checkedAt": "2026-11-27T23:01:33.550Z"
     }
    },
    "sitemapSubmittedAt": "2026-11-27T18:13:26.558Z",
    "summary": {
-    "total": 72,
+    "total": 73,
     "indexed": 0,
     "redirectError": 32,
     "unknown": 6,
-    "discovered": 25,
+    "discovered": 26,
     "crawledNotIndexed": 9,
     "other": 0,
     "error": 0
@@ -774,5 +781,5 @@
    }
   }
  },
- "updatedAt": "2026-11-27T21:47:24.176Z"
+ "updatedAt": "2026-11-27T23:01:33.550Z"
 }
