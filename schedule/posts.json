@@ -46364,10 +46364,13 @@
     "scheduledAt": "2026-11-27T03:37:00.000Z",
     "createdAt": "2026-11-14T00:20:24.238Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18075596216784735",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18075596216784735"
+    ]
   },
   {
     "id": "93e3aaca-b967-41a8-8901-e384d7f1bb95",
