@@ -50293,11 +50293,14 @@
     "scheduledAt": "2026-11-27T07:11:00.000Z",
     "createdAt": "2026-11-14T02:27:27.519Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18000226530046333",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "toneFixed": true
+    "toneFixed": true,
+    "chainPublishedIds": [
+      "18000226530046333"
+    ]
   },
   {
     "id": "f8dd983d-e453-4994-899b-6e2ed063a9a4",
