@@ -50327,11 +50327,14 @@
     "scheduledAt": "2026-11-27T09:43:00.000Z",
     "createdAt": "2026-11-14T02:28:13.056Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18116786176853109",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18116786176853109"
+    ]
   },
   {
     "id": "b2da9f5c-4c61-4d85-af2f-4f7efa4f7414",
