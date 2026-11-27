@@ -44701,10 +44701,13 @@
     "scheduledAt": "2026-11-27T01:14:00.000Z",
     "createdAt": "2026-11-13T23:20:42.725Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18122564900054794",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18122564900054794"
+    ]
   },
   {
     "id": "7bdcc22b-86e0-4cf0-8166-e0cdb23c9f65",
