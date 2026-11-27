@@ -44776,10 +44776,13 @@
     "scheduledAt": "2026-11-27T23:23:00.000Z",
     "createdAt": "2026-11-13T23:22:34.355Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18436021507151007",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18436021507151007"
+    ]
   },
   {
     "id": "e68c6d49-3a2e-444e-8989-d11887e82674",
