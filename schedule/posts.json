@@ -48446,11 +48446,14 @@
     "scheduledAt": "2026-11-27T08:18:00.000Z",
     "createdAt": "2026-11-14T01:24:28.003Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18099802469247505",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18099802469247505"
+    ]
   },
   {
     "id": "ed782f9d-cb0a-41f7-962a-939dce34f113",
