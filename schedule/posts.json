@@ -50249,10 +50249,13 @@
     "scheduledAt": "2026-11-27T04:29:00.000Z",
     "createdAt": "2026-11-14T02:26:50.721Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18024022754959976",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18024022754959976"
+    ]
   },
   {
     "id": "fa0c2485-f557-4f69-9355-b1f0c2dc34bd",
