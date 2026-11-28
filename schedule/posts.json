@@ -46484,10 +46484,13 @@
     "scheduledAt": "2026-11-28T04:43:00.000Z",
     "createdAt": "2026-11-14T00:23:17.603Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17925462330451548",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17925462330451548"
+    ]
   },
   {
     "id": "c9079548-fca3-4562-8d88-b0bdbfa9cac5",
