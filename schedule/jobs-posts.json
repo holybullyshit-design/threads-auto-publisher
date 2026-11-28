@@ -12380,7 +12380,7 @@
   },
   {
     "id": "c68f91f4-9497-4b2d-b933-4189cfdee4ba",
-    "status": "reply_pending",
+    "status": "published",
     "createdAt": "2026-11-20T13:58:42.522Z",
     "handle": "hire_masters",
     "scheduledAt": "2026-11-28T00:30:00.000Z",
@@ -12438,7 +12438,10 @@
     "mainUrl": "https://www.threads.com/@hire_masters/post/DgQ-RqKFtbm",
     "mainTimestamp": "2026-11-28T00:31:27+0000",
     "replyId": "18112166444250571",
-    "replySentText": "👉 공고문 기준 정리 글은 여기서 확인\nhttps://hirecurator.blogspot.com/2026/11/ai-150-223124-14.html"
+    "replySentText": "👉 공고문 기준 정리 글은 여기서 확인\nhttps://hirecurator.blogspot.com/2026/11/ai-150-223124-14.html",
+    "replyUrl": "https://www.threads.com/@hire_masters/post/DgQ-TY4ln-U",
+    "replyTimestamp": "2026-11-28T00:31:39+0000",
+    "publishedAt": "2026-11-28T00:31:44.816Z"
   },
   {
     "id": "7906b2ca-abcb-4923-9a6d-78a099db87fa",
