@@ -48590,11 +48590,14 @@
     "scheduledAt": "2026-11-28T07:14:00.000Z",
     "createdAt": "2026-11-14T01:28:37.670Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18004009563040802",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "toneFixed": true
+    "toneFixed": true,
+    "chainPublishedIds": [
+      "18004009563040802"
+    ]
   },
   {
     "id": "5ddc528f-7efb-450f-951c-cb1bce642288",
