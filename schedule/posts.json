@@ -50446,10 +50446,13 @@
     "scheduledAt": "2026-11-28T04:16:00.000Z",
     "createdAt": "2026-11-14T02:30:22.422Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18140415214641748",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18140415214641748"
+    ]
   },
   {
     "id": "6a3c3890-813d-44d2-835a-da44d9922210",
