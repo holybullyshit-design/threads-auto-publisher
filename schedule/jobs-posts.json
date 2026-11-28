@@ -12380,7 +12380,7 @@
   },
   {
     "id": "c68f91f4-9497-4b2d-b933-4189cfdee4ba",
-    "status": "scheduled",
+    "status": "publishing",
     "createdAt": "2026-11-20T13:58:42.522Z",
     "handle": "hire_masters",
     "scheduledAt": "2026-11-28T00:30:00.000Z",
@@ -12431,7 +12431,9 @@
     "imageSha256": "41b625fe0342f89b0a2d47b8b3f2524a00134bb38df561195de55a25b7226aa1",
     "checkedAt": "2026-11-20T13:58:42.522Z",
     "updatedAt": "2026-11-20T13:58:42.522Z",
-    "blogUrl": "https://hirecurator.blogspot.com/2026/11/ai-150-223124-14.html"
+    "blogUrl": "https://hirecurator.blogspot.com/2026/11/ai-150-223124-14.html",
+    "attemptedAt": "2026-11-28T00:31:18.021Z",
+    "error": null
   },
   {
     "id": "7906b2ca-abcb-4923-9a6d-78a099db87fa",
