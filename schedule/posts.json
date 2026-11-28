@@ -50537,11 +50537,14 @@
     "scheduledAt": "2026-11-28T09:16:00.000Z",
     "createdAt": "2026-11-14T02:31:42.117Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18120501782046449",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18120501782046449"
+    ]
   },
   {
     "id": "8c3d7952-88bc-4507-8cc4-404bff661146",
