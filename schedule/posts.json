@@ -48525,11 +48525,14 @@
     "scheduledAt": "2026-11-28T02:43:00.000Z",
     "createdAt": "2026-11-14T01:26:43.233Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18132473371859373",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "toneFixed": true
+    "toneFixed": true,
+    "chainPublishedIds": [
+      "18132473371859373"
+    ]
   },
   {
     "id": "49c61f1f-117a-4e2f-9721-8ef6239448ef",
