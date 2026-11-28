@@ -46520,10 +46520,13 @@
     "scheduledAt": "2026-11-28T07:35:00.000Z",
     "createdAt": "2026-11-14T00:24:00.631Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18082608380737889",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "18082608380737889"
+    ]
   },
   {
     "id": "dab07883-5aee-4253-93a4-dcaf3d6da5dc",
