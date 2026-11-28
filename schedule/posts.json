@@ -48629,11 +48629,14 @@
     "scheduledAt": "2026-11-28T09:54:00.000Z",
     "createdAt": "2026-11-14T01:29:20.992Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18130504618848682",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "commentCta": true
+    "commentCta": true,
+    "chainPublishedIds": [
+      "18130504618848682"
+    ]
   },
   {
     "id": "5f1b0f5a-4430-4637-b6a1-9b151bc3dd29",
