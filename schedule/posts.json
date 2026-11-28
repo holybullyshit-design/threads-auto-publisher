@@ -44828,10 +44828,13 @@
     "scheduledAt": "2026-11-28T04:56:00.000Z",
     "createdAt": "2026-11-13T23:24:19.491Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "17947054662090766",
     "error": null,
     "viralEngine": true,
-    "hitFormula": true
+    "hitFormula": true,
+    "chainPublishedIds": [
+      "17947054662090766"
+    ]
   },
   {
     "id": "0f318a00-6650-45fa-9361-a531ea91c617",
