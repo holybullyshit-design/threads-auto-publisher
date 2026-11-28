@@ -12445,7 +12445,7 @@
   },
   {
     "id": "7906b2ca-abcb-4923-9a6d-78a099db87fa",
-    "status": "reply_pending",
+    "status": "published",
     "createdAt": "2026-11-20T13:58:42.522Z",
     "handle": "high_quality_hire",
     "scheduledAt": "2026-11-28T01:30:00.000Z",
@@ -12508,7 +12508,10 @@
     "mainUrl": "https://www.threads.com/@high_quality_hire/post/DgRFItQjJYf",
     "mainTimestamp": "2026-11-28T01:31:26+0000",
     "replyId": "17916943404283538",
-    "replySentText": "👆 직무별 급여·자격 비교 전체는 여기\nhttps://hirecurator.blogspot.com/2026/11/565-124-12.html"
+    "replySentText": "👆 직무별 급여·자격 비교 전체는 여기\nhttps://hirecurator.blogspot.com/2026/11/565-124-12.html",
+    "replyUrl": "https://www.threads.com/@high_quality_hire/post/DgRFKotDNur",
+    "replyTimestamp": "2026-11-28T01:31:38+0000",
+    "publishedAt": "2026-11-28T01:31:47.545Z"
   },
   {
     "id": "38c5cf37-6a9e-469f-bba9-e4d40047b70d",
