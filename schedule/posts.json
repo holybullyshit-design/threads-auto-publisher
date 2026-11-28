@@ -50402,11 +50402,14 @@
     "scheduledAt": "2026-11-28T01:29:00.000Z",
     "createdAt": "2026-11-14T02:29:46.986Z",
     "publishedAt": null,
-    "publishedId": null,
+    "publishedId": "18119150090017298",
     "error": null,
     "viralEngine": true,
     "hitFormula": true,
-    "toneFixed": true
+    "toneFixed": true,
+    "chainPublishedIds": [
+      "18119150090017298"
+    ]
   },
   {
     "id": "893fd2b2-a991-4e28-a59c-fa40e85c8b8e",
